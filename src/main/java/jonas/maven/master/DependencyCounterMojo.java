@@ -36,6 +36,12 @@ public class DependencyCounterMojo extends AbstractMojo {
     public void execute() throws MojoExecutionException, MojoFailureException {
         List<Dependency> dependencies = project.getDependencies();
 
+        for(int i = 0; i < dependencies.size(); i++){
+            System.out.println("DEPENDENCY: " + dependencies.get(i).toString());
+            System.out.println("SCOPE: " + dependencies.get(i).getScope());
+        }
+
+
         long numDependencies = dependencies.stream()
                 .filter(d -> (scope == null || scope.isEmpty()) || scope.equals(d.getScope()))
                 .count();
