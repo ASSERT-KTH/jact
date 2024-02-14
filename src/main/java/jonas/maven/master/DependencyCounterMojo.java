@@ -1,11 +1,12 @@
 package jonas.maven.master;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.List;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
 import java.lang.ProcessBuilder;
+import java.util.jar.JarEntry;
+import java.util.jar.JarInputStream;
 
 import org.apache.maven.model.Dependency;
 import org.apache.maven.plugin.AbstractMojo;
@@ -23,7 +24,7 @@ import org.apache.maven.project.MavenProject;
  * It can be filtered by scope.
  *
  */
-@Mojo(name = "dependency-counter", defaultPhase = LifecyclePhase.COMPILE)
+@Mojo(name = "dependency-counter", defaultPhase = LifecyclePhase.PACKAGE)
 public class DependencyCounterMojo extends AbstractMojo {
 
     /**
@@ -35,8 +36,9 @@ public class DependencyCounterMojo extends AbstractMojo {
     /**
      * Gives access to the Maven project information.
      */
-    @Parameter(defaultValue = "${project}", required = true, readonly = true)
+    @Parameter(defaultValue = "${project}", required = true, readonly = false)
     MavenProject project;
+
 
     public void execute() throws MojoExecutionException, MojoFailureException {
         List<Dependency> dependencies = project.getDependencies();
@@ -45,13 +47,23 @@ public class DependencyCounterMojo extends AbstractMojo {
         System.out.println("OUTPUT DIRECTORY: " + outputDir);
 
         mvnVersion();
+        File mavenHome = new File("C:/Programs/pache-maven-3.9.1");
+        // Run JaCoCo usage analysis
+        JacocoCoverage jacocoCoverage = new JacocoCoverage(project, mavenHome);
+        UsageAnalysis jacocoUsageAnalysis = jacocoCoverage.executeTestBasedAnalysis();
 
+        // Print out JaCoCo coverage output
+        System.out.println("JaCoCo:");
+        if (!jacocoUsageAnalysis.classes().isEmpty() && jacocoUsageAnalysis != null) {
+            System.out.print(jacocoUsageAnalysis.toString());
+        }
+        //myFileWriter.writeCoverageAnalysisToFile(CoverageToolEnum.JACOCO, jacocoUsageAnalysis);
+        //printCoverageAnalysisResults(jacocoUsageAnalysis);
 
         for (Dependency dependency : dependencies) {
             System.out.println("DEPENDENCY: " + dependency.toString());
             System.out.println("SCOPE: " + dependency.getScope());
         }
-
 
 
         long numDependencies = dependencies.stream()
@@ -95,7 +107,7 @@ public class DependencyCounterMojo extends AbstractMojo {
         }
     }
 
-    private static String readInputStream(InputStream inputStream) throws IOException {
+    public static String readInputStream(InputStream inputStream) throws IOException {
         // Read the input stream and convert it to a string
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             StringBuilder output = new StringBuilder();
