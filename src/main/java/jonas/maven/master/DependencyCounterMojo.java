@@ -47,7 +47,7 @@ public class DependencyCounterMojo extends AbstractMojo {
         System.out.println("OUTPUT DIRECTORY: " + outputDir);
 
         mvnVersion();
-        File mavenHome = new File("C:/Programs/pache-maven-3.9.1");
+        File mavenHome = new File("/mnt/c/Programs/apache-maven-3.9.1");
         // Run JaCoCo usage analysis
         JacocoCoverage jacocoCoverage = new JacocoCoverage(project, mavenHome);
         UsageAnalysis jacocoUsageAnalysis = jacocoCoverage.executeTestBasedAnalysis();
@@ -56,6 +56,12 @@ public class DependencyCounterMojo extends AbstractMojo {
         System.out.println("JaCoCo:");
         if (!jacocoUsageAnalysis.classes().isEmpty() && jacocoUsageAnalysis != null) {
             System.out.print(jacocoUsageAnalysis.toString());
+        }else if(jacocoUsageAnalysis.classes().isEmpty()){
+            System.out.println("jacoco analysis empty classes");
+        }else if(jacocoUsageAnalysis == null){
+            System.out.println("jacoco analysis is null");
+        }else{
+            System.out.println("Something else is wrong with jacoco");
         }
         //myFileWriter.writeCoverageAnalysisToFile(CoverageToolEnum.JACOCO, jacocoUsageAnalysis);
         //printCoverageAnalysisResults(jacocoUsageAnalysis);

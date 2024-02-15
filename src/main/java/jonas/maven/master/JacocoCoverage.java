@@ -163,7 +163,8 @@ public class JacocoCoverage extends AbstractCoverage
         try {
             writeReports();
         } catch (IOException e) {
-            LOGGER.error("Error writing coverage reports.");
+            //LOGGER.error("Error writing coverage reports.");
+            System.out.println("ERROR WRITING COVERAGE REPORTS");
         }
     }
 
