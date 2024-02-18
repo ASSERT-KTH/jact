@@ -77,44 +77,13 @@ public abstract class AbstractCoverage implements UsageAnalyzer
     protected void runTests()
     {
         System.out.println("IM TRYING TO RUN THE TESTS");
-//        try {
-//            // Command to be executed
-//            String command = "mvn org.apache.maven.plugins:maven-surefire-plugin:3.0.0-M5:test";
-//
-//            System.out.println("HEJSAN HEJSAN");
-//
-//            // Create a process builder with a shell
-//            ProcessBuilder processBuilder = new ProcessBuilder("cmd", "/c", command); // For Windows
-//            // ProcessBuilder processBuilder = new ProcessBuilder("/bin/bash", "-c", command); // For Linux
-//
-//            // Redirect error stream to output stream
-//            processBuilder.redirectErrorStream(true);
-//
-//            // Start the process
-//            Process process = processBuilder.start();
-//
-//            // Get the input stream of the process
-//            InputStream inputStream = process.getInputStream();
-//
-//            // Read the output
-//            String output = readInputStream(inputStream);
-//
-//            // Wait for the process to complete
-//            int exitCode = process.waitFor();
-//
-//            // Print the output
-//            System.out.println("Exit Code: " + exitCode);
-//            System.out.println("Output:\n" + output);
-//        } catch (IOException | InterruptedException e) {
-//            e.printStackTrace();
-//        }
-
-        // Run tests from here
-//        try {
-//            TestRunner.runTests(mavenProject, true);
-//        } catch (IOException e) {
-//            LOGGER.error("Error running the tests.");
-//        }
+         //Run tests from here
+        try {
+            TestRunner.runTests(mavenProject, true);
+        } catch (IOException e) {
+            //LOGGER.error("Error running the tests.");
+            System.out.println("ERROR RUNNING THE TESTS");
+        }
     }
 
 
@@ -131,7 +100,7 @@ public abstract class AbstractCoverage implements UsageAnalyzer
         excludeOptionalDependencies(mavenUtils);
         JarUtils.decompressJars(classesDir);
         JarUtils.decompressJars(testDir);
-        applyBytecodeTransformations(classesDir);
+        // applyBytecodeTransformations(classesDir);
         return mavenUtils;
     }
 

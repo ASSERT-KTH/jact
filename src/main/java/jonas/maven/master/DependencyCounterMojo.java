@@ -46,7 +46,7 @@ public class DependencyCounterMojo extends AbstractMojo {
         String outputDir = project.getBuild().getOutputDirectory();
         System.out.println("OUTPUT DIRECTORY: " + outputDir);
 
-        mvnVersion();
+        //mvnVersion();
         File mavenHome = new File("/mnt/c/Programs/apache-maven-3.9.1");
         // Run JaCoCo usage analysis
         JacocoCoverage jacocoCoverage = new JacocoCoverage(project, mavenHome);
@@ -87,8 +87,8 @@ public class DependencyCounterMojo extends AbstractMojo {
             String command = "mvn --version";
 
             // Create a process builder with a shell
-            ProcessBuilder processBuilder = new ProcessBuilder("cmd", "/c", command); // For Windows
-            // ProcessBuilder processBuilder = new ProcessBuilder("/bin/bash", "-c", command); // For Linux
+            //ProcessBuilder processBuilder = new ProcessBuilder("cmd", "/c", command); // For Windows
+            ProcessBuilder processBuilder = new ProcessBuilder("/bin/bash", "-c", command); // For Linux
 
             // Redirect error stream to output stream
             processBuilder.redirectErrorStream(true);

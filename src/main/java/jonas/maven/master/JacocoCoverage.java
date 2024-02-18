@@ -174,7 +174,7 @@ public class JacocoCoverage extends AbstractCoverage
     private int writeReports() throws IOException
     {
         final ExecFileLoader loader = loadExecutionData();
-        final IBundleCoverage bundle = analyze(loader.getExecutionDataStore());
+        final IBundleCoverage bundle = analyze(loader.getExecutionDataStore()); // This is throwing exceptions
         writeReports(bundle, loader);
         return 0;
     }
@@ -275,7 +275,8 @@ public class JacocoCoverage extends AbstractCoverage
                 total += instrumentRecursive(s, absoluteDest);
             }
         }
-        LOGGER.info(Integer.valueOf(total) + " classes instrumented to " + absoluteDest);
+        System.out.println(Integer.valueOf(total) + " classes instrumented to " + absoluteDest);
+        //LOGGER.info(Integer.valueOf(total) + " classes instrumented to " + absoluteDest);
     }
 
     /**
@@ -316,7 +317,7 @@ public class JacocoCoverage extends AbstractCoverage
      */
     private void addJaCoCoAsTestDependency(String testDir, MavenUtils mavenUtils)
     {
-        //mavenUtils.copyDependency("org.jacoco:org.jacoco.agent:0.8.5", testDir);
+        mavenUtils.copyDependency("org.jacoco:org.jacoco.agent:0.8.5", testDir);
         JarUtils.decompressJars(testDir);
     }
 }
