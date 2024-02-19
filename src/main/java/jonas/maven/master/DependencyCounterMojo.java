@@ -8,6 +8,7 @@ import java.lang.ProcessBuilder;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -24,7 +25,7 @@ import org.apache.maven.project.MavenProject;
  * It can be filtered by scope.
  *
  */
-@Mojo(name = "dependency-counter", defaultPhase = LifecyclePhase.PACKAGE)
+@Mojo(name = "dependency-counter", defaultPhase = LifecyclePhase.PACKAGE, threadSafe = true)
 public class DependencyCounterMojo extends AbstractMojo {
 
     /**
@@ -43,8 +44,13 @@ public class DependencyCounterMojo extends AbstractMojo {
     public void execute() throws MojoExecutionException, MojoFailureException {
         List<Dependency> dependencies = project.getDependencies();
 
-        String outputDir = project.getBuild().getOutputDirectory();
-        System.out.println("OUTPUT DIRECTORY: " + outputDir);
+        String outputDirectory = project.getBuild().getOutputDirectory();
+        String projectBaseDir = project.getBasedir().getAbsolutePath();
+        MyFileWriter myFileWriter = new MyFileWriter(projectBaseDir);
+        myFileWriter.resetJDBLReportsDirectory();
+
+        replaceClassesWithClassesInJarWithDependencies(projectBaseDir);
+        System.out.println("OUTPUT DIRECTORY: " + outputDirectory);
 
         //mvnVersion();
         File mavenHome = new File("/mnt/c/Programs/apache-maven-3.9.1");
@@ -122,6 +128,19 @@ public class DependencyCounterMojo extends AbstractMojo {
                 output.append(line).append("\n");
             }
             return output.toString();
+        }
+    }
+
+    private void replaceClassesWithClassesInJarWithDependencies(final String projectBaseDir)
+    {
+        Collection<File> jarFiles = FileUtils.listFiles(new File(projectBaseDir + "/target"), new String[]{"jar"}, false);
+
+        for (File jarFile : jarFiles) {
+            if (jarFile.getName().endsWith("-jar-with-dependencies.jar")) {
+                final String jarWithDepsName = jarFile.getName().substring(0, jarFile.getName().length() - 4);
+                final String jarWithDepsPath = jarFile.getAbsolutePath();
+                JarWithDeps.setInstance(jarWithDepsName, jarWithDepsPath);
+            }
         }
     }
 

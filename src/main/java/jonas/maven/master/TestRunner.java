@@ -9,6 +9,8 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.maven.project.MavenProject;
 
+import eu.stamp_project.testrunner.EntryPoint;
+
 import static jonas.maven.master.DependencyCounterMojo.readInputStream;
 
 
