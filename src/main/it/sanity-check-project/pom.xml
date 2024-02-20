@@ -4,6 +4,7 @@
     <artifactId>maven-tutorial</artifactId>
     <groupId>com.infiniteskills.maven</groupId>
     <version>1.0.0</version>
+    <packaging>jar</packaging>
 
     <name>Learning Maven Examples</name>
     <description>This is a project used to demonstrate maven principles</description>
@@ -64,6 +65,19 @@
 
     <build>
         <plugins>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-jar-plugin</artifactId>-->
+<!--                <version>3.2.0</version> &lt;!&ndash; Adjust version if needed &ndash;&gt;-->
+<!--                <configuration>-->
+<!--                    <archive>-->
+<!--                        <manifest>-->
+<!--                            <mainClass>jonas.sanity.check.SanityCheck</mainClass>-->
+<!--                        </manifest>-->
+<!--                    </archive>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -86,21 +100,21 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>jonas.maven.master</groupId>
-                <artifactId>jonas-maven-master</artifactId>
-                <version>1.0-SNAPSHOT</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>dependency-counter</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <scope>test</scope>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>jonas.maven.master</groupId>-->
+<!--                <artifactId>jonas-maven-master</artifactId>-->
+<!--                <version>1.0-SNAPSHOT</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>dependency-counter</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--                <configuration>-->
+<!--                    <scope>test</scope>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
 <!--            <plugin>-->
 <!--                <groupId>org.apache.maven.plugins</groupId>-->
 <!--                <artifactId>maven-dependency-plugin</artifactId>-->

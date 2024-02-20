@@ -58,7 +58,7 @@ public class TestRunner
         Process p;
 
         if (isTestRunForCoverage) {
-            p = rt.exec("mvn org.apache.maven.plugins:maven-surefire-plugin:3.0.0-M5:test");
+            p = rt.exec("mvn org.apache.maven.plugins:maven-surefire-plugin:3.0.0-M5:test -DadditionalClasspathElements=target/classes");
         } else {
             p = rt.exec("mvn test -Dmaven.main.skip=true -Drat.skip=true -Danimal.sniffer.skip=true -Dmaven.javadoc.skip=true -Dlicense.skip=true -Dsource.skip=true");
         }
