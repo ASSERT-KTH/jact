@@ -23,6 +23,8 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
+import static jonas.maven.master.JacocoXMLParser.groupPackageByDep;
+
 
 /**
  * Counts the number of maven dependencies of a project.
@@ -58,7 +60,7 @@ public class DependencyCounterMojo extends AbstractMojo {
         System.out.println("OUTPUT DIRECTORY: " + outputDirectory);
 
 
-
+        groupPackageByDep(dependencies);
 
         //mvnVersion();
         //File mavenHome = new File("/mnt/c/Programs/apache-maven-3.9.1");

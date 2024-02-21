@@ -1,5 +1,8 @@
 package jonas.maven.master;
 
+import com.google.gson.JsonObject;
+import org.apache.maven.model.Dependency;
+import org.apache.maven.project.MavenProject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -7,15 +10,46 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
+import java.sql.Array;
+import java.util.*;
 
 public class JacocoXMLParser {
 
-    public static void main(String[] args) {
+    public static void groupPackageByDep(List<Dependency> dependencies) {
+
+        // If the package-name contains artifactid + groupid then put that in its own report
+        //List<String> depWords = new ArrayList<>();
+
+
+
+        List<Set<String>> setOfAllDeps = new ArrayList<>();
+        for (Dependency dependency : dependencies) {
+            List<String> depWords = new ArrayList<>();
+
+
+            // Extract the words in the group id
+            String depGroupId = dependency.getGroupId();
+            String[] words = depGroupId.split("[.-]");
+            depWords.addAll(Arrays.asList(words));
+
+            // Extract the words in the artifact id
+            String depArtifactId = dependency.getArtifactId();
+            words = depArtifactId.split("[.-]");
+            depWords.addAll(Arrays.asList(words));
+
+            // Convert it to a set here
+            Set<String> depWordsSet = new HashSet<>(depWords);
+            setOfAllDeps.add(depWordsSet);
+        }
+
+        for(Set s : setOfAllDeps){
+            System.out.println(s.toString());
+        }
+
+
         try {
             // Load Jacoco XML report
-            File xmlFile = new File("jacoco_report.xml");
+            File xmlFile = new File("jacoco_report.xml"); // Currently manually generated.
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             dbFactory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false); // Disable DTD validation
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
