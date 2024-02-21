@@ -5,9 +5,14 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 import java.lang.ProcessBuilder;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
+import com.google.gson.JsonObject;
 import org.apache.commons.io.FileUtils;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.plugin.AbstractMojo;
@@ -52,31 +57,83 @@ public class DependencyCounterMojo extends AbstractMojo {
         replaceClassesWithClassesInJarWithDependencies(projectBaseDir);
         System.out.println("OUTPUT DIRECTORY: " + outputDirectory);
 
+
+
+
         //mvnVersion();
-        File mavenHome = new File("/mnt/c/Programs/apache-maven-3.9.1");
+        //File mavenHome = new File("/mnt/c/Programs/apache-maven-3.9.1");
         // Run JaCoCo usage analysis
-        JacocoCoverage jacocoCoverage = new JacocoCoverage(project, mavenHome);
-        UsageAnalysis jacocoUsageAnalysis = jacocoCoverage.executeTestBasedAnalysis();
+        //JacocoCoverage jacocoCoverage = new JacocoCoverage(project, mavenHome);
+        //UsageAnalysis jacocoUsageAnalysis = jacocoCoverage.executeTestBasedAnalysis();
 
         // Print out JaCoCo coverage output
-        System.out.println("JaCoCo:");
-        if (!jacocoUsageAnalysis.classes().isEmpty() && jacocoUsageAnalysis != null) {
-            System.out.print(jacocoUsageAnalysis.toString());
-        }else if(jacocoUsageAnalysis.classes().isEmpty()){
-            System.out.println("jacoco analysis empty classes");
-        }else if(jacocoUsageAnalysis == null){
-            System.out.println("jacoco analysis is null");
-        }else{
-            System.out.println("Something else is wrong with jacoco");
-        }
+//        System.out.println("JaCoCo:");
+//        if (!jacocoUsageAnalysis.classes().isEmpty() && jacocoUsageAnalysis != null) {
+//            System.out.print(jacocoUsageAnalysis.toString());
+//        }else if(jacocoUsageAnalysis.classes().isEmpty()){
+//            System.out.println("jacoco analysis empty classes");
+//        }else if(jacocoUsageAnalysis == null){
+//            System.out.println("jacoco analysis is null");
+//        }else{
+//            System.out.println("Something else is wrong with jacoco");
+//        }
         //myFileWriter.writeCoverageAnalysisToFile(CoverageToolEnum.JACOCO, jacocoUsageAnalysis);
         //printCoverageAnalysisResults(jacocoUsageAnalysis);
+
+        String filename = "ProjectDependencies.json";
+
+//        try (FileWriter fileWriter = new FileWriter(filename)) {
+//            for (Dependency dependency : dependencies) {
+//                fileWriter.write(dependency.toString() + "\n");
+//            }
+//            System.out.println("Successfully wrote to the file.");
+//        } catch (IOException e) {
+//            System.out.println("An error occurred while writing to the file.");
+//            e.printStackTrace();
+//        }
+
+
+//        try (FileWriter fileWriter = new FileWriter(filename)) {
+//            JSONArray jsonArray = new JSONArray();
+//
+//            for (Dependency dependency : dependencies) {
+//                JSONObject dependencyObj = new JSONObject();
+//                dependencyObj.put("groupId", dependency.getGroupId());
+//                dependencyObj.put("artifactId", dependency.getArtifactId());
+//                dependencyObj.put("version", dependency.getVersion());
+//                jsonArray.add(dependencyObj);
+//            }
+//
+//            fileWriter.write(jsonArray.toJSONString());
+//            System.out.println("Successfully wrote to the JSON file.");
+//        } catch (IOException e) {
+//            System.out.println("An error occurred while writing to the JSON file.");
+//            e.printStackTrace();
+//        }
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        try (FileWriter fileWriter = new FileWriter(filename)) {
+            for (Dependency dependency : dependencies) {
+                JsonObject dependencyObj  = new JsonObject();
+                dependencyObj.addProperty("groupId", dependency.getGroupId());
+                dependencyObj.addProperty("artifactId", dependency.getArtifactId());
+                dependencyObj.addProperty("version", dependency.getVersion());
+                dependencyObj.addProperty("scope", dependency.getScope());
+                //dependencyObj.addProperty("type", dependency.getType());
+                String json = gson.toJson(dependencyObj);
+                fileWriter.write(json + "\n");
+            }
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing to the file.");
+            e.printStackTrace();
+        }
 
         for (Dependency dependency : dependencies) {
             System.out.println("DEPENDENCY: " + dependency.toString());
             System.out.println("SCOPE: " + dependency.getScope());
         }
-
 
         long numDependencies = dependencies.stream()
                 .filter(d -> (scope == null || scope.isEmpty()) || scope.equals(d.getScope()))
@@ -84,7 +141,6 @@ public class DependencyCounterMojo extends AbstractMojo {
 
         getLog().info("Number of dependencies: " + numDependencies);
     }
-
 
 
     void mvnVersion(){
