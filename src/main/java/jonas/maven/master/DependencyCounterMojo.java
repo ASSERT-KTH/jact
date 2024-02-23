@@ -60,7 +60,7 @@ public class DependencyCounterMojo extends AbstractMojo {
         System.out.println("OUTPUT DIRECTORY: " + outputDirectory);
 
 
-        groupPackageByDep(dependencies);
+        //moveDepDirs(dependencies);
 
         //mvnVersion();
         //File mavenHome = new File("/mnt/c/Programs/apache-maven-3.9.1");
@@ -113,24 +113,24 @@ public class DependencyCounterMojo extends AbstractMojo {
 //            e.printStackTrace();
 //        }
 
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-        try (FileWriter fileWriter = new FileWriter(filename)) {
-            for (Dependency dependency : dependencies) {
-                JsonObject dependencyObj  = new JsonObject();
-                dependencyObj.addProperty("groupId", dependency.getGroupId());
-                dependencyObj.addProperty("artifactId", dependency.getArtifactId());
-                dependencyObj.addProperty("version", dependency.getVersion());
-                dependencyObj.addProperty("scope", dependency.getScope());
-                //dependencyObj.addProperty("type", dependency.getType());
-                String json = gson.toJson(dependencyObj);
-                fileWriter.write(json + "\n");
-            }
-            System.out.println("Successfully wrote to the file.");
-        } catch (IOException e) {
-            System.out.println("An error occurred while writing to the file.");
-            e.printStackTrace();
-        }
+//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//
+//        try (FileWriter fileWriter = new FileWriter(filename)) {
+//            for (Dependency dependency : dependencies) {
+//                JsonObject dependencyObj  = new JsonObject();
+//                dependencyObj.addProperty("groupId", dependency.getGroupId());
+//                dependencyObj.addProperty("artifactId", dependency.getArtifactId());
+//                dependencyObj.addProperty("version", dependency.getVersion());
+//                dependencyObj.addProperty("scope", dependency.getScope());
+//                //dependencyObj.addProperty("type", dependency.getType());
+//                String json = gson.toJson(dependencyObj);
+//                fileWriter.write(json + "\n");
+//            }
+//            System.out.println("Successfully wrote to the file.");
+//        } catch (IOException e) {
+//            System.out.println("An error occurred while writing to the file.");
+//            e.printStackTrace();
+//        }
 
         for (Dependency dependency : dependencies) {
             System.out.println("DEPENDENCY: " + dependency.toString());
