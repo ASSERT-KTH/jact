@@ -23,6 +23,7 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
+import static jonas.maven.master.JacocoHTMLReport.moveDepDirs;
 import static jonas.maven.master.JacocoXMLParser.groupPackageByDep;
 
 
@@ -60,7 +61,7 @@ public class DependencyCounterMojo extends AbstractMojo {
         System.out.println("OUTPUT DIRECTORY: " + outputDirectory);
 
 
-        //moveDepDirs(dependencies);
+        moveDepDirs(dependencies);
 
         //mvnVersion();
         //File mavenHome = new File("/mnt/c/Programs/apache-maven-3.9.1");
