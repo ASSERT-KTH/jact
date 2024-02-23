@@ -22,8 +22,9 @@ public class JacocoHTMLReport {
                 // Create all the dependency directories
                 String depGroupId = dependency.getGroupId();
                 String depArtifactId = dependency.getArtifactId();
+                String depVersion = dependency.getVersion();
                 createDir("dependencies/" + depGroupId.replace("-", ".") +
-                        "." + depArtifactId.replace("-", "."));
+                        "." + depArtifactId.replace("-", ".") + "-v" + depVersion);
 
                 Set<String> depWordsSet = new HashSet<>();
 
