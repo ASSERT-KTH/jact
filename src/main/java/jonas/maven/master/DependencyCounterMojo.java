@@ -63,8 +63,8 @@ public class DependencyCounterMojo extends AbstractMojo {
 
 
         moveDepDirs(dependencies);
-        System.out.println("PROJECT NAME: " + project.getName());
-        //createDependencyReports(dependencies, project.getName());
+        //System.out.println("PRJECT NAME: " + project.getGroupId());
+        createDependencyReports(dependencies, project.getGroupId());
 
         //mvnVersion();
         //File mavenHome = new File("/mnt/c/Programs/apache-maven-3.9.1");

@@ -1,7 +1,8 @@
 package jonas.maven.master;
 
 import org.apache.maven.model.Dependency;
-
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -24,8 +25,6 @@ public class JacocoHTMLReport {
                 String depGroupId = dependency.getGroupId();
                 String depArtifactId = dependency.getArtifactId();
                 String depVersion = dependency.getVersion();
-                System.out.println("CREATING DIR: " + "./target/report/dependencies/" + depGroupId.replace("-", ".") +
-                        "." + depArtifactId.replace("-", ".") + "-v" + depVersion);
                 createDir("./target/report/dependencies/" + depGroupId.replace("-", ".") +
                         "." + depArtifactId.replace("-", ".") + "-v" + depVersion);
 
@@ -54,10 +53,10 @@ public class JacocoHTMLReport {
                 for (File directory : directories) {
                     // Check if directory name contains any string from sets in setOfAllDeps
                     String dirName = directory.getName();
-                    System.out.println("DIRECTORY: " + dirName);
+                    //System.out.println("DIRECTORY: " + dirName);
                     for (Set<String> depWordsSet : setOfAllDeps) {
                         boolean containsAll = depWordsSet.stream().allMatch(dirName::contains);
-                        System.out.println("BOOL: " + containsAll);
+                        //System.out.println("BOOL: " + containsAll);
                         if (containsAll) {
                             // Check again which directory it should be place in
                             // Another contains all with the pre-created directories.
@@ -80,9 +79,9 @@ public class JacocoHTMLReport {
                 for (File directory : directories) {
                     // Check if directory name contains any string from sets in setOfAllDeps
                     String dirName = directory.getName();
-                    System.out.println("DIRECTORY: " + dirName);
+                    //System.out.println("DIRECTORY: " + dirName);
                     boolean containsAll = matchedSet.stream().allMatch(dirName::contains);
-                    System.out.println("BOOL: " + containsAll);
+                    //System.out.println("BOOL: " + containsAll);
                     if (containsAll) {
                         return dirName;
                     }
@@ -115,7 +114,7 @@ public class JacocoHTMLReport {
         Path destPath = Paths.get(destDirName).resolve(sourcePath.getFileName());
         try {
             Files.move(sourcePath, destPath);
-            System.out.println("Moved directory: " + sourcePath.toString() + " to " + destPath.toString());
+            //System.out.println("Moved directory: " + sourcePath.toString() + " to " + destPath.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -123,6 +122,30 @@ public class JacocoHTMLReport {
 
 
     public static void createDependencyReports(List<Dependency> dependencies, String projectName) {
+
+        String inputFilePath = "./target/report/index.html"; // Provide the path to your input HTML file
+
+        // Format the index.html report:
+        try {
+            // Read the HTML file using Jsoup
+            File inputFile = new File(inputFilePath);
+            Document doc = Jsoup.parse(inputFile, "UTF-8");
+
+            // Format the HTML content as desired
+            // For example, pretty print the HTML
+            String formattedHtml = doc.outerHtml();
+
+            // Write the formatted HTML back to the original file, overwriting its content
+            org.apache.commons.io.FileUtils.writeStringToFile(inputFile, formattedHtml, "UTF-8");
+
+            System.out.println("HTML formatting completed successfully.");
+        } catch (IOException e) {
+            System.err.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+
+
         // REMOVE THIS LATER
         // Generate sets of words from dependencies
         List<Set<String>> setOfAllDeps = new ArrayList<>();
@@ -147,17 +170,17 @@ public class JacocoHTMLReport {
         // Create the individual dependencies report
 
         // HTML input and output file paths
-        String inputFilePath = "target/report/index.html"; // Provide the path to your input HTML file
+
         String outputFilePath = ""; // Provide the path to the output HTML file
-        String templateFilePath1 = "depTemplate1.html"; // Provide the path to the first template HTML file
-        String templateFilePath2 = "depTemplate2.html"; // Provide the path to the second template HTML file
+        String templateFilePath1 = "./depTemplate1.html"; // Provide the path to the first template HTML file
+        String templateFilePath2 = "./depTemplate2.html"; // Provide the path to the second template HTML file
 
         // Call method to extract and write HTML
         // Create a report inside 'target/report/depname/index.html'
         // for all dependencies.
 
         // Traverse the "dependencies" directory
-        File reportDir = new File("/target/report/dependencies");
+        File reportDir = new File("./target/report/dependencies");
         if (reportDir.exists() && reportDir.isDirectory()) {
             File[] directories = reportDir.listFiles(File::isDirectory);
             if (directories != null) {
@@ -169,7 +192,7 @@ public class JacocoHTMLReport {
                         boolean containsAll = depWordsSet.stream().allMatch(dirName::contains);
                         System.out.println("BOOL: " + containsAll);
                         if(containsAll){
-                            outputFilePath = "target/report/dependencies/" + matchPackageToDir(depWordsSet) + "/index.html";
+                            outputFilePath = "./target/report/dependencies/" + matchPackageToDir(depWordsSet) + "/index.html";
                             try {
                                 copyTemplate(templateFilePath1, outputFilePath);
                                 extractAndAppendHTML(inputFilePath, outputFilePath, depWordsSet);
@@ -188,19 +211,20 @@ public class JacocoHTMLReport {
 
 
         // Create the whole project overview
-        outputFilePath = "/target/report/newindex.html"; // Provide the path to the output HTML file
-        templateFilePath1 = "depOverviewTemplate1.html"; // Provide the path to the first template HTML file
-        templateFilePath2 = "depOverviewTemplate2.html"; // Provide the path to the second template HTML file
-        String templateFilePathX = "depOverviewEntry.html";
+        outputFilePath = "./target/report/newindex.html"; // Provide the path to the output HTML file
+        templateFilePath1 = "./depOverviewTemplate1.html"; // Provide the path to the first template HTML file
+        templateFilePath2 = "./depOverviewTemplate2.html"; // Provide the path to the second template HTML file
+        String templateFilePathX = "./depOverviewEntry.html";
 
         Set<String> projectNameSet = new HashSet<>();
 
         // Create sets of the words in the group/artifact-id
         projectNameSet.addAll(Arrays.asList(projectName.split("[.-]")));
+        System.out.println(projectNameSet.toString());
         try {
             copyTemplate(templateFilePath1, outputFilePath);
-            extractAndAppendHTML(inputFilePath, outputFilePath, projectNameSet);
-            appendTemplate(templateFilePathX, outputFilePath);
+            extractAndAppendHTML(inputFilePath, outputFilePath, projectNameSet); // Adds the project coverage
+            appendTemplate(templateFilePathX, outputFilePath); // Adds the total dependency information
             appendTemplate(templateFilePath2, outputFilePath);
             System.out.println("Extraction and writing completed successfully. 2");
         } catch (IOException e) {
@@ -211,12 +235,12 @@ public class JacocoHTMLReport {
 
         // Create the dependencies overview
 
-        outputFilePath = "/target/report/dependencies/index.html"; // Provide the path to the output HTML file
-        templateFilePath1 = "depTemplate1.html"; // Provide the path to the first template HTML file
-        templateFilePath2 = "depTemplate2.html"; // Provide the path to the second template HTML file
+        outputFilePath = "./target/report/dependencies/index.html"; // Provide the path to the output HTML file
+        templateFilePath1 = "./depTemplate1.html"; // Provide the path to the first template HTML file
+        templateFilePath2 = "./depTemplate2.html"; // Provide the path to the second template HTML file
         try {
             copyTemplate(templateFilePath1, outputFilePath);
-            File depDir = new File("/target/report/dependencies");
+            File depDir = new File("./target/report/dependencies");
             if (reportDir.exists() && reportDir.isDirectory()) {
                 File[] directories = reportDir.listFiles(File::isDirectory);
                 if (directories != null) {
@@ -240,6 +264,9 @@ public class JacocoHTMLReport {
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
+
+
+
     }
 
     public static void copyTemplate(String templateFilePath, String outputFilePath) throws IOException {
@@ -297,7 +324,7 @@ public class JacocoHTMLReport {
                 // Append line to current <tr> element content
                 if (insideTbody && trContent.length() > 0) {
                     trContent.append(line.trim()).append("\n");
-                    if(matchSet.stream().allMatch(line::contains)){
+                    if (matchSet.stream().allMatch(line::contains)) {
                         containsString = true; // Set containsString flag if the line contains the specified string
                     }
                 }
@@ -319,7 +346,7 @@ public class JacocoHTMLReport {
 
     public static void copyHtmlWithReplacement(String outputFilePath, String dependencyName)
             throws IOException {
-        try (BufferedReader br = new BufferedReader(new FileReader("depEntry.html"));
+        try (BufferedReader br = new BufferedReader(new FileReader("./depEntry.html"));
              BufferedWriter bw = new BufferedWriter(new FileWriter(outputFilePath, true))) {
 
             String line;
