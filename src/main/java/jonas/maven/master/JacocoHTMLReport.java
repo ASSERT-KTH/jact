@@ -7,6 +7,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,10 +18,15 @@ public class JacocoHTMLReport {
         // Create a directory for the dependency coverage
         createDir("./target/report/dependencies");
 
+        // Path to jacoco-resources (to be copied to subdirectories)
+        String jacocoResPath = "./target/report/jacoco-resources";
+        copyDirectory(new File(jacocoResPath),
+                new File("./target/report/dependencies/jacoco-resources"));
+
         // Generate sets of words from dependencies
         List<Set<String>> setOfAllDeps = new ArrayList<>();
         for (Dependency dependency : dependencies) {
-            if(!dependency.getScope().equals("test")){
+            if (!dependency.getScope().equals("test")) {
                 // Create all the dependency directories
                 String depGroupId = dependency.getGroupId();
                 String depArtifactId = dependency.getArtifactId();
@@ -42,9 +48,6 @@ public class JacocoHTMLReport {
 //        setOfAllDeps.add(depWordsSet2);
 
 
-
-
-
         // Traverse the "report" directory
         File reportDir = new File("./target/report");
         if (reportDir.exists() && reportDir.isDirectory()) {
@@ -62,6 +65,8 @@ public class JacocoHTMLReport {
                             // Another contains all with the pre-created directories.
                             String matchingDir = matchPackageToDir(depWordsSet);
                             moveDirectory(directory, "./target/report/dependencies/" + matchingDir);
+                            copyDirectory(new File(jacocoResPath),
+                                    new File("./target/report/dependencies/" + matchingDir + "/jacoco-resources"));
                             break; // Move to next directory after moving this one
                         }
                     }
@@ -69,6 +74,28 @@ public class JacocoHTMLReport {
             }
         }
     }
+
+    public static void copyDirectory(File sourceDir, File destDir) {
+        // Create the destination directory if it doesn't exist
+        if (!destDir.exists()) {
+            destDir.mkdirs();
+        }
+
+        // Get all files from the source directory
+        File[] files = sourceDir.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                File destFile = new File(destDir, file.getName());
+                // Copy the file to the destination directory
+                try {
+                    Files.copy(file.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+    }
+
 
     private static String matchPackageToDir(Set<String> matchedSet){
         // Traverse the "report" directory
