@@ -125,7 +125,7 @@ public class JacocoHTMLReport {
 
         // Check if directory creation was successful
         if (success) {
-            System.out.println("Dependency report directory created successfully.");
+            System.out.println("Report directory created successfully.");
         } else {
             System.out.println("Failed to create dependency report directory." + directoryPath);
         }
@@ -205,10 +205,10 @@ public class JacocoHTMLReport {
                 for (File directory : directories) {
                     // Check if directory name contains any string from sets in setOfAllDeps
                     String dirName = directory.getName();
-                    System.out.println("DIRECTORY: " + dirName);
+                    //System.out.println("DIRECTORY: " + dirName);
                     for (Set<String> depWordsSet : setOfAllDeps) {
                         boolean containsAll = depWordsSet.stream().allMatch(dirName::contains);
-                        System.out.println("BOOL: " + containsAll);
+                        //System.out.println("BOOL: " + containsAll);
                         if(containsAll){
                             String depDirName = matchPackageToDir(depWordsSet);
                             outputFilePath = "./target/report/dependencies/" + depDirName + "/index.html";
@@ -220,7 +220,7 @@ public class JacocoHTMLReport {
 
                                 writeTemplateToFile(templateFilePath2, outputFilePath);
                                 //appendTemplate(templateFilePath2, outputFilePath);
-                                System.out.println("Extraction and writing completed successfully.");
+                                System.out.println("Writing the dependency package overview for " + depDirName + " completed successfully.");
                             } catch (IOException e) {
                                 System.err.println("Error: " + e.getMessage());
                                 e.printStackTrace();
@@ -243,13 +243,13 @@ public class JacocoHTMLReport {
 
         // Create sets of the words in the group/artifact-id
         projectNameSet.addAll(Arrays.asList(projectName.split("[.-]")));
-        System.out.println(projectNameSet.toString());
+        //System.out.println(projectNameSet.toString());
         try {
             writeTemplateToFile(templateFilePath1, outputFilePath);
             extractAndAppendHTML(inputFilePath, outputFilePath, projectNameSet); // Adds the project coverage
             writeTemplateToFile(templateFilePathX, outputFilePath);
             writeTemplateToFile(templateFilePath2, outputFilePath);
-            System.out.println("Extraction and writing completed successfully. 2");
+            System.out.println("Writing of the project overview completed successfully.");
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
@@ -273,7 +273,7 @@ public class JacocoHTMLReport {
                         String dirName = directory.getName();
                         for (Set<String> depWordsSet : setOfAllDeps) {
                             boolean containsAll = depWordsSet.stream().allMatch(dirName::contains);
-                            System.out.println("BOOL: " + containsAll);
+                            //System.out.println("BOOL: " + containsAll);
                             if(containsAll){
                                 writeModifiedTemplateToFile("depEntry.html", outputFilePath, dirName);
                                 break;
@@ -283,7 +283,7 @@ public class JacocoHTMLReport {
                 }
             }
             writeTemplateToFile(templateFilePath2, outputFilePath);
-            System.out.println("Extraction and writing completed successfully. 3");
+            System.out.println("Writing the dependency overview completed successfully.");
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
