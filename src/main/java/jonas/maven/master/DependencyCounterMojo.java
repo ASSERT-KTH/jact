@@ -1,27 +1,16 @@
 package jonas.maven.master;
 
 import java.io.*;
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.*;
 import java.lang.ProcessBuilder;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 import java.util.jar.JarInputStream;
-import java.util.jar.JarOutputStream;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import com.google.gson.JsonObject;
-import org.apache.commons.io.FileUtils;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -31,11 +20,8 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
-import org.jacoco.cli.internal.Command;
-
 import static jonas.maven.master.JacocoHTMLReport.createDependencyReports;
 import static jonas.maven.master.JacocoHTMLReport.moveDepDirs;
-import static jonas.maven.master.JacocoXMLParser.groupPackageByDep;
 
 
 /**
@@ -70,9 +56,6 @@ public class DependencyCounterMojo extends AbstractMojo {
         }
 
         String outputDirectory = project.getBuild().getOutputDirectory();
-        String projectBaseDir = project.getBasedir().getAbsolutePath();
-        //MyFileWriter myFileWriter = new MyFileWriter(projectBaseDir);
-        //myFileWriter.resetJDBLReportsDirectory();
 
         System.out.println("OUTPUT DIRECTORY: " + outputDirectory + "\n");
 

@@ -95,11 +95,6 @@
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.cli -->
         <dependency>
-            <groupId>org.jacoco</groupId>
-            <artifactId>org.jacoco.cli</artifactId>
-            <version>0.8.11</version>
-        </dependency>
-        <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
             <version>1.17.2</version>
