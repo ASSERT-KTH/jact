@@ -218,11 +218,11 @@ public class JacocoHTMLReport {
                         boolean containsAll = depWordsSet.stream().allMatch(dirName::contains);
                         System.out.println("BOOL: " + containsAll);
                         if(containsAll){
-                            outputFilePath = "./target/report/dependencies/" + matchPackageToDir(depWordsSet) + "/index.html";
+                            String depDirName = matchPackageToDir(depWordsSet);
+                            outputFilePath = "./target/report/dependencies/" + depDirName + "/index.html";
                             try {
-                                writeTemplateToFile(templateFilePath1, outputFilePath);
-                                //copyTemplate(templateFilePath1, outputFilePath);
-
+                                writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
+                                        outputFilePath, depDirName);
 
                                 extractAndAppendHTML(inputFilePath, outputFilePath, depWordsSet);
 
@@ -329,30 +329,6 @@ public class JacocoHTMLReport {
     }
 
 
-    public static void copyTemplate(String templateFilePath, String outputFilePath) throws IOException {
-        try (BufferedReader br = new BufferedReader(new FileReader(templateFilePath));
-             BufferedWriter bw = new BufferedWriter(new FileWriter(outputFilePath))) {
-
-            String line;
-            // Copy contents of template file to output file
-            while ((line = br.readLine()) != null) {
-                bw.write(line.trim() + "\n");
-            }
-        }
-    }
-
-    public static void appendTemplate(String templateFilePath, String outputFilePath) throws IOException {
-        try (BufferedReader br = new BufferedReader(new FileReader(templateFilePath));
-             BufferedWriter bw = new BufferedWriter(new FileWriter(outputFilePath, true))) {
-
-            String line;
-            // Append contents of template file to output file
-            while ((line = br.readLine()) != null) {
-                bw.write(line.trim() + "\n");
-            }
-        }
-    }
-
     public static void extractAndAppendHTML(String inputFilePath, String outputFilePath, Set<String> matchSet)
             throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(inputFilePath));
@@ -404,26 +380,6 @@ public class JacocoHTMLReport {
         }
     }
 
-    public static void copyHtmlWithReplacement(String outputFilePath, String dependencyName)
-            throws IOException {
-        try (BufferedReader br = new BufferedReader(new FileReader("./depEntry.html"));
-             BufferedWriter bw = new BufferedWriter(new FileWriter(outputFilePath, true))) {
-
-            String line;
-
-            // Read each line of the template HTML file
-            while ((line = br.readLine()) != null) {
-                // Replace placeholders with provided strings
-                line = line.replace("pathtodependencyindex", dependencyName + "/index.html");
-                line = line.replace("dependency.name", dependencyName);
-
-                // Write the modified line to the output file
-                bw.write(line);
-                bw.newLine();
-            }
-        }
-    }
-
     public static void writeModifiedTemplateToFile(String filename, String outputFilePath, String dependencyName) throws IOException {
         String templateContent = loadTemplateWithReplacement(filename, dependencyName);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath, true))) {
@@ -436,16 +392,29 @@ public class JacocoHTMLReport {
             if (inputStream == null) {
                 throw new IOException("Resource not found: " + resourceName);
             }
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
-                StringBuilder stringBuilder = new StringBuilder();
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    // Replace placeholders with provided strings
-                    line = line.replace("pathtodependencyindex", dependencyName + "/index.html");
-                    line = line.replace("dependency.name", dependencyName);
-                    stringBuilder.append(line).append("\n");
+            if(resourceName.equals("depOverviewTemplateStart.html")){
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
+                    StringBuilder stringBuilder = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        // Replace placeholders with provided strings
+                        line = line.replace("dependency.name", dependencyName);
+                        stringBuilder.append(line).append("\n");
+                    }
+                    return stringBuilder.toString();
                 }
-                return stringBuilder.toString();
+            }else{
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
+                    StringBuilder stringBuilder = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        // Replace placeholders with provided strings
+                        line = line.replace("pathtodependencyindex", dependencyName + "/index.html");
+                        line = line.replace("dependency.name", dependencyName);
+                        stringBuilder.append(line).append("\n");
+                    }
+                    return stringBuilder.toString();
+                }
             }
         }
     }
