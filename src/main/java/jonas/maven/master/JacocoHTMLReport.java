@@ -9,8 +9,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class JacocoHTMLReport {
 
@@ -123,17 +121,14 @@ public class JacocoHTMLReport {
 
         File dir = new File(directoryPath);
 
-        // Use the mkdirs() method to create the directory along with any necessary parent directories
         boolean success = dir.mkdirs();
 
         // Check if directory creation was successful
         if (success) {
-            System.out.println("Directory created successfully.");
+            System.out.println("Dependency report directory created successfully.");
         } else {
-            System.out.println("Failed to create directory." + directoryPath);
+            System.out.println("Failed to create dependency report directory." + directoryPath);
         }
-
-        //for dependency in dependencies --> create dirs for all of them
     }
 
     private static void moveDirectory(File sourceDir, String destDirName) {
@@ -150,22 +145,19 @@ public class JacocoHTMLReport {
 
     public static void createDependencyReports(List<Dependency> dependencies, String projectName) {
 
-        String inputFilePath = "./target/report/index.html"; // Provide the path to your input HTML file
+        // Path to the jacoco html report.
+        String inputFilePath = "./target/report/index.html";
 
         // Format the index.html report:
         try {
-            // Read the HTML file using Jsoup
+            // Read the HTML file
             File inputFile = new File(inputFilePath);
             Document doc = Jsoup.parse(inputFile, "UTF-8");
 
-            // Format the HTML content as desired
-            // For example, pretty print the HTML
             String formattedHtml = doc.outerHtml();
 
-            // Write the formatted HTML back to the original file, overwriting its content
+            // Write the formatted HTML back to the original file, overwriting its previous content
             org.apache.commons.io.FileUtils.writeStringToFile(inputFile, formattedHtml, "UTF-8");
-
-            System.out.println("HTML formatting completed successfully.");
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
@@ -197,11 +189,11 @@ public class JacocoHTMLReport {
 
         // HTML input and output file paths
 
-        String outputFilePath = ""; // Provide the path to the output HTML file
-        String templateFilePath1 = "indivDepViewTemplateStart.html"; // Provide the path to the first template HTML file
-        String templateFilePath2 = "indivDepViewTemplateEnd.html"; // Provide the path to the second template HTML file
+        String outputFilePath = "";
+        String templateFilePath1 = "indivDepViewTemplateStart.html";
+        String templateFilePath2 = "indivDepViewTemplateEnd.html";
 
-        // Call method to extract and write HTML
+
         // Create a report inside 'target/report/depname/index.html'
         // for all dependencies.
 
@@ -242,9 +234,9 @@ public class JacocoHTMLReport {
 
 
         // Create the whole project overview
-        outputFilePath = "./target/report/newindex.html"; // Provide the path to the output HTML file
-        templateFilePath1 = "overviewTemplateStart.html"; // Provide the path to the first template HTML file
-        templateFilePath2 = "overviewTemplateEnd.html"; // Provide the path to the second template HTML file
+        outputFilePath = "./target/report/newindex.html";
+        templateFilePath1 = "overviewTemplateStart.html";
+        templateFilePath2 = "overviewTemplateEnd.html";
         String templateFilePathX = "overviewEntry.html";
 
         Set<String> projectNameSet = new HashSet<>();
@@ -254,12 +246,9 @@ public class JacocoHTMLReport {
         System.out.println(projectNameSet.toString());
         try {
             writeTemplateToFile(templateFilePath1, outputFilePath);
-            //copyTemplate(templateFilePath1, outputFilePath);
             extractAndAppendHTML(inputFilePath, outputFilePath, projectNameSet); // Adds the project coverage
             writeTemplateToFile(templateFilePathX, outputFilePath);
-            //appendTemplate(templateFilePathX, outputFilePath); // Adds the total dependency information
             writeTemplateToFile(templateFilePath2, outputFilePath);
-            //appendTemplate(templateFilePath2, outputFilePath);
             System.out.println("Extraction and writing completed successfully. 2");
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
@@ -269,9 +258,9 @@ public class JacocoHTMLReport {
 
         // Create the dependencies overview
 
-        outputFilePath = "./target/report/dependencies/index.html"; // Provide the path to the output HTML file
-        templateFilePath1 = "depOverviewTemplateStart.html"; // Provide the path to the first template HTML file
-        templateFilePath2 = "depOverviewTemplateEnd.html"; // Provide the path to the second template HTML file
+        outputFilePath = "./target/report/dependencies/index.html";
+        templateFilePath1 = "depOverviewTemplateStart.html";
+        templateFilePath2 = "depOverviewTemplateEnd.html";
         try {
             writeTemplateToFile(templateFilePath1, outputFilePath);
             //copyTemplate(templateFilePath1, outputFilePath);
@@ -287,7 +276,6 @@ public class JacocoHTMLReport {
                             System.out.println("BOOL: " + containsAll);
                             if(containsAll){
                                 writeModifiedTemplateToFile("depEntry.html", outputFilePath, dirName);
-                                //copyHtmlWithReplacement(outputFilePath, dirName);
                                 break;
                             }
                         }
@@ -295,7 +283,6 @@ public class JacocoHTMLReport {
                 }
             }
             writeTemplateToFile(templateFilePath2, outputFilePath);
-            //appendTemplate(templateFilePath2, outputFilePath);
             System.out.println("Extraction and writing completed successfully. 3");
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
@@ -397,7 +384,6 @@ public class JacocoHTMLReport {
                     StringBuilder stringBuilder = new StringBuilder();
                     String line;
                     while ((line = reader.readLine()) != null) {
-                        // Replace placeholders with provided strings
                         line = line.replace("dependency.name", dependencyName);
                         stringBuilder.append(line).append("\n");
                     }
@@ -408,7 +394,6 @@ public class JacocoHTMLReport {
                     StringBuilder stringBuilder = new StringBuilder();
                     String line;
                     while ((line = reader.readLine()) != null) {
-                        // Replace placeholders with provided strings
                         line = line.replace("pathtodependencyindex", dependencyName + "/index.html");
                         line = line.replace("dependency.name", dependencyName);
                         stringBuilder.append(line).append("\n");
