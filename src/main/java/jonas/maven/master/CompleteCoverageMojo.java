@@ -49,18 +49,18 @@ public class CompleteCoverageMojo extends AbstractMojo {
     public void execute() throws MojoExecutionException, MojoFailureException {
         List<Dependency> dependencies = project.getDependencies();
 
-        System.out.println("DEPENDENCY INFO:");
+        getLog().info("DEPENDENCY INFO:");
         for (Dependency dependency : dependencies) {
-            System.out.println("DEPENDENCY: " + dependency.toString());
-            System.out.println("SCOPE: " + dependency.getScope());
+            getLog().info(dependency.toString() + "-{SCOPE: " + dependency.getScope() + "}");
         }
 
         String outputDirectory = project.getBuild().getOutputDirectory();
 
-        System.out.println("OUTPUT DIRECTORY: " + outputDirectory + "\n");
+        //System.out.println("OUTPUT DIRECTORY: " + outputDirectory + "\n");
 
 
         // Execute JaCoCoCLI to create the report WITH dependencies
+        getLog().info("Copying the `jacococli.jar` to the project.");
         try {
             copyJacocoCliJar();
         } catch (IOException e) {
@@ -68,8 +68,10 @@ public class CompleteCoverageMojo extends AbstractMojo {
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
+        getLog().info("Creating the complete coverage report.");
         executeJacocoCLI("sanity-check-1.0.0-shaded"); // TODO need to get the final jar name
 
+        getLog().info("Organizing the complete coverage report.");
         moveDepDirs(dependencies);
         createDependencyReports(dependencies, project.getGroupId());
 
@@ -118,7 +120,7 @@ public class CompleteCoverageMojo extends AbstractMojo {
             String command = String.format("java -jar ./target/jacococli/jacococli.jar report ./target/jacoco.exec --classfiles " +
                     "./target/" + jarName +".jar --html ./target/report");
 
-            // Create a process builder
+            // For Linux
             ProcessBuilder processBuilder = new ProcessBuilder("/bin/bash", "-c", command);
 
             // Redirect error stream to output stream
@@ -130,7 +132,7 @@ public class CompleteCoverageMojo extends AbstractMojo {
             // Wait for the process to complete
             int exitCode = process.waitFor();
 
-            // If Jacoco CLI execution fails, throw MojoExecutionException
+            // If Jacoco CLI execution fails
             if (exitCode != 0) {
                 throw new MojoExecutionException("Failed to execute Jacoco CLI");
             }

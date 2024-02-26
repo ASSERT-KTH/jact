@@ -145,8 +145,22 @@ public class JacocoHTMLAugmenter {
 
     public static void createDependencyReports(List<Dependency> dependencies, String projectName) {
 
-        // Path to the jacoco html report.
-        String inputFilePath = "./target/report/index.html";
+        // Rename the original index.html file
+        String originalFilePath = "./target/report/index.html";
+        File originalFile = new File(originalFilePath);
+        File newFile = new File(originalFile.getParent(), "originalIndex.html");
+        if (originalFile.exists()) {
+            if (originalFile.renameTo(newFile)) {
+                System.out.println("File renamed successfully.");
+            } else {
+                System.err.println("Failed to rename the file.");
+            }
+        } else {
+            System.err.println("File doesn't exist.");
+        }
+
+        // Path to the original jacoco html report.
+        String inputFilePath = "./target/report/originalIndex.html";
 
         // Format the index.html report:
         try {
@@ -234,7 +248,7 @@ public class JacocoHTMLAugmenter {
 
 
         // Create the whole project overview
-        outputFilePath = "./target/report/newindex.html";
+        outputFilePath = "./target/report/index.html";
         templateFilePath1 = "overviewTemplateStart.html";
         templateFilePath2 = "overviewTemplateEnd.html";
         String templateFilePathX = "overviewEntry.html";
