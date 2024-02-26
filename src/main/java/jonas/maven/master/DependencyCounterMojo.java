@@ -1,14 +1,22 @@
 package jonas.maven.master;
 
 import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.*;
 import java.lang.ProcessBuilder;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 import java.util.jar.JarInputStream;
+import java.util.jar.JarOutputStream;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -23,6 +31,8 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
+import org.jacoco.cli.internal.Command;
+
 import static jonas.maven.master.JacocoHTMLReport.createDependencyReports;
 import static jonas.maven.master.JacocoHTMLReport.moveDepDirs;
 import static jonas.maven.master.JacocoXMLParser.groupPackageByDep;
@@ -34,7 +44,7 @@ import static jonas.maven.master.JacocoXMLParser.groupPackageByDep;
  * It can be filtered by scope.
  *
  */
-@Mojo(name = "dependency-counter", defaultPhase = LifecyclePhase.PACKAGE, threadSafe = true)
+@Mojo(name = "dependency-counter", defaultPhase = LifecyclePhase.INSTALL, threadSafe = true)
 public class DependencyCounterMojo extends AbstractMojo {
 
     /**
@@ -67,6 +77,16 @@ public class DependencyCounterMojo extends AbstractMojo {
         System.out.println("OUTPUT DIRECTORY: " + outputDirectory + "\n");
 
 
+        // Execute JaCoCoCLI to create the report WITH dependencies
+        try {
+            copyJacocoCliJar();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+        executeJacocoCLI("sanity-check-1.0.0-shaded"); // TODO need to get the final jar name
+
         moveDepDirs(dependencies);
         createDependencyReports(dependencies, project.getGroupId());
 
@@ -76,6 +96,70 @@ public class DependencyCounterMojo extends AbstractMojo {
 
     }
 
+    public void copyJacocoCliJar() throws IOException, URISyntaxException {
+        // Get the path to the plugin JAR file
+        Path pluginJarPath = Paths.get(getClass().getProtectionDomain().getCodeSource().getLocation().toURI());
+
+        // Create a JarInputStream to read from the plugin JAR
+        try (JarInputStream jarInputStream = new JarInputStream(new FileInputStream(pluginJarPath.toFile()))) {
+            // Loop through all entries in the plugin JAR
+            JarEntry jarEntry;
+            while ((jarEntry = jarInputStream.getNextJarEntry()) != null) {
+                // Look for jacococli.jar entry
+                if (jarEntry.getName().equals("jacococli.jar")) {
+                    // Prepare the target directory
+                    Path targetDirectory = Paths.get("target", "jacococli");
+                    Files.createDirectories(targetDirectory);
+
+                    // Define the target file path
+                    Path targetPath = targetDirectory.resolve("jacococli.jar");
+
+                    // Copy the entry to the target directory
+                    try (OutputStream outputStream = Files.newOutputStream(targetPath)) {
+                        byte[] buffer = new byte[8192];
+                        int length;
+                        while ((length = jarInputStream.read(buffer)) > 0) {
+                            outputStream.write(buffer, 0, length);
+                        }
+                    }
+                    break; // Exit loop once jacococli.jar is found and copied
+                }
+            }
+        }
+    }
+
+    void executeJacocoCLI(String jarName) throws MojoExecutionException {
+        try {
+            // Retrieve the URL to the jacococli.jar file
+            // Command to execute Jacoco CLI
+            String command = String.format("java -jar ./target/jacococli/jacococli.jar report ./target/jacoco.exec --classfiles " +
+                    "./target/" + jarName +".jar --html ./target/report");
+
+            // Create a process builder
+            ProcessBuilder processBuilder = new ProcessBuilder("/bin/bash", "-c", command);
+
+            // Redirect error stream to output stream
+            processBuilder.redirectErrorStream(true);
+
+            // Start the process
+            Process process = processBuilder.start();
+
+            // Wait for the process to complete
+            int exitCode = process.waitFor();
+
+            // If Jacoco CLI execution fails, throw MojoExecutionException
+            if (exitCode != 0) {
+                throw new MojoExecutionException("Failed to execute Jacoco CLI");
+            }
+
+            // Print the output
+            InputStream inputStream = process.getInputStream();
+            String output = readInputStream(inputStream);
+            getLog().info(output);
+        } catch (IOException | InterruptedException e) {
+            throw new MojoExecutionException("Error executing Jacoco CLI", e);
+        }
+    }
 
     void mvnVersion(){
         try {
