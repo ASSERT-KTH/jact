@@ -193,14 +193,13 @@ public class JacocoHTMLReport {
         }
 
 
-
         // Create the individual dependencies report
 
         // HTML input and output file paths
 
         String outputFilePath = ""; // Provide the path to the output HTML file
-        String templateFilePath1 = "./depTemplate1.html"; // Provide the path to the first template HTML file
-        String templateFilePath2 = "./depTemplate2.html"; // Provide the path to the second template HTML file
+        String templateFilePath1 = "depTemplate1.html"; // Provide the path to the first template HTML file
+        String templateFilePath2 = "depTemplate2.html"; // Provide the path to the second template HTML file
 
         // Call method to extract and write HTML
         // Create a report inside 'target/report/depname/index.html'
@@ -221,9 +220,14 @@ public class JacocoHTMLReport {
                         if(containsAll){
                             outputFilePath = "./target/report/dependencies/" + matchPackageToDir(depWordsSet) + "/index.html";
                             try {
-                                copyTemplate(templateFilePath1, outputFilePath);
+                                writeTemplateToFile(templateFilePath1, outputFilePath);
+                                //copyTemplate(templateFilePath1, outputFilePath);
+
+
                                 extractAndAppendHTML(inputFilePath, outputFilePath, depWordsSet);
-                                appendTemplate(templateFilePath2, outputFilePath);
+
+                                writeTemplateToFile(templateFilePath2, outputFilePath);
+                                //appendTemplate(templateFilePath2, outputFilePath);
                                 System.out.println("Extraction and writing completed successfully.");
                             } catch (IOException e) {
                                 System.err.println("Error: " + e.getMessage());
@@ -239,9 +243,9 @@ public class JacocoHTMLReport {
 
         // Create the whole project overview
         outputFilePath = "./target/report/newindex.html"; // Provide the path to the output HTML file
-        templateFilePath1 = "./depOverviewTemplate1.html"; // Provide the path to the first template HTML file
-        templateFilePath2 = "./depOverviewTemplate2.html"; // Provide the path to the second template HTML file
-        String templateFilePathX = "./depOverviewEntry.html";
+        templateFilePath1 = "depOverviewTemplate1.html"; // Provide the path to the first template HTML file
+        templateFilePath2 = "depOverviewTemplate2.html"; // Provide the path to the second template HTML file
+        String templateFilePathX = "depOverviewEntry.html";
 
         Set<String> projectNameSet = new HashSet<>();
 
@@ -249,10 +253,13 @@ public class JacocoHTMLReport {
         projectNameSet.addAll(Arrays.asList(projectName.split("[.-]")));
         System.out.println(projectNameSet.toString());
         try {
-            copyTemplate(templateFilePath1, outputFilePath);
+            writeTemplateToFile(templateFilePath1, outputFilePath);
+            //copyTemplate(templateFilePath1, outputFilePath);
             extractAndAppendHTML(inputFilePath, outputFilePath, projectNameSet); // Adds the project coverage
-            appendTemplate(templateFilePathX, outputFilePath); // Adds the total dependency information
-            appendTemplate(templateFilePath2, outputFilePath);
+            writeTemplateToFile(templateFilePathX, outputFilePath);
+            //appendTemplate(templateFilePathX, outputFilePath); // Adds the total dependency information
+            writeTemplateToFile(templateFilePath2, outputFilePath);
+            //appendTemplate(templateFilePath2, outputFilePath);
             System.out.println("Extraction and writing completed successfully. 2");
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
@@ -263,10 +270,11 @@ public class JacocoHTMLReport {
         // Create the dependencies overview
 
         outputFilePath = "./target/report/dependencies/index.html"; // Provide the path to the output HTML file
-        templateFilePath1 = "./depTemplate1.html"; // Provide the path to the first template HTML file
-        templateFilePath2 = "./depTemplate2.html"; // Provide the path to the second template HTML file
+        templateFilePath1 = "depTemplate1.html"; // Provide the path to the first template HTML file
+        templateFilePath2 = "depTemplate2.html"; // Provide the path to the second template HTML file
         try {
-            copyTemplate(templateFilePath1, outputFilePath);
+            writeTemplateToFile(templateFilePath1, outputFilePath);
+            //copyTemplate(templateFilePath1, outputFilePath);
             File depDir = new File("./target/report/dependencies");
             if (reportDir.exists() && reportDir.isDirectory()) {
                 File[] directories = reportDir.listFiles(File::isDirectory);
@@ -285,16 +293,40 @@ public class JacocoHTMLReport {
                     }
                 }
             }
-            appendTemplate(templateFilePath2, outputFilePath);
+            writeTemplateToFile(templateFilePath2, outputFilePath);
+            //appendTemplate(templateFilePath2, outputFilePath);
             System.out.println("Extraction and writing completed successfully. 3");
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
 
-
-
     }
+
+
+    public static String loadTemplate(String resourceName) throws IOException {
+        try (InputStream inputStream = JacocoHTMLReport.class.getClassLoader().getResourceAsStream(resourceName)) {
+            if (inputStream == null) {
+                throw new IOException("Resource not found: " + resourceName);
+            }
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
+                StringBuilder stringBuilder = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    stringBuilder.append(line).append("\n");
+                }
+                return stringBuilder.toString();
+            }
+        }
+    }
+
+    public static void writeTemplateToFile(String filename, String outputFilePath) throws IOException {
+        String templateContent = loadTemplate(filename);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath, true))) {
+            writer.write(templateContent);
+        }
+    }
+
 
     public static void copyTemplate(String templateFilePath, String outputFilePath) throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(templateFilePath));
