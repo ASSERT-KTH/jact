@@ -63,7 +63,6 @@ public class DependencyCounterMojo extends AbstractMojo {
 
 
         moveDepDirs(dependencies);
-        //System.out.println("PRJECT NAME: " + project.getGroupId());
         createDependencyReports(dependencies, project.getGroupId());
 
         //mvnVersion();
