@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
 
-public class JacocoHTMLReport {
+public class JacocoHTMLAugmenter {
 
     public static void moveDepDirs(List<Dependency> dependencies) {
         // Create a directory for the dependency coverage
@@ -293,7 +293,7 @@ public class JacocoHTMLReport {
 
 
     public static String loadTemplate(String resourceName) throws IOException {
-        try (InputStream inputStream = JacocoHTMLReport.class.getClassLoader().getResourceAsStream(resourceName)) {
+        try (InputStream inputStream = JacocoHTMLAugmenter.class.getClassLoader().getResourceAsStream(resourceName)) {
             if (inputStream == null) {
                 throw new IOException("Resource not found: " + resourceName);
             }
@@ -375,7 +375,7 @@ public class JacocoHTMLReport {
     }
 
     public static String loadTemplateWithReplacement(String resourceName, String dependencyName) throws IOException {
-        try (InputStream inputStream = JacocoHTMLReport.class.getClassLoader().getResourceAsStream(resourceName)) {
+        try (InputStream inputStream = JacocoHTMLAugmenter.class.getClassLoader().getResourceAsStream(resourceName)) {
             if (inputStream == null) {
                 throw new IOException("Resource not found: " + resourceName);
             }

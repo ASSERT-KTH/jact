@@ -20,8 +20,8 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
-import static jonas.maven.master.JacocoHTMLReport.createDependencyReports;
-import static jonas.maven.master.JacocoHTMLReport.moveDepDirs;
+import static jonas.maven.master.JacocoHTMLAugmenter.createDependencyReports;
+import static jonas.maven.master.JacocoHTMLAugmenter.moveDepDirs;
 
 
 /**
@@ -31,7 +31,7 @@ import static jonas.maven.master.JacocoHTMLReport.moveDepDirs;
  *
  */
 @Mojo(name = "dependency-counter", defaultPhase = LifecyclePhase.INSTALL, threadSafe = true)
-public class DependencyCounterMojo extends AbstractMojo {
+public class CompleteCoverageMojo extends AbstractMojo {
 
     /**
      * Scope to filter the dependencies.
