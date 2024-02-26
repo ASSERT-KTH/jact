@@ -198,8 +198,8 @@ public class JacocoHTMLReport {
         // HTML input and output file paths
 
         String outputFilePath = ""; // Provide the path to the output HTML file
-        String templateFilePath1 = "depTemplate1.html"; // Provide the path to the first template HTML file
-        String templateFilePath2 = "depTemplate2.html"; // Provide the path to the second template HTML file
+        String templateFilePath1 = "indivDepViewTemplateStart.html"; // Provide the path to the first template HTML file
+        String templateFilePath2 = "indivDepViewTemplateEnd.html"; // Provide the path to the second template HTML file
 
         // Call method to extract and write HTML
         // Create a report inside 'target/report/depname/index.html'
@@ -243,9 +243,9 @@ public class JacocoHTMLReport {
 
         // Create the whole project overview
         outputFilePath = "./target/report/newindex.html"; // Provide the path to the output HTML file
-        templateFilePath1 = "depOverviewTemplate1.html"; // Provide the path to the first template HTML file
-        templateFilePath2 = "depOverviewTemplate2.html"; // Provide the path to the second template HTML file
-        String templateFilePathX = "depOverviewEntry.html";
+        templateFilePath1 = "overviewTemplateStart.html"; // Provide the path to the first template HTML file
+        templateFilePath2 = "overviewTemplateEnd.html"; // Provide the path to the second template HTML file
+        String templateFilePathX = "overviewEntry.html";
 
         Set<String> projectNameSet = new HashSet<>();
 
@@ -270,8 +270,8 @@ public class JacocoHTMLReport {
         // Create the dependencies overview
 
         outputFilePath = "./target/report/dependencies/index.html"; // Provide the path to the output HTML file
-        templateFilePath1 = "depTemplate1.html"; // Provide the path to the first template HTML file
-        templateFilePath2 = "depTemplate2.html"; // Provide the path to the second template HTML file
+        templateFilePath1 = "depOverviewTemplateStart.html"; // Provide the path to the first template HTML file
+        templateFilePath2 = "depOverviewTemplateEnd.html"; // Provide the path to the second template HTML file
         try {
             writeTemplateToFile(templateFilePath1, outputFilePath);
             //copyTemplate(templateFilePath1, outputFilePath);
@@ -286,7 +286,8 @@ public class JacocoHTMLReport {
                             boolean containsAll = depWordsSet.stream().allMatch(dirName::contains);
                             System.out.println("BOOL: " + containsAll);
                             if(containsAll){
-                                copyHtmlWithReplacement(outputFilePath, dirName);
+                                writeModifiedTemplateToFile("depEntry.html", outputFilePath, dirName);
+                                //copyHtmlWithReplacement(outputFilePath, dirName);
                                 break;
                             }
                         }
@@ -419,6 +420,32 @@ public class JacocoHTMLReport {
                 // Write the modified line to the output file
                 bw.write(line);
                 bw.newLine();
+            }
+        }
+    }
+
+    public static void writeModifiedTemplateToFile(String filename, String outputFilePath, String dependencyName) throws IOException {
+        String templateContent = loadTemplateWithReplacement(filename, dependencyName);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath, true))) {
+            writer.write(templateContent);
+        }
+    }
+
+    public static String loadTemplateWithReplacement(String resourceName, String dependencyName) throws IOException {
+        try (InputStream inputStream = JacocoHTMLReport.class.getClassLoader().getResourceAsStream(resourceName)) {
+            if (inputStream == null) {
+                throw new IOException("Resource not found: " + resourceName);
+            }
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
+                StringBuilder stringBuilder = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    // Replace placeholders with provided strings
+                    line = line.replace("pathtodependencyindex", dependencyName + "/index.html");
+                    line = line.replace("dependency.name", dependencyName);
+                    stringBuilder.append(line).append("\n");
+                }
+                return stringBuilder.toString();
             }
         }
     }
