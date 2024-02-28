@@ -1,6 +1,5 @@
 package jonas.maven.master;
 
-import com.google.gson.JsonObject;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.project.MavenProject;
 import org.w3c.dom.Document;

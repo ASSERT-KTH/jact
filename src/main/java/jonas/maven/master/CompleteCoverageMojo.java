@@ -19,6 +19,7 @@ import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
+import org.apache.maven.shared.dependency.graph.*;
 
 import static jonas.maven.master.JacocoHTMLAugmenter.createDependencyReports;
 import static jonas.maven.master.JacocoHTMLAugmenter.moveDepDirs;
@@ -49,6 +50,7 @@ public class CompleteCoverageMojo extends AbstractMojo {
     public void execute() throws MojoExecutionException, MojoFailureException {
         List<Dependency> dependencies = project.getDependencies();
 
+
         getLog().info("DEPENDENCY INFO:");
         for (Dependency dependency : dependencies) {
             getLog().info(dependency.toString() + "-{SCOPE: " + dependency.getScope() + "}");
@@ -69,7 +71,7 @@ public class CompleteCoverageMojo extends AbstractMojo {
             throw new RuntimeException(e);
         }
         getLog().info("Creating the complete coverage report.");
-        executeJacocoCLI("sanity-check-1.0.0-shaded"); // TODO need to get the final jar name
+        executeJacocoCLI("sanity-check-1.0-shaded"); // TODO need to get the final jar name
 
         getLog().info("Organizing the complete coverage report.");
         moveDepDirs(dependencies);
