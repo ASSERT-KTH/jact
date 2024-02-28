@@ -1,7 +1,9 @@
 package jonas.maven.master;
 
 import java.io.*;
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -19,7 +21,6 @@ import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
-import org.apache.maven.shared.dependency.graph.*;
 
 import static jonas.maven.master.JacocoHTMLAugmenter.createDependencyReports;
 import static jonas.maven.master.JacocoHTMLAugmenter.moveDepDirs;
@@ -46,7 +47,6 @@ public class CompleteCoverageMojo extends AbstractMojo {
     @Parameter(defaultValue = "${project}", required = true, readonly = false)
     MavenProject project;
 
-
     public void execute() throws MojoExecutionException, MojoFailureException {
         List<Dependency> dependencies = project.getDependencies();
 
@@ -60,6 +60,7 @@ public class CompleteCoverageMojo extends AbstractMojo {
 
         //System.out.println("OUTPUT DIRECTORY: " + outputDirectory + "\n");
 
+        ProjectDependencies.generateDependencyTree();
 
         // Execute JaCoCoCLI to create the report WITH dependencies
         getLog().info("Copying the `jacococli.jar` to the project.");
@@ -79,7 +80,6 @@ public class CompleteCoverageMojo extends AbstractMojo {
 
         //mvnVersion();
         //File mavenHome = new File("/mnt/c/Programs/apache-maven-3.9.1");
-
 
     }
 
@@ -179,6 +179,7 @@ public class CompleteCoverageMojo extends AbstractMojo {
             e.printStackTrace();
         }
     }
+
 
     public static String readInputStream(InputStream inputStream) throws IOException {
         // Read the input stream and convert it to a string
