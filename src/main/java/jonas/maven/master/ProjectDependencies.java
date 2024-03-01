@@ -29,9 +29,9 @@ public class ProjectDependencies {
             for (JsonElement dependencyElement : dependenciesArray) {
                 gson.fromJson(dependencyElement, ProjectDependency.class);
             }
-            for (ProjectDependency dependency : projectDependencies) {
-                System.out.println(dependency);
-            }
+//            for (ProjectDependency dependency : projectDependencies) {
+//                System.out.println(dependency);
+//            }
         } catch (Exception e) {
             e.printStackTrace();
         }

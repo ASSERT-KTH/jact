@@ -24,13 +24,17 @@ public class JacocoHTMLAugmenter {
 
         // Generate sets of words from dependencies
         List<Set<String>> setOfAllDeps = new ArrayList<>();
+        Map<Set<String>, List<String>> depPathsMap = new HashMap<>();
         for (ProjectDependency dependency : dependencies) {
             if (!dependency.getScope().equals("test")) {
                 // Create all the dependency directories
                 String depGroupId = dependency.getGroupId();
                 String depArtifactId = dependency.getArtifactId();
                 String depVersion = dependency.getVersion();
-                createDir(REPORTPATH + "dependencies/" + getFullDepPath(dependency));
+                String fullPath = getFullDepPath(dependency);
+
+
+                createDir(REPORTPATH + "dependencies/" + fullPath);
 
 
                 Set<String> depWordsSet = new HashSet<>();
@@ -39,6 +43,10 @@ public class JacocoHTMLAugmenter {
                 depWordsSet.addAll(Arrays.asList(depGroupId.split("[.-]")));
                 depWordsSet.addAll(Arrays.asList(depArtifactId.split("[.-]")));
                 setOfAllDeps.add(depWordsSet);
+
+                List<String> depPaths = depPathsMap.getOrDefault(depWordsSet, new ArrayList<>());
+                depPaths.add(fullPath);
+                depPathsMap.put(depWordsSet, depPaths);
             }
         }
 //        Set<String> depWordsSet2 = new HashSet<>();
@@ -62,16 +70,21 @@ public class JacocoHTMLAugmenter {
                         if (containsAll) {
                             // Check again which directory it should be place in
                             // Another contains all with the pre-created directories.
-                            String matchingDir = matchPackageToDir(depWordsSet);
-                            moveDirectory(directory, REPORTPATH + "dependencies/" + matchingDir);
-                            copyDirectory(new File(jacocoResPath),
-                                    new File(REPORTPATH + "dependencies/" + matchingDir + "/jacoco-resources"));
+                            List<String> matchedDirs = depPathsMap.get(depWordsSet);
+                            //String matchingDir = matchPackageToDir(depWordsSet);
+                            for(String matchedDir : matchedDirs){
+                                copyDirectory(directory, new File(REPORTPATH + "dependencies/" + matchedDir)); // Copy instead
+                                copyDirectory(new File(jacocoResPath),
+                                        new File(REPORTPATH + "dependencies/" + matchedDir + "/jacoco-resources"));
+                            }
+                            removeDirectory(directory);
                             break; // Move to next directory after moving this one
                         }
                     }
                 }
             }
         }
+
     }
 
     public static String getFullDepPath(ProjectDependency projectDependency){
@@ -82,13 +95,13 @@ public class JacocoHTMLAugmenter {
 
         // Creating the file path to the dependency
         for(int i = 0; i < parentDeps.size(); i++){
-            if(i > 0){
-                fullPath.append("/"); // If we have more than one entry --> create a new layer.
-            }
             currProjDep = parentDeps.get(i);
             path = currProjDep.getGroupId().replace("-", ".") + "." +
                     currProjDep.getArtifactId().replace("-", ".") + "-v" + currProjDep.getVersion();
             fullPath.append(path);
+
+            // Add a transitive dependencies directory here:
+            fullPath.append("/transitive-dependencies/");
         }
         // Adding dependency directory
         path = projectDependency.getGroupId().replace("-", ".") + "." +
@@ -116,6 +129,29 @@ public class JacocoHTMLAugmenter {
                     throw new RuntimeException(e);
                 }
             }
+        }
+    }
+
+    public static void removeDirectory(File dir) {
+        if (!dir.exists()) {
+            return;
+        }
+
+        File[] files = dir.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                if (file.isDirectory()) {
+                    removeDirectory(file); // Recursive call to remove subdirectories
+                } else {
+                    if (!file.delete()) {
+                        throw new RuntimeException("Failed to delete file: " + file.getAbsolutePath());
+                    }
+                }
+            }
+        }
+
+        if (!dir.delete()) {
+            throw new RuntimeException("Failed to delete directory: " + dir.getAbsolutePath());
         }
     }
 
