@@ -58,7 +58,7 @@ public class ProjectDependencies {
             ProjectDependency projectDependency = new ProjectDependency();
             projectDependency.setId(jsonObject.has("id") ? jsonObject.get("id").getAsString() : "");
             projectDependency.setGroupId(jsonObject.has("groupId") ? jsonObject.get("groupId").getAsString() : "");
-            projectDependency.setArtifactIdId(jsonObject.has("artifactId") ? jsonObject.get("artifactId").getAsString() : "");
+            projectDependency.setArtifactId(jsonObject.has("artifactId") ? jsonObject.get("artifactId").getAsString() : "");
             projectDependency.setVersion(jsonObject.has("selectedVersion") ? jsonObject.get("selectedVersion").getAsString() : "");
             projectDependency.setScope(jsonObject.has("scope") ? jsonObject.get("scope").getAsString() : "");
 

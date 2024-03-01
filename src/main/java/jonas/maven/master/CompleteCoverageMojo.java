@@ -66,7 +66,7 @@ public class CompleteCoverageMojo extends AbstractMojo {
 
         //System.out.println("OUTPUT DIRECTORY: " + outputDirectory + "\n");
 
-        ProjectDependencies.getAllProjectDependencies();
+        List<ProjectDependency> projectDependencies = ProjectDependencies.getAllProjectDependencies();
 
         // Execute JaCoCoCLI to create the report WITH dependencies
         getLog().info("Copying the `jacococli.jar` to the project.");
@@ -81,8 +81,8 @@ public class CompleteCoverageMojo extends AbstractMojo {
         executeJacocoCLI("sanity-check-1.0-shaded"); // TODO need to get the final jar name
 
         getLog().info("Organizing the complete coverage report.");
-        moveDepDirs(dependencies);
-        createDependencyReports(dependencies, project.getGroupId());
+        moveDepDirs(projectDependencies);
+        createDependencyReports(projectDependencies, project.getGroupId());
 
         //mvnVersion();
         //File mavenHome = new File("/mnt/c/Programs/apache-maven-3.9.1");

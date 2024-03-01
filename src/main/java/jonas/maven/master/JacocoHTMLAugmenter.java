@@ -13,7 +13,7 @@ import java.util.*;
 public class JacocoHTMLAugmenter {
     public static final String REPORTPATH = "./target/jact-report/";
 
-    public static void moveDepDirs(List<Dependency> dependencies) {
+    public static void moveDepDirs(List<ProjectDependency> dependencies) {
         // Create a directory for the dependency coverage
         createDir(REPORTPATH + "dependencies");
 
@@ -24,7 +24,7 @@ public class JacocoHTMLAugmenter {
 
         // Generate sets of words from dependencies
         List<Set<String>> setOfAllDeps = new ArrayList<>();
-        for (Dependency dependency : dependencies) {
+        for (ProjectDependency dependency : dependencies) {
             if (!dependency.getScope().equals("test")) {
                 // Create all the dependency directories
                 String depGroupId = dependency.getGroupId();
@@ -144,7 +144,7 @@ public class JacocoHTMLAugmenter {
     }
 
 
-    public static void createDependencyReports(List<Dependency> dependencies, String projectName) {
+    public static void createDependencyReports(List<ProjectDependency> dependencies, String projectName) {
 
         // Rename the original index.html file
         String originalFilePath = REPORTPATH + "index.html";
@@ -183,7 +183,7 @@ public class JacocoHTMLAugmenter {
         // REMOVE THIS LATER
         // Generate sets of words from dependencies
         List<Set<String>> setOfAllDeps = new ArrayList<>();
-        for (Dependency dependency : dependencies) {
+        for (ProjectDependency dependency : dependencies) {
             if(!dependency.getScope().equals("test")){
                 // Create all the dependency directories
                 String depGroupId = dependency.getGroupId();

@@ -29,11 +29,11 @@ public class ProjectDependency {
         return this.groupId;
     }
 
-    public void setArtifactIdId(String artifactId){
+    public void setArtifactId(String artifactId){
         this.artifactId = artifactId;
     }
 
-    public String getArtifactIdId(){
+    public String getArtifactId(){
         return this.artifactId;
     }
 
@@ -74,11 +74,11 @@ public class ProjectDependency {
     @Override
     public String toString() {
         return "{" +
-                "id='" + id + '\'' +
-                "groupId='" + groupId + '\'' +
-                ", artifactId='" + artifactId + '\'' +
-                ", version='" + version + '\'' +
-                ", scope='" + scope + '\'' +
+                "id='" + this.getId() + '\'' +
+                "groupId='" + this.getGroupId() + '\'' +
+                ", artifactId='" + this.getArtifactId() + '\'' +
+                ", version='" + this.getVersion() + '\'' +
+                ", scope='" + this.getScope() + '\'' +
                 ", children=[" + childrenToString() + ']'+
                 ", parents=["  + parentsToString() + ']' +
                 '}';
