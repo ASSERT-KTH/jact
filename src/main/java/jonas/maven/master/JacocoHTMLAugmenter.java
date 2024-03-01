@@ -65,7 +65,7 @@ public class JacocoHTMLAugmenter {
                     String dirName = directory.getName();
                     //System.out.println("DIRECTORY: " + dirName);
                     for (Set<String> depWordsSet : setOfAllDeps) {
-                        boolean containsAll = depWordsSet.stream().allMatch(dirName::contains);
+                         boolean containsAll = depWordsSet.stream().allMatch(dirName::contains);
                         //System.out.println("BOOL: " + containsAll);
                         if (containsAll) {
                             // Check again which directory it should be place in
@@ -80,6 +80,36 @@ public class JacocoHTMLAugmenter {
                             removeDirectory(directory);
                             break; // Move to next directory after moving this one
                         }
+                    }
+
+                }
+
+                // If we still have directories left with group ids that are from the dependencies:
+                directories = reportDir.listFiles(File::isDirectory);
+                if (directories != null) {
+                    for (File directory : directories) {
+                        // Check if directory name contains any string from sets in setOfAllDeps
+                        String dirName = directory.getName();
+                        //System.out.println("DIRECTORY: " + dirName);
+                        for (ProjectDependency pd : dependencies) {
+                            if (dirName.contains(pd.getGroupId().replace("-", "."))) {
+                                Set<String> wordSet = new HashSet<>();
+
+                                // Create sets of the words in the group/artifact-id
+                                wordSet.addAll(Arrays.asList(pd.getGroupId().split("[.-]")));
+                                wordSet.addAll(Arrays.asList(pd.getArtifactId().split("[.-]")));
+                                List<String> matchedDirs = depPathsMap.get(wordSet);
+                                for (String matchedDir : matchedDirs) {
+                                    System.out.println("NON-STRICT PACKAGE MATCH, copying: " + dirName + " to: " + "\n" +
+                                            REPORTPATH + "dependencies/" + matchedDir + "/" + dirName);
+                                    copyDirectory(directory, new File(REPORTPATH + "dependencies/" + matchedDir + "/" + dirName)); // Copy instead
+                                }
+                                removeDirectory(directory);
+                                break; // Move to next directory after moving this one
+                            }
+                        }
+
+
                     }
                 }
             }

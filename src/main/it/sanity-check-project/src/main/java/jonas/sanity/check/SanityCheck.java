@@ -1,9 +1,13 @@
 package jonas.sanity.check;
 
+import java.io.DataInput;
+import java.io.DataInputStream;
 import java.util.ArrayList;
 import org.apache.commons.math3.analysis.function.Add;
 import org.joda.time.LocalDate;
+import com.fasterxml.jackson.core.format.DataFormatDetector;
 
+import javax.xml.crypto.Data;
 
 public class SanityCheck {
 
@@ -19,6 +23,10 @@ public class SanityCheck {
         System.out.println(currentDate);
 
         System.out.println("Hello World");
+
+
+        DataFormatDetector df = new DataFormatDetector();
+        df.toString();
 
         ArrayList<Integer> dependencyTest = new ArrayList<>();
 
