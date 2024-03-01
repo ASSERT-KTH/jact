@@ -12,9 +12,12 @@ import static jonas.maven.master.CompleteCoverageMojo.readInputStream;
 
 import com.google.gson.*;
 import jonas.maven.master.ProjectDependency;
+import org.checkerframework.checker.units.qual.A;
+
 public class ProjectDependencies {
 
     static List<ProjectDependency> projectDependencies = new ArrayList<>();
+
 
     public static List<ProjectDependency> getAllProjectDependencies() {
         generateDependencyLockfile();
@@ -23,10 +26,8 @@ public class ProjectDependencies {
             Gson gson = new GsonBuilder().registerTypeAdapter(ProjectDependency.class, new ProjectDependencyDeserializer()).create();
             JsonElement jsonElement = gson.fromJson(reader, JsonElement.class);
             JsonArray dependenciesArray = jsonElement.getAsJsonObject().getAsJsonArray("dependencies");
-            List<ProjectDependency> dependencies = new ArrayList<>();
             for (JsonElement dependencyElement : dependenciesArray) {
-                ProjectDependency dependency = gson.fromJson(dependencyElement, ProjectDependency.class);
-                dependencies.add(dependency);
+                gson.fromJson(dependencyElement, ProjectDependency.class);
             }
             for (ProjectDependency dependency : projectDependencies) {
                 System.out.println(dependency);
@@ -42,10 +43,11 @@ public class ProjectDependencies {
         public ProjectDependency deserialize(JsonElement json, java.lang.reflect.Type typeOfT, com.google.gson.JsonDeserializationContext context) {
             JsonObject jsonObject = json.getAsJsonObject();
             Set<String> visited = new HashSet<>();
-            return parseDependency(jsonObject, visited, context);
+            List<ProjectDependency> parentDeps = new ArrayList<>();
+            return parseDependency(jsonObject, parentDeps);
         }
 
-        private ProjectDependency parseDependency(JsonObject jsonObject, Set<String> visited, com.google.gson.JsonDeserializationContext context) {
+        private ProjectDependency parseDependency(JsonObject jsonObject, List<ProjectDependency> parentDeps) {
 //            String dependencyId = jsonObject.get("id").getAsString();
 //            if (visited.contains(dependencyId)) {
 //                // If the dependency has been visited before, return null to avoid infinite recursion
@@ -59,17 +61,29 @@ public class ProjectDependencies {
             projectDependency.setArtifactIdId(jsonObject.has("artifactId") ? jsonObject.get("artifactId").getAsString() : "");
             projectDependency.setVersion(jsonObject.has("selectedVersion") ? jsonObject.get("selectedVersion").getAsString() : "");
             projectDependency.setScope(jsonObject.has("scope") ? jsonObject.get("scope").getAsString() : "");
+
+            String parentString = jsonObject.has("parent") ? jsonObject.get("parent").getAsString() : "";
+
+            // First add the previous parents in order
+            for(ProjectDependency parentDep : parentDeps){
+                projectDependency.addParentDep(parentDep);
+            }
+            // Then add the immediate parent
+            if (!parentString.isEmpty()) {
+                for (ProjectDependency pd : projectDependencies) {
+                    if (pd.getId().equals(parentString)) {
+                        projectDependency.addParentDep(pd);
+                        break;
+                    }
+                }
+            }
             //System.out.println("ADDING: " + projectDependency.toString());
             projectDependencies.add(projectDependency);
             JsonArray childrenJsonArray = jsonObject.getAsJsonArray("children");
             if (childrenJsonArray != null) {
                 for (JsonElement element : childrenJsonArray) {
-                    ProjectDependency child = parseDependency(element.getAsJsonObject(), visited, context);
-                    if (child != null) {
-                        child.setParent(projectDependency);
-                        //System.out.println("ADDING CHILD: " + child.groupId);
-                        projectDependency.addChildDep(child);
-                    }
+                    ProjectDependency child = parseDependency(element.getAsJsonObject(), projectDependency.getParentDeps());
+                    projectDependency.addChildDep(child);
                 }
             }
 

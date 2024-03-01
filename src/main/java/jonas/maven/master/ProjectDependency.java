@@ -10,7 +10,7 @@ public class ProjectDependency {
     private String version;
     private String scope;
     private List<ProjectDependency> children = new ArrayList<>();
-    private  ProjectDependency parent;
+    private List<ProjectDependency> parents = new ArrayList<>();
 
 
     public void setId(String id){
@@ -53,16 +53,20 @@ public class ProjectDependency {
         return this.scope;
     }
 
-    public void setParent(ProjectDependency parent){
-        this.parent = parent;
-    }
-
-    public ProjectDependency getParent(){
-        return this.parent;
-    }
-
     public void addChildDep(ProjectDependency child){
         children.add(child);
+    }
+
+    public List<ProjectDependency> getChildDeps(){
+        return this.children;
+    }
+
+    public void addParentDep(ProjectDependency parent){
+        this.parents.add(parent);
+    }
+
+    public List<ProjectDependency> getParentDeps(){
+        return this.parents;
     }
 
 
@@ -76,29 +80,36 @@ public class ProjectDependency {
                 ", version='" + version + '\'' +
                 ", scope='" + scope + '\'' +
                 ", children=[" + childrenToString() + ']'+
-                ", parent='" + parentToString() + '\'' +
+                ", parents=["  + parentsToString() + ']' +
                 '}';
     }
 
     private String childrenToString() {
         StringBuilder sb = new StringBuilder();
-        if (!children.isEmpty()) {
+        if (!this.getChildDeps().isEmpty()) {
 
-            for (int i = 0; i < children.size(); i++) {
+            for (int i = 0; i < this.getChildDeps().size(); i++) {
                 if (i > 0) {
                     sb.append(", ");
                 }
-                sb.append(children.get(i).id);
+                sb.append(this.children.get(i).id);
             }
             return sb.toString();
         }
         return "";
     }
 
-    private String parentToString(){
-        if(this.getParent() == null){
+    private String parentsToString(){
+        if(this.getParentDeps().isEmpty()){
             return "";
         }
-        return this.getParent().id;
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i< this.getParentDeps().size(); i++){
+            if (i > 0) {
+                sb.append(", ");
+            }
+            sb.append(this.getParentDeps().get(i).getId());
+        }
+        return sb.toString();
     }
 }
