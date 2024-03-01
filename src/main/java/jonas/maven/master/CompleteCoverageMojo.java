@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
+import org.apache.maven.artifact.resolver.filter.ArtifactFilter;
+import org.apache.maven.artifact.resolver.filter.ExclusionArtifactFilter;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -20,7 +22,11 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
-import org.apache.maven.project.MavenProject;
+import org.apache.maven.project.*;
+
+import org.apache.maven.shared.dependency.graph.*;
+import org.apache.maven.shared.dependency.graph.internal.DefaultDependencyGraphBuilder;
+import io.github.chains_project.maven_lockfile.GenerateLockFileMojo;
 
 import static jonas.maven.master.JacocoHTMLAugmenter.createDependencyReports;
 import static jonas.maven.master.JacocoHTMLAugmenter.moveDepDirs;
@@ -60,7 +66,7 @@ public class CompleteCoverageMojo extends AbstractMojo {
 
         //System.out.println("OUTPUT DIRECTORY: " + outputDirectory + "\n");
 
-        ProjectDependencies.generateDependencyTree();
+        //ProjectDependencies.generateDependencyTree();
 
         // Execute JaCoCoCLI to create the report WITH dependencies
         getLog().info("Copying the `jacococli.jar` to the project.");
