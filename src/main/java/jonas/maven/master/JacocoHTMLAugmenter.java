@@ -30,8 +30,8 @@ public class JacocoHTMLAugmenter {
                 String depGroupId = dependency.getGroupId();
                 String depArtifactId = dependency.getArtifactId();
                 String depVersion = dependency.getVersion();
-                createDir(REPORTPATH + "dependencies/" + depGroupId.replace("-", ".") +
-                        "." + depArtifactId.replace("-", ".") + "-v" + depVersion);
+                createDir(REPORTPATH + "dependencies/" + getFullDepPath(dependency));
+
 
                 Set<String> depWordsSet = new HashSet<>();
 
@@ -72,6 +72,30 @@ public class JacocoHTMLAugmenter {
                 }
             }
         }
+    }
+
+    public static String getFullDepPath(ProjectDependency projectDependency){
+        StringBuilder fullPath = new StringBuilder();
+        List<ProjectDependency> parentDeps = projectDependency.getParentDeps();
+        String path;
+        ProjectDependency currProjDep;
+
+        // Creating the file path to the dependency
+        for(int i = 0; i < parentDeps.size(); i++){
+            if(i > 0){
+                fullPath.append("/"); // If we have more than one entry --> create a new layer.
+            }
+            currProjDep = parentDeps.get(i);
+            path = currProjDep.getGroupId().replace("-", ".") + "." +
+                    currProjDep.getArtifactId().replace("-", ".") + "-v" + currProjDep.getVersion();
+            fullPath.append(path);
+        }
+        // Adding dependency directory
+        path = projectDependency.getGroupId().replace("-", ".") + "." +
+                projectDependency.getArtifactId().replace("-", ".") + "-v" + projectDependency.getVersion();
+        fullPath.append(path);
+
+        return fullPath.toString();
     }
 
     public static void copyDirectory(File sourceDir, File destDir) {
