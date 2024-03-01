@@ -101,7 +101,7 @@ public class CompleteCoverageMojo extends AbstractMojo {
                 // Look for jacococli.jar entry
                 if (jarEntry.getName().equals("jacococli.jar")) {
                     // Prepare the target directory
-                    Path targetDirectory = Paths.get("target", "jacococli");
+                    Path targetDirectory = Paths.get("target", "jact-resources");
                     Files.createDirectories(targetDirectory);
 
                     // Define the target file path
@@ -125,8 +125,8 @@ public class CompleteCoverageMojo extends AbstractMojo {
         try {
             // Retrieve the URL to the jacococli.jar file
             // Command to execute Jacoco CLI
-            String command = String.format("java -jar ./target/jacococli/jacococli.jar report ./target/jacoco.exec --classfiles " +
-                    "./target/" + jarName +".jar --html ./target/report");
+            String command = String.format("java -jar ./target/jact-resources/jacococli.jar report ./target/jacoco.exec --classfiles " +
+                    "./target/" + jarName +".jar --html ./target/jact-report");
 
             // For Linux
             ProcessBuilder processBuilder = new ProcessBuilder("/bin/bash", "-c", command);

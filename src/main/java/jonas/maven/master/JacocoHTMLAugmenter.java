@@ -11,15 +11,16 @@ import java.nio.file.StandardCopyOption;
 import java.util.*;
 
 public class JacocoHTMLAugmenter {
+    public static final String REPORTPATH = "./target/jact-report/";
 
     public static void moveDepDirs(List<Dependency> dependencies) {
         // Create a directory for the dependency coverage
-        createDir("./target/report/dependencies");
+        createDir(REPORTPATH + "dependencies");
 
         // Path to jacoco-resources (to be copied to subdirectories)
-        String jacocoResPath = "./target/report/jacoco-resources";
+        String jacocoResPath = REPORTPATH + "jacoco-resources";
         copyDirectory(new File(jacocoResPath),
-                new File("./target/report/dependencies/jacoco-resources"));
+                new File(REPORTPATH + "dependencies/jacoco-resources"));
 
         // Generate sets of words from dependencies
         List<Set<String>> setOfAllDeps = new ArrayList<>();
@@ -29,7 +30,7 @@ public class JacocoHTMLAugmenter {
                 String depGroupId = dependency.getGroupId();
                 String depArtifactId = dependency.getArtifactId();
                 String depVersion = dependency.getVersion();
-                createDir("./target/report/dependencies/" + depGroupId.replace("-", ".") +
+                createDir(REPORTPATH + "dependencies/" + depGroupId.replace("-", ".") +
                         "." + depArtifactId.replace("-", ".") + "-v" + depVersion);
 
                 Set<String> depWordsSet = new HashSet<>();
@@ -47,7 +48,7 @@ public class JacocoHTMLAugmenter {
 
 
         // Traverse the "report" directory
-        File reportDir = new File("./target/report");
+        File reportDir = new File(REPORTPATH);
         if (reportDir.exists() && reportDir.isDirectory()) {
             File[] directories = reportDir.listFiles(File::isDirectory);
             if (directories != null) {
@@ -62,9 +63,9 @@ public class JacocoHTMLAugmenter {
                             // Check again which directory it should be place in
                             // Another contains all with the pre-created directories.
                             String matchingDir = matchPackageToDir(depWordsSet);
-                            moveDirectory(directory, "./target/report/dependencies/" + matchingDir);
+                            moveDirectory(directory, REPORTPATH + "dependencies/" + matchingDir);
                             copyDirectory(new File(jacocoResPath),
-                                    new File("./target/report/dependencies/" + matchingDir + "/jacoco-resources"));
+                                    new File(REPORTPATH + "dependencies/" + matchingDir + "/jacoco-resources"));
                             break; // Move to next directory after moving this one
                         }
                     }
@@ -97,7 +98,7 @@ public class JacocoHTMLAugmenter {
 
     private static String matchPackageToDir(Set<String> matchedSet){
         // Traverse the "report" directory
-        File reportDir = new File("./target/report/dependencies");
+        File reportDir = new File(REPORTPATH + "dependencies");
         if (reportDir.exists() && reportDir.isDirectory()) {
             File[] directories = reportDir.listFiles(File::isDirectory);
             if (directories != null) {
@@ -146,7 +147,7 @@ public class JacocoHTMLAugmenter {
     public static void createDependencyReports(List<Dependency> dependencies, String projectName) {
 
         // Rename the original index.html file
-        String originalFilePath = "./target/report/index.html";
+        String originalFilePath = REPORTPATH + "index.html";
         File originalFile = new File(originalFilePath);
         File newFile = new File(originalFile.getParent(), "originalIndex.html");
         if (originalFile.exists()) {
@@ -160,7 +161,7 @@ public class JacocoHTMLAugmenter {
         }
 
         // Path to the original jacoco html report.
-        String inputFilePath = "./target/report/originalIndex.html";
+        String inputFilePath = REPORTPATH + "originalIndex.html";
 
         // Format the index.html report:
         try {
@@ -212,7 +213,7 @@ public class JacocoHTMLAugmenter {
         // for all dependencies.
 
         // Traverse the "dependencies" directory
-        File reportDir = new File("./target/report/dependencies");
+        File reportDir = new File(REPORTPATH + "dependencies");
         if (reportDir.exists() && reportDir.isDirectory()) {
             File[] directories = reportDir.listFiles(File::isDirectory);
             if (directories != null) {
@@ -225,7 +226,7 @@ public class JacocoHTMLAugmenter {
                         //System.out.println("BOOL: " + containsAll);
                         if(containsAll){
                             String depDirName = matchPackageToDir(depWordsSet);
-                            outputFilePath = "./target/report/dependencies/" + depDirName + "/index.html";
+                            outputFilePath = REPORTPATH + "dependencies/" + depDirName + "/index.html";
                             try {
                                 writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
                                         outputFilePath, depDirName);
@@ -248,7 +249,7 @@ public class JacocoHTMLAugmenter {
 
 
         // Create the whole project overview
-        outputFilePath = "./target/report/index.html";
+        outputFilePath = REPORTPATH + "index.html";
         templateFilePath1 = "overviewTemplateStart.html";
         templateFilePath2 = "overviewTemplateEnd.html";
         String templateFilePathX = "overviewEntry.html";
@@ -272,7 +273,7 @@ public class JacocoHTMLAugmenter {
 
         // Create the dependencies overview
 
-        outputFilePath = "./target/report/dependencies/index.html";
+        outputFilePath = REPORTPATH + "dependencies/index.html";
         templateFilePath1 = "depOverviewTemplateStart.html";
         templateFilePath2 = "depOverviewTemplateEnd.html";
         try {
