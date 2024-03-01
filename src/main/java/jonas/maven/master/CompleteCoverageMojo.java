@@ -66,7 +66,7 @@ public class CompleteCoverageMojo extends AbstractMojo {
 
         //System.out.println("OUTPUT DIRECTORY: " + outputDirectory + "\n");
 
-        //ProjectDependencies.generateDependencyTree();
+        ProjectDependencies.getAllProjectDependencies();
 
         // Execute JaCoCoCLI to create the report WITH dependencies
         getLog().info("Copying the `jacococli.jar` to the project.");

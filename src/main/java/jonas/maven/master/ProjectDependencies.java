@@ -16,8 +16,9 @@ public class ProjectDependencies {
 
     static List<ProjectDependency> projectDependencies = new ArrayList<>();
 
-    public static void main(String[] args) {
-        String filePath = "./lockfile.json"; // Path to the JSON file
+    public static List<ProjectDependency> getAllProjectDependencies() {
+        generateDependencyLockfile();
+        String filePath = "./target/jact-report/lockfile.json"; // Path to the JSON file
         try (FileReader reader = new FileReader(filePath)) {
             Gson gson = new GsonBuilder().registerTypeAdapter(ProjectDependency.class, new ProjectDependencyDeserializer()).create();
             JsonElement jsonElement = gson.fromJson(reader, JsonElement.class);
@@ -33,6 +34,7 @@ public class ProjectDependencies {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return projectDependencies;
     }
 
     static class ProjectDependencyDeserializer implements com.google.gson.JsonDeserializer<ProjectDependency> {
@@ -76,10 +78,9 @@ public class ProjectDependencies {
     }
 
 
-    public static void generateDependencyTree(){
+    public static void generateDependencyLockfile(){
         try {
             // Command to be executed
-            //String command = "mvn dependency:tree -DoutputFile=./target/jact-report/dependency-tree.txt";
             String command = "mvn io.github.chains-project:maven-lockfile:generate -Dreduced=true";
 
             // Create a process builder with a shell
@@ -104,6 +105,20 @@ public class ProjectDependencies {
             // Print the output
             System.out.println("Exit Code: " + exitCode);
             System.out.println("Output:\n" + output);
+
+            // Move the generated lockfile.json to ./target/jact-report/lockfile.json
+            File sourceFile = new File("./lockfile.json");
+            File targetDir = new File("./target/jact-report/");
+            if (!targetDir.exists()) {
+                targetDir.mkdirs();
+            }
+            File targetFile = new File(targetDir, "lockfile.json");
+
+            if (sourceFile.renameTo(targetFile)) {
+                System.out.println("File moved successfully to " + targetFile.getAbsolutePath());
+            } else {
+                System.out.println("Failed to move the file");
+            }
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
