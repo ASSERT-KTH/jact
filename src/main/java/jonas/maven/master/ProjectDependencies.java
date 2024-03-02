@@ -5,15 +5,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import static jonas.maven.master.CompleteCoverageMojo.readInputStream;
-
 import com.google.gson.*;
-import jonas.maven.master.ProjectDependency;
-import org.apache.maven.plugin.MojoExecutionException;
-import org.checkerframework.checker.units.qual.A;
 
 public class ProjectDependencies {
 
@@ -27,7 +19,7 @@ public class ProjectDependencies {
     }
 
     private static void generateAllProjectDependencies() {
-        generateDependencyLockfile();
+        CommandExecutor.generateDependencyLockfile();
         String filePath = "./target/jact-report/lockfile.json"; // Path to the JSON file
         try (FileReader reader = new FileReader(filePath)) {
             Gson gson = new GsonBuilder().registerTypeAdapter(ProjectDependency.class, new ProjectDependencyDeserializer()).create();
@@ -94,60 +86,6 @@ public class ProjectDependencies {
             }
 
             return projectDependency;
-        }
-    }
-
-
-    private static void generateDependencyLockfile(){
-        try {
-            // Command to be executed
-            String command = "mvn io.github.chains-project:maven-lockfile:generate -Dreduced=true";
-
-            // Adapts the command based on OS:
-            ProcessBuilder processBuilder;
-            if(CompleteCoverageMojo.hostOS.contains("linux")){
-                processBuilder = new ProcessBuilder("/bin/bash", "-c", command);
-            }else if(CompleteCoverageMojo.hostOS.contains("windows")){
-                processBuilder = new ProcessBuilder("cmd", "/c", command); // For Windows
-            }else{
-                // No support for MacOS currently
-                throw new RuntimeException("Could not identify operating system for lock file generation.");
-            }
-
-            // Redirect error stream to output stream
-            processBuilder.redirectErrorStream(true);
-
-            // Start the process
-            Process process = processBuilder.start();
-
-            // Get the input stream of the process
-            InputStream inputStream = process.getInputStream();
-
-            // Read the output
-            String output = readInputStream(inputStream);
-
-            // Wait for the process to complete
-            int exitCode = process.waitFor();
-
-            // Print the output
-            System.out.println("Exit Code: " + exitCode);
-            System.out.println("Output:\n" + output);
-
-            // Move the generated lockfile.json to ./target/jact-report/lockfile.json
-            File sourceFile = new File("./lockfile.json");
-            File targetDir = new File("./target/jact-report/");
-            if (!targetDir.exists()) {
-                targetDir.mkdirs();
-            }
-            File targetFile = new File(targetDir, "lockfile.json");
-
-            if (sourceFile.renameTo(targetFile)) {
-                System.out.println("File moved successfully to " + targetFile.getAbsolutePath());
-            } else {
-                System.out.println("Failed to move the file");
-            }
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
         }
     }
 }

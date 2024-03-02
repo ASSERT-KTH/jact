@@ -83,10 +83,12 @@ public class CompleteCoverageMojo extends AbstractMojo {
 
         List<ProjectDependency> projectDependencies = ProjectDependencies.getAllProjectDependencies();
 
+        CommandExecutor cmdExec = new CommandExecutor();
+
         // Execute JaCoCoCLI to create the report WITH dependencies
         getLog().info("Copying the `jacococli.jar` to the project.");
         try {
-            copyJacocoCliJar();
+            cmdExec.copyJacocoCliJar();
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (URISyntaxException e) {
@@ -94,103 +96,13 @@ public class CompleteCoverageMojo extends AbstractMojo {
         }
 
 
-
         getLog().info("Creating the complete coverage report.");
-        executeJacocoCLI(outputJarName + "-shaded");
+        cmdExec.executeJacocoCLI(outputJarName + "-shaded");
 
         getLog().info("Organizing the complete coverage report.");
         moveDepDirs(projectDependencies);
         createDependencyReports(projectDependencies, project.getGroupId());
 
-        //mvnVersion();
-        //File mavenHome = new File("/mnt/c/Programs/apache-maven-3.9.1");
-
-    }
-
-    public void copyJacocoCliJar() throws IOException, URISyntaxException {
-        // Get the path to the plugin JAR file
-        Path pluginJarPath = Paths.get(getClass().getProtectionDomain().getCodeSource().getLocation().toURI());
-
-        // Create a JarInputStream to read from the plugin JAR
-        try (JarInputStream jarInputStream = new JarInputStream(new FileInputStream(pluginJarPath.toFile()))) {
-            // Loop through all entries in the plugin JAR
-            JarEntry jarEntry;
-            while ((jarEntry = jarInputStream.getNextJarEntry()) != null) {
-                // Look for jacococli.jar entry
-                if (jarEntry.getName().equals("jacococli.jar")) {
-                    // Prepare the target directory
-                    Path targetDirectory = Paths.get("target", "jact-resources");
-                    Files.createDirectories(targetDirectory);
-
-                    // Define the target file path
-                    Path targetPath = targetDirectory.resolve("jacococli.jar");
-
-                    // Copy the entry to the target directory
-                    try (OutputStream outputStream = Files.newOutputStream(targetPath)) {
-                        byte[] buffer = new byte[8192];
-                        int length;
-                        while ((length = jarInputStream.read(buffer)) > 0) {
-                            outputStream.write(buffer, 0, length);
-                        }
-                    }
-                    break; // Exit loop once jacococli.jar is found and copied
-                }
-            }
-        }
-    }
-
-    void executeJacocoCLI(String jarName) throws MojoExecutionException {
-        try {
-            // Retrieve the URL to the jacococli.jar file
-            // Command to execute Jacoco CLI
-            String command = String.format("java -jar ./target/jact-resources/jacococli.jar report ./target/jacoco.exec --classfiles " +
-                    "./target/" + jarName +".jar --html ./target/jact-report");
-
-            // Adapts the command based on OS:
-            ProcessBuilder processBuilder;
-            if(hostOS.contains("linux")){
-                processBuilder = new ProcessBuilder("/bin/bash", "-c", command);
-            }else if(hostOS.contains("windows")){
-                processBuilder = new ProcessBuilder("cmd", "/c", command); // For Windows
-            }else{
-                // No support for MacOS currently
-                throw new RuntimeException("Could not identify operating system for lock file generation.");
-            }
-
-            // Redirect error stream to output stream
-            processBuilder.redirectErrorStream(true);
-
-            // Start the process
-            Process process = processBuilder.start();
-
-            // Wait for the process to complete
-            int exitCode = process.waitFor();
-
-            // If Jacoco CLI execution fails
-            if (exitCode != 0) {
-                throw new MojoExecutionException("Failed to execute Jacoco CLI");
-            }
-
-            // Print the output
-            InputStream inputStream = process.getInputStream();
-            String output = readInputStream(inputStream);
-            getLog().info(output);
-        } catch (IOException | InterruptedException e) {
-            throw new MojoExecutionException("Error executing Jacoco CLI", e);
-        }
-    }
-
-
-    public static String readInputStream(InputStream inputStream) throws IOException {
-        // Read the input stream and convert it to a string
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-            StringBuilder output = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                output.append(line).append("\n");
-            }
-            return output.toString();
-        }
     }
 
 }
