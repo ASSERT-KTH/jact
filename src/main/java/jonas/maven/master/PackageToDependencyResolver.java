@@ -17,7 +17,7 @@ public class PackageToDependencyResolver {
         // packageName = "jonas.sanity.check";
 
         // Directory where your Maven dependencies are stored
-        String mavenRepositoryDir = "/home/jonas/.m2/repository"; // TODO GET THE REPO DYNAMICALLY
+        String mavenRepositoryDir = CompleteCoverageMojo.localRepoPath;
 
         // Iterate over each dependency
         for (ProjectDependency dependency : dependencies) {

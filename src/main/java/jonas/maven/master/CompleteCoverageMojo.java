@@ -23,6 +23,7 @@ import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.*;
+import org.apache.maven.execution.MavenSession;
 
 import org.apache.maven.shared.dependency.graph.*;
 import org.apache.maven.shared.dependency.graph.internal.DefaultDependencyGraphBuilder;
@@ -50,15 +51,22 @@ public class CompleteCoverageMojo extends AbstractMojo {
     /**
      * Gives access to the Maven project information.
      */
-    @Parameter(defaultValue = "${project}", required = true, readonly = false)
+    @Parameter(defaultValue = "${project}", required = true, readonly = true)
     MavenProject project;
+
+    /**
+     * The Maven session.
+     */
+    @Parameter(defaultValue = "${session}", required = true, readonly = true)
+    private MavenSession session;
+    public static String localRepoPath;
 
     public static Set<String> projGroupIdSet = new HashSet<>();
 
     public void execute() throws MojoExecutionException, MojoFailureException {
         projGroupIdSet.addAll(Arrays.asList(project.getGroupId().split("[.-]")));
         String outputJarName = project.getBuild().getFinalName();
-
+        localRepoPath = session.getLocalRepository().getBasedir();
         List<Dependency> dependencies = project.getDependencies();
 
         getLog().info("DEPENDENCY INFO:");
