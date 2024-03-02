@@ -56,9 +56,10 @@ public class CompleteCoverageMojo extends AbstractMojo {
     public static Set<String> projGroupIdSet = new HashSet<>();
 
     public void execute() throws MojoExecutionException, MojoFailureException {
-        List<Dependency> dependencies = project.getDependencies();
         projGroupIdSet.addAll(Arrays.asList(project.getGroupId().split("[.-]")));
+        String outputJarName = project.getBuild().getFinalName();
 
+        List<Dependency> dependencies = project.getDependencies();
 
         getLog().info("DEPENDENCY INFO:");
         for (Dependency dependency : dependencies) {
@@ -80,8 +81,11 @@ public class CompleteCoverageMojo extends AbstractMojo {
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
+
+
+
         getLog().info("Creating the complete coverage report.");
-        executeJacocoCLI("sanity-check-1.0-shaded"); // TODO need to get the final jar name
+        executeJacocoCLI(outputJarName + "-shaded");
 
         getLog().info("Organizing the complete coverage report.");
         moveDepDirs(projectDependencies);
