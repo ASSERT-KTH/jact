@@ -114,13 +114,10 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>dependency-counter</goal>
+                            <goal>coverage-report</goal>
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <scope>test</scope>
-                </configuration>
             </plugin>
 
             <plugin>

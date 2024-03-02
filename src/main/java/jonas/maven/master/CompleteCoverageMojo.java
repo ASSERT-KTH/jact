@@ -39,7 +39,7 @@ import static jonas.maven.master.JacocoHTMLAugmenter.moveDepDirs;
  * It can be filtered by scope.
  *
  */
-@Mojo(name = "dependency-counter", defaultPhase = LifecyclePhase.INSTALL, threadSafe = true)
+@Mojo(name = "coverage-report", defaultPhase = LifecyclePhase.INSTALL, threadSafe = true)
 public class CompleteCoverageMojo extends AbstractMojo {
 
     /**

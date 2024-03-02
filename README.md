@@ -13,3 +13,20 @@ upon JaCoCo to capture even more accurate coverage.
 - Need to be able to build a FAT-jar (including the project and its dependencies)
 - Provide the name of the FAT-jar before packaging (for report generation)
 - Resulting jar has to be place under ./target/
+
+### Using JACT:
+After fulfilling the prerequsites in your project, clone this repo and execute `mvn clean install` and add this plugin to your pom.xml file.
+```xml
+<plugin>
+    <groupId>java.absolute.coverage.tracker</groupId>
+    <artifactId>jact</artifactId>
+    <version>1.0</version>
+    <executions>
+        <execution>
+            <goals>
+                <goal>coverage-report</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+```
