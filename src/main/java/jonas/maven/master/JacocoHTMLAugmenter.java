@@ -14,6 +14,10 @@ public class JacocoHTMLAugmenter {
     public static final String REPORTPATH = "./target/jact-report/";
     public static final String jacocoResPath = REPORTPATH + "jacoco-resources";
 
+    //public static final Set<String> projGroupIdSet = CompleteCoverageMojo.projectGroupId.split("[.-]");
+
+
+
     public static void moveDepDirs(List<ProjectDependency> dependencies) {
         // Create a directory for the dependency coverage
         createDir(REPORTPATH + "dependencies");
@@ -64,13 +68,21 @@ public class JacocoHTMLAugmenter {
                 for (File directory : directories) {
                     // Check if directory name contains any string from sets in setOfAllDeps
                     String dirName = directory.getName();
-                    ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(dirName);
-                    for(String path : matchedDep.getReportPaths()){
-                        copyDirectory(directory, new File(path + "/" + dirName));
+                    boolean packageDir = CompleteCoverageMojo.projGroupIdSet.stream().allMatch(dirName::contains);
+                    if(!dirName.equals("dependencies") && !dirName.equals("jacoco-resources") && !packageDir){
+                        ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(dirName);
+                        if(matchedDep.getReportPaths().size() == 1){
+                            //String path = matchedDep.getReportPaths().get(0);
+                            moveDirectory(directory, matchedDep.getReportPaths().get(0));
+                        }else{
+                            // Handle dependencies with the same transitive dependencies.
+                            for(String path : matchedDep.getReportPaths()){
+                                copyDirectory(directory, new File(path + "/" + dirName));
+                            }
+                            System.out.println("REMOVING: " + directory.getPath());
+                            removeDirectory(directory);
+                        }
                     }
-//                    if(!dirName.equals("jacoco-resources")){
-//                        removeDirectory(directory);
-//                    }
                 }
             }
         }

@@ -53,8 +53,11 @@ public class CompleteCoverageMojo extends AbstractMojo {
     @Parameter(defaultValue = "${project}", required = true, readonly = false)
     MavenProject project;
 
+    public static Set<String> projGroupIdSet = new HashSet<>();
+
     public void execute() throws MojoExecutionException, MojoFailureException {
         List<Dependency> dependencies = project.getDependencies();
+        projGroupIdSet.addAll(Arrays.asList(project.getGroupId().split("[.-]")));
 
 
         getLog().info("DEPENDENCY INFO:");
