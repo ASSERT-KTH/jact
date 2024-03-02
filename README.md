@@ -1,4 +1,5 @@
-# JACT - Java Absolute Coverage Tracker
+# JACT - Java Absolute Coverage Tracker <img src=".img/jact-logo.png" align="left" height="135px"/>
+
 #### *(NAME IS NOT FINAL, used to create a unique report directory)*
 
 ### What is JACT?
