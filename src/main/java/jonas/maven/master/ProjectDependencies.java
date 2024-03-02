@@ -12,6 +12,7 @@ import static jonas.maven.master.CompleteCoverageMojo.readInputStream;
 
 import com.google.gson.*;
 import jonas.maven.master.ProjectDependency;
+import org.apache.maven.plugin.MojoExecutionException;
 import org.checkerframework.checker.units.qual.A;
 
 public class ProjectDependencies {
@@ -102,9 +103,16 @@ public class ProjectDependencies {
             // Command to be executed
             String command = "mvn io.github.chains-project:maven-lockfile:generate -Dreduced=true";
 
-            // Create a process builder with a shell
-            //ProcessBuilder processBuilder = new ProcessBuilder("cmd", "/c", command); // For Windows
-            ProcessBuilder processBuilder = new ProcessBuilder("/bin/bash", "-c", command); // For Linux
+            // Adapts the command based on OS:
+            ProcessBuilder processBuilder;
+            if(CompleteCoverageMojo.hostOS.contains("linux")){
+                processBuilder = new ProcessBuilder("/bin/bash", "-c", command);
+            }else if(CompleteCoverageMojo.hostOS.contains("windows")){
+                processBuilder = new ProcessBuilder("cmd", "/c", command); // For Windows
+            }else{
+                // No support for MacOS currently
+                throw new RuntimeException("Could not identify operating system for lock file generation.");
+            }
 
             // Redirect error stream to output stream
             processBuilder.redirectErrorStream(true);

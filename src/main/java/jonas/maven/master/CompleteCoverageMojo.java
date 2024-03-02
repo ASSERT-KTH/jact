@@ -59,6 +59,8 @@ public class CompleteCoverageMojo extends AbstractMojo {
      */
     @Parameter(defaultValue = "${session}", required = true, readonly = true)
     private MavenSession session;
+
+    public static String hostOS;
     public static String localRepoPath;
 
     public static Set<String> projGroupIdSet = new HashSet<>();
@@ -67,6 +69,7 @@ public class CompleteCoverageMojo extends AbstractMojo {
         projGroupIdSet.addAll(Arrays.asList(project.getGroupId().split("[.-]")));
         String outputJarName = project.getBuild().getFinalName();
         localRepoPath = session.getLocalRepository().getBasedir();
+        hostOS = session.getSystemProperties().getProperty("os.name").toLowerCase();
         List<Dependency> dependencies = project.getDependencies();
 
         getLog().info("DEPENDENCY INFO:");
@@ -143,8 +146,16 @@ public class CompleteCoverageMojo extends AbstractMojo {
             String command = String.format("java -jar ./target/jact-resources/jacococli.jar report ./target/jacoco.exec --classfiles " +
                     "./target/" + jarName +".jar --html ./target/jact-report");
 
-            // For Linux
-            ProcessBuilder processBuilder = new ProcessBuilder("/bin/bash", "-c", command);
+            // Adapts the command based on OS:
+            ProcessBuilder processBuilder;
+            if(hostOS.contains("linux")){
+                processBuilder = new ProcessBuilder("/bin/bash", "-c", command);
+            }else if(hostOS.contains("windows")){
+                processBuilder = new ProcessBuilder("cmd", "/c", command); // For Windows
+            }else{
+                // No support for MacOS currently
+                throw new RuntimeException("Could not identify operating system for lock file generation.");
+            }
 
             // Redirect error stream to output stream
             processBuilder.redirectErrorStream(true);
@@ -166,38 +177,6 @@ public class CompleteCoverageMojo extends AbstractMojo {
             getLog().info(output);
         } catch (IOException | InterruptedException e) {
             throw new MojoExecutionException("Error executing Jacoco CLI", e);
-        }
-    }
-
-    void mvnVersion(){
-        try {
-            // Command to be executed
-            String command = "mvn --version";
-
-            // Create a process builder with a shell
-            //ProcessBuilder processBuilder = new ProcessBuilder("cmd", "/c", command); // For Windows
-            ProcessBuilder processBuilder = new ProcessBuilder("/bin/bash", "-c", command); // For Linux
-
-            // Redirect error stream to output stream
-            processBuilder.redirectErrorStream(true);
-
-            // Start the process
-            Process process = processBuilder.start();
-
-            // Get the input stream of the process
-            InputStream inputStream = process.getInputStream();
-
-            // Read the output
-            String output = readInputStream(inputStream);
-
-            // Wait for the process to complete
-            int exitCode = process.waitFor();
-
-            // Print the output
-            System.out.println("Exit Code: " + exitCode);
-            System.out.println("Output:\n" + output);
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
         }
     }
 
