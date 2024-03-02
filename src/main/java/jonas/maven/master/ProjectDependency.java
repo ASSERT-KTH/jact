@@ -11,6 +11,7 @@ public class ProjectDependency {
     private String scope;
     private List<ProjectDependency> children = new ArrayList<>();
     private List<ProjectDependency> parents = new ArrayList<>();
+    private List<String> raportPaths = new ArrayList<>();
 
 
     public void setId(String id){
@@ -69,6 +70,13 @@ public class ProjectDependency {
         return this.parents;
     }
 
+    public void addReportPath(String reportPath){
+        this.raportPaths.add(reportPath);
+    }
+
+    public List<String> getReportPaths(){
+        return this.raportPaths;
+    }
 
 
     @Override

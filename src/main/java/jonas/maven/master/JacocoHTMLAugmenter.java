@@ -12,13 +12,13 @@ import java.util.*;
 
 public class JacocoHTMLAugmenter {
     public static final String REPORTPATH = "./target/jact-report/";
+    public static final String jacocoResPath = REPORTPATH + "jacoco-resources";
 
     public static void moveDepDirs(List<ProjectDependency> dependencies) {
         // Create a directory for the dependency coverage
         createDir(REPORTPATH + "dependencies");
 
         // Path to jacoco-resources (to be copied to subdirectories)
-        String jacocoResPath = REPORTPATH + "jacoco-resources";
         copyDirectory(new File(jacocoResPath),
                 new File(REPORTPATH + "dependencies/jacoco-resources"));
 
@@ -33,9 +33,10 @@ public class JacocoHTMLAugmenter {
                 String depVersion = dependency.getVersion();
                 String fullPath = getFullDepPath(dependency);
 
-
+                dependency.addReportPath(REPORTPATH + "dependencies/" + fullPath); // Adding the path to easily get the report location.
                 createDir(REPORTPATH + "dependencies/" + fullPath);
-
+                copyDirectory(new File(jacocoResPath),
+                        new File(REPORTPATH + "dependencies/" + fullPath + "/jacoco-resources"));
 
                 Set<String> depWordsSet = new HashSet<>();
 
@@ -63,54 +64,13 @@ public class JacocoHTMLAugmenter {
                 for (File directory : directories) {
                     // Check if directory name contains any string from sets in setOfAllDeps
                     String dirName = directory.getName();
-                    //System.out.println("DIRECTORY: " + dirName);
-                    for (Set<String> depWordsSet : setOfAllDeps) {
-                         boolean containsAll = depWordsSet.stream().allMatch(dirName::contains);
-                        //System.out.println("BOOL: " + containsAll);
-                        if (containsAll) {
-                            // Check again which directory it should be place in
-                            // Another contains all with the pre-created directories.
-                            List<String> matchedDirs = depPathsMap.get(depWordsSet);
-                            //String matchingDir = matchPackageToDir(depWordsSet);
-                            for(String matchedDir : matchedDirs){
-                                copyDirectory(directory, new File(REPORTPATH + "dependencies/" + matchedDir)); // Copy instead
-                                copyDirectory(new File(jacocoResPath),
-                                        new File(REPORTPATH + "dependencies/" + matchedDir + "/jacoco-resources"));
-                            }
-                            removeDirectory(directory);
-                            break; // Move to next directory after moving this one
-                        }
+                    ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(dirName);
+                    for(String path : matchedDep.getReportPaths()){
+                        copyDirectory(directory, new File(path + "/" + dirName));
                     }
-
-                }
-
-                // If we still have directories left with group ids that are from the dependencies:
-                directories = reportDir.listFiles(File::isDirectory);
-                if (directories != null) {
-                    for (File directory : directories) {
-                        // Check if directory name contains any string from sets in setOfAllDeps
-                        String dirName = directory.getName();
-                        //System.out.println("DIRECTORY: " + dirName);
-                        for (ProjectDependency pd : dependencies) {
-                            if (dirName.contains(pd.getGroupId().replace("-", "."))) {
-                                Set<String> wordSet = new HashSet<>();
-
-                                // Create sets of the words in the group/artifact-id
-                                wordSet.addAll(Arrays.asList(pd.getGroupId().split("[.-]")));
-                                wordSet.addAll(Arrays.asList(pd.getArtifactId().split("[.-]")));
-                                List<String> matchedDirs = depPathsMap.get(wordSet);
-                                for (String matchedDir : matchedDirs) {
-                                    System.out.println("NON-STRICT PACKAGE MATCH, copying: " + dirName + " to: " + "\n" +
-                                            REPORTPATH + "dependencies/" + matchedDir + "/" + dirName);
-                                    copyDirectory(directory, new File(REPORTPATH + "dependencies/" + matchedDir + "/" + dirName)); // Copy instead
-                                }
-                                removeDirectory(directory);
-                                break; // Move to next directory after moving this one
-                            }
-                        }
-
-
-                    }
+//                    if(!dirName.equals("jacoco-resources")){
+//                        removeDirectory(directory);
+//                    }
                 }
             }
         }
@@ -132,6 +92,12 @@ public class JacocoHTMLAugmenter {
 
             // Add a transitive dependencies directory here:
             fullPath.append("/transitive-dependencies/");
+
+            // Copy jacoco-resources if it's not already there.
+            if(!new File(fullPath + "jacoco-resources").exists()){
+                copyDirectory(new File(jacocoResPath),
+                        new File(REPORTPATH + "dependencies/" + fullPath + "/jacoco-resources"));
+            }
         }
         // Adding dependency directory
         path = projectDependency.getGroupId().replace("-", ".") + "." +
