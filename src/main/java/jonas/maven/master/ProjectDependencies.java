@@ -17,7 +17,7 @@ import org.checkerframework.checker.units.qual.A;
 
 public class ProjectDependencies {
 
-    static List<ProjectDependency> projectDependencies = new ArrayList<>();
+    public static List<ProjectDependency> projectDependencies = new ArrayList<>();
 
     public static List<ProjectDependency> getAllProjectDependencies(){
         if(projectDependencies.isEmpty()){
@@ -26,7 +26,7 @@ public class ProjectDependencies {
         return projectDependencies;
     }
 
-    public static void generateAllProjectDependencies() {
+    private static void generateAllProjectDependencies() {
         generateDependencyLockfile();
         String filePath = "./target/jact-report/lockfile.json"; // Path to the JSON file
         try (FileReader reader = new FileReader(filePath)) {
@@ -98,7 +98,7 @@ public class ProjectDependencies {
     }
 
 
-    public static void generateDependencyLockfile(){
+    private static void generateDependencyLockfile(){
         try {
             // Command to be executed
             String command = "mvn io.github.chains-project:maven-lockfile:generate -Dreduced=true";
