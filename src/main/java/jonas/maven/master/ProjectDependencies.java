@@ -18,8 +18,14 @@ public class ProjectDependencies {
 
     static List<ProjectDependency> projectDependencies = new ArrayList<>();
 
+    public static List<ProjectDependency> getAllProjectDependencies(){
+        if(projectDependencies.isEmpty()){
+            generateAllProjectDependencies();
+        }
+        return projectDependencies;
+    }
 
-    public static List<ProjectDependency> getAllProjectDependencies() {
+    public static void generateAllProjectDependencies() {
         generateDependencyLockfile();
         String filePath = "./target/jact-report/lockfile.json"; // Path to the JSON file
         try (FileReader reader = new FileReader(filePath)) {
@@ -35,7 +41,6 @@ public class ProjectDependencies {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return projectDependencies;
     }
 
     static class ProjectDependencyDeserializer implements com.google.gson.JsonDeserializer<ProjectDependency> {

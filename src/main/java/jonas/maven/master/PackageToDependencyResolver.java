@@ -3,11 +3,14 @@ package jonas.maven.master;
 import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-public class DependencyResolverExample {
-    public static void main(String[] args) {
+import static jonas.maven.master.ProjectDependencies.projectDependencies;
+
+public class PackageToDependencyResolver {
+    public static String packageToDepPaths(String packageName) {
         // List of dependencies along with their coordinates
         String[][] dependencies = {
                 {"jonas.sanity.check", "sanity-check", "1.0"},
@@ -15,8 +18,10 @@ public class DependencyResolverExample {
                 // Add more dependencies as needed
         };
 
+        //projectDependencies
+
         // Package name you want to match
-        String packageName = "jonas.sanity.check";
+        // packageName = "jonas.sanity.check";
 
         // Directory where your Maven dependencies are stored
         String mavenRepositoryDir = "/home/jonas/.m2/repository";
@@ -41,6 +46,7 @@ public class DependencyResolverExample {
                         // Check if the entry is a class file within the desired package
                         if (entry.getName().startsWith(packageName.replace('.', '/')) && entry.getName().endsWith(".class")) {
                             System.out.println("Package " + packageName + " found in dependency: " + groupId + ":" + artifactId + ":" + version);
+                            //return dependency;
                             break;
                         }
                         System.out.println("DID NOT FIND PACKAGE");
@@ -50,6 +56,7 @@ public class DependencyResolverExample {
                 }
             }
         }
+        return "Error: Could not find a matching package.";
     }
 }
 
