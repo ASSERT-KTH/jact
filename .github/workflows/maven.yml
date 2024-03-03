@@ -28,7 +28,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Plugin Build
-      run: mvn clean install
+      run: mvn install
     - name: Test Project Build
       working-directory: ./src/main/it/sanity-check-project
-      run: mvn clean install
+      run: mvn install
