@@ -1,6 +1,5 @@
 package jonas.maven.master;
 
-import org.apache.maven.model.Dependency;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import java.io.*;
@@ -14,13 +13,6 @@ public class JacocoHTMLAugmenter {
     public static final String REPORTPATH = "./target/jact-report/";
     public static final String jacocoResPath = REPORTPATH + "jacoco-resources";
 
-    //public static final Set<String> projGroupIdSet = CompleteCoverageMojo.projectGroupId.split("[.-]");
-
-//    public static void main(String[] args){
-//        List<ProjectDependency> projectDependencies = ProjectDependencies.getAllProjectDependencies();
-//        moveDepDirs(projectDependencies);
-//        createDependencyReports(projectDependencies, "jonas.sanity.check");
-//    }
 
     public static void moveDepDirs(List<ProjectDependency> dependencies) {
         // Create a directory for the dependency coverage
@@ -30,14 +22,9 @@ public class JacocoHTMLAugmenter {
         copyDirectory(new File(jacocoResPath),
                 new File(REPORTPATH + "dependencies/jacoco-resources"));
 
-        // Generate sets of words from dependencies
-        //Map<Set<String>, List<String>> depPathsMap = new HashMap<>();
         for (ProjectDependency dependency : dependencies) {
             if (!dependency.getScope().equals("test")) {
                 // Create all the dependency directories
-                String depGroupId = dependency.getGroupId();
-                String depArtifactId = dependency.getArtifactId();
-                String depVersion = dependency.getVersion();
                 String fullPath = getFullDepPath(dependency);
 
                 // Adding the path to easily get the report location.
@@ -45,12 +32,6 @@ public class JacocoHTMLAugmenter {
                 createDir(REPORTPATH + "dependencies/" + fullPath);
                 copyDirectory(new File(jacocoResPath),
                         new File(REPORTPATH + "dependencies/" + fullPath + "/jacoco-resources"));
-
-                Set<String> depWordsSet = new HashSet<>();
-
-//                List<String> depPaths = depPathsMap.getOrDefault(depWordsSet, new ArrayList<>());
-//                depPaths.add(fullPath);
-//                depPathsMap.put(depWordsSet, depPaths);
             }
         }
 
@@ -72,7 +53,7 @@ public class JacocoHTMLAugmenter {
                             if(!new File(outputFilePath).exists()){
                                 try {
                                     writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
-                                            outputFilePath, matchedDep.getId()); // TODO change getID to the dep foldername
+                                            outputFilePath, depToDirName(matchedDep));
 
                                     // Get the parent directory of the current path
                                     File parentDir = new File(matchedDep.getReportPaths().get(0)).getParentFile();
@@ -83,7 +64,7 @@ public class JacocoHTMLAugmenter {
                                             String parentDepName = parentDir.getParentFile().getName();
                                             try {
                                                 writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
-                                                        parentDir + "/index.html", "Transitive Dependencies from: " + parentDepName); // TODO change getID to the dep foldername
+                                                        parentDir + "/index.html", "Transitive Dependencies from: " + parentDepName);
                                                 writeTemplateToFile("transitiveEntry.html", parentDir.getParentFile() + "/index.html");
                                             } catch (IOException e) {
                                                 throw new RuntimeException(e);
@@ -116,7 +97,7 @@ public class JacocoHTMLAugmenter {
                                     if (!new File(parentDir + "/index.html").exists()) {
                                         try {
                                             writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
-                                                    parentDir + "/index.html", "Transitive Dependencies from: " + parentDepName); // TODO change getID to the dep foldername
+                                                    parentDir + "/index.html", "Transitive Dependencies from: " + parentDepName);
                                             writeTemplateToFile("transitiveEntry.html", parentDir + "/index.html");
                                         } catch (IOException e) {
                                             throw new RuntimeException(e);
@@ -149,8 +130,7 @@ public class JacocoHTMLAugmenter {
         // Creating the file path to the dependency
         for(int i = 0; i < parentDeps.size(); i++){
             currProjDep = parentDeps.get(i);
-            path = currProjDep.getGroupId().replace("-", ".") + "." +
-                    currProjDep.getArtifactId().replace("-", ".") + "-v" + currProjDep.getVersion();
+            path = depToDirName(currProjDep);
             fullPath.append(path);
 
             // Add a transitive dependencies directory here:
@@ -163,8 +143,7 @@ public class JacocoHTMLAugmenter {
             }
         }
         // Adding dependency directory
-        path = projectDependency.getGroupId().replace("-", ".") + "." +
-                projectDependency.getArtifactId().replace("-", ".") + "-v" + projectDependency.getVersion();
+        path = depToDirName(projectDependency);
         fullPath.append(path);
 
         return fullPath.toString();
@@ -219,26 +198,6 @@ public class JacocoHTMLAugmenter {
         }
     }
 
-
-    private static String matchPackageToDir(Set<String> matchedSet){
-        // Traverse the "report" directory
-        File reportDir = new File(REPORTPATH + "dependencies");
-        if (reportDir.exists() && reportDir.isDirectory()) {
-            File[] directories = reportDir.listFiles(File::isDirectory);
-            if (directories != null) {
-                for (File directory : directories) {
-                    String dirName = directory.getName();
-                    //System.out.println("DIRECTORY: " + dirName);
-                    boolean containsAll = matchedSet.stream().allMatch(dirName::contains);
-                    //System.out.println("BOOL: " + containsAll);
-                    if (containsAll) {
-                        return dirName;
-                    }
-                }
-            }
-        }
-        return "Could not find a matching directory";
-    }
 
     private static void createDir(String directoryPath){
         // Will take a list of dependencies later
@@ -299,27 +258,6 @@ public class JacocoHTMLAugmenter {
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
-        }
-
-
-
-        // REMOVE THIS LATER
-        // Generate sets of words from dependencies
-        List<Set<String>> setOfAllDeps = new ArrayList<>();
-        for (ProjectDependency dependency : dependencies) {
-            if(!dependency.getScope().equals("test")){
-                // Create all the dependency directories
-                String depGroupId = dependency.getGroupId();
-                String depArtifactId = dependency.getArtifactId();
-                String depVersion = dependency.getVersion();
-
-                Set<String> depWordsSet = new HashSet<>();
-
-                // Create sets of the words in the group/artifact-id
-                depWordsSet.addAll(Arrays.asList(depGroupId.split("[.-]")));
-                depWordsSet.addAll(Arrays.asList(depArtifactId.split("[.-]")));
-                setOfAllDeps.add(depWordsSet);
-            }
         }
 
 
@@ -414,11 +352,8 @@ public class JacocoHTMLAugmenter {
     }
 
 
-    // TODO change this to take in a package name and not a set, would be good if it also just required one reading of the file.
     public static void extractAndAppendHTMLDependencies(String inputFilePath) throws IOException {
-        System.out.println("I GET TO THE EXTRACTION");
         try (BufferedReader br = new BufferedReader(new FileReader(inputFilePath))) {
-            System.out.println("I GET INSIDE");
             String line;
 
             // Flag to indicate if we are inside the <tbody> tag
@@ -461,10 +396,8 @@ public class JacocoHTMLAugmenter {
                                     String indexPath = new File(parentDir, "index.html").getAbsolutePath();
                                     indexPath = path + "/index.html";
                                     // Write to the parent directory's index.html file
-                                    System.out.println("WANT TO WRITE TO: " + indexPath);
                                     try (BufferedWriter bw = new BufferedWriter(new FileWriter(indexPath, true))) {
                                         bw.write(trContent.toString());
-                                        System.out.println("WROTE TO: " + indexPath);
                                     }
                                 }
                             }
