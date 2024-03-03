@@ -226,7 +226,7 @@ public class JacocoHTMLAugmenter {
     }
 
 
-    public static void createDependencyReports(List<ProjectDependency> dependencies, String projectName) {
+    public static void createDependencyReports(String projectName) {
 
         // Rename the original index.html file
         String originalFilePath = REPORTPATH + "index.html";
