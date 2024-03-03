@@ -95,9 +95,16 @@ public class JacocoHTMLAugmenter {
                                             try {
                                                 writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
                                                         parentDir + "/index.html", "Transitive Dependencies from: " + parentDepName); // TODO change getID to the dep foldername
+                                                writeTemplateToFile("transitiveEntry.html", parentDir.getParentFile() + "/index.html");
                                             } catch (IOException e) {
                                                 throw new RuntimeException(e);
                                             }
+                                        }
+
+                                        try {
+                                            writeModifiedTemplateToFile("depEntry.html", parentDir + "/index.html", depToDirName(matchedDep));
+                                        } catch (IOException e) {
+                                            throw new RuntimeException(e);
                                         }
                                     }
 
@@ -116,16 +123,22 @@ public class JacocoHTMLAugmenter {
                                 File parentDir = new File(path).getParentFile();
                                 // Ensure parentDir is not null and it's a directory
                                 if (parentDir != null && parentDir.isDirectory() && parentDir.getName().equals("transitive-dependencies")) {
-                                    // Copy jacoco-resources if it's not already there.
+                                    String parentDepName = parentDir.getParentFile().getName();
                                     if (!new File(parentDir + "/index.html").exists()) {
-                                        String parentDepName = parentDir.getParentFile().getName();
                                         try {
                                             writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
                                                     parentDir + "/index.html", "Transitive Dependencies from: " + parentDepName); // TODO change getID to the dep foldername
+                                            writeTemplateToFile("transitiveEntry.html", parentDir + "/index.html");
                                         } catch (IOException e) {
                                             throw new RuntimeException(e);
                                         }
                                     }
+                                    try {
+                                        writeModifiedTemplateToFile("depEntry.html", parentDir + "/index.html", depToDirName(matchedDep));
+                                    } catch (IOException e) {
+                                        throw new RuntimeException(e);
+                                    }
+
                                 }
                             }
                             System.out.println("REMOVING: " + directory.getPath());
@@ -166,6 +179,11 @@ public class JacocoHTMLAugmenter {
         fullPath.append(path);
 
         return fullPath.toString();
+    }
+
+    private static String depToDirName(ProjectDependency dependency){
+        return dependency.getGroupId().replace("-", ".") + "." +
+                dependency.getArtifactId().replace("-", ".") + "-v" + dependency.getVersion();
     }
 
     public static void copyDirectory(File sourceDir, File destDir) {
