@@ -48,8 +48,8 @@ public class CommandExecutor extends CompleteCoverageMojo{
         try {
             // Retrieve the URL to the jacococli.jar file
             // Command to execute Jacoco CLI
-            String command = String.format("java -jar ./target/jact-resources/jacococli.jar report ./target/jacoco.exec --classfiles " +
-                    "./target/" + jarName +".jar --html ./target/jact-report");
+            String command = String.format("java -jar ./target/jact-resources/jacococli.jar report ./target/jacoco.exec " +
+                    "--classfiles " + "./target/" + jarName +".jar --html ./target/jact-report");
 
             // Adapts the command based on OS:
             ProcessBuilder processBuilder;

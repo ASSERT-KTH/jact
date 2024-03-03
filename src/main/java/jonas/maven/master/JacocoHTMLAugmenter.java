@@ -37,7 +37,8 @@ public class JacocoHTMLAugmenter {
                 String depVersion = dependency.getVersion();
                 String fullPath = getFullDepPath(dependency);
 
-                dependency.addReportPath(REPORTPATH + "dependencies/" + fullPath); // Adding the path to easily get the report location.
+                // Adding the path to easily get the report location.
+                dependency.addReportPath(REPORTPATH + "dependencies/" + fullPath);
                 createDir(REPORTPATH + "dependencies/" + fullPath);
                 copyDirectory(new File(jacocoResPath),
                         new File(REPORTPATH + "dependencies/" + fullPath + "/jacoco-resources"));

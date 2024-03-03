@@ -1,20 +1,9 @@
 package jonas.maven.master;
 
-import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
-import java.lang.ProcessBuilder;
 import java.io.IOException;
-import java.util.jar.JarEntry;
-import java.util.jar.JarInputStream;
 
-import org.apache.maven.artifact.resolver.filter.ArtifactFilter;
-import org.apache.maven.artifact.resolver.filter.ExclusionArtifactFilter;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -24,10 +13,6 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.*;
 import org.apache.maven.execution.MavenSession;
-
-import org.apache.maven.shared.dependency.graph.*;
-import org.apache.maven.shared.dependency.graph.internal.DefaultDependencyGraphBuilder;
-import io.github.chains_project.maven_lockfile.GenerateLockFileMojo;
 
 import static jonas.maven.master.JacocoHTMLAugmenter.createDependencyReports;
 import static jonas.maven.master.JacocoHTMLAugmenter.moveDepDirs;

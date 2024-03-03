@@ -26,7 +26,8 @@ public class PackageToDependencyResolver {
             String version = dependency.getVersion();
 
             // Construct the path to the JAR file
-            String jarFilePath = mavenRepositoryDir + "/" + groupId.replace('.', '/') + "/" + artifactId + "/" + version + "/" + artifactId + "-" + version + ".jar";
+            String jarFilePath = mavenRepositoryDir + "/" + groupId.replace('.', '/') +
+                    "/" + artifactId + "/" + version + "/" + artifactId + "-" + version + ".jar";
             File jarFile = new File(jarFilePath);
 
             // Check if the JAR file exists
