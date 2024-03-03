@@ -19,7 +19,7 @@ public class ProjectDependencies {
     }
 
     private static void generateAllProjectDependencies() {
-        CommandExecutor.generateDependencyLockfile();
+        CommandExecutor.generateDependencyLockfile(); // TODO UNCOMMENT THIS LINE AFTER TESTING
         String filePath = "./target/jact-report/lockfile.json"; // Path to the JSON file
         try (FileReader reader = new FileReader(filePath)) {
             Gson gson = new GsonBuilder().registerTypeAdapter(ProjectDependency.class, new ProjectDependencyDeserializer()).create();
