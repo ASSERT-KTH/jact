@@ -91,9 +91,10 @@ public class JacocoHTMLAugmenter {
                                     if (parentDir != null && parentDir.isDirectory() && parentDir.getName().equals("transitive-dependencies")) {
                                         // Copy jacoco-resources if it's not already there.
                                         if (!new File(parentDir + "/index.html").exists()) {
+                                            String parentDepName = parentDir.getParentFile().getName();
                                             try {
-                                                writeModifiedTemplateToFile("depOverviewTemplateStart.html",
-                                                        parentDir + "/index.html", matchedDep.getId()); // TODO change getID to the dep foldername
+                                                writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
+                                                        parentDir + "/index.html", "Transitive Dependencies from: " + parentDepName); // TODO change getID to the dep foldername
                                             } catch (IOException e) {
                                                 throw new RuntimeException(e);
                                             }
@@ -110,6 +111,22 @@ public class JacocoHTMLAugmenter {
                             // Handle dependencies with the same transitive dependencies.
                             for(String path : matchedDep.getReportPaths()){
                                 copyDirectory(directory, new File(path + "/" + dirName));
+
+                                // Get the parent directory of the current path
+                                File parentDir = new File(path).getParentFile();
+                                // Ensure parentDir is not null and it's a directory
+                                if (parentDir != null && parentDir.isDirectory() && parentDir.getName().equals("transitive-dependencies")) {
+                                    // Copy jacoco-resources if it's not already there.
+                                    if (!new File(parentDir + "/index.html").exists()) {
+                                        String parentDepName = parentDir.getParentFile().getName();
+                                        try {
+                                            writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
+                                                    parentDir + "/index.html", "Transitive Dependencies from: " + parentDepName); // TODO change getID to the dep foldername
+                                        } catch (IOException e) {
+                                            throw new RuntimeException(e);
+                                        }
+                                    }
+                                }
                             }
                             System.out.println("REMOVING: " + directory.getPath());
                             removeDirectory(directory);
