@@ -31,8 +31,7 @@ public class JacocoHTMLAugmenter {
                 new File(REPORTPATH + "dependencies/jacoco-resources"));
 
         // Generate sets of words from dependencies
-        List<Set<String>> setOfAllDeps = new ArrayList<>();
-        Map<Set<String>, List<String>> depPathsMap = new HashMap<>();
+        //Map<Set<String>, List<String>> depPathsMap = new HashMap<>();
         for (ProjectDependency dependency : dependencies) {
             if (!dependency.getScope().equals("test")) {
                 // Create all the dependency directories
@@ -49,20 +48,11 @@ public class JacocoHTMLAugmenter {
 
                 Set<String> depWordsSet = new HashSet<>();
 
-                // Create sets of the words in the group/artifact-id
-                depWordsSet.addAll(Arrays.asList(depGroupId.split("[.-]")));
-                depWordsSet.addAll(Arrays.asList(depArtifactId.split("[.-]")));
-                setOfAllDeps.add(depWordsSet);
-
-                List<String> depPaths = depPathsMap.getOrDefault(depWordsSet, new ArrayList<>());
-                depPaths.add(fullPath);
-                depPathsMap.put(depWordsSet, depPaths);
+//                List<String> depPaths = depPathsMap.getOrDefault(depWordsSet, new ArrayList<>());
+//                depPaths.add(fullPath);
+//                depPathsMap.put(depWordsSet, depPaths);
             }
         }
-//        Set<String> depWordsSet2 = new HashSet<>();
-//        String dep = "org.apache.commons.math3";
-//        depWordsSet2.addAll(Arrays.asList(dep.split("[.-]")));
-//        setOfAllDeps.add(depWordsSet2);
 
 
         // Traverse the "report" directory
@@ -71,7 +61,6 @@ public class JacocoHTMLAugmenter {
             File[] directories = reportDir.listFiles(File::isDirectory);
             if (directories != null) {
                 for (File directory : directories) {
-                    // Check if directory name contains any string from sets in setOfAllDeps
                     String dirName = directory.getName();
                     boolean packageDir = CompleteCoverageMojo.projGroupIdSet.stream().allMatch(dirName::contains);
                     if(!dirName.equals("dependencies") && !dirName.equals("jacoco-resources") && !packageDir){
@@ -238,7 +227,6 @@ public class JacocoHTMLAugmenter {
             File[] directories = reportDir.listFiles(File::isDirectory);
             if (directories != null) {
                 for (File directory : directories) {
-                    // Check if directory name contains any string from sets in setOfAllDeps
                     String dirName = directory.getName();
                     //System.out.println("DIRECTORY: " + dirName);
                     boolean containsAll = matchedSet.stream().allMatch(dirName::contains);
@@ -339,51 +327,8 @@ public class JacocoHTMLAugmenter {
 
         // HTML input and output file paths
 
-        String outputFilePath = "";
-        String templateFilePath1 = "indivDepViewTemplateStart.html";
-        String templateFilePath2 = "indivDepViewTemplateEnd.html";
 
-
-        // Create a report inside 'target/report/depname/index.html'
-        // for all dependencies.
-
-
-
-        // Traverse the "dependencies" directory
-        File reportDir = new File(REPORTPATH + "dependencies");
-//        if (reportDir.exists() && reportDir.isDirectory()) {
-//            File[] directories = reportDir.listFiles(File::isDirectory);
-//            if (directories != null) {
-//                for (File directory : directories) {
-//                    // Check if directory name contains any string from sets in setOfAllDeps
-//                    String dirName = directory.getName();
-//                    //System.out.println("DIRECTORY: " + dirName);
-//                    for (Set<String> depWordsSet : setOfAllDeps) { // TODO change this to be all the packages in a dependency
-//                        boolean containsAll = depWordsSet.stream().allMatch(dirName::contains);
-//                        //System.out.println("BOOL: " + containsAll);
-//                        if(containsAll){
-//                            String depDirName = matchPackageToDir(depWordsSet);
-//                            outputFilePath = REPORTPATH + "dependencies/" + depDirName + "/index.html";
-//                            try {
-//                                writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
-//                                        outputFilePath, depDirName);
-//
-//                                extractAndAppendHTML(inputFilePath, outputFilePath, depWordsSet);
-//
-//                                writeTemplateToFile(templateFilePath2, outputFilePath);
-//                                //appendTemplate(templateFilePath2, outputFilePath);
-//                                System.out.println("Writing the dependency package overview for " + depDirName + " completed successfully.");
-//                            } catch (IOException e) {
-//                                System.err.println("Error: " + e.getMessage());
-//                                e.printStackTrace();
-//                            }
-//                            break;
-//                        }
-//                    }
-//                }
-//            }
-//        }
-
+        // Create individual reports for each dependency (including transitive).
         try {
             extractAndAppendHTMLDependencies(inputFilePath);
             System.out.println("Writing the overview for individual dependencies completed successfully.");
@@ -393,9 +338,9 @@ public class JacocoHTMLAugmenter {
 
 
         // Create the whole project overview
-        outputFilePath = REPORTPATH + "index.html";
-        templateFilePath1 = "overviewTemplateStart.html";
-        templateFilePath2 = "overviewTemplateEnd.html";
+        String outputFilePath = REPORTPATH + "index.html";
+        String templateFilePath1 = "overviewTemplateStart.html";
+        String templateFilePath2 = "overviewTemplateEnd.html";
         String templateFilePathX = "overviewEntry.html";
 
         Set<String> projectNameSet = new HashSet<>();
@@ -416,27 +361,21 @@ public class JacocoHTMLAugmenter {
 
 
         // Create the dependencies overview
-
+        // Create the dependencies overview
+        // Traverse the "dependencies" directory
+        File reportDir = new File(REPORTPATH + "dependencies");
         outputFilePath = REPORTPATH + "dependencies/index.html";
         templateFilePath1 = "depOverviewTemplateStart.html";
         templateFilePath2 = "depOverviewTemplateEnd.html";
         try {
             writeTemplateToFile(templateFilePath1, outputFilePath);
-            //copyTemplate(templateFilePath1, outputFilePath);
-            File depDir = new File("./target/report/dependencies");
             if (reportDir.exists() && reportDir.isDirectory()) {
                 File[] directories = reportDir.listFiles(File::isDirectory);
                 if (directories != null) {
                     for (File directory : directories) {
-                        // Check if directory name contains any string from sets in setOfAllDeps
                         String dirName = directory.getName();
-                        for (Set<String> depWordsSet : setOfAllDeps) {
-                            boolean containsAll = depWordsSet.stream().allMatch(dirName::contains);
-                            //System.out.println("BOOL: " + containsAll);
-                            if(containsAll){
-                                writeModifiedTemplateToFile("depEntry.html", outputFilePath, dirName);
-                                break;
-                            }
+                        if(!dirName.equals("jacoco-resources")){
+                            writeModifiedTemplateToFile("depEntry.html", outputFilePath, dirName);
                         }
                     }
                 }
