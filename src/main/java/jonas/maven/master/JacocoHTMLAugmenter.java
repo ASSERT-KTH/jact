@@ -84,6 +84,22 @@ public class JacocoHTMLAugmenter {
                                 try {
                                     writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
                                             outputFilePath, matchedDep.getId()); // TODO change getID to the dep foldername
+
+                                    // Get the parent directory of the current path
+                                    File parentDir = new File(matchedDep.getReportPaths().get(0)).getParentFile();
+                                    // Ensure parentDir is not null and it's a directory
+                                    if (parentDir != null && parentDir.isDirectory() && parentDir.getName().equals("transitive-dependencies")) {
+                                        // Copy jacoco-resources if it's not already there.
+                                        if (!new File(parentDir + "/index.html").exists()) {
+                                            try {
+                                                writeModifiedTemplateToFile("depOverviewTemplateStart.html",
+                                                        parentDir + "/index.html", matchedDep.getId()); // TODO change getID to the dep foldername
+                                            } catch (IOException e) {
+                                                throw new RuntimeException(e);
+                                            }
+                                        }
+                                    }
+
                                 } catch (IOException e) {
                                     throw new RuntimeException(e);
                                 }
