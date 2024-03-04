@@ -125,4 +125,58 @@ public class DependencyUsage {
         - Creating the html entry (Calculate bar widths)
      */
 
+    private static String percentage(long part, long whole) {
+        double percentage = (double) part / whole * 100;
+        long roundedPercentage = (long) Math.floor(percentage);
+        return String.format("%d%%", roundedPercentage);
+    }
+
+    public String usageToHTML(String dependencyDirName){
+
+        // TODO fix the width of the bars
+        long totalInstructions = this.getCoveredInstructions() + this.getMissedInstructions();
+        long totalBranches = this.getCoveredBranches() + this.getMissedBranches();
+        String htmlString = "<tr>\n" +
+                "    <td id=\"a47\"><a href=\""+ dependencyDirName +"/index.html\" class=\"el_group\">"+ dependencyDirName +"</a></td>\n" +
+                "    <td class=\"bar\" id=\"b5\"><img src=\"jacoco-resources/redbar.gif\" width=\"33\" height=\"10\" title=\""+ String.format("%,d", this.getMissedInstructions()) + "\" alt=\""+ String.format("%,d", this.getMissedInstructions()) + "\">" +
+                "<img src=\"jacoco-resources/greenbar.gif\" width=\"1\" height=\"10\" title=\""+String.format("%,d", this.getCoveredInstructions())+"\" alt=\""+String.format("%,d", this.getCoveredInstructions())+"\"></td>\n" +
+                "    <td class=\"ctr2\" id=\"c5\">"+percentage(this.getCoveredInstructions(), totalInstructions) +"</td>\n" +
+                "    <td class=\"bar\" id=\"d4\"><img src=\"jacoco-resources/redbar.gif\" width=\"33\" height=\"10\" title=\""+ String.format("%,d", this.getMissedBranches()) + "\" alt=\""+ String.format("%,d", this.getMissedBranches()) + "\">" +
+                "<img src=\"jacoco-resources/greenbar.gif\" width=\"1\" height=\"10\" title=\""+String.format("%,d", this.getCoveredBranches())+"\" alt=\""+String.format("%,d", this.getCoveredBranches())+"\"></td>\n" +
+                "    <td class=\"ctr2\" id=\"e5\">"+percentage(this.getCoveredBranches(), totalBranches) +"</td>\n" +
+                "    <td class=\"ctr1\" id=\"f2\">"+ String.format("%,d", this.getMissedCyclomaticComplexity()) +"</td>\n" +
+                "    <td class=\"ctr2\" id=\"g2\">"+ String.format("%,d", this.getCyclomaticComplexity()) +"</td>\n" +
+                "    <td class=\"ctr1\" id=\"h2\">"+ String.format("%,d", this.getMissedLines()) +"</td>\n" +
+                "    <td class=\"ctr2\" id=\"i2\">"+ String.format("%,d", this.getCoveredLines()) +"</td>\n" +
+                "    <td class=\"ctr1\" id=\"j1\">"+ String.format("%,d", this.getMissedMethods()) +"</td>\n" +
+                "    <td class=\"ctr2\" id=\"k1\">"+ String.format("%,d", this.getCoveredMethods()) +"</td>\n" +
+                "    <td class=\"ctr1\" id=\"l13\">"+ String.format("%,d", this.getMissedClasses()) +"</td>\n" +
+                "    <td class=\"ctr2\" id=\"m11\">"+ String.format("%,d", this.getCoveredClasses()) +"</td>\n" +
+                "</tr>";
+        return htmlString;
+    }
+
+    public String totalUsageToHTML(){
+
+        // TODO fix the width of the bars
+        long totalInstructions = this.getCoveredInstructions() + this.getMissedInstructions();
+        long totalBranches = this.getCoveredBranches() + this.getMissedBranches();
+        String htmlString = "<tr>\n" +
+                "    <td>Total</td>\n" +
+                "    <td class=\"bar\">"+String.format("%,d", this.getCoveredInstructions())+" of "+String.format("%,d", totalInstructions)+"</td>\n" +
+                "    <td class=\"ctr2\" id=\"c5\">"+ percentage(this.getCoveredInstructions(), totalInstructions) +"</td>\n" +
+                "    <td class=\"bar\">"+String.format("%,d", this.getCoveredBranches())+" of "+String.format("%,d", totalBranches)+"</td>\n" +
+                "    <td class=\"ctr2\" id=\"e5\">"+ percentage(this.getCoveredBranches(), totalBranches) +"</td>\n" +
+                "    <td class=\"ctr1\" id=\"f2\">"+ String.format("%,d", this.getMissedCyclomaticComplexity()) +"</td>\n" +
+                "    <td class=\"ctr2\" id=\"g2\">"+ String.format("%,d", this.getCyclomaticComplexity()) +"</td>\n" +
+                "    <td class=\"ctr1\" id=\"h2\">"+ String.format("%,d", this.getMissedLines()) +"</td>\n" +
+                "    <td class=\"ctr2\" id=\"i2\">"+ String.format("%,d", this.getCoveredLines()) +"</td>\n" +
+                "    <td class=\"ctr1\" id=\"j1\">"+ String.format("%,d", this.getMissedMethods()) +"</td>\n" +
+                "    <td class=\"ctr2\" id=\"k1\">"+ String.format("%,d", this.getCoveredMethods()) +"</td>\n" +
+                "    <td class=\"ctr1\" id=\"l13\">"+ String.format("%,d", this.getMissedClasses()) +"</td>\n" +
+                "    <td class=\"ctr2\" id=\"m11\">"+ String.format("%,d", this.getCoveredClasses()) +"</td>\n" +
+                "</tr>";
+        return htmlString;
+    }
+
 }

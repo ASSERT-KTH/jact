@@ -1,5 +1,6 @@
 package jonas.maven.master;
 
+import org.apache.maven.model.Dependency;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import java.io.*;
@@ -7,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.sql.Array;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -68,7 +70,7 @@ public class JacocoHTMLAugmenter {
                                                 writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
                                                         parentDir + "/index.html", "Transitive Dependencies from: " + parentDepName);
                                                 // Write the transitive-dependencies entry
-                                                writeTemplateToFile("transitiveEntry.html", parentDir.getParentFile() + "/index.html");
+                                                //writeTemplateToFile("transitiveEntry.html", parentDir.getParentFile() + "/index.html");
                                             } catch (IOException e) {
                                                 throw new RuntimeException(e);
                                             }
@@ -102,14 +104,14 @@ public class JacocoHTMLAugmenter {
                                         try {
                                             writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
                                                     parentDir + "/index.html", "Transitive Dependencies from: " + parentDepName);
-                                            writeTemplateToFile("transitiveEntry.html", parentDir.getParentFile() + "/index.html");
+                                            //writeTemplateToFile("transitiveEntry.html", parentDir.getParentFile() + "/index.html");
                                         } catch (IOException e) {
                                             throw new RuntimeException(e);
                                         }
                                     }
                                     try {
                                         //writeModifiedTemplateToFile("depEntry.html", parentDir + "/index.html", depToDirName(matchedDep));
-                                        writeHTMLStringToFile(parentDir + "/index.html", matchedDep.usageToHTML());
+                                        writeHTMLStringToFile(parentDir + "/index.html", matchedDep.dependencyUsage.usageToHTML(depToDirName(matchedDep)));
                                     } catch (IOException e) {
                                         throw new RuntimeException(e);
                                     }
@@ -297,7 +299,7 @@ public class JacocoHTMLAugmenter {
             extractAndAppendOverallTotal(inputFilePath, outputFilePath);
             extractAndAppendHTML(inputFilePath, outputFilePath, projectNameSet); // Adds the project coverage
             writeTemplateToFile(templateFilePathX, outputFilePath);
-            writeTemplateToFile(templateFilePath2, outputFilePath);
+            //writeTemplateToFile(templateFilePath2, outputFilePath);
             System.out.println("Writing of the project overview completed successfully.");
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
@@ -314,34 +316,38 @@ public class JacocoHTMLAugmenter {
         templateFilePath2 = "depOverviewTemplateEnd.html";
         try {
             writeTemplateToFile(templateFilePath1, outputFilePath);
-            extractAndAppendOverallTotal(inputFilePath, outputFilePath);
             // TODO WRITE THE TOTAL ENTRIES FROM HERE
-            for(ProjectDependency pd : dependencies) {
-                for (String path : pd.getReportPaths()) {
-                    // Get the parent directory of the current path
-                    File parentDir = new File(path).getParentFile();
+//            for(ProjectDependency pd : dependencies) {
+//                for (String path : pd.getReportPaths()) {
+//                    // Get the parent directory of the current path
+//                    File parentDir = new File(path).getParentFile();
+//
+//                    // Ensure parentDir is not null and it's a directory
+//                    if (parentDir != null && parentDir.isDirectory() &&
+//                            (parentDir.getName().equals("transitive-dependencies") ||
+//                                    parentDir.getName().equals("dependencies"))) {
+//                        try {
+//                            writeHTMLStringToFile(parentDir + "/index.html", pd.dependencyUsage.usageToHTML(depToDirName(pd)));
+//                        } catch (IOException e) {
+//                            throw new RuntimeException(e);
+//                        }
+//                    }
+//                }
+//            }
 
-                    // Ensure parentDir is not null and it's a directory
-                    if (parentDir != null && parentDir.isDirectory() &&
-                            (parentDir.getName().equals("transitive-dependencies") ||
-                                    parentDir.getName().equals("dependencies"))) {
-                        try {
-                            writeHTMLStringToFile(parentDir + "/index.html", pd.usageToHTML());
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                }
-            }
 
-
-            writeTemplateToFile(templateFilePath2, outputFilePath);
+            //writeTemplateToFile(templateFilePath2, outputFilePath);
             System.out.println("Writing the dependency overview completed successfully.");
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
 
+        List<String> writtenPaths = new ArrayList<>();
+        List<String> writtenEntryPaths = new ArrayList<>();
+        for(ProjectDependency pd : dependencies){
+            calculateTotalForAllLayers(pd, writtenPaths, writtenEntryPaths);
+        }
     }
 
     public static ProjectDependency dirNameToDep(String directoryName, List<ProjectDependency> dependencies){
@@ -351,6 +357,93 @@ public class JacocoHTMLAugmenter {
             }
         }
         throw new RuntimeException("Could not find a matching dependency.");
+    }
+
+    public static DependencyUsage calculateTotalForAllLayers(ProjectDependency currDependency, List<String> writtenPaths, List<String> writtenEntryPaths){
+        List<String> writtenTotalPaths = new ArrayList<>();
+        DependencyUsage currTotal = new DependencyUsage();
+            if(!currDependency.getChildDeps().isEmpty()){
+                DependencyUsage childTotal;
+                for(ProjectDependency child : currDependency.getChildDeps()){
+                    childTotal = calculateTotalForAllLayers(child, writtenPaths, writtenEntryPaths);
+                    currTotal.addMissedInstructions(childTotal.getMissedInstructions());
+                    currTotal.addMissedInstructions(childTotal.getCoveredInstructions());
+                    currTotal.addMissedInstructions(childTotal.getMissedBranches());
+                    currTotal.addMissedInstructions(childTotal.getCoveredBranches());
+                    currTotal.addMissedInstructions(childTotal.getMissedCyclomaticComplexity());
+                    currTotal.addMissedInstructions(childTotal.getCyclomaticComplexity());
+                    currTotal.addMissedInstructions(childTotal.getMissedLines());
+                    currTotal.addMissedInstructions(childTotal.getCoveredLines());
+                    currTotal.addMissedInstructions(childTotal.getMissedMethods());
+                    currTotal.addMissedInstructions(childTotal.getCoveredMethods());
+                    currTotal.addMissedInstructions(childTotal.getMissedClasses());
+                    currTotal.addMissedInstructions(childTotal.getCoveredClasses());
+                }
+            }
+            // Calculate the total.
+            currTotal.addMissedInstructions(currDependency.dependencyUsage.getMissedInstructions());
+            currTotal.addMissedInstructions(currDependency.dependencyUsage.getCoveredInstructions());
+            currTotal.addMissedInstructions(currDependency.dependencyUsage.getMissedBranches());
+            currTotal.addMissedInstructions(currDependency.dependencyUsage.getCoveredBranches());
+            currTotal.addMissedInstructions(currDependency.dependencyUsage.getMissedCyclomaticComplexity());
+            currTotal.addMissedInstructions(currDependency.dependencyUsage.getCyclomaticComplexity());
+            currTotal.addMissedInstructions(currDependency.dependencyUsage.getMissedLines());
+            currTotal.addMissedInstructions(currDependency.dependencyUsage.getCoveredLines());
+            currTotal.addMissedInstructions(currDependency.dependencyUsage.getMissedMethods());
+            currTotal.addMissedInstructions(currDependency.dependencyUsage.getCoveredMethods());
+            currTotal.addMissedInstructions(currDependency.dependencyUsage.getMissedClasses());
+            currTotal.addMissedInstructions(currDependency.dependencyUsage.getCoveredClasses());
+
+
+            // Write here
+            for (String path : currDependency.getReportPaths()) {
+                File currDir = new File(path);
+                File parentDir = currDir.getParentFile();
+                File grandParentDir = parentDir.getParentFile();
+                if(!writtenPaths.contains(path)){
+                    writtenPaths.add(path);
+                    // Needs to be moved and checked
+                    try {
+                        // Write the total for its own index.html
+                        writeHTMLStringToFile(path + "/index.html", currTotal.totalUsageToHTML());
+                        writeHTMLStringToFile(path + "/index.html", "\n</tfoot>\n<tbody>\n");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+
+                if(!writtenEntryPaths.contains(parentDir.getPath()) &&
+                                            (currDir.getName().equals("transitive-dependencies") ||
+                                                    currDir.getName().equals("dependencies"))){
+                    writtenEntryPaths.add(parentDir.getPath());
+                    try {
+                        // Writing entry for Dependencies or Transitive-Dependencies
+                        writeHTMLStringToFile(parentDir + "/index.html", currTotal.usageToHTML(currDir.getName()));
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+
+                // Get the parent directory of the current path
+                //writtenPaths.add(grandParentDir.getPath());
+                System.out.println("WRITING TO: " + grandParentDir + " " + "WITH " + parentDir.getName());
+                // Ensure parentDir is not null and it's a directory
+                if (parentDir != null && parentDir.isDirectory()) {
+                    try {
+                        //  &&
+                        //                            (parentDir.getName().equals("transitive-dependencies") ||
+                        //                                    parentDir.getName().equals("dependencies"))
+                        // Writing entry
+                        writeHTMLStringToFile(parentDir + "/index.html", currDependency.dependencyUsage.usageToHTML(depToDirName(currDependency)));
+
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+
+            }
+
+            return currTotal;
     }
 
 
