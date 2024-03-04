@@ -122,6 +122,25 @@ public class ProjectDependency {
         return sb.toString();
     }
 
+    public static String formatNumber(long number) {
+        if (number < 0) {
+            return "-" + formatNumber(-number);
+        }
+        if (number < 1000) {
+            return Long.toString(number);
+        }
+
+        String[] suffixes = new String[]{"", "thousand", "million", "billion", "trillion", "quadrillion", "quintillion"};
+        int index = 0;
+
+        while (number >= 1000) {
+            number /= 1000;
+            index++;
+        }
+
+        return String.format("%,d %s", number, suffixes[index]);
+    }
+
     public String usageToHTML(){
         String dependencyDirName = JacocoHTMLAugmenter.depToDirName(this);
 
@@ -132,14 +151,14 @@ public class ProjectDependency {
                 "    <td class=\"ctr2\" id=\"c5\">4%</td>\n" +
                 "    <td class=\"bar\" id=\"d4\"><img src=\"jacoco-resources/redbar.gif\" width=\"33\" height=\"10\" title=\"1,695\" alt=\"1,695\"></td>\n" +
                 "    <td class=\"ctr2\" id=\"e5\">1%</td>\n" +
-                "    <td class=\"ctr1\" id=\"f2\">2,488</td>\n" +
-                "    <td class=\"ctr2\" id=\"g2\">2,572</td>\n" +
-                "    <td class=\"ctr1\" id=\"h2\">4,607</td>\n" +
-                "    <td class=\"ctr2\" id=\"i2\">4,873</td>\n" +
-                "    <td class=\"ctr1\" id=\"j1\">1,553</td>\n" +
-                "    <td class=\"ctr2\" id=\"k1\">1,635</td>\n" +
-                "    <td class=\"ctr1\" id=\"l13\">43</td>\n" +
-                "    <td class=\"ctr2\" id=\"m11\">57</td>\n" +
+                "    <td class=\"ctr1\" id=\"f2\">"+ String.format("%,d", this.dependencyUsage.getMissedCyclomaticComplexity()) +"</td>\n" +
+                "    <td class=\"ctr2\" id=\"g2\">"+ String.format("%,d", this.dependencyUsage.getCyclomaticComplexity()) +"</td>\n" +
+                "    <td class=\"ctr1\" id=\"h2\">"+ String.format("%,d", this.dependencyUsage.getMissedLines()) +"</td>\n" +
+                "    <td class=\"ctr2\" id=\"i2\">"+ String.format("%,d", this.dependencyUsage.getCoveredLines()) +"</td>\n" +
+                "    <td class=\"ctr1\" id=\"j1\">"+ String.format("%,d", this.dependencyUsage.getMissedMethods()) +"</td>\n" +
+                "    <td class=\"ctr2\" id=\"k1\">"+ String.format("%,d", this.dependencyUsage.getCoveredMethods()) +"</td>\n" +
+                "    <td class=\"ctr1\" id=\"l13\">"+ String.format("%,d", this.dependencyUsage.getMissedClasses()) +"</td>\n" +
+                "    <td class=\"ctr2\" id=\"m11\">"+ String.format("%,d", this.dependencyUsage.getCoveredClasses()) +"</td>\n" +
                 "</tr>";
         return htmlString;
     }
