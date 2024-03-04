@@ -67,18 +67,19 @@ public class JacocoHTMLAugmenter {
                                             try {
                                                 writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
                                                         parentDir + "/index.html", "Transitive Dependencies from: " + parentDepName);
+                                                // Write the transitive-dependencies entry
                                                 writeTemplateToFile("transitiveEntry.html", parentDir.getParentFile() + "/index.html");
                                             } catch (IOException e) {
                                                 throw new RuntimeException(e);
                                             }
                                         }
 
-                                        try {
-                                            //writeModifiedTemplateToFile("depEntry.html", parentDir + "/index.html", depToDirName(matchedDep));
-                                            writeHTMLStringToFile(parentDir + "/index.html", matchedDep.usageToHTML());
-                                        } catch (IOException e) {
-                                            throw new RuntimeException(e);
-                                        }
+//                                        try {
+//                                            //writeModifiedTemplateToFile("depEntry.html", parentDir + "/index.html", depToDirName(matchedDep));
+//                                            writeHTMLStringToFile(parentDir + "/index.html", matchedDep.usageToHTML());
+//                                        } catch (IOException e) {
+//                                            throw new RuntimeException(e);
+//                                        }
                                     }
 
                                 } catch (IOException e) {
@@ -311,18 +312,25 @@ public class JacocoHTMLAugmenter {
         templateFilePath2 = "depOverviewTemplateEnd.html";
         try {
             writeTemplateToFile(templateFilePath1, outputFilePath);
-            if (reportDir.exists() && reportDir.isDirectory()) {
-                File[] directories = reportDir.listFiles(File::isDirectory);
-                if (directories != null) {
-                    for (File directory : directories) {
-                        String dirName = directory.getName();
-                        if(!dirName.equals("jacoco-resources")){
-                            //writeModifiedTemplateToFile("depEntry.html", outputFilePath, dirName);
-                            writeHTMLStringToFile(outputFilePath, dirNameToDep(dirName, dependencies).usageToHTML());
+            for(ProjectDependency pd : dependencies) {
+                for (String path : pd.getReportPaths()) {
+                    // Get the parent directory of the current path
+                    File parentDir = new File(path).getParentFile();
+
+                    // Ensure parentDir is not null and it's a directory
+                    if (parentDir != null && parentDir.isDirectory() &&
+                            (parentDir.getName().equals("transitive-dependencies") ||
+                                    parentDir.getName().equals("dependencies"))) {
+                        try {
+                            writeHTMLStringToFile(parentDir + "/index.html", pd.usageToHTML());
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
                         }
                     }
                 }
             }
+
+            
             writeTemplateToFile(templateFilePath2, outputFilePath);
             System.out.println("Writing the dependency overview completed successfully.");
         } catch (IOException e) {
