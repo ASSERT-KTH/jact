@@ -230,7 +230,7 @@ public class JacocoHTMLAugmenter {
     }
 
 
-    public static void createDependencyReports(String projectName) {
+    public static void createDependencyReports(String projectName, List<ProjectDependency> dependencies) {
 
         // Rename the original index.html file
         String originalFilePath = REPORTPATH + "index.html";
@@ -317,7 +317,8 @@ public class JacocoHTMLAugmenter {
                     for (File directory : directories) {
                         String dirName = directory.getName();
                         if(!dirName.equals("jacoco-resources")){
-                            writeModifiedTemplateToFile("depEntry.html", outputFilePath, dirName);
+                            //writeModifiedTemplateToFile("depEntry.html", outputFilePath, dirName);
+                            writeHTMLStringToFile(outputFilePath, dirNameToDep(dirName, dependencies).usageToHTML());
                         }
                     }
                 }
@@ -329,6 +330,15 @@ public class JacocoHTMLAugmenter {
             e.printStackTrace();
         }
 
+    }
+
+    public static ProjectDependency dirNameToDep(String directoryName, List<ProjectDependency> dependencies){
+        for(ProjectDependency pd : dependencies){
+            if(depToDirName(pd).equals(directoryName)){
+                return pd;
+            }
+        }
+        throw new RuntimeException("Could not find a matching dependency.");
     }
 
 

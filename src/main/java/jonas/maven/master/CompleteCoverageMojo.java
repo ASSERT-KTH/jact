@@ -86,7 +86,7 @@ public class CompleteCoverageMojo extends AbstractMojo {
 
         getLog().info("Organizing the complete coverage report.");
         moveDepDirs(projectDependencies);
-        createDependencyReports(project.getGroupId());
+        createDependencyReports(project.getGroupId(), projectDependencies);
 
         System.out.println("COVERED INSTRUCTIONS "+ "for " + projectDependencies.getFirst().getId() + " " +
                 projectDependencies.getFirst().dependencyUsage.getCoveredInstructions());
