@@ -7,7 +7,7 @@ public class DependencyUsage {
     private long missedBranches = 0L;
     private long coveredBranches = 0L;
     private long missedCyclomaticComplexity = 0L;
-    private Long cyclomaticComplexity = 0L;
+    private long cyclomaticComplexity = 0L;
 
     private long missedLines = 0L;
     private long lines = 0L;

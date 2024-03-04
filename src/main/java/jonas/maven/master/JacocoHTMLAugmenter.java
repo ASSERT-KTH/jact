@@ -74,7 +74,8 @@ public class JacocoHTMLAugmenter {
                                         }
 
                                         try {
-                                            writeModifiedTemplateToFile("depEntry.html", parentDir + "/index.html", depToDirName(matchedDep));
+                                            //writeModifiedTemplateToFile("depEntry.html", parentDir + "/index.html", depToDirName(matchedDep));
+                                            writeHTMLStringToFile(parentDir + "/index.html", matchedDep.usageToHTML());
                                         } catch (IOException e) {
                                             throw new RuntimeException(e);
                                         }
@@ -100,13 +101,14 @@ public class JacocoHTMLAugmenter {
                                         try {
                                             writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
                                                     parentDir + "/index.html", "Transitive Dependencies from: " + parentDepName);
-                                            writeTemplateToFile("transitiveEntry.html", parentDir + "/index.html");
+                                            writeTemplateToFile("transitiveEntry.html", parentDir.getParentFile() + "/index.html");
                                         } catch (IOException e) {
                                             throw new RuntimeException(e);
                                         }
                                     }
                                     try {
-                                        writeModifiedTemplateToFile("depEntry.html", parentDir + "/index.html", depToDirName(matchedDep));
+                                        //writeModifiedTemplateToFile("depEntry.html", parentDir + "/index.html", depToDirName(matchedDep));
+                                        writeHTMLStringToFile(parentDir + "/index.html", matchedDep.usageToHTML());
                                     } catch (IOException e) {
                                         throw new RuntimeException(e);
                                     }
@@ -151,7 +153,7 @@ public class JacocoHTMLAugmenter {
         return fullPath.toString();
     }
 
-    private static String depToDirName(ProjectDependency dependency){
+    public static String depToDirName(ProjectDependency dependency){
         return dependency.getGroupId().replace("-", ".") + "." +
                 dependency.getArtifactId().replace("-", ".") + "-v" + dependency.getVersion();
     }
@@ -598,6 +600,12 @@ public class JacocoHTMLAugmenter {
         String templateContent = loadTemplateWithReplacement(filename, dependencyName);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath, true))) {
             writer.write(templateContent);
+        }
+    }
+
+    public static void writeHTMLStringToFile(String outputFilePath, String inputString) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath, true))) {
+            writer.write(inputString);
         }
     }
 
