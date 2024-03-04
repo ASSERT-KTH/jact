@@ -368,6 +368,7 @@ public class JacocoHTMLAugmenter {
                     insideTbody = false;
                 }
 
+                // TODO calculate the total usage here
                 // Check if we are inside a <tr> element
                 if (insideTbody && line.contains("<tr>")) {
                     // Read the next line

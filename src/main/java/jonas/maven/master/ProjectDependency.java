@@ -12,6 +12,7 @@ public class ProjectDependency {
     private List<ProjectDependency> children = new ArrayList<>();
     private List<ProjectDependency> parents = new ArrayList<>();
     private List<String> raportPaths = new ArrayList<>();
+    public DependencyUsage dependencyUsage = new DependencyUsage();
 
 
     public void setId(String id){
