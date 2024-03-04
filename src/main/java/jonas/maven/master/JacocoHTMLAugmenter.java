@@ -293,6 +293,8 @@ public class JacocoHTMLAugmenter {
         //System.out.println(projectNameSet.toString());
         try {
             writeTemplateToFile(templateFilePath1, outputFilePath);
+            // Write total here:
+            extractAndAppendOverallTotal(inputFilePath, outputFilePath);
             extractAndAppendHTML(inputFilePath, outputFilePath, projectNameSet); // Adds the project coverage
             writeTemplateToFile(templateFilePathX, outputFilePath);
             writeTemplateToFile(templateFilePath2, outputFilePath);
@@ -312,6 +314,8 @@ public class JacocoHTMLAugmenter {
         templateFilePath2 = "depOverviewTemplateEnd.html";
         try {
             writeTemplateToFile(templateFilePath1, outputFilePath);
+            extractAndAppendOverallTotal(inputFilePath, outputFilePath);
+            // TODO WRITE THE TOTAL ENTRIES FROM HERE
             for(ProjectDependency pd : dependencies) {
                 for (String path : pd.getReportPaths()) {
                     // Get the parent directory of the current path
@@ -330,7 +334,7 @@ public class JacocoHTMLAugmenter {
                 }
             }
 
-            
+
             writeTemplateToFile(templateFilePath2, outputFilePath);
             System.out.println("Writing the dependency overview completed successfully.");
         } catch (IOException e) {
@@ -421,6 +425,7 @@ public class JacocoHTMLAugmenter {
                                 // Ensure parentDir is not null and it's a directory
                                 if (parentDir != null && parentDir.isDirectory()) {
                                     // Construct the path to the parent directory's index.html file
+                                    // TODO refactor this
                                     String indexPath = new File(parentDir, "index.html").getAbsolutePath();
                                     indexPath = path + "/index.html";
                                     // Write to the parent directory's index.html file
@@ -561,6 +566,51 @@ public class JacocoHTMLAugmenter {
     }
 
 
+    public static void extractAndAppendOverallTotal(String inputFilePath, String outputFilePath) throws IOException {
+        try (BufferedReader br = new BufferedReader(new FileReader(inputFilePath));
+             BufferedWriter bw = new BufferedWriter(new FileWriter(outputFilePath, true))) {
+
+            String line;
+
+            // Flag to indicate if we are inside the <tbody> tag
+            boolean insideTbody = false;
+            // Flag to indicate if the current <tr> element contains the specified string
+            boolean containsString = false;
+            // StringBuilder to store content of current <tr> element
+            StringBuilder trContent = new StringBuilder();
+
+            // Iterate through the input HTML file
+            while ((line = br.readLine()) != null) {
+                // Check if we are inside the <tbody> tag
+                if (line.contains("<tfoot>")) {
+                    insideTbody = true;
+                }else if(line.contains("</tfoot>")){
+                    bw.write("\n</tfoot>\n<tbody>");
+                }
+
+                // Check if we are inside a <tr> element
+                if (insideTbody && line.contains("<tr>")) {
+                    trContent.setLength(0); // Clear StringBuilder for new <tr> element
+                    trContent.append(line.trim()).append("\n");
+                }
+
+                // Append line to current <tr> element content
+                if (insideTbody && trContent.length() > 0) {
+                    trContent.append(line.trim()).append("\n");
+                }
+
+                // Write content of <tr> element to output if it contains the specified string
+                if (insideTbody && line.contains("</tr>")) {
+                    bw.write(trContent.toString());
+                }
+
+                // Check if we are outside the <tbody> tag
+                if (line.contains("</tfoot>")) {
+                    insideTbody = false;
+                }
+            }
+        }
+    }
 
     public static void extractAndAppendHTML(String inputFilePath, String outputFilePath, Set<String> matchSet)
             throws IOException {
