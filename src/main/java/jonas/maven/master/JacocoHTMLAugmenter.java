@@ -8,6 +8,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class JacocoHTMLAugmenter {
     public static final String REPORTPATH = "./target/jact-report/";
@@ -380,13 +382,16 @@ public class JacocoHTMLAugmenter {
                         ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(packageName);
                         // Write the entire <tr> element to each path
                         StringBuilder trContent = new StringBuilder(line).append("\n");
-                        int entryIndex = 0;
+                        int entryIndex = 1;
                         while ((line = br.readLine()) != null) {
                             trContent.append(line).append("\n");
                             if (line.contains("</tr>")) {
                                 break; // Stop processing when encountering </tr>
                             }
-                            extractUsage(line, entryIndex, matchedDep);
+                            if(entryIndex > 0){
+                                extractUsage(line, entryIndex, matchedDep);
+                            }
+                            entryIndex++;
                         }
                         if (!matchedDep.getReportPaths().isEmpty()) {
                             for (String path : matchedDep.getReportPaths()) {
@@ -432,43 +437,107 @@ public class JacocoHTMLAugmenter {
         switch(entryIndex) {
             case 1:
                 // Missed and Covered instructions
+                long[] instrUsage = extractBranchNInstrUsage(line);
+                matchedDep.dependencyUsage.addMissedInstructions(instrUsage[0]);
+                matchedDep.dependencyUsage.addCoveredInstructions(instrUsage[1]);
                 break;
             case 2:
                 // Percentage (Don't care about this now)
                 break;
             case 3:
                 // Missed and Covered Branches
+                long[] branchUsage = extractBranchNInstrUsage(line);
+                matchedDep.dependencyUsage.addMissedBranches(branchUsage[0]);
+                matchedDep.dependencyUsage.addCoveredBranches(branchUsage[1]);
                 break;
             case 4:
                 // Percentage (Don't care about this now)
                 break;
             case 5:
                 // Missed cyclomatic complexity
+                matchedDep.dependencyUsage.addMissedCyclomaticComplexity(extractUsageNumber(line));
                 break;
             case 6:
                 // Covered cyclomatic complexity
+                matchedDep.dependencyUsage.addCyclomaticComplexity(extractUsageNumber(line));
                 break;
             case 7:
                 // Missed Lines
+                matchedDep.dependencyUsage.addMissedLines(extractUsageNumber(line));
                 break;
             case 8:
                 // Covered Lines
+                matchedDep.dependencyUsage.addCoveredLines(extractUsageNumber(line));
                 break;
             case 9:
                 // Missed Methods
+                matchedDep.dependencyUsage.addMissedMethods(extractUsageNumber(line));
                 break;
             case 10:
                 // Covered Methods
+                matchedDep.dependencyUsage.addCoveredMethods(extractUsageNumber(line));
                 break;
             case 11:
                 // Missed Classes
+                matchedDep.dependencyUsage.addMissedClasses(extractUsageNumber(line));
                 break;
             case 12:
                 // Covered Classes
+                matchedDep.dependencyUsage.addCoveredClasses(extractUsageNumber(line));
                 break;
             default:
                 System.out.println("Could not extract usage of line: " + line);
         }
+    }
+
+
+
+    public static long extractUsageNumber(String input) {
+        // Define a regex pattern to match the number after id= and before </td>
+        Pattern pattern = Pattern.compile("id=\"\\w+\">(\\d{1,3}(?:,\\d{3})*)</td>");
+        Matcher matcher = pattern.matcher(input);
+
+        if (matcher.find()) {
+            String numberStr = matcher.group(1); // Extract the matched number string
+            // Remove commas and parse the string as Long
+            try {
+                return Long.parseLong(numberStr.replace(",", ""));
+            } catch (NumberFormatException e) {
+                System.out.println("Error parsing number: " + e.getMessage());
+                return 0L; // Or handle the error as appropriate
+            }
+        } else {
+            System.out.println("No match found.");
+            return 0L; // Or handle the absence of match as appropriate
+        }
+    }
+
+    public static long[] extractBranchNInstrUsage(String input) {
+        // Define regex patterns to match the numbers after title= inside the <img> tags
+        Pattern pattern = Pattern.compile("<img\\s+src=\"jacoco-resources/(?:red|green)bar.gif\"[^>]*title=\"(\\d{1,3}(?:,\\d{3})*)\"");
+        Matcher matcher = pattern.matcher(input);
+
+        long[] numbers = new long[2];
+        int index = 0;
+
+        while (matcher.find()) {
+            String numberStr = matcher.group(1); // Extract the matched number string
+            // Remove commas and parse the string as Long
+            try {
+                numbers[index] = Long.parseLong(numberStr.replace(",", ""));
+            } catch (NumberFormatException e) {
+                System.out.println("Error parsing number: " + e.getMessage());
+                numbers[index] = 0L; // Or handle the error as appropriate
+            }
+            index++;
+        }
+
+        // If only one number found (uncovered), set covered to 0
+        if (index == 1) {
+            numbers[1] = 0L;
+        }
+
+        return numbers;
     }
 
 
@@ -517,6 +586,7 @@ public class JacocoHTMLAugmenter {
                 }
 
                 // Check if we are outside the <tbody> tag
+                // TODO REMOVE THIS
                 if (line.contains("</tbody>")) {
                     insideTbody = false;
                 }

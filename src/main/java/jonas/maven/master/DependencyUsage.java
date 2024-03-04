@@ -2,120 +2,120 @@ package jonas.maven.master;
 
 public class DependencyUsage {
     // Dependency usage, in their entry order
-    private Long missedInstructions = 0L;
-    private Long coveredInstructions = 0L;
-    private Long missedBranches = 0L;
-    private Long coveredBranches = 0L;
-    private Long missedCyclomaticComplexity = 0L;
+    private long missedInstructions = 0L;
+    private long coveredInstructions = 0L;
+    private long missedBranches = 0L;
+    private long coveredBranches = 0L;
+    private long missedCyclomaticComplexity = 0L;
     private Long cyclomaticComplexity = 0L;
 
-    private Long missedLines = 0L;
-    private Long lines = 0L;
+    private long missedLines = 0L;
+    private long lines = 0L;
 
-    private Long missedMethods = 0L;
-    private Long methods = 0L;
+    private long missedMethods = 0L;
+    private long methods = 0L;
 
-    private Long missedClasses = 0L;
-    private Long classes = 0L;
+    private long missedClasses = 0L;
+    private long classes = 0L;
 
 
-    public void addMissedInstructions(Long missedInstr){
+    public void addMissedInstructions(long missedInstr){
         this.missedInstructions += missedInstr;
     }
 
-    public Long getMissedInstructions(){
+    public long getMissedInstructions(){
         return this.missedInstructions;
     }
 
 
-    public void addCoveredInstructions(Long coveredInstr){
+    public void addCoveredInstructions(long coveredInstr){
         this.coveredInstructions += coveredInstr;
     }
 
-    public Long getCoveredInstructions(){
+    public long getCoveredInstructions(){
         return this.coveredInstructions;
     }
 
-    public void addMissedBranches(Long missedBranch){
+    public void addMissedBranches(long missedBranch){
         this.missedBranches += missedBranch;
     }
 
-    public Long getMissedBranches(){
+    public long getMissedBranches(){
         return this.missedBranches;
     }
 
-    public void addCoveredBranches(Long coveredBranch){
+    public void addCoveredBranches(long coveredBranch){
         this.coveredBranches += coveredBranch;
     }
 
-    public Long getCoveredBranches(){
+    public long getCoveredBranches(){
         return this.coveredBranches;
     }
 
-    public void addMissedCyclomaticComplexity(Long missedCxty){
+    public void addMissedCyclomaticComplexity(long missedCxty){
         this.missedCyclomaticComplexity += missedCxty;
     }
 
-    public Long getMissedCyclomaticComplexity(){
+    public long getMissedCyclomaticComplexity(){
         return this.missedCyclomaticComplexity;
     }
 
 
-    public void addCyclomaticComplexity(Long cxty){
+    public void addCyclomaticComplexity(long cxty){
         this.cyclomaticComplexity += cxty;
     }
 
-    public Long getCyclomaticComplexity(){
+    public long getCyclomaticComplexity(){
         return this.cyclomaticComplexity;
     }
 
-    public void addMissedLines(Long mlines){
+    public void addMissedLines(long mlines){
         this.missedLines += mlines;
     }
 
-    public Long getMissedLines(){
+    public long getMissedLines(){
         return this.missedLines;
     }
 
-    public void addCoveredLines(Long clines){
+    public void addCoveredLines(long clines){
         this.lines += clines;
     }
 
-    public Long getCoveredLines(){
+    public long getCoveredLines(){
         return this.lines;
     }
 
 
-    public void addMissedMethods(Long mMethods){
+    public void addMissedMethods(long mMethods){
         this.missedMethods += mMethods;
     }
 
-    public Long getMissedMethods(){
+    public long getMissedMethods(){
         return this.missedMethods;
     }
 
-    public void addCoveredMethods(Long cMethods){
+    public void addCoveredMethods(long cMethods){
         this.methods += cMethods;
     }
 
-    public Long getCoveredMethods(){
+    public long getCoveredMethods(){
         return this.methods;
     }
 
 
-    public void addMissedClasses(Long mClasses){
+    public void addMissedClasses(long mClasses){
         this.missedClasses += mClasses;
     }
 
-    public Long getMissedClasses(){
+    public long getMissedClasses(){
         return this.missedClasses;
     }
 
-    public void addCoveredClasses(Long cClasses){
+    public void addCoveredClasses(long cClasses){
         this.classes += cClasses;
     }
 
-    public Long getCoveredClasses(){
+    public long getCoveredClasses(){
         return this.classes;
     }
 

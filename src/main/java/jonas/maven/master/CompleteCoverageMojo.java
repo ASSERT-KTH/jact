@@ -88,6 +88,12 @@ public class CompleteCoverageMojo extends AbstractMojo {
         moveDepDirs(projectDependencies);
         createDependencyReports(project.getGroupId());
 
+        System.out.println("COVERED INSTRUCTIONS "+ "for " + projectDependencies.getFirst().getId() + " " +
+                projectDependencies.getFirst().dependencyUsage.getCoveredInstructions());
+
+        System.out.println("UNCOVERED INSTRUCTIONS "+ "for " + projectDependencies.getFirst().getId() + " " +
+                projectDependencies.getFirst().dependencyUsage.getMissedInstructions());
+
     }
 
 }
