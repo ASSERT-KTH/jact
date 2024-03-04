@@ -141,16 +141,26 @@ public class ProjectDependency {
         return String.format("%,d %s", number, suffixes[index]);
     }
 
+    private static String percentage(long part, long whole) {
+        double percentage = (double) part / whole * 100;
+        long roundedPercentage = (long) Math.floor(percentage);
+        return String.format("%d%%", roundedPercentage);
+    }
+
     public String usageToHTML(){
         String dependencyDirName = JacocoHTMLAugmenter.depToDirName(this);
 
         // TODO fix the width of the bars
+        long totalInstructions = this.dependencyUsage.getCoveredInstructions() + this.dependencyUsage.getMissedInstructions();
+        long totalBranches = this.dependencyUsage.getCoveredBranches() + this.dependencyUsage.getMissedBranches();
         String htmlString = "<tr>\n" +
                 "    <td id=\"a47\"><a href=\""+ dependencyDirName +"/index.html\" class=\"el_group\">"+ dependencyDirName +"</a></td>\n" +
-                "    <td class=\"bar\" id=\"b5\"><img src=\"jacoco-resources/redbar.gif\" width=\"33\" height=\"10\" title=\"21,684\" alt=\"21,684\"><img src=\"jacoco-resources/greenbar.gif\" width=\"1\" height=\"10\" title=\"927\" alt=\"927\"></td>\n" +
-                "    <td class=\"ctr2\" id=\"c5\">4%</td>\n" +
-                "    <td class=\"bar\" id=\"d4\"><img src=\"jacoco-resources/redbar.gif\" width=\"33\" height=\"10\" title=\"1,695\" alt=\"1,695\"></td>\n" +
-                "    <td class=\"ctr2\" id=\"e5\">1%</td>\n" +
+                "    <td class=\"bar\" id=\"b5\"><img src=\"jacoco-resources/redbar.gif\" width=\"33\" height=\"10\" title=\""+ String.format("%,d", this.dependencyUsage.getMissedInstructions()) + "\" alt=\""+ String.format("%,d", this.dependencyUsage.getMissedInstructions()) + "\">" +
+                "<img src=\"jacoco-resources/greenbar.gif\" width=\"1\" height=\"10\" title=\""+String.format("%,d", this.dependencyUsage.getCoveredInstructions())+"\" alt=\""+String.format("%,d", this.dependencyUsage.getCoveredInstructions())+"\"></td>\n" +
+                "    <td class=\"ctr2\" id=\"c5\">"+percentage(this.dependencyUsage.getCoveredInstructions(), totalInstructions) +"</td>\n" +
+                "    <td class=\"bar\" id=\"d4\"><img src=\"jacoco-resources/redbar.gif\" width=\"33\" height=\"10\" title=\""+ String.format("%,d", this.dependencyUsage.getMissedBranches()) + "\" alt=\""+ String.format("%,d", this.dependencyUsage.getMissedBranches()) + "\">" +
+                "<img src=\"jacoco-resources/greenbar.gif\" width=\"1\" height=\"10\" title=\""+String.format("%,d", this.dependencyUsage.getCoveredBranches())+"\" alt=\""+String.format("%,d", this.dependencyUsage.getCoveredBranches())+"\"></td>\n" +
+                "    <td class=\"ctr2\" id=\"e5\">"+percentage(this.dependencyUsage.getCoveredBranches(), totalBranches) +"</td>\n" +
                 "    <td class=\"ctr1\" id=\"f2\">"+ String.format("%,d", this.dependencyUsage.getMissedCyclomaticComplexity()) +"</td>\n" +
                 "    <td class=\"ctr2\" id=\"g2\">"+ String.format("%,d", this.dependencyUsage.getCyclomaticComplexity()) +"</td>\n" +
                 "    <td class=\"ctr1\" id=\"h2\">"+ String.format("%,d", this.dependencyUsage.getMissedLines()) +"</td>\n" +
