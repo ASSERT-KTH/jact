@@ -380,11 +380,13 @@ public class JacocoHTMLAugmenter {
                         ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(packageName);
                         // Write the entire <tr> element to each path
                         StringBuilder trContent = new StringBuilder(line).append("\n");
+                        int entryIndex = 0;
                         while ((line = br.readLine()) != null) {
                             trContent.append(line).append("\n");
                             if (line.contains("</tr>")) {
                                 break; // Stop processing when encountering </tr>
                             }
+                            extractUsage(line, entryIndex, matchedDep);
                         }
                         if (!matchedDep.getReportPaths().isEmpty()) {
                             for (String path : matchedDep.getReportPaths()) {
@@ -423,6 +425,50 @@ public class JacocoHTMLAugmenter {
         int endIndex = line.indexOf("</a>", startIndex);
         System.out.println(line.substring(startIndex, endIndex));
         return line.substring(startIndex, endIndex);
+    }
+
+
+    private static void extractUsage(String line, int entryIndex, ProjectDependency matchedDep){
+        switch(entryIndex) {
+            case 1:
+                // Missed and Covered instructions
+                break;
+            case 2:
+                // Percentage (Don't care about this now)
+                break;
+            case 3:
+                // Missed and Covered Branches
+                break;
+            case 4:
+                // Percentage (Don't care about this now)
+                break;
+            case 5:
+                // Missed cyclomatic complexity
+                break;
+            case 6:
+                // Covered cyclomatic complexity
+                break;
+            case 7:
+                // Missed Lines
+                break;
+            case 8:
+                // Covered Lines
+                break;
+            case 9:
+                // Missed Methods
+                break;
+            case 10:
+                // Covered Methods
+                break;
+            case 11:
+                // Missed Classes
+                break;
+            case 12:
+                // Covered Classes
+                break;
+            default:
+                System.out.println("Could not extract usage of line: " + line);
+        }
     }
 
 
