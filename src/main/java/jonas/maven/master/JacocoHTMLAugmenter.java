@@ -361,6 +361,7 @@ public class JacocoHTMLAugmenter {
 
     public static DependencyUsage calculateTotalForAllLayers(ProjectDependency currDependency, List<String> writtenPaths, List<String> writtenEntryPaths){
         List<String> writtenTotalPaths = new ArrayList<>();
+        // Keep track of dependencies that have already been checked out.
         DependencyUsage currTotal = new DependencyUsage();
             if(!currDependency.getChildDeps().isEmpty()){
                 DependencyUsage childTotal;
@@ -405,20 +406,21 @@ public class JacocoHTMLAugmenter {
                     // Needs to be moved and checked
                     try {
                         // Write the total for its own index.html
-                        writeHTMLStringToFile(path + "/index.html", currTotal.totalUsageToHTML());
+                        writeHTMLStringToFile(path + "/index.html", currDependency.dependencyUsage.totalUsageToHTML());
                         writeHTMLStringToFile(path + "/index.html", "\n</tfoot>\n<tbody>\n");
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
                 }
 
-                if(!writtenEntryPaths.contains(parentDir.getPath()) &&
-                                            (currDir.getName().equals("transitive-dependencies") ||
-                                                    currDir.getName().equals("dependencies"))){
-                    writtenEntryPaths.add(parentDir.getPath());
+                if(!writtenEntryPaths.contains(grandParentDir.getPath()) &&
+                                            (parentDir.getName().equals("transitive-dependencies") ||
+                                                    parentDir.getName().equals("dependencies"))){
+                    writtenEntryPaths.add(grandParentDir.getPath());
                     try {
                         // Writing entry for Dependencies or Transitive-Dependencies
-                        writeHTMLStringToFile(parentDir + "/index.html", currTotal.usageToHTML(currDir.getName()));
+                        System.out.println("WRITING TO: " + grandParentDir + " " + "WITH " + parentDir.getName());
+                        writeHTMLStringToFile(grandParentDir + "/index.html", currTotal.usageToHTML(parentDir.getName()));
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -426,16 +428,16 @@ public class JacocoHTMLAugmenter {
 
                 // Get the parent directory of the current path
                 //writtenPaths.add(grandParentDir.getPath());
-                System.out.println("WRITING TO: " + grandParentDir + " " + "WITH " + parentDir.getName());
+
                 // Ensure parentDir is not null and it's a directory
-                if (parentDir != null && parentDir.isDirectory()) {
+                if (parentDir != null && parentDir.isDirectory() && !currDependency.writtenToFile) {
                     try {
                         //  &&
                         //                            (parentDir.getName().equals("transitive-dependencies") ||
                         //                                    parentDir.getName().equals("dependencies"))
                         // Writing entry
                         writeHTMLStringToFile(parentDir + "/index.html", currDependency.dependencyUsage.usageToHTML(depToDirName(currDependency)));
-
+                        currDependency.writtenToFile = true;
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

@@ -14,6 +14,8 @@ public class ProjectDependency {
     private List<String> raportPaths = new ArrayList<>();
     public DependencyUsage dependencyUsage = new DependencyUsage();
 
+    public boolean writtenToFile = false;
+
 
     public void setId(String id){
         this.id = id;
