@@ -14,7 +14,7 @@ upon JaCoCo to capture even more accurate coverage.
 - Provide the name of the FAT-jar before packaging (for report generation)
 - Resulting jar has to be place under ./target/
 
-##### Building the test project and inspecting its coverage report:
+### Building the test project and inspecting its coverage report:
 - Clone this repo and build the project from the root folder:
     ```
     mvn clean install
@@ -25,7 +25,7 @@ upon JaCoCo to capture even more accurate coverage.
     mvn clean install
     ```
 
-The report will now be located under the test project `/target/jact/report` where its `index.html` file is a good place to start. 
+The report will now be located under the test project `/target/jact-report` where its `index.html` file is a good place to start. 
 
 
 ### Using JACT:
