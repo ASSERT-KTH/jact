@@ -14,6 +14,20 @@ upon JaCoCo to capture even more accurate coverage.
 - Provide the name of the FAT-jar before packaging (for report generation)
 - Resulting jar has to be place under ./target/
 
+##### Building the test project and inspecting its coverage report:
+- Clone this repo and build the project from the root folder:
+    ```
+    mvn clean install
+    ```
+  
+- Navigate into the root of the test project: `./src/main/it/sanity-check-project` and again execute:
+    ```
+    mvn clean install
+    ```
+
+The report will now be located under the test project `/target/jact/report` where its `index.html` file is a good place to start. 
+
+
 ### Using JACT:
 After fulfilling the prerequsites in your project, clone this repo and execute `mvn clean install` and add this plugin to your pom.xml file.
 ```xml
