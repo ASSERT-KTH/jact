@@ -380,32 +380,22 @@ public class JacocoHTMLAugmenter {
         // Keep track of dependencies that have already been checked out.
         //DependencyUsage currTotal = new DependencyUsage();
             if(!currDependency.getChildDeps().isEmpty()){
-                DependencyUsage childTotal;
+                DependencyUsage childTotal = new DependencyUsage();
                 for(ProjectDependency child : currDependency.getChildDeps()){
-                    childTotal = calculateTotalForAllLayers(child, writtenPaths, writtenEntryPaths, currTotal);
-                    currTotal.addAll(childTotal);
+                    childTotal.addAll(calculateTotalForAllLayers(child, writtenPaths, writtenEntryPaths, currTotal));
+                    currDependency.dependencyUsage.addAll(childTotal);
                 }
-
-                // Here I have the total for all the child dependencies:
                 for (String path : currDependency.getReportPaths()) {
                     //System.out.println("DEP: " + currDependency.getId() + " PATH: " + path);
                     File currDir = new File(path);
                     File parentDir = currDir.getParentFile();
                     File grandParentDir = parentDir.getParentFile();
-                    if (!writtenPaths.contains(path)) {
-                        //writtenPaths.add(path);
-                        // Needs to be moved and checked
-                        try {
-                            // Write the total for its own index.html
-                            writeHTMLStringToFile(path + "/transitive-dependencies/index.html", currTotal.totalUsageToHTML());
-                            writeHTMLStringToFile(path + "/transitive-dependencies/index.html", "\n</tfoot>\n<tbody>\n");
-
-
-                            //writeHTMLStringToFile(parentDir + "/index.html", currDependency.dependencyUsage.totalUsageToHTML());
-                            //writeHTMLStringToFile(parentDir + "/index.html", "\n</tfoot>\n<tbody>\n");
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
+                    try {
+                        // Writing the dependency total as an entry
+                        writeHTMLStringToFile(currDir + "/index.html", childTotal.usageToHTML("transitive-dependencies"));
+                        // Writing the total within the transitive dependency
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
                     }
                 }
             }
@@ -414,60 +404,68 @@ public class JacocoHTMLAugmenter {
 
 
             // Write here
-            for (String path : currDependency.getReportPaths()) {
-                System.out.println("DEP: " + currDependency.getId() + " PATH: " + path);
-                File currDir = new File(path);
-                File parentDir = currDir.getParentFile();
-                File grandParentDir = parentDir.getParentFile();
-                if(!writtenPaths.contains(path)){
-                    writtenPaths.add(path);
-                    // Needs to be moved and checked
+            if(!currDependency.writtenToFile){
+                currDependency.writtenToFile = true;
+                for (String path : currDependency.getReportPaths()) {
+                    System.out.println("DEP: " + currDependency.getId() + " PATH: " + path);
+                    File currDir = new File(path);
+                    File parentDir = currDir.getParentFile();
+                    File grandParentDir = parentDir.getParentFile();
+//                if(!writtenPaths.contains(path)){
+//                    writtenPaths.add(path);
+//                    // Needs to be moved and checked
+//                    try {
+//                        // Write the total for its own index.html
+//                        writeHTMLStringToFile(path + "/index.html", currTotal.totalUsageToHTML());
+//                        writeHTMLStringToFile(path + "/index.html", "\n</tfoot>\n<tbody>\n");
+//
+//
+//                        //writeHTMLStringToFile(parentDir + "/index.html", currDependency.dependencyUsage.totalUsageToHTML());
+//                        //writeHTMLStringToFile(parentDir + "/index.html", "\n</tfoot>\n<tbody>\n");
+//                    } catch (IOException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//                }
+
+//                if(!writtenEntryPaths.contains(parentDir.getPath()) &&
+//                                            (currDir.getName().equals("transitive-dependencies") ||
+//                                                    currDir.getName().equals("dependencies"))){
+//                    writtenEntryPaths.add(parentDir.getPath());
                     try {
-                        // Write the total for its own index.html
-                        writeHTMLStringToFile(path + "/index.html", currTotal.totalUsageToHTML());
-                        writeHTMLStringToFile(path + "/index.html", "\n</tfoot>\n<tbody>\n");
+                        // Writing the dependency total as an entry
 
+                        //writeHTMLStringToFile(currDir + "/index.html", currDependency.dependencyUsage.totalUsageToHTML());
+                        writtenEntryPaths.add(path);
+                        System.out.println("WRITING TO: " + parentDir + " " + "WITH " + currDir.getName());
+                        writeHTMLStringToFile(parentDir + "/index.html", currDependency.dependencyUsage.usageToHTML(currDir.getName()));
 
-                        //writeHTMLStringToFile(parentDir + "/index.html", currDependency.dependencyUsage.totalUsageToHTML());
-                        //writeHTMLStringToFile(parentDir + "/index.html", "\n</tfoot>\n<tbody>\n");
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-
-                if(!writtenEntryPaths.contains(grandParentDir.getPath()) &&
-                                            (parentDir.getName().equals("transitive-dependencies") ||
-                                                    parentDir.getName().equals("dependencies"))){
-                    writtenEntryPaths.add(grandParentDir.getPath());
-                    try {
-                        // Writing entry for Dependencies or Transitive-Dependencies
-                        System.out.println("WRITING TO: " + grandParentDir + " " + "WITH " + parentDir.getName());
-                        writeHTMLStringToFile(grandParentDir + "/index.html", currTotal.usageToHTML(parentDir.getName()));
 
                         // Writing the total within the transitive dependency
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
+                    //}
+
+                    // Get the parent directory of the current path
+                    //writtenPaths.add(grandParentDir.getPath());
+
+                    // Ensure parentDir is not null and it's a directory
+//                if (parentDir != null && parentDir.isDirectory() && !currDependency.writtenToFile) {
+//                    try {
+//                        //  &&
+//                        //                            (parentDir.getName().equals("transitive-dependencies") ||
+//                        //                                    parentDir.getName().equals("dependencies"))
+//                        // Writing entry
+//                        writeHTMLStringToFile(parentDir + "/index.html", currDependency.dependencyUsage.usageToHTML(depToDirName(currDependency)));
+//                        currDependency.writtenToFile = true;
+//                    } catch (IOException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//                }
+
                 }
-
-                // Get the parent directory of the current path
-                //writtenPaths.add(grandParentDir.getPath());
-
-                // Ensure parentDir is not null and it's a directory
-                if (parentDir != null && parentDir.isDirectory() && !currDependency.writtenToFile) {
-                    try {
-                        //  &&
-                        //                            (parentDir.getName().equals("transitive-dependencies") ||
-                        //                                    parentDir.getName().equals("dependencies"))
-                        // Writing entry
-                        writeHTMLStringToFile(parentDir + "/index.html", currDependency.dependencyUsage.usageToHTML(depToDirName(currDependency)));
-                        currDependency.writtenToFile = true;
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-
             }
+
 
             return currTotal;
     }
@@ -584,6 +582,11 @@ public class JacocoHTMLAugmenter {
                 long[] instrUsage = extractBranchNInstrUsage(line);
                 matchedDep.dependencyUsage.addMissedInstructions(instrUsage[0]);
                 matchedDep.dependencyUsage.addCoveredInstructions(instrUsage[1]);
+                if(matchedDep.getId().equals("com.google.code.findbugs:jsr305:3.0.2")){
+                    System.out.println("CHECK ME OUT: \n"  + matchedDep.dependencyUsage.getCoveredInstructions() + " of " +
+                            matchedDep.dependencyUsage.getMissedInstructions());
+                    System.out.println("THIS IS THE LINE: " + line);
+                }
                 break;
             case 2:
                 // Percentage (Don't care about this now)
@@ -604,9 +607,6 @@ public class JacocoHTMLAugmenter {
             case 6:
                 // Covered cyclomatic complexity
                 matchedDep.dependencyUsage.addCyclomaticComplexity(extractUsageNumber(line));
-                if(matchedDep.getId().equals("com.google.code.findbugs:jsr305:3.0.2")){
-                    System.out.println("CHECK ME OUT: "  + matchedDep.dependencyUsage.getCyclomaticComplexity());
-                }
                 break;
             case 7:
                 // Missed Lines

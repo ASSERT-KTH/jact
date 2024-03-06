@@ -140,8 +140,8 @@ public class DependencyUsage {
         this.addCyclomaticComplexity(depUsage.getCyclomaticComplexity());
         this.addMissedLines(depUsage.getMissedLines());
         this.addCoveredLines(depUsage.getCoveredLines());
-        this.addMissedInstructions(depUsage.getMissedMethods());
-        this.addCoveredInstructions(depUsage.getCoveredMethods());
+        this.addMissedMethods(depUsage.getMissedMethods());
+        this.addCoveredMethods(depUsage.getCoveredMethods());
         this.addMissedClasses(depUsage.getMissedClasses());
         this.addCoveredClasses(depUsage.getCoveredClasses());
     }
