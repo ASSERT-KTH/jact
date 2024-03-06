@@ -17,8 +17,13 @@ public class JacocoHTMLAugmenter {
     public static final String REPORTPATH = "./target/jact-report/";
     public static final String jacocoResPath = REPORTPATH + "jacoco-resources";
 
+    private static ProjectDependency thisProject = new ProjectDependency();
+    static String projId = CompleteCoverageMojo.projectGroupId + ":" + CompleteCoverageMojo.projectGroupId +
+            ":" + CompleteCoverageMojo.version;
+
 
     public static void moveDepDirs(List<ProjectDependency> dependencies) {
+        thisProject.setId(projId);
         // Create a directory for the dependency coverage
         createDir(REPORTPATH + "dependencies");
 
@@ -297,7 +302,7 @@ public class JacocoHTMLAugmenter {
             writeTemplateToFile(templateFilePath1, outputFilePath);
             // Write total here:
             //extractAndAppendOverallTotal(inputFilePath, outputFilePath);
-            extractAndAppendHTML(inputFilePath, outputFilePath, projectNameSet); // Adds the project coverage
+            //extractAndAppendHTML(inputFilePath, outputFilePath, projectNameSet); // Adds the project coverage
             //writeTemplateToFile(templateFilePathX, outputFilePath);
             //writeTemplateToFile(templateFilePath2, outputFilePath);
             System.out.println("Writing of the project overview completed successfully.");
@@ -349,13 +354,20 @@ public class JacocoHTMLAugmenter {
         DependencyUsage totalDepUsage = new DependencyUsage();
         for(ProjectDependency pd : dependencies){
             pd.writePackagesToFile();
-            totalDepUsage.addAll(pd.dependencyUsage);
             DependencyUsage currTotal = new DependencyUsage();
             calculateTotalForAllLayers(pd, writtenPaths, writtenEntryPaths, currTotal);
+            totalDepUsage.addAll(pd.dependencyUsage);
         }
         try {
             writeHTMLStringToFile(REPORTPATH + "/index.html", totalDepUsage.usageToHTML("dependencies", false));
             writeHTMLTotalToFile(REPORTPATH + "dependencies/index.html", totalDepUsage.totalUsageToHTML());
+
+            totalDepUsage.addAll(thisProject.packageUsageMap.get(CompleteCoverageMojo.projectGroupId)); // Add the project coverage
+            String test = thisProject.packageUsageMap.get(CompleteCoverageMojo.projectGroupId).usageToHTML(CompleteCoverageMojo.projectGroupId, true);
+            System.out.println(test);
+            writeHTMLStringToFile(REPORTPATH + "/index.html",
+                    thisProject.packageUsageMap.get(CompleteCoverageMojo.projectGroupId).usageToHTML(CompleteCoverageMojo.projectGroupId, true));
+            writeHTMLTotalToFile(REPORTPATH + "index.html", totalDepUsage.totalUsageToHTML());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -530,6 +542,9 @@ public class JacocoHTMLAugmenter {
                                 extractAndAddPackageTotal(matchedDep.getReportPaths().getFirst() + "/" +
                                         packageName + "/index.html", matchedDep, packageName);
                             }
+                        }else if(packageName.equals(CompleteCoverageMojo.projectGroupId)){
+                            extractAndAddPackageTotal(REPORTPATH + CompleteCoverageMojo.projectGroupId +
+                                            "/index.html", thisProject, packageName);
                         }
                         if (!matchedDep.getReportPaths().isEmpty()) {
                             for (String path : matchedDep.getReportPaths()) {
@@ -741,7 +756,8 @@ public class JacocoHTMLAugmenter {
                             if (line.contains("</tr>")) {
                                 break; // Stop processing when encountering </tr>
                             }
-                            if (entryIndex > 0 && matchedDep.getId() != null) {
+                            if (entryIndex > 0 && (matchedDep.getId() != null ||
+                                    packageName.equals(CompleteCoverageMojo.projectGroupId))) {
                                 extractUsage(line, entryIndex, matchedDep, packageUsage);
                             }
                             entryIndex++;

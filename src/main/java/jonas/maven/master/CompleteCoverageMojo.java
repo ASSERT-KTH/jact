@@ -49,6 +49,9 @@ public class CompleteCoverageMojo extends AbstractMojo {
     public static String localRepoPath;
 
     public static Set<String> projGroupIdSet = new HashSet<>();
+    public static String projectGroupId;
+    public static String artifactId;
+    public static String version;
 
     public void execute() throws MojoExecutionException, MojoFailureException {
         projGroupIdSet.addAll(Arrays.asList(project.getGroupId().split("[.-]")));
@@ -56,6 +59,9 @@ public class CompleteCoverageMojo extends AbstractMojo {
         localRepoPath = session.getLocalRepository().getBasedir();
         hostOS = session.getSystemProperties().getProperty("os.name").toLowerCase();
         List<Dependency> dependencies = project.getDependencies();
+        projectGroupId = project.getGroupId();
+        artifactId = project.getArtifactId();
+        version = project.getVersion();
 
         getLog().info("DEPENDENCY INFO:");
         for (Dependency dependency : dependencies) {
