@@ -572,12 +572,12 @@ public class JacocoHTMLAugmenter {
                 // Missed and Covered instructions
                 long[] instrUsage = extractBranchNInstrUsage(line);
                 matchedDep.dependencyUsage.addMissedInstructions(instrUsage[0]);
-                matchedDep.dependencyUsage.addCoveredInstructions(instrUsage[1]);
+                matchedDep.dependencyUsage.addTotalInstructions(instrUsage[1]);
                 packageUsage.addMissedInstructions(instrUsage[0]);
-                packageUsage.addCoveredInstructions(instrUsage[1]);
+                packageUsage.addTotalInstructions(instrUsage[1]);
                 if(matchedDep.getId().equals("com.google.code.findbugs:jsr305:3.0.2")){
-                    System.out.println("CHECK ME OUT: \n"  + matchedDep.dependencyUsage.getCoveredInstructions() + " of " +
-                            matchedDep.dependencyUsage.getMissedInstructions());
+                    System.out.println("CHECK ME OUT: \n"  + instrUsage[0] + " of " +
+                            instrUsage[1]);
                     System.out.println("THIS IS THE LINE: " + line);
                 }
                 break;
@@ -588,9 +588,9 @@ public class JacocoHTMLAugmenter {
                 // Missed and Covered Branches
                 long[] branchUsage = extractBranchNInstrUsage(line);
                 matchedDep.dependencyUsage.addMissedBranches(branchUsage[0]);
-                matchedDep.dependencyUsage.addCoveredBranches(branchUsage[1]);
+                matchedDep.dependencyUsage.addTotalBranches(branchUsage[1]);
                 packageUsage.addMissedBranches(branchUsage[0]);
-                packageUsage.addCoveredBranches(branchUsage[1]);
+                packageUsage.addTotalBranches(branchUsage[1]);
                 break;
             case 4:
                 // Percentage (Don't care about this now)
@@ -694,6 +694,7 @@ public class JacocoHTMLAugmenter {
 
 
     public static void extractAndAddPackageTotal(String inputFilePath, ProjectDependency matchedDep, String packageName) throws IOException {
+        System.out.println("READING: " + inputFilePath);
         // Format the index.html report:
         try {
             // Read the HTML file
@@ -740,6 +741,7 @@ public class JacocoHTMLAugmenter {
                             entryIndex++;
                         }
                         matchedDep.packageUsageMap.put(packageName, packageUsage);
+                        break;
                     }
                 }
             }

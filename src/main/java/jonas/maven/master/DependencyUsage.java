@@ -3,9 +3,9 @@ package jonas.maven.master;
 public class DependencyUsage {
     // Dependency usage, in their entry order
     private long missedInstructions = 0L;
-    private long coveredInstructions = 0L;
+    private long totalInstructions = 0L;
     private long missedBranches = 0L;
-    private long coveredBranches = 0L;
+    private long totalBranches = 0L;
     private long missedCyclomaticComplexity = 0L;
     private long cyclomaticComplexity = 0L;
 
@@ -28,12 +28,12 @@ public class DependencyUsage {
     }
 
 
-    public void addCoveredInstructions(long coveredInstr){
-        this.coveredInstructions += coveredInstr;
+    public void addTotalInstructions(long instr){
+        this.totalInstructions += instr;
     }
 
-    public long getCoveredInstructions(){
-        return this.coveredInstructions;
+    public long getTotalInstructions(){
+        return this.totalInstructions;
     }
 
     public void addMissedBranches(long missedBranch){
@@ -44,12 +44,12 @@ public class DependencyUsage {
         return this.missedBranches;
     }
 
-    public void addCoveredBranches(long coveredBranch){
-        this.coveredBranches += coveredBranch;
+    public void addTotalBranches(long branches){
+        this.totalBranches += branches;
     }
 
-    public long getCoveredBranches(){
-        return this.coveredBranches;
+    public long getTotalBranches(){
+        return this.totalBranches;
     }
 
     public void addMissedCyclomaticComplexity(long missedCxty){
@@ -133,9 +133,9 @@ public class DependencyUsage {
 
     public void addAll(DependencyUsage depUsage){
         this.addMissedInstructions(depUsage.getMissedInstructions());
-        this.addCoveredInstructions(depUsage.getCoveredInstructions());
+        this.addTotalInstructions(depUsage.getTotalInstructions());
         this.addMissedBranches(depUsage.getMissedBranches());
-        this.addCoveredBranches(depUsage.getCoveredBranches());
+        this.addTotalBranches(depUsage.getTotalBranches());
         this.addMissedCyclomaticComplexity(depUsage.getMissedCyclomaticComplexity());
         this.addCyclomaticComplexity(depUsage.getCyclomaticComplexity());
         this.addMissedLines(depUsage.getMissedLines());
@@ -149,8 +149,8 @@ public class DependencyUsage {
     public String usageToHTML(String dependencyDirName, Boolean isPackage){
 
         // TODO fix the width of the bars
-        long totalInstructions = this.getCoveredInstructions() + this.getMissedInstructions();
-        long totalBranches = this.getCoveredBranches() + this.getMissedBranches();
+        long coveredInstructions = this.getTotalInstructions() - this.getMissedInstructions();
+        long coveredBranches = this.getTotalBranches() - this.getMissedBranches();
         String icon;
         if(isPackage){
             icon = "el_package";
@@ -160,11 +160,11 @@ public class DependencyUsage {
         String htmlString = "<tr>\n" +
                 "    <td id=\"a47\"><a href=\""+ dependencyDirName +"/index.html\" class=\""+ icon +"\">"+ dependencyDirName +"</a></td>\n" +
                 "    <td class=\"bar\" id=\"b5\"><img src=\"jacoco-resources/redbar.gif\" width=\"33\" height=\"10\" title=\""+ String.format("%,d", this.getMissedInstructions()) + "\" alt=\""+ String.format("%,d", this.getMissedInstructions()) + "\">" +
-                "<img src=\"jacoco-resources/greenbar.gif\" width=\"1\" height=\"10\" title=\""+String.format("%,d", this.getCoveredInstructions())+"\" alt=\""+String.format("%,d", this.getCoveredInstructions())+"\"></td>\n" +
-                "    <td class=\"ctr2\" id=\"c5\">"+percentage(this.getCoveredInstructions(), totalInstructions) +"</td>\n" +
+                "<img src=\"jacoco-resources/greenbar.gif\" width=\"1\" height=\"10\" title=\""+String.format("%,d", this.getTotalInstructions())+"\" alt=\""+String.format("%,d", this.getTotalInstructions())+"\"></td>\n" +
+                "    <td class=\"ctr2\" id=\"c5\">"+percentage(coveredInstructions, this.getTotalInstructions()) +"</td>\n" +
                 "    <td class=\"bar\" id=\"d4\"><img src=\"jacoco-resources/redbar.gif\" width=\"33\" height=\"10\" title=\""+ String.format("%,d", this.getMissedBranches()) + "\" alt=\""+ String.format("%,d", this.getMissedBranches()) + "\">" +
-                "<img src=\"jacoco-resources/greenbar.gif\" width=\"1\" height=\"10\" title=\""+String.format("%,d", this.getCoveredBranches())+"\" alt=\""+String.format("%,d", this.getCoveredBranches())+"\"></td>\n" +
-                "    <td class=\"ctr2\" id=\"e5\">"+percentage(this.getCoveredBranches(), totalBranches) +"</td>\n" +
+                "<img src=\"jacoco-resources/greenbar.gif\" width=\"1\" height=\"10\" title=\""+String.format("%,d", this.getTotalBranches())+"\" alt=\""+String.format("%,d", this.getTotalBranches())+"\"></td>\n" +
+                "    <td class=\"ctr2\" id=\"e5\">"+percentage(coveredBranches, this.getTotalBranches()) +"</td>\n" +
                 "    <td class=\"ctr1\" id=\"f2\">"+ String.format("%,d", this.getMissedCyclomaticComplexity()) +"</td>\n" +
                 "    <td class=\"ctr2\" id=\"g2\">"+ String.format("%,d", this.getCyclomaticComplexity()) +"</td>\n" +
                 "    <td class=\"ctr1\" id=\"h2\">"+ String.format("%,d", this.getMissedLines()) +"</td>\n" +
@@ -180,14 +180,14 @@ public class DependencyUsage {
     public String totalUsageToHTML(){
 
         // TODO fix the width of the bars
-        long totalInstructions = this.getCoveredInstructions() + this.getMissedInstructions();
-        long totalBranches = this.getCoveredBranches() + this.getMissedBranches();
+        long coveredInstructions = this.getTotalInstructions() - this.getMissedInstructions();
+        long coveredBranches = this.getTotalBranches() - this.getMissedBranches();
         String htmlString = "<tr>\n" +
                 "    <td>Total</td>\n" +
-                "    <td class=\"bar\">"+String.format("%,d", this.getCoveredInstructions())+" of "+String.format("%,d", totalInstructions)+"</td>\n" +
-                "    <td class=\"ctr2\" id=\"c5\">"+ percentage(this.getCoveredInstructions(), totalInstructions) +"</td>\n" +
-                "    <td class=\"bar\">"+String.format("%,d", this.getCoveredBranches())+" of "+String.format("%,d", totalBranches)+"</td>\n" +
-                "    <td class=\"ctr2\" id=\"e5\">"+ percentage(this.getCoveredBranches(), totalBranches) +"</td>\n" +
+                "    <td class=\"bar\">"+String.format("%,d", this.getMissedInstructions())+" of "+String.format("%,d", this.getTotalInstructions())+"</td>\n" +
+                "    <td class=\"ctr2\" id=\"c5\">"+ percentage(coveredInstructions, this.getTotalInstructions()) +"</td>\n" +
+                "    <td class=\"bar\">"+String.format("%,d", this.getMissedBranches())+" of "+String.format("%,d", this.getTotalBranches())+"</td>\n" +
+                "    <td class=\"ctr2\" id=\"e5\">"+ percentage(coveredBranches, this.getTotalBranches()) +"</td>\n" +
                 "    <td class=\"ctr1\" id=\"f2\">"+ String.format("%,d", this.getMissedCyclomaticComplexity()) +"</td>\n" +
                 "    <td class=\"ctr2\" id=\"g2\">"+ String.format("%,d", this.getCyclomaticComplexity()) +"</td>\n" +
                 "    <td class=\"ctr1\" id=\"h2\">"+ String.format("%,d", this.getMissedLines()) +"</td>\n" +
