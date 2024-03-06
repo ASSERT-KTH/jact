@@ -355,7 +355,7 @@ public class JacocoHTMLAugmenter {
         }
         try {
             writeHTMLStringToFile(REPORTPATH + "/index.html", totalDepUsage.usageToHTML("dependencies", false));
-            writeHTMLStringToFile(REPORTPATH + "dependencies/index.html", totalDepUsage.totalUsageToHTML());
+            writeHTMLTotalToFile(REPORTPATH + "dependencies/index.html", totalDepUsage.totalUsageToHTML());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -390,7 +390,7 @@ public class JacocoHTMLAugmenter {
                     try {
                         // Writing the dependency total as an entry
                         writeHTMLStringToFile(currDir + "/index.html", childTotal.usageToHTML("transitive-dependencies", false));
-                        writeHTMLStringToFile(currDir + "/transitive-dependencies/index.html", childTotal.totalUsageToHTML());
+                        writeHTMLTotalToFile(currDir + "/transitive-dependencies/index.html", childTotal.totalUsageToHTML());
                         // Writing the total within the transitive dependency
                     } catch (IOException e) {
                         throw new RuntimeException(e);
@@ -436,7 +436,10 @@ public class JacocoHTMLAugmenter {
                         writtenEntryPaths.add(path);
                         System.out.println("WRITING TO: " + parentDir + " " + "WITH " + currDir.getName());
                         writeHTMLStringToFile(parentDir + "/index.html", currDependency.dependencyUsage.usageToHTML(currDir.getName(), false));
-                        writeHTMLStringToFile(currDir + "/index.html", currDependency.dependencyUsage.totalUsageToHTML());
+                        if(new File(currDir + "/index.html").exists()){
+                            writeHTMLTotalToFile(currDir + "/index.html", currDependency.dependencyUsage.totalUsageToHTML());
+                        }
+
 
                         // Writing the total within the transitive dependency
                     } catch (IOException e) {
@@ -522,8 +525,11 @@ public class JacocoHTMLAugmenter {
                         // Write the entire <tr> element to each path
                         StringBuilder trContent = new StringBuilder(line).append("\n");
                         if(matchedDep.getId() != null){
-                            extractAndAddPackageTotal(matchedDep.getReportPaths().getFirst() + "/" +
-                                    packageName + "/index.html", matchedDep, packageName);
+                            if(new File(matchedDep.getReportPaths().getFirst() + "/" +
+                                    packageName + "/index.html").exists()){
+                                extractAndAddPackageTotal(matchedDep.getReportPaths().getFirst() + "/" +
+                                        packageName + "/index.html", matchedDep, packageName);
+                            }
                         }
                         if (!matchedDep.getReportPaths().isEmpty()) {
                             for (String path : matchedDep.getReportPaths()) {
@@ -811,6 +817,56 @@ public class JacocoHTMLAugmenter {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath, true))) {
             writer.write(inputString);
         }
+    }
+
+    public static void writeHTMLTotalToFile(String outputFilePath, String inputString) throws IOException {
+        // Create a temporary file to store the modified content
+        File tempFile = new File(outputFilePath + ".temp");
+        BufferedReader reader = null;
+        BufferedWriter writer = null;
+
+        try {
+            reader = new BufferedReader(new FileReader(outputFilePath));
+            writer = new BufferedWriter(new FileWriter(tempFile));
+
+            String line;
+            boolean foundMarker = false;
+
+            // Read lines from the original file and write them to the temporary file
+            while ((line = reader.readLine()) != null) {
+                // If the marker is found, insert the input string
+                if (line.contains("REPLACEWITHTOTAL") && !foundMarker) {
+                    writer.write(inputString);
+                    writer.newLine();
+                    foundMarker = true; // Set the flag to true after inserting the input string
+                } else {
+                    // Write the line to the temporary file only if it doesn't contain the marker
+                    writer.write(line);
+                    writer.newLine();
+                }
+            }
+
+            // If the marker was not found, and inputString was not inserted, insert it at the end of the file
+            if (!foundMarker) {
+                writer.write(inputString);
+                writer.newLine();
+            }
+        } finally {
+            // Close the reader and writer
+            if (reader != null) {
+                reader.close();
+            }
+            if (writer != null) {
+                writer.close();
+            }
+        }
+
+        // Delete the original file
+        File originalFile = new File(outputFilePath);
+        originalFile.delete();
+
+        // Rename the temporary file to the original file
+        tempFile.renameTo(originalFile);
     }
 
     public static String loadTemplateWithReplacement(String resourceName, String dependencyName) throws IOException {
