@@ -298,7 +298,7 @@ public class JacocoHTMLAugmenter {
             // Write total here:
             extractAndAppendOverallTotal(inputFilePath, outputFilePath);
             extractAndAppendHTML(inputFilePath, outputFilePath, projectNameSet); // Adds the project coverage
-            writeTemplateToFile(templateFilePathX, outputFilePath);
+            //writeTemplateToFile(templateFilePathX, outputFilePath);
             //writeTemplateToFile(templateFilePath2, outputFilePath);
             System.out.println("Writing of the project overview completed successfully.");
         } catch (IOException e) {
