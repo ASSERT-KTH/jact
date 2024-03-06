@@ -348,21 +348,17 @@ public class JacocoHTMLAugmenter {
 
         DependencyUsage totalDepUsage = new DependencyUsage();
         for(ProjectDependency pd : dependencies){
-            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getMissedInstructions());
-            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getCoveredInstructions());
-            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getMissedBranches());
-            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getCoveredBranches());
-            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getMissedCyclomaticComplexity());
-            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getCyclomaticComplexity());
-            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getMissedLines());
-            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getCoveredLines());
-            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getMissedMethods());
-            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getCoveredMethods());
-            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getMissedClasses());
-            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getCoveredClasses());
+            totalDepUsage.addAll(pd.dependencyUsage);
             DependencyUsage currTotal = new DependencyUsage();
             calculateTotalForAllLayers(pd, writtenPaths, writtenEntryPaths, currTotal);
         }
+        try {
+            writeHTMLStringToFile(REPORTPATH + "/index.html", totalDepUsage.usageToHTML("dependencies"));
+            writeHTMLStringToFile(REPORTPATH + "dependencies/index.html", totalDepUsage.totalUsageToHTML());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 
@@ -393,6 +389,7 @@ public class JacocoHTMLAugmenter {
                     try {
                         // Writing the dependency total as an entry
                         writeHTMLStringToFile(currDir + "/index.html", childTotal.usageToHTML("transitive-dependencies"));
+                        writeHTMLStringToFile(currDir + "/transitive-dependencies/index.html", childTotal.totalUsageToHTML());
                         // Writing the total within the transitive dependency
                     } catch (IOException e) {
                         throw new RuntimeException(e);
@@ -438,7 +435,7 @@ public class JacocoHTMLAugmenter {
                         writtenEntryPaths.add(path);
                         System.out.println("WRITING TO: " + parentDir + " " + "WITH " + currDir.getName());
                         writeHTMLStringToFile(parentDir + "/index.html", currDependency.dependencyUsage.usageToHTML(currDir.getName()));
-
+                        writeHTMLStringToFile(currDir + "/index.html", currDependency.dependencyUsage.totalUsageToHTML());
 
                         // Writing the total within the transitive dependency
                     } catch (IOException e) {
