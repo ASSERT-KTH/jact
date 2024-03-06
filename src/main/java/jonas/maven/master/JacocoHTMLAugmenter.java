@@ -345,9 +345,25 @@ public class JacocoHTMLAugmenter {
 
         List<String> writtenPaths = new ArrayList<>();
         List<String> writtenEntryPaths = new ArrayList<>();
+
+        DependencyUsage totalDepUsage = new DependencyUsage();
         for(ProjectDependency pd : dependencies){
-            calculateTotalForAllLayers(pd, writtenPaths, writtenEntryPaths);
+            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getMissedInstructions());
+            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getCoveredInstructions());
+            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getMissedBranches());
+            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getCoveredBranches());
+            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getMissedCyclomaticComplexity());
+            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getCyclomaticComplexity());
+            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getMissedLines());
+            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getCoveredLines());
+            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getMissedMethods());
+            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getCoveredMethods());
+            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getMissedClasses());
+            totalDepUsage.addMissedInstructions(pd.dependencyUsage.getCoveredClasses());
+            DependencyUsage currTotal = new DependencyUsage();
+            calculateTotalForAllLayers(pd, writtenPaths, writtenEntryPaths, currTotal);
         }
+
     }
 
     public static ProjectDependency dirNameToDep(String directoryName, List<ProjectDependency> dependencies){
@@ -359,45 +375,47 @@ public class JacocoHTMLAugmenter {
         throw new RuntimeException("Could not find a matching dependency.");
     }
 
-    public static DependencyUsage calculateTotalForAllLayers(ProjectDependency currDependency, List<String> writtenPaths, List<String> writtenEntryPaths){
+    public static DependencyUsage calculateTotalForAllLayers(ProjectDependency currDependency, List<String> writtenPaths, List<String> writtenEntryPaths, DependencyUsage currTotal ){
         List<String> writtenTotalPaths = new ArrayList<>();
         // Keep track of dependencies that have already been checked out.
-        DependencyUsage currTotal = new DependencyUsage();
+        //DependencyUsage currTotal = new DependencyUsage();
             if(!currDependency.getChildDeps().isEmpty()){
                 DependencyUsage childTotal;
                 for(ProjectDependency child : currDependency.getChildDeps()){
-                    childTotal = calculateTotalForAllLayers(child, writtenPaths, writtenEntryPaths);
-                    currTotal.addMissedInstructions(childTotal.getMissedInstructions());
-                    currTotal.addMissedInstructions(childTotal.getCoveredInstructions());
-                    currTotal.addMissedInstructions(childTotal.getMissedBranches());
-                    currTotal.addMissedInstructions(childTotal.getCoveredBranches());
-                    currTotal.addMissedInstructions(childTotal.getMissedCyclomaticComplexity());
-                    currTotal.addMissedInstructions(childTotal.getCyclomaticComplexity());
-                    currTotal.addMissedInstructions(childTotal.getMissedLines());
-                    currTotal.addMissedInstructions(childTotal.getCoveredLines());
-                    currTotal.addMissedInstructions(childTotal.getMissedMethods());
-                    currTotal.addMissedInstructions(childTotal.getCoveredMethods());
-                    currTotal.addMissedInstructions(childTotal.getMissedClasses());
-                    currTotal.addMissedInstructions(childTotal.getCoveredClasses());
+                    childTotal = calculateTotalForAllLayers(child, writtenPaths, writtenEntryPaths, currTotal);
+                    currTotal.addAll(childTotal);
+                }
+
+                // Here I have the total for all the child dependencies:
+                for (String path : currDependency.getReportPaths()) {
+                    //System.out.println("DEP: " + currDependency.getId() + " PATH: " + path);
+                    File currDir = new File(path);
+                    File parentDir = currDir.getParentFile();
+                    File grandParentDir = parentDir.getParentFile();
+                    if (!writtenPaths.contains(path)) {
+                        //writtenPaths.add(path);
+                        // Needs to be moved and checked
+                        try {
+                            // Write the total for its own index.html
+                            writeHTMLStringToFile(path + "/transitive-dependencies/index.html", currTotal.totalUsageToHTML());
+                            writeHTMLStringToFile(path + "/transitive-dependencies/index.html", "\n</tfoot>\n<tbody>\n");
+
+
+                            //writeHTMLStringToFile(parentDir + "/index.html", currDependency.dependencyUsage.totalUsageToHTML());
+                            //writeHTMLStringToFile(parentDir + "/index.html", "\n</tfoot>\n<tbody>\n");
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
                 }
             }
             // Calculate the total.
-            currTotal.addMissedInstructions(currDependency.dependencyUsage.getMissedInstructions());
-            currTotal.addMissedInstructions(currDependency.dependencyUsage.getCoveredInstructions());
-            currTotal.addMissedInstructions(currDependency.dependencyUsage.getMissedBranches());
-            currTotal.addMissedInstructions(currDependency.dependencyUsage.getCoveredBranches());
-            currTotal.addMissedInstructions(currDependency.dependencyUsage.getMissedCyclomaticComplexity());
-            currTotal.addMissedInstructions(currDependency.dependencyUsage.getCyclomaticComplexity());
-            currTotal.addMissedInstructions(currDependency.dependencyUsage.getMissedLines());
-            currTotal.addMissedInstructions(currDependency.dependencyUsage.getCoveredLines());
-            currTotal.addMissedInstructions(currDependency.dependencyUsage.getMissedMethods());
-            currTotal.addMissedInstructions(currDependency.dependencyUsage.getCoveredMethods());
-            currTotal.addMissedInstructions(currDependency.dependencyUsage.getMissedClasses());
-            currTotal.addMissedInstructions(currDependency.dependencyUsage.getCoveredClasses());
+            currTotal.addAll(currDependency.dependencyUsage);
 
 
             // Write here
             for (String path : currDependency.getReportPaths()) {
+                System.out.println("DEP: " + currDependency.getId() + " PATH: " + path);
                 File currDir = new File(path);
                 File parentDir = currDir.getParentFile();
                 File grandParentDir = parentDir.getParentFile();
@@ -406,8 +424,12 @@ public class JacocoHTMLAugmenter {
                     // Needs to be moved and checked
                     try {
                         // Write the total for its own index.html
-                        writeHTMLStringToFile(path + "/index.html", currDependency.dependencyUsage.totalUsageToHTML());
+                        writeHTMLStringToFile(path + "/index.html", currTotal.totalUsageToHTML());
                         writeHTMLStringToFile(path + "/index.html", "\n</tfoot>\n<tbody>\n");
+
+
+                        //writeHTMLStringToFile(parentDir + "/index.html", currDependency.dependencyUsage.totalUsageToHTML());
+                        //writeHTMLStringToFile(parentDir + "/index.html", "\n</tfoot>\n<tbody>\n");
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -421,6 +443,8 @@ public class JacocoHTMLAugmenter {
                         // Writing entry for Dependencies or Transitive-Dependencies
                         System.out.println("WRITING TO: " + grandParentDir + " " + "WITH " + parentDir.getName());
                         writeHTMLStringToFile(grandParentDir + "/index.html", currTotal.usageToHTML(parentDir.getName()));
+
+                        // Writing the total within the transitive dependency
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -507,7 +531,7 @@ public class JacocoHTMLAugmenter {
                             if (line.contains("</tr>")) {
                                 break; // Stop processing when encountering </tr>
                             }
-                            if(entryIndex > 0){
+                            if(entryIndex > 0 && matchedDep.getId() != null){
                                 extractUsage(line, entryIndex, matchedDep);
                             }
                             entryIndex++;
@@ -580,6 +604,9 @@ public class JacocoHTMLAugmenter {
             case 6:
                 // Covered cyclomatic complexity
                 matchedDep.dependencyUsage.addCyclomaticComplexity(extractUsageNumber(line));
+                if(matchedDep.getId().equals("com.google.code.findbugs:jsr305:3.0.2")){
+                    System.out.println("CHECK ME OUT: "  + matchedDep.dependencyUsage.getCyclomaticComplexity());
+                }
                 break;
             case 7:
                 // Missed Lines
@@ -614,6 +641,7 @@ public class JacocoHTMLAugmenter {
 
     public static long extractUsageNumber(String input) {
         // Define a regex pattern to match the number after id= and before </td>
+        //Pattern pattern = Pattern.compile("id=\"\\w+\">(\\d{1,3}(?:,\\d{3})*)</td>");
         Pattern pattern = Pattern.compile("id=\"\\w+\">(\\d{1,3}(?:,\\d{3})*)</td>");
         Matcher matcher = pattern.matcher(input);
 

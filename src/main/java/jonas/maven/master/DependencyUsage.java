@@ -131,6 +131,21 @@ public class DependencyUsage {
         return String.format("%d%%", roundedPercentage);
     }
 
+    public void addAll(DependencyUsage depUsage){
+        this.addMissedInstructions(depUsage.getMissedInstructions());
+        this.addCoveredInstructions(depUsage.getCoveredInstructions());
+        this.addMissedBranches(depUsage.getMissedBranches());
+        this.addCoveredBranches(depUsage.getCoveredBranches());
+        this.addMissedCyclomaticComplexity(depUsage.getMissedCyclomaticComplexity());
+        this.addCyclomaticComplexity(depUsage.getCyclomaticComplexity());
+        this.addMissedLines(depUsage.getMissedLines());
+        this.addCoveredLines(depUsage.getCoveredLines());
+        this.addMissedInstructions(depUsage.getMissedMethods());
+        this.addCoveredInstructions(depUsage.getCoveredMethods());
+        this.addMissedClasses(depUsage.getMissedClasses());
+        this.addCoveredClasses(depUsage.getCoveredClasses());
+    }
+
     public String usageToHTML(String dependencyDirName){
 
         // TODO fix the width of the bars
