@@ -1,7 +1,13 @@
 package jonas.maven.master;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static jonas.maven.master.JacocoHTMLAugmenter.REPORTPATH;
+import static jonas.maven.master.JacocoHTMLAugmenter.writeHTMLStringToFile;
 
 public class ProjectDependency {
     private String id;
@@ -13,6 +19,7 @@ public class ProjectDependency {
     private List<ProjectDependency> parents = new ArrayList<>();
     private List<String> raportPaths = new ArrayList<>();
     public DependencyUsage dependencyUsage = new DependencyUsage();
+    public Map<String, DependencyUsage> packageUsageMap = new HashMap<>();
 
     public boolean writtenToFile = false;
 
@@ -124,23 +131,18 @@ public class ProjectDependency {
         return sb.toString();
     }
 
-    public static String formatNumber(long number) {
-        if (number < 0) {
-            return "-" + formatNumber(-number);
-        }
-        if (number < 1000) {
-            return Long.toString(number);
-        }
+    public void writePackagesToFile() {
+        // Iterate through the map entries
+        for (Map.Entry<String, DependencyUsage> entry : this.packageUsageMap.entrySet()) {
+            for(String path : this.getReportPaths()){
+                try {
+                    writeHTMLStringToFile(path + "/index.html", entry.getValue().usageToHTML(entry.getKey(), true));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
 
-        String[] suffixes = new String[]{"", "thousand", "million", "billion", "trillion", "quadrillion", "quintillion"};
-        int index = 0;
-
-        while (number >= 1000) {
-            number /= 1000;
-            index++;
         }
-
-        return String.format("%,d %s", number, suffixes[index]);
     }
 
 }

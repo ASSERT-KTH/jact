@@ -109,12 +109,12 @@ public class JacocoHTMLAugmenter {
                                             throw new RuntimeException(e);
                                         }
                                     }
-                                    try {
-                                        //writeModifiedTemplateToFile("depEntry.html", parentDir + "/index.html", depToDirName(matchedDep));
-                                        writeHTMLStringToFile(parentDir + "/index.html", matchedDep.dependencyUsage.usageToHTML(depToDirName(matchedDep)));
-                                    } catch (IOException e) {
-                                        throw new RuntimeException(e);
-                                    }
+//                                    try {
+//                                        //writeModifiedTemplateToFile("depEntry.html", parentDir + "/index.html", depToDirName(matchedDep));
+//                                        writeHTMLStringToFile(parentDir + "/index.html", matchedDep.dependencyUsage.usageToHTML(depToDirName(matchedDep), false));
+//                                    } catch (IOException e) {
+//                                        throw new RuntimeException(e);
+//                                    }
 
                                 }
                             }
@@ -296,7 +296,7 @@ public class JacocoHTMLAugmenter {
         try {
             writeTemplateToFile(templateFilePath1, outputFilePath);
             // Write total here:
-            extractAndAppendOverallTotal(inputFilePath, outputFilePath);
+            //extractAndAppendOverallTotal(inputFilePath, outputFilePath);
             extractAndAppendHTML(inputFilePath, outputFilePath, projectNameSet); // Adds the project coverage
             //writeTemplateToFile(templateFilePathX, outputFilePath);
             //writeTemplateToFile(templateFilePath2, outputFilePath);
@@ -348,12 +348,13 @@ public class JacocoHTMLAugmenter {
 
         DependencyUsage totalDepUsage = new DependencyUsage();
         for(ProjectDependency pd : dependencies){
+            pd.writePackagesToFile();
             totalDepUsage.addAll(pd.dependencyUsage);
             DependencyUsage currTotal = new DependencyUsage();
             calculateTotalForAllLayers(pd, writtenPaths, writtenEntryPaths, currTotal);
         }
         try {
-            writeHTMLStringToFile(REPORTPATH + "/index.html", totalDepUsage.usageToHTML("dependencies"));
+            writeHTMLStringToFile(REPORTPATH + "/index.html", totalDepUsage.usageToHTML("dependencies", false));
             writeHTMLStringToFile(REPORTPATH + "dependencies/index.html", totalDepUsage.totalUsageToHTML());
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -388,7 +389,7 @@ public class JacocoHTMLAugmenter {
                     File grandParentDir = parentDir.getParentFile();
                     try {
                         // Writing the dependency total as an entry
-                        writeHTMLStringToFile(currDir + "/index.html", childTotal.usageToHTML("transitive-dependencies"));
+                        writeHTMLStringToFile(currDir + "/index.html", childTotal.usageToHTML("transitive-dependencies", false));
                         writeHTMLStringToFile(currDir + "/transitive-dependencies/index.html", childTotal.totalUsageToHTML());
                         // Writing the total within the transitive dependency
                     } catch (IOException e) {
@@ -434,7 +435,7 @@ public class JacocoHTMLAugmenter {
                         //writeHTMLStringToFile(currDir + "/index.html", currDependency.dependencyUsage.totalUsageToHTML());
                         writtenEntryPaths.add(path);
                         System.out.println("WRITING TO: " + parentDir + " " + "WITH " + currDir.getName());
-                        writeHTMLStringToFile(parentDir + "/index.html", currDependency.dependencyUsage.usageToHTML(currDir.getName()));
+                        writeHTMLStringToFile(parentDir + "/index.html", currDependency.dependencyUsage.usageToHTML(currDir.getName(), false));
                         writeHTMLStringToFile(currDir + "/index.html", currDependency.dependencyUsage.totalUsageToHTML());
 
                         // Writing the total within the transitive dependency
@@ -520,16 +521,9 @@ public class JacocoHTMLAugmenter {
                         ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(packageName);
                         // Write the entire <tr> element to each path
                         StringBuilder trContent = new StringBuilder(line).append("\n");
-                        int entryIndex = 1;
-                        while ((line = br.readLine()) != null) {
-                            trContent.append(line).append("\n");
-                            if (line.contains("</tr>")) {
-                                break; // Stop processing when encountering </tr>
-                            }
-                            if(entryIndex > 0 && matchedDep.getId() != null){
-                                extractUsage(line, entryIndex, matchedDep);
-                            }
-                            entryIndex++;
+                        if(matchedDep.getId() != null){
+                            extractAndAddPackageTotal(matchedDep.getReportPaths().getFirst() + "/" +
+                                    packageName + "/index.html", matchedDep, packageName);
                         }
                         if (!matchedDep.getReportPaths().isEmpty()) {
                             for (String path : matchedDep.getReportPaths()) {
@@ -543,9 +537,9 @@ public class JacocoHTMLAugmenter {
                                     String indexPath = new File(parentDir, "index.html").getAbsolutePath();
                                     indexPath = path + "/index.html";
                                     // Write to the parent directory's index.html file
-                                    try (BufferedWriter bw = new BufferedWriter(new FileWriter(indexPath, true))) {
-                                        bw.write(trContent.toString());
-                                    }
+//                                    try (BufferedWriter bw = new BufferedWriter(new FileWriter(indexPath, true))) {
+//                                        bw.write(trContent.toString());
+//                                    }
                                 }
                             }
                         }
@@ -572,13 +566,15 @@ public class JacocoHTMLAugmenter {
     }
 
 
-    private static void extractUsage(String line, int entryIndex, ProjectDependency matchedDep){
+    private static void extractUsage(String line, int entryIndex, ProjectDependency matchedDep, DependencyUsage packageUsage){
         switch(entryIndex) {
             case 1:
                 // Missed and Covered instructions
                 long[] instrUsage = extractBranchNInstrUsage(line);
                 matchedDep.dependencyUsage.addMissedInstructions(instrUsage[0]);
                 matchedDep.dependencyUsage.addCoveredInstructions(instrUsage[1]);
+                packageUsage.addMissedInstructions(instrUsage[0]);
+                packageUsage.addCoveredInstructions(instrUsage[1]);
                 if(matchedDep.getId().equals("com.google.code.findbugs:jsr305:3.0.2")){
                     System.out.println("CHECK ME OUT: \n"  + matchedDep.dependencyUsage.getCoveredInstructions() + " of " +
                             matchedDep.dependencyUsage.getMissedInstructions());
@@ -593,6 +589,8 @@ public class JacocoHTMLAugmenter {
                 long[] branchUsage = extractBranchNInstrUsage(line);
                 matchedDep.dependencyUsage.addMissedBranches(branchUsage[0]);
                 matchedDep.dependencyUsage.addCoveredBranches(branchUsage[1]);
+                packageUsage.addMissedBranches(branchUsage[0]);
+                packageUsage.addCoveredBranches(branchUsage[1]);
                 break;
             case 4:
                 // Percentage (Don't care about this now)
@@ -600,34 +598,42 @@ public class JacocoHTMLAugmenter {
             case 5:
                 // Missed cyclomatic complexity
                 matchedDep.dependencyUsage.addMissedCyclomaticComplexity(extractUsageNumber(line));
+                packageUsage.addMissedCyclomaticComplexity(extractUsageNumber(line));
                 break;
             case 6:
                 // Covered cyclomatic complexity
                 matchedDep.dependencyUsage.addCyclomaticComplexity(extractUsageNumber(line));
+                packageUsage.addCyclomaticComplexity(extractUsageNumber(line));
                 break;
             case 7:
                 // Missed Lines
                 matchedDep.dependencyUsage.addMissedLines(extractUsageNumber(line));
+                packageUsage.addMissedLines(extractUsageNumber(line));
                 break;
             case 8:
                 // Covered Lines
                 matchedDep.dependencyUsage.addCoveredLines(extractUsageNumber(line));
+                packageUsage.addCoveredLines(extractUsageNumber(line));
                 break;
             case 9:
                 // Missed Methods
                 matchedDep.dependencyUsage.addMissedMethods(extractUsageNumber(line));
+                packageUsage.addMissedMethods(extractUsageNumber(line));
                 break;
             case 10:
                 // Covered Methods
                 matchedDep.dependencyUsage.addCoveredMethods(extractUsageNumber(line));
+                packageUsage.addCoveredMethods(extractUsageNumber(line));
                 break;
             case 11:
                 // Missed Classes
                 matchedDep.dependencyUsage.addMissedClasses(extractUsageNumber(line));
+                packageUsage.addMissedClasses(extractUsageNumber(line));
                 break;
             case 12:
                 // Covered Classes
                 matchedDep.dependencyUsage.addCoveredClasses(extractUsageNumber(line));
+                packageUsage.addCoveredClasses(extractUsageNumber(line));
                 break;
             default:
                 System.out.println("Could not extract usage of line: " + line);
@@ -637,9 +643,8 @@ public class JacocoHTMLAugmenter {
 
 
     public static long extractUsageNumber(String input) {
-        // Define a regex pattern to match the number after id= and before </td>
-        //Pattern pattern = Pattern.compile("id=\"\\w+\">(\\d{1,3}(?:,\\d{3})*)</td>");
-        Pattern pattern = Pattern.compile("id=\"\\w+\">(\\d{1,3}(?:,\\d{3})*)</td>");
+        // Define a regex pattern to match the number within <td> tags
+        Pattern pattern = Pattern.compile("<td[^>]*>(\\d+(?:,\\d+)*)</td>");
         Matcher matcher = pattern.matcher(input);
 
         if (matcher.find()) {
@@ -652,32 +657,34 @@ public class JacocoHTMLAugmenter {
                 return 0L; // Or handle the error as appropriate
             }
         } else {
-            System.out.println("No match found.");
+            System.out.println("No match found for extracting number from <td> tag.");
             return 0L; // Or handle the absence of match as appropriate
         }
     }
 
     public static long[] extractBranchNInstrUsage(String input) {
-        // Define regex patterns to match the numbers after title= inside the <img> tags
-        Pattern pattern = Pattern.compile("<img\\s+src=\"jacoco-resources/(?:red|green)bar.gif\"[^>]*title=\"(\\d{1,3}(?:,\\d{3})*)\"");
+        // Define regex pattern to match the numbers inside <td> tags
+        Pattern pattern = Pattern.compile("<td[^>]*>(\\d+(?:,\\d+)*)\\s+of\\s+(\\d+(?:,\\d+)*)</td>");
         Matcher matcher = pattern.matcher(input);
 
         long[] numbers = new long[2];
         int index = 0;
 
-        while (matcher.find()) {
-            String numberStr = matcher.group(1); // Extract the matched number string
-            // Remove commas and parse the string as Long
-            try {
-                numbers[index] = Long.parseLong(numberStr.replace(",", ""));
-            } catch (NumberFormatException e) {
-                System.out.println("Error parsing number: " + e.getMessage());
-                numbers[index] = 0L; // Or handle the error as appropriate
+        if (matcher.find()) {
+            for (int i = 1; i <= 2; i++) {
+                String numberStr = matcher.group(i); // Extract the matched number string
+                // Remove commas and parse the string as Long
+                try {
+                    numbers[index] = Long.parseLong(numberStr.replace(",", ""));
+                } catch (NumberFormatException e) {
+                    System.out.println("Error parsing number: " + e.getMessage());
+                    numbers[index] = 0L; // Or handle the error as appropriate
+                }
+                index++;
             }
-            index++;
         }
 
-        // If only one number found (uncovered), set covered to 0
+        // If only one number found, set the second number to 0
         if (index == 1) {
             numbers[1] = 0L;
         }
@@ -686,47 +693,54 @@ public class JacocoHTMLAugmenter {
     }
 
 
-    public static void extractAndAppendOverallTotal(String inputFilePath, String outputFilePath) throws IOException {
-        try (BufferedReader br = new BufferedReader(new FileReader(inputFilePath));
-             BufferedWriter bw = new BufferedWriter(new FileWriter(outputFilePath, true))) {
+    public static void extractAndAddPackageTotal(String inputFilePath, ProjectDependency matchedDep, String packageName) throws IOException {
+        // Format the index.html report:
+        try {
+            // Read the HTML file
+            File inputFile = new File(inputFilePath);
+            Document doc = Jsoup.parse(inputFile, "UTF-8");
+
+            String formattedHtml = doc.outerHtml();
+
+            // Write the formatted HTML back to the original file, overwriting its previous content
+            org.apache.commons.io.FileUtils.writeStringToFile(inputFile, formattedHtml, "UTF-8");
+        } catch (IOException e) {
+            System.err.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader(inputFilePath))) {
 
             String line;
 
             // Flag to indicate if we are inside the <tbody> tag
             boolean insideTbody = false;
-            // Flag to indicate if the current <tr> element contains the specified string
-            boolean containsString = false;
-            // StringBuilder to store content of current <tr> element
-            StringBuilder trContent = new StringBuilder();
 
             // Iterate through the input HTML file
             while ((line = br.readLine()) != null) {
                 // Check if we are inside the <tbody> tag
                 if (line.contains("<tfoot>")) {
                     insideTbody = true;
-                }else if(line.contains("</tfoot>")){
-                    bw.write("\n</tfoot>\n<tbody>");
+                    line = br.readLine();
                 }
-
                 // Check if we are inside a <tr> element
                 if (insideTbody && line.contains("<tr>")) {
-                    trContent.setLength(0); // Clear StringBuilder for new <tr> element
-                    trContent.append(line.trim()).append("\n");
-                }
-
-                // Append line to current <tr> element content
-                if (insideTbody && trContent.length() > 0) {
-                    trContent.append(line.trim()).append("\n");
-                }
-
-                // Write content of <tr> element to output if it contains the specified string
-                if (insideTbody && line.contains("</tr>")) {
-                    bw.write(trContent.toString());
-                }
-
-                // Check if we are outside the <tbody> tag
-                if (line.contains("</tfoot>")) {
-                    insideTbody = false;
+                    line = br.readLine();
+                    if (line != null) {
+                        int entryIndex = 1;
+                        DependencyUsage packageUsage = new DependencyUsage();
+                        while ((line = br.readLine()) != null) {
+                            //trContent.append(line).append("\n");
+                            if (line.contains("</tr>")) {
+                                break; // Stop processing when encountering </tr>
+                            }
+                            if (entryIndex > 0 && matchedDep.getId() != null) {
+                                extractUsage(line, entryIndex, matchedDep, packageUsage);
+                            }
+                            entryIndex++;
+                        }
+                        matchedDep.packageUsageMap.put(packageName, packageUsage);
+                    }
                 }
             }
         }

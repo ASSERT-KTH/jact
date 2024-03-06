@@ -146,13 +146,19 @@ public class DependencyUsage {
         this.addCoveredClasses(depUsage.getCoveredClasses());
     }
 
-    public String usageToHTML(String dependencyDirName){
+    public String usageToHTML(String dependencyDirName, Boolean isPackage){
 
         // TODO fix the width of the bars
         long totalInstructions = this.getCoveredInstructions() + this.getMissedInstructions();
         long totalBranches = this.getCoveredBranches() + this.getMissedBranches();
+        String icon;
+        if(isPackage){
+            icon = "el_package";
+        }else{
+            icon = "el_group";
+        }
         String htmlString = "<tr>\n" +
-                "    <td id=\"a47\"><a href=\""+ dependencyDirName +"/index.html\" class=\"el_group\">"+ dependencyDirName +"</a></td>\n" +
+                "    <td id=\"a47\"><a href=\""+ dependencyDirName +"/index.html\" class=\""+ icon +"\">"+ dependencyDirName +"</a></td>\n" +
                 "    <td class=\"bar\" id=\"b5\"><img src=\"jacoco-resources/redbar.gif\" width=\"33\" height=\"10\" title=\""+ String.format("%,d", this.getMissedInstructions()) + "\" alt=\""+ String.format("%,d", this.getMissedInstructions()) + "\">" +
                 "<img src=\"jacoco-resources/greenbar.gif\" width=\"1\" height=\"10\" title=\""+String.format("%,d", this.getCoveredInstructions())+"\" alt=\""+String.format("%,d", this.getCoveredInstructions())+"\"></td>\n" +
                 "    <td class=\"ctr2\" id=\"c5\">"+percentage(this.getCoveredInstructions(), totalInstructions) +"</td>\n" +
@@ -167,7 +173,7 @@ public class DependencyUsage {
                 "    <td class=\"ctr2\" id=\"k1\">"+ String.format("%,d", this.getCoveredMethods()) +"</td>\n" +
                 "    <td class=\"ctr1\" id=\"l13\">"+ String.format("%,d", this.getMissedClasses()) +"</td>\n" +
                 "    <td class=\"ctr2\" id=\"m11\">"+ String.format("%,d", this.getCoveredClasses()) +"</td>\n" +
-                "</tr>";
+                "</tr>\n";
         return htmlString;
     }
 
@@ -190,7 +196,7 @@ public class DependencyUsage {
                 "    <td class=\"ctr2\" id=\"k1\">"+ String.format("%,d", this.getCoveredMethods()) +"</td>\n" +
                 "    <td class=\"ctr1\" id=\"l13\">"+ String.format("%,d", this.getMissedClasses()) +"</td>\n" +
                 "    <td class=\"ctr2\" id=\"m11\">"+ String.format("%,d", this.getCoveredClasses()) +"</td>\n" +
-                "</tr>";
+                "</tr>\n";
         return htmlString;
     }
 
