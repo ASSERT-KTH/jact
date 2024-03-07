@@ -571,9 +571,9 @@ public class JacocoHTMLAugmenter {
                         // Write the entire <tr> element to each path
                         StringBuilder trContent = new StringBuilder(line).append("\n");
                         if(matchedDep.getId() != null){
-                            if(new File(matchedDep.getReportPaths().getFirst() + "/" +
+                            if(new File(matchedDep.getReportPaths().get(0) + "/" +
                                     packageName + "/index.html").exists()){
-                                extractAndAddPackageTotal(matchedDep.getReportPaths().getFirst() + "/" +
+                                extractAndAddPackageTotal(matchedDep.getReportPaths().get(0) + "/" +
                                         packageName + "/index.html", matchedDep, packageName);
                             }
                         }else if(packageName.equals(CompleteCoverageMojo.projectGroupId)){
