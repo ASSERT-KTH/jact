@@ -146,7 +146,7 @@ public class DependencyUsage {
         this.addCoveredClasses(depUsage.getCoveredClasses());
     }
 
-    public String usageToHTML(String dependencyDirName, Boolean isPackage){
+    public String usageToHTML(String dependencyDirName, DependencyUsage total,Boolean isPackage){
 
         // TODO fix the width of the bars
         long coveredInstructions = this.getTotalInstructions() - this.getMissedInstructions();
