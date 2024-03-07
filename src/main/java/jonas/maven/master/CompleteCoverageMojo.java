@@ -14,8 +14,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.*;
 import org.apache.maven.execution.MavenSession;
 
-import static jonas.maven.master.JacocoHTMLAugmenter.createDependencyReports;
-import static jonas.maven.master.JacocoHTMLAugmenter.moveDepDirs;
+import static jonas.maven.master.JacocoHTMLAugmenter.*;
 
 
 /**
@@ -70,8 +69,6 @@ public class CompleteCoverageMojo extends AbstractMojo {
 
         String outputDirectory = project.getBuild().getOutputDirectory();
 
-        //System.out.println("OUTPUT DIRECTORY: " + outputDirectory + "\n");
-
         List<ProjectDependency> projectDependencies = ProjectDependencies.getAllProjectDependencies();
 
         CommandExecutor cmdExec = new CommandExecutor();
@@ -86,20 +83,13 @@ public class CompleteCoverageMojo extends AbstractMojo {
             throw new RuntimeException(e);
         }
 
-
         getLog().info("Creating the complete coverage report.");
         cmdExec.executeJacocoCLI(outputJarName + "-shaded");
 
         getLog().info("Organizing the complete coverage report.");
-        moveDepDirs(projectDependencies);
-        createDependencyReports(project.getGroupId(), projectDependencies);
-
-//        System.out.println("TOTAL INSTRUCTIONS "+ "for " + projectDependencies.getFirst().getId() + " " +
-//                projectDependencies.getFirst().dependencyUsage.getTotalInstructions());
-//
-//        System.out.println("UNCOVERED INSTRUCTIONS "+ "for " + projectDependencies.getFirst().getId() + " " +
-//                projectDependencies.getFirst().dependencyUsage.getMissedInstructions());
-
+        moveReportDirs(projectDependencies);
+        createDependencyReports(projectDependencies);
+        getLog().info("JACT Report Successfully Generated!");
     }
 
 }

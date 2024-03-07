@@ -22,7 +22,7 @@ public class JacocoHTMLAugmenter {
             ":" + CompleteCoverageMojo.version;
 
 
-    public static void moveDepDirs(List<ProjectDependency> dependencies) {
+    public static void moveReportDirs(List<ProjectDependency> dependencies) {
         thisProject.setId(projId);
         // Create a directory for the dependency coverage
         createDir(REPORTPATH + "dependencies");
@@ -86,21 +86,12 @@ public class JacocoHTMLAugmenter {
                                                 throw new RuntimeException(e);
                                             }
                                         }
-
-//                                        try {
-//                                            //writeModifiedTemplateToFile("depEntry.html", parentDir + "/index.html", depToDirName(matchedDep));
-//                                            writeHTMLStringToFile(parentDir + "/index.html", matchedDep.usageToHTML());
-//                                        } catch (IOException e) {
-//                                            throw new RuntimeException(e);
-//                                        }
                                     }
 
                                 } catch (IOException e) {
                                     throw new RuntimeException(e);
                                 }
                             }
-
-                            //writeTemplateToFile(templateFilePath2, outputFilePath);
                         }else{
                             // Handle dependencies with the same transitive dependencies.
                             for(String path : matchedDep.getReportPaths()){
@@ -120,13 +111,6 @@ public class JacocoHTMLAugmenter {
                                             throw new RuntimeException(e);
                                         }
                                     }
-//                                    try {
-//                                        //writeModifiedTemplateToFile("depEntry.html", parentDir + "/index.html", depToDirName(matchedDep));
-//                                        writeHTMLStringToFile(parentDir + "/index.html", matchedDep.dependencyUsage.usageToHTML(depToDirName(matchedDep), false));
-//                                    } catch (IOException e) {
-//                                        throw new RuntimeException(e);
-//                                    }
-
                                 }
                             }
                             System.out.println("REMOVING: " + directory.getPath());
@@ -236,14 +220,13 @@ public class JacocoHTMLAugmenter {
         Path destPath = Paths.get(destDirName).resolve(sourcePath.getFileName());
         try {
             Files.move(sourcePath, destPath);
-            //System.out.println("Moved directory: " + sourcePath.toString() + " to " + destPath.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
 
-    public static void createDependencyReports(String projectName, List<ProjectDependency> dependencies) {
+    public static void createDependencyReports(List<ProjectDependency> dependencies) {
 
         // Rename the original index.html file
         String originalFilePath = REPORTPATH + "index.html";
@@ -278,11 +261,6 @@ public class JacocoHTMLAugmenter {
         }
 
 
-        // Create the individual dependencies report
-
-        // HTML input and output file paths
-
-
         // Create individual reports for each dependency (including transitive).
         try {
             extractAndAppendHTMLDependencies(inputFilePath);
@@ -296,21 +274,10 @@ public class JacocoHTMLAugmenter {
         String outputFilePath = REPORTPATH + "index.html";
         String templateFilePath1 = "overviewTemplateStart.html";
         String templateFilePath2 = "overviewTemplateEnd.html";
-        String templateFilePathX = "overviewEntry.html";
 
-        Set<String> projectNameSet = new HashSet<>();
-
-        // Create sets of the words in the group/artifact-id
-        projectNameSet.addAll(Arrays.asList(projectName.split("[.-]")));
-        //System.out.println(projectNameSet.toString());
         try {
+            // Writes the overview HTML template
             writeTemplateToFile(templateFilePath1, outputFilePath);
-            // Write total here:
-            //extractAndAppendOverallTotal(inputFilePath, outputFilePath);
-            //extractAndAppendHTML(inputFilePath, outputFilePath, projectNameSet); // Adds the project coverage
-            //writeTemplateToFile(templateFilePathX, outputFilePath);
-            //writeTemplateToFile(templateFilePath2, outputFilePath);
-            System.out.println("Writing of the project overview completed successfully.");
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
@@ -318,36 +285,13 @@ public class JacocoHTMLAugmenter {
 
 
         // Create the dependencies overview
-        // Create the dependencies overview
-        // Traverse the "dependencies" directory
-        File reportDir = new File(REPORTPATH + "dependencies");
         outputFilePath = REPORTPATH + "dependencies/index.html";
         templateFilePath1 = "depOverviewTemplateStart.html";
         templateFilePath2 = "depOverviewTemplateEnd.html";
         try {
+            // Writes the HTML template for the Dependency Overview
             writeTemplateToFile(templateFilePath1, outputFilePath);
-            // TODO WRITE THE TOTAL ENTRIES FROM HERE
-//            for(ProjectDependency pd : dependencies) {
-//                for (String path : pd.getReportPaths()) {
-//                    // Get the parent directory of the current path
-//                    File parentDir = new File(path).getParentFile();
-//
-//                    // Ensure parentDir is not null and it's a directory
-//                    if (parentDir != null && parentDir.isDirectory() &&
-//                            (parentDir.getName().equals("transitive-dependencies") ||
-//                                    parentDir.getName().equals("dependencies"))) {
-//                        try {
-//                            writeHTMLStringToFile(parentDir + "/index.html", pd.dependencyUsage.usageToHTML(depToDirName(pd)));
-//                        } catch (IOException e) {
-//                            throw new RuntimeException(e);
-//                        }
-//                    }
-//                }
-//            }
-
-
             //writeTemplateToFile(templateFilePath2, outputFilePath);
-            System.out.println("Writing the dependency overview completed successfully.");
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
@@ -358,16 +302,13 @@ public class JacocoHTMLAugmenter {
 
         DependencyUsage totalDepUsage = new DependencyUsage();
         for(ProjectDependency pd : dependencies){
-
             DependencyUsage currTotal = new DependencyUsage();
             currTotal = calculateTotalForAllLayers(pd, writtenPaths, writtenEntryPaths, currTotal);
             if(!pd.writtenEntryToFile){
                 pd.writtenEntryToFile = true;
                 for (String path : pd.getReportPaths()) {
-                    //System.out.println("DEP: " + currDependency.getId() + " PATH: " + path);
                     File currDir = new File(path);
                     File parentDir = currDir.getParentFile();
-                    File grandParentDir = parentDir.getParentFile();
                     try {
                         writeHTMLStringToFile(parentDir + "/index.html", pd.dependencyUsage.usageToHTML(currDir.getName(), currTotal,false));
                     } catch (IOException e) {
@@ -377,21 +318,22 @@ public class JacocoHTMLAugmenter {
             }
             pd.writePackagesToFile(currTotal);
 
-
             totalDepUsage.addAll(pd.dependencyUsage);
         }
+
         try {
             DependencyUsage overallTotal = new DependencyUsage();
             overallTotal.addAll(totalDepUsage);
             overallTotal.addAll(thisProject.packageUsageMap.get(CompleteCoverageMojo.projectGroupId));
 
+            // Write the total dependency usage AND its entry in the overview
             writeHTMLStringToFile(REPORTPATH + "/index.html", totalDepUsage.usageToHTML("dependencies", overallTotal, false));
             writeHTMLTotalToFile(REPORTPATH + "dependencies/index.html", totalDepUsage.totalUsageToHTML());
 
-            //String test = thisProject.packageUsageMap.get(CompleteCoverageMojo.projectGroupId).usageToHTML(CompleteCoverageMojo.projectGroupId, true);
-            //System.out.println(test);
+            // Write the project overview entry:
             writeHTMLStringToFile(REPORTPATH + "/index.html",
                     thisProject.packageUsageMap.get(CompleteCoverageMojo.projectGroupId).usageToHTML(CompleteCoverageMojo.projectGroupId, overallTotal,true));
+            // Write the overview total: Project + Dependencies (incl. transitive)
             writeHTMLTotalToFile(REPORTPATH + "index.html", overallTotal.totalUsageToHTML());
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -570,6 +512,8 @@ public class JacocoHTMLAugmenter {
                         ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(packageName);
                         // Write the entire <tr> element to each path
                         StringBuilder trContent = new StringBuilder(line).append("\n");
+
+                        // TODO investigate this
                         if(matchedDep.getId() != null){
                             if(new File(matchedDep.getReportPaths().get(0) + "/" +
                                     packageName + "/index.html").exists()){
@@ -580,6 +524,7 @@ public class JacocoHTMLAugmenter {
                             extractAndAddPackageTotal(REPORTPATH + CompleteCoverageMojo.projectGroupId +
                                             "/index.html", thisProject, packageName);
                         }
+                        // TODO REMOVE THIS?
                         if (!matchedDep.getReportPaths().isEmpty()) {
                             for (String path : matchedDep.getReportPaths()) {
                                 // Get the parent directory of the current path
@@ -588,7 +533,6 @@ public class JacocoHTMLAugmenter {
                                 // Ensure parentDir is not null and it's a directory
                                 if (parentDir != null && parentDir.isDirectory()) {
                                     // Construct the path to the parent directory's index.html file
-                                    // TODO refactor this
                                     String indexPath = new File(parentDir, "index.html").getAbsolutePath();
                                     indexPath = path + "/index.html";
                                     // Write to the parent directory's index.html file
@@ -613,10 +557,8 @@ public class JacocoHTMLAugmenter {
 
     // Helper method to extract package name from <tr> element
     private static String extractPackageName(String line) {
-        //System.out.println("PACKAGE NAME");
         int startIndex = line.indexOf("el_package\">") + "el_package\">".length();
         int endIndex = line.indexOf("</a>", startIndex);
-        //System.out.println(line.substring(startIndex, endIndex));
         return line.substring(startIndex, endIndex);
     }
 
@@ -630,11 +572,6 @@ public class JacocoHTMLAugmenter {
                 matchedDep.dependencyUsage.addTotalInstructions(instrUsage[1]);
                 packageUsage.addMissedInstructions(instrUsage[0]);
                 packageUsage.addTotalInstructions(instrUsage[1]);
-//                if(matchedDep.getId().equals("com.google.code.findbugs:jsr305:3.0.2")){
-//                    System.out.println("CHECK ME OUT: \n"  + instrUsage[0] + " of " +
-//                            instrUsage[1]);
-//                    System.out.println("THIS IS THE LINE: " + line);
-//                }
                 break;
             case 2:
                 // Percentage (Don't care about this now)
@@ -709,11 +646,11 @@ public class JacocoHTMLAugmenter {
                 return Long.parseLong(numberStr.replace(",", ""));
             } catch (NumberFormatException e) {
                 System.out.println("Error parsing number: " + e.getMessage());
-                return 0L; // Or handle the error as appropriate
+                return 0L;
             }
         } else {
             System.out.println("No match found for extracting number from <td> tag.");
-            return 0L; // Or handle the absence of match as appropriate
+            return 0L;
         }
     }
 
@@ -733,13 +670,11 @@ public class JacocoHTMLAugmenter {
                     numbers[index] = Long.parseLong(numberStr.replace(",", ""));
                 } catch (NumberFormatException e) {
                     System.out.println("Error parsing number: " + e.getMessage());
-                    numbers[index] = 0L; // Or handle the error as appropriate
+                    numbers[index] = 0L;
                 }
                 index++;
             }
         }
-
-        // If only one number found, set the second number to 0
         if (index == 1) {
             numbers[1] = 0L;
         }
@@ -749,8 +684,6 @@ public class JacocoHTMLAugmenter {
 
 
     public static void extractAndAddPackageTotal(String inputFilePath, ProjectDependency matchedDep, String packageName) throws IOException {
-        //System.out.println("READING: " + inputFilePath);
-        // Format the index.html report:
         try {
             // Read the HTML file
             File inputFile = new File(inputFilePath);
@@ -799,58 +732,6 @@ public class JacocoHTMLAugmenter {
                         matchedDep.packageUsageMap.put(packageName, packageUsage);
                         break;
                     }
-                }
-            }
-        }
-    }
-
-    public static void extractAndAppendHTML(String inputFilePath, String outputFilePath, Set<String> matchSet)
-            throws IOException {
-        try (BufferedReader br = new BufferedReader(new FileReader(inputFilePath));
-             BufferedWriter bw = new BufferedWriter(new FileWriter(outputFilePath, true))) {
-
-            String line;
-
-            // Flag to indicate if we are inside the <tbody> tag
-            boolean insideTbody = false;
-            // Flag to indicate if the current <tr> element contains the specified string
-            boolean containsString = false;
-            // StringBuilder to store content of current <tr> element
-            StringBuilder trContent = new StringBuilder();
-
-            // Iterate through the input HTML file
-            while ((line = br.readLine()) != null) {
-                // Check if we are inside the <tbody> tag
-                if (line.contains("<tbody>")) {
-                    insideTbody = true;
-                }
-
-                // Check if we are inside a <tr> element
-                if (insideTbody && line.contains("<tr>")) {
-                    trContent.setLength(0); // Clear StringBuilder for new <tr> element
-                    trContent.append(line.trim()).append("\n");
-                    containsString = false; // Reset containsString flag for new <tr> element
-                }
-
-                // Append line to current <tr> element content
-                if (insideTbody && trContent.length() > 0) {
-                    trContent.append(line.trim()).append("\n");
-                    if (matchSet.stream().allMatch(line::contains)) {
-                        containsString = true; // Set containsString flag if the line contains the specified string
-                    }
-                }
-
-                // Write content of <tr> element to output if it contains the specified string
-                if (insideTbody && line.contains("</tr>")) {
-                    if (containsString) {
-                        bw.write(trContent.toString());
-                    }
-                }
-
-                // Check if we are outside the <tbody> tag
-                // TODO REMOVE THIS
-                if (line.contains("</tbody>")) {
-                    insideTbody = false;
                 }
             }
         }
