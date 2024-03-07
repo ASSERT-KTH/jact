@@ -1,4 +1,4 @@
-package jonas.maven.master;
+package jact;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -6,8 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static jonas.maven.master.JacocoHTMLAugmenter.REPORTPATH;
-import static jonas.maven.master.JacocoHTMLAugmenter.writeHTMLStringToFile;
+import static jact.JacocoHTMLAugmenter.writeHTMLStringToFile;
 
 public class ProjectDependency {
     private String id;

@@ -1,4 +1,4 @@
-package jonas.maven.master;
+package jact;
 
 import java.io.File;
 import java.io.IOException;

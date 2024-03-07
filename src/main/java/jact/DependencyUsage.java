@@ -1,4 +1,4 @@
-package jonas.maven.master;
+package jact;
 
 public class DependencyUsage {
     // Dependency usage, in their entry order

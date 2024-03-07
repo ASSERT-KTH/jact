@@ -1,6 +1,5 @@
-package jonas.maven.master;
+package jact;
 
-import org.apache.maven.model.Dependency;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import java.io.*;
@@ -8,7 +7,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.sql.Array;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,7 +26,6 @@ public class JacocoHTMLAugmenter {
         createDir(REPORTPATH + "dependencies");
 
         // Copy the JACT logo to the jacoco-resources
-
 
         // Path to jacoco-resources (to be copied to subdirectories)
         copyDirectory(new File(jacocoResPath),

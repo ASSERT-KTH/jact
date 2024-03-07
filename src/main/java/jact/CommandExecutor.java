@@ -1,4 +1,4 @@
-package jonas.maven.master;
+package jact;
 
 import org.apache.maven.plugin.MojoExecutionException;
 
@@ -7,7 +7,6 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 

@@ -1,4 +1,4 @@
-package jonas.maven.master;
+package jact;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import com.google.gson.*;
-import io.github.chains_project.maven_lockfile.graph.DependencyGraph;
 
 public class ProjectDependencies {
 
@@ -20,7 +19,7 @@ public class ProjectDependencies {
     }
 
     private static void generateAllProjectDependencies() {
-        CommandExecutor.generateDependencyLockfile(); // TODO UNCOMMENT THIS LINE AFTER TESTING
+        CommandExecutor.generateDependencyLockfile();
         String filePath = "./target/jact-report/lockfile.json"; // Path to the JSON file
         try (FileReader reader = new FileReader(filePath)) {
             Gson gson = new GsonBuilder().registerTypeAdapter(ProjectDependency.class, new ProjectDependencyDeserializer()).create();
@@ -29,9 +28,6 @@ public class ProjectDependencies {
             for (JsonElement dependencyElement : dependenciesArray) {
                 gson.fromJson(dependencyElement, ProjectDependency.class);
             }
-//            for (ProjectDependency dependency : projectDependencies) {
-//                System.out.println(dependency);
-//            }
         } catch (Exception e) {
             e.printStackTrace();
         }

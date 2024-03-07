@@ -1,4 +1,4 @@
-package jonas.maven.master;
+package jact;
 
 import java.net.URISyntaxException;
 import java.util.*;
@@ -14,7 +14,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.*;
 import org.apache.maven.execution.MavenSession;
 
-import static jonas.maven.master.JacocoHTMLAugmenter.*;
+import static jact.JacocoHTMLAugmenter.*;
 
 
 /**

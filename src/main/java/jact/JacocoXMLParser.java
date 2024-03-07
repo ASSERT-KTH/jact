@@ -1,4 +1,4 @@
-package jonas.maven.master;
+package jact;
 
 import org.apache.maven.model.Dependency;
 import org.w3c.dom.Document;
