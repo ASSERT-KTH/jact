@@ -27,6 +27,9 @@ public class JacocoHTMLAugmenter {
         // Create a directory for the dependency coverage
         createDir(REPORTPATH + "dependencies");
 
+        // Copy the JACT logo to the jacoco-resources
+
+
         // Path to jacoco-resources (to be copied to subdirectories)
         copyDirectory(new File(jacocoResPath),
                 new File(REPORTPATH + "dependencies/jacoco-resources"));
@@ -130,7 +133,6 @@ public class JacocoHTMLAugmenter {
                 }
             }
         }
-
     }
 
     public static String getFullDepPath(ProjectDependency projectDependency){
