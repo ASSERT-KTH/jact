@@ -76,7 +76,10 @@ public class JacocoHTMLAugmenter {
                                             String parentDepName = parentDir.getParentFile().getName();
                                             try {
                                                 writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
-                                                        parentDir + "/index.html", "Transitive Dependencies from: " + parentDepName);
+                                                        parentDir + "/index.html",
+                                                        "<span style=\"display: inline-block;\">Transitive Dependencies from: <br>" +
+                                                                parentDepName+"</span>");
+
                                                 // Write the transitive-dependencies entry
                                                 //writeTemplateToFile("transitiveEntry.html", parentDir.getParentFile() + "/index.html");
                                             } catch (IOException e) {
