@@ -363,8 +363,8 @@ public class JacocoHTMLAugmenter {
             writeHTMLTotalToFile(REPORTPATH + "dependencies/index.html", totalDepUsage.totalUsageToHTML());
 
             totalDepUsage.addAll(thisProject.packageUsageMap.get(CompleteCoverageMojo.projectGroupId)); // Add the project coverage
-            String test = thisProject.packageUsageMap.get(CompleteCoverageMojo.projectGroupId).usageToHTML(CompleteCoverageMojo.projectGroupId, true);
-            System.out.println(test);
+            //String test = thisProject.packageUsageMap.get(CompleteCoverageMojo.projectGroupId).usageToHTML(CompleteCoverageMojo.projectGroupId, true);
+            //System.out.println(test);
             writeHTMLStringToFile(REPORTPATH + "/index.html",
                     thisProject.packageUsageMap.get(CompleteCoverageMojo.projectGroupId).usageToHTML(CompleteCoverageMojo.projectGroupId, true));
             writeHTMLTotalToFile(REPORTPATH + "index.html", totalDepUsage.totalUsageToHTML());
@@ -391,22 +391,29 @@ public class JacocoHTMLAugmenter {
             if(!currDependency.getChildDeps().isEmpty()){
                 DependencyUsage childTotal = new DependencyUsage();
                 for(ProjectDependency child : currDependency.getChildDeps()){
-                    childTotal.addAll(calculateTotalForAllLayers(child, writtenPaths, writtenEntryPaths, currTotal));
+                    DependencyUsage childUsage = new DependencyUsage();
+                    childTotal.addAll(calculateTotalForAllLayers(child, writtenPaths, writtenEntryPaths, childUsage));
                     currDependency.dependencyUsage.addAll(childTotal);
                 }
+
                 for (String path : currDependency.getReportPaths()) {
-                    //System.out.println("DEP: " + currDependency.getId() + " PATH: " + path);
-                    File currDir = new File(path);
-                    File parentDir = currDir.getParentFile();
-                    File grandParentDir = parentDir.getParentFile();
-                    try {
-                        // Writing the dependency total as an entry
-                        writeHTMLStringToFile(currDir + "/index.html", childTotal.usageToHTML("transitive-dependencies", false));
-                        writeHTMLTotalToFile(currDir + "/transitive-dependencies/index.html", childTotal.totalUsageToHTML());
-                        // Writing the total within the transitive dependency
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
+                    if(!writtenPaths.contains(path)){
+                        writtenPaths.add(path);
+                        //System.out.println("DEP: " + currDependency.getId() + " PATH: " + path);
+                        File currDir = new File(path);
+                        File parentDir = currDir.getParentFile();
+                        File grandParentDir = parentDir.getParentFile();
+                        try {
+                            // Writing the dependency total as an entry
+                            System.out.println("Writing total to: " + currDir + "/transitive-dependencies/index.html");
+                            writeHTMLStringToFile(currDir + "/index.html", childTotal.usageToHTML("transitive-dependencies", false));
+                            writeHTMLTotalToFile(currDir + "/transitive-dependencies/index.html", childTotal.totalUsageToHTML());
+                            // Writing the total within the transitive dependency
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
+
                 }
             }
             // Calculate the total.
@@ -417,7 +424,7 @@ public class JacocoHTMLAugmenter {
             if(!currDependency.writtenToFile){
                 currDependency.writtenToFile = true;
                 for (String path : currDependency.getReportPaths()) {
-                    System.out.println("DEP: " + currDependency.getId() + " PATH: " + path);
+                    //System.out.println("DEP: " + currDependency.getId() + " PATH: " + path);
                     File currDir = new File(path);
                     File parentDir = currDir.getParentFile();
                     File grandParentDir = parentDir.getParentFile();
@@ -446,7 +453,7 @@ public class JacocoHTMLAugmenter {
 
                         //writeHTMLStringToFile(currDir + "/index.html", currDependency.dependencyUsage.totalUsageToHTML());
                         writtenEntryPaths.add(path);
-                        System.out.println("WRITING TO: " + parentDir + " " + "WITH " + currDir.getName());
+                        //System.out.println("WRITING TO: " + parentDir + " " + "WITH " + currDir.getName());
                         writeHTMLStringToFile(parentDir + "/index.html", currDependency.dependencyUsage.usageToHTML(currDir.getName(), false));
                         if(new File(currDir + "/index.html").exists()){
                             writeHTMLTotalToFile(currDir + "/index.html", currDependency.dependencyUsage.totalUsageToHTML());
@@ -579,10 +586,10 @@ public class JacocoHTMLAugmenter {
 
     // Helper method to extract package name from <tr> element
     private static String extractPackageName(String line) {
-        System.out.println("PACKAGE NAME");
+        //System.out.println("PACKAGE NAME");
         int startIndex = line.indexOf("el_package\">") + "el_package\">".length();
         int endIndex = line.indexOf("</a>", startIndex);
-        System.out.println(line.substring(startIndex, endIndex));
+        //System.out.println(line.substring(startIndex, endIndex));
         return line.substring(startIndex, endIndex);
     }
 
@@ -596,11 +603,11 @@ public class JacocoHTMLAugmenter {
                 matchedDep.dependencyUsage.addTotalInstructions(instrUsage[1]);
                 packageUsage.addMissedInstructions(instrUsage[0]);
                 packageUsage.addTotalInstructions(instrUsage[1]);
-                if(matchedDep.getId().equals("com.google.code.findbugs:jsr305:3.0.2")){
-                    System.out.println("CHECK ME OUT: \n"  + instrUsage[0] + " of " +
-                            instrUsage[1]);
-                    System.out.println("THIS IS THE LINE: " + line);
-                }
+//                if(matchedDep.getId().equals("com.google.code.findbugs:jsr305:3.0.2")){
+//                    System.out.println("CHECK ME OUT: \n"  + instrUsage[0] + " of " +
+//                            instrUsage[1]);
+//                    System.out.println("THIS IS THE LINE: " + line);
+//                }
                 break;
             case 2:
                 // Percentage (Don't care about this now)
@@ -715,7 +722,7 @@ public class JacocoHTMLAugmenter {
 
 
     public static void extractAndAddPackageTotal(String inputFilePath, ProjectDependency matchedDep, String packageName) throws IOException {
-        System.out.println("READING: " + inputFilePath);
+        //System.out.println("READING: " + inputFilePath);
         // Format the index.html report:
         try {
             // Read the HTML file
