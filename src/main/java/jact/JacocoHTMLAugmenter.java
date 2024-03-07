@@ -363,10 +363,8 @@ public class JacocoHTMLAugmenter {
                 for (String path : currDependency.getReportPaths()) {
                     if(!writtenPaths.contains(path)){
                         writtenPaths.add(path);
-                        //System.out.println("DEP: " + currDependency.getId() + " PATH: " + path);
                         File currDir = new File(path);
                         File parentDir = currDir.getParentFile();
-                        File grandParentDir = parentDir.getParentFile();
                         try {
                             // Writing the dependency total as an entry
                             DependencyUsage totalForBars = currTotal;
@@ -374,7 +372,6 @@ public class JacocoHTMLAugmenter {
                             System.out.println("Writing total to: " + currDir + "/transitive-dependencies/index.html");
                             writeHTMLStringToFile(currDir + "/index.html", childTotal.usageToHTML("transitive-dependencies", totalForBars, false));
                             writeHTMLTotalToFile(currDir + "/transitive-dependencies/index.html", childTotal.totalUsageToHTML());
-                            // Writing the total within the transitive dependency
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
@@ -390,65 +387,16 @@ public class JacocoHTMLAugmenter {
             if(!currDependency.writtenTotalToFile){
                 currDependency.writtenTotalToFile = true;
                 for (String path : currDependency.getReportPaths()) {
-                    //System.out.println("DEP: " + currDependency.getId() + " PATH: " + path);
                     File currDir = new File(path);
-                    File parentDir = currDir.getParentFile();
-                    File grandParentDir = parentDir.getParentFile();
-//                if(!writtenPaths.contains(path)){
-//                    writtenPaths.add(path);
-//                    // Needs to be moved and checked
-//                    try {
-//                        // Write the total for its own index.html
-//                        writeHTMLStringToFile(path + "/index.html", currTotal.totalUsageToHTML());
-//                        writeHTMLStringToFile(path + "/index.html", "\n</tfoot>\n<tbody>\n");
-//
-//
-//                        //writeHTMLStringToFile(parentDir + "/index.html", currDependency.dependencyUsage.totalUsageToHTML());
-//                        //writeHTMLStringToFile(parentDir + "/index.html", "\n</tfoot>\n<tbody>\n");
-//                    } catch (IOException e) {
-//                        throw new RuntimeException(e);
-//                    }
-//                }
-
-//                if(!writtenEntryPaths.contains(parentDir.getPath()) &&
-//                                            (currDir.getName().equals("transitive-dependencies") ||
-//                                                    currDir.getName().equals("dependencies"))){
-//                    writtenEntryPaths.add(parentDir.getPath());
                     try {
                         // Writing the dependency total as an entry
-
-                        //writeHTMLStringToFile(currDir + "/index.html", currDependency.dependencyUsage.totalUsageToHTML());
                         writtenEntryPaths.add(path);
-                        //System.out.println("WRITING TO: " + parentDir + " " + "WITH " + currDir.getName());
-                        //writeHTMLStringToFile(parentDir + "/index.html", currDependency.dependencyUsage.usageToHTML(currDir.getName(), ,false));
                         if(new File(currDir + "/index.html").exists()){
                             writeHTMLTotalToFile(currDir + "/index.html", currDependency.dependencyUsage.totalUsageToHTML());
                         }
-
-
-                        // Writing the total within the transitive dependency
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                    //}
-
-                    // Get the parent directory of the current path
-                    //writtenPaths.add(grandParentDir.getPath());
-
-                    // Ensure parentDir is not null and it's a directory
-//                if (parentDir != null && parentDir.isDirectory() && !currDependency.writtenToFile) {
-//                    try {
-//                        //  &&
-//                        //                            (parentDir.getName().equals("transitive-dependencies") ||
-//                        //                                    parentDir.getName().equals("dependencies"))
-//                        // Writing entry
-//                        writeHTMLStringToFile(parentDir + "/index.html", currDependency.dependencyUsage.usageToHTML(depToDirName(currDependency)));
-//                        currDependency.writtenToFile = true;
-//                    } catch (IOException e) {
-//                        throw new RuntimeException(e);
-//                    }
-//                }
-
                 }
             }
 
@@ -497,7 +445,6 @@ public class JacocoHTMLAugmenter {
                     insideTbody = false;
                 }
 
-                // TODO calculate the total usage here
                 // Check if we are inside a <tr> element
                 if (insideTbody && line.contains("<tr>")) {
                     // Read the next line
@@ -505,12 +452,8 @@ public class JacocoHTMLAugmenter {
                     if (line != null) {
                         // Extract package name from the <tr> element
                         String packageName = extractPackageName(line);
-                        // Call function with package name
                         ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(packageName);
-                        // Write the entire <tr> element to each path
-                        StringBuilder trContent = new StringBuilder(line).append("\n");
 
-                        // TODO investigate this
                         if(matchedDep.getId() != null){
                             if(new File(matchedDep.getReportPaths().get(0) + "/" +
                                     packageName + "/index.html").exists()){
@@ -521,31 +464,7 @@ public class JacocoHTMLAugmenter {
                             extractAndAddPackageTotal(REPORTPATH + CompleteCoverageMojo.projectGroupId +
                                             "/index.html", thisProject, packageName);
                         }
-                        // TODO REMOVE THIS?
-                        if (!matchedDep.getReportPaths().isEmpty()) {
-                            for (String path : matchedDep.getReportPaths()) {
-                                // Get the parent directory of the current path
-                                File parentDir = new File(path).getParentFile();
-
-                                // Ensure parentDir is not null and it's a directory
-                                if (parentDir != null && parentDir.isDirectory()) {
-                                    // Construct the path to the parent directory's index.html file
-                                    String indexPath = new File(parentDir, "index.html").getAbsolutePath();
-                                    indexPath = path + "/index.html";
-                                    // Write to the parent directory's index.html file
-//                                    try (BufferedWriter bw = new BufferedWriter(new FileWriter(indexPath, true))) {
-//                                        bw.write(trContent.toString());
-//                                    }
-                                }
-                            }
-                        }
                     }
-                }
-
-                // Check if we are outside the <tbody> tag
-                // move this to the start of the loop later
-                if (line.contains("</tbody>")) {
-                    insideTbody = false;
                 }
             }
         }
