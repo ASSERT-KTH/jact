@@ -7,6 +7,7 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
@@ -80,11 +81,46 @@ public class CommandExecutor extends CompleteCoverageMojo{
             InputStream inputStream = process.getInputStream();
             String output = readInputStream(inputStream);
             getLog().info(output);
+            copyPNGImage("jact-logo.png", "./target/jact-report/jacoco-resources");
         } catch (IOException | InterruptedException e) {
             throw new MojoExecutionException("Error executing Jacoco CLI", e);
         }
     }
 
+    public static void copyPNGImage(String filename, String destinationDirectory) throws IOException {
+        // Check if the filename ends with .png
+        if (!filename.toLowerCase().endsWith(".png")) {
+            throw new IllegalArgumentException("File is not a PNG image.");
+        }
+
+        // Load the image from src/main/resources folder
+        ClassLoader classLoader = CommandExecutor.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(filename);
+
+        if (inputStream == null) {
+            throw new IOException("File not found in resources: " + filename);
+        }
+
+        // Create the destination directory if it doesn't exist
+        File destinationDir = new File(destinationDirectory);
+        if (!destinationDir.exists()) {
+            destinationDir.mkdirs();
+        }
+
+        // Construct the destination path
+        Path destinationPath = new File(destinationDirectory, filename).toPath();
+
+        // Copy the image to the destination directory
+        try (OutputStream outputStream = new FileOutputStream(destinationPath.toFile())) {
+            byte[] buffer = new byte[4096];
+            int bytesRead;
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, bytesRead);
+            }
+        }
+
+        System.out.println("PNG image copied successfully to: " + destinationPath);
+    }
 
     public static void generateDependencyLockfile(){
         try {

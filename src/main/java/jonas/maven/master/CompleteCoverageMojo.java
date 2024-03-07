@@ -49,6 +49,9 @@ public class CompleteCoverageMojo extends AbstractMojo {
     public static String localRepoPath;
 
     public static Set<String> projGroupIdSet = new HashSet<>();
+    public static String projectGroupId;
+    public static String artifactId;
+    public static String version;
 
     public void execute() throws MojoExecutionException, MojoFailureException {
         projGroupIdSet.addAll(Arrays.asList(project.getGroupId().split("[.-]")));
@@ -56,6 +59,9 @@ public class CompleteCoverageMojo extends AbstractMojo {
         localRepoPath = session.getLocalRepository().getBasedir();
         hostOS = session.getSystemProperties().getProperty("os.name").toLowerCase();
         List<Dependency> dependencies = project.getDependencies();
+        projectGroupId = project.getGroupId();
+        artifactId = project.getArtifactId();
+        version = project.getVersion();
 
         getLog().info("DEPENDENCY INFO:");
         for (Dependency dependency : dependencies) {
@@ -86,7 +92,13 @@ public class CompleteCoverageMojo extends AbstractMojo {
 
         getLog().info("Organizing the complete coverage report.");
         moveDepDirs(projectDependencies);
-        createDependencyReports(project.getGroupId());
+        createDependencyReports(project.getGroupId(), projectDependencies);
+
+//        System.out.println("TOTAL INSTRUCTIONS "+ "for " + projectDependencies.getFirst().getId() + " " +
+//                projectDependencies.getFirst().dependencyUsage.getTotalInstructions());
+//
+//        System.out.println("UNCOVERED INSTRUCTIONS "+ "for " + projectDependencies.getFirst().getId() + " " +
+//                projectDependencies.getFirst().dependencyUsage.getMissedInstructions());
 
     }
 

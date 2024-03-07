@@ -1,7 +1,13 @@
 package jonas.maven.master;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static jonas.maven.master.JacocoHTMLAugmenter.REPORTPATH;
+import static jonas.maven.master.JacocoHTMLAugmenter.writeHTMLStringToFile;
 
 public class ProjectDependency {
     private String id;
@@ -12,6 +18,11 @@ public class ProjectDependency {
     private List<ProjectDependency> children = new ArrayList<>();
     private List<ProjectDependency> parents = new ArrayList<>();
     private List<String> raportPaths = new ArrayList<>();
+    public DependencyUsage dependencyUsage = new DependencyUsage();
+    public Map<String, DependencyUsage> packageUsageMap = new HashMap<>();
+
+    public boolean writtenEntryToFile = false;
+    public boolean writtenTotalToFile = false;
 
 
     public void setId(String id){
@@ -120,4 +131,19 @@ public class ProjectDependency {
         }
         return sb.toString();
     }
+
+    public void writePackagesToFile(DependencyUsage total) {
+        // Iterate through the map entries
+        for (Map.Entry<String, DependencyUsage> entry : this.packageUsageMap.entrySet()) {
+            for(String path : this.getReportPaths()){
+                try {
+                    writeHTMLStringToFile(path + "/index.html", entry.getValue().usageToHTML(entry.getKey(), total,true));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+        }
+    }
+
 }
