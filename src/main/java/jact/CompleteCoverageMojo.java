@@ -56,6 +56,14 @@ public class CompleteCoverageMojo extends AbstractMojo {
         artifactId = project.getArtifactId();
         version = project.getVersion();
 
+        List<String> packages = project.getCompileSourceRoots();
+
+        getLog().info("Packages in project:");
+        for (String packageName : packages) {
+            getLog().info("- " + packageName);
+        }
+
+
         getLog().info("STARTING: JACT - Java Complete Coverage Tracker");
 
         //String outputDirectory = project.getBuild().getOutputDirectory();

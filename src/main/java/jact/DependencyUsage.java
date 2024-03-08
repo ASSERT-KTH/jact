@@ -189,8 +189,6 @@ public class DependencyUsage {
     }
 
     public String totalUsageToHTML(){
-
-        // TODO fix the width of the bars
         long coveredInstructions = this.getTotalInstructions() - this.getMissedInstructions();
         long coveredBranches = this.getTotalBranches() - this.getMissedBranches();
         String htmlString = "<tr>\n" +

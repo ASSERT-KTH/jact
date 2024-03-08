@@ -50,7 +50,7 @@ public class JacocoHTMLAugmenter {
                     String dirName = directory.getName();
                     boolean packageDir = CompleteCoverageMojo.projGroupIdSet.stream().allMatch(dirName::contains);
                     if(!dirName.equals("dependencies") && !dirName.equals("jacoco-resources") && !packageDir){
-                        ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(dirName);
+                        ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(dirName, dependencies);
                         if(matchedDep.getReportPaths().size() == 1){
                             moveDirectory(directory, matchedDep.getReportPaths().get(0));
                             String outputFilePath = matchedDep.getReportPaths().get(0) + "/index.html";
@@ -184,7 +184,7 @@ public class JacocoHTMLAugmenter {
 
         // Create individual reports for each dependency (including transitive).
         try {
-            extractAndAppendHTMLDependencies(inputFilePath);
+            extractAndAppendHTMLDependencies(inputFilePath, dependencies);
             System.out.println("Writing the overview for individual dependencies completed successfully.");
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -353,7 +353,7 @@ public class JacocoHTMLAugmenter {
     }
 
 
-    public static void extractAndAppendHTMLDependencies(String inputFilePath) throws IOException {
+    public static void extractAndAppendHTMLDependencies(String inputFilePath, List<ProjectDependency> dependencies) throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(inputFilePath))) {
             String line;
 
@@ -376,9 +376,22 @@ public class JacocoHTMLAugmenter {
                     if (line != null) {
                         // Extract package name from the <tr> element
                         String packageName = extractPackageName(line);
-                        ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(packageName);
 
-                        if(matchedDep.getId() != null){
+                        ProjectDependency matchedDep = null;
+                        for (ProjectDependency pd : dependencies) {
+                            for (Map.Entry<String, DependencyUsage> entry : pd.packageUsageMap.entrySet()) {
+                                String key = entry.getKey();
+                                if (key.equals(packageName)) {
+                                    matchedDep = pd;
+                                    break;
+                                }
+                            }
+                            if (matchedDep != null) {
+                                break;
+                            }
+                        }
+                        // Do this for all report paths
+                        if(matchedDep != null){
                             if(new File(matchedDep.getReportPaths().get(0) + "/" +
                                     packageName + "/index.html").exists()){
                                 extractAndAddPackageTotal(matchedDep.getReportPaths().get(0) + "/" +
