@@ -25,15 +25,13 @@ public class JacocoHTMLAugmenter {
         // Create a directory for the dependency coverage
         createDir(REPORTPATH + "dependencies");
 
-        // Copy the JACT logo to the jacoco-resources
-
-        // Path to jacoco-resources (to be copied to subdirectories)
+        // Path to jacoco-resources (to be copied to subdirectories for correct icons and styling)
         copyDirectory(new File(jacocoResPath),
                 new File(REPORTPATH + "dependencies/jacoco-resources"));
 
+        // Creates the dependency report directories
         for (ProjectDependency dependency : dependencies) {
             if (!dependency.getScope().equals("test")) {
-                // Create all the dependency directories
                 String fullPath = getFullDepPath(dependency);
 
                 // Adding the path to easily get the report location.
@@ -44,8 +42,8 @@ public class JacocoHTMLAugmenter {
             }
         }
 
-
-        // Traverse the "report" directory
+        // Traverse the "report" directory:
+        // Moves packages to their respective dependency directory and create their `index.html` file
         File reportDir = new File(REPORTPATH);
         if (reportDir.exists() && reportDir.isDirectory()) {
             File[] directories = reportDir.listFiles(File::isDirectory);
@@ -56,7 +54,6 @@ public class JacocoHTMLAugmenter {
                     if(!dirName.equals("dependencies") && !dirName.equals("jacoco-resources") && !packageDir){
                         ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(dirName);
                         if(matchedDep.getReportPaths().size() == 1){
-                            //String path = matchedDep.getReportPaths().get(0);
                             moveDirectory(directory, matchedDep.getReportPaths().get(0));
                             String outputFilePath = matchedDep.getReportPaths().get(0) + "/index.html";
                             if(!new File(outputFilePath).exists()){
@@ -76,9 +73,6 @@ public class JacocoHTMLAugmenter {
                                                         parentDir + "/index.html",
                                                         "<span style=\"display: inline-block;\">Transitive Dependencies from: <br>" +
                                                                 parentDepName+"</span>");
-
-                                                // Write the transitive-dependencies entry
-                                                //writeTemplateToFile("transitiveEntry.html", parentDir.getParentFile() + "/index.html");
                                             } catch (IOException e) {
                                                 throw new RuntimeException(e);
                                             }
@@ -177,7 +171,6 @@ public class JacocoHTMLAugmenter {
         if (!dir.exists()) {
             return;
         }
-
         File[] files = dir.listFiles();
         if (files != null) {
             for (File file : files) {
@@ -190,7 +183,6 @@ public class JacocoHTMLAugmenter {
                 }
             }
         }
-
         if (!dir.delete()) {
             throw new RuntimeException("Failed to delete directory: " + dir.getAbsolutePath());
         }
