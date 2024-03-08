@@ -18,17 +18,12 @@ import static jact.JacocoHTMLAugmenter.*;
 
 
 /**
- * Counts the number of maven dependencies of a project.
- *
- * It can be filtered by scope.
- *
+ * Generates a complete code coverage report including all
+ * dependencies along with their transitive dependencies.
  */
 @Mojo(name = "coverage-report", defaultPhase = LifecyclePhase.INSTALL, threadSafe = true)
 public class CompleteCoverageMojo extends AbstractMojo {
 
-    /**
-     * Scope to filter the dependencies.
-     */
     @Parameter(property = "scope")
     String scope;
 
