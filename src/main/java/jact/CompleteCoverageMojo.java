@@ -1,5 +1,6 @@
 package jact;
 
+import java.io.File;
 import java.net.URISyntaxException;
 import java.util.*;
 import java.io.IOException;
@@ -56,8 +57,14 @@ public class CompleteCoverageMojo extends AbstractMojo {
         artifactId = project.getArtifactId();
         version = project.getVersion();
 
-        List<String> packages = project.getCompileSourceRoots();
+        Set<String> packages = new HashSet<>();
 
+        // Add source directories
+        for (Object sourceRoot : project.getCompileSourceRoots()) {
+            scanSourceDirectory(new File(sourceRoot.toString()), packages, "");
+        }
+
+        // Print out packages
         getLog().info("Packages in project:");
         for (String packageName : packages) {
             getLog().info("- " + packageName);
@@ -91,4 +98,18 @@ public class CompleteCoverageMojo extends AbstractMojo {
         getLog().info("JACT Report Successfully Generated!");
     }
 
+
+    private void scanSourceDirectory(File directory, Set<String> packages, String parentPackage) {
+        for (File file : directory.listFiles()) {
+            if (file.isDirectory()) {
+                String currentPackage = parentPackage.isEmpty() ? file.getName() : parentPackage + "." + file.getName();
+                scanSourceDirectory(file, packages, currentPackage);
+            } else if (file.getName().endsWith(".java")) {
+                // Extract package name from Java file
+                String packageName = parentPackage.replace(File.separator, ".");
+                packages.add(packageName);
+                break; // Only need to add the package name once for each directory
+            }
+        }
+    }
 }

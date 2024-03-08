@@ -390,7 +390,7 @@ public class JacocoHTMLAugmenter {
                                 break;
                             }
                         }
-                        // Do this for all report paths
+                        // TODO Do this for all report paths and handle project packages
                         if(matchedDep != null){
                             if(new File(matchedDep.getReportPaths().get(0) + "/" +
                                     packageName + "/index.html").exists()){
