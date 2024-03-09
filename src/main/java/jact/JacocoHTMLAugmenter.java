@@ -352,7 +352,10 @@ public class JacocoHTMLAugmenter {
         }
     }
 
-
+    /** TODO:
+     *  - Read all the package usage before moving them? To just read directory names
+     *    instead of parsing the html file.
+     */
     public static void extractAndAppendHTMLDependencies(String inputFilePath, List<ProjectDependency> dependencies) throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(inputFilePath))) {
             String line;
@@ -377,29 +380,33 @@ public class JacocoHTMLAugmenter {
                         // Extract package name from the <tr> element
                         String packageName = extractPackageName(line);
 
-                        ProjectDependency matchedDep = null;
-                        for (ProjectDependency pd : dependencies) {
-                            for (Map.Entry<String, DependencyUsage> entry : pd.packageUsageMap.entrySet()) {
-                                String key = entry.getKey();
-                                if (key.equals(packageName)) {
-                                    matchedDep = pd;
+                        // Could become problematic if packages share name with packages in dependencies
+                        if(CompleteCoverageMojo.projectPackages.contains(packageName)){
+                            extractAndAddPackageTotal(REPORTPATH + packageName +
+                                    "/index.html", thisProject, packageName);
+                        }else{
+                            ProjectDependency matchedDep = null;
+                            for (ProjectDependency pd : dependencies) {
+                                for (Map.Entry<String, DependencyUsage> entry : pd.packageUsageMap.entrySet()) {
+                                    String key = entry.getKey();
+                                    if (key.equals(packageName)) {
+                                        matchedDep = pd;
+                                        break;
+                                    }
+                                }
+                                if (matchedDep != null) {
                                     break;
                                 }
                             }
-                            if (matchedDep != null) {
-                                break;
+                            if(matchedDep != null){
+                                for(int i = 0; i< matchedDep.getReportPaths().size(); i++){
+                                    if(new File(matchedDep.getReportPaths().get(i) + "/" +
+                                            packageName + "/index.html").exists()){
+                                        extractAndAddPackageTotal(matchedDep.getReportPaths().get(i) + "/" +
+                                                packageName + "/index.html", matchedDep, packageName);
+                                    }
+                                }
                             }
-                        }
-                        // TODO Do this for all report paths and handle project packages
-                        if(matchedDep != null){
-                            if(new File(matchedDep.getReportPaths().get(0) + "/" +
-                                    packageName + "/index.html").exists()){
-                                extractAndAddPackageTotal(matchedDep.getReportPaths().get(0) + "/" +
-                                        packageName + "/index.html", matchedDep, packageName);
-                            }
-                        }else if(packageName.equals(CompleteCoverageMojo.projectGroupId)){
-                            extractAndAddPackageTotal(REPORTPATH + CompleteCoverageMojo.projectGroupId +
-                                            "/index.html", thisProject, packageName);
                         }
                     }
                 }

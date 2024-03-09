@@ -47,6 +47,7 @@ public class CompleteCoverageMojo extends AbstractMojo {
     public static String projectGroupId;
     public static String artifactId;
     public static String version;
+    public static Set<String> projectPackages = new HashSet<>();
 
     public void execute() throws MojoExecutionException, MojoFailureException {
         projGroupIdSet.addAll(Arrays.asList(project.getGroupId().split("[.-]")));
@@ -57,16 +58,16 @@ public class CompleteCoverageMojo extends AbstractMojo {
         artifactId = project.getArtifactId();
         version = project.getVersion();
 
-        Set<String> packages = new HashSet<>();
 
-        // Add source directories
+
+        // Get all project packages to correctly add them in the report.
         for (Object sourceRoot : project.getCompileSourceRoots()) {
-            scanSourceDirectory(new File(sourceRoot.toString()), packages, "");
+            scanForPackageNames(new File(sourceRoot.toString()), projectPackages, "");
         }
 
         // Print out packages
         getLog().info("Packages in project:");
-        for (String packageName : packages) {
+        for (String packageName : projectPackages) {
             getLog().info("- " + packageName);
         }
 
@@ -99,11 +100,11 @@ public class CompleteCoverageMojo extends AbstractMojo {
     }
 
 
-    private void scanSourceDirectory(File directory, Set<String> packages, String parentPackage) {
+    private void scanForPackageNames(File directory, Set<String> packages, String parentPackage) {
         for (File file : directory.listFiles()) {
             if (file.isDirectory()) {
                 String currentPackage = parentPackage.isEmpty() ? file.getName() : parentPackage + "." + file.getName();
-                scanSourceDirectory(file, packages, currentPackage);
+                scanForPackageNames(file, packages, currentPackage);
             } else if (file.getName().endsWith(".java")) {
                 // Extract package name from Java file
                 String packageName = parentPackage.replace(File.separator, ".");
