@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
-public class CommandExecutor extends CompleteCoverageMojo{
+public class CommandExecutor extends CompleteCoverageMojo {
 
     public static void copyJacocoCliJar() throws IOException, URISyntaxException {
         // Get the path to the plugin JAR file
@@ -41,48 +41,6 @@ public class CommandExecutor extends CompleteCoverageMojo{
                     break; // Exit loop once jacococli.jar is found and copied
                 }
             }
-        }
-    }
-
-    public void executeJacocoCLI(String jarName) throws MojoExecutionException {
-        try {
-            // Retrieve the URL to the jacococli.jar file
-            // Command to execute Jacoco CLI
-            String command = String.format("java -jar ./target/jact-resources/jacococli.jar report ./target/jacoco.exec " +
-                    "--classfiles " + "./target/" + jarName +".jar --html ./target/jact-report");
-
-            // Adapts the command based on OS:
-            ProcessBuilder processBuilder;
-            if(hostOS.contains("linux")){
-                processBuilder = new ProcessBuilder("/bin/bash", "-c", command);
-            }else if(hostOS.contains("windows")){
-                processBuilder = new ProcessBuilder("cmd", "/c", command); // For Windows
-            }else{
-                // No support for MacOS currently
-                throw new RuntimeException("Could not identify operating system for lock file generation.");
-            }
-
-            // Redirect error stream to output stream
-            processBuilder.redirectErrorStream(true);
-
-            // Start the process
-            Process process = processBuilder.start();
-
-            // Wait for the process to complete
-            int exitCode = process.waitFor();
-
-            // If Jacoco CLI execution fails
-            if (exitCode != 0) {
-                throw new MojoExecutionException("Failed to execute Jacoco CLI");
-            }
-
-            // Print the output
-            InputStream inputStream = process.getInputStream();
-            String output = readInputStream(inputStream);
-            getLog().info(output);
-            copyPNGImage("jact-logo.png", "./target/jact-report/jacoco-resources");
-        } catch (IOException | InterruptedException e) {
-            throw new MojoExecutionException("Error executing Jacoco CLI", e);
         }
     }
 
@@ -121,18 +79,18 @@ public class CommandExecutor extends CompleteCoverageMojo{
         System.out.println("PNG image copied successfully to: " + destinationPath);
     }
 
-    public static void generateDependencyLockfile(){
+    public static void generateDependencyLockfile() {
         try {
             // Command to be executed
             String command = "mvn io.github.chains-project:maven-lockfile:generate -Dreduced=true";
 
             // Adapts the command based on OS:
             ProcessBuilder processBuilder;
-            if(CompleteCoverageMojo.hostOS.contains("linux")){
+            if (CompleteCoverageMojo.getHostOS().contains("linux")) {
                 processBuilder = new ProcessBuilder("/bin/bash", "-c", command);
-            }else if(CompleteCoverageMojo.hostOS.contains("windows")){
+            } else if (CompleteCoverageMojo.getHostOS().contains("windows")) {
                 processBuilder = new ProcessBuilder("cmd", "/c", command); // For Windows
-            }else{
+            } else {
                 // No support for MacOS currently
                 throw new RuntimeException("Could not identify operating system for lock file generation.");
             }
@@ -174,7 +132,6 @@ public class CommandExecutor extends CompleteCoverageMojo{
         }
     }
 
-
     private static String readInputStream(InputStream inputStream) throws IOException {
         // Read the input stream and convert it to a string
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
@@ -184,6 +141,48 @@ public class CommandExecutor extends CompleteCoverageMojo{
                 output.append(line).append("\n");
             }
             return output.toString();
+        }
+    }
+
+    public void executeJacocoCLI(String jarName) throws MojoExecutionException {
+        try {
+            // Retrieve the URL to the jacococli.jar file
+            // Command to execute Jacoco CLI
+            String command = String.format("java -jar ./target/jact-resources/jacococli.jar report ./target/jacoco.exec " +
+                    "--classfiles " + "./target/" + jarName + ".jar --html ./target/jact-report");
+
+            // Adapts the command based on OS:
+            ProcessBuilder processBuilder;
+            if (getHostOS().contains("linux")) {
+                processBuilder = new ProcessBuilder("/bin/bash", "-c", command);
+            } else if (getHostOS().contains("windows")) {
+                processBuilder = new ProcessBuilder("cmd", "/c", command); // For Windows
+            } else {
+                // No support for MacOS currently
+                throw new RuntimeException("Could not identify operating system for lock file generation.");
+            }
+
+            // Redirect error stream to output stream
+            processBuilder.redirectErrorStream(true);
+
+            // Start the process
+            Process process = processBuilder.start();
+
+            // Wait for the process to complete
+            int exitCode = process.waitFor();
+
+            // If Jacoco CLI execution fails
+            if (exitCode != 0) {
+                throw new MojoExecutionException("Failed to execute Jacoco CLI");
+            }
+
+            // Print the output
+            InputStream inputStream = process.getInputStream();
+            String output = readInputStream(inputStream);
+            getLog().info(output);
+            copyPNGImage("jact-logo.png", "./target/jact-report/jacoco-resources");
+        } catch (IOException | InterruptedException e) {
+            throw new MojoExecutionException("Error executing Jacoco CLI", e);
         }
     }
 }

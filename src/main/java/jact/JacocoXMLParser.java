@@ -18,7 +18,6 @@ public class JacocoXMLParser {
         //List<String> depWords = new ArrayList<>();
 
 
-
         List<Set<String>> setOfAllDeps = new ArrayList<>();
         for (Dependency dependency : dependencies) {
             List<String> depWords = new ArrayList<>();
@@ -39,7 +38,7 @@ public class JacocoXMLParser {
             setOfAllDeps.add(depWordsSet);
         }
 
-        for(Set s : setOfAllDeps){
+        for (Set s : setOfAllDeps) {
             System.out.println(s.toString());
         }
 
