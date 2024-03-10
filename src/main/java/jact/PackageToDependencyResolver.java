@@ -20,7 +20,6 @@ public class PackageToDependencyResolver {
     private static ProjectDependency lastMatchedDep = new ProjectDependency();
 
 
-
     public static ProjectDependency packageToDepPaths(String packageName, List<ProjectDependency> dependencies) {
         // List of dependencies along with their coordinates
 
@@ -32,7 +31,7 @@ public class PackageToDependencyResolver {
         // Directory where your Maven dependencies are stored
         String mavenRepositoryDir = CompleteCoverageMojo.getLocalRepoPath();
 
-        if(lastMatchedDep.getId() != null){
+        if (lastMatchedDep.getId() != null) {
             String groupId = lastMatchedDep.getGroupId();
             String artifactId = lastMatchedDep.getArtifactId();
             String version = lastMatchedDep.getVersion();

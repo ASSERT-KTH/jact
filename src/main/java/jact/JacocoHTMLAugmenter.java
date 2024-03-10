@@ -2,8 +2,10 @@ package jact;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,11 +14,9 @@ import static jact.DirectoryUtils.*;
 public class JacocoHTMLAugmenter {
     public static final String REPORTPATH = "./target/jact-report/";
     public static final String jacocoResPath = REPORTPATH + "jacoco-resources";
-
+    private static final String projId = CompleteCoverageMojo.getProjectGroupId() + ":" +
+            CompleteCoverageMojo.getProjectArtifactId() + ":" + CompleteCoverageMojo.getProjectVersion();
     private static ProjectDependency thisProject = new ProjectDependency();
-    static String projId = CompleteCoverageMojo.getProjectGroupId() + ":" + CompleteCoverageMojo.getProjectArtifactId() +
-            ":" + CompleteCoverageMojo.getProjectVersion();
-
 
     public static void extractReportAndMoveDirs(List<ProjectDependency> dependencies) throws IOException {
         thisProject.setId(projId);
@@ -49,22 +49,22 @@ public class JacocoHTMLAugmenter {
                 for (File directory : directories) {
                     String dirName = directory.getName();
                     //boolean packageDir = CompleteCoverageMojo.projGroupIdSet.stream().allMatch(dirName::contains);
-                    if(!dirName.equals("dependencies") && !dirName.equals("jacoco-resources")){
+                    if (!dirName.equals("dependencies") && !dirName.equals("jacoco-resources")) {
                         // Could become problematic if packages share name with packages in dependencies
-                        if(CompleteCoverageMojo.getProjectPackages().contains(dirName)){
+                        if (CompleteCoverageMojo.getProjectPackages().contains(dirName)) {
                             extractAndAddPackageTotal(REPORTPATH + dirName +
                                     "/index.html", thisProject, dirName);
                             thisProject.addReportPath(REPORTPATH + dirName);
-                        }else{
+                        } else {
                             ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(dirName, dependencies);
-                            if(matchedDep.getId() != null){
+                            if (matchedDep.getId() != null) {
                                 extractAndAddPackageTotal(REPORTPATH + dirName +
                                         "/index.html", matchedDep, dirName);
                             }
-                            if(matchedDep.getReportPaths().size() == 1){
+                            if (matchedDep.getReportPaths().size() == 1) {
                                 moveDirectory(directory, matchedDep.getReportPaths().get(0));
                                 String outputFilePath = matchedDep.getReportPaths().get(0) + "/index.html";
-                                if(!new File(outputFilePath).exists()){
+                                if (!new File(outputFilePath).exists()) {
                                     try {
                                         writeModifiedTemplateToFile("html-templates/indivDepViewTemplateStart.html",
                                                 outputFilePath, depToDirName(matchedDep));
@@ -80,7 +80,7 @@ public class JacocoHTMLAugmenter {
                                                     writeModifiedTemplateToFile("html-templates/indivDepViewTemplateStart.html",
                                                             parentDir + "/index.html",
                                                             "<span style=\"display: inline-block;\">Transitive Dependencies from: <br>" +
-                                                                    parentDepName+"</span>");
+                                                                    parentDepName + "</span>");
                                                 } catch (IOException e) {
                                                     throw new RuntimeException(e);
                                                 }
@@ -91,9 +91,9 @@ public class JacocoHTMLAugmenter {
                                         throw new RuntimeException(e);
                                     }
                                 }
-                            }else{
+                            } else {
                                 // Handle dependencies with the same transitive dependencies.
-                                for(String path : matchedDep.getReportPaths()){
+                                for (String path : matchedDep.getReportPaths()) {
                                     copyDirectory(directory, new File(path + "/" + dirName));
 
                                     // Get the parent directory of the current path
@@ -122,14 +122,14 @@ public class JacocoHTMLAugmenter {
         }
     }
 
-    public static String getFullDepPath(ProjectDependency projectDependency){
+    public static String getFullDepPath(ProjectDependency projectDependency) {
         StringBuilder fullPath = new StringBuilder();
         List<ProjectDependency> parentDeps = projectDependency.getParentDeps();
         String path;
         ProjectDependency currProjDep;
 
         // Creating the file path to the dependency
-        for(int i = 0; i < parentDeps.size(); i++){
+        for (int i = 0; i < parentDeps.size(); i++) {
             currProjDep = parentDeps.get(i);
             path = depToDirName(currProjDep);
             fullPath.append(path);
@@ -138,7 +138,7 @@ public class JacocoHTMLAugmenter {
             fullPath.append("/transitive-dependencies/");
 
             // Copy jacoco-resources if it's not already there.
-            if(!new File(fullPath + "jacoco-resources").exists()){
+            if (!new File(fullPath + "jacoco-resources").exists()) {
                 copyDirectory(new File(jacocoResPath),
                         new File(REPORTPATH + "dependencies/" + fullPath + "/jacoco-resources"));
             }
@@ -150,12 +150,10 @@ public class JacocoHTMLAugmenter {
         return fullPath.toString();
     }
 
-    public static String depToDirName(ProjectDependency dependency){
+    public static String depToDirName(ProjectDependency dependency) {
         return dependency.getGroupId().replace("-", ".") + "." +
                 dependency.getArtifactId().replace("-", ".") + "-v" + dependency.getVersion();
     }
-
-
 
 
     public static void createDependencyReports(List<ProjectDependency> dependencies) {
@@ -224,16 +222,16 @@ public class JacocoHTMLAugmenter {
         List<String> writtenEntryPaths = new ArrayList<>();
 
         DependencyUsage totalDepUsage = new DependencyUsage();
-        for(ProjectDependency pd : dependencies){
+        for (ProjectDependency pd : dependencies) {
             DependencyUsage currTotal = new DependencyUsage();
             currTotal = calculateTotalForAllLayers(pd, writtenPaths, writtenEntryPaths, currTotal);
-            if(!pd.writtenEntryToFile){
+            if (!pd.writtenEntryToFile) {
                 pd.writtenEntryToFile = true;
                 for (String path : pd.getReportPaths()) {
                     File currDir = new File(path);
                     File parentDir = currDir.getParentFile();
                     try {
-                        writeHTMLStringToFile(parentDir + "/index.html", pd.dependencyUsage.usageToHTML(currDir.getName(), currTotal,false));
+                        writeHTMLStringToFile(parentDir + "/index.html", pd.dependencyUsage.usageToHTML(currDir.getName(), currTotal, false));
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -263,7 +261,7 @@ public class JacocoHTMLAugmenter {
 
             // Write the project overview entry:
             writeHTMLStringToFile(REPORTPATH + "/index.html",
-                    thisProject.packageUsageMap.get(CompleteCoverageMojo.getProjectGroupId()).usageToHTML(CompleteCoverageMojo.getProjectGroupId(), overallTotal,true));
+                    thisProject.packageUsageMap.get(CompleteCoverageMojo.getProjectGroupId()).usageToHTML(CompleteCoverageMojo.getProjectGroupId(), overallTotal, true));
             // Write the overview total: Project + Dependencies (incl. transitive)
             writeHTMLTotalToFile(REPORTPATH + "index.html", overallTotal.totalUsageToHTML());
 
@@ -288,59 +286,59 @@ public class JacocoHTMLAugmenter {
     }
 
 
-    public static DependencyUsage calculateTotalForAllLayers(ProjectDependency currDependency, List<String> writtenPaths, List<String> writtenEntryPaths, DependencyUsage currTotal ){
+    public static DependencyUsage calculateTotalForAllLayers(ProjectDependency currDependency, List<String> writtenPaths, List<String> writtenEntryPaths, DependencyUsage currTotal) {
         List<String> writtenTotalPaths = new ArrayList<>();
         // Keep track of dependencies that have already been checked out.
         //DependencyUsage currTotal = new DependencyUsage();
-            if(!currDependency.getChildDeps().isEmpty()){
-                DependencyUsage childTotal = new DependencyUsage();
-                for(ProjectDependency child : currDependency.getChildDeps()){
-                    DependencyUsage childUsage = new DependencyUsage();
-                    childTotal.addAll(calculateTotalForAllLayers(child, writtenPaths, writtenEntryPaths, childUsage));
-                    currDependency.dependencyUsage.addAll(childTotal);
-                }
-
-                for (String path : currDependency.getReportPaths()) {
-                    if(!writtenPaths.contains(path)){
-                        writtenPaths.add(path);
-                        File currDir = new File(path);
-                        File parentDir = currDir.getParentFile();
-                        try {
-                            // Writing the dependency total as an entry
-                            DependencyUsage totalForBars = currTotal;
-                            totalForBars.addAll(currDependency.dependencyUsage);
-                            writeHTMLStringToFile(currDir + "/index.html", childTotal.usageToHTML("transitive-dependencies", totalForBars, false));
-                            writeHTMLTotalToFile(currDir + "/transitive-dependencies/index.html", childTotal.totalUsageToHTML());
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-
-                }
+        if (!currDependency.getChildDeps().isEmpty()) {
+            DependencyUsage childTotal = new DependencyUsage();
+            for (ProjectDependency child : currDependency.getChildDeps()) {
+                DependencyUsage childUsage = new DependencyUsage();
+                childTotal.addAll(calculateTotalForAllLayers(child, writtenPaths, writtenEntryPaths, childUsage));
+                currDependency.dependencyUsage.addAll(childTotal);
             }
-            // Calculate the total.
-            currTotal.addAll(currDependency.dependencyUsage);
 
-
-            // Write here
-            if(!currDependency.writtenTotalToFile){
-                currDependency.writtenTotalToFile = true;
-                for (String path : currDependency.getReportPaths()) {
+            for (String path : currDependency.getReportPaths()) {
+                if (!writtenPaths.contains(path)) {
+                    writtenPaths.add(path);
                     File currDir = new File(path);
+                    File parentDir = currDir.getParentFile();
                     try {
                         // Writing the dependency total as an entry
-                        writtenEntryPaths.add(path);
-                        if(new File(currDir + "/index.html").exists()){
-                            writeHTMLTotalToFile(currDir + "/index.html", currDependency.dependencyUsage.totalUsageToHTML());
-                        }
+                        DependencyUsage totalForBars = currTotal;
+                        totalForBars.addAll(currDependency.dependencyUsage);
+                        writeHTMLStringToFile(currDir + "/index.html", childTotal.usageToHTML("transitive-dependencies", totalForBars, false));
+                        writeHTMLTotalToFile(currDir + "/transitive-dependencies/index.html", childTotal.totalUsageToHTML());
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
                 }
+
             }
+        }
+        // Calculate the total.
+        currTotal.addAll(currDependency.dependencyUsage);
 
 
-            return currTotal;
+        // Write here
+        if (!currDependency.writtenTotalToFile) {
+            currDependency.writtenTotalToFile = true;
+            for (String path : currDependency.getReportPaths()) {
+                File currDir = new File(path);
+                try {
+                    // Writing the dependency total as an entry
+                    writtenEntryPaths.add(path);
+                    if (new File(currDir + "/index.html").exists()) {
+                        writeHTMLTotalToFile(currDir + "/index.html", currDependency.dependencyUsage.totalUsageToHTML());
+                    }
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+
+        return currTotal;
     }
 
 
@@ -368,8 +366,8 @@ public class JacocoHTMLAugmenter {
     }
 
 
-    private static void extractUsage(String line, int entryIndex, ProjectDependency matchedDep, DependencyUsage packageUsage){
-        switch(entryIndex) {
+    private static void extractUsage(String line, int entryIndex, ProjectDependency matchedDep, DependencyUsage packageUsage) {
+        switch (entryIndex) {
             case 1:
                 // Missed and Covered instructions
                 long[] instrUsage = extractBranchNInstrUsage(line);
@@ -436,7 +434,6 @@ public class JacocoHTMLAugmenter {
                 System.out.println("Could not extract usage of line: " + line);
         }
     }
-
 
 
     public static long extractUsageNumber(String input) {
@@ -609,7 +606,7 @@ public class JacocoHTMLAugmenter {
             if (inputStream == null) {
                 throw new IOException("Resource not found: " + resourceName);
             }
-            if(resourceName.equals("depOverviewTemplateStart.html")){
+            if (resourceName.equals("depOverviewTemplateStart.html")) {
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
                     StringBuilder stringBuilder = new StringBuilder();
                     String line;
@@ -619,7 +616,7 @@ public class JacocoHTMLAugmenter {
                     }
                     return stringBuilder.toString();
                 }
-            }else{
+            } else {
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
                     StringBuilder stringBuilder = new StringBuilder();
                     String line;

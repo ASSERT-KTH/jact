@@ -1,21 +1,23 @@
 package jact;
 
-import java.io.File;
-import java.net.URISyntaxException;
-import java.util.*;
-import java.io.IOException;
-
-import org.apache.maven.model.Dependency;
+import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
-import org.apache.maven.project.*;
-import org.apache.maven.execution.MavenSession;
+import org.apache.maven.project.MavenProject;
 
-import static jact.JacocoHTMLAugmenter.*;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import static jact.JacocoHTMLAugmenter.createDependencyReports;
+import static jact.JacocoHTMLAugmenter.extractReportAndMoveDirs;
 
 
 /**
@@ -25,39 +27,56 @@ import static jact.JacocoHTMLAugmenter.*;
 @Mojo(name = "coverage-report", defaultPhase = LifecyclePhase.INSTALL, threadSafe = true)
 public class CompleteCoverageMojo extends AbstractMojo {
 
+    private static String hostOS;
+    private static String localRepoPath;
+    private static String projectGroupId;
+    private static String artifactId;
+    private static String version;
+    private static Set<String> projectPackages = new HashSet<>();
     @Parameter(property = "scope")
     String scope;
-
     /**
      * Gives access to the Maven project information.
      */
     @Parameter(defaultValue = "${project}", required = true, readonly = true)
     MavenProject project;
-
     /**
      * The Maven session.
      */
     @Parameter(defaultValue = "${session}", required = true, readonly = true)
     private MavenSession session;
 
-    private static String hostOS;
-    private static String localRepoPath;
+    public static String getHostOS() {
+        return hostOS;
+    }
 
-    private static Set<String> projGroupIdSet = new HashSet<>();
-    private static String projectGroupId;
-    private static String artifactId;
-    private static String version;
-    private static Set<String> projectPackages = new HashSet<>();
+    public static String getLocalRepoPath() {
+        return localRepoPath;
+    }
+
+    public static String getProjectGroupId() {
+        return projectGroupId;
+    }
+
+    public static String getProjectArtifactId() {
+        return artifactId;
+    }
+
+    public static String getProjectVersion() {
+        return version;
+    }
+
+    public static Set<String> getProjectPackages() {
+        return projectPackages;
+    }
 
     public void execute() throws MojoExecutionException, MojoFailureException {
-        projGroupIdSet.addAll(Arrays.asList(project.getGroupId().split("[.-]")));
         String outputJarName = project.getBuild().getFinalName();
         localRepoPath = session.getLocalRepository().getBasedir();
         hostOS = session.getSystemProperties().getProperty("os.name").toLowerCase();
         projectGroupId = project.getGroupId();
         artifactId = project.getArtifactId();
         version = project.getVersion();
-
 
 
         // Get all project packages to correctly add them in the report.
@@ -103,7 +122,6 @@ public class CompleteCoverageMojo extends AbstractMojo {
         getLog().info("JACT Report Successfully Generated!");
     }
 
-
     private void scanForPackageNames(File directory, Set<String> packages, String parentPackage) {
         for (File file : directory.listFiles()) {
             if (file.isDirectory()) {
@@ -116,30 +134,5 @@ public class CompleteCoverageMojo extends AbstractMojo {
                 break; // Only need to add the package name once for each directory
             }
         }
-    }
-
-
-    public static String getHostOS(){
-        return hostOS;
-    }
-
-    public static String getLocalRepoPath(){
-        return localRepoPath;
-    }
-
-    public static String getProjectGroupId(){
-        return projectGroupId;
-    }
-
-    public static String getProjectArtifactId(){
-        return artifactId;
-    }
-
-    public static String getProjectVersion(){
-        return version;
-    }
-
-    public static Set<String> getProjectPackages(){
-        return projectPackages;
     }
 }

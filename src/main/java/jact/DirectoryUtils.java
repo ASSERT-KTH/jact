@@ -51,7 +51,7 @@ public class DirectoryUtils {
     }
 
 
-    public static void createDir(String directoryPath){
+    public static void createDir(String directoryPath) {
         // Will take a list of dependencies later
 
         File dir = new File(directoryPath);

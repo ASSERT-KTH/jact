@@ -1,19 +1,19 @@
 package jact;
 
-import java.io.*;
+import com.google.gson.*;
+
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import com.google.gson.*;
-import io.github.chains_project.maven_lockfile.graph.DependencyGraph;
 
 public class ProjectDependencies {
 
     public static List<ProjectDependency> projectDependencies = new ArrayList<>();
 
-    public static List<ProjectDependency> getAllProjectDependencies(){
-        if(projectDependencies.isEmpty()){
+    public static List<ProjectDependency> getAllProjectDependencies() {
+        if (projectDependencies.isEmpty()) {
             generateAllProjectDependencies();
         }
         return projectDependencies;
@@ -61,7 +61,7 @@ public class ProjectDependencies {
             String parentString = jsonObject.has("parent") ? jsonObject.get("parent").getAsString() : "";
 
             // First add the previous parents in order
-            for(ProjectDependency parentDep : parentDeps){
+            for (ProjectDependency parentDep : parentDeps) {
                 projectDependency.addParentDep(parentDep);
             }
             // Then add the immediate parent
