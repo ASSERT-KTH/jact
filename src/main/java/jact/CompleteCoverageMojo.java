@@ -40,14 +40,14 @@ public class CompleteCoverageMojo extends AbstractMojo {
     @Parameter(defaultValue = "${session}", required = true, readonly = true)
     private MavenSession session;
 
-    public static String hostOS;
-    public static String localRepoPath;
+    private static String hostOS;
+    private static String localRepoPath;
 
-    public static Set<String> projGroupIdSet = new HashSet<>();
-    public static String projectGroupId;
-    public static String artifactId;
-    public static String version;
-    public static Set<String> projectPackages = new HashSet<>();
+    private static Set<String> projGroupIdSet = new HashSet<>();
+    private static String projectGroupId;
+    private static String artifactId;
+    private static String version;
+    private static Set<String> projectPackages = new HashSet<>();
 
     public void execute() throws MojoExecutionException, MojoFailureException {
         projGroupIdSet.addAll(Arrays.asList(project.getGroupId().split("[.-]")));
@@ -116,5 +116,30 @@ public class CompleteCoverageMojo extends AbstractMojo {
                 break; // Only need to add the package name once for each directory
             }
         }
+    }
+
+
+    public static String getHostOS(){
+        return hostOS;
+    }
+
+    public static String getLocalRepoPath(){
+        return localRepoPath;
+    }
+
+    public static String getProjectGroupId(){
+        return projectGroupId;
+    }
+
+    public static String getProjectArtifactId(){
+        return artifactId;
+    }
+
+    public static String getProjectVersion(){
+        return version;
+    }
+
+    public static Set<String> getProjectPackages(){
+        return projectPackages;
     }
 }

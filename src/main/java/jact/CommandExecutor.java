@@ -53,9 +53,9 @@ public class CommandExecutor extends CompleteCoverageMojo{
 
             // Adapts the command based on OS:
             ProcessBuilder processBuilder;
-            if(hostOS.contains("linux")){
+            if(getHostOS().contains("linux")){
                 processBuilder = new ProcessBuilder("/bin/bash", "-c", command);
-            }else if(hostOS.contains("windows")){
+            }else if(getHostOS().contains("windows")){
                 processBuilder = new ProcessBuilder("cmd", "/c", command); // For Windows
             }else{
                 // No support for MacOS currently
@@ -128,9 +128,9 @@ public class CommandExecutor extends CompleteCoverageMojo{
 
             // Adapts the command based on OS:
             ProcessBuilder processBuilder;
-            if(CompleteCoverageMojo.hostOS.contains("linux")){
+            if(CompleteCoverageMojo.getHostOS().contains("linux")){
                 processBuilder = new ProcessBuilder("/bin/bash", "-c", command);
-            }else if(CompleteCoverageMojo.hostOS.contains("windows")){
+            }else if(CompleteCoverageMojo.getHostOS().contains("windows")){
                 processBuilder = new ProcessBuilder("cmd", "/c", command); // For Windows
             }else{
                 // No support for MacOS currently

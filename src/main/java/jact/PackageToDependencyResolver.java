@@ -30,7 +30,7 @@ public class PackageToDependencyResolver {
         // packageName = "jonas.sanity.check";
 
         // Directory where your Maven dependencies are stored
-        String mavenRepositoryDir = CompleteCoverageMojo.localRepoPath;
+        String mavenRepositoryDir = CompleteCoverageMojo.getLocalRepoPath();
 
         if(lastMatchedDep.getId() != null){
             String groupId = lastMatchedDep.getGroupId();

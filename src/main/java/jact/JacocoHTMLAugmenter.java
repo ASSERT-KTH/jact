@@ -14,8 +14,8 @@ public class JacocoHTMLAugmenter {
     public static final String jacocoResPath = REPORTPATH + "jacoco-resources";
 
     private static ProjectDependency thisProject = new ProjectDependency();
-    static String projId = CompleteCoverageMojo.projectGroupId + ":" + CompleteCoverageMojo.projectGroupId +
-            ":" + CompleteCoverageMojo.version;
+    static String projId = CompleteCoverageMojo.getProjectGroupId() + ":" + CompleteCoverageMojo.getProjectArtifactId() +
+            ":" + CompleteCoverageMojo.getProjectVersion();
 
 
     public static void extractReportAndMoveDirs(List<ProjectDependency> dependencies) throws IOException {
@@ -51,7 +51,7 @@ public class JacocoHTMLAugmenter {
                     //boolean packageDir = CompleteCoverageMojo.projGroupIdSet.stream().allMatch(dirName::contains);
                     if(!dirName.equals("dependencies") && !dirName.equals("jacoco-resources")){
                         // Could become problematic if packages share name with packages in dependencies
-                        if(CompleteCoverageMojo.projectPackages.contains(dirName)){
+                        if(CompleteCoverageMojo.getProjectPackages().contains(dirName)){
                             extractAndAddPackageTotal(REPORTPATH + dirName +
                                     "/index.html", thisProject, dirName);
                             thisProject.addReportPath(REPORTPATH + dirName);
@@ -255,7 +255,7 @@ public class JacocoHTMLAugmenter {
         try {
             DependencyUsage overallTotal = new DependencyUsage();
             overallTotal.addAll(totalDepUsage);
-            overallTotal.addAll(thisProject.packageUsageMap.get(CompleteCoverageMojo.projectGroupId));
+            overallTotal.addAll(thisProject.packageUsageMap.get(CompleteCoverageMojo.getProjectGroupId()));
 
             // Write the total dependency usage AND its entry in the overview
             writeHTMLStringToFile(REPORTPATH + "/index.html", totalDepUsage.usageToHTML("dependencies", overallTotal, false));
@@ -263,7 +263,7 @@ public class JacocoHTMLAugmenter {
 
             // Write the project overview entry:
             writeHTMLStringToFile(REPORTPATH + "/index.html",
-                    thisProject.packageUsageMap.get(CompleteCoverageMojo.projectGroupId).usageToHTML(CompleteCoverageMojo.projectGroupId, overallTotal,true));
+                    thisProject.packageUsageMap.get(CompleteCoverageMojo.getProjectGroupId()).usageToHTML(CompleteCoverageMojo.getProjectGroupId(), overallTotal,true));
             // Write the overview total: Project + Dependencies (incl. transitive)
             writeHTMLTotalToFile(REPORTPATH + "index.html", overallTotal.totalUsageToHTML());
 
@@ -309,7 +309,6 @@ public class JacocoHTMLAugmenter {
                             // Writing the dependency total as an entry
                             DependencyUsage totalForBars = currTotal;
                             totalForBars.addAll(currDependency.dependencyUsage);
-                            System.out.println("Writing total to: " + currDir + "/transitive-dependencies/index.html");
                             writeHTMLStringToFile(currDir + "/index.html", childTotal.usageToHTML("transitive-dependencies", totalForBars, false));
                             writeHTMLTotalToFile(currDir + "/transitive-dependencies/index.html", childTotal.totalUsageToHTML());
                         } catch (IOException e) {
