@@ -165,10 +165,10 @@ public class DependencyUsage {
         String htmlString = "<tr>\n" +
                 "    <td id=\"a47\"><a href=\"" + dependencyDirName + "/index.html\" class=\"" + icon + "\">" + dependencyDirName + "</a></td>\n" +
                 "    <td class=\"bar\" id=\"b5\"><img src=\"jacoco-resources/redbar.gif\" width=\"" + redInstrBar + "\" height=\"10\" title=\"" + String.format("%,d", this.getMissedInstructions()) + "\" alt=\"" + String.format("%,d", this.getMissedInstructions()) + "\">" +
-                "<img src=\"jacoco-resources/greenbar.gif\" width=\"" + greenInstrBar + "\" height=\"10\" title=\"" + String.format("%,d", this.getTotalInstructions()) + "\" alt=\"" + String.format("%,d", this.getTotalInstructions()) + "\"></td>\n" +
+                "<img src=\"jacoco-resources/greenbar.gif\" width=\"" + greenInstrBar + "\" height=\"10\" title=\"" + String.format("%,d", coveredInstructions) + "\" alt=\"" + String.format("%,d", coveredInstructions) + "\"></td>\n" +
                 "    <td class=\"ctr2\" id=\"c5\">" + percentage(coveredInstructions, this.getTotalInstructions()) + "</td>\n" +
                 "    <td class=\"bar\" id=\"d4\"><img src=\"jacoco-resources/redbar.gif\" width=\"" + redBranchBar + "\" height=\"10\" title=\"" + String.format("%,d", this.getMissedBranches()) + "\" alt=\"" + String.format("%,d", this.getMissedBranches()) + "\">" +
-                "<img src=\"jacoco-resources/greenbar.gif\" width=\"" + greenBranchBar + "\" height=\"10\" title=\"" + String.format("%,d", this.getTotalBranches()) + "\" alt=\"" + String.format("%,d", this.getTotalBranches()) + "\"></td>\n" +
+                "<img src=\"jacoco-resources/greenbar.gif\" width=\"" + greenBranchBar + "\" height=\"10\" title=\"" + String.format("%,d", coveredBranches) + "\" alt=\"" + String.format("%,d", coveredBranches) + "\"></td>\n" +
                 "    <td class=\"ctr2\" id=\"e5\">" + percentage(coveredBranches, this.getTotalBranches()) + "</td>\n" +
                 "    <td class=\"ctr1\" id=\"f2\">" + String.format("%,d", this.getMissedCyclomaticComplexity()) + "</td>\n" +
                 "    <td class=\"ctr2\" id=\"g2\">" + String.format("%,d", this.getCyclomaticComplexity()) + "</td>\n" +
