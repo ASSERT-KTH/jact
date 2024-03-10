@@ -1,8 +1,11 @@
 # JACT - Java Absolute Coverage Tracker <img src=".img/jact-logo.png" align="left" height="135px"/>
 
-#### *(NAME IS NOT FINAL, used to create a unique report directory)*
+[comment]: <> (Include coverage stats etc here later)
+<br/> 
+<br/> 
+<br/> 
 
-### <br/> What is JACT?
+### What is JACT?
 JACT is a work in progress Maven plugin for my master's thesis which will generate a complete code coverage report of a
 Java project using Maven. The report includes coverage of both the project and all of its dependencies (even transitive).
 It currently uses JaCoCo together with its CLI-module to generate the coverage report, and the goal is to later improve 

@@ -117,12 +117,6 @@ public class DependencyUsage {
         return this.missedClasses;
     }
 
-    /*
-     TODO:
-        - methods for instruction/branch percentage
-        - Creating the html entry (Calculate bar widths)
-     */
-
     public void addCoveredClasses(long cClasses) {
         this.classes += cClasses;
     }
