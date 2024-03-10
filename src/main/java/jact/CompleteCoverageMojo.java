@@ -94,7 +94,11 @@ public class CompleteCoverageMojo extends AbstractMojo {
         cmdExec.executeJacocoCLI(outputJarName + "-shaded");
 
         getLog().info("Organizing the complete coverage report.");
-        moveReportDirs(projectDependencies);
+        try {
+            moveReportDirs(projectDependencies);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         createDependencyReports(projectDependencies);
         getLog().info("JACT Report Successfully Generated!");
     }

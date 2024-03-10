@@ -18,7 +18,7 @@ public class JacocoHTMLAugmenter {
             ":" + CompleteCoverageMojo.version;
 
 
-    public static void moveReportDirs(List<ProjectDependency> dependencies) {
+    public static void moveReportDirs(List<ProjectDependency> dependencies) throws IOException {
         thisProject.setId(projId);
         // Create a directory for the dependency coverage
         createDir(REPORTPATH + "dependencies");
@@ -48,62 +48,73 @@ public class JacocoHTMLAugmenter {
             if (directories != null) {
                 for (File directory : directories) {
                     String dirName = directory.getName();
-                    boolean packageDir = CompleteCoverageMojo.projGroupIdSet.stream().allMatch(dirName::contains);
-                    if(!dirName.equals("dependencies") && !dirName.equals("jacoco-resources") && !packageDir){
-                        ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(dirName, dependencies);
-                        if(matchedDep.getReportPaths().size() == 1){
-                            moveDirectory(directory, matchedDep.getReportPaths().get(0));
-                            String outputFilePath = matchedDep.getReportPaths().get(0) + "/index.html";
-                            if(!new File(outputFilePath).exists()){
-                                try {
-                                    writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
-                                            outputFilePath, depToDirName(matchedDep));
+                    //boolean packageDir = CompleteCoverageMojo.projGroupIdSet.stream().allMatch(dirName::contains);
+                    if(!dirName.equals("dependencies") && !dirName.equals("jacoco-resources")){
+                        // Could become problematic if packages share name with packages in dependencies
+                        if(CompleteCoverageMojo.projectPackages.contains(dirName)){
+                            extractAndAddPackageTotal(REPORTPATH + dirName +
+                                    "/index.html", thisProject, dirName);
+                            thisProject.addReportPath(REPORTPATH + dirName);
+                        }else{
+                            ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(dirName, dependencies);
+                            if(matchedDep.getId() != null){
+                                extractAndAddPackageTotal(REPORTPATH + dirName +
+                                        "/index.html", matchedDep, dirName);
+                            }
+                            if(matchedDep.getReportPaths().size() == 1){
+                                moveDirectory(directory, matchedDep.getReportPaths().get(0));
+                                String outputFilePath = matchedDep.getReportPaths().get(0) + "/index.html";
+                                if(!new File(outputFilePath).exists()){
+                                    try {
+                                        writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
+                                                outputFilePath, depToDirName(matchedDep));
+
+                                        // Get the parent directory of the current path
+                                        File parentDir = new File(matchedDep.getReportPaths().get(0)).getParentFile();
+                                        // Ensure parentDir is not null and it's a directory
+                                        if (parentDir != null && parentDir.isDirectory() && parentDir.getName().equals("transitive-dependencies")) {
+                                            // Copy jacoco-resources if it's not already there.
+                                            if (!new File(parentDir + "/index.html").exists()) {
+                                                String parentDepName = parentDir.getParentFile().getName();
+                                                try {
+                                                    writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
+                                                            parentDir + "/index.html",
+                                                            "<span style=\"display: inline-block;\">Transitive Dependencies from: <br>" +
+                                                                    parentDepName+"</span>");
+                                                } catch (IOException e) {
+                                                    throw new RuntimeException(e);
+                                                }
+                                            }
+                                        }
+
+                                    } catch (IOException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                }
+                            }else{
+                                // Handle dependencies with the same transitive dependencies.
+                                for(String path : matchedDep.getReportPaths()){
+                                    copyDirectory(directory, new File(path + "/" + dirName));
 
                                     // Get the parent directory of the current path
-                                    File parentDir = new File(matchedDep.getReportPaths().get(0)).getParentFile();
+                                    File parentDir = new File(path).getParentFile();
                                     // Ensure parentDir is not null and it's a directory
                                     if (parentDir != null && parentDir.isDirectory() && parentDir.getName().equals("transitive-dependencies")) {
-                                        // Copy jacoco-resources if it's not already there.
+                                        String parentDepName = parentDir.getParentFile().getName();
                                         if (!new File(parentDir + "/index.html").exists()) {
-                                            String parentDepName = parentDir.getParentFile().getName();
                                             try {
                                                 writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
-                                                        parentDir + "/index.html",
-                                                        "<span style=\"display: inline-block;\">Transitive Dependencies from: <br>" +
-                                                                parentDepName+"</span>");
+                                                        parentDir + "/index.html", "Transitive Dependencies from: " + parentDepName);
+                                                //writeTemplateToFile("transitiveEntry.html", parentDir.getParentFile() + "/index.html");
                                             } catch (IOException e) {
                                                 throw new RuntimeException(e);
                                             }
                                         }
                                     }
-
-                                } catch (IOException e) {
-                                    throw new RuntimeException(e);
                                 }
+                                System.out.println("REMOVING: " + directory.getPath());
+                                removeDirectory(directory);
                             }
-                        }else{
-                            // Handle dependencies with the same transitive dependencies.
-                            for(String path : matchedDep.getReportPaths()){
-                                copyDirectory(directory, new File(path + "/" + dirName));
-
-                                // Get the parent directory of the current path
-                                File parentDir = new File(path).getParentFile();
-                                // Ensure parentDir is not null and it's a directory
-                                if (parentDir != null && parentDir.isDirectory() && parentDir.getName().equals("transitive-dependencies")) {
-                                    String parentDepName = parentDir.getParentFile().getName();
-                                    if (!new File(parentDir + "/index.html").exists()) {
-                                        try {
-                                            writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
-                                                    parentDir + "/index.html", "Transitive Dependencies from: " + parentDepName);
-                                            //writeTemplateToFile("transitiveEntry.html", parentDir.getParentFile() + "/index.html");
-                                        } catch (IOException e) {
-                                            throw new RuntimeException(e);
-                                        }
-                                    }
-                                }
-                            }
-                            System.out.println("REMOVING: " + directory.getPath());
-                            removeDirectory(directory);
                         }
                     }
                 }
@@ -182,15 +193,6 @@ public class JacocoHTMLAugmenter {
         }
 
 
-        // Create individual reports for each dependency (including transitive).
-        try {
-            extractAndAppendHTMLDependencies(inputFilePath, dependencies);
-            System.out.println("Writing the overview for individual dependencies completed successfully.");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-
         // Create the whole project overview
         String outputFilePath = REPORTPATH + "index.html";
         String templateFilePath1 = "overviewTemplateStart.html";
@@ -263,14 +265,6 @@ public class JacocoHTMLAugmenter {
 
     }
 
-    public static ProjectDependency dirNameToDep(String directoryName, List<ProjectDependency> dependencies){
-        for(ProjectDependency pd : dependencies){
-            if(depToDirName(pd).equals(directoryName)){
-                return pd;
-            }
-        }
-        throw new RuntimeException("Could not find a matching dependency.");
-    }
 
     public static DependencyUsage calculateTotalForAllLayers(ProjectDependency currDependency, List<String> writtenPaths, List<String> writtenEntryPaths, DependencyUsage currTotal ){
         List<String> writtenTotalPaths = new ArrayList<>();
@@ -350,76 +344,6 @@ public class JacocoHTMLAugmenter {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath, true))) {
             writer.write(templateContent);
         }
-    }
-
-    /** TODO:
-     *  - Read all the package usage before moving them? To just read directory names
-     *    instead of parsing the html file.
-     */
-    public static void extractAndAppendHTMLDependencies(String inputFilePath, List<ProjectDependency> dependencies) throws IOException {
-        try (BufferedReader br = new BufferedReader(new FileReader(inputFilePath))) {
-            String line;
-
-            // Flag to indicate if we are inside the <tbody> tag
-            boolean insideTbody = false;
-
-            // Iterate through the input HTML file
-            while ((line = br.readLine()) != null) {
-                // Check if we are inside the <tbody> tag
-                if (line.contains("<tbody>")) {
-                    insideTbody = true;
-                } else if (line.contains("</tbody>")) {
-                    insideTbody = false;
-                }
-
-                // Check if we are inside a <tr> element
-                if (insideTbody && line.contains("<tr>")) {
-                    // Read the next line
-                    line = br.readLine();
-                    if (line != null) {
-                        // Extract package name from the <tr> element
-                        String packageName = extractPackageName(line);
-
-                        // Could become problematic if packages share name with packages in dependencies
-                        if(CompleteCoverageMojo.projectPackages.contains(packageName)){
-                            extractAndAddPackageTotal(REPORTPATH + packageName +
-                                    "/index.html", thisProject, packageName);
-                        }else{
-                            ProjectDependency matchedDep = null;
-                            for (ProjectDependency pd : dependencies) {
-                                for (Map.Entry<String, DependencyUsage> entry : pd.packageUsageMap.entrySet()) {
-                                    String key = entry.getKey();
-                                    if (key.equals(packageName)) {
-                                        matchedDep = pd;
-                                        break;
-                                    }
-                                }
-                                if (matchedDep != null) {
-                                    break;
-                                }
-                            }
-                            if(matchedDep != null){
-                                for(int i = 0; i< matchedDep.getReportPaths().size(); i++){
-                                    if(new File(matchedDep.getReportPaths().get(i) + "/" +
-                                            packageName + "/index.html").exists()){
-                                        extractAndAddPackageTotal(matchedDep.getReportPaths().get(i) + "/" +
-                                                packageName + "/index.html", matchedDep, packageName);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-
-    // Helper method to extract package name from <tr> element
-    private static String extractPackageName(String line) {
-        int startIndex = line.indexOf("el_package\">") + "el_package\">".length();
-        int endIndex = line.indexOf("</a>", startIndex);
-        return line.substring(startIndex, endIndex);
     }
 
 
@@ -583,8 +507,7 @@ public class JacocoHTMLAugmenter {
                             if (line.contains("</tr>")) {
                                 break; // Stop processing when encountering </tr>
                             }
-                            if (entryIndex > 0 && (matchedDep.getId() != null ||
-                                    packageName.equals(CompleteCoverageMojo.projectGroupId))) {
+                            if (entryIndex > 0 && matchedDep.getId() != null) {
                                 extractUsage(line, entryIndex, matchedDep, packageUsage);
                             }
                             entryIndex++;

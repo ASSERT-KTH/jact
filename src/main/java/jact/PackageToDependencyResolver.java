@@ -78,7 +78,6 @@ public class PackageToDependencyResolver {
                         // Check if the entry is a class file within the desired package
                         if (entry.getName().startsWith(packageName.replace('.', '/')) && entry.getName().endsWith(".class")) {
                             System.out.println("Package: " + packageName + " matched to dependency: " + groupId + ":" + artifactId + ":" + version);
-                            dependency.packageUsageMap.put(packageName, new DependencyUsage());
                             lastMatchedDep = dependency;
                             return dependency;
                         }
