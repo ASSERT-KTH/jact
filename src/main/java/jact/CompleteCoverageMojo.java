@@ -95,7 +95,7 @@ public class CompleteCoverageMojo extends AbstractMojo {
 
         getLog().info("Organizing the complete coverage report.");
         try {
-            moveReportDirs(projectDependencies);
+            extractReportAndMoveDirs(projectDependencies);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

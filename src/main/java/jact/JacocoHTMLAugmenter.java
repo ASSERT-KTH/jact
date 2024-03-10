@@ -18,7 +18,7 @@ public class JacocoHTMLAugmenter {
             ":" + CompleteCoverageMojo.version;
 
 
-    public static void moveReportDirs(List<ProjectDependency> dependencies) throws IOException {
+    public static void extractReportAndMoveDirs(List<ProjectDependency> dependencies) throws IOException {
         thisProject.setId(projId);
         // Create a directory for the dependency coverage
         createDir(REPORTPATH + "dependencies");
@@ -66,7 +66,7 @@ public class JacocoHTMLAugmenter {
                                 String outputFilePath = matchedDep.getReportPaths().get(0) + "/index.html";
                                 if(!new File(outputFilePath).exists()){
                                     try {
-                                        writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
+                                        writeModifiedTemplateToFile("html-templates/indivDepViewTemplateStart.html",
                                                 outputFilePath, depToDirName(matchedDep));
 
                                         // Get the parent directory of the current path
@@ -77,7 +77,7 @@ public class JacocoHTMLAugmenter {
                                             if (!new File(parentDir + "/index.html").exists()) {
                                                 String parentDepName = parentDir.getParentFile().getName();
                                                 try {
-                                                    writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
+                                                    writeModifiedTemplateToFile("html-templates/indivDepViewTemplateStart.html",
                                                             parentDir + "/index.html",
                                                             "<span style=\"display: inline-block;\">Transitive Dependencies from: <br>" +
                                                                     parentDepName+"</span>");
@@ -103,7 +103,7 @@ public class JacocoHTMLAugmenter {
                                         String parentDepName = parentDir.getParentFile().getName();
                                         if (!new File(parentDir + "/index.html").exists()) {
                                             try {
-                                                writeModifiedTemplateToFile("indivDepViewTemplateStart.html",
+                                                writeModifiedTemplateToFile("html-templates/indivDepViewTemplateStart.html",
                                                         parentDir + "/index.html", "Transitive Dependencies from: " + parentDepName);
                                                 //writeTemplateToFile("transitiveEntry.html", parentDir.getParentFile() + "/index.html");
                                             } catch (IOException e) {
@@ -195,8 +195,8 @@ public class JacocoHTMLAugmenter {
 
         // Create the whole project overview
         String outputFilePath = REPORTPATH + "index.html";
-        String templateFilePath1 = "overviewTemplateStart.html";
-        String templateFilePath2 = "overviewTemplateEnd.html";
+        String templateFilePath1 = "html-templates/overviewTemplateStart.html";
+        String templateFilePath2 = "html-templates/overviewTemplateEnd.html";
 
         try {
             // Writes the overview HTML template
@@ -209,8 +209,8 @@ public class JacocoHTMLAugmenter {
 
         // Create the dependencies overview
         outputFilePath = REPORTPATH + "dependencies/index.html";
-        templateFilePath1 = "depOverviewTemplateStart.html";
-        templateFilePath2 = "depOverviewTemplateEnd.html";
+        templateFilePath1 = "html-templates/depOverviewTemplateStart.html";
+        templateFilePath2 = "html-templates/depOverviewTemplateEnd.html";
         try {
             // Writes the HTML template for the Dependency Overview
             writeTemplateToFile(templateFilePath1, outputFilePath);
@@ -245,6 +245,14 @@ public class JacocoHTMLAugmenter {
         }
 
         try {
+            // Writes the HTML template for the Dependency Overview
+            writeTemplateToFile(templateFilePath2, outputFilePath);
+        } catch (IOException e) {
+            System.err.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        try {
             DependencyUsage overallTotal = new DependencyUsage();
             overallTotal.addAll(totalDepUsage);
             overallTotal.addAll(thisProject.packageUsageMap.get(CompleteCoverageMojo.projectGroupId));
@@ -258,6 +266,20 @@ public class JacocoHTMLAugmenter {
                     thisProject.packageUsageMap.get(CompleteCoverageMojo.projectGroupId).usageToHTML(CompleteCoverageMojo.projectGroupId, overallTotal,true));
             // Write the overview total: Project + Dependencies (incl. transitive)
             writeHTMLTotalToFile(REPORTPATH + "index.html", overallTotal.totalUsageToHTML());
+
+
+            // Create the whole project overview
+            outputFilePath = REPORTPATH + "index.html";
+            templateFilePath2 = "html-templates/overviewTemplateEnd.html";
+
+            try {
+                // Writes the overview HTML template
+                writeTemplateToFile(templateFilePath2, outputFilePath);
+            } catch (IOException e) {
+                System.err.println("Error: " + e.getMessage());
+                e.printStackTrace();
+            }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
