@@ -6,6 +6,7 @@ import org.jsoup.nodes.Document;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -51,6 +52,7 @@ public class JacocoHTMLAugmenter {
                     //boolean packageDir = CompleteCoverageMojo.projGroupIdSet.stream().allMatch(dirName::contains);
                     if (!dirName.equals("dependencies") && !dirName.equals("jacoco-resources")) {
                         // Could become problematic if packages share name with packages in dependencies
+                        // TODO HANDLE COLLIDING PROJECT PACKAGES HERE
                         if (CompleteCoverageMojo.getProjectPackages().contains(dirName)) {
                             extractAndAddPackageTotal(REPORTPATH + dirName +
                                     "/index.html", thisProject, dirName);
@@ -253,15 +255,24 @@ public class JacocoHTMLAugmenter {
         try {
             DependencyUsage overallTotal = new DependencyUsage();
             overallTotal.addAll(totalDepUsage);
-            overallTotal.addAll(thisProject.packageUsageMap.get(CompleteCoverageMojo.getProjectGroupId()));
+            for (Map.Entry<String, DependencyUsage> entry : thisProject.packageUsageMap.entrySet()) {
+                overallTotal.addAll(entry.getValue());
+            }
 
             // Write the total dependency usage AND its entry in the overview
             writeHTMLStringToFile(REPORTPATH + "/index.html", totalDepUsage.usageToHTML("dependencies", overallTotal, false));
             writeHTMLTotalToFile(REPORTPATH + "dependencies/index.html", totalDepUsage.totalUsageToHTML());
 
             // Write the project overview entry:
-            writeHTMLStringToFile(REPORTPATH + "/index.html",
-                    thisProject.packageUsageMap.get(CompleteCoverageMojo.getProjectGroupId()).usageToHTML(CompleteCoverageMojo.getProjectGroupId(), overallTotal, true));
+            for (Map.Entry<String, DependencyUsage> entry : thisProject.packageUsageMap.entrySet()) {
+                try {
+                    writeHTMLStringToFile(REPORTPATH + "/index.html", entry.getValue().usageToHTML(entry.getKey(),overallTotal, true));
+                    //writeHTMLStringToFile(REPORTPATH + "/index.html",
+                    //        thisProject.packageUsageMap.get(CompleteCoverageMojo.getProjectGroupId()).usageToHTML(CompleteCoverageMojo.getProjectGroupId(), overallTotal, true));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
             // Write the overview total: Project + Dependencies (incl. transitive)
             writeHTMLTotalToFile(REPORTPATH + "index.html", overallTotal.totalUsageToHTML());
 

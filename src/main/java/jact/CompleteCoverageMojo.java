@@ -92,7 +92,7 @@ public class CompleteCoverageMojo extends AbstractMojo {
 
 
         getLog().info("STARTING: JACT - Java Complete Coverage Tracker");
-
+        getLog().info("JARNAME: " + outputJarName + "-shaded");
         //String outputDirectory = project.getBuild().getOutputDirectory();
 
         List<ProjectDependency> projectDependencies = ProjectDependencies.getAllProjectDependencies();

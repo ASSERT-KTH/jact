@@ -13,9 +13,9 @@ upon JaCoCo to capture even more accurate coverage.
 
 ##### Current prerequisites:
 - Required to use JaCoCo
-- Need to be able to build a FAT-jar (including the project and its dependencies)
-- Provide the name of the FAT-jar before packaging (for report generation)
-- Resulting jar has to be place under ./target/
+- Use either the Maven Shade Plugin to create a FAT-jar (including all the dependencies along with their transitive 
+  dependencies). Example provided under 'Using JACT'.
+- Resulting FAT-jar has to be place under ./target/
 
 ### Building the test project and inspecting its coverage report:
 - Clone this repo and build the project from the root folder:
@@ -32,12 +32,35 @@ The report will now be located under the test project `/target/jact-report` wher
 
 
 ### Using JACT:
-After fulfilling the prerequsites in your project, clone this repo and execute `mvn clean install` and add this plugin to your pom.xml file.
+After fulfilling the prerequsites in your project, clone this repo and execute `mvn clean install`.
+
+For JACT to create a complete coverage report you need to package your project separately as a FAT-jar. This is done with
+the Maven Shade Plugin. Add this minimal configuration to the pom.xml file in your project:
+```xml
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-shade-plugin</artifactId>
+<version>3.2.4</version> <!-- Adjust version if needed -->
+<executions>
+    <execution>
+        <phase>package</phase>
+        <goals>
+            <goal>shade</goal>
+        </goals>
+        <configuration>
+            <shadedArtifactAttached>true</shadedArtifactAttached>
+        </configuration>
+    </execution>
+</executions>
+</plugin>
+```
+
+Now just add the JACT plugin to the pom.xml file in your project:
 ```xml
 <plugin>
     <groupId>java.absolute.coverage.tracker</groupId>
     <artifactId>jact</artifactId>
-    <version>1.0</version>
+    <version>1.0</version> <!-- Adjust version if needed -->
     <executions>
         <execution>
             <goals>
@@ -47,3 +70,6 @@ After fulfilling the prerequsites in your project, clone this repo and execute `
     </executions>
 </plugin>
 ```
+
+JACT creates the report during the `install`-phase since it requires a packaged FAT-jar. Executing `mvn clean install`
+in your project will create a `jact-report` directory under `./target/jact-report`. 
