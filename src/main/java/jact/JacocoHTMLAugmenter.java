@@ -53,12 +53,14 @@ public class JacocoHTMLAugmenter {
                     if (!dirName.equals("dependencies") && !dirName.equals("jacoco-resources")) {
                         // Could become problematic if packages share name with packages in dependencies
                         // TODO HANDLE COLLIDING PROJECT PACKAGES HERE
-                        if (CompleteCoverageMojo.getProjectPackages().contains(dirName)) {
+                        List<ProjectDependency> matchedDeps = PackageToDependencyResolver.packageToDepPaths(dirName, dependencies);
+                        if (CompleteCoverageMojo.getProjectPackagesAndClasses().containsKey(dirName) && matchedDeps.isEmpty()) {
                             extractAndAddPackageTotal(REPORTPATH + dirName +
                                     "/index.html", thisProject, dirName);
                             thisProject.addReportPath(REPORTPATH + dirName);
-                        } else {
-                            ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(dirName, dependencies);
+                        } else if(!CompleteCoverageMojo.getProjectPackagesAndClasses().containsKey(dirName) && !matchedDeps.isEmpty()) {
+                            // Go into the directory and move the classfiles to a project package directory
+                            ProjectDependency matchedDep = matchedDeps.get(0);
                             if (matchedDep.getId() != null) {
                                 extractAndAddPackageTotal(REPORTPATH + dirName +
                                         "/index.html", matchedDep, dirName);
@@ -263,12 +265,10 @@ public class JacocoHTMLAugmenter {
             writeHTMLStringToFile(REPORTPATH + "/index.html", totalDepUsage.usageToHTML("dependencies", overallTotal, false));
             writeHTMLTotalToFile(REPORTPATH + "dependencies/index.html", totalDepUsage.totalUsageToHTML());
 
-            // Write the project overview entry:
+            // Write the project package overview entries:
             for (Map.Entry<String, DependencyUsage> entry : thisProject.packageUsageMap.entrySet()) {
                 try {
                     writeHTMLStringToFile(REPORTPATH + "/index.html", entry.getValue().usageToHTML(entry.getKey(),overallTotal, true));
-                    //writeHTMLStringToFile(REPORTPATH + "/index.html",
-                    //        thisProject.packageUsageMap.get(CompleteCoverageMojo.getProjectGroupId()).usageToHTML(CompleteCoverageMojo.getProjectGroupId(), overallTotal, true));
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
