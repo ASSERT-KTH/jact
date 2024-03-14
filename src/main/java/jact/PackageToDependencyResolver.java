@@ -6,6 +6,8 @@ import java.util.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import static jact.JacocoHTMLAugmenter.REPORTPATH;
+
 public class PackageToDependencyResolver {
     /**
      * Take a list of all dependencies,
@@ -18,17 +20,20 @@ public class PackageToDependencyResolver {
     // Handle the scenario where two or more packages have the same name:
 
 
-    public static List<ProjectDependency> packageToDepPaths(String packageName, List<ProjectDependency> dependencies) {
+    public static ProjectDependency packageToDepPaths(String packageName, List<ProjectDependency> dependencies) {
         // List of dependencies along with their coordinates
 
-        List<ProjectDependency> currMatchedDeps = new ArrayList<>();
+        //List<ProjectDependency> currMatchedDeps = new ArrayList<>();
         Map<String, Set<String>> projectPackages = CompleteCoverageMojo.getProjectPackagesAndClasses();
+
+        Boolean packageNameInProject = projectPackages.containsKey(packageName);
 
         //List<ProjectDependency> dependencies = ProjectDependencies.getAllProjectDependencies();
 
-
         // Directory where your Maven dependencies are stored
         String mavenRepositoryDir = CompleteCoverageMojo.getLocalRepoPath();
+
+        ProjectDependency matchedDep = new ProjectDependency();
 
         // Iterate over each dependency
         for (ProjectDependency dependency : dependencies) {
@@ -50,7 +55,8 @@ public class PackageToDependencyResolver {
                         // Check if the entry is a class file within the desired package
                         if (entry.getName().startsWith(packageName.replace('.', '/')) && entry.getName().endsWith(".class")) {
                             System.out.println("Package: " + packageName + " matched to dependency: " + groupId + ":" + artifactId + ":" + version);
-                            currMatchedDeps.add(dependency);
+                            //currMatchedDeps.add(dependency);
+                            matchedDep = dependency;
                             break;
                             //return dependency;
                         }
@@ -60,7 +66,20 @@ public class PackageToDependencyResolver {
                 }
             }
         }
-        return currMatchedDeps;
+
+        if(matchedDep.getId() != null && packageNameInProject){
+            // Extract the classes in the project and put them in a separate directory
+            String projectPath = REPORTPATH + "/" + packageName;
+            throw new RuntimeException("CANNOT RESOLVE PACKAGES: Package name: " + packageName +
+                    " has an identical name to a package in " + matchedDep.getId());
+        }
+        // Handle the case when multiple dependencies has been matched
+        // Here I need to create a new directory for those classes
+        // that come from different dependencies
+
+
+        //return currMatchedDeps;
+        return matchedDep;
     }
 }
 

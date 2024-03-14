@@ -1,4 +1,4 @@
-package com.google.common.reflect;
+package com.google.common.reflect2;
 
 public class PackageResolveDreamDestroyer {
 

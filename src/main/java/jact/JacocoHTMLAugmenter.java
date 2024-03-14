@@ -53,14 +53,14 @@ public class JacocoHTMLAugmenter {
                     if (!dirName.equals("dependencies") && !dirName.equals("jacoco-resources")) {
                         // Could become problematic if packages share name with packages in dependencies
                         // TODO HANDLE COLLIDING PROJECT PACKAGES HERE
-                        List<ProjectDependency> matchedDeps = PackageToDependencyResolver.packageToDepPaths(dirName, dependencies);
-                        if (CompleteCoverageMojo.getProjectPackagesAndClasses().containsKey(dirName) && matchedDeps.isEmpty()) {
+                        ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(dirName, dependencies);
+                        if (CompleteCoverageMojo.getProjectPackagesAndClasses().containsKey(dirName) && matchedDep.getId() == null) {
                             extractAndAddPackageTotal(REPORTPATH + dirName +
                                     "/index.html", thisProject, dirName);
                             thisProject.addReportPath(REPORTPATH + dirName);
-                        } else if(!CompleteCoverageMojo.getProjectPackagesAndClasses().containsKey(dirName) && !matchedDeps.isEmpty()) {
+                        } else if(!CompleteCoverageMojo.getProjectPackagesAndClasses().containsKey(dirName) && matchedDep.getId() != null) {
                             // Go into the directory and move the classfiles to a project package directory
-                            ProjectDependency matchedDep = matchedDeps.get(0);
+                            //ProjectDependency matchedDep = matchedDeps.get(0);
                             if (matchedDep.getId() != null) {
                                 extractAndAddPackageTotal(REPORTPATH + dirName +
                                         "/index.html", matchedDep, dirName);
