@@ -51,16 +51,13 @@ public class JacocoHTMLAugmenter {
                     String dirName = directory.getName();
                     //boolean packageDir = CompleteCoverageMojo.projGroupIdSet.stream().allMatch(dirName::contains);
                     if (!dirName.equals("dependencies") && !dirName.equals("jacoco-resources")) {
-                        // Could become problematic if packages share name with packages in dependencies
-                        // TODO HANDLE COLLIDING PROJECT PACKAGES HERE
                         ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(dirName, dependencies);
-                        if (CompleteCoverageMojo.getProjectPackagesAndClasses().containsKey(dirName) && matchedDep.getId() == null) {
+                        // Could become problematic if packages share name with packages in dependencies
+                        if (CompleteCoverageMojo.getProjectPackagesAndClasses().containsKey(dirName)) {
                             extractAndAddPackageTotal(REPORTPATH + dirName +
                                     "/index.html", thisProject, dirName);
                             thisProject.addReportPath(REPORTPATH + dirName);
-                        } else if(!CompleteCoverageMojo.getProjectPackagesAndClasses().containsKey(dirName) && matchedDep.getId() != null) {
-                            // Go into the directory and move the classfiles to a project package directory
-                            //ProjectDependency matchedDep = matchedDeps.get(0);
+                        } else {
                             if (matchedDep.getId() != null) {
                                 extractAndAddPackageTotal(REPORTPATH + dirName +
                                         "/index.html", matchedDep, dirName);
@@ -242,6 +239,7 @@ public class JacocoHTMLAugmenter {
                 }
             }
             pd.writePackagesToFile(currTotal);
+
             totalDepUsage.addAll(pd.dependencyUsage);
         }
 
@@ -315,10 +313,10 @@ public class JacocoHTMLAugmenter {
                     File parentDir = currDir.getParentFile();
                     try {
                         // Writing the dependency total as an entry
-                        DependencyUsage totalForBars = childTotal;
+                        DependencyUsage totalForBars = currTotal;
                         totalForBars.addAll(currDependency.dependencyUsage);
                         writeHTMLStringToFile(currDir + "/index.html", childTotal.usageToHTML("transitive-dependencies", totalForBars, false));
-                        writeHTMLTotalToFile(currDir + "/transitive-dependencies/index.html", totalForBars.totalUsageToHTML());
+                        writeHTMLTotalToFile(currDir + "/transitive-dependencies/index.html", childTotal.totalUsageToHTML());
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -326,9 +324,9 @@ public class JacocoHTMLAugmenter {
 
             }
         }
-
         // Calculate the total.
         currTotal.addAll(currDependency.dependencyUsage);
+
 
         // Write here
         if (!currDependency.writtenTotalToFile) {
