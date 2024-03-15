@@ -242,7 +242,6 @@ public class JacocoHTMLAugmenter {
                 }
             }
             pd.writePackagesToFile(currTotal);
-
             totalDepUsage.addAll(pd.dependencyUsage);
         }
 
@@ -316,10 +315,10 @@ public class JacocoHTMLAugmenter {
                     File parentDir = currDir.getParentFile();
                     try {
                         // Writing the dependency total as an entry
-                        DependencyUsage totalForBars = currTotal;
+                        DependencyUsage totalForBars = childTotal;
                         totalForBars.addAll(currDependency.dependencyUsage);
                         writeHTMLStringToFile(currDir + "/index.html", childTotal.usageToHTML("transitive-dependencies", totalForBars, false));
-                        writeHTMLTotalToFile(currDir + "/transitive-dependencies/index.html", childTotal.totalUsageToHTML());
+                        writeHTMLTotalToFile(currDir + "/transitive-dependencies/index.html", totalForBars.totalUsageToHTML());
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -327,9 +326,9 @@ public class JacocoHTMLAugmenter {
 
             }
         }
+
         // Calculate the total.
         currTotal.addAll(currDependency.dependencyUsage);
-
 
         // Write here
         if (!currDependency.writtenTotalToFile) {

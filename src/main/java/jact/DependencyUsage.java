@@ -141,7 +141,9 @@ public class DependencyUsage {
     }
 
     public String usageToHTML(String dependencyDirName, DependencyUsage total, Boolean isPackage) {
-
+        if(dependencyDirName.equals("com.google.guava.guava-v33.0.0-jre")){
+            System.out.println("GUAVA INSTRUCTIONS " + total.getTotalInstructions());
+        }
         long coveredInstructions = this.getTotalInstructions() - this.getMissedInstructions();
         long coveredBranches = this.getTotalBranches() - this.getMissedBranches();
 
