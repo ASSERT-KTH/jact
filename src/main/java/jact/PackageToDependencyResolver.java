@@ -26,7 +26,7 @@ public class PackageToDependencyResolver {
         //List<ProjectDependency> currMatchedDeps = new ArrayList<>();
         Map<String, Set<String>> projectPackages = CompleteCoverageMojo.getProjectPackagesAndClasses();
 
-        Boolean packageNameInProject = projectPackages.containsKey(packageName);
+        boolean packageNameInProject = projectPackages.containsKey(packageName);
 
         //List<ProjectDependency> dependencies = ProjectDependencies.getAllProjectDependencies();
 
@@ -35,8 +35,13 @@ public class PackageToDependencyResolver {
 
         ProjectDependency matchedDep = new ProjectDependency();
 
+        boolean foundDep = false;
+
         // Iterate over each dependency
         for (ProjectDependency dependency : dependencies) {
+            if(foundDep){
+                break;
+            }
             String groupId = dependency.getGroupId();
             String artifactId = dependency.getArtifactId();
             String version = dependency.getVersion();
@@ -57,6 +62,7 @@ public class PackageToDependencyResolver {
                             System.out.println("Package: " + packageName + " matched to dependency: " + groupId + ":" + artifactId + ":" + version);
                             //currMatchedDeps.add(dependency);
                             matchedDep = dependency;
+                            foundDep = true;
                             break;
                             //return dependency;
                         }
