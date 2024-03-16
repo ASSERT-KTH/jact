@@ -24,14 +24,14 @@ public class PackageToDependencyResolver {
         // List of dependencies along with their coordinates
 
         //List<ProjectDependency> currMatchedDeps = new ArrayList<>();
-        Map<String, Set<String>> projectPackages = CompleteCoverageMojo.getProjectPackagesAndClasses();
+        Map<String, Set<String>> projectPackages = HtmlReportMojo.getProjectPackagesAndClasses();
 
         boolean packageNameInProject = projectPackages.containsKey(packageName);
 
         //List<ProjectDependency> dependencies = ProjectDependencies.getAllProjectDependencies();
 
         // Directory where your Maven dependencies are stored
-        String mavenRepositoryDir = CompleteCoverageMojo.getLocalRepoPath();
+        String mavenRepositoryDir = HtmlReportMojo.getLocalRepoPath();
 
         ProjectDependency matchedDep = new ProjectDependency();
 

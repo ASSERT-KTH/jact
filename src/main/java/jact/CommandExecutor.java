@@ -10,11 +10,11 @@ import java.nio.file.Paths;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
-public class CommandExecutor extends CompleteCoverageMojo {
+public class CommandExecutor extends HtmlReportMojo {
 
     public static void copyJacocoCliJar() throws IOException, URISyntaxException {
         // Get the path to the plugin JAR file
-        Path pluginJarPath = Paths.get(CompleteCoverageMojo.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+        Path pluginJarPath = Paths.get(HtmlReportMojo.class.getProtectionDomain().getCodeSource().getLocation().toURI());
 
         // Create a JarInputStream to read from the plugin JAR
         try (JarInputStream jarInputStream = new JarInputStream(new FileInputStream(pluginJarPath.toFile()))) {
@@ -86,9 +86,9 @@ public class CommandExecutor extends CompleteCoverageMojo {
 
             // Adapts the command based on OS:
             ProcessBuilder processBuilder;
-            if (CompleteCoverageMojo.getHostOS().contains("linux")) {
+            if (HtmlReportMojo.getHostOS().contains("linux")) {
                 processBuilder = new ProcessBuilder("/bin/bash", "-c", command);
-            } else if (CompleteCoverageMojo.getHostOS().contains("windows")) {
+            } else if (HtmlReportMojo.getHostOS().contains("windows")) {
                 processBuilder = new ProcessBuilder("cmd", "/c", command); // For Windows
             } else {
                 // No support for MacOS currently

@@ -22,8 +22,8 @@ import static jact.JacocoHTMLAugmenter.extractReportAndMoveDirs;
  * Generates a complete code coverage report including all
  * dependencies along with their transitive dependencies.
  */
-@Mojo(name = "coverage-report", defaultPhase = LifecyclePhase.INSTALL, threadSafe = true)
-public class CompleteCoverageMojo extends AbstractMojo {
+@Mojo(name = "xml-report", defaultPhase = LifecyclePhase.INSTALL, threadSafe = false)
+public class XmlReportMojo extends AbstractMojo {
 
     private static String hostOS;
     private static String localRepoPath;

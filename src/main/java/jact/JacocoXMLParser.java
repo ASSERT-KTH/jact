@@ -14,11 +14,13 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.util.*;
 
+import static jact.PackageToDependencyResolver.packageToDepPaths;
+
 public class JacocoXMLParser {
 
     public static final String REPORTPATH = "./target/jact-report/";
-    private static final String projId = CompleteCoverageMojo.getProjectGroupId() + ":" +
-            CompleteCoverageMojo.getProjectArtifactId() + ":" + CompleteCoverageMojo.getProjectVersion();
+    private static final String projId = HtmlReportMojo.getProjectGroupId() + ":" +
+            HtmlReportMojo.getProjectArtifactId() + ":" + HtmlReportMojo.getProjectVersion();
     private static ProjectDependency thisProject = new ProjectDependency();
 
 
@@ -57,7 +59,7 @@ public class JacocoXMLParser {
             for (Map.Entry<String, Document> entry : packageReports.entrySet()) {
                 String packageName = entry.getKey();
                 Document packageReport = entry.getValue();
-                String filename = packageName.replace("/", "-") + "_report.xml"; // Use package name for filename
+                String filename = packageName.replace("/", "-") + ".xml"; // Use package name for filename
                 writeXML(packageReport, "./xml_reports/" + filename);
                 //System.out.println("filename: " + filename);
             }
@@ -66,6 +68,32 @@ public class JacocoXMLParser {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        File reportDir = new File("./xml_reports");
+
+        // Check if the directory exists
+        if (reportDir.exists() && reportDir.isDirectory()) {
+            // List all files in the directory
+            File[] files = reportDir.listFiles();
+            if (files != null) {
+                // Iterate through each file
+                for (File file : files) {
+                    // Extract filename without extension
+                    String filename = file.getName().replaceAll("\\.xml$", "");
+                    System.out.println(filename);
+                    // Call your function with the filename
+                    ProjectDependency matchedDep = packageToDepPaths(filename, dependencies);
+                    System.out.println(matchedDep.getId());
+                }
+            } else {
+                System.out.println("No files found in the directory.");
+            }
+        } else {
+            System.out.println("Directory does not exist or is not a directory.");
+        }
+
+
+
     }
 
     private static Document createPackageReport(Element packageElement) throws Exception {

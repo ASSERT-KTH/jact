@@ -15,8 +15,8 @@ import static jact.DirectoryUtils.*;
 public class JacocoHTMLAugmenter {
     public static final String REPORTPATH = "./target/jact-report/";
     public static final String jacocoResPath = REPORTPATH + "jacoco-resources";
-    private static final String projId = CompleteCoverageMojo.getProjectGroupId() + ":" +
-            CompleteCoverageMojo.getProjectArtifactId() + ":" + CompleteCoverageMojo.getProjectVersion();
+    private static final String projId = HtmlReportMojo.getProjectGroupId() + ":" +
+            HtmlReportMojo.getProjectArtifactId() + ":" + HtmlReportMojo.getProjectVersion();
     private static ProjectDependency thisProject = new ProjectDependency();
 
     public static void extractReportAndMoveDirs(List<ProjectDependency> dependencies) throws IOException {
@@ -53,7 +53,7 @@ public class JacocoHTMLAugmenter {
                     if (!dirName.equals("dependencies") && !dirName.equals("jacoco-resources")) {
                         ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(dirName, dependencies);
                         // Could become problematic if packages share name with packages in dependencies
-                        if (CompleteCoverageMojo.getProjectPackagesAndClasses().containsKey(dirName)) {
+                        if (HtmlReportMojo.getProjectPackagesAndClasses().containsKey(dirName)) {
                             extractAndAddPackageTotal(REPORTPATH + dirName +
                                     "/index.html", thisProject, dirName);
                             thisProject.addReportPath(REPORTPATH + dirName);
