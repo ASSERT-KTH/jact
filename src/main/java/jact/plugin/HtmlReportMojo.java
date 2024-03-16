@@ -1,5 +1,8 @@
-package jact;
+package jact.plugin;
 
+import jact.CommandExecutor;
+import jact.ProjectDependencies;
+import jact.ProjectDependency;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;

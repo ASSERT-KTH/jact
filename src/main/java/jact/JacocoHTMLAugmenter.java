@@ -1,5 +1,9 @@
-package jact;
+package jact.html;
 
+import jact.DependencyUsage;
+import jact.PackageToDependencyResolver;
+import jact.ProjectDependency;
+import jact.plugin.HtmlReportMojo;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
