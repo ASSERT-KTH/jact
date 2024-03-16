@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><report><package name="org/apache/commons/math3/geometry/enclosing">
+        <class name="org/apache/commons/math3/geometry/enclosing/EnclosingBall" sourcefilename="EnclosingBall.java">
+            <method desc="(Lorg/apache/commons/math3/geometry/Point;D[Lorg/apache/commons/math3/geometry/Point;)V" line="51" name="&lt;init&gt;">
+                <counter covered="0" missed="14" type="INSTRUCTION"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/Point;" line="61" name="getCenter">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="68" name="getRadius">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[Lorg/apache/commons/math3/geometry/Point;" line="75" name="getSupport">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="82" name="getSupportSize">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Point;)Z" line="90" name="contains">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Point;D)Z" line="100" name="contains">
+                <counter covered="0" missed="14" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="55" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="BRANCH"/>
+            <counter covered="0" missed="11" type="LINE"/>
+            <counter covered="0" missed="9" type="COMPLEXITY"/>
+            <counter covered="0" missed="7" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/enclosing/SupportBallGenerator" sourcefilename="SupportBallGenerator.java"/>
+        <class name="org/apache/commons/math3/geometry/enclosing/Encloser" sourcefilename="Encloser.java"/>
+        <class name="org/apache/commons/math3/geometry/enclosing/WelzlEncloser" sourcefilename="WelzlEncloser.java">
+            <method desc="(DLorg/apache/commons/math3/geometry/enclosing/SupportBallGenerator;)V" line="55" name="&lt;init&gt;">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/Iterable;)Lorg/apache/commons/math3/geometry/enclosing/EnclosingBall;" line="63" name="enclose">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/Iterable;)Lorg/apache/commons/math3/geometry/enclosing/EnclosingBall;" line="79" name="pivotingBall">
+                <counter covered="0" missed="84" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="17" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/util/List;ILjava/util/List;)Lorg/apache/commons/math3/geometry/enclosing/EnclosingBall;" line="128" name="moveToFrontBall">
+                <counter covered="0" missed="69" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="12" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/Iterable;Lorg/apache/commons/math3/geometry/enclosing/EnclosingBall;)Lorg/apache/commons/math3/geometry/Point;" line="165" name="selectFarthest">
+                <counter covered="0" missed="32" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="10" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="211" type="INSTRUCTION"/>
+            <counter covered="0" missed="20" type="BRANCH"/>
+            <counter covered="0" missed="46" type="LINE"/>
+            <counter covered="0" missed="15" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <sourcefile name="EnclosingBall.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="51"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="52"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="53"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="54"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="55"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="61"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="68"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="75"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="82"/>
+            <line cb="0" ci="0" mb="2" mi="12" nr="90"/>
+            <line cb="0" ci="0" mb="2" mi="14" nr="100"/>
+            <counter covered="0" missed="55" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="BRANCH"/>
+            <counter covered="0" missed="11" type="LINE"/>
+            <counter covered="0" missed="9" type="COMPLEXITY"/>
+            <counter covered="0" missed="7" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="Encloser.java"/>
+        <sourcefile name="SupportBallGenerator.java"/>
+        <sourcefile name="WelzlEncloser.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="55"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="56"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="57"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="58"/>
+            <line cb="0" ci="0" mb="4" mi="6" nr="63"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="65"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="81"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="84"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="85"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="90"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="92"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="98"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="99"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="100"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="101"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="109"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="112"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="115"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="128"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="130"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="132"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="133"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="134"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="138"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="139"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="140"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="144"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="145"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="147"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="154"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="165"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="166"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="167"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="169"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="170"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="171"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="172"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="173"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="175"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="177"/>
+            <counter covered="0" missed="211" type="INSTRUCTION"/>
+            <counter covered="0" missed="20" type="BRANCH"/>
+            <counter covered="0" missed="46" type="LINE"/>
+            <counter covered="0" missed="15" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <counter covered="0" missed="266" type="INSTRUCTION"/>
+        <counter covered="0" missed="24" type="BRANCH"/>
+        <counter covered="0" missed="57" type="LINE"/>
+        <counter covered="0" missed="24" type="COMPLEXITY"/>
+        <counter covered="0" missed="12" type="METHOD"/>
+        <counter covered="0" missed="2" type="CLASS"/>
+    </package></report>

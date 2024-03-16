@@ -1,0 +1,2034 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><report><package name="org/apache/commons/math3/geometry/euclidean/twod">
+        <class name="org/apache/commons/math3/geometry/euclidean/twod/Line$LineTransform" sourcefilename="Line.java">
+            <method desc="(DDDDDD)V" line="533" name="&lt;init&gt;">
+                <counter covered="0" missed="58" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="13" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Point;)Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;" line="554" name="apply">
+                <counter covered="0" missed="33" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/Hyperplane;)Lorg/apache/commons/math3/geometry/euclidean/twod/Line;" line="563" name="apply">
+                <counter covered="0" missed="71" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/SubHyperplane;Lorg/apache/commons/math3/geometry/partitioning/Hyperplane;Lorg/apache/commons/math3/geometry/partitioning/Hyperplane;)Lorg/apache/commons/math3/geometry/partitioning/SubHyperplane;" line="577" name="apply">
+                <counter covered="0" missed="29" type="INSTRUCTION"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="191" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="BRANCH"/>
+            <counter covered="0" missed="28" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/euclidean/twod/SubLine" sourcefilename="SubLine.java">
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/Hyperplane;Lorg/apache/commons/math3/geometry/partitioning/Region;)V" line="50" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;D)V" line="60" name="&lt;init&gt;">
+                <counter covered="0" missed="13" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;)V" line="70" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Segment;)V" line="77" name="&lt;init&gt;">
+                <counter covered="0" missed="13" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/util/List;" line="97" name="getSegments">
+                <counter covered="0" missed="53" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="9" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/SubLine;Z)Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;" line="128" name="intersection">
+                <counter covered="0" missed="52" type="INSTRUCTION"/>
+                <counter covered="0" missed="12" type="BRANCH"/>
+                <counter covered="0" missed="10" type="LINE"/>
+                <counter covered="0" missed="7" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;D)Lorg/apache/commons/math3/geometry/euclidean/oned/IntervalsSet;" line="158" name="buildIntervalSet">
+                <counter covered="0" missed="20" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/Hyperplane;Lorg/apache/commons/math3/geometry/partitioning/Region;)Lorg/apache/commons/math3/geometry/partitioning/AbstractSubHyperplane;" line="168" name="buildNew">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/Hyperplane;)Lorg/apache/commons/math3/geometry/partitioning/SubHyperplane$SplitSubHyperplane;" line="175" name="split">
+                <counter covered="0" missed="161" type="INSTRUCTION"/>
+                <counter covered="0" missed="14" type="BRANCH"/>
+                <counter covered="0" missed="19" type="LINE"/>
+                <counter covered="0" missed="8" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="329" type="INSTRUCTION"/>
+            <counter covered="0" missed="28" type="BRANCH"/>
+            <counter covered="0" missed="49" type="LINE"/>
+            <counter covered="0" missed="23" type="COMPLEXITY"/>
+            <counter covered="0" missed="9" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/euclidean/twod/Line" sourcefilename="Line.java">
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;D)V" line="93" name="&lt;init&gt;">
+                <counter covered="0" missed="10" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;DD)V" line="104" name="&lt;init&gt;">
+                <counter covered="0" missed="10" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDDDD)V" line="118" name="&lt;init&gt;">
+                <counter covered="0" missed="21" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;)V" line="135" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;D)V" line="145" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Line;)V" line="153" name="&lt;init&gt;">
+                <counter covered="0" missed="28" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/twod/Line;" line="164" name="copySelf">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;)V" line="173" name="reset">
+                <counter covered="0" missed="70" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="14" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;D)V" line="195" name="reset">
+                <counter covered="0" missed="30" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="205" name="revertSelf">
+                <counter covered="0" missed="36" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="219" name="unlinkReverse">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/twod/Line;" line="241" name="getReverse">
+                <counter covered="0" missed="40" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Vector;)Lorg/apache/commons/math3/geometry/euclidean/oned/Vector1D;" line="255" name="toSubSpace">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Vector;)Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;" line="264" name="toSpace">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Point;)Lorg/apache/commons/math3/geometry/euclidean/oned/Vector1D;" line="269" name="toSubSpace">
+                <counter covered="0" missed="16" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Point;)Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;" line="275" name="toSpace">
+                <counter covered="0" missed="25" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Line;)Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;" line="286" name="intersection">
+                <counter covered="0" missed="47" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Point;)Lorg/apache/commons/math3/geometry/Point;" line="298" name="project">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="305" name="getTolerance">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/twod/SubLine;" line="310" name="wholeHyperplane">
+                <counter covered="0" missed="10" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/twod/PolygonsSet;" line="318" name="wholeSpace">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Line;)D" line="332" name="getOffset">
+                <counter covered="0" missed="22" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Vector;)D" line="341" name="getOffset">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Point;)D" line="346" name="getOffset">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/Hyperplane;)Z" line="352" name="sameOrientationAs">
+                <counter covered="0" missed="19" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/oned/Vector1D;D)Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;" line="363" name="getPointAt">
+                <counter covered="0" missed="27" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;)Z" line="374" name="contains">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;)D" line="387" name="distance">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Line;)Z" line="396" name="isParallelTo">
+                <counter covered="0" missed="19" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;)V" line="403" name="translateToPoint">
+                <counter covered="0" missed="13" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="410" name="getAngle">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="417" name="setAngle">
+                <counter covered="0" missed="18" type="INSTRUCTION"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="427" name="getOriginOffset">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="434" name="setOriginOffset">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/awt/geom/AffineTransform;)Lorg/apache/commons/math3/geometry/partitioning/Transform;" line="455" name="getTransform">
+                <counter covered="0" missed="28" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDDDDD)Lorg/apache/commons/math3/geometry/partitioning/Transform;" line="482" name="getTransform">
+                <counter covered="0" missed="10" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="602" type="INSTRUCTION"/>
+            <counter covered="0" missed="20" type="BRANCH"/>
+            <counter covered="0" missed="107" type="LINE"/>
+            <counter covered="0" missed="46" type="COMPLEXITY"/>
+            <counter covered="0" missed="36" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/euclidean/twod/Vector2DFormat" sourcefilename="Vector2DFormat.java">
+            <method desc="()V" line="54" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/text/NumberFormat;)V" line="63" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V" line="74" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/text/NumberFormat;)V" line="87" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2DFormat;" line="95" name="getInstance">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/util/Locale;)Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2DFormat;" line="104" name="getInstance">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Vector;Ljava/lang/StringBuffer;Ljava/text/FieldPosition;)Ljava/lang/StringBuffer;" line="111" name="format">
+                <counter covered="0" missed="20" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/String;)Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;" line="118" name="parse">
+                <counter covered="0" missed="23" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/String;Ljava/text/ParsePosition;)Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;" line="131" name="parse">
+                <counter covered="0" missed="20" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="100" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="BRANCH"/>
+            <counter covered="0" missed="21" type="LINE"/>
+            <counter covered="0" missed="11" type="COMPLEXITY"/>
+            <counter covered="0" missed="9" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/euclidean/twod/Euclidean2D$LazyHolder" sourcefilename="Euclidean2D.java">
+            <method desc="()V" line="62" name="&lt;clinit&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="6" type="INSTRUCTION"/>
+            <counter covered="0" missed="1" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/euclidean/twod/DiskGenerator" sourcefilename="DiskGenerator.java">
+            <method desc="()V" line="29" name="&lt;init&gt;">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/util/List;)Lorg/apache/commons/math3/geometry/enclosing/EnclosingBall;" line="34" name="ballOnSupport">
+                <counter covered="0" missed="258" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="21" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([Lorg/apache/commons/math3/fraction/BigFraction;[Lorg/apache/commons/math3/fraction/BigFraction;)Lorg/apache/commons/math3/fraction/BigFraction;" line="103" name="minor">
+                <counter covered="0" missed="36" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="297" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="BRANCH"/>
+            <counter covered="0" missed="23" type="LINE"/>
+            <counter covered="0" missed="6" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/euclidean/twod/Euclidean2D" sourcefilename="Euclidean2D.java">
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/twod/Euclidean2D;" line="43" name="getInstance">
+                <counter covered="0" missed="2" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="48" name="getDimension">
+                <counter covered="0" missed="2" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/oned/Euclidean1D;" line="53" name="getSubSpace">
+                <counter covered="0" missed="2" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/Object;" line="71" name="readResolve">
+                <counter covered="0" missed="2" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="8" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet$Edge" sourcefilename="PolygonsSet.java">
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/PolygonsSet$Vertex;Lorg/apache/commons/math3/geometry/euclidean/twod/PolygonsSet$Vertex;Lorg/apache/commons/math3/geometry/euclidean/twod/Line;)V" line="531" name="&lt;init&gt;">
+                <counter covered="0" missed="21" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/twod/PolygonsSet$Vertex;" line="548" name="getStart">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/twod/PolygonsSet$Vertex;" line="555" name="getEnd">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/twod/Line;" line="562" name="getLine">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/BSPTree;)V" line="569" name="setNode">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/partitioning/BSPTree;" line="577" name="getNode">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Line;)Lorg/apache/commons/math3/geometry/euclidean/twod/PolygonsSet$Vertex;" line="590" name="split">
+                <counter covered="0" missed="39" type="INSTRUCTION"/>
+                <counter covered="0" missed="7" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="76" type="INSTRUCTION"/>
+            <counter covered="0" missed="21" type="LINE"/>
+            <counter covered="0" missed="7" type="COMPLEXITY"/>
+            <counter covered="0" missed="7" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet$ConnectableSegment" sourcefilename="PolygonsSet.java">
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;Lorg/apache/commons/math3/geometry/euclidean/twod/Line;Lorg/apache/commons/math3/geometry/partitioning/BSPTree;Lorg/apache/commons/math3/geometry/partitioning/BSPTree;Lorg/apache/commons/math3/geometry/partitioning/BSPTree;)V" line="978" name="&lt;init&gt;">
+                <counter covered="0" missed="24" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/partitioning/BSPTree;" line="991" name="getNode">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/partitioning/BSPTree;" line="998" name="getStartNode">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/partitioning/BSPTree;" line="1005" name="getEndNode">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/twod/PolygonsSet$ConnectableSegment;" line="1012" name="getPrevious">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/PolygonsSet$ConnectableSegment;)V" line="1019" name="setPrevious">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/twod/PolygonsSet$ConnectableSegment;" line="1026" name="getNext">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/PolygonsSet$ConnectableSegment;)V" line="1033" name="setNext">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Z)V" line="1040" name="setProcessed">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Z" line="1047" name="isProcessed">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="54" type="INSTRUCTION"/>
+            <counter covered="0" missed="20" type="LINE"/>
+            <counter covered="0" missed="10" type="COMPLEXITY"/>
+            <counter covered="0" missed="10" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet$SegmentsBuilder" sourcefilename="PolygonsSet.java">
+            <method desc="(D)V" line="1064" name="&lt;init&gt;">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/BSPTree;)Lorg/apache/commons/math3/geometry/partitioning/BSPTreeVisitor$Order;" line="1071" name="visitOrder">
+                <counter covered="0" missed="2" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/BSPTree;)V" line="1077" name="visitInternalNode">
+                <counter covered="0" missed="28" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="7" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/BSPTree;)V" line="1089" name="visitLeafNode">
+                <counter covered="0" missed="1" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/SubHyperplane;Lorg/apache/commons/math3/geometry/partitioning/BSPTree;Ljava/lang/Iterable;Z)V" line="1102" name="addContribution">
+                <counter covered="0" missed="92" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="13" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;Ljava/lang/Iterable;)Lorg/apache/commons/math3/geometry/partitioning/BSPTree;" line="1136" name="selectClosest">
+                <counter covered="0" missed="39" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="9" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/util/List;" line="1155" name="getSegments">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="176" type="INSTRUCTION"/>
+            <counter covered="0" missed="18" type="BRANCH"/>
+            <counter covered="0" missed="36" type="LINE"/>
+            <counter covered="0" missed="16" type="COMPLEXITY"/>
+            <counter covered="0" missed="7" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet$Vertex" sourcefilename="PolygonsSet.java">
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;)V" line="429" name="&lt;init&gt;">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;" line="440" name="getLocation">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Line;)V" line="447" name="bindWith">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/PolygonsSet$Vertex;)Lorg/apache/commons/math3/geometry/euclidean/twod/Line;" line="461" name="sharedLineWith">
+                <counter covered="0" missed="31" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="7" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/PolygonsSet$Edge;)V" line="479" name="setIncoming">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/twod/PolygonsSet$Edge;" line="487" name="getIncoming">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/PolygonsSet$Edge;)V" line="498" name="setOutgoing">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/twod/PolygonsSet$Edge;" line="506" name="getOutgoing">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="79" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="BRANCH"/>
+            <counter covered="0" missed="24" type="LINE"/>
+            <counter covered="0" missed="11" type="COMPLEXITY"/>
+            <counter covered="0" missed="8" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet" sourcefilename="PolygonsSet.java">
+            <method desc="(D)V" line="55" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/BSPTree;D)V" line="80" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/util/Collection;D)V" line="106" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDDDD)V" line="120" name="&lt;init&gt;">
+                <counter covered="0" missed="10" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D[Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;)V" line="154" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="162" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/BSPTree;)V" line="177" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/util/Collection;)V" line="203" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDDD)V" line="216" name="&lt;init&gt;">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDDDD)[Lorg/apache/commons/math3/geometry/euclidean/twod/Line;" line="230" name="boxBoundary">
+                <counter covered="0" missed="77" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="7" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D[Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;)Lorg/apache/commons/math3/geometry/partitioning/BSPTree;" line="264" name="verticesToTree">
+                <counter covered="0" missed="120" type="INSTRUCTION"/>
+                <counter covered="0" missed="16" type="BRANCH"/>
+                <counter covered="0" missed="20" type="LINE"/>
+                <counter covered="0" missed="9" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DLorg/apache/commons/math3/geometry/partitioning/BSPTree;Ljava/util/List;)V" line="326" name="insertEdges">
+                <counter covered="0" missed="214" type="INSTRUCTION"/>
+                <counter covered="0" missed="41" type="BRANCH"/>
+                <counter covered="0" missed="50" type="LINE"/>
+                <counter covered="0" missed="22" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/BSPTree;)Lorg/apache/commons/math3/geometry/euclidean/twod/PolygonsSet;" line="604" name="buildNew">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="611" name="computeGeometricalProperties">
+                <counter covered="0" missed="173" type="INSTRUCTION"/>
+                <counter covered="0" missed="14" type="BRANCH"/>
+                <counter covered="0" missed="32" type="LINE"/>
+                <counter covered="0" missed="8" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[[Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;" line="686" name="getVertices">
+                <counter covered="0" missed="307" type="INSTRUCTION"/>
+                <counter covered="0" missed="36" type="BRANCH"/>
+                <counter covered="0" missed="51" type="LINE"/>
+                <counter covered="0" missed="19" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/util/List;)I" line="786" name="naturalFollowerConnections">
+                <counter covered="0" missed="54" type="INSTRUCTION"/>
+                <counter covered="0" missed="12" type="BRANCH"/>
+                <counter covered="0" missed="14" type="LINE"/>
+                <counter covered="0" missed="7" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/util/List;)I" line="812" name="splitEdgeConnections">
+                <counter covered="0" missed="58" type="INSTRUCTION"/>
+                <counter covered="0" missed="12" type="BRANCH"/>
+                <counter covered="0" missed="14" type="LINE"/>
+                <counter covered="0" missed="7" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/util/List;)I" line="842" name="closeVerticesConnections">
+                <counter covered="0" missed="70" type="INSTRUCTION"/>
+                <counter covered="0" missed="16" type="BRANCH"/>
+                <counter covered="0" missed="19" type="LINE"/>
+                <counter covered="0" missed="9" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/util/List;)Lorg/apache/commons/math3/geometry/euclidean/twod/PolygonsSet$ConnectableSegment;" line="874" name="getUnprocessed">
+                <counter covered="0" missed="18" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/PolygonsSet$ConnectableSegment;)Ljava/util/List;" line="892" name="followLoop">
+                <counter covered="0" missed="65" type="INSTRUCTION"/>
+                <counter covered="0" missed="12" type="BRANCH"/>
+                <counter covered="0" missed="18" type="LINE"/>
+                <counter covered="0" missed="7" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/util/List;)V" line="931" name="filterSpuriousVertices">
+                <counter covered="0" missed="55" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="1271" type="INSTRUCTION"/>
+            <counter covered="0" missed="173" type="BRANCH"/>
+            <counter covered="0" missed="257" type="LINE"/>
+            <counter covered="0" missed="108" type="COMPLEXITY"/>
+            <counter covered="0" missed="21" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/euclidean/twod/Vector2D" sourcefilename="Vector2D.java">
+            <method desc="(DD)V" line="69" name="&lt;init&gt;">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([D)V" line="80" name="&lt;init&gt;">
+                <counter covered="0" missed="24" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DLorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;)V" line="94" name="&lt;init&gt;">
+                <counter covered="0" missed="15" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DLorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;DLorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;)V" line="107" name="&lt;init&gt;">
+                <counter covered="0" missed="25" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DLorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;DLorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;DLorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;)V" line="123" name="&lt;init&gt;">
+                <counter covered="0" missed="35" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DLorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;DLorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;DLorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;DLorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;)V" line="141" name="&lt;init&gt;">
+                <counter covered="0" missed="45" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="151" name="getX">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="159" name="getY">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="167" name="toArray">
+                <counter covered="0" missed="13" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/Space;" line="172" name="getSpace">
+                <counter covered="0" missed="2" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;" line="177" name="getZero">
+                <counter covered="0" missed="2" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="182" name="getNorm1">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="187" name="getNorm">
+                <counter covered="0" missed="13" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="192" name="getNormSq">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="197" name="getNormInf">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Vector;)Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;" line="202" name="add">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DLorg/apache/commons/math3/geometry/Vector;)Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;" line="208" name="add">
+                <counter covered="0" missed="21" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Vector;)Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;" line="214" name="subtract">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DLorg/apache/commons/math3/geometry/Vector;)Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;" line="220" name="subtract">
+                <counter covered="0" missed="21" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;" line="226" name="normalize">
+                <counter covered="0" missed="20" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;)D" line="246" name="angle">
+                <counter covered="0" missed="67" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="11" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;" line="269" name="negate">
+                <counter covered="0" missed="10" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;" line="274" name="scalarMultiply">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Z" line="279" name="isNaN">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Z" line="284" name="isInfinite">
+                <counter covered="0" missed="15" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Vector;)D" line="289" name="distance1">
+                <counter covered="0" missed="21" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Vector;)D" line="298" name="distance">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Point;)D" line="303" name="distance">
+                <counter covered="0" missed="24" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Vector;)D" line="311" name="distanceInf">
+                <counter covered="0" missed="21" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Vector;)D" line="319" name="distanceSq">
+                <counter covered="0" missed="23" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Vector;)D" line="327" name="dotProduct">
+                <counter covered="0" missed="13" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;)D" line="352" name="crossProduct">
+                <counter covered="0" missed="31" type="INSTRUCTION"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;)D" line="368" name="distance">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;)D" line="380" name="distanceInf">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;)D" line="392" name="distanceSq">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/Object;)Z" line="417" name="equals">
+                <counter covered="0" missed="35" type="INSTRUCTION"/>
+                <counter covered="0" missed="10" type="BRANCH"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="6" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="441" name="hashCode">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/String;" line="452" name="toString">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/text/NumberFormat;)Ljava/lang/String;" line="457" name="toString">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="38" name="&lt;clinit&gt;">
+                <counter covered="0" missed="25" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="666" type="INSTRUCTION"/>
+            <counter covered="0" missed="34" type="BRANCH"/>
+            <counter covered="0" missed="106" type="LINE"/>
+            <counter covered="0" missed="57" type="COMPLEXITY"/>
+            <counter covered="0" missed="40" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/euclidean/twod/Segment" sourcefilename="Segment.java">
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;Lorg/apache/commons/math3/geometry/euclidean/twod/Line;)V" line="41" name="&lt;init&gt;">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;" line="51" name="getStart">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;" line="58" name="getEnd">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/twod/Line;" line="65" name="getLine">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;)D" line="84" name="distance">
+                <counter covered="0" missed="90" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="11" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="111" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="BRANCH"/>
+            <counter covered="0" missed="19" type="LINE"/>
+            <counter covered="0" missed="7" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/euclidean/twod/NestedLoops" sourcefilename="NestedLoops.java">
+            <method desc="(D)V" line="73" name="&lt;init&gt;">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;D)V" line="86" name="&lt;init&gt;">
+                <counter covered="0" missed="105" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="20" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([Lorg/apache/commons/math3/geometry/euclidean/twod/Vector2D;)V" line="127" name="add">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/twod/NestedLoops;)V" line="138" name="add">
+                <counter covered="0" missed="84" type="INSTRUCTION"/>
+                <counter covered="0" missed="12" type="BRANCH"/>
+                <counter covered="0" missed="18" type="LINE"/>
+                <counter covered="0" missed="7" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="172" name="correctOrientation">
+                <counter covered="0" missed="16" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Z)V" line="183" name="setClockWise">
+                <counter covered="0" missed="55" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="12" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="280" type="INSTRUCTION"/>
+            <counter covered="0" missed="28" type="BRANCH"/>
+            <counter covered="0" missed="60" type="LINE"/>
+            <counter covered="0" missed="20" type="COMPLEXITY"/>
+            <counter covered="0" missed="6" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <sourcefile name="Euclidean2D.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="43"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="48"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="53"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="71"/>
+            <counter covered="0" missed="14" type="INSTRUCTION"/>
+            <counter covered="0" missed="5" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="2" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="Line.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="93"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="95"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="96"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="105"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="106"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="107"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="118"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="119"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="120"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="121"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="122"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="123"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="124"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="125"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="135"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="136"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="145"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="146"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="153"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="154"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="155"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="156"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="157"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="158"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="159"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="164"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="173"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="174"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="175"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="176"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="177"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="178"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="179"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="180"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="181"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="183"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="184"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="185"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="186"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="188"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="195"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="196"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="197"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="198"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="199"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="200"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="205"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="206"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="207"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="209"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="211"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="212"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="213"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="214"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="219"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="220"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="222"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="223"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="241"/>
+            <line cb="0" ci="0" mb="2" mi="30" nr="242"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="244"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="246"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="255"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="264"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="269"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="270"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="275"/>
+            <line cb="0" ci="0" mb="0" mi="21" nr="276"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="286"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="287"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="288"/>
+            <line cb="0" ci="0" mb="0" mi="28" nr="290"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="298"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="305"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="310"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="318"/>
+            <line cb="0" ci="0" mb="2" mi="22" nr="332"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="341"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="346"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="347"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="352"/>
+            <line cb="0" ci="0" mb="2" mi="16" nr="353"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="363"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="364"/>
+            <line cb="0" ci="0" mb="0" mi="19" nr="365"/>
+            <line cb="0" ci="0" mb="2" mi="12" nr="374"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="387"/>
+            <line cb="0" ci="0" mb="2" mi="19" nr="396"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="403"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="404"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="410"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="417"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="418"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="419"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="420"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="421"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="427"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="434"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="435"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="436"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="455"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="456"/>
+            <line cb="0" ci="0" mb="0" mi="22" nr="457"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="482"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="533"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="535"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="536"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="537"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="538"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="539"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="540"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="542"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="543"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="544"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="546"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="547"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="550"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="554"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="555"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="556"/>
+            <line cb="0" ci="0" mb="0" mi="24" nr="557"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="563"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="564"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="565"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="566"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="567"/>
+            <line cb="0" ci="0" mb="0" mi="23" nr="568"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="577"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="578"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="579"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="580"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="582"/>
+            <counter covered="0" missed="793" type="INSTRUCTION"/>
+            <counter covered="0" missed="22" type="BRANCH"/>
+            <counter covered="0" missed="135" type="LINE"/>
+            <counter covered="0" missed="51" type="COMPLEXITY"/>
+            <counter covered="0" missed="40" type="METHOD"/>
+            <counter covered="0" missed="2" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="DiskGenerator.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="29"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="34"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="35"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="37"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="38"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="39"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="41"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="42"/>
+            <line cb="0" ci="0" mb="0" mi="26" nr="43"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="47"/>
+            <line cb="0" ci="0" mb="0" mi="27" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="27" nr="72"/>
+            <line cb="0" ci="0" mb="0" mi="57" nr="75"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="81"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="82"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="83"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="84"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="85"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="87"/>
+            <line cb="0" ci="0" mb="0" mi="28" nr="88"/>
+            <line cb="0" ci="0" mb="0" mi="36" nr="103"/>
+            <counter covered="0" missed="297" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="BRANCH"/>
+            <counter covered="0" missed="23" type="LINE"/>
+            <counter covered="0" missed="6" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="Vector2D.java">
+            <line cb="0" ci="0" mb="0" mi="6" nr="38"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="42"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="46"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="50"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="71"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="72"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="80"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="81"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="82"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="84"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="85"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="95"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="96"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="97"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="107"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="108"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="109"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="110"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="123"/>
+            <line cb="0" ci="0" mb="0" mi="16" nr="124"/>
+            <line cb="0" ci="0" mb="0" mi="16" nr="125"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="126"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="141"/>
+            <line cb="0" ci="0" mb="0" mi="21" nr="142"/>
+            <line cb="0" ci="0" mb="0" mi="21" nr="143"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="144"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="151"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="159"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="167"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="172"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="177"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="182"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="187"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="192"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="197"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="202"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="203"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="208"/>
+            <line cb="0" ci="0" mb="0" mi="18" nr="209"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="214"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="215"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="220"/>
+            <line cb="0" ci="0" mb="0" mi="18" nr="221"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="226"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="227"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="228"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="230"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="246"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="247"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="248"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="251"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="252"/>
+            <line cb="0" ci="0" mb="4" mi="9" nr="253"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="255"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="256"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="257"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="259"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="263"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="269"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="274"/>
+            <line cb="0" ci="0" mb="4" mi="12" nr="279"/>
+            <line cb="0" ci="0" mb="6" mi="15" nr="284"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="289"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="290"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="291"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="292"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="298"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="303"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="304"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="305"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="306"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="311"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="312"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="313"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="314"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="319"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="320"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="321"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="322"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="327"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="328"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="352"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="353"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="354"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="355"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="356"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="368"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="380"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="392"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="417"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="418"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="421"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="422"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="423"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="424"/>
+            <line cb="0" ci="0" mb="4" mi="16" nr="427"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="429"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="441"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="442"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="444"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="452"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="457"/>
+            <counter covered="0" missed="666" type="INSTRUCTION"/>
+            <counter covered="0" missed="34" type="BRANCH"/>
+            <counter covered="0" missed="106" type="LINE"/>
+            <counter covered="0" missed="57" type="COMPLEXITY"/>
+            <counter covered="0" missed="40" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="NestedLoops.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="73"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="74"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="75"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="76"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="86"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="88"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="89"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="92"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="93"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="97"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="98"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="99"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="100"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="101"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="103"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="107"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="109"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="112"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="113"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="114"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="116"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="119"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="127"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="128"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="138"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="139"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="140"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="141"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="143"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="146"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="147"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="148"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="149"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="150"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="152"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="155"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="156"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="157"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="158"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="162"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="164"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="172"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="173"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="174"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="175"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="183"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="185"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="186"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="187"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="188"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="189"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="190"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="191"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="195"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="196"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="197"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="199"/>
+            <counter covered="0" missed="280" type="INSTRUCTION"/>
+            <counter covered="0" missed="28" type="BRANCH"/>
+            <counter covered="0" missed="60" type="LINE"/>
+            <counter covered="0" missed="20" type="COMPLEXITY"/>
+            <counter covered="0" missed="6" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="PolygonsSet.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="55"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="56"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="81"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="106"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="107"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="120"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="121"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="154"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="155"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="162"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="163"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="177"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="178"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="203"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="204"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="216"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="217"/>
+            <line cb="0" ci="0" mb="4" mi="12" nr="230"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="232"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="234"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="235"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="236"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="237"/>
+            <line cb="0" ci="0" mb="0" mi="39" nr="238"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="264"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="265"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="267"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="271"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="272"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="273"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="277"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="278"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="281"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="282"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="287"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="288"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="289"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="293"/>
+            <line cb="0" ci="0" mb="2" mi="16" nr="296"/>
+            <line cb="0" ci="0" mb="6" mi="14" nr="297"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="299"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="306"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="307"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="309"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="326"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="327"/>
+            <line cb="0" ci="0" mb="4" mi="6" nr="328"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="329"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="330"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="331"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="332"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="334"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="337"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="341"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="344"/>
+            <line cb="0" ci="0" mb="4" mi="6" nr="345"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="346"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="348"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="350"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="355"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="356"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="357"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="358"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="359"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="360"/>
+            <line cb="0" ci="0" mb="4" mi="15" nr="361"/>
+            <line cb="0" ci="0" mb="4" mi="15" nr="363"/>
+            <line cb="0" ci="0" mb="3" mi="5" nr="365"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="367"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="369"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="370"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="371"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="372"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="373"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="375"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="377"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="379"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="380"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="381"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="382"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="383"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="385"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="387"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="388"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="389"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="390"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="395"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="398"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="399"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="401"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="403"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="404"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="406"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="409"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="429"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="430"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="431"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="432"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="433"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="434"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="440"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="447"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="448"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="461"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="462"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="463"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="464"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="466"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="467"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="468"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="479"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="480"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="481"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="487"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="498"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="499"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="500"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="506"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="531"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="533"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="534"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="535"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="536"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="539"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="540"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="542"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="548"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="555"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="562"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="569"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="570"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="577"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="590"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="591"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="592"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="593"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="594"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="595"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="596"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="604"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="611"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="613"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="614"/>
+            <line cb="0" ci="0" mb="4" mi="8" nr="615"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="617"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="618"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="620"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="621"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="623"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="625"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="626"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="630"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="631"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="632"/>
+            <line cb="0" ci="0" mb="2" mi="16" nr="634"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="635"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="636"/>
+            <line cb="0" ci="0" mb="2" mi="16" nr="637"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="638"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="639"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="640"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="641"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="642"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="643"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="644"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="645"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="649"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="651"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="652"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="654"/>
+            <line cb="0" ci="0" mb="0" mi="15" nr="655"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="660"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="686"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="687"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="688"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="692"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="693"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="694"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="698"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="699"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="700"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="701"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="703"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="704"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="708"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="709"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="710"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="711"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="712"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="714"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="717"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="723"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="724"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="726"/>
+            <line cb="0" ci="0" mb="8" mi="20" nr="727"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="730"/>
+            <line cb="0" ci="0" mb="0" mi="29" nr="731"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="736"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="738"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="739"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="740"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="742"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="744"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="745"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="746"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="747"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="750"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="752"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="755"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="757"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="758"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="759"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="762"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="763"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="764"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="765"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="766"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="767"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="768"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="769"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="770"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="772"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="777"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="786"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="787"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="788"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="789"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="790"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="791"/>
+            <line cb="0" ci="0" mb="6" mi="11" nr="792"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="796"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="797"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="798"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="799"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="801"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="803"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="804"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="812"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="813"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="814"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="815"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="816"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="817"/>
+            <line cb="0" ci="0" mb="6" mi="13" nr="818"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="822"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="823"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="824"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="825"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="827"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="829"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="830"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="842"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="843"/>
+            <line cb="0" ci="0" mb="4" mi="6" nr="844"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="845"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="846"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="847"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="848"/>
+            <line cb="0" ci="0" mb="4" mi="6" nr="849"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="850"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="851"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="852"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="853"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="856"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="857"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="859"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="860"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="861"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="864"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="865"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="874"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="875"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="876"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="878"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="879"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="892"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="893"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="894"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="897"/>
+            <line cb="0" ci="0" mb="4" mi="5" nr="898"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="899"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="900"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="901"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="904"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="907"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="908"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="909"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="910"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="911"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="916"/>
+            <line cb="0" ci="0" mb="4" mi="10" nr="918"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="920"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="922"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="931"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="932"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="933"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="934"/>
+            <line cb="0" ci="0" mb="4" mi="11" nr="935"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="939"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="940"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="943"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="978"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="979"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="980"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="981"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="982"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="983"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="984"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="985"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="991"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="998"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="1005"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="1012"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="1019"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="1020"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="1026"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="1033"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="1034"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="1040"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="1041"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="1047"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="1064"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="1065"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="1066"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="1067"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="1071"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="1077"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="1078"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="1079"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="1080"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="1082"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="1083"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="1085"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="1089"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="1102"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="1104"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="1105"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="1106"/>
+            <line cb="0" ci="0" mb="2" mi="14" nr="1109"/>
+            <line cb="0" ci="0" mb="2" mi="14" nr="1111"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="1115"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="1116"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="1118"/>
+            <line cb="0" ci="0" mb="0" mi="15" nr="1119"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="1122"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="1126"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="1127"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="1136"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="1137"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="1139"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="1140"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="1141"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="1142"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="1143"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="1145"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="1147"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="1155"/>
+            <counter covered="0" missed="1656" type="INSTRUCTION"/>
+            <counter covered="0" missed="197" type="BRANCH"/>
+            <counter covered="0" missed="358" type="LINE"/>
+            <counter covered="0" missed="152" type="COMPLEXITY"/>
+            <counter covered="0" missed="53" type="METHOD"/>
+            <counter covered="0" missed="5" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="Segment.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="41"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="42"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="43"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="44"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="45"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="51"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="58"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="65"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="84"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="85"/>
+            <line cb="0" ci="0" mb="0" mi="26" nr="87"/>
+            <line cb="0" ci="0" mb="4" mi="8" nr="97"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="98"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="99"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="101"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="105"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="106"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="108"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="109"/>
+            <counter covered="0" missed="111" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="BRANCH"/>
+            <counter covered="0" missed="19" type="LINE"/>
+            <counter covered="0" missed="7" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="Vector2DFormat.java">
+            <line cb="0" ci="0" mb="0" mi="6" nr="54"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="56"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="63"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="64"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="74"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="75"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="87"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="88"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="95"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="111"/>
+            <line cb="0" ci="0" mb="0" mi="17" nr="112"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="118"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="119"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="120"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="121"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="125"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="131"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="132"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="133"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="135"/>
+            <counter covered="0" missed="100" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="BRANCH"/>
+            <counter covered="0" missed="21" type="LINE"/>
+            <counter covered="0" missed="11" type="COMPLEXITY"/>
+            <counter covered="0" missed="9" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="SubLine.java">
+            <line cb="0" ci="0" mb="0" mi="4" nr="50"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="51"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="60"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="61"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="71"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="97"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="98"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="99"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="101"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="103"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="105"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="107"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="128"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="129"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="132"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="133"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="134"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="138"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="141"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="143"/>
+            <line cb="0" ci="0" mb="4" mi="10" nr="144"/>
+            <line cb="0" ci="0" mb="4" mi="10" nr="146"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="158"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="159"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="168"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="175"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="176"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="177"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="178"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="180"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="182"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="183"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="184"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="185"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="186"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="188"/>
+            <line cb="0" ci="0" mb="2" mi="13" nr="193"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="194"/>
+            <line cb="0" ci="0" mb="2" mi="12" nr="195"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="197"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="200"/>
+            <line cb="0" ci="0" mb="2" mi="23" nr="201"/>
+            <line cb="0" ci="0" mb="2" mi="23" nr="205"/>
+            <line cb="0" ci="0" mb="0" mi="24" nr="209"/>
+            <counter covered="0" missed="329" type="INSTRUCTION"/>
+            <counter covered="0" missed="28" type="BRANCH"/>
+            <counter covered="0" missed="49" type="LINE"/>
+            <counter covered="0" missed="23" type="COMPLEXITY"/>
+            <counter covered="0" missed="9" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <counter covered="0" missed="4246" type="INSTRUCTION"/>
+        <counter covered="0" missed="323" type="BRANCH"/>
+        <counter covered="0" missed="776" type="LINE"/>
+        <counter covered="0" missed="332" type="COMPLEXITY"/>
+        <counter covered="0" missed="170" type="METHOD"/>
+        <counter covered="0" missed="15" type="CLASS"/>
+    </package></report>

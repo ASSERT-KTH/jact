@@ -1,0 +1,1063 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><report><package name="org/apache/commons/math3/optimization">
+        <class name="org/apache/commons/math3/optimization/Target" sourcefilename="Target.java">
+            <method desc="([D)V" line="38" name="&lt;init&gt;">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="48" name="getTarget">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="13" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/OptimizationData" sourcefilename="OptimizationData.java"/>
+        <class name="org/apache/commons/math3/optimization/BaseMultivariateOptimizer" sourcefilename="BaseMultivariateOptimizer.java"/>
+        <class name="org/apache/commons/math3/optimization/PointValuePair" sourcefilename="PointValuePair.java">
+            <method desc="([DD)V" line="48" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([DDZ)V" line="62" name="&lt;init&gt;">
+                <counter covered="0" missed="16" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="74" name="getPoint">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="84" name="getPointRef">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/Object;" line="92" name="writeReplace">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="49" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="BRANCH"/>
+            <counter covered="0" missed="8" type="LINE"/>
+            <counter covered="0" missed="8" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/MultivariateMultiStartOptimizer" sourcefilename="MultivariateMultiStartOptimizer.java">
+            <method desc="(Lorg/apache/commons/math3/optimization/MultivariateOptimizer;ILorg/apache/commons/math3/random/RandomVectorGenerator;)V" line="50" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="6" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/PointValuePair$DataTransferObject" sourcefilename="PointValuePair.java">
+            <method desc="([DD)V" line="114" name="&lt;init&gt;">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/Object;" line="123" name="readResolve">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="20" type="INSTRUCTION"/>
+            <counter covered="0" missed="5" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/SimpleValueChecker" sourcefilename="SimpleValueChecker.java">
+            <method desc="()V" line="61" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="76" name="&lt;init&gt;">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDI)V" line="97" name="&lt;init&gt;">
+                <counter covered="0" missed="16" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/optimization/PointValuePair;Lorg/apache/commons/math3/optimization/PointValuePair;)Z" line="125" name="converged">
+                <counter covered="0" missed="47" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="7" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="77" type="INSTRUCTION"/>
+            <counter covered="0" missed="10" type="BRANCH"/>
+            <counter covered="0" missed="18" type="LINE"/>
+            <counter covered="0" missed="9" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/MultivariateOptimizer" sourcefilename="MultivariateOptimizer.java"/>
+        <class name="org/apache/commons/math3/optimization/SimplePointChecker" sourcefilename="SimplePointChecker.java">
+            <method desc="()V" line="64" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="79" name="&lt;init&gt;">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDI)V" line="99" name="&lt;init&gt;">
+                <counter covered="0" missed="16" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/util/Pair;Lorg/apache/commons/math3/util/Pair;)Z" line="127" name="converged">
+                <counter covered="0" missed="61" type="INSTRUCTION"/>
+                <counter covered="0" missed="10" type="BRANCH"/>
+                <counter covered="0" missed="12" type="LINE"/>
+                <counter covered="0" missed="6" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="91" type="INSTRUCTION"/>
+            <counter covered="0" missed="12" type="BRANCH"/>
+            <counter covered="0" missed="23" type="LINE"/>
+            <counter covered="0" missed="10" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/MultivariateDifferentiableVectorOptimizer" sourcefilename="MultivariateDifferentiableVectorOptimizer.java"/>
+        <class name="org/apache/commons/math3/optimization/LeastSquaresConverter" sourcefilename="LeastSquaresConverter.java">
+            <method desc="(Lorg/apache/commons/math3/analysis/MultivariateVectorFunction;[D)V" line="76" name="&lt;init&gt;">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/analysis/MultivariateVectorFunction;[D[D)V" line="112" name="&lt;init&gt;">
+                <counter covered="0" missed="32" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/analysis/MultivariateVectorFunction;[DLorg/apache/commons/math3/linear/RealMatrix;)V" line="142" name="&lt;init&gt;">
+                <counter covered="0" missed="31" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([D)D" line="155" name="value">
+                <counter covered="0" missed="120" type="INSTRUCTION"/>
+                <counter covered="0" missed="14" type="BRANCH"/>
+                <counter covered="0" missed="16" type="LINE"/>
+                <counter covered="0" missed="8" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="200" type="INSTRUCTION"/>
+            <counter covered="0" missed="18" type="BRANCH"/>
+            <counter covered="0" missed="38" type="LINE"/>
+            <counter covered="0" missed="13" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/BaseMultivariateVectorMultiStartOptimizer" sourcefilename="BaseMultivariateVectorMultiStartOptimizer.java">
+            <method desc="(Lorg/apache/commons/math3/optimization/BaseMultivariateVectorOptimizer;ILorg/apache/commons/math3/random/RandomVectorGenerator;)V" line="73" name="&lt;init&gt;">
+                <counter covered="0" missed="29" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="9" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[Lorg/apache/commons/math3/optimization/PointVectorValuePair;" line="115" name="getOptima">
+                <counter covered="0" missed="15" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="123" name="getMaxEvaluations">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="128" name="getEvaluations">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/optimization/ConvergenceChecker;" line="133" name="getConvergenceChecker">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/MultivariateVectorFunction;[D[D[D)Lorg/apache/commons/math3/optimization/PointVectorValuePair;" line="142" name="optimize">
+                <counter covered="0" missed="82" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="17" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([D[D)V" line="183" name="sortPairs">
+                <counter covered="0" missed="10" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="146" type="INSTRUCTION"/>
+            <counter covered="0" missed="14" type="BRANCH"/>
+            <counter covered="0" missed="34" type="LINE"/>
+            <counter covered="0" missed="14" type="COMPLEXITY"/>
+            <counter covered="0" missed="7" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/MultivariateDifferentiableOptimizer" sourcefilename="MultivariateDifferentiableOptimizer.java"/>
+        <class name="org/apache/commons/math3/optimization/DifferentiableMultivariateVectorOptimizer" sourcefilename="DifferentiableMultivariateVectorOptimizer.java"/>
+        <class name="org/apache/commons/math3/optimization/SimpleVectorValueChecker" sourcefilename="SimpleVectorValueChecker.java">
+            <method desc="()V" line="61" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="77" name="&lt;init&gt;">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDI)V" line="99" name="&lt;init&gt;">
+                <counter covered="0" missed="16" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/optimization/PointVectorValuePair;Lorg/apache/commons/math3/optimization/PointVectorValuePair;)Z" line="127" name="converged">
+                <counter covered="0" missed="59" type="INSTRUCTION"/>
+                <counter covered="0" missed="10" type="BRANCH"/>
+                <counter covered="0" missed="12" type="LINE"/>
+                <counter covered="0" missed="6" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="89" type="INSTRUCTION"/>
+            <counter covered="0" missed="12" type="BRANCH"/>
+            <counter covered="0" missed="23" type="LINE"/>
+            <counter covered="0" missed="10" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/DifferentiableMultivariateMultiStartOptimizer" sourcefilename="DifferentiableMultivariateMultiStartOptimizer.java">
+            <method desc="(Lorg/apache/commons/math3/optimization/DifferentiableMultivariateOptimizer;ILorg/apache/commons/math3/random/RandomVectorGenerator;)V" line="50" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="6" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/BaseMultivariateVectorOptimizer" sourcefilename="BaseMultivariateVectorOptimizer.java"/>
+        <class name="org/apache/commons/math3/optimization/BaseMultivariateMultiStartOptimizer" sourcefilename="BaseMultivariateMultiStartOptimizer.java">
+            <method desc="(Lorg/apache/commons/math3/optimization/BaseMultivariateOptimizer;ILorg/apache/commons/math3/random/RandomVectorGenerator;)V" line="73" name="&lt;init&gt;">
+                <counter covered="0" missed="29" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="9" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[Lorg/apache/commons/math3/optimization/PointValuePair;" line="114" name="getOptima">
+                <counter covered="0" missed="15" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="122" name="getMaxEvaluations">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="127" name="getEvaluations">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/optimization/ConvergenceChecker;" line="132" name="getConvergenceChecker">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/MultivariateFunction;Lorg/apache/commons/math3/optimization/GoalType;[D)Lorg/apache/commons/math3/optimization/PointValuePair;" line="141" name="optimize">
+                <counter covered="0" missed="73" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="15" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/optimization/GoalType;)V" line="177" name="sortPairs">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="136" type="INSTRUCTION"/>
+            <counter covered="0" missed="14" type="BRANCH"/>
+            <counter covered="0" missed="32" type="LINE"/>
+            <counter covered="0" missed="14" type="COMPLEXITY"/>
+            <counter covered="0" missed="7" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/AbstractConvergenceChecker" sourcefilename="AbstractConvergenceChecker.java">
+            <method desc="()V" line="65" name="&lt;init&gt;">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="77" name="&lt;init&gt;">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="86" name="getRelativeThreshold">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="93" name="getAbsoluteThreshold">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="39" name="&lt;clinit&gt;">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="33" type="INSTRUCTION"/>
+            <counter covered="0" missed="12" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/Weight" sourcefilename="Weight.java">
+            <method desc="([D)V" line="42" name="&lt;init&gt;">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/linear/RealMatrix;)V" line="51" name="&lt;init&gt;">
+                <counter covered="0" missed="20" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/linear/RealMatrix;" line="66" name="getWeight">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="33" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="BRANCH"/>
+            <counter covered="0" missed="9" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/PointVectorValuePair$DataTransferObject" sourcefilename="PointVectorValuePair.java">
+            <method desc="([D[D)V" line="139" name="&lt;init&gt;">
+                <counter covered="0" missed="13" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/Object;" line="148" name="readResolve">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="22" type="INSTRUCTION"/>
+            <counter covered="0" missed="5" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/MultivariateDifferentiableVectorMultiStartOptimizer" sourcefilename="MultivariateDifferentiableVectorMultiStartOptimizer.java">
+            <method desc="(Lorg/apache/commons/math3/optimization/MultivariateDifferentiableVectorOptimizer;ILorg/apache/commons/math3/random/RandomVectorGenerator;)V" line="51" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="6" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/BaseMultivariateVectorMultiStartOptimizer$1" sourcefilename="BaseMultivariateVectorMultiStartOptimizer.java">
+            <method desc="(Lorg/apache/commons/math3/optimization/BaseMultivariateVectorMultiStartOptimizer;[D[D)V" line="183" name="&lt;init&gt;">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/optimization/PointVectorValuePair;Lorg/apache/commons/math3/optimization/PointVectorValuePair;)I" line="187" name="compare">
+                <counter covered="0" missed="20" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/optimization/PointVectorValuePair;)D" line="195" name="weightedResidual">
+                <counter covered="0" missed="35" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="67" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="BRANCH"/>
+            <counter covered="0" missed="12" type="LINE"/>
+            <counter covered="0" missed="7" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/BaseOptimizer" sourcefilename="BaseOptimizer.java"/>
+        <class name="org/apache/commons/math3/optimization/BaseMultivariateMultiStartOptimizer$1" sourcefilename="BaseMultivariateMultiStartOptimizer.java">
+            <method desc="(Lorg/apache/commons/math3/optimization/BaseMultivariateMultiStartOptimizer;Lorg/apache/commons/math3/optimization/GoalType;)V" line="177" name="&lt;init&gt;">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/optimization/PointValuePair;Lorg/apache/commons/math3/optimization/PointValuePair;)I" line="181" name="compare">
+                <counter covered="0" missed="34" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="7" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="43" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="BRANCH"/>
+            <counter covered="0" missed="8" type="LINE"/>
+            <counter covered="0" missed="6" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/MultivariateDifferentiableMultiStartOptimizer" sourcefilename="MultivariateDifferentiableMultiStartOptimizer.java">
+            <method desc="(Lorg/apache/commons/math3/optimization/MultivariateDifferentiableOptimizer;ILorg/apache/commons/math3/random/RandomVectorGenerator;)V" line="50" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="6" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/DifferentiableMultivariateOptimizer" sourcefilename="DifferentiableMultivariateOptimizer.java"/>
+        <class name="org/apache/commons/math3/optimization/InitialGuess" sourcefilename="InitialGuess.java">
+            <method desc="([D)V" line="36" name="&lt;init&gt;">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="46" name="getInitialGuess">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="13" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/SimpleBounds" sourcefilename="SimpleBounds.java">
+            <method desc="([D[D)V" line="42" name="&lt;init&gt;">
+                <counter covered="0" missed="13" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="53" name="getLower">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="61" name="getUpper">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="23" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="LINE"/>
+            <counter covered="0" missed="3" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/GoalType" sourcefilename="GoalType.java">
+            <method desc="()V" line="28" name="&lt;clinit&gt;">
+                <counter covered="0" missed="24" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="24" type="INSTRUCTION"/>
+            <counter covered="0" missed="3" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/DifferentiableMultivariateVectorMultiStartOptimizer" sourcefilename="DifferentiableMultivariateVectorMultiStartOptimizer.java">
+            <method desc="(Lorg/apache/commons/math3/optimization/DifferentiableMultivariateVectorOptimizer;ILorg/apache/commons/math3/random/RandomVectorGenerator;)V" line="51" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="6" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/PointVectorValuePair" sourcefilename="PointVectorValuePair.java">
+            <method desc="([D[D)V" line="48" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([D[DZ)V" line="62" name="&lt;init&gt;">
+                <counter covered="0" missed="25" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="78" name="getPoint">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="88" name="getPointRef">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="98" name="getValue">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="109" name="getValueRef">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/Object;" line="117" name="writeReplace">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="72" type="INSTRUCTION"/>
+            <counter covered="0" missed="12" type="BRANCH"/>
+            <counter covered="0" missed="11" type="LINE"/>
+            <counter covered="0" missed="13" type="COMPLEXITY"/>
+            <counter covered="0" missed="7" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/BaseMultivariateSimpleBoundsOptimizer" sourcefilename="BaseMultivariateSimpleBoundsOptimizer.java"/>
+        <class name="org/apache/commons/math3/optimization/ConvergenceChecker" sourcefilename="ConvergenceChecker.java"/>
+        <sourcefile name="BaseMultivariateVectorOptimizer.java"/>
+        <sourcefile name="MultivariateDifferentiableOptimizer.java"/>
+        <sourcefile name="SimpleValueChecker.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="61"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="63"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="76"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="97"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="99"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="100"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="103"/>
+            <line cb="0" ci="0" mb="4" mi="8" nr="125"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="126"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="129"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="130"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="131"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="132"/>
+            <line cb="0" ci="0" mb="4" mi="16" nr="133"/>
+            <counter covered="0" missed="77" type="INSTRUCTION"/>
+            <counter covered="0" missed="10" type="BRANCH"/>
+            <counter covered="0" missed="18" type="LINE"/>
+            <counter covered="0" missed="9" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="BaseOptimizer.java"/>
+        <sourcefile name="BaseMultivariateSimpleBoundsOptimizer.java"/>
+        <sourcefile name="BaseMultivariateMultiStartOptimizer.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="73"/>
+            <line cb="0" ci="0" mb="4" mi="4" nr="74"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="76"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="82"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="83"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="84"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="85"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="114"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="115"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="117"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="122"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="127"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="132"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="141"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="142"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="143"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="144"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="147"/>
+            <line cb="0" ci="0" mb="2" mi="20" nr="150"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="152"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="153"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="154"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="155"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="158"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="161"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="163"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="164"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="168"/>
+            <line cb="0" ci="0" mb="0" mi="17" nr="177"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="181"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="182"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="183"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="184"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="186"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="187"/>
+            <line cb="0" ci="0" mb="2" mi="12" nr="188"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="192"/>
+            <counter covered="0" missed="179" type="INSTRUCTION"/>
+            <counter covered="0" missed="22" type="BRANCH"/>
+            <counter covered="0" missed="39" type="LINE"/>
+            <counter covered="0" missed="20" type="COMPLEXITY"/>
+            <counter covered="0" missed="9" type="METHOD"/>
+            <counter covered="0" missed="2" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="DifferentiableMultivariateOptimizer.java"/>
+        <sourcefile name="MultivariateDifferentiableVectorMultiStartOptimizer.java">
+            <line cb="0" ci="0" mb="0" mi="5" nr="51"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="52"/>
+            <counter covered="0" missed="6" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="AbstractConvergenceChecker.java">
+            <line cb="0" ci="0" mb="0" mi="4" nr="39"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="46"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="65"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="66"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="67"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="68"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="93"/>
+            <counter covered="0" missed="33" type="INSTRUCTION"/>
+            <counter covered="0" missed="12" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="MultivariateDifferentiableMultiStartOptimizer.java">
+            <line cb="0" ci="0" mb="0" mi="5" nr="50"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="51"/>
+            <counter covered="0" missed="6" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="OptimizationData.java"/>
+        <sourcefile name="InitialGuess.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="36"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="37"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="38"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="46"/>
+            <counter covered="0" missed="13" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="DifferentiableMultivariateVectorMultiStartOptimizer.java">
+            <line cb="0" ci="0" mb="0" mi="5" nr="51"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="52"/>
+            <counter covered="0" missed="6" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="MultivariateOptimizer.java"/>
+        <sourcefile name="SimplePointChecker.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="64"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="65"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="66"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="81"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="99"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="101"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="105"/>
+            <line cb="0" ci="0" mb="4" mi="8" nr="127"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="128"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="131"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="132"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="133"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="134"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="135"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="136"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="137"/>
+            <line cb="0" ci="0" mb="4" mi="12" nr="138"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="140"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="143"/>
+            <counter covered="0" missed="91" type="INSTRUCTION"/>
+            <counter covered="0" missed="12" type="BRANCH"/>
+            <counter covered="0" missed="23" type="LINE"/>
+            <counter covered="0" missed="10" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="GoalType.java">
+            <line cb="0" ci="0" mb="0" mi="12" nr="28"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="32"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="35"/>
+            <counter covered="0" missed="24" type="INSTRUCTION"/>
+            <counter covered="0" missed="3" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="MultivariateDifferentiableVectorOptimizer.java"/>
+        <sourcefile name="BaseMultivariateOptimizer.java"/>
+        <sourcefile name="DifferentiableMultivariateVectorOptimizer.java"/>
+        <sourcefile name="PointVectorValuePair.java">
+            <line cb="0" ci="0" mb="0" mi="5" nr="48"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="49"/>
+            <line cb="0" ci="0" mb="8" mi="24" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="78"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="88"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="98"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="99"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="109"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="117"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="139"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="140"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="141"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="142"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="148"/>
+            <counter covered="0" missed="94" type="INSTRUCTION"/>
+            <counter covered="0" missed="12" type="BRANCH"/>
+            <counter covered="0" missed="16" type="LINE"/>
+            <counter covered="0" missed="15" type="COMPLEXITY"/>
+            <counter covered="0" missed="9" type="METHOD"/>
+            <counter covered="0" missed="2" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="MultivariateMultiStartOptimizer.java">
+            <line cb="0" ci="0" mb="0" mi="5" nr="50"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="51"/>
+            <counter covered="0" missed="6" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="Target.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="38"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="39"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="40"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="48"/>
+            <counter covered="0" missed="13" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="PointValuePair.java">
+            <line cb="0" ci="0" mb="0" mi="5" nr="48"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="49"/>
+            <line cb="0" ci="0" mb="4" mi="15" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="66"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="74"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="75"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="84"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="92"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="114"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="115"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="116"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="117"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="123"/>
+            <counter covered="0" missed="69" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="BRANCH"/>
+            <counter covered="0" missed="13" type="LINE"/>
+            <counter covered="0" missed="10" type="COMPLEXITY"/>
+            <counter covered="0" missed="7" type="METHOD"/>
+            <counter covered="0" missed="2" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="LeastSquaresConverter.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="76"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="81"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="112"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="113"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="114"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="116"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="117"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="118"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="119"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="120"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="142"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="143"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="144"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="146"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="147"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="148"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="149"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="150"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="155"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="156"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="157"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="159"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="164"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="165"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="166"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="167"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="168"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="170"/>
+            <line cb="0" ci="0" mb="2" mi="20" nr="171"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="172"/>
+            <line cb="0" ci="0" mb="2" mi="16" nr="175"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="176"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="180"/>
+            <counter covered="0" missed="200" type="INSTRUCTION"/>
+            <counter covered="0" missed="18" type="BRANCH"/>
+            <counter covered="0" missed="38" type="LINE"/>
+            <counter covered="0" missed="13" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="SimpleBounds.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="42"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="43"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="44"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="45"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="53"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="61"/>
+            <counter covered="0" missed="23" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="LINE"/>
+            <counter covered="0" missed="3" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="ConvergenceChecker.java"/>
+        <sourcefile name="Weight.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="42"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="43"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="44"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="51"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="52"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="53"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="57"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="58"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="66"/>
+            <counter covered="0" missed="33" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="BRANCH"/>
+            <counter covered="0" missed="9" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="BaseMultivariateVectorMultiStartOptimizer.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="73"/>
+            <line cb="0" ci="0" mb="4" mi="4" nr="74"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="76"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="82"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="83"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="84"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="85"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="115"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="116"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="118"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="123"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="128"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="133"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="142"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="143"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="144"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="145"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="148"/>
+            <line cb="0" ci="0" mb="2" mi="21" nr="152"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="154"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="155"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="156"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="157"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="158"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="159"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="162"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="165"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="167"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="168"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="172"/>
+            <line cb="0" ci="0" mb="0" mi="21" nr="183"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="187"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="188"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="189"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="190"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="192"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="195"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="196"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="197"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="198"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="199"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="201"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="204"/>
+            <counter covered="0" missed="213" type="INSTRUCTION"/>
+            <counter covered="0" missed="22" type="BRANCH"/>
+            <counter covered="0" missed="45" type="LINE"/>
+            <counter covered="0" missed="21" type="COMPLEXITY"/>
+            <counter covered="0" missed="10" type="METHOD"/>
+            <counter covered="0" missed="2" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="SimpleVectorValueChecker.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="61"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="63"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="99"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="101"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="105"/>
+            <line cb="0" ci="0" mb="4" mi="8" nr="127"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="128"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="131"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="132"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="133"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="134"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="135"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="136"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="137"/>
+            <line cb="0" ci="0" mb="4" mi="12" nr="138"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="140"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="143"/>
+            <counter covered="0" missed="89" type="INSTRUCTION"/>
+            <counter covered="0" missed="12" type="BRANCH"/>
+            <counter covered="0" missed="23" type="LINE"/>
+            <counter covered="0" missed="10" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="DifferentiableMultivariateMultiStartOptimizer.java">
+            <line cb="0" ci="0" mb="0" mi="5" nr="50"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="51"/>
+            <counter covered="0" missed="6" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <counter covered="0" missed="1181" type="INSTRUCTION"/>
+        <counter covered="0" missed="116" type="BRANCH"/>
+        <counter covered="0" missed="263" type="LINE"/>
+        <counter covered="0" missed="130" type="COMPLEXITY"/>
+        <counter covered="0" missed="72" type="METHOD"/>
+        <counter covered="0" missed="23" type="CLASS"/>
+    </package></report>

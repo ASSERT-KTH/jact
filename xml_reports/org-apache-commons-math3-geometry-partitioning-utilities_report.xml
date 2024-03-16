@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><report><package name="org/apache/commons/math3/geometry/partitioning/utilities">
+        <class name="org/apache/commons/math3/geometry/partitioning/utilities/AVLTree$Node" sourcefilename="AVLTree.java">
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/utilities/AVLTree;Ljava/lang/Comparable;Lorg/apache/commons/math3/geometry/partitioning/utilities/AVLTree$Node;)V" line="247" name="&lt;init&gt;">
+                <counter covered="0" missed="21" type="INSTRUCTION"/>
+                <counter covered="0" missed="7" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/Comparable;" line="259" name="getElement">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="266" name="size">
+                <counter covered="0" missed="20" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/partitioning/utilities/AVLTree$Node;" line="276" name="getSmallest">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/partitioning/utilities/AVLTree$Node;" line="290" name="getLargest">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/partitioning/utilities/AVLTree$Node;" line="304" name="getPrevious">
+                <counter covered="0" missed="30" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/partitioning/utilities/AVLTree$Node;" line="329" name="getNext">
+                <counter covered="0" missed="30" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/Comparable;)Z" line="351" name="insert">
+                <counter covered="0" missed="55" type="INSTRUCTION"/>
+                <counter covered="0" missed="10" type="BRANCH"/>
+                <counter covered="0" missed="9" type="LINE"/>
+                <counter covered="0" missed="6" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="372" name="delete">
+                <counter covered="0" missed="118" type="INSTRUCTION"/>
+                <counter covered="0" missed="32" type="BRANCH"/>
+                <counter covered="0" missed="24" type="LINE"/>
+                <counter covered="0" missed="17" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Z" line="418" name="rebalanceLeftGrown">
+                <counter covered="0" missed="77" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="23" type="LINE"/>
+                <counter covered="0" missed="6" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Z" line="457" name="rebalanceRightGrown">
+                <counter covered="0" missed="77" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="23" type="LINE"/>
+                <counter covered="0" missed="6" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Z" line="496" name="rebalanceLeftShrunk">
+                <counter covered="0" missed="94" type="INSTRUCTION"/>
+                <counter covered="0" missed="10" type="BRANCH"/>
+                <counter covered="0" missed="29" type="LINE"/>
+                <counter covered="0" missed="7" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Z" line="541" name="rebalanceRightShrunk">
+                <counter covered="0" missed="94" type="INSTRUCTION"/>
+                <counter covered="0" missed="10" type="BRANCH"/>
+                <counter covered="0" missed="29" type="LINE"/>
+                <counter covered="0" missed="7" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="588" name="rotateCW">
+                <counter covered="0" missed="48" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="13" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="613" name="rotateCCW">
+                <counter covered="0" missed="48" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="13" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="737" type="INSTRUCTION"/>
+            <counter covered="0" missed="110" type="BRANCH"/>
+            <counter covered="0" missed="196" type="LINE"/>
+            <counter covered="0" missed="74" type="COMPLEXITY"/>
+            <counter covered="0" missed="15" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/partitioning/utilities/AVLTree$Skew" sourcefilename="AVLTree.java">
+            <method desc="()V" line="204" name="&lt;clinit&gt;">
+                <counter covered="0" missed="34" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="34" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/partitioning/utilities/AVLTree" sourcefilename="AVLTree.java">
+            <method desc="()V" line="56" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/Comparable;)V" line="64" name="insert">
+                <counter covered="0" missed="20" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/Comparable;)Z" line="84" name="delete">
+                <counter covered="0" missed="29" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Z" line="105" name="isEmpty">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="113" name="size">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/partitioning/utilities/AVLTree$Node;" line="126" name="getSmallest">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/partitioning/utilities/AVLTree$Node;" line="139" name="getLargest">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/Comparable;)Lorg/apache/commons/math3/geometry/partitioning/utilities/AVLTree$Node;" line="154" name="getNotSmaller">
+                <counter covered="0" missed="34" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="11" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/Comparable;)Lorg/apache/commons/math3/geometry/partitioning/utilities/AVLTree$Node;" line="185" name="getNotLarger">
+                <counter covered="0" missed="34" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="11" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="157" type="INSTRUCTION"/>
+            <counter covered="0" missed="36" type="BRANCH"/>
+            <counter covered="0" missed="42" type="LINE"/>
+            <counter covered="0" missed="27" type="COMPLEXITY"/>
+            <counter covered="0" missed="9" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/partitioning/utilities/OrderedTuple" sourcefilename="OrderedTuple.java">
+            <method desc="([D)V" line="134" name="&lt;init&gt;">
+                <counter covered="0" missed="122" type="INSTRUCTION"/>
+                <counter covered="0" missed="16" type="BRANCH"/>
+                <counter covered="0" missed="28" type="LINE"/>
+                <counter covered="0" missed="9" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)V" line="186" name="encode">
+                <counter covered="0" missed="102" type="INSTRUCTION"/>
+                <counter covered="0" missed="14" type="BRANCH"/>
+                <counter covered="0" missed="19" type="LINE"/>
+                <counter covered="0" missed="8" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/utilities/OrderedTuple;)I" line="250" name="compareTo">
+                <counter covered="0" missed="119" type="INSTRUCTION"/>
+                <counter covered="0" missed="28" type="BRANCH"/>
+                <counter covered="0" missed="25" type="LINE"/>
+                <counter covered="0" missed="15" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/Object;)Z" line="294" name="equals">
+                <counter covered="0" missed="19" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="307" name="hashCode">
+                <counter covered="0" missed="59" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="10" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="329" name="getComponents">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(J)J" line="337" name="sign">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(J)I" line="345" name="exponent">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(J)J" line="353" name="mantissa">
+                <counter covered="0" missed="18" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(J)I" line="366" name="computeMSB">
+                <counter covered="0" missed="35" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="11" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(J)I" line="392" name="computeLSB">
+                <counter covered="0" missed="35" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="11" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(II)I" line="417" name="getBit">
+                <counter covered="0" missed="66" type="INSTRUCTION"/>
+                <counter covered="0" missed="14" type="BRANCH"/>
+                <counter covered="0" missed="10" type="LINE"/>
+                <counter covered="0" missed="8" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="593" type="INSTRUCTION"/>
+            <counter covered="0" missed="94" type="BRANCH"/>
+            <counter covered="0" missed="123" type="LINE"/>
+            <counter covered="0" missed="59" type="COMPLEXITY"/>
+            <counter covered="0" missed="12" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <sourcefile name="OrderedTuple.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="134"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="135"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="136"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="137"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="138"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="139"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="140"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="141"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="142"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="143"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="144"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="146"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="148"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="149"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="151"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="152"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="153"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="154"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="155"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="156"/>
+            <line cb="0" ci="0" mb="4" mi="6" nr="161"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="163"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="164"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="165"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="168"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="170"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="172"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="177"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="186"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="187"/>
+            <line cb="0" ci="0" mb="6" mi="15" nr="189"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="191"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="196"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="197"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="198"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="201"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="202"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="203"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="204"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="205"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="206"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="207"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="209"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="210"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="211"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="212"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="217"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="250"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="251"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="252"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="253"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="254"/>
+            <line cb="0" ci="0" mb="4" mi="6" nr="255"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="256"/>
+            <line cb="0" ci="0" mb="4" mi="6" nr="257"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="258"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="261"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="262"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="263"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="264"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="267"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="268"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="269"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="270"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="271"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="272"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="276"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="277"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="278"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="279"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="281"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="287"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="294"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="295"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="296"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="297"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="299"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="307"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="308"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="309"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="314"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="315"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="316"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="317"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="318"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="319"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="321"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="329"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="337"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="345"/>
+            <line cb="0" ci="0" mb="2" mi="18" nr="353"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="366"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="367"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="368"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="369"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="371"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="372"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="373"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="374"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="376"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="377"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="380"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="392"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="393"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="394"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="395"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="397"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="398"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="399"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="400"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="402"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="403"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="406"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="417"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="418"/>
+            <line cb="0" ci="0" mb="4" mi="7" nr="419"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="420"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="421"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="422"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="423"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="424"/>
+            <line cb="0" ci="0" mb="2" mi="12" nr="426"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="427"/>
+            <counter covered="0" missed="593" type="INSTRUCTION"/>
+            <counter covered="0" missed="94" type="BRANCH"/>
+            <counter covered="0" missed="123" type="LINE"/>
+            <counter covered="0" missed="59" type="COMPLEXITY"/>
+            <counter covered="0" missed="12" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="AVLTree.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="56"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="57"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="58"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="64"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="65"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="66"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="68"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="71"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="84"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="85"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="88"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="89"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="90"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="91"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="98"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="105"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="113"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="126"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="139"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="154"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="155"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="156"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="157"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="158"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="162"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="163"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="164"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="166"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="169"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="185"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="186"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="187"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="188"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="189"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="191"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="193"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="194"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="195"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="197"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="200"/>
+            <line cb="0" ci="0" mb="0" mi="16" nr="204"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="206"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="209"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="212"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="247"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="248"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="249"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="250"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="251"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="252"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="253"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="259"/>
+            <line cb="0" ci="0" mb="4" mi="20" nr="266"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="276"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="277"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="278"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="280"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="290"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="291"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="292"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="294"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="304"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="305"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="306"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="307"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="311"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="312"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="313"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="317"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="329"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="330"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="331"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="332"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="336"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="337"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="338"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="342"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="351"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="353"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="354"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="355"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="357"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="361"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="362"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="363"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="365"/>
+            <line cb="0" ci="0" mb="6" mi="9" nr="372"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="374"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="375"/>
+            <line cb="0" ci="0" mb="4" mi="6" nr="381"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="382"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="383"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="384"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="385"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="387"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="388"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="389"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="390"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="393"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="394"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="395"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="397"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="399"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="400"/>
+            <line cb="0" ci="0" mb="6" mi="9" nr="403"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="404"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="405"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="407"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="408"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="412"/>
+            <line cb="0" ci="0" mb="3" mi="6" nr="418"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="420"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="421"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="422"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="423"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="425"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="426"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="427"/>
+            <line cb="0" ci="0" mb="3" mi="5" nr="428"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="430"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="431"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="432"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="434"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="435"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="436"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="438"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="439"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="441"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="443"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="445"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="446"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="448"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="449"/>
+            <line cb="0" ci="0" mb="3" mi="6" nr="457"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="459"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="460"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="462"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="463"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="464"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="465"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="467"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="468"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="469"/>
+            <line cb="0" ci="0" mb="3" mi="5" nr="470"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="472"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="473"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="474"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="476"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="477"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="478"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="480"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="481"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="483"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="485"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="487"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="488"/>
+            <line cb="0" ci="0" mb="3" mi="6" nr="496"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="498"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="499"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="501"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="502"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="503"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="504"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="505"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="506"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="507"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="508"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="509"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="510"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="512"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="513"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="514"/>
+            <line cb="0" ci="0" mb="3" mi="5" nr="515"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="517"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="518"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="519"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="521"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="522"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="523"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="525"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="526"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="528"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="529"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="532"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="533"/>
+            <line cb="0" ci="0" mb="3" mi="6" nr="541"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="543"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="544"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="546"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="547"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="548"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="549"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="550"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="551"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="552"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="553"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="554"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="555"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="557"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="558"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="559"/>
+            <line cb="0" ci="0" mb="3" mi="5" nr="560"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="562"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="563"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="564"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="566"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="567"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="568"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="570"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="571"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="573"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="574"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="577"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="578"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="588"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="589"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="590"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="592"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="593"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="594"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="595"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="596"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="598"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="599"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="601"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="602"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="605"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="613"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="614"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="615"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="617"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="618"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="619"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="620"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="621"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="623"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="624"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="626"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="627"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="630"/>
+            <counter covered="0" missed="928" type="INSTRUCTION"/>
+            <counter covered="0" missed="146" type="BRANCH"/>
+            <counter covered="0" missed="242" type="LINE"/>
+            <counter covered="0" missed="102" type="COMPLEXITY"/>
+            <counter covered="0" missed="25" type="METHOD"/>
+            <counter covered="0" missed="3" type="CLASS"/>
+        </sourcefile>
+        <counter covered="0" missed="1521" type="INSTRUCTION"/>
+        <counter covered="0" missed="240" type="BRANCH"/>
+        <counter covered="0" missed="365" type="LINE"/>
+        <counter covered="0" missed="161" type="COMPLEXITY"/>
+        <counter covered="0" missed="37" type="METHOD"/>
+        <counter covered="0" missed="4" type="CLASS"/>
+    </package></report>

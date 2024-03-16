@@ -7,40 +7,31 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.util.*;
 
 public class JacocoXMLParser {
 
-    public static void groupPackageByDep(List<Dependency> dependencies) {
+    public static final String REPORTPATH = "./target/jact-report/";
+    private static final String projId = CompleteCoverageMojo.getProjectGroupId() + ":" +
+            CompleteCoverageMojo.getProjectArtifactId() + ":" + CompleteCoverageMojo.getProjectVersion();
+    private static ProjectDependency thisProject = new ProjectDependency();
+
+
+    public static void main(String[] args){
+        List<ProjectDependency> pdList = new ArrayList<>();
+        groupPackageByDep(pdList);
+    }
+
+    public static void groupPackageByDep(List<ProjectDependency> dependencies) {
+        thisProject.setId(projId);
 
         // If the package-name contains artifactid + groupid then put that in its own report
         //List<String> depWords = new ArrayList<>();
-
-
-        List<Set<String>> setOfAllDeps = new ArrayList<>();
-        for (Dependency dependency : dependencies) {
-            List<String> depWords = new ArrayList<>();
-
-
-            // Extract the words in the group id
-            String depGroupId = dependency.getGroupId();
-            String[] words = depGroupId.split("[.-]");
-            depWords.addAll(Arrays.asList(words));
-
-            // Extract the words in the artifact id
-            String depArtifactId = dependency.getArtifactId();
-            words = depArtifactId.split("[.-]");
-            depWords.addAll(Arrays.asList(words));
-
-            // Convert it to a set here
-            Set<String> depWordsSet = new HashSet<>(depWords);
-            setOfAllDeps.add(depWordsSet);
-        }
-
-        for (Set s : setOfAllDeps) {
-            System.out.println(s.toString());
-        }
 
 
         try {
@@ -67,7 +58,7 @@ public class JacocoXMLParser {
                 String packageName = entry.getKey();
                 Document packageReport = entry.getValue();
                 String filename = packageName.replace("/", "-") + "_report.xml"; // Use package name for filename
-                writeXML(packageReport, filename);
+                writeXML(packageReport, "./xml_reports/" + filename);
                 //System.out.println("filename: " + filename);
             }
 
@@ -92,11 +83,19 @@ public class JacocoXMLParser {
         return doc;
     }
 
-    private static void writeXML(Document doc, String filename) throws Exception {
-        javax.xml.transform.TransformerFactory transformerFactory = javax.xml.transform.TransformerFactory.newInstance();
-        javax.xml.transform.Transformer transformer = transformerFactory.newTransformer();
-        javax.xml.transform.dom.DOMSource source = new javax.xml.transform.dom.DOMSource(doc);
-        javax.xml.transform.stream.StreamResult result = new javax.xml.transform.stream.StreamResult(new File(filename));
+    private static void writeXML(Document doc, String outputPath) throws Exception {
+        File outputFile = new File(outputPath);
+        File parentDir = outputFile.getParentFile();
+
+        // Create parent directories if they don't exist
+        if (!parentDir.exists() && !parentDir.mkdirs()) {
+            throw new IllegalStateException("Couldn't create directory: " + parentDir);
+        }
+
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        DOMSource source = new DOMSource(doc);
+        StreamResult result = new StreamResult(outputFile);
         transformer.transform(source, result);
     }
 }

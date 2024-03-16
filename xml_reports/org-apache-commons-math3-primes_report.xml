@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><report><package name="org/apache/commons/math3/primes">
+        <class name="org/apache/commons/math3/primes/SmallPrimes" sourcefilename="SmallPrimes.java">
+            <method desc="(ILjava/util/List;)I" line="83" name="smallTrialDivision">
+                <counter covered="0" missed="33" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(IILjava/util/List;)I" line="100" name="boundedTrialDivision">
+                <counter covered="0" missed="50" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="15" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)Ljava/util/List;" line="128" name="trialDivision">
+                <counter covered="0" missed="26" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="7" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)Z" line="149" name="millerRabinPrimeTest">
+                <counter covered="0" missed="99" type="INSTRUCTION"/>
+                <counter covered="0" missed="20" type="BRANCH"/>
+                <counter covered="0" missed="28" type="LINE"/>
+                <counter covered="0" missed="11" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="39" name="&lt;clinit&gt;">
+                <counter covered="0" missed="2059" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="2267" type="INSTRUCTION"/>
+            <counter covered="0" missed="34" type="BRANCH"/>
+            <counter covered="0" missed="57" type="LINE"/>
+            <counter covered="0" missed="22" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/primes/Primes" sourcefilename="Primes.java">
+            <method desc="(I)Z" line="54" name="isPrime">
+                <counter covered="0" missed="36" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)I" line="74" name="nextPrime">
+                <counter covered="0" missed="64" type="INSTRUCTION"/>
+                <counter covered="0" missed="16" type="BRANCH"/>
+                <counter covered="0" missed="20" type="LINE"/>
+                <counter covered="0" missed="9" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)Ljava/util/List;" line="119" name="primeFactors">
+                <counter covered="0" missed="23" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="123" type="INSTRUCTION"/>
+            <counter covered="0" missed="26" type="BRANCH"/>
+            <counter covered="0" missed="29" type="LINE"/>
+            <counter covered="0" missed="16" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/primes/PollardRho" sourcefilename="PollardRho.java">
+            <method desc="(I)Ljava/util/List;" line="42" name="primeFactors">
+                <counter covered="0" missed="40" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="11" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)I" line="73" name="rhoBrent">
+                <counter covered="0" missed="126" type="INSTRUCTION"/>
+                <counter covered="0" missed="12" type="BRANCH"/>
+                <counter covered="0" missed="33" type="LINE"/>
+                <counter covered="0" missed="7" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(II)I" line="135" name="gcdPositive">
+                <counter covered="0" missed="50" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="16" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="216" type="INSTRUCTION"/>
+            <counter covered="0" missed="22" type="BRANCH"/>
+            <counter covered="0" missed="60" type="LINE"/>
+            <counter covered="0" missed="14" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <sourcefile name="SmallPrimes.java">
+            <line cb="0" ci="0" mb="0" mi="2051" nr="39"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="68"/>
+            <line cb="0" ci="0" mb="2" mi="16" nr="83"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="84"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="85"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="89"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="100"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="102"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="103"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="105"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="106"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="108"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="109"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="110"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="111"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="112"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="114"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="116"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="117"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="119"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="128"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="129"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="130"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="131"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="134"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="135"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="136"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="149"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="150"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="151"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="153"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="154"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="155"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="157"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="158"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="161"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="163"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="164"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="166"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="167"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="168"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="169"/>
+            <line cb="0" ci="0" mb="4" mi="6" nr="170"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="171"/>
+            <line cb="0" ci="0" mb="4" mi="8" nr="172"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="173"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="174"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="175"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="176"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="178"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="179"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="180"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="181"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="185"/>
+            <counter covered="0" missed="2267" type="INSTRUCTION"/>
+            <counter covered="0" missed="34" type="BRANCH"/>
+            <counter covered="0" missed="57" type="LINE"/>
+            <counter covered="0" missed="22" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="Primes.java">
+            <line cb="0" ci="0" mb="2" mi="3" nr="54"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="55"/>
+            <line cb="0" ci="0" mb="2" mi="16" nr="58"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="59"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="60"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="63"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="74"/>
+            <line cb="0" ci="0" mb="0" mi="17" nr="75"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="80"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="81"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="82"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="85"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="91"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="92"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="93"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="96"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="99"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="100"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="102"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="103"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="106"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="119"/>
+            <line cb="0" ci="0" mb="0" mi="17" nr="120"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="125"/>
+            <counter covered="0" missed="123" type="INSTRUCTION"/>
+            <counter covered="0" missed="26" type="BRANCH"/>
+            <counter covered="0" missed="29" type="LINE"/>
+            <counter covered="0" missed="16" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="PollardRho.java">
+            <line cb="0" ci="0" mb="0" mi="4" nr="42"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="44"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="45"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="46"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="49"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="50"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="51"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="54"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="55"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="56"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="57"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="73"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="74"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="75"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="76"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="79"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="81"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="82"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="84"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="87"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="88"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="89"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="90"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="91"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="92"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="93"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="95"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="96"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="97"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="99"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="100"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="101"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="105"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="106"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="107"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="109"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="110"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="111"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="112"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="135"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="136"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="137"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="138"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="142"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="143"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="144"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="145"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="146"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="152"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="153"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="154"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="155"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="158"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="159"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="162"/>
+            <counter covered="0" missed="216" type="INSTRUCTION"/>
+            <counter covered="0" missed="22" type="BRANCH"/>
+            <counter covered="0" missed="60" type="LINE"/>
+            <counter covered="0" missed="14" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <counter covered="0" missed="2606" type="INSTRUCTION"/>
+        <counter covered="0" missed="82" type="BRANCH"/>
+        <counter covered="0" missed="146" type="LINE"/>
+        <counter covered="0" missed="52" type="COMPLEXITY"/>
+        <counter covered="0" missed="11" type="METHOD"/>
+        <counter covered="0" missed="3" type="CLASS"/>
+    </package></report>

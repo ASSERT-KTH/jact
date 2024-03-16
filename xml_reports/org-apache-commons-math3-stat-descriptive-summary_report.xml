@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><report><package name="org/apache/commons/math3/stat/descriptive/summary">
+        <class name="org/apache/commons/math3/stat/descriptive/summary/SumOfSquares" sourcefilename="SumOfSquares.java">
+            <method desc="()V" line="55" name="&lt;init&gt;">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/stat/descriptive/summary/SumOfSquares;)V" line="67" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="76" name="increment">
+                <counter covered="0" missed="15" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="85" name="getResult">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()J" line="92" name="getN">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="100" name="clear">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([DII)D" line="121" name="evaluate">
+                <counter covered="0" missed="32" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/stat/descriptive/summary/SumOfSquares;" line="136" name="copy">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/stat/descriptive/summary/SumOfSquares;Lorg/apache/commons/math3/stat/descriptive/summary/SumOfSquares;)V" line="152" name="copy">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="101" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="BRANCH"/>
+            <counter covered="0" missed="30" type="LINE"/>
+            <counter covered="0" missed="11" type="COMPLEXITY"/>
+            <counter covered="0" missed="9" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/stat/descriptive/summary/Product" sourcefilename="Product.java">
+            <method desc="()V" line="57" name="&lt;init&gt;">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/stat/descriptive/summary/Product;)V" line="69" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="78" name="increment">
+                <counter covered="0" missed="13" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="87" name="getResult">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()J" line="94" name="getN">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="102" name="clear">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([DII)D" line="123" name="evaluate">
+                <counter covered="0" missed="28" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([D[DII)D" line="163" name="evaluate">
+                <counter covered="0" missed="33" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([D[D)D" line="198" name="evaluate">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/stat/descriptive/summary/Product;" line="207" name="copy">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/stat/descriptive/summary/Product;Lorg/apache/commons/math3/stat/descriptive/summary/Product;)V" line="223" name="copy">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="136" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="BRANCH"/>
+            <counter covered="0" missed="37" type="LINE"/>
+            <counter covered="0" missed="15" type="COMPLEXITY"/>
+            <counter covered="0" missed="11" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/stat/descriptive/summary/SumOfLogs" sourcefilename="SumOfLogs.java">
+            <method desc="()V" line="64" name="&lt;init&gt;">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/stat/descriptive/summary/SumOfLogs;)V" line="76" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="85" name="increment">
+                <counter covered="0" missed="14" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="94" name="getResult">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()J" line="101" name="getN">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="109" name="clear">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([DII)D" line="133" name="evaluate">
+                <counter covered="0" missed="29" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/stat/descriptive/summary/SumOfLogs;" line="148" name="copy">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/stat/descriptive/summary/SumOfLogs;Lorg/apache/commons/math3/stat/descriptive/summary/SumOfLogs;)V" line="164" name="copy">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="98" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="BRANCH"/>
+            <counter covered="0" missed="30" type="LINE"/>
+            <counter covered="0" missed="11" type="COMPLEXITY"/>
+            <counter covered="0" missed="9" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/stat/descriptive/summary/Sum" sourcefilename="Sum.java">
+            <method desc="()V" line="56" name="&lt;init&gt;">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/stat/descriptive/summary/Sum;)V" line="68" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="77" name="increment">
+                <counter covered="0" missed="13" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="86" name="getResult">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()J" line="93" name="getN">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="101" name="clear">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([DII)D" line="122" name="evaluate">
+                <counter covered="0" missed="28" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([D[DII)D" line="161" name="evaluate">
+                <counter covered="0" missed="33" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([D[D)D" line="195" name="evaluate">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/stat/descriptive/summary/Sum;" line="203" name="copy">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/stat/descriptive/summary/Sum;Lorg/apache/commons/math3/stat/descriptive/summary/Sum;)V" line="219" name="copy">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="136" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="BRANCH"/>
+            <counter covered="0" missed="37" type="LINE"/>
+            <counter covered="0" missed="15" type="COMPLEXITY"/>
+            <counter covered="0" missed="11" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <sourcefile name="Product.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="57"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="58"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="59"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="60"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="71"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="87"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="103"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="123"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="124"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="125"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="126"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="127"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="130"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="163"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="164"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="165"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="166"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="167"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="170"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="198"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="207"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="209"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="210"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="223"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="224"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="225"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="226"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="227"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="228"/>
+            <counter covered="0" missed="136" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="BRANCH"/>
+            <counter covered="0" missed="37" type="LINE"/>
+            <counter covered="0" missed="15" type="COMPLEXITY"/>
+            <counter covered="0" missed="11" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="SumOfLogs.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="64"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="65"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="66"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="67"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="76"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="85"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="87"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="101"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="109"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="110"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="111"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="133"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="134"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="135"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="136"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="137"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="140"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="148"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="150"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="151"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="164"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="165"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="166"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="167"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="168"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="169"/>
+            <counter covered="0" missed="98" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="BRANCH"/>
+            <counter covered="0" missed="30" type="LINE"/>
+            <counter covered="0" missed="11" type="COMPLEXITY"/>
+            <counter covered="0" missed="9" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="Sum.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="56"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="57"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="58"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="59"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="68"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="93"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="101"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="103"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="122"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="123"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="124"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="125"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="126"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="129"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="161"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="162"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="163"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="164"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="165"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="168"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="195"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="203"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="205"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="206"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="219"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="220"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="221"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="222"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="223"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="224"/>
+            <counter covered="0" missed="136" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="BRANCH"/>
+            <counter covered="0" missed="37" type="LINE"/>
+            <counter covered="0" missed="15" type="COMPLEXITY"/>
+            <counter covered="0" missed="11" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="SumOfSquares.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="55"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="56"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="57"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="58"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="67"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="68"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="76"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="85"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="92"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="100"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="101"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="121"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="122"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="123"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="124"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="125"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="128"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="136"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="138"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="139"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="152"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="153"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="154"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="155"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="156"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="157"/>
+            <counter covered="0" missed="101" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="BRANCH"/>
+            <counter covered="0" missed="30" type="LINE"/>
+            <counter covered="0" missed="11" type="COMPLEXITY"/>
+            <counter covered="0" missed="9" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <counter covered="0" missed="471" type="INSTRUCTION"/>
+        <counter covered="0" missed="24" type="BRANCH"/>
+        <counter covered="0" missed="134" type="LINE"/>
+        <counter covered="0" missed="52" type="COMPLEXITY"/>
+        <counter covered="0" missed="40" type="METHOD"/>
+        <counter covered="0" missed="4" type="CLASS"/>
+    </package></report>

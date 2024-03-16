@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><report><package name="org/apache/commons/math3/analysis/integration">
+        <class name="org/apache/commons/math3/analysis/integration/LegendreGaussIntegrator" sourcefilename="LegendreGaussIntegrator.java">
+            <method desc="(IDDII)V" line="142" name="&lt;init&gt;">
+                <counter covered="0" missed="59" type="INSTRUCTION"/>
+                <counter covered="0" missed="5" type="BRANCH"/>
+                <counter covered="0" missed="16" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(IDD)V" line="179" name="&lt;init&gt;">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(III)V" line="198" name="&lt;init&gt;">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="208" name="doIntegrate">
+                <counter covered="0" missed="70" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="12" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)D" line="248" name="stage">
+                <counter covered="0" missed="62" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="9" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="58" name="&lt;clinit&gt;">
+                <counter covered="0" missed="270" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="477" type="INSTRUCTION"/>
+            <counter covered="0" missed="13" type="BRANCH"/>
+            <counter covered="0" missed="49" type="LINE"/>
+            <counter covered="0" missed="14" type="COMPLEXITY"/>
+            <counter covered="0" missed="6" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/integration/SimpsonIntegrator" sourcefilename="SimpsonIntegrator.java">
+            <method desc="(DDII)V" line="61" name="&lt;init&gt;">
+                <counter covered="0" missed="19" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(II)V" line="83" name="&lt;init&gt;">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="95" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="103" name="doIntegrate">
+                <counter covered="0" missed="82" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="16" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="123" type="INSTRUCTION"/>
+            <counter covered="0" missed="12" type="BRANCH"/>
+            <counter covered="0" missed="26" type="LINE"/>
+            <counter covered="0" missed="10" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/integration/IterativeLegendreGaussIntegrator$1" sourcefilename="IterativeLegendreGaussIntegrator.java">
+            <method desc="(Lorg/apache/commons/math3/analysis/integration/IterativeLegendreGaussIntegrator;)V" line="160" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)D" line="164" name="value">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="11" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/integration/IterativeLegendreGaussIntegrator" sourcefilename="IterativeLegendreGaussIntegrator.java">
+            <method desc="(IDDII)V" line="74" name="&lt;init&gt;">
+                <counter covered="0" missed="19" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(IDD)V" line="93" name="&lt;init&gt;">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(III)V" line="113" name="&lt;init&gt;">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="122" name="doIntegrate">
+                <counter covered="0" missed="69" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="12" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)D" line="160" name="stage">
+                <counter covered="0" missed="53" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="11" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="50" name="&lt;clinit&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="162" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="BRANCH"/>
+            <counter covered="0" missed="33" type="LINE"/>
+            <counter covered="0" missed="10" type="COMPLEXITY"/>
+            <counter covered="0" missed="6" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/integration/UnivariateIntegrator" sourcefilename="UnivariateIntegrator.java"/>
+        <class name="org/apache/commons/math3/analysis/integration/RombergIntegrator" sourcefilename="RombergIntegrator.java">
+            <method desc="(DDII)V" line="62" name="&lt;init&gt;">
+                <counter covered="0" missed="19" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(II)V" line="84" name="&lt;init&gt;">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="96" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="104" name="doIntegrate">
+                <counter covered="0" missed="120" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="25" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="161" type="INSTRUCTION"/>
+            <counter covered="0" missed="12" type="BRANCH"/>
+            <counter covered="0" missed="35" type="LINE"/>
+            <counter covered="0" missed="10" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/integration/BaseAbstractUnivariateIntegrator" sourcefilename="BaseAbstractUnivariateIntegrator.java">
+            <method desc="(DDII)V" line="118" name="&lt;init&gt;">
+                <counter covered="0" missed="47" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="13" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="151" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(II)V" line="167" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="173" name="getRelativeAccuracy">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="178" name="getAbsoluteAccuracy">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="183" name="getMinimalIterationCount">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="188" name="getMaximalIterationCount">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="193" name="getEvaluations">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="198" name="getIterations">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="206" name="incrementCount">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="213" name="getMin">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="219" name="getMax">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)D" line="233" name="computeObjectiveValue">
+                <counter covered="0" missed="16" type="INSTRUCTION"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/UnivariateFunction;DD)V" line="258" name="setup">
+                <counter covered="0" missed="29" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/UnivariateFunction;DD)D" line="277" name="integrate">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="146" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="BRANCH"/>
+            <counter covered="0" missed="42" type="LINE"/>
+            <counter covered="0" missed="17" type="COMPLEXITY"/>
+            <counter covered="0" missed="15" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/integration/TrapezoidIntegrator" sourcefilename="TrapezoidIntegrator.java">
+            <method desc="(DDII)V" line="64" name="&lt;init&gt;">
+                <counter covered="0" missed="19" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(II)V" line="86" name="&lt;init&gt;">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="98" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/analysis/integration/BaseAbstractUnivariateIntegrator;I)D" line="119" name="stage">
+                <counter covered="0" missed="87" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="16" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="149" name="doIntegrate">
+                <counter covered="0" missed="51" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="12" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="179" type="INSTRUCTION"/>
+            <counter covered="0" missed="14" type="BRANCH"/>
+            <counter covered="0" missed="38" type="LINE"/>
+            <counter covered="0" missed="12" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/integration/MidPointIntegrator" sourcefilename="MidPointIntegrator.java">
+            <method desc="(DDII)V" line="61" name="&lt;init&gt;">
+                <counter covered="0" missed="19" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(II)V" line="83" name="&lt;init&gt;">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="95" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(IDDD)D" line="124" name="stage">
+                <counter covered="0" missed="48" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="146" name="doIntegrate">
+                <counter covered="0" missed="66" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="14" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="155" type="INSTRUCTION"/>
+            <counter covered="0" missed="12" type="BRANCH"/>
+            <counter covered="0" missed="32" type="LINE"/>
+            <counter covered="0" missed="11" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <sourcefile name="MidPointIntegrator.java">
+            <line cb="0" ci="0" mb="0" mi="6" nr="61"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="63"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="66"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="83"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="84"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="85"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="88"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="95"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="96"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="124"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="125"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="128"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="131"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="132"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="133"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="134"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="137"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="146"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="147"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="148"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="150"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="153"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="154"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="155"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="156"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="157"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="158"/>
+            <line cb="0" ci="0" mb="4" mi="9" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="161"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="164"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="165"/>
+            <counter covered="0" missed="155" type="INSTRUCTION"/>
+            <counter covered="0" missed="12" type="BRANCH"/>
+            <counter covered="0" missed="32" type="LINE"/>
+            <counter covered="0" missed="11" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="LegendreGaussIntegrator.java">
+            <line cb="0" ci="0" mb="0" mi="17" nr="58"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="64"/>
+            <line cb="0" ci="0" mb="0" mi="18" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="15" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="53" nr="84"/>
+            <line cb="0" ci="0" mb="0" mi="47" nr="92"/>
+            <line cb="0" ci="0" mb="0" mi="57" nr="100"/>
+            <line cb="0" ci="0" mb="0" mi="52" nr="109"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="142"/>
+            <line cb="0" ci="0" mb="5" mi="2" nr="143"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="145"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="146"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="147"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="149"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="150"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="151"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="153"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="154"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="155"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="157"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="158"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="159"/>
+            <line cb="0" ci="0" mb="0" mi="22" nr="161"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="166"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="179"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="181"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="198"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="200"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="208"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="210"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="214"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="217"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="218"/>
+            <line cb="0" ci="0" mb="4" mi="11" nr="223"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="224"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="228"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="229"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="230"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="231"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="233"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="248"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="249"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="252"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="253"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="254"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="255"/>
+            <line cb="0" ci="0" mb="0" mi="18" nr="256"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="258"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="261"/>
+            <counter covered="0" missed="477" type="INSTRUCTION"/>
+            <counter covered="0" missed="13" type="BRANCH"/>
+            <counter covered="0" missed="49" type="LINE"/>
+            <counter covered="0" missed="14" type="COMPLEXITY"/>
+            <counter covered="0" missed="6" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="BaseAbstractUnivariateIntegrator.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="118"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="121"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="122"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="125"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="126"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="128"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="129"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="131"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="132"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="135"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="137"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="140"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="142"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="151"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="153"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="167"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="169"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="173"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="178"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="183"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="188"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="193"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="198"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="206"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="207"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="213"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="219"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="233"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="234"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="235"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="236"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="237"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="258"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="259"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="262"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="263"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="264"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="265"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="266"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="268"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="277"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="280"/>
+            <counter covered="0" missed="146" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="BRANCH"/>
+            <counter covered="0" missed="42" type="LINE"/>
+            <counter covered="0" missed="17" type="COMPLEXITY"/>
+            <counter covered="0" missed="15" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="RombergIntegrator.java">
+            <line cb="0" ci="0" mb="0" mi="6" nr="62"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="63"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="64"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="67"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="84"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="85"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="89"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="96"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="97"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="105"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="106"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="108"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="109"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="110"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="111"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="114"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="117"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="118"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="119"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="121"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="122"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="123"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="125"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="126"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="127"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="129"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="130"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="131"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="132"/>
+            <line cb="0" ci="0" mb="4" mi="9" nr="133"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="134"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="137"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="138"/>
+            <counter covered="0" missed="161" type="INSTRUCTION"/>
+            <counter covered="0" missed="12" type="BRANCH"/>
+            <counter covered="0" missed="35" type="LINE"/>
+            <counter covered="0" missed="10" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="SimpsonIntegrator.java">
+            <line cb="0" ci="0" mb="0" mi="6" nr="61"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="63"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="66"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="83"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="84"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="85"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="88"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="95"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="96"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="103"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="105"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="109"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="110"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="112"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="113"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="114"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="115"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="116"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="117"/>
+            <line cb="0" ci="0" mb="4" mi="9" nr="119"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="120"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="123"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="124"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="125"/>
+            <counter covered="0" missed="123" type="INSTRUCTION"/>
+            <counter covered="0" missed="12" type="BRANCH"/>
+            <counter covered="0" missed="26" type="LINE"/>
+            <counter covered="0" missed="10" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="IterativeLegendreGaussIntegrator.java">
+            <line cb="0" ci="0" mb="0" mi="5" nr="50"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="74"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="75"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="76"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="93"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="95"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="113"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="115"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="122"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="124"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="127"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="130"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="131"/>
+            <line cb="0" ci="0" mb="4" mi="11" nr="136"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="138"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="142"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="143"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="144"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="145"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="146"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="164"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="168"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="169"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="170"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="172"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="173"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="175"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="176"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="177"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="178"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="181"/>
+            <counter covered="0" missed="173" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="BRANCH"/>
+            <counter covered="0" missed="34" type="LINE"/>
+            <counter covered="0" missed="12" type="COMPLEXITY"/>
+            <counter covered="0" missed="8" type="METHOD"/>
+            <counter covered="0" missed="2" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="TrapezoidIntegrator.java">
+            <line cb="0" ci="0" mb="0" mi="6" nr="64"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="65"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="66"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="86"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="87"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="88"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="91"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="98"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="99"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="119"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="120"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="121"/>
+            <line cb="0" ci="0" mb="0" mi="15" nr="122"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="125"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="127"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="128"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="129"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="130"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="132"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="133"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="134"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="135"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="136"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="139"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="140"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="149"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="150"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="152"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="153"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="154"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="155"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="156"/>
+            <line cb="0" ci="0" mb="4" mi="9" nr="158"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="159"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="162"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="163"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="164"/>
+            <counter covered="0" missed="179" type="INSTRUCTION"/>
+            <counter covered="0" missed="14" type="BRANCH"/>
+            <counter covered="0" missed="38" type="LINE"/>
+            <counter covered="0" missed="12" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="UnivariateIntegrator.java"/>
+        <counter covered="0" missed="1414" type="INSTRUCTION"/>
+        <counter covered="0" missed="75" type="BRANCH"/>
+        <counter covered="0" missed="256" type="LINE"/>
+        <counter covered="0" missed="86" type="COMPLEXITY"/>
+        <counter covered="0" missed="47" type="METHOD"/>
+        <counter covered="0" missed="8" type="CLASS"/>
+    </package></report>

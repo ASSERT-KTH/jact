@@ -1,0 +1,1094 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><report><package name="org/apache/commons/math3/exception">
+        <class name="org/apache/commons/math3/exception/OutOfRangeException" sourcefilename="OutOfRangeException.java">
+            <method desc="(Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V" line="45" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V" line="61" name="&lt;init&gt;">
+                <counter covered="0" missed="21" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/Number;" line="70" name="getLo">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/Number;" line="76" name="getHi">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="34" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/DimensionMismatchException" sourcefilename="DimensionMismatchException.java">
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;II)V" line="43" name="&lt;init&gt;">
+                <counter covered="0" missed="16" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(II)V" line="55" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="62" name="getDimension">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="25" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="LINE"/>
+            <counter covered="0" missed="3" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/MaxCountExceededException" sourcefilename="MaxCountExceededException.java">
+            <method desc="(Ljava/lang/Number;)V" line="41" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;Ljava/lang/Number;[Ljava/lang/Object;)V" line="52" name="&lt;init&gt;">
+                <counter covered="0" missed="20" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/Number;" line="61" name="getMax">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="30" type="INSTRUCTION"/>
+            <counter covered="0" missed="7" type="LINE"/>
+            <counter covered="0" missed="3" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/NoBracketingException" sourcefilename="NoBracketingException.java">
+            <method desc="(DDDD)V" line="50" name="&lt;init&gt;">
+                <counter covered="0" missed="10" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;DDDD[Ljava/lang/Object;)V" line="67" name="&lt;init&gt;">
+                <counter covered="0" missed="42" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="80" name="getLo">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="88" name="getHi">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="96" name="getFLo">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="104" name="getFHi">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="64" type="INSTRUCTION"/>
+            <counter covered="0" missed="12" type="LINE"/>
+            <counter covered="0" missed="6" type="COMPLEXITY"/>
+            <counter covered="0" missed="6" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/MathUnsupportedOperationException" sourcefilename="MathUnsupportedOperationException.java">
+            <method desc="()V" line="43" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;[Ljava/lang/Object;)V" line="51" name="&lt;init&gt;">
+                <counter covered="0" missed="14" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/exception/util/ExceptionContext;" line="58" name="getContext">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/String;" line="64" name="getMessage">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/String;" line="70" name="getLocalizedMessage">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="31" type="INSTRUCTION"/>
+            <counter covered="0" missed="9" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/MathArithmeticException" sourcefilename="MathArithmeticException.java">
+            <method desc="()V" line="42" name="&lt;init&gt;">
+                <counter covered="0" missed="15" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;[Ljava/lang/Object;)V" line="55" name="&lt;init&gt;">
+                <counter covered="0" missed="14" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/exception/util/ExceptionContext;" line="62" name="getContext">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/String;" line="68" name="getMessage">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/String;" line="74" name="getLocalizedMessage">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="40" type="INSTRUCTION"/>
+            <counter covered="0" missed="11" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/NotStrictlyPositiveException" sourcefilename="NotStrictlyPositiveException.java">
+            <method desc="(Ljava/lang/Number;)V" line="37" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;Ljava/lang/Number;)V" line="47" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="13" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/MathParseException" sourcefilename="MathParseException.java">
+            <method desc="(Ljava/lang/String;ILjava/lang/Class;)V" line="41" name="&lt;init&gt;">
+                <counter covered="0" missed="23" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/String;I)V" line="52" name="&lt;init&gt;">
+                <counter covered="0" missed="18" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="41" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/MathRuntimeException" sourcefilename="MathRuntimeException.java">
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;[Ljava/lang/Object;)V" line="44" name="&lt;init&gt;">
+                <counter covered="0" missed="14" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/exception/util/ExceptionContext;" line="51" name="getContext">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/String;" line="57" name="getMessage">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/String;" line="63" name="getLocalizedMessage">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="25" type="INSTRUCTION"/>
+            <counter covered="0" missed="7" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/NullArgumentException" sourcefilename="NullArgumentException.java">
+            <method desc="()V" line="40" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;[Ljava/lang/Object;)V" line="49" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="11" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/NotPositiveException" sourcefilename="NotPositiveException.java">
+            <method desc="(Ljava/lang/Number;)V" line="36" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;Ljava/lang/Number;)V" line="46" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="13" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/TooManyEvaluationsException" sourcefilename="TooManyEvaluationsException.java">
+            <method desc="(Ljava/lang/Number;)V" line="36" name="&lt;init&gt;">
+                <counter covered="0" missed="10" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="10" type="INSTRUCTION"/>
+            <counter covered="0" missed="3" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/ZeroException" sourcefilename="ZeroException.java">
+            <method desc="()V" line="36" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;[Ljava/lang/Object;)V" line="46" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="12" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/NumberIsTooLargeException" sourcefilename="NumberIsTooLargeException.java">
+            <method desc="(Ljava/lang/Number;Ljava/lang/Number;Z)V" line="49" name="&lt;init&gt;">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;Ljava/lang/Number;Ljava/lang/Number;Z)V" line="66" name="&lt;init&gt;">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Z" line="76" name="getBoundIsAllowed">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/Number;" line="83" name="getMax">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="34" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="BRANCH"/>
+            <counter covered="0" missed="8" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/MultiDimensionMismatchException" sourcefilename="MultiDimensionMismatchException.java">
+            <method desc="([Ljava/lang/Integer;[Ljava/lang/Integer;)V" line="44" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;[Ljava/lang/Integer;[Ljava/lang/Integer;)V" line="58" name="&lt;init&gt;">
+                <counter covered="0" missed="24" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[Ljava/lang/Integer;" line="67" name="getWrongDimensions">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[Ljava/lang/Integer;" line="73" name="getExpectedDimensions">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)I" line="81" name="getWrongDimension">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)I" line="88" name="getExpectedDimension">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="52" type="INSTRUCTION"/>
+            <counter covered="0" missed="10" type="LINE"/>
+            <counter covered="0" missed="6" type="COMPLEXITY"/>
+            <counter covered="0" missed="6" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/MathIllegalArgumentException" sourcefilename="MathIllegalArgumentException.java">
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;[Ljava/lang/Object;)V" line="43" name="&lt;init&gt;">
+                <counter covered="0" missed="14" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/exception/util/ExceptionContext;" line="50" name="getContext">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/String;" line="56" name="getMessage">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/String;" line="62" name="getLocalizedMessage">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="25" type="INSTRUCTION"/>
+            <counter covered="0" missed="7" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/NonMonotonicSequenceException" sourcefilename="NonMonotonicSequenceException.java">
+            <method desc="(Ljava/lang/Number;Ljava/lang/Number;I)V" line="60" name="&lt;init&gt;">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/Number;Ljava/lang/Number;ILorg/apache/commons/math3/util/MathArrays$OrderDirection;Z)V" line="79" name="&lt;init&gt;">
+                <counter covered="0" missed="48" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/util/MathArrays$OrderDirection;" line="98" name="getDirection">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Z" line="104" name="getStrict">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="112" name="getIndex">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/Number;" line="118" name="getPrevious">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="68" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="BRANCH"/>
+            <counter covered="0" missed="12" type="LINE"/>
+            <counter covered="0" missed="9" type="COMPLEXITY"/>
+            <counter covered="0" missed="6" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/NoDataException" sourcefilename="NoDataException.java">
+            <method desc="()V" line="36" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;)V" line="44" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="10" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/TooManyIterationsException" sourcefilename="TooManyIterationsException.java">
+            <method desc="(Ljava/lang/Number;)V" line="36" name="&lt;init&gt;">
+                <counter covered="0" missed="10" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="10" type="INSTRUCTION"/>
+            <counter covered="0" missed="3" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/ConvergenceException" sourcefilename="ConvergenceException.java">
+            <method desc="()V" line="36" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;[Ljava/lang/Object;)V" line="47" name="&lt;init&gt;">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="14" type="INSTRUCTION"/>
+            <counter covered="0" missed="5" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/NotFiniteNumberException" sourcefilename="NotFiniteNumberException.java">
+            <method desc="(Ljava/lang/Number;[Ljava/lang/Object;)V" line="39" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;Ljava/lang/Number;[Ljava/lang/Object;)V" line="52" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="12" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/MathInternalError" sourcefilename="MathInternalError.java">
+            <method desc="()V" line="36" name="&lt;init&gt;">
+                <counter covered="0" missed="13" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/Throwable;)V" line="45" name="&lt;init&gt;">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;[Ljava/lang/Object;)V" line="55" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="29" type="INSTRUCTION"/>
+            <counter covered="0" missed="7" type="LINE"/>
+            <counter covered="0" missed="3" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/MathIllegalStateException" sourcefilename="MathIllegalStateException.java">
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;[Ljava/lang/Object;)V" line="45" name="&lt;init&gt;">
+                <counter covered="0" missed="14" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/Throwable;Lorg/apache/commons/math3/exception/util/Localizable;[Ljava/lang/Object;)V" line="60" name="&lt;init&gt;">
+                <counter covered="0" missed="15" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="69" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/exception/util/ExceptionContext;" line="74" name="getContext">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/String;" line="80" name="getMessage">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/String;" line="86" name="getLocalizedMessage">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="46" type="INSTRUCTION"/>
+            <counter covered="0" missed="13" type="LINE"/>
+            <counter covered="0" missed="6" type="COMPLEXITY"/>
+            <counter covered="0" missed="6" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/NumberIsTooSmallException" sourcefilename="NumberIsTooSmallException.java">
+            <method desc="(Ljava/lang/Number;Ljava/lang/Number;Z)V" line="49" name="&lt;init&gt;">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;Ljava/lang/Number;Ljava/lang/Number;Z)V" line="67" name="&lt;init&gt;">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Z" line="77" name="getBoundIsAllowed">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/Number;" line="84" name="getMin">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="34" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="BRANCH"/>
+            <counter covered="0" missed="8" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/NotANumberException" sourcefilename="NotANumberException.java">
+            <method desc="()V" line="34" name="&lt;init&gt;">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="8" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/InsufficientDataException" sourcefilename="InsufficientDataException.java">
+            <method desc="()V" line="37" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;[Ljava/lang/Object;)V" line="47" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="11" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/exception/MathIllegalNumberException" sourcefilename="MathIllegalNumberException.java">
+            <method desc="(Lorg/apache/commons/math3/exception/util/Localizable;Ljava/lang/Number;[Ljava/lang/Object;)V" line="50" name="&lt;init&gt;">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/Number;" line="58" name="getArgument">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="32" name="&lt;clinit&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="24" type="INSTRUCTION"/>
+            <counter covered="0" missed="5" type="LINE"/>
+            <counter covered="0" missed="3" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <sourcefile name="NotPositiveException.java">
+            <line cb="0" ci="0" mb="0" mi="5" nr="36"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="37"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="46"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="47"/>
+            <counter covered="0" missed="13" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="MathIllegalNumberException.java">
+            <line cb="0" ci="0" mb="0" mi="4" nr="32"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="50"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="51"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="52"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="58"/>
+            <counter covered="0" missed="24" type="INSTRUCTION"/>
+            <counter covered="0" missed="5" type="LINE"/>
+            <counter covered="0" missed="3" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="InsufficientDataException.java">
+            <line cb="0" ci="0" mb="0" mi="5" nr="37"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="38"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="47"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="48"/>
+            <counter covered="0" missed="11" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="MathIllegalArgumentException.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="43"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="44"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="45"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="46"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="50"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="56"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="62"/>
+            <counter covered="0" missed="25" type="INSTRUCTION"/>
+            <counter covered="0" missed="7" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="OutOfRangeException.java">
+            <line cb="0" ci="0" mb="0" mi="6" nr="45"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="46"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="61"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="63"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="64"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="76"/>
+            <counter covered="0" missed="34" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="TooManyEvaluationsException.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="36"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="37"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="38"/>
+            <counter covered="0" missed="10" type="INSTRUCTION"/>
+            <counter covered="0" missed="3" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="ConvergenceException.java">
+            <line cb="0" ci="0" mb="0" mi="5" nr="36"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="37"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="47"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="48"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="49"/>
+            <counter covered="0" missed="14" type="INSTRUCTION"/>
+            <counter covered="0" missed="5" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="NoBracketingException.java">
+            <line cb="0" ci="0" mb="0" mi="9" nr="50"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="51"/>
+            <line cb="0" ci="0" mb="0" mi="29" nr="67"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="68"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="71"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="72"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="88"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="96"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="104"/>
+            <counter covered="0" missed="64" type="INSTRUCTION"/>
+            <counter covered="0" missed="12" type="LINE"/>
+            <counter covered="0" missed="6" type="COMPLEXITY"/>
+            <counter covered="0" missed="6" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="MathUnsupportedOperationException.java">
+            <line cb="0" ci="0" mb="0" mi="5" nr="43"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="44"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="51"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="52"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="53"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="54"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="58"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="64"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="70"/>
+            <counter covered="0" missed="31" type="INSTRUCTION"/>
+            <counter covered="0" missed="9" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="ZeroException.java">
+            <line cb="0" ci="0" mb="0" mi="5" nr="36"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="37"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="46"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="47"/>
+            <counter covered="0" missed="12" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="MathIllegalStateException.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="45"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="46"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="47"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="48"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="60"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="61"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="63"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="74"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="86"/>
+            <counter covered="0" missed="46" type="INSTRUCTION"/>
+            <counter covered="0" missed="13" type="LINE"/>
+            <counter covered="0" missed="6" type="COMPLEXITY"/>
+            <counter covered="0" missed="6" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="NotFiniteNumberException.java">
+            <line cb="0" ci="0" mb="0" mi="5" nr="39"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="40"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="52"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="53"/>
+            <counter covered="0" missed="12" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="NullArgumentException.java">
+            <line cb="0" ci="0" mb="0" mi="5" nr="40"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="41"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="49"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="50"/>
+            <counter covered="0" missed="11" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="NumberIsTooLargeException.java">
+            <line cb="0" ci="0" mb="2" mi="10" nr="49"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="53"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="66"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="68"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="76"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="83"/>
+            <counter covered="0" missed="34" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="BRANCH"/>
+            <counter covered="0" missed="8" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="MathArithmeticException.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="42"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="43"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="44"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="45"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="55"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="56"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="57"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="58"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="68"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="74"/>
+            <counter covered="0" missed="40" type="INSTRUCTION"/>
+            <counter covered="0" missed="11" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="NotANumberException.java">
+            <line cb="0" ci="0" mb="0" mi="7" nr="34"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="35"/>
+            <counter covered="0" missed="8" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="TooManyIterationsException.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="36"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="37"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="38"/>
+            <counter covered="0" missed="10" type="INSTRUCTION"/>
+            <counter covered="0" missed="3" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="DimensionMismatchException.java">
+            <line cb="0" ci="0" mb="0" mi="12" nr="43"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="44"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="45"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="55"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="56"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="62"/>
+            <counter covered="0" missed="25" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="LINE"/>
+            <counter covered="0" missed="3" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="MaxCountExceededException.java">
+            <line cb="0" ci="0" mb="0" mi="6" nr="41"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="42"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="52"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="53"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="54"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="55"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="61"/>
+            <counter covered="0" missed="30" type="INSTRUCTION"/>
+            <counter covered="0" missed="7" type="LINE"/>
+            <counter covered="0" missed="3" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="NonMonotonicSequenceException.java">
+            <line cb="0" ci="0" mb="0" mi="7" nr="60"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="61"/>
+            <line cb="0" ci="0" mb="6" mi="35" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="88"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="89"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="90"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="91"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="92"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="98"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="112"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="118"/>
+            <counter covered="0" missed="68" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="BRANCH"/>
+            <counter covered="0" missed="12" type="LINE"/>
+            <counter covered="0" missed="9" type="COMPLEXITY"/>
+            <counter covered="0" missed="6" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="MathInternalError.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="36"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="37"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="38"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="45"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="46"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="55"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="56"/>
+            <counter covered="0" missed="29" type="INSTRUCTION"/>
+            <counter covered="0" missed="7" type="LINE"/>
+            <counter covered="0" missed="3" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="NoDataException.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="36"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="37"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="44"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="45"/>
+            <counter covered="0" missed="10" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="NumberIsTooSmallException.java">
+            <line cb="0" ci="0" mb="2" mi="10" nr="49"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="53"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="67"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="71"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="84"/>
+            <counter covered="0" missed="34" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="BRANCH"/>
+            <counter covered="0" missed="8" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="MathRuntimeException.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="44"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="45"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="46"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="47"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="51"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="57"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="63"/>
+            <counter covered="0" missed="25" type="INSTRUCTION"/>
+            <counter covered="0" missed="7" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="MathParseException.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="41"/>
+            <line cb="0" ci="0" mb="0" mi="20" nr="42"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="44"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="52"/>
+            <line cb="0" ci="0" mb="0" mi="15" nr="53"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="55"/>
+            <counter covered="0" missed="41" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="NotStrictlyPositiveException.java">
+            <line cb="0" ci="0" mb="0" mi="5" nr="37"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="38"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="47"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="48"/>
+            <counter covered="0" missed="13" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="MultiDimensionMismatchException.java">
+            <line cb="0" ci="0" mb="0" mi="5" nr="44"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="45"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="58"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="59"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="60"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="61"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="67"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="73"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="81"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="88"/>
+            <counter covered="0" missed="52" type="INSTRUCTION"/>
+            <counter covered="0" missed="10" type="LINE"/>
+            <counter covered="0" missed="6" type="COMPLEXITY"/>
+            <counter covered="0" missed="6" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <counter covered="0" missed="726" type="INSTRUCTION"/>
+        <counter covered="0" missed="10" type="BRANCH"/>
+        <counter covered="0" missed="177" type="LINE"/>
+        <counter covered="0" missed="92" type="COMPLEXITY"/>
+        <counter covered="0" missed="87" type="METHOD"/>
+        <counter covered="0" missed="27" type="CLASS"/>
+    </package></report>

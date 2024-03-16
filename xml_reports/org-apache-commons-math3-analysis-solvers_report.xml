@@ -1,0 +1,2206 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><report><package name="org/apache/commons/math3/analysis/solvers">
+        <class name="org/apache/commons/math3/analysis/solvers/BaseSecantSolver" sourcefilename="BaseSecantSolver.java">
+            <method desc="(DLorg/apache/commons/math3/analysis/solvers/BaseSecantSolver$Method;)V" line="68" name="&lt;init&gt;">
+                <counter covered="0" missed="10" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDLorg/apache/commons/math3/analysis/solvers/BaseSecantSolver$Method;)V" line="83" name="&lt;init&gt;">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDDLorg/apache/commons/math3/analysis/solvers/BaseSecantSolver$Method;)V" line="100" name="&lt;init&gt;">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/UnivariateFunction;DDLorg/apache/commons/math3/analysis/solvers/AllowedSolution;)D" line="109" name="solve">
+                <counter covered="0" missed="15" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/UnivariateFunction;DDDLorg/apache/commons/math3/analysis/solvers/AllowedSolution;)D" line="116" name="solve">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/UnivariateFunction;DDD)D" line="124" name="solve">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="137" name="doSolve">
+                <counter covered="0" missed="206" type="INSTRUCTION"/>
+                <counter covered="0" missed="48" type="BRANCH"/>
+                <counter covered="0" missed="52" type="LINE"/>
+                <counter covered="0" missed="30" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="274" type="INSTRUCTION"/>
+            <counter covered="0" missed="48" type="BRANCH"/>
+            <counter covered="0" missed="68" type="LINE"/>
+            <counter covered="0" missed="36" type="COMPLEXITY"/>
+            <counter covered="0" missed="7" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/FieldBracketingNthOrderBrentSolver" sourcefilename="FieldBracketingNthOrderBrentSolver.java">
+            <method desc="(Lorg/apache/commons/math3/RealFieldElement;Lorg/apache/commons/math3/RealFieldElement;Lorg/apache/commons/math3/RealFieldElement;I)V" line="85" name="&lt;init&gt;">
+                <counter covered="0" missed="34" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="10" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="101" name="getMaximalOrder">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="110" name="getMaxEvaluations">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="122" name="getEvaluations">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/RealFieldElement;" line="130" name="getAbsoluteAccuracy">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/RealFieldElement;" line="138" name="getRelativeAccuracy">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/RealFieldElement;" line="146" name="getFunctionValueAccuracy">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/RealFieldUnivariateFunction;Lorg/apache/commons/math3/RealFieldElement;Lorg/apache/commons/math3/RealFieldElement;Lorg/apache/commons/math3/analysis/solvers/AllowedSolution;)Lorg/apache/commons/math3/RealFieldElement;" line="168" name="solve">
+                <counter covered="0" missed="15" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/RealFieldUnivariateFunction;Lorg/apache/commons/math3/RealFieldElement;Lorg/apache/commons/math3/RealFieldElement;Lorg/apache/commons/math3/RealFieldElement;Lorg/apache/commons/math3/analysis/solvers/AllowedSolution;)Lorg/apache/commons/math3/RealFieldElement;" line="194" name="solve">
+                <counter covered="0" missed="550" type="INSTRUCTION"/>
+                <counter covered="0" missed="58" type="BRANCH"/>
+                <counter covered="0" missed="102" type="LINE"/>
+                <counter covered="0" missed="32" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/RealFieldElement;[Lorg/apache/commons/math3/RealFieldElement;[Lorg/apache/commons/math3/RealFieldElement;II)Lorg/apache/commons/math3/RealFieldElement;" line="429" name="guessX">
+                <counter covered="0" missed="77" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="696" type="INSTRUCTION"/>
+            <counter covered="0" missed="66" type="BRANCH"/>
+            <counter covered="0" missed="127" type="LINE"/>
+            <counter covered="0" missed="45" type="COMPLEXITY"/>
+            <counter covered="0" missed="10" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/AbstractDifferentiableUnivariateSolver" sourcefilename="AbstractDifferentiableUnivariateSolver.java">
+            <method desc="(D)V" line="44" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDD)V" line="57" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)D" line="69" name="computeDerivativeObjectiveValue">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/DifferentiableUnivariateFunction;DDD)V" line="79" name="setup">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="29" type="INSTRUCTION"/>
+            <counter covered="0" missed="9" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/BrentSolver" sourcefilename="BrentSolver.java">
+            <method desc="()V" line="54" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="62" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="72" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDD)V" line="86" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="97" name="doSolve">
+                <counter covered="0" missed="84" type="INSTRUCTION"/>
+                <counter covered="0" missed="10" type="BRANCH"/>
+                <counter covered="0" missed="19" type="LINE"/>
+                <counter covered="0" missed="6" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDDD)D" line="153" name="brent">
+                <counter covered="0" missed="247" type="INSTRUCTION"/>
+                <counter covered="0" missed="30" type="BRANCH"/>
+                <counter covered="0" missed="55" type="LINE"/>
+                <counter covered="0" missed="16" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="350" type="INSTRUCTION"/>
+            <counter covered="0" missed="40" type="BRANCH"/>
+            <counter covered="0" missed="82" type="LINE"/>
+            <counter covered="0" missed="26" type="COMPLEXITY"/>
+            <counter covered="0" missed="6" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/NewtonRaphsonSolver" sourcefilename="NewtonRaphsonSolver.java">
+            <method desc="()V" line="40" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="48" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/differentiation/UnivariateDifferentiableFunction;DD)D" line="68" name="solve">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="77" name="doSolve">
+                <counter covered="0" missed="38" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="9" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="54" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="BRANCH"/>
+            <counter covered="0" missed="14" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/UnivariateDifferentiableSolver" sourcefilename="UnivariateDifferentiableSolver.java"/>
+        <class name="org/apache/commons/math3/analysis/solvers/LaguerreSolver$ComplexSolver" sourcefilename="LaguerreSolver.java">
+            <method desc="(Lorg/apache/commons/math3/analysis/solvers/LaguerreSolver;)V" line="289" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDLorg/apache/commons/math3/complex/Complex;)Z" line="300" name="isRoot">
+                <counter covered="0" missed="38" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([Lorg/apache/commons/math3/complex/Complex;Lorg/apache/commons/math3/complex/Complex;)[Lorg/apache/commons/math3/complex/Complex;" line="325" name="solveAll">
+                <counter covered="0" missed="103" type="INSTRUCTION"/>
+                <counter covered="0" missed="10" type="BRANCH"/>
+                <counter covered="0" missed="20" type="LINE"/>
+                <counter covered="0" missed="6" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([Lorg/apache/commons/math3/complex/Complex;Lorg/apache/commons/math3/complex/Complex;)Lorg/apache/commons/math3/complex/Complex;" line="374" name="solve">
+                <counter covered="0" missed="199" type="INSTRUCTION"/>
+                <counter covered="0" missed="14" type="BRANCH"/>
+                <counter covered="0" missed="40" type="LINE"/>
+                <counter covered="0" missed="8" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="346" type="INSTRUCTION"/>
+            <counter covered="0" missed="30" type="BRANCH"/>
+            <counter covered="0" missed="65" type="LINE"/>
+            <counter covered="0" missed="19" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/PolynomialSolver" sourcefilename="PolynomialSolver.java"/>
+        <class name="org/apache/commons/math3/analysis/solvers/BracketedUnivariateSolver" sourcefilename="BracketedUnivariateSolver.java"/>
+        <class name="org/apache/commons/math3/analysis/solvers/SecantSolver" sourcefilename="SecantSolver.java">
+            <method desc="()V" line="49" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="58" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="69" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="78" name="doSolve">
+                <counter covered="0" missed="91" type="INSTRUCTION"/>
+                <counter covered="0" missed="10" type="BRANCH"/>
+                <counter covered="0" missed="25" type="LINE"/>
+                <counter covered="0" missed="6" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="104" type="INSTRUCTION"/>
+            <counter covered="0" missed="10" type="BRANCH"/>
+            <counter covered="0" missed="31" type="LINE"/>
+            <counter covered="0" missed="9" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/MullerSolver2" sourcefilename="MullerSolver2.java">
+            <method desc="()V" line="58" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="66" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="76" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="87" name="doSolve">
+                <counter covered="0" missed="244" type="INSTRUCTION"/>
+                <counter covered="0" missed="20" type="BRANCH"/>
+                <counter covered="0" missed="48" type="LINE"/>
+                <counter covered="0" missed="11" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="257" type="INSTRUCTION"/>
+            <counter covered="0" missed="20" type="BRANCH"/>
+            <counter covered="0" missed="54" type="LINE"/>
+            <counter covered="0" missed="14" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/RiddersSolver" sourcefilename="RiddersSolver.java">
+            <method desc="()V" line="42" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="50" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="60" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="70" name="doSolve">
+                <counter covered="0" missed="166" type="INSTRUCTION"/>
+                <counter covered="0" missed="16" type="BRANCH"/>
+                <counter covered="0" missed="45" type="LINE"/>
+                <counter covered="0" missed="9" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="179" type="INSTRUCTION"/>
+            <counter covered="0" missed="16" type="BRANCH"/>
+            <counter covered="0" missed="51" type="LINE"/>
+            <counter covered="0" missed="12" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/BaseUnivariateSolver" sourcefilename="BaseUnivariateSolver.java"/>
+        <class name="org/apache/commons/math3/analysis/solvers/AbstractUnivariateDifferentiableSolver" sourcefilename="AbstractUnivariateDifferentiableSolver.java">
+            <method desc="(D)V" line="43" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDD)V" line="56" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)Lorg/apache/commons/math3/analysis/differentiation/DerivativeStructure;" line="69" name="computeObjectiveValueAndDerivative">
+                <counter covered="0" missed="13" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/differentiation/UnivariateDifferentiableFunction;DDD)V" line="79" name="setup">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="34" type="INSTRUCTION"/>
+            <counter covered="0" missed="9" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/BracketingNthOrderBrentSolver" sourcefilename="BracketingNthOrderBrentSolver.java">
+            <method desc="()V" line="69" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DI)V" line="82" name="&lt;init&gt;">
+                <counter covered="0" missed="22" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDI)V" line="102" name="&lt;init&gt;">
+                <counter covered="0" missed="23" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDDI)V" line="124" name="&lt;init&gt;">
+                <counter covered="0" missed="24" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="136" name="getMaximalOrder">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="148" name="doSolve">
+                <counter covered="0" missed="497" type="INSTRUCTION"/>
+                <counter covered="0" missed="54" type="BRANCH"/>
+                <counter covered="0" missed="98" type="LINE"/>
+                <counter covered="0" missed="30" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D[D[DII)D" line="373" name="guessX">
+                <counter covered="0" missed="71" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/UnivariateFunction;DDLorg/apache/commons/math3/analysis/solvers/AllowedSolution;)D" line="396" name="solve">
+                <counter covered="0" missed="10" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/UnivariateFunction;DDDLorg/apache/commons/math3/analysis/solvers/AllowedSolution;)D" line="407" name="solve">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="666" type="INSTRUCTION"/>
+            <counter covered="0" missed="66" type="BRANCH"/>
+            <counter covered="0" missed="131" type="LINE"/>
+            <counter covered="0" missed="44" type="COMPLEXITY"/>
+            <counter covered="0" missed="9" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/DifferentiableUnivariateSolver" sourcefilename="DifferentiableUnivariateSolver.java"/>
+        <class name="org/apache/commons/math3/analysis/solvers/AbstractUnivariateSolver" sourcefilename="AbstractUnivariateSolver.java">
+            <method desc="(D)V" line="36" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="46" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDD)V" line="58" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="15" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="LINE"/>
+            <counter covered="0" missed="3" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/IllinoisSolver" sourcefilename="IllinoisSolver.java">
+            <method desc="()V" line="47" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="56" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="67" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDD)V" line="80" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="23" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/AbstractPolynomialSolver" sourcefilename="AbstractPolynomialSolver.java">
+            <method desc="(D)V" line="39" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="49" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDD)V" line="61" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/polynomials/PolynomialFunction;DDD)V" line="70" name="setup">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="78" name="getCoefficients">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="30" type="INSTRUCTION"/>
+            <counter covered="0" missed="10" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/UnivariateSolverUtils" sourcefilename="UnivariateSolverUtils.java">
+            <method desc="(Lorg/apache/commons/math3/analysis/UnivariateFunction;DD)D" line="52" name="solve">
+                <counter covered="0" missed="20" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/analysis/UnivariateFunction;DDD)D" line="77" name="solve">
+                <counter covered="0" missed="21" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/UnivariateFunction;Lorg/apache/commons/math3/analysis/solvers/BracketedUnivariateSolver;DDDLorg/apache/commons/math3/analysis/solvers/AllowedSolution;)D" line="108" name="forceSide">
+                <counter covered="0" missed="166" type="INSTRUCTION"/>
+                <counter covered="0" missed="24" type="BRANCH"/>
+                <counter covered="0" missed="33" type="LINE"/>
+                <counter covered="0" missed="13" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/analysis/UnivariateFunction;DDD)[D" line="204" name="bracket">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/analysis/UnivariateFunction;DDDI)[D" line="231" name="bracket">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/analysis/UnivariateFunction;DDDDDI)[D" line="300" name="bracket">
+                <counter covered="0" missed="152" type="INSTRUCTION"/>
+                <counter covered="0" missed="20" type="BRANCH"/>
+                <counter covered="0" missed="32" type="LINE"/>
+                <counter covered="0" missed="11" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)D" line="367" name="midpoint">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/analysis/UnivariateFunction;DD)Z" line="386" name="isBracketing">
+                <counter covered="0" missed="37" type="INSTRUCTION"/>
+                <counter covered="0" missed="10" type="BRANCH"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="6" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDD)Z" line="405" name="isSequence">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="418" name="verifyInterval">
+                <counter covered="0" missed="15" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDD)V" line="437" name="verifySequence">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/analysis/UnivariateFunction;DD)V" line="457" name="verifyBracketing">
+                <counter covered="0" missed="30" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="484" type="INSTRUCTION"/>
+            <counter covered="0" missed="68" type="BRANCH"/>
+            <counter covered="0" missed="94" type="LINE"/>
+            <counter covered="0" missed="46" type="COMPLEXITY"/>
+            <counter covered="0" missed="12" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/BisectionSolver" sourcefilename="BisectionSolver.java">
+            <method desc="()V" line="37" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="45" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="55" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="64" name="doSolve">
+                <counter covered="0" missed="49" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="13" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="62" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="BRANCH"/>
+            <counter covered="0" missed="19" type="LINE"/>
+            <counter covered="0" missed="6" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/BaseAbstractUnivariateSolver" sourcefilename="BaseAbstractUnivariateSolver.java">
+            <method desc="(D)V" line="70" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="83" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDD)V" line="97" name="&lt;init&gt;">
+                <counter covered="0" missed="15" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="106" name="getMaxEvaluations">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="110" name="getEvaluations">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="116" name="getMin">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="122" name="getMax">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="128" name="getStartValue">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="134" name="getAbsoluteAccuracy">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="140" name="getRelativeAccuracy">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="146" name="getFunctionValueAccuracy">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)D" line="159" name="computeObjectiveValue">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/UnivariateFunction;DDD)V" line="181" name="setup">
+                <counter covered="0" missed="23" type="INSTRUCTION"/>
+                <counter covered="0" missed="7" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/UnivariateFunction;DDD)D" line="196" name="solve">
+                <counter covered="0" missed="10" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/UnivariateFunction;DD)D" line="204" name="solve">
+                <counter covered="0" missed="14" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/UnivariateFunction;D)D" line="211" name="solve">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)Z" line="237" name="isBracketing">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDD)Z" line="251" name="isSequence">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="264" name="verifyInterval">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDD)V" line="280" name="verifySequence">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="297" name="verifyBracketing">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="313" name="incrementEvaluationCount">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="153" type="INSTRUCTION"/>
+            <counter covered="0" missed="44" type="LINE"/>
+            <counter covered="0" missed="22" type="COMPLEXITY"/>
+            <counter covered="0" missed="22" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/BracketedRealFieldUnivariateSolver" sourcefilename="BracketedRealFieldUnivariateSolver.java"/>
+        <class name="org/apache/commons/math3/analysis/solvers/LaguerreSolver" sourcefilename="LaguerreSolver.java">
+            <method desc="()V" line="54" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="48" name="&lt;init&gt;">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="48" name="&lt;init&gt;">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDD)V" line="48" name="&lt;init&gt;">
+                <counter covered="0" missed="13" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="95" name="doSolve">
+                <counter covered="0" missed="84" type="INSTRUCTION"/>
+                <counter covered="0" missed="10" type="BRANCH"/>
+                <counter covered="0" missed="19" type="LINE"/>
+                <counter covered="0" missed="6" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDDD)D" line="156" name="laguerre">
+                <counter covered="0" missed="63" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="12" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([DD)[Lorg/apache/commons/math3/complex/Complex;" line="197" name="solveAllComplex">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([DDI)[Lorg/apache/commons/math3/complex/Complex;" line="222" name="solveAllComplex">
+                <counter covered="0" missed="21" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([DD)Lorg/apache/commons/math3/complex/Complex;" line="252" name="solveComplex">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([DDI)Lorg/apache/commons/math3/complex/Complex;" line="277" name="solveComplex">
+                <counter covered="0" missed="21" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="241" type="INSTRUCTION"/>
+            <counter covered="0" missed="16" type="BRANCH"/>
+            <counter covered="0" missed="46" type="LINE"/>
+            <counter covered="0" missed="18" type="COMPLEXITY"/>
+            <counter covered="0" missed="10" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/BaseSecantSolver$Method" sourcefilename="BaseSecantSolver.java">
+            <method desc="()V" line="263" name="&lt;clinit&gt;">
+                <counter covered="0" missed="34" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="34" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/AllowedSolution" sourcefilename="AllowedSolution.java">
+            <method desc="()V" line="40" name="&lt;clinit&gt;">
+                <counter covered="0" missed="54" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="54" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/NewtonSolver" sourcefilename="NewtonSolver.java">
+            <method desc="()V" line="41" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="49" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/DifferentiableUnivariateFunction;DD)D" line="69" name="solve">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="78" name="doSolve">
+                <counter covered="0" missed="30" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="7" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="46" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="BRANCH"/>
+            <counter covered="0" missed="12" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/PegasusSolver" sourcefilename="PegasusSolver.java">
+            <method desc="()V" line="49" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="58" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="69" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDD)V" line="82" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="23" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/UnivariateSolver" sourcefilename="UnivariateSolver.java"/>
+        <class name="org/apache/commons/math3/analysis/solvers/MullerSolver" sourcefilename="MullerSolver.java">
+            <method desc="()V" line="58" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="66" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="76" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="87" name="doSolve">
+                <counter covered="0" missed="73" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="18" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDDD)D" line="132" name="solve">
+                <counter covered="0" missed="245" type="INSTRUCTION"/>
+                <counter covered="0" missed="28" type="BRANCH"/>
+                <counter covered="0" missed="39" type="LINE"/>
+                <counter covered="0" missed="15" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="331" type="INSTRUCTION"/>
+            <counter covered="0" missed="36" type="BRANCH"/>
+            <counter covered="0" missed="63" type="LINE"/>
+            <counter covered="0" missed="23" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/solvers/RegulaFalsiSolver" sourcefilename="RegulaFalsiSolver.java">
+            <method desc="()V" line="59" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="68" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="79" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDD)V" line="92" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="23" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <sourcefile name="SecantSolver.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="49"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="50"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="58"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="59"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="81"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="87"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="89"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="90"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="97"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="98"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="99"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="105"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="110"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="111"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="115"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="116"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="117"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="118"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="123"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="124"/>
+            <line cb="0" ci="0" mb="2" mi="12" nr="129"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="130"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="132"/>
+            <counter covered="0" missed="104" type="INSTRUCTION"/>
+            <counter covered="0" missed="10" type="BRANCH"/>
+            <counter covered="0" missed="31" type="LINE"/>
+            <counter covered="0" missed="9" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="AbstractUnivariateSolver.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="36"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="37"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="46"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="47"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="58"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="59"/>
+            <counter covered="0" missed="15" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="LINE"/>
+            <counter covered="0" missed="3" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="PolynomialSolver.java"/>
+        <sourcefile name="AllowedSolution.java">
+            <line cb="0" ci="0" mb="0" mi="24" nr="40"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="47"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="54"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="61"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="67"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="73"/>
+            <counter covered="0" missed="54" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="AbstractPolynomialSolver.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="39"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="40"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="49"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="50"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="61"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="71"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="72"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="78"/>
+            <counter covered="0" missed="30" type="INSTRUCTION"/>
+            <counter covered="0" missed="10" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="IllinoisSolver.java">
+            <line cb="0" ci="0" mb="0" mi="4" nr="47"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="48"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="56"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="57"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="67"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="68"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="81"/>
+            <counter covered="0" missed="23" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="AbstractUnivariateDifferentiableSolver.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="43"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="44"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="56"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="57"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="81"/>
+            <counter covered="0" missed="34" type="INSTRUCTION"/>
+            <counter covered="0" missed="9" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="BrentSolver.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="54"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="55"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="63"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="72"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="73"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="87"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="97"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="98"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="99"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="100"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="105"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="106"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="107"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="111"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="112"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="113"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="117"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="118"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="122"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="123"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="124"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="128"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="129"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="132"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="153"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="154"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="155"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="156"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="157"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="158"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="159"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="162"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="163"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="166"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="167"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="168"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="169"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="170"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="171"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="172"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="175"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="176"/>
+            <line cb="0" ci="0" mb="4" mi="9" nr="178"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="180"/>
+            <line cb="0" ci="0" mb="4" mi="11" nr="182"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="185"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="186"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="188"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="194"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="196"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="197"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="200"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="201"/>
+            <line cb="0" ci="0" mb="0" mi="20" nr="202"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="203"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="205"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="206"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="208"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="210"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="211"/>
+            <line cb="0" ci="0" mb="4" mi="22" nr="212"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="217"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="218"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="220"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="223"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="224"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="226"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="227"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="228"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="229"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="231"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="233"/>
+            <line cb="0" ci="0" mb="8" mi="16" nr="234"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="236"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="237"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="238"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="239"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="241"/>
+            <counter covered="0" missed="350" type="INSTRUCTION"/>
+            <counter covered="0" missed="40" type="BRANCH"/>
+            <counter covered="0" missed="82" type="LINE"/>
+            <counter covered="0" missed="26" type="COMPLEXITY"/>
+            <counter covered="0" missed="6" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="UnivariateSolver.java"/>
+        <sourcefile name="BaseAbstractUnivariateSolver.java">
+            <line cb="0" ci="0" mb="0" mi="5" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="73"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="83"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="97"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="98"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="99"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="100"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="101"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="106"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="110"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="116"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="122"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="128"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="134"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="140"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="146"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="159"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="181"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="184"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="185"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="186"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="187"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="188"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="189"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="196"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="199"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="204"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="211"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="237"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="251"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="264"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="265"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="280"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="281"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="297"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="298"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="313"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="314"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="315"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="316"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="317"/>
+            <counter covered="0" missed="153" type="INSTRUCTION"/>
+            <counter covered="0" missed="44" type="LINE"/>
+            <counter covered="0" missed="22" type="COMPLEXITY"/>
+            <counter covered="0" missed="22" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="BracketingNthOrderBrentSolver.java">
+            <line cb="0" ci="0" mb="0" mi="4" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="82"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="83"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="84"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="87"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="88"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="102"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="103"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="106"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="107"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="108"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="124"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="125"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="126"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="128"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="129"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="130"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="136"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="148"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="149"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="150"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="151"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="152"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="153"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="156"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="157"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="159"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="163"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="164"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="166"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="171"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="174"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="175"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="180"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="181"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="183"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="186"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="188"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="189"/>
+            <line cb="0" ci="0" mb="0" mi="16" nr="191"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="197"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="200"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="201"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="202"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="203"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="204"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="205"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="206"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="207"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="213"/>
+            <line cb="0" ci="0" mb="4" mi="13" nr="215"/>
+            <line cb="0" ci="0" mb="6" mi="6" nr="216"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="218"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="220"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="222"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="224"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="226"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="229"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="235"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="237"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="238"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="239"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="240"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="241"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="243"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="244"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="245"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="246"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="247"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="249"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="254"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="255"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="259"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="260"/>
+            <line cb="0" ci="0" mb="4" mi="8" nr="262"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="268"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="270"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="273"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="277"/>
+            <line cb="0" ci="0" mb="4" mi="8" nr="281"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="283"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="285"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="286"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="287"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="291"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="292"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="295"/>
+            <line cb="0" ci="0" mb="4" mi="8" nr="298"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="302"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="303"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="304"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="305"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="307"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="310"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="313"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="315"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="316"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="317"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="324"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="325"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="326"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="327"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="328"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="331"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="333"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="334"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="335"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="336"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="337"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="340"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="341"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="342"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="343"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="344"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="347"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="351"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="373"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="374"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="375"/>
+            <line cb="0" ci="0" mb="0" mi="22" nr="376"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="381"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="382"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="383"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="386"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="396"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="397"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="407"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="408"/>
+            <counter covered="0" missed="666" type="INSTRUCTION"/>
+            <counter covered="0" missed="66" type="BRANCH"/>
+            <counter covered="0" missed="131" type="LINE"/>
+            <counter covered="0" missed="44" type="COMPLEXITY"/>
+            <counter covered="0" missed="9" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="BracketedUnivariateSolver.java"/>
+        <sourcefile name="BracketedRealFieldUnivariateSolver.java"/>
+        <sourcefile name="DifferentiableUnivariateSolver.java"/>
+        <sourcefile name="UnivariateDifferentiableSolver.java"/>
+        <sourcefile name="PegasusSolver.java">
+            <line cb="0" ci="0" mb="0" mi="4" nr="49"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="50"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="58"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="59"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="82"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="83"/>
+            <counter covered="0" missed="23" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="BisectionSolver.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="37"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="38"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="45"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="46"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="55"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="56"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="64"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="65"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="66"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="67"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="73"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="74"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="75"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="82"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="85"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="87"/>
+            <counter covered="0" missed="62" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="BRANCH"/>
+            <counter covered="0" missed="19" type="LINE"/>
+            <counter covered="0" missed="6" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="RiddersSolver.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="42"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="43"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="50"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="51"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="60"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="61"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="71"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="75"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="76"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="78"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="81"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="82"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="84"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="85"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="87"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="89"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="90"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="91"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="93"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="96"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="97"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="98"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="99"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="101"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="105"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="108"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="109"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="110"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="112"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="113"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="118"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="119"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="120"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="121"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="123"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="124"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="125"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="126"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="129"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="130"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="131"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="133"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="134"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="135"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="136"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="139"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="140"/>
+            <counter covered="0" missed="179" type="INSTRUCTION"/>
+            <counter covered="0" missed="16" type="BRANCH"/>
+            <counter covered="0" missed="51" type="LINE"/>
+            <counter covered="0" missed="12" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="AbstractDifferentiableUnivariateSolver.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="44"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="45"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="57"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="58"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="81"/>
+            <counter covered="0" missed="29" type="INSTRUCTION"/>
+            <counter covered="0" missed="9" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="MullerSolver.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="58"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="59"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="66"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="67"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="76"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="87"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="88"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="89"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="91"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="93"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="96"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="97"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="98"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="100"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="101"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="104"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="105"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="106"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="109"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="111"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="112"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="114"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="132"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="133"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="134"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="141"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="142"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="143"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="144"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="145"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="146"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="148"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="154"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="155"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="156"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="157"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="158"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="159"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="160"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="163"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="164"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="167"/>
+            <line cb="0" ci="0" mb="4" mi="12" nr="168"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="170"/>
+            <line cb="0" ci="0" mb="10" mi="36" nr="177"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="181"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="182"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="183"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="184"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="185"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="186"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="187"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="189"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="190"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="191"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="192"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="194"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="196"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="197"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="198"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="200"/>
+            <counter covered="0" missed="331" type="INSTRUCTION"/>
+            <counter covered="0" missed="36" type="BRANCH"/>
+            <counter covered="0" missed="63" type="LINE"/>
+            <counter covered="0" missed="23" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="BaseSecantSolver.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="68"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="71"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="83"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="84"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="85"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="100"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="101"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="103"/>
+            <line cb="0" ci="0" mb="0" mi="15" nr="109"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="116"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="117"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="124"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="137"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="138"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="139"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="140"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="145"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="146"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="148"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="149"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="153"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="156"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="157"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="158"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="162"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="167"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="168"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="173"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="174"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="178"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="181"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="182"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="183"/>
+            <line cb="0" ci="0" mb="4" mi="6" nr="185"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="187"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="188"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="190"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="191"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="195"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="196"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="201"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="205"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="206"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="211"/>
+            <line cb="0" ci="0" mb="6" mi="6" nr="212"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="214"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="216"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="217"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="221"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="222"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="226"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="227"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="231"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="232"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="236"/>
+            <line cb="0" ci="0" mb="2" mi="12" nr="242"/>
+            <line cb="0" ci="0" mb="6" mi="6" nr="244"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="246"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="248"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="250"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="252"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="254"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="256"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="259"/>
+            <line cb="0" ci="0" mb="0" mi="16" nr="263"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="269"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="272"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="275"/>
+            <counter covered="0" missed="308" type="INSTRUCTION"/>
+            <counter covered="0" missed="48" type="BRANCH"/>
+            <counter covered="0" missed="72" type="LINE"/>
+            <counter covered="0" missed="37" type="COMPLEXITY"/>
+            <counter covered="0" missed="8" type="METHOD"/>
+            <counter covered="0" missed="2" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="RegulaFalsiSolver.java">
+            <line cb="0" ci="0" mb="0" mi="4" nr="59"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="60"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="68"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="92"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="93"/>
+            <counter covered="0" missed="23" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="NewtonSolver.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="41"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="42"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="49"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="50"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="81"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="84"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="85"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="89"/>
+            <counter covered="0" missed="46" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="BRANCH"/>
+            <counter covered="0" missed="12" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="LaguerreSolver.java">
+            <line cb="0" ci="0" mb="0" mi="21" nr="48"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="54"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="55"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="63"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="72"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="73"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="84"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="85"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="95"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="96"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="97"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="98"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="100"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="103"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="105"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="109"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="110"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="111"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="115"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="116"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="120"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="121"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="122"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="126"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="127"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="130"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="156"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="158"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="159"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="161"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="163"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="165"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="166"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="167"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="168"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="169"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="172"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="197"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="222"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="227"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="252"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="277"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="282"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="289"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="300"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="301"/>
+            <line cb="0" ci="0" mb="4" mi="17" nr="302"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="305"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="325"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="326"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="328"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="329"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="330"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="333"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="334"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="335"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="339"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="340"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="341"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="342"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="343"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="345"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="346"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="347"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="348"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="349"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="350"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="354"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="374"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="375"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="378"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="379"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="380"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="383"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="384"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="385"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="387"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="388"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="390"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="391"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="396"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="397"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="398"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="399"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="400"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="401"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="402"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="404"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="407"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="409"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="410"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="412"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="413"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="417"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="418"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="419"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="420"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="422"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="423"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="424"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="425"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="428"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="429"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="430"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="433"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="434"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="436"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="437"/>
+            <counter covered="0" missed="587" type="INSTRUCTION"/>
+            <counter covered="0" missed="46" type="BRANCH"/>
+            <counter covered="0" missed="111" type="LINE"/>
+            <counter covered="0" missed="37" type="COMPLEXITY"/>
+            <counter covered="0" missed="14" type="METHOD"/>
+            <counter covered="0" missed="2" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="NewtonRaphsonSolver.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="40"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="41"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="48"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="49"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="68"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="83"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="84"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="85"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="89"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="90"/>
+            <counter covered="0" missed="54" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="BRANCH"/>
+            <counter covered="0" missed="14" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="MullerSolver2.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="58"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="59"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="66"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="67"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="76"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="87"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="88"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="90"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="92"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="93"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="100"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="101"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="103"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="105"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="106"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="107"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="108"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="111"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="112"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="115"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="116"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="118"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="121"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="122"/>
+            <line cb="0" ci="0" mb="0" mi="24" nr="123"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="124"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="125"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="128"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="130"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="131"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="132"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="133"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="135"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="137"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="138"/>
+            <line cb="0" ci="0" mb="4" mi="8" nr="141"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="142"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="146"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="147"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="149"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="152"/>
+            <line cb="0" ci="0" mb="4" mi="12" nr="153"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="155"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="159"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="161"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="162"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="163"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="164"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="165"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="166"/>
+            <counter covered="0" missed="257" type="INSTRUCTION"/>
+            <counter covered="0" missed="20" type="BRANCH"/>
+            <counter covered="0" missed="54" type="LINE"/>
+            <counter covered="0" missed="14" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="FieldBracketingNthOrderBrentSolver.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="85"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="87"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="89"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="90"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="91"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="92"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="93"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="95"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="101"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="110"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="122"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="130"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="138"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="146"/>
+            <line cb="0" ci="0" mb="0" mi="15" nr="168"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="194"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="197"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="198"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="199"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="202"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="203"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="204"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="205"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="206"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="209"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="210"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="211"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="213"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="217"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="218"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="219"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="221"/>
+            <line cb="0" ci="0" mb="2" mi="12" nr="226"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="229"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="230"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="235"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="236"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="237"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="239"/>
+            <line cb="0" ci="0" mb="2" mi="12" nr="242"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="244"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="245"/>
+            <line cb="0" ci="0" mb="0" mi="20" nr="247"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="254"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="257"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="258"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="259"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="260"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="261"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="262"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="263"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="264"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="265"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="266"/>
+            <line cb="0" ci="0" mb="2" mi="12" nr="272"/>
+            <line cb="0" ci="0" mb="2" mi="12" nr="273"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="274"/>
+            <line cb="0" ci="0" mb="4" mi="20" nr="275"/>
+            <line cb="0" ci="0" mb="6" mi="5" nr="277"/>
+            <line cb="0" ci="0" mb="2" mi="12" nr="279"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="281"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="283"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="285"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="287"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="290"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="296"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="298"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="299"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="301"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="304"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="309"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="310"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="314"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="315"/>
+            <line cb="0" ci="0" mb="4" mi="16" nr="317"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="323"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="325"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="328"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="332"/>
+            <line cb="0" ci="0" mb="4" mi="9" nr="336"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="338"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="340"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="341"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="342"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="346"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="347"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="348"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="351"/>
+            <line cb="0" ci="0" mb="4" mi="8" nr="354"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="358"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="359"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="360"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="361"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="363"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="366"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="369"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="371"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="372"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="373"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="380"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="381"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="382"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="383"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="384"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="387"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="389"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="390"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="391"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="392"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="393"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="396"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="397"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="398"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="399"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="400"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="403"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="407"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="429"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="430"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="431"/>
+            <line cb="0" ci="0" mb="0" mi="24" nr="432"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="437"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="438"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="439"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="442"/>
+            <counter covered="0" missed="696" type="INSTRUCTION"/>
+            <counter covered="0" missed="66" type="BRANCH"/>
+            <counter covered="0" missed="127" type="LINE"/>
+            <counter covered="0" missed="45" type="COMPLEXITY"/>
+            <counter covered="0" missed="10" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="BaseUnivariateSolver.java"/>
+        <sourcefile name="UnivariateSolverUtils.java">
+            <line cb="0" ci="0" mb="2" mi="2" nr="52"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="53"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="55"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="56"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="81"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="108"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="110"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="114"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="116"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="117"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="118"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="119"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="120"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="121"/>
+            <line cb="0" ci="0" mb="8" mi="16" nr="123"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="125"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="129"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="130"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="131"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="133"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="134"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="136"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="138"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="140"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="141"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="143"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="147"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="148"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="152"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="153"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="154"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="155"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="159"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="161"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="162"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="165"/>
+            <line cb="0" ci="0" mb="0" mi="38" nr="167"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="204"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="231"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="300"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="301"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="303"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="304"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="306"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="307"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="309"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="312"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="313"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="314"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="315"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="316"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="318"/>
+            <line cb="0" ci="0" mb="6" mi="11" nr="319"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="320"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="322"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="323"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="324"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="325"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="327"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="328"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="329"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="330"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="331"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="333"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="336"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="338"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="343"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="345"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="346"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="348"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="355"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="367"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="386"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="387"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="389"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="390"/>
+            <line cb="0" ci="0" mb="8" mi="20" nr="391"/>
+            <line cb="0" ci="0" mb="4" mi="12" nr="405"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="418"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="419"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="422"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="437"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="438"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="439"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="457"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="458"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="460"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="461"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="462"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="466"/>
+            <counter covered="0" missed="484" type="INSTRUCTION"/>
+            <counter covered="0" missed="68" type="BRANCH"/>
+            <counter covered="0" missed="94" type="LINE"/>
+            <counter covered="0" missed="46" type="COMPLEXITY"/>
+            <counter covered="0" missed="12" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <counter covered="0" missed="4508" type="INSTRUCTION"/>
+        <counter covered="0" missed="424" type="BRANCH"/>
+        <counter covered="0" missed="969" type="LINE"/>
+        <counter covered="0" missed="360" type="COMPLEXITY"/>
+        <counter covered="0" missed="139" type="METHOD"/>
+        <counter covered="0" missed="24" type="CLASS"/>
+    </package></report>

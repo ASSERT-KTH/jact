@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><report><package name="org/apache/commons/math3/distribution/fitting">
+        <class name="org/apache/commons/math3/distribution/fitting/MultivariateNormalMixtureExpectationMaximization$DataRow" sourcefilename="MultivariateNormalMixtureExpectationMaximization.java">
+            <method desc="([D)V" line="404" name="&lt;init&gt;">
+                <counter covered="0" missed="38" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="7" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/distribution/fitting/MultivariateNormalMixtureExpectationMaximization$DataRow;)I" line="421" name="compareTo">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/Object;)Z" line="428" name="equals">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="443" name="hashCode">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="450" name="getRow">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="68" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="BRANCH"/>
+            <counter covered="0" missed="15" type="LINE"/>
+            <counter covered="0" missed="8" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/distribution/fitting/MultivariateNormalMixtureExpectationMaximization" sourcefilename="MultivariateNormalMixtureExpectationMaximization.java">
+            <method desc="([[D)V" line="74" name="&lt;init&gt;">
+                <counter covered="0" missed="86" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="12" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/distribution/MixtureMultivariateNormalDistribution;ID)V" line="138" name="fit">
+                <counter covered="0" missed="380" type="INSTRUCTION"/>
+                <counter covered="0" missed="32" type="BRANCH"/>
+                <counter covered="0" missed="58" type="LINE"/>
+                <counter covered="0" missed="17" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/distribution/MixtureMultivariateNormalDistribution;)V" line="281" name="fit">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([[DI)Lorg/apache/commons/math3/distribution/MixtureMultivariateNormalDistribution;" line="306" name="estimate">
+                <counter covered="0" missed="178" type="INSTRUCTION"/>
+                <counter covered="0" missed="14" type="BRANCH"/>
+                <counter covered="0" missed="30" type="LINE"/>
+                <counter covered="0" missed="8" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="379" name="getLogLikelihood">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/distribution/MixtureMultivariateNormalDistribution;" line="388" name="getFittedModel">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="660" type="INSTRUCTION"/>
+            <counter covered="0" missed="54" type="BRANCH"/>
+            <counter covered="0" missed="104" type="LINE"/>
+            <counter covered="0" missed="33" type="COMPLEXITY"/>
+            <counter covered="0" missed="6" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <sourcefile name="MultivariateNormalMixtureExpectationMaximization.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="74"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="89"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="90"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="91"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="94"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="96"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="97"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="99"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="103"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="106"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="108"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="138"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="139"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="142"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="143"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="146"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="150"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="151"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="153"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="156"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="157"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="161"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="163"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="166"/>
+            <line cb="0" ci="0" mb="4" mi="12" nr="168"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="170"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="171"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="174"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="178"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="180"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="182"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="183"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="184"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="191"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="194"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="197"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="199"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="200"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="201"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="203"/>
+            <line cb="0" ci="0" mb="0" mi="19" nr="204"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="205"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="207"/>
+            <line cb="0" ci="0" mb="0" mi="20" nr="208"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="213"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="217"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="218"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="220"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="221"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="222"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="223"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="228"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="229"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="230"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="232"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="233"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="234"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="236"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="238"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="243"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="244"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="245"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="246"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="250"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="253"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="255"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="257"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="259"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="281"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="282"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="306"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="307"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="309"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="310"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="312"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="313"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="316"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="317"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="320"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="321"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="322"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="324"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="327"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="330"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="334"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="336"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="339"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="342"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="345"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="348"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="351"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="352"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="353"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="354"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="355"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="359"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="362"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="364"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="367"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="370"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="379"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="388"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="404"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="406"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="408"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="409"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="410"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="412"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="413"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="421"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="428"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="429"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="432"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="433"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="436"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="443"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="450"/>
+            <counter covered="0" missed="728" type="INSTRUCTION"/>
+            <counter covered="0" missed="60" type="BRANCH"/>
+            <counter covered="0" missed="119" type="LINE"/>
+            <counter covered="0" missed="41" type="COMPLEXITY"/>
+            <counter covered="0" missed="11" type="METHOD"/>
+            <counter covered="0" missed="2" type="CLASS"/>
+        </sourcefile>
+        <counter covered="0" missed="728" type="INSTRUCTION"/>
+        <counter covered="0" missed="60" type="BRANCH"/>
+        <counter covered="0" missed="119" type="LINE"/>
+        <counter covered="0" missed="41" type="COMPLEXITY"/>
+        <counter covered="0" missed="11" type="METHOD"/>
+        <counter covered="0" missed="2" type="CLASS"/>
+    </package></report>

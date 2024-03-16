@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><report><package name="org/apache/commons/math3/ml/neuralnet/sofm">
+        <class name="org/apache/commons/math3/ml/neuralnet/sofm/NeighbourhoodSizeFunction" sourcefilename="NeighbourhoodSizeFunction.java"/>
+        <class name="org/apache/commons/math3/ml/neuralnet/sofm/LearningFactorFunctionFactory" sourcefilename="LearningFactorFunctionFactory.java">
+            <method desc="(DDJ)Lorg/apache/commons/math3/ml/neuralnet/sofm/LearningFactorFunction;" line="60" name="exponentialDecay">
+                <counter covered="0" missed="25" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDJ)Lorg/apache/commons/math3/ml/neuralnet/sofm/LearningFactorFunction;" line="101" name="quasiSigmoidDecay">
+                <counter covered="0" missed="25" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="50" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="BRANCH"/>
+            <counter covered="0" missed="6" type="LINE"/>
+            <counter covered="0" missed="6" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ml/neuralnet/sofm/KohonenUpdateAction" sourcefilename="KohonenUpdateAction.java">
+            <method desc="(Lorg/apache/commons/math3/ml/distance/DistanceMeasure;Lorg/apache/commons/math3/ml/neuralnet/sofm/LearningFactorFunction;Lorg/apache/commons/math3/ml/neuralnet/sofm/NeighbourhoodSizeFunction;)V" line="77" name="&lt;init&gt;">
+                <counter covered="0" missed="18" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/ml/neuralnet/Network;[D)V" line="97" name="update">
+                <counter covered="0" missed="83" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="19" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()J" line="144" name="getNumberOfCalls">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/ml/neuralnet/Neuron;[DD)Z" line="159" name="attemptNeuronUpdate">
+                <counter covered="0" missed="14" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/ml/neuralnet/Neuron;[DD)V" line="178" name="updateNeighbouringNeuron">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/ml/neuralnet/Network;[DD)Lorg/apache/commons/math3/ml/neuralnet/Neuron;" line="197" name="findAndUpdateBestNeuron">
+                <counter covered="0" missed="15" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([D[DD)[D" line="220" name="computeFeatures">
+                <counter covered="0" missed="21" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="163" type="INSTRUCTION"/>
+            <counter covered="0" missed="10" type="BRANCH"/>
+            <counter covered="0" missed="39" type="LINE"/>
+            <counter covered="0" missed="12" type="COMPLEXITY"/>
+            <counter covered="0" missed="7" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ml/neuralnet/sofm/LearningFactorFunctionFactory$2" sourcefilename="LearningFactorFunctionFactory.java">
+            <method desc="(DDJ)V" line="106" name="&lt;init&gt;">
+                <counter covered="0" missed="23" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(J)D" line="113" name="value">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="28" type="INSTRUCTION"/>
+            <counter covered="0" missed="3" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ml/neuralnet/sofm/LearningFactorFunctionFactory$1" sourcefilename="LearningFactorFunctionFactory.java">
+            <method desc="(DDJ)V" line="65" name="&lt;init&gt;">
+                <counter covered="0" missed="23" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(J)D" line="72" name="value">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="28" type="INSTRUCTION"/>
+            <counter covered="0" missed="3" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ml/neuralnet/sofm/NeighbourhoodSizeFunctionFactory$2" sourcefilename="NeighbourhoodSizeFunctionFactory.java">
+            <method desc="(DDJ)V" line="96" name="&lt;init&gt;">
+                <counter covered="0" missed="23" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(J)I" line="103" name="value">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="30" type="INSTRUCTION"/>
+            <counter covered="0" missed="3" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ml/neuralnet/sofm/NeighbourhoodSizeFunctionFactory$1" sourcefilename="NeighbourhoodSizeFunctionFactory.java">
+            <method desc="(DDJ)V" line="60" name="&lt;init&gt;">
+                <counter covered="0" missed="23" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(J)I" line="67" name="value">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="30" type="INSTRUCTION"/>
+            <counter covered="0" missed="3" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ml/neuralnet/sofm/NeighbourhoodSizeFunctionFactory" sourcefilename="NeighbourhoodSizeFunctionFactory.java">
+            <method desc="(DDJ)Lorg/apache/commons/math3/ml/neuralnet/sofm/NeighbourhoodSizeFunction;" line="60" name="exponentialDecay">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDJ)Lorg/apache/commons/math3/ml/neuralnet/sofm/NeighbourhoodSizeFunction;" line="96" name="quasiSigmoidDecay">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="14" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ml/neuralnet/sofm/KohonenTrainingTask" sourcefilename="KohonenTrainingTask.java">
+            <method desc="(Lorg/apache/commons/math3/ml/neuralnet/Network;Ljava/util/Iterator;Lorg/apache/commons/math3/ml/neuralnet/sofm/KohonenUpdateAction;)V" line="45" name="&lt;init&gt;">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="55" name="run">
+                <counter covered="0" missed="15" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="27" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="BRANCH"/>
+            <counter covered="0" missed="8" type="LINE"/>
+            <counter covered="0" missed="3" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ml/neuralnet/sofm/LearningFactorFunction" sourcefilename="LearningFactorFunction.java"/>
+        <sourcefile name="KohonenTrainingTask.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="45"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="46"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="47"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="48"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="49"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="55"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="56"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="58"/>
+            <counter covered="0" missed="27" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="BRANCH"/>
+            <counter covered="0" missed="8" type="LINE"/>
+            <counter covered="0" missed="3" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="KohonenUpdateAction.java">
+            <line cb="0" ci="0" mb="0" mi="6" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="87"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="88"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="89"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="90"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="97"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="98"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="99"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="103"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="106"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="111"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="113"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="114"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="116"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="117"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="119"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="122"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="125"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="126"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="127"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="131"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="132"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="133"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="135"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="144"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="159"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="164"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="178"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="179"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="182"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="197"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="199"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="200"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="206"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="220"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="221"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="223"/>
+            <counter covered="0" missed="163" type="INSTRUCTION"/>
+            <counter covered="0" missed="10" type="BRANCH"/>
+            <counter covered="0" missed="39" type="LINE"/>
+            <counter covered="0" missed="12" type="COMPLEXITY"/>
+            <counter covered="0" missed="7" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="LearningFactorFunctionFactory.java">
+            <line cb="0" ci="0" mb="4" mi="8" nr="60"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="18" nr="65"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="67"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="72"/>
+            <line cb="0" ci="0" mb="4" mi="8" nr="101"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="103"/>
+            <line cb="0" ci="0" mb="0" mi="18" nr="106"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="108"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="113"/>
+            <counter covered="0" missed="106" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="BRANCH"/>
+            <counter covered="0" missed="10" type="LINE"/>
+            <counter covered="0" missed="10" type="COMPLEXITY"/>
+            <counter covered="0" missed="6" type="METHOD"/>
+            <counter covered="0" missed="3" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="NeighbourhoodSizeFunction.java"/>
+        <sourcefile name="NeighbourhoodSizeFunctionFactory.java">
+            <line cb="0" ci="0" mb="0" mi="18" nr="60"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="67"/>
+            <line cb="0" ci="0" mb="0" mi="18" nr="96"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="98"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="103"/>
+            <counter covered="0" missed="74" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="LINE"/>
+            <counter covered="0" missed="6" type="COMPLEXITY"/>
+            <counter covered="0" missed="6" type="METHOD"/>
+            <counter covered="0" missed="3" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="LearningFactorFunction.java"/>
+        <counter covered="0" missed="370" type="INSTRUCTION"/>
+        <counter covered="0" missed="20" type="BRANCH"/>
+        <counter covered="0" missed="63" type="LINE"/>
+        <counter covered="0" missed="31" type="COMPLEXITY"/>
+        <counter covered="0" missed="21" type="METHOD"/>
+        <counter covered="0" missed="8" type="CLASS"/>
+    </package></report>

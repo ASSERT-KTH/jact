@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><report><package name="jonas/sanity/check">
+        <class name="jonas/sanity/check/SanityCheck" sourcefilename="SanityCheck.java">
+            <method desc="()V" line="9" name="&lt;init&gt;">
+                <counter covered="3" missed="0" type="INSTRUCTION"/>
+                <counter covered="1" missed="0" type="LINE"/>
+                <counter covered="1" missed="0" type="COMPLEXITY"/>
+                <counter covered="1" missed="0" type="METHOD"/>
+            </method>
+            <method desc="([Ljava/lang/String;)V" line="15" name="main">
+                <counter covered="36" missed="0" type="INSTRUCTION"/>
+                <counter covered="2" missed="0" type="BRANCH"/>
+                <counter covered="9" missed="0" type="LINE"/>
+                <counter covered="2" missed="0" type="COMPLEXITY"/>
+                <counter covered="1" missed="0" type="METHOD"/>
+            </method>
+            <counter covered="39" missed="0" type="INSTRUCTION"/>
+            <counter covered="2" missed="0" type="BRANCH"/>
+            <counter covered="10" missed="0" type="LINE"/>
+            <counter covered="3" missed="0" type="COMPLEXITY"/>
+            <counter covered="2" missed="0" type="METHOD"/>
+            <counter covered="1" missed="0" type="CLASS"/>
+        </class>
+        <sourcefile name="SanityCheck.java">
+            <line cb="0" ci="3" mb="0" mi="0" nr="9"/>
+            <line cb="0" ci="4" mb="0" mi="0" nr="15"/>
+            <line cb="0" ci="5" mb="0" mi="0" nr="16"/>
+            <line cb="0" ci="3" mb="0" mi="0" nr="18"/>
+            <line cb="0" ci="3" mb="0" mi="0" nr="20"/>
+            <line cb="0" ci="4" mb="0" mi="0" nr="22"/>
+            <line cb="2" ci="7" mb="0" mi="0" nr="24"/>
+            <line cb="0" ci="5" mb="0" mi="0" nr="25"/>
+            <line cb="0" ci="4" mb="0" mi="0" nr="28"/>
+            <line cb="0" ci="1" mb="0" mi="0" nr="29"/>
+            <counter covered="39" missed="0" type="INSTRUCTION"/>
+            <counter covered="2" missed="0" type="BRANCH"/>
+            <counter covered="10" missed="0" type="LINE"/>
+            <counter covered="3" missed="0" type="COMPLEXITY"/>
+            <counter covered="2" missed="0" type="METHOD"/>
+            <counter covered="1" missed="0" type="CLASS"/>
+        </sourcefile>
+        <counter covered="39" missed="0" type="INSTRUCTION"/>
+        <counter covered="2" missed="0" type="BRANCH"/>
+        <counter covered="10" missed="0" type="LINE"/>
+        <counter covered="3" missed="0" type="COMPLEXITY"/>
+        <counter covered="2" missed="0" type="METHOD"/>
+        <counter covered="1" missed="0" type="CLASS"/>
+    </package></report>

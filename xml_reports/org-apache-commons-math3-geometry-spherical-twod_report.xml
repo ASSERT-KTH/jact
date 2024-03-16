@@ -1,0 +1,1203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><report><package name="org/apache/commons/math3/geometry/spherical/twod">
+        <class name="org/apache/commons/math3/geometry/spherical/twod/SubCircle" sourcefilename="SubCircle.java">
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/Hyperplane;Lorg/apache/commons/math3/geometry/partitioning/Region;)V" line="39" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/Hyperplane;Lorg/apache/commons/math3/geometry/partitioning/Region;)Lorg/apache/commons/math3/geometry/partitioning/AbstractSubHyperplane;" line="46" name="buildNew">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/Hyperplane;)Lorg/apache/commons/math3/geometry/partitioning/SubHyperplane$SplitSubHyperplane;" line="53" name="split">
+                <counter covered="0" missed="71" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="10" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="82" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="BRANCH"/>
+            <counter covered="0" missed="13" type="LINE"/>
+            <counter covered="0" missed="7" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/spherical/twod/Edge" sourcefilename="Edge.java">
+            <method desc="(Lorg/apache/commons/math3/geometry/spherical/twod/Vertex;Lorg/apache/commons/math3/geometry/spherical/twod/Vertex;DLorg/apache/commons/math3/geometry/spherical/twod/Circle;)V" line="51" name="&lt;init&gt;">
+                <counter covered="0" missed="21" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/spherical/twod/Vertex;" line="68" name="getStart">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/spherical/twod/Vertex;" line="75" name="getEnd">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="82" name="getLength">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/spherical/twod/Circle;" line="89" name="getCircle">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)Lorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;" line="103" name="getPointAt">
+                <counter covered="0" missed="13" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/spherical/twod/Edge;)V" line="110" name="setNextEdge">
+                <counter covered="0" missed="14" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/spherical/twod/Circle;Ljava/util/List;Ljava/util/List;)V" line="129" name="split">
+                <counter covered="0" missed="185" type="INSTRUCTION"/>
+                <counter covered="0" missed="10" type="BRANCH"/>
+                <counter covered="0" missed="25" type="LINE"/>
+                <counter covered="0" missed="6" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/spherical/twod/Vertex;Lorg/apache/commons/math3/geometry/spherical/twod/Vertex;DLjava/util/List;Lorg/apache/commons/math3/geometry/spherical/twod/Circle;)Lorg/apache/commons/math3/geometry/spherical/twod/Vertex;" line="209" name="addSubEdge">
+                <counter covered="0" missed="26" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="271" type="INSTRUCTION"/>
+            <counter covered="0" missed="12" type="BRANCH"/>
+            <counter covered="0" missed="48" type="LINE"/>
+            <counter covered="0" missed="15" type="COMPLEXITY"/>
+            <counter covered="0" missed="9" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/spherical/twod/Sphere2D" sourcefilename="Sphere2D.java">
+            <method desc="()Lorg/apache/commons/math3/geometry/spherical/twod/Sphere2D;" line="49" name="getInstance">
+                <counter covered="0" missed="2" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="54" name="getDimension">
+                <counter covered="0" missed="2" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/spherical/oned/Sphere1D;" line="59" name="getSubSpace">
+                <counter covered="0" missed="2" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/Object;" line="77" name="readResolve">
+                <counter covered="0" missed="2" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="8" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/spherical/twod/S2Point" sourcefilename="S2Point.java">
+            <method desc="(DD)V" line="85" name="&lt;init&gt;">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;)V" line="94" name="&lt;init&gt;">
+                <counter covered="0" missed="13" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDLorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;)V" line="103" name="&lt;init&gt;">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)Lorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;" line="118" name="vector">
+                <counter covered="0" missed="41" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="7" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="136" name="getTheta">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="144" name="getPhi">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;" line="151" name="getVector">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/Space;" line="156" name="getSpace">
+                <counter covered="0" missed="2" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Z" line="161" name="isNaN">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/spherical/twod/S2Point;" line="168" name="negate">
+                <counter covered="0" missed="14" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Point;)D" line="173" name="distance">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/spherical/twod/S2Point;Lorg/apache/commons/math3/geometry/spherical/twod/S2Point;)D" line="182" name="distance">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/Object;)Z" line="207" name="equals">
+                <counter covered="0" missed="35" type="INSTRUCTION"/>
+                <counter covered="0" missed="10" type="BRANCH"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="6" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="231" name="hashCode">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="41" name="&lt;clinit&gt;">
+                <counter covered="0" missed="50" type="INSTRUCTION"/>
+                <counter covered="0" missed="7" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="224" type="INSTRUCTION"/>
+            <counter covered="0" missed="20" type="BRANCH"/>
+            <counter covered="0" missed="42" type="LINE"/>
+            <counter covered="0" missed="25" type="COMPLEXITY"/>
+            <counter covered="0" missed="15" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/spherical/twod/Circle" sourcefilename="Circle.java">
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;D)V" line="64" name="&lt;init&gt;">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/spherical/twod/S2Point;Lorg/apache/commons/math3/geometry/spherical/twod/S2Point;D)V" line="75" name="&lt;init&gt;">
+                <counter covered="0" missed="13" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;Lorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;Lorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;D)V" line="88" name="&lt;init&gt;">
+                <counter covered="0" missed="15" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/spherical/twod/Circle;)V" line="101" name="&lt;init&gt;">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/spherical/twod/Circle;" line="106" name="copySelf">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;)V" line="114" name="reset">
+                <counter covered="0" missed="16" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="123" name="revertSelf">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/spherical/twod/Circle;" line="133" name="getReverse">
+                <counter covered="0" missed="14" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Point;)Lorg/apache/commons/math3/geometry/Point;" line="138" name="project">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="143" name="getTolerance">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Point;)Lorg/apache/commons/math3/geometry/spherical/oned/S1Point;" line="150" name="toSubSpace">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;)D" line="164" name="getPhase">
+                <counter covered="0" missed="14" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Point;)Lorg/apache/commons/math3/geometry/spherical/twod/S2Point;" line="171" name="toSpace">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)Lorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;" line="182" name="getPointAt">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;" line="197" name="getXAxis">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;" line="212" name="getYAxis">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;" line="225" name="getPole">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/spherical/twod/Circle;)Lorg/apache/commons/math3/geometry/spherical/oned/Arc;" line="233" name="getInsideArc">
+                <counter covered="0" missed="19" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/spherical/twod/SubCircle;" line="240" name="wholeHyperplane">
+                <counter covered="0" missed="10" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/spherical/twod/SphericalPolygonsSet;" line="248" name="wholeSpace">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Point;)D" line="255" name="getOffset">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;)D" line="268" name="getOffset">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/Hyperplane;)Z" line="273" name="sameOrientationAs">
+                <counter covered="0" missed="15" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/threed/Rotation;)Lorg/apache/commons/math3/geometry/partitioning/Transform;" line="286" name="getTransform">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="224" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="BRANCH"/>
+            <counter covered="0" missed="44" type="LINE"/>
+            <counter covered="0" missed="25" type="COMPLEXITY"/>
+            <counter covered="0" missed="24" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/spherical/twod/Sphere2D$LazyHolder" sourcefilename="Sphere2D.java">
+            <method desc="()V" line="68" name="&lt;clinit&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="6" type="INSTRUCTION"/>
+            <counter covered="0" missed="1" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/spherical/twod/EdgesBuilder" sourcefilename="EdgesBuilder.java">
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/BSPTree;D)V" line="55" name="&lt;init&gt;">
+                <counter covered="0" missed="19" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/BSPTree;)Lorg/apache/commons/math3/geometry/partitioning/BSPTreeVisitor$Order;" line="64" name="visitOrder">
+                <counter covered="0" missed="2" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/BSPTree;)V" line="69" name="visitInternalNode">
+                <counter covered="0" missed="33" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="7" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/BSPTree;)V" line="82" name="visitLeafNode">
+                <counter covered="0" missed="1" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/spherical/twod/SubCircle;ZLorg/apache/commons/math3/geometry/partitioning/BSPTree;)V" line="91" name="addContribution">
+                <counter covered="0" missed="85" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="14" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/spherical/twod/Edge;)Lorg/apache/commons/math3/geometry/spherical/twod/Edge;" line="119" name="getFollowingEdge">
+                <counter covered="0" missed="93" type="INSTRUCTION"/>
+                <counter covered="0" missed="14" type="BRANCH"/>
+                <counter covered="0" missed="20" type="LINE"/>
+                <counter covered="0" missed="8" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/util/List;" line="161" name="getEdges">
+                <counter covered="0" missed="25" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="258" type="INSTRUCTION"/>
+            <counter covered="0" missed="24" type="BRANCH"/>
+            <counter covered="0" missed="53" type="LINE"/>
+            <counter covered="0" missed="19" type="COMPLEXITY"/>
+            <counter covered="0" missed="7" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/spherical/twod/PropertiesComputer" sourcefilename="PropertiesComputer.java">
+            <method desc="(D)V" line="49" name="&lt;init&gt;">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/BSPTree;)Lorg/apache/commons/math3/geometry/partitioning/BSPTreeVisitor$Order;" line="58" name="visitOrder">
+                <counter covered="0" missed="2" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/BSPTree;)V" line="64" name="visitInternalNode">
+                <counter covered="0" missed="1" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/BSPTree;)V" line="68" name="visitLeafNode">
+                <counter covered="0" missed="63" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="11" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/spherical/twod/Vertex;)D" line="102" name="convexCellArea">
+                <counter covered="0" missed="66" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="12" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/spherical/twod/Vertex;)Lorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;" line="135" name="convexCellBarycenter">
+                <counter covered="0" missed="33" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="152" name="getArea">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/spherical/twod/S2Point;" line="159" name="getBarycenter">
+                <counter covered="0" missed="14" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/util/List;" line="170" name="getConvexCellsInsidePoints">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="202" type="INSTRUCTION"/>
+            <counter covered="0" missed="16" type="BRANCH"/>
+            <counter covered="0" missed="42" type="LINE"/>
+            <counter covered="0" missed="17" type="COMPLEXITY"/>
+            <counter covered="0" missed="9" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/spherical/twod/Vertex" sourcefilename="Vertex.java">
+            <method desc="(Lorg/apache/commons/math3/geometry/spherical/twod/S2Point;)V" line="44" name="&lt;init&gt;">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/spherical/twod/S2Point;" line="55" name="getLocation">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/spherical/twod/Circle;)V" line="62" name="bindWith">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/spherical/twod/Vertex;)Lorg/apache/commons/math3/geometry/spherical/twod/Circle;" line="76" name="sharedCircleWith">
+                <counter covered="0" missed="31" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="7" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/spherical/twod/Edge;)V" line="94" name="setIncoming">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/spherical/twod/Edge;" line="102" name="getIncoming">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/spherical/twod/Edge;)V" line="113" name="setOutgoing">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/spherical/twod/Edge;" line="121" name="getOutgoing">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="79" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="BRANCH"/>
+            <counter covered="0" missed="24" type="LINE"/>
+            <counter covered="0" missed="11" type="COMPLEXITY"/>
+            <counter covered="0" missed="8" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/spherical/twod/SphericalPolygonsSet" sourcefilename="SphericalPolygonsSet.java">
+            <method desc="(D)V" line="54" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;D)V" line="62" name="&lt;init&gt;">
+                <counter covered="0" missed="22" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;Lorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;DID)V" line="79" name="&lt;init&gt;">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/BSPTree;D)V" line="93" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/util/Collection;D)V" line="118" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D[Lorg/apache/commons/math3/geometry/spherical/twod/S2Point;)V" line="152" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;Lorg/apache/commons/math3/geometry/euclidean/threed/Vector3D;DI)[Lorg/apache/commons/math3/geometry/spherical/twod/S2Point;" line="164" name="createRegularPolygonVertices">
+                <counter covered="0" missed="54" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="7" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D[Lorg/apache/commons/math3/geometry/spherical/twod/S2Point;)Lorg/apache/commons/math3/geometry/partitioning/BSPTree;" line="198" name="verticesToTree">
+                <counter covered="0" missed="127" type="INSTRUCTION"/>
+                <counter covered="0" missed="16" type="BRANCH"/>
+                <counter covered="0" missed="21" type="LINE"/>
+                <counter covered="0" missed="9" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DLorg/apache/commons/math3/geometry/partitioning/BSPTree;Ljava/util/List;)V" line="264" name="insertEdges">
+                <counter covered="0" missed="98" type="INSTRUCTION"/>
+                <counter covered="0" missed="20" type="BRANCH"/>
+                <counter covered="0" missed="25" type="LINE"/>
+                <counter covered="0" missed="11" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/BSPTree;)Lorg/apache/commons/math3/geometry/spherical/twod/SphericalPolygonsSet;" line="312" name="buildNew">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="322" name="computeGeometricalProperties">
+                <counter covered="0" missed="51" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="12" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/util/List;" line="374" name="getBoundaryLoops">
+                <counter covered="0" missed="76" type="INSTRUCTION"/>
+                <counter covered="0" missed="12" type="BRANCH"/>
+                <counter covered="0" missed="20" type="LINE"/>
+                <counter covered="0" missed="7" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/geometry/enclosing/EnclosingBall;" line="470" name="getEnclosingCap">
+                <counter covered="0" missed="256" type="INSTRUCTION"/>
+                <counter covered="0" missed="26" type="BRANCH"/>
+                <counter covered="0" missed="39" type="LINE"/>
+                <counter covered="0" missed="14" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/util/List;" line="549" name="getInsidePoints">
+                <counter covered="0" missed="14" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/util/List;" line="558" name="getOutsidePoints">
+                <counter covered="0" missed="21" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="756" type="INSTRUCTION"/>
+            <counter covered="0" missed="82" type="BRANCH"/>
+            <counter covered="0" missed="144" type="LINE"/>
+            <counter covered="0" missed="56" type="COMPLEXITY"/>
+            <counter covered="0" missed="15" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/geometry/spherical/twod/Circle$CircleTransform" sourcefilename="Circle.java">
+            <method desc="(Lorg/apache/commons/math3/geometry/euclidean/threed/Rotation;)V" line="298" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/Point;)Lorg/apache/commons/math3/geometry/spherical/twod/S2Point;" line="304" name="apply">
+                <counter covered="0" missed="10" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/Hyperplane;)Lorg/apache/commons/math3/geometry/spherical/twod/Circle;" line="309" name="apply">
+                <counter covered="0" missed="25" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/geometry/partitioning/SubHyperplane;Lorg/apache/commons/math3/geometry/partitioning/Hyperplane;Lorg/apache/commons/math3/geometry/partitioning/Hyperplane;)Lorg/apache/commons/math3/geometry/partitioning/SubHyperplane;" line="321" name="apply">
+                <counter covered="0" missed="2" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="43" type="INSTRUCTION"/>
+            <counter covered="0" missed="7" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <sourcefile name="SphericalPolygonsSet.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="54"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="55"/>
+            <line cb="0" ci="0" mb="0" mi="21" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="67"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="93"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="118"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="119"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="152"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="153"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="164"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="165"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="167"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="169"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="170"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="171"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="174"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="198"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="199"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="201"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="205"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="206"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="207"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="211"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="212"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="213"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="216"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="217"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="222"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="223"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="224"/>
+            <line cb="0" ci="0" mb="0" mi="16" nr="228"/>
+            <line cb="0" ci="0" mb="2" mi="16" nr="234"/>
+            <line cb="0" ci="0" mb="6" mi="14" nr="235"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="237"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="244"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="245"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="247"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="264"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="265"/>
+            <line cb="0" ci="0" mb="4" mi="6" nr="266"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="267"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="268"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="269"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="273"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="276"/>
+            <line cb="0" ci="0" mb="4" mi="6" nr="277"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="278"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="280"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="282"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="287"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="288"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="289"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="290"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="291"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="293"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="296"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="297"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="299"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="301"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="302"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="304"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="307"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="312"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="322"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="324"/>
+            <line cb="0" ci="0" mb="4" mi="8" nr="328"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="330"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="331"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="333"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="334"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="340"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="341"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="342"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="343"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="347"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="374"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="375"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="376"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="380"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="381"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="382"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="383"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="387"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="388"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="391"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="392"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="393"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="399"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="400"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="401"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="402"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="407"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="409"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="411"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="416"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="470"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="471"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="473"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="474"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="478"/>
+            <line cb="0" ci="0" mb="4" mi="10" nr="479"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="481"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="482"/>
+            <line cb="0" ci="0" mb="4" mi="10" nr="485"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="487"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="488"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="493"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="496"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="497"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="498"/>
+            <line cb="0" ci="0" mb="4" mi="12" nr="499"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="500"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="501"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="503"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="506"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="507"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="509"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="510"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="513"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="514"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="515"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="518"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="520"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="521"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="522"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="523"/>
+            <line cb="0" ci="0" mb="0" mi="18" nr="524"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="528"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="529"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="531"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="532"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="533"/>
+            <line cb="0" ci="0" mb="0" mi="25" nr="536"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="541"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="549"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="550"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="551"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="558"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="560"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="561"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="562"/>
+            <counter covered="0" missed="756" type="INSTRUCTION"/>
+            <counter covered="0" missed="82" type="BRANCH"/>
+            <counter covered="0" missed="144" type="LINE"/>
+            <counter covered="0" missed="56" type="COMPLEXITY"/>
+            <counter covered="0" missed="15" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="EdgesBuilder.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="55"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="56"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="57"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="58"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="59"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="60"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="64"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="71"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="72"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="73"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="75"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="76"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="82"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="91"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="92"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="93"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="95"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="96"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="97"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="99"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="100"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="105"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="106"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="107"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="119"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="120"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="123"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="124"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="125"/>
+            <line cb="0" ci="0" mb="2" mi="14" nr="126"/>
+            <line cb="0" ci="0" mb="4" mi="7" nr="127"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="128"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="129"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="130"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="131"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="132"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="135"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="136"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="138"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="139"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="140"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="142"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="146"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="150"/>
+            <line cb="0" ci="0" mb="2" mi="12" nr="161"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="162"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="163"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="165"/>
+            <counter covered="0" missed="258" type="INSTRUCTION"/>
+            <counter covered="0" missed="24" type="BRANCH"/>
+            <counter covered="0" missed="53" type="LINE"/>
+            <counter covered="0" missed="19" type="COMPLEXITY"/>
+            <counter covered="0" missed="7" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="Edge.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="51"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="53"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="54"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="55"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="56"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="59"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="60"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="68"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="75"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="82"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="89"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="103"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="110"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="111"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="112"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="113"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="129"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="130"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="131"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="132"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="133"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="136"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="137"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="138"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="142"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="148"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="149"/>
+            <line cb="0" ci="0" mb="0" mi="19" nr="151"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="154"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="157"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="159"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="165"/>
+            <line cb="0" ci="0" mb="0" mi="21" nr="169"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="172"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="174"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="176"/>
+            <line cb="0" ci="0" mb="0" mi="21" nr="180"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="183"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="184"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="191"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="209"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="211"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="215"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="216"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="217"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="218"/>
+            <counter covered="0" missed="271" type="INSTRUCTION"/>
+            <counter covered="0" missed="12" type="BRANCH"/>
+            <counter covered="0" missed="48" type="LINE"/>
+            <counter covered="0" missed="15" type="COMPLEXITY"/>
+            <counter covered="0" missed="9" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="S2Point.java">
+            <line cb="0" ci="0" mb="0" mi="7" nr="41"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="44"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="47"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="50"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="53"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="56"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="60"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="85"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="96"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="103"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="105"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="106"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="107"/>
+            <line cb="0" ci="0" mb="4" mi="8" nr="118"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="119"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="122"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="123"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="124"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="125"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="127"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="136"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="144"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="151"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="156"/>
+            <line cb="0" ci="0" mb="4" mi="12" nr="161"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="168"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="173"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="182"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="207"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="208"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="211"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="212"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="213"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="214"/>
+            <line cb="0" ci="0" mb="4" mi="16" nr="217"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="219"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="231"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="232"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="234"/>
+            <counter covered="0" missed="224" type="INSTRUCTION"/>
+            <counter covered="0" missed="20" type="BRANCH"/>
+            <counter covered="0" missed="42" type="LINE"/>
+            <counter covered="0" missed="25" type="COMPLEXITY"/>
+            <counter covered="0" missed="15" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="Circle.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="64"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="65"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="66"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="67"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="75"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="76"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="88"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="89"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="90"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="91"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="92"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="93"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="101"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="106"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="114"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="115"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="116"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="117"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="123"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="124"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="125"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="133"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="138"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="143"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="150"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="164"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="171"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="182"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="197"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="212"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="225"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="233"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="234"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="235"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="240"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="248"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="255"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="268"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="273"/>
+            <line cb="0" ci="0" mb="2" mi="12" nr="274"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="286"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="298"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="299"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="300"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="304"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="309"/>
+            <line cb="0" ci="0" mb="0" mi="22" nr="310"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="321"/>
+            <counter covered="0" missed="267" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="BRANCH"/>
+            <counter covered="0" missed="51" type="LINE"/>
+            <counter covered="0" missed="29" type="COMPLEXITY"/>
+            <counter covered="0" missed="28" type="METHOD"/>
+            <counter covered="0" missed="2" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="PropertiesComputer.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="49"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="50"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="51"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="52"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="53"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="54"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="58"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="64"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="68"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="71"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="78"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="81"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="85"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="87"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="90"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="91"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="103"/>
+            <line cb="0" ci="0" mb="4" mi="14" nr="106"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="109"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="110"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="111"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="112"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="114"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="115"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="117"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="118"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="125"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="135"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="136"/>
+            <line cb="0" ci="0" mb="4" mi="14" nr="139"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="140"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="141"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="144"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="152"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="159"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="162"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="170"/>
+            <counter covered="0" missed="202" type="INSTRUCTION"/>
+            <counter covered="0" missed="16" type="BRANCH"/>
+            <counter covered="0" missed="42" type="LINE"/>
+            <counter covered="0" missed="17" type="COMPLEXITY"/>
+            <counter covered="0" missed="9" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="Vertex.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="44"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="45"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="46"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="47"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="48"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="49"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="55"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="63"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="76"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="77"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="81"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="82"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="83"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="95"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="96"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="113"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="114"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="115"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="121"/>
+            <counter covered="0" missed="79" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="BRANCH"/>
+            <counter covered="0" missed="24" type="LINE"/>
+            <counter covered="0" missed="11" type="COMPLEXITY"/>
+            <counter covered="0" missed="8" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="Sphere2D.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="49"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="54"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="59"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="68"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="77"/>
+            <counter covered="0" missed="14" type="INSTRUCTION"/>
+            <counter covered="0" missed="5" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="2" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="SubCircle.java">
+            <line cb="0" ci="0" mb="0" mi="4" nr="39"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="40"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="46"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="53"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="54"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="55"/>
+            <line cb="0" ci="0" mb="4" mi="12" nr="57"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="59"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="63"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="64"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="65"/>
+            <line cb="0" ci="0" mb="4" mi="24" nr="66"/>
+            <counter covered="0" missed="82" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="BRANCH"/>
+            <counter covered="0" missed="13" type="LINE"/>
+            <counter covered="0" missed="7" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <counter covered="0" missed="2153" type="INSTRUCTION"/>
+        <counter covered="0" missed="170" type="BRANCH"/>
+        <counter covered="0" missed="422" type="LINE"/>
+        <counter covered="0" missed="184" type="COMPLEXITY"/>
+        <counter covered="0" missed="99" type="METHOD"/>
+        <counter covered="0" missed="11" type="CLASS"/>
+    </package></report>

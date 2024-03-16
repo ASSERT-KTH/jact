@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><report><package name="org/apache/commons/math3/optimization/fitting">
+        <class name="org/apache/commons/math3/optimization/fitting/HarmonicFitter$ParameterGuesser" sourcefilename="HarmonicFitter.java">
+            <method desc="([Lorg/apache/commons/math3/optimization/fitting/WeightedObservedPoint;)V" line="197" name="&lt;init&gt;">
+                <counter covered="0" missed="41" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="9" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="223" name="guess">
+                <counter covered="0" missed="18" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([Lorg/apache/commons/math3/optimization/fitting/WeightedObservedPoint;)[Lorg/apache/commons/math3/optimization/fitting/WeightedObservedPoint;" line="233" name="sortObservations">
+                <counter covered="0" missed="70" type="INSTRUCTION"/>
+                <counter covered="0" missed="10" type="BRANCH"/>
+                <counter covered="0" missed="15" type="LINE"/>
+                <counter covered="0" missed="6" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([Lorg/apache/commons/math3/optimization/fitting/WeightedObservedPoint;)[D" line="273" name="guessAOmega">
+                <counter covered="0" missed="253" type="INSTRUCTION"/>
+                <counter covered="0" missed="16" type="BRANCH"/>
+                <counter covered="0" missed="52" type="LINE"/>
+                <counter covered="0" missed="9" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([Lorg/apache/commons/math3/optimization/fitting/WeightedObservedPoint;)D" line="361" name="guessPhi">
+                <counter covered="0" missed="86" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="16" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="468" type="INSTRUCTION"/>
+            <counter covered="0" missed="30" type="BRANCH"/>
+            <counter covered="0" missed="93" type="LINE"/>
+            <counter covered="0" missed="20" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/fitting/CurveFitter$OldTheoreticalValuesFunction" sourcefilename="CurveFitter.java">
+            <method desc="(Lorg/apache/commons/math3/optimization/fitting/CurveFitter;Lorg/apache/commons/math3/analysis/ParametricUnivariateFunction;)V" line="210" name="&lt;init&gt;">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/analysis/MultivariateMatrixFunction;" line="216" name="jacobian">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([D)[D" line="234" name="value">
+                <counter covered="0" missed="33" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="47" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="BRANCH"/>
+            <counter covered="0" missed="10" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/fitting/PolynomialFitter" sourcefilename="PolynomialFitter.java">
+            <method desc="(ILorg/apache/commons/math3/optimization/DifferentiableMultivariateVectorOptimizer;)V" line="51" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/optimization/DifferentiableMultivariateVectorOptimizer;)V" line="62" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="76" name="fit">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I[D)[D" line="94" name="fit">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([D)[D" line="109" name="fit">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="40" type="INSTRUCTION"/>
+            <counter covered="0" missed="9" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/fitting/GaussianFitter$ParameterGuesser$1" sourcefilename="GaussianFitter.java">
+            <method desc="(Lorg/apache/commons/math3/optimization/fitting/GaussianFitter$ParameterGuesser;)V" line="188" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/optimization/fitting/WeightedObservedPoint;Lorg/apache/commons/math3/optimization/fitting/WeightedObservedPoint;)I" line="192" name="compare">
+                <counter covered="0" missed="58" type="INSTRUCTION"/>
+                <counter covered="0" missed="20" type="BRANCH"/>
+                <counter covered="0" missed="22" type="LINE"/>
+                <counter covered="0" missed="11" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="64" type="INSTRUCTION"/>
+            <counter covered="0" missed="20" type="BRANCH"/>
+            <counter covered="0" missed="23" type="LINE"/>
+            <counter covered="0" missed="12" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/fitting/CurveFitter$OldTheoreticalValuesFunction$1" sourcefilename="CurveFitter.java">
+            <method desc="(Lorg/apache/commons/math3/optimization/fitting/CurveFitter$OldTheoreticalValuesFunction;)V" line="216" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([D)[[D" line="219" name="value">
+                <counter covered="0" missed="36" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="42" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="BRANCH"/>
+            <counter covered="0" missed="7" type="LINE"/>
+            <counter covered="0" missed="3" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/fitting/WeightedObservedPoint" sourcefilename="WeightedObservedPoint.java">
+            <method desc="(DDD)V" line="48" name="&lt;init&gt;">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="58" name="getWeight">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="65" name="getX">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="72" name="getY">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="21" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/fitting/CurveFitter" sourcefilename="CurveFitter.java">
+            <method desc="(Lorg/apache/commons/math3/optimization/DifferentiableMultivariateVectorOptimizer;)V" line="69" name="&lt;init&gt;">
+                <counter covered="0" missed="14" type="INSTRUCTION"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/optimization/MultivariateDifferentiableVectorOptimizer;)V" line="79" name="&lt;init&gt;">
+                <counter covered="0" missed="14" type="INSTRUCTION"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="96" name="addObservedPoint">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDD)V" line="109" name="addObservedPoint">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/optimization/fitting/WeightedObservedPoint;)V" line="119" name="addObservedPoint">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[Lorg/apache/commons/math3/optimization/fitting/WeightedObservedPoint;" line="129" name="getObservations">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="136" name="clearObservations">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/analysis/ParametricUnivariateFunction;[D)[D" line="153" name="fit">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(ILorg/apache/commons/math3/analysis/ParametricUnivariateFunction;[D)[D" line="176" name="fit">
+                <counter covered="0" missed="68" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="12" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="138" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="BRANCH"/>
+            <counter covered="0" missed="32" type="LINE"/>
+            <counter covered="0" missed="11" type="COMPLEXITY"/>
+            <counter covered="0" missed="9" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/fitting/GaussianFitter$ParameterGuesser" sourcefilename="GaussianFitter.java">
+            <method desc="([Lorg/apache/commons/math3/optimization/fitting/WeightedObservedPoint;)V" line="149" name="&lt;init&gt;">
+                <counter covered="0" missed="49" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="11" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="176" name="guess">
+                <counter covered="0" missed="18" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([Lorg/apache/commons/math3/optimization/fitting/WeightedObservedPoint;)[Lorg/apache/commons/math3/optimization/fitting/WeightedObservedPoint;" line="186" name="sortObservations">
+                <counter covered="0" missed="14" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([Lorg/apache/commons/math3/optimization/fitting/WeightedObservedPoint;)[D" line="238" name="basicGuess">
+                <counter covered="0" missed="80" type="INSTRUCTION"/>
+                <counter covered="0" missed="12" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([Lorg/apache/commons/math3/optimization/fitting/WeightedObservedPoint;)I" line="264" name="findMaxY">
+                <counter covered="0" missed="24" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([Lorg/apache/commons/math3/optimization/fitting/WeightedObservedPoint;IID)D" line="292" name="interpolateXAtY">
+                <counter covered="0" missed="57" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="10" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([Lorg/apache/commons/math3/optimization/fitting/WeightedObservedPoint;IID)[Lorg/apache/commons/math3/optimization/fitting/WeightedObservedPoint;" line="329" name="getInterpolationPointsForY">
+                <counter covered="0" missed="78" type="INSTRUCTION"/>
+                <counter covered="0" missed="12" type="BRANCH"/>
+                <counter covered="0" missed="12" type="LINE"/>
+                <counter covered="0" missed="7" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DDD)Z" line="367" name="isBetween">
+                <counter covered="0" missed="20" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="340" type="INSTRUCTION"/>
+            <counter covered="0" missed="34" type="BRANCH"/>
+            <counter covered="0" missed="56" type="LINE"/>
+            <counter covered="0" missed="25" type="COMPLEXITY"/>
+            <counter covered="0" missed="8" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/fitting/CurveFitter$TheoreticalValuesFunction" sourcefilename="CurveFitter.java">
+            <method desc="(Lorg/apache/commons/math3/optimization/fitting/CurveFitter;Lorg/apache/commons/math3/analysis/ParametricUnivariateFunction;)V" line="253" name="&lt;init&gt;">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([D)[D" line="260" name="value">
+                <counter covered="0" missed="33" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([Lorg/apache/commons/math3/analysis/differentiation/DerivativeStructure;)[Lorg/apache/commons/math3/analysis/differentiation/DerivativeStructure;" line="273" name="value">
+                <counter covered="0" missed="79" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="12" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="121" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="BRANCH"/>
+            <counter covered="0" missed="21" type="LINE"/>
+            <counter covered="0" missed="7" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/fitting/GaussianFitter" sourcefilename="GaussianFitter.java">
+            <method desc="(Lorg/apache/commons/math3/optimization/DifferentiableMultivariateVectorOptimizer;)V" line="67" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([D)[D" line="84" name="fit">
+                <counter covered="0" missed="10" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="122" name="fit">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="25" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="LINE"/>
+            <counter covered="0" missed="3" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/fitting/GaussianFitter$1" sourcefilename="GaussianFitter.java">
+            <method desc="(Lorg/apache/commons/math3/optimization/fitting/GaussianFitter;)V" line="84" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D[D)D" line="88" name="value">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D[D)[D" line="100" name="gradient">
+                <counter covered="0" missed="24" type="INSTRUCTION"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="41" type="INSTRUCTION"/>
+            <counter covered="0" missed="11" type="LINE"/>
+            <counter covered="0" missed="3" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optimization/fitting/HarmonicFitter" sourcefilename="HarmonicFitter.java">
+            <method desc="(Lorg/apache/commons/math3/optimization/DifferentiableMultivariateVectorOptimizer;)V" line="47" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([D)[D" line="63" name="fit">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="78" name="fit">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="20" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="3" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <sourcefile name="CurveFitter.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="71"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="72"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="73"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="81"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="82"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="83"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="96"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="97"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="109"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="110"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="119"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="120"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="129"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="136"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="137"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="153"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="176"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="177"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="178"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="179"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="180"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="181"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="182"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="183"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="187"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="189"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="192"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="197"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="210"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="211"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="212"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="216"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="219"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="221"/>
+            <line cb="0" ci="0" mb="2" mi="13" nr="222"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="223"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="224"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="226"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="234"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="235"/>
+            <line cb="0" ci="0" mb="2" mi="12" nr="236"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="237"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="238"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="240"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="253"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="254"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="255"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="260"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="261"/>
+            <line cb="0" ci="0" mb="2" mi="12" nr="262"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="263"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="264"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="266"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="273"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="274"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="275"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="279"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="280"/>
+            <line cb="0" ci="0" mb="2" mi="12" nr="281"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="285"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="286"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="287"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="290"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="292"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="294"/>
+            <counter covered="0" missed="348" type="INSTRUCTION"/>
+            <counter covered="0" missed="16" type="BRANCH"/>
+            <counter covered="0" missed="69" type="LINE"/>
+            <counter covered="0" missed="25" type="COMPLEXITY"/>
+            <counter covered="0" missed="17" type="METHOD"/>
+            <counter covered="0" missed="4" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="PolynomialFitter.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="51"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="52"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="53"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="63"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="64"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="76"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="109"/>
+            <counter covered="0" missed="40" type="INSTRUCTION"/>
+            <counter covered="0" missed="9" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="WeightedObservedPoint.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="48"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="49"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="50"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="51"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="52"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="58"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="65"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="72"/>
+            <counter covered="0" missed="21" type="INSTRUCTION"/>
+            <counter covered="0" missed="8" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="GaussianFitter.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="67"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="68"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="84"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="88"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="90"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="91"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="93"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="15" nr="100"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="105"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="107"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="108"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="112"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="122"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="123"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="149"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="150"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="151"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="153"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="154"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="157"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="158"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="161"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="162"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="163"/>
+            <line cb="0" ci="0" mb="0" mi="18" nr="176"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="186"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="187"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="188"/>
+            <line cb="0" ci="0" mb="4" mi="4" nr="192"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="193"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="195"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="196"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="198"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="199"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="201"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="202"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="203"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="205"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="206"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="208"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="209"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="210"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="212"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="213"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="215"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="216"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="217"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="219"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="220"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="222"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="226"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="227"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="238"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="239"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="240"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="244"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="245"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="246"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="247"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="248"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="250"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="251"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="252"/>
+            <line cb="0" ci="0" mb="0" mi="15" nr="254"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="264"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="265"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="266"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="267"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="270"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="292"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="293"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="295"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="297"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="298"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="299"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="300"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="302"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="303"/>
+            <line cb="0" ci="0" mb="0" mi="20" nr="305"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="329"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="330"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="332"/>
+            <line cb="0" ci="0" mb="6" mi="13" nr="333"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="334"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="335"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="336"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="337"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="338"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="339"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="341"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="349"/>
+            <line cb="0" ci="0" mb="8" mi="20" nr="367"/>
+            <counter covered="0" missed="470" type="INSTRUCTION"/>
+            <counter covered="0" missed="54" type="BRANCH"/>
+            <counter covered="0" missed="95" type="LINE"/>
+            <counter covered="0" missed="43" type="COMPLEXITY"/>
+            <counter covered="0" missed="16" type="METHOD"/>
+            <counter covered="0" missed="4" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="HarmonicFitter.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="47"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="48"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="63"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="197"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="198"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="199"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="203"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="205"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="206"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="207"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="209"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="210"/>
+            <line cb="0" ci="0" mb="0" mi="18" nr="223"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="233"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="238"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="239"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="240"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="241"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="242"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="244"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="245"/>
+            <line cb="0" ci="0" mb="4" mi="8" nr="246"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="247"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="248"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="249"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="252"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="253"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="257"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="273"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="276"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="277"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="278"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="279"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="280"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="282"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="283"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="284"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="285"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="286"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="287"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="289"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="290"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="291"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="292"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="296"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="297"/>
+            <line cb="0" ci="0" mb="0" mi="16" nr="298"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="300"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="302"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="303"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="304"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="306"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="307"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="308"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="309"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="310"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="314"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="315"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="316"/>
+            <line cb="0" ci="0" mb="4" mi="12" nr="317"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="318"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="321"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="322"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="323"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="325"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="327"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="328"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="329"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="330"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="331"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="332"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="334"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="335"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="338"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="339"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="340"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="343"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="346"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="347"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="350"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="361"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="362"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="364"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="365"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="366"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="368"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="369"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="370"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="371"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="372"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="374"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="375"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="376"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="377"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="378"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="381"/>
+            <counter covered="0" missed="488" type="INSTRUCTION"/>
+            <counter covered="0" missed="30" type="BRANCH"/>
+            <counter covered="0" missed="97" type="LINE"/>
+            <counter covered="0" missed="23" type="COMPLEXITY"/>
+            <counter covered="0" missed="8" type="METHOD"/>
+            <counter covered="0" missed="2" type="CLASS"/>
+        </sourcefile>
+        <counter covered="0" missed="1367" type="INSTRUCTION"/>
+        <counter covered="0" missed="100" type="BRANCH"/>
+        <counter covered="0" missed="278" type="LINE"/>
+        <counter covered="0" missed="100" type="COMPLEXITY"/>
+        <counter covered="0" missed="50" type="METHOD"/>
+        <counter covered="0" missed="12" type="CLASS"/>
+    </package></report>

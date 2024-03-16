@@ -1,0 +1,783 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><report><package name="org/apache/commons/math3/ml/neuralnet">
+        <class name="org/apache/commons/math3/ml/neuralnet/Neuron$SerializationProxy" sourcefilename="Neuron.java">
+            <method desc="(J[D)V" line="257" name="&lt;init&gt;">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/Object;" line="268" name="readResolve">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="17" type="INSTRUCTION"/>
+            <counter covered="0" missed="5" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ml/neuralnet/Neuron" sourcefilename="Neuron.java">
+            <method desc="(J[D)V" line="46" name="&lt;init&gt;">
+                <counter covered="0" missed="29" type="INSTRUCTION"/>
+                <counter covered="0" missed="7" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/ml/neuralnet/Neuron;" line="78" name="copy">
+                <counter covered="0" missed="22" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()J" line="92" name="getIdentifier">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="101" name="getSize">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="110" name="getFeatures">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([D[D)Z" line="143" name="compareAndSetFeatures">
+                <counter covered="0" missed="44" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="10" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()J" line="180" name="getNumberOfAttemptedUpdates">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()J" line="195" name="getNumberOfSuccessfulUpdates">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([D[D)Z" line="210" name="containSameValues">
+                <counter covered="0" missed="33" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/io/ObjectInputStream;)V" line="228" name="readObject">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/Object;" line="237" name="writeReplace">
+                <counter covered="0" missed="10" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="163" type="INSTRUCTION"/>
+            <counter covered="0" missed="12" type="BRANCH"/>
+            <counter covered="0" missed="34" type="LINE"/>
+            <counter covered="0" missed="17" type="COMPLEXITY"/>
+            <counter covered="0" missed="11" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ml/neuralnet/MapUtils$PairNeuronDouble" sourcefilename="MapUtils.java">
+            <method desc="(Lorg/apache/commons/math3/ml/neuralnet/Neuron;D)V" line="315" name="&lt;init&gt;">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/ml/neuralnet/Neuron;" line="322" name="getNeuron">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="298" name="&lt;clinit&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="17" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="LINE"/>
+            <counter covered="0" missed="3" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ml/neuralnet/FeatureInitializerFactory$2" sourcefilename="FeatureInitializerFactory.java">
+            <method desc="(Lorg/apache/commons/math3/ml/neuralnet/FeatureInitializer;Lorg/apache/commons/math3/distribution/RealDistribution;)V" line="107" name="&lt;init&gt;">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="110" name="value">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="17" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ml/neuralnet/FeatureInitializerFactory$1" sourcefilename="FeatureInitializerFactory.java">
+            <method desc="(DLorg/apache/commons/math3/analysis/UnivariateFunction;D)V" line="84" name="&lt;init&gt;">
+                <counter covered="0" missed="16" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="90" name="value">
+                <counter covered="0" missed="15" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="31" type="INSTRUCTION"/>
+            <counter covered="0" missed="5" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ml/neuralnet/Network" sourcefilename="Network.java">
+            <method desc="(JI[Lorg/apache/commons/math3/ml/neuralnet/Neuron;[[J)V" line="52" name="&lt;init&gt;">
+                <counter covered="0" missed="123" type="INSTRUCTION"/>
+                <counter covered="0" missed="12" type="BRANCH"/>
+                <counter covered="0" missed="23" type="LINE"/>
+                <counter covered="0" missed="7" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(JI)V" line="52" name="&lt;init&gt;">
+                <counter covered="0" missed="22" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/ml/neuralnet/Network;" line="147" name="copy">
+                <counter covered="0" missed="59" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/util/Iterator;" line="166" name="iterator">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/util/Comparator;)Ljava/util/Collection;" line="178" name="getNeurons">
+                <counter covered="0" missed="15" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([D)J" line="196" name="createNeuron">
+                <counter covered="0" missed="39" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/ml/neuralnet/Neuron;)V" line="216" name="deleteNeuron">
+                <counter covered="0" missed="27" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="233" name="getFeaturesSize">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/ml/neuralnet/Neuron;Lorg/apache/commons/math3/ml/neuralnet/Neuron;)V" line="249" name="addLink">
+                <counter covered="0" missed="38" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/util/Set;J)V" line="274" name="addLinkToLinkSet">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/ml/neuralnet/Neuron;Lorg/apache/commons/math3/ml/neuralnet/Neuron;)V" line="287" name="deleteLink">
+                <counter covered="0" missed="38" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/util/Set;J)V" line="312" name="deleteLinkFromLinkSet">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(J)Lorg/apache/commons/math3/ml/neuralnet/Neuron;" line="324" name="getNeuron">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/Iterable;)Ljava/util/Collection;" line="339" name="getNeighbours">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/Iterable;Ljava/lang/Iterable;)Ljava/util/Collection;" line="356" name="getNeighbours">
+                <counter covered="0" missed="68" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="13" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/ml/neuralnet/Neuron;)Ljava/util/Collection;" line="383" name="getNeighbours">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/ml/neuralnet/Neuron;Ljava/lang/Iterable;)Ljava/util/Collection;" line="396" name="getNeighbours">
+                <counter covered="0" missed="51" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="10" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/Long;" line="417" name="createNextId">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/io/ObjectInputStream;)V" line="426" name="readObject">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/Object;" line="435" name="writeReplace">
+                <counter covered="0" missed="64" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="12" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="600" type="INSTRUCTION"/>
+            <counter covered="0" missed="48" type="BRANCH"/>
+            <counter covered="0" missed="116" type="LINE"/>
+            <counter covered="0" missed="44" type="COMPLEXITY"/>
+            <counter covered="0" missed="20" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ml/neuralnet/MapUtils$PairNeuronDouble$1" sourcefilename="MapUtils.java">
+            <method desc="()V" line="299" name="&lt;init&gt;">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/ml/neuralnet/MapUtils$PairNeuronDouble;Lorg/apache/commons/math3/ml/neuralnet/MapUtils$PairNeuronDouble;)I" line="303" name="compare">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="9" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ml/neuralnet/Network$SerializationProxy" sourcefilename="Network.java">
+            <method desc="(JI[Lorg/apache/commons/math3/ml/neuralnet/Neuron;[[J)V" line="480" name="&lt;init&gt;">
+                <counter covered="0" missed="15" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/Object;" line="493" name="readResolve">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="27" type="INSTRUCTION"/>
+            <counter covered="0" missed="7" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ml/neuralnet/FeatureInitializer" sourcefilename="FeatureInitializer.java"/>
+        <class name="org/apache/commons/math3/ml/neuralnet/SquareNeighbourhood" sourcefilename="SquareNeighbourhood.java">
+            <method desc="()V" line="25" name="&lt;clinit&gt;">
+                <counter covered="0" missed="24" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="24" type="INSTRUCTION"/>
+            <counter covered="0" missed="3" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ml/neuralnet/MapUtils" sourcefilename="MapUtils.java">
+            <method desc="([DLjava/lang/Iterable;Lorg/apache/commons/math3/ml/distance/DistanceMeasure;)Lorg/apache/commons/math3/ml/neuralnet/Neuron;" line="59" name="findBest">
+                <counter covered="0" missed="31" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="9" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([DLjava/lang/Iterable;Lorg/apache/commons/math3/ml/distance/DistanceMeasure;)Lorg/apache/commons/math3/util/Pair;" line="88" name="findBestAndSecondBest">
+                <counter covered="0" missed="90" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="14" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([DLjava/lang/Iterable;Lorg/apache/commons/math3/ml/distance/DistanceMeasure;)[Lorg/apache/commons/math3/ml/neuralnet/Neuron;" line="133" name="sort">
+                <counter covered="0" missed="55" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="11" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/ml/neuralnet/twod/NeuronSquareMesh2D;Lorg/apache/commons/math3/ml/distance/DistanceMeasure;)[[D" line="162" name="computeU">
+                <counter covered="0" missed="74" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="17" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/Iterable;Lorg/apache/commons/math3/ml/neuralnet/twod/NeuronSquareMesh2D;Lorg/apache/commons/math3/ml/distance/DistanceMeasure;)[[I" line="199" name="computeHitHistogram">
+                <counter covered="0" missed="98" type="INSTRUCTION"/>
+                <counter covered="0" missed="10" type="BRANCH"/>
+                <counter covered="0" missed="20" type="LINE"/>
+                <counter covered="0" missed="6" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/Iterable;Ljava/lang/Iterable;Lorg/apache/commons/math3/ml/distance/DistanceMeasure;)D" line="246" name="computeQuantizationError">
+                <counter covered="0" missed="38" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="9" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/lang/Iterable;Lorg/apache/commons/math3/ml/neuralnet/Network;Lorg/apache/commons/math3/ml/distance/DistanceMeasure;)D" line="274" name="computeTopographicError">
+                <counter covered="0" missed="43" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="11" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="429" type="INSTRUCTION"/>
+            <counter covered="0" missed="40" type="BRANCH"/>
+            <counter covered="0" missed="91" type="LINE"/>
+            <counter covered="0" missed="27" type="COMPLEXITY"/>
+            <counter covered="0" missed="7" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ml/neuralnet/FeatureInitializerFactory" sourcefilename="FeatureInitializerFactory.java">
+            <method desc="(Lorg/apache/commons/math3/random/RandomGenerator;DD)Lorg/apache/commons/math3/ml/neuralnet/FeatureInitializer;" line="51" name="uniform">
+                <counter covered="0" missed="15" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)Lorg/apache/commons/math3/ml/neuralnet/FeatureInitializer;" line="67" name="uniform">
+                <counter covered="0" missed="14" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/analysis/UnivariateFunction;DD)Lorg/apache/commons/math3/ml/neuralnet/FeatureInitializer;" line="84" name="function">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/distribution/RealDistribution;Lorg/apache/commons/math3/ml/neuralnet/FeatureInitializer;)Lorg/apache/commons/math3/ml/neuralnet/FeatureInitializer;" line="107" name="randomize">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="42" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ml/neuralnet/UpdateAction" sourcefilename="UpdateAction.java"/>
+        <class name="org/apache/commons/math3/ml/neuralnet/Network$NeuronIdentifierComparator" sourcefilename="Network.java">
+            <method desc="()V" line="66" name="&lt;init&gt;">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/ml/neuralnet/Neuron;Lorg/apache/commons/math3/ml/neuralnet/Neuron;)I" line="75" name="compare">
+                <counter covered="0" missed="20" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="23" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="BRANCH"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <sourcefile name="Network.java">
+            <line cb="0" ci="0" mb="0" mi="10" nr="52"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="59"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="66"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="75"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="76"/>
+            <line cb="0" ci="0" mb="4" mi="14" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="96"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="97"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="98"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="99"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="103"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="104"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="105"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="106"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="108"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="109"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="112"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="113"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="114"/>
+            <line cb="0" ci="0" mb="2" mi="19" nr="115"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="116"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="117"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="119"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="123"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="124"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="125"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="133"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="134"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="135"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="136"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="147"/>
+            <line cb="0" ci="0" mb="2" mi="12" nr="151"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="152"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="153"/>
+            <line cb="0" ci="0" mb="2" mi="12" nr="155"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="156"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="157"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="159"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="166"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="178"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="179"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="181"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="183"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="196"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="197"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="200"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="201"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="202"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="203"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="216"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="219"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="220"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="221"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="224"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="225"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="233"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="249"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="250"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="253"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="254"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="256"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="257"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="261"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="262"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="274"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="275"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="287"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="288"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="291"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="292"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="294"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="295"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="299"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="300"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="312"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="313"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="324"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="325"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="326"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="328"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="339"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="356"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="358"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="359"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="360"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="361"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="362"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="363"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="364"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="367"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="368"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="369"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="370"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="372"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="383"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="396"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="397"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="398"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="399"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="400"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="403"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="404"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="405"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="406"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="408"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="417"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="426"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="435"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="436"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="438"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="439"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="440"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="441"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="442"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="443"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="444"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="445"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="446"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="449"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="480"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="481"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="482"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="483"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="484"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="485"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="493"/>
+            <counter covered="0" missed="650" type="INSTRUCTION"/>
+            <counter covered="0" missed="52" type="BRANCH"/>
+            <counter covered="0" missed="127" type="LINE"/>
+            <counter covered="0" missed="50" type="COMPLEXITY"/>
+            <counter covered="0" missed="24" type="METHOD"/>
+            <counter covered="0" missed="3" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="FeatureInitializerFactory.java">
+            <line cb="0" ci="0" mb="0" mi="15" nr="51"/>
+            <line cb="0" ci="0" mb="0" mi="14" nr="67"/>
+            <line cb="0" ci="0" mb="0" mi="18" nr="84"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="90"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="91"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="92"/>
+            <line cb="0" ci="0" mb="0" mi="15" nr="107"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="110"/>
+            <counter covered="0" missed="90" type="INSTRUCTION"/>
+            <counter covered="0" missed="9" type="LINE"/>
+            <counter covered="0" missed="8" type="COMPLEXITY"/>
+            <counter covered="0" missed="8" type="METHOD"/>
+            <counter covered="0" missed="3" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="Neuron.java">
+            <line cb="0" ci="0" mb="0" mi="6" nr="46"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="48"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="63"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="64"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="65"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="66"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="67"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="81"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="83"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="92"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="101"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="110"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="143"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="144"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="149"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="150"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="152"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="156"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="158"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="161"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="164"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="180"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="195"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="210"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="211"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="214"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="215"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="216"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="219"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="228"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="237"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="257"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="258"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="259"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="260"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="268"/>
+            <counter covered="0" missed="180" type="INSTRUCTION"/>
+            <counter covered="0" missed="12" type="BRANCH"/>
+            <counter covered="0" missed="39" type="LINE"/>
+            <counter covered="0" missed="19" type="COMPLEXITY"/>
+            <counter covered="0" missed="13" type="METHOD"/>
+            <counter covered="0" missed="2" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="MapUtils.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="59"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="60"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="61"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="62"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="63"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="64"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="65"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="67"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="88"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="89"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="91"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="92"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="93"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="95"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="96"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="99"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="100"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="101"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="103"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="106"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="108"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="133"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="135"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="136"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="137"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="138"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="140"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="142"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="143"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="145"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="146"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="148"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="162"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="163"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="164"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="166"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="168"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="169"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="170"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="171"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="172"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="174"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="175"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="176"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="177"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="178"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="179"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="181"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="185"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="199"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="200"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="202"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="203"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="204"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="205"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="206"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="208"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="210"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="213"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="214"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="215"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="217"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="218"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="219"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="220"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="221"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="222"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="224"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="229"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="246"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="247"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="248"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="249"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="250"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="251"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="253"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="254"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="257"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="274"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="275"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="276"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="277"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="278"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="279"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="282"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="284"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="286"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="287"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="290"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="298"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="299"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="303"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="315"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="316"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="317"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="318"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="322"/>
+            <counter covered="0" missed="455" type="INSTRUCTION"/>
+            <counter covered="0" missed="40" type="BRANCH"/>
+            <counter covered="0" missed="99" type="LINE"/>
+            <counter covered="0" missed="32" type="COMPLEXITY"/>
+            <counter covered="0" missed="12" type="METHOD"/>
+            <counter covered="0" missed="3" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="SquareNeighbourhood.java">
+            <line cb="0" ci="0" mb="0" mi="12" nr="25"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="31"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="37"/>
+            <counter covered="0" missed="24" type="INSTRUCTION"/>
+            <counter covered="0" missed="3" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="FeatureInitializer.java"/>
+        <sourcefile name="UpdateAction.java"/>
+        <counter covered="0" missed="1399" type="INSTRUCTION"/>
+        <counter covered="0" missed="104" type="BRANCH"/>
+        <counter covered="0" missed="277" type="LINE"/>
+        <counter covered="0" missed="110" type="COMPLEXITY"/>
+        <counter covered="0" missed="58" type="METHOD"/>
+        <counter covered="0" missed="12" type="CLASS"/>
+    </package></report>

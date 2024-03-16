@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><report><package name="org/apache/commons/math3/analysis/integration/gauss">
+        <class name="org/apache/commons/math3/analysis/integration/gauss/LegendreHighPrecisionRuleFactory" sourcefilename="LegendreHighPrecisionRuleFactory.java">
+            <method desc="()V" line="49" name="&lt;init&gt;">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/math/MathContext;)V" line="55" name="&lt;init&gt;">
+                <counter covered="0" missed="27" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)Lorg/apache/commons/math3/util/Pair;" line="67" name="computeRule">
+                <counter covered="0" missed="483" type="INSTRUCTION"/>
+                <counter covered="0" missed="24" type="BRANCH"/>
+                <counter covered="0" missed="90" type="LINE"/>
+                <counter covered="0" missed="13" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="514" type="INSTRUCTION"/>
+            <counter covered="0" missed="24" type="BRANCH"/>
+            <counter covered="0" missed="98" type="LINE"/>
+            <counter covered="0" missed="15" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/integration/gauss/SymmetricGaussIntegrator" sourcefilename="SymmetricGaussIntegrator.java">
+            <method desc="([D[D)V" line="46" name="&lt;init&gt;">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/util/Pair;)V" line="61" name="&lt;init&gt;">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/analysis/UnivariateFunction;)D" line="69" name="integrate">
+                <counter covered="0" missed="90" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="21" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="104" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="BRANCH"/>
+            <counter covered="0" missed="25" type="LINE"/>
+            <counter covered="0" missed="6" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/integration/gauss/HermiteRuleFactory" sourcefilename="HermiteRuleFactory.java">
+            <method desc="()V" line="51" name="&lt;init&gt;">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)Lorg/apache/commons/math3/util/Pair;" line="64" name="computeRule">
+                <counter covered="0" missed="331" type="INSTRUCTION"/>
+                <counter covered="0" missed="24" type="BRANCH"/>
+                <counter covered="0" missed="67" type="LINE"/>
+                <counter covered="0" missed="13" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="334" type="INSTRUCTION"/>
+            <counter covered="0" missed="24" type="BRANCH"/>
+            <counter covered="0" missed="68" type="LINE"/>
+            <counter covered="0" missed="14" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/integration/gauss/BaseRuleFactory" sourcefilename="BaseRuleFactory.java">
+            <method desc="()V" line="36" name="&lt;init&gt;">
+                <counter covered="0" missed="13" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)Lorg/apache/commons/math3/util/Pair;" line="57" name="getRule">
+                <counter covered="0" missed="44" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)Lorg/apache/commons/math3/util/Pair;" line="94" name="getRuleInternal">
+                <counter covered="0" missed="20" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/util/Pair;)V" line="111" name="addRule">
+                <counter covered="0" missed="32" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/util/Pair;)Lorg/apache/commons/math3/util/Pair;" line="139" name="convertToDouble">
+                <counter covered="0" missed="44" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="9" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="153" type="INSTRUCTION"/>
+            <counter covered="0" missed="10" type="BRANCH"/>
+            <counter covered="0" missed="29" type="LINE"/>
+            <counter covered="0" missed="10" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/integration/gauss/GaussIntegratorFactory" sourcefilename="GaussIntegratorFactory.java">
+            <method desc="()V" line="31" name="&lt;init&gt;">
+                <counter covered="0" missed="18" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)Lorg/apache/commons/math3/analysis/integration/gauss/GaussIntegrator;" line="50" name="legendre">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(IDD)Lorg/apache/commons/math3/analysis/integration/gauss/GaussIntegrator;" line="69" name="legendre">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)Lorg/apache/commons/math3/analysis/integration/gauss/GaussIntegrator;" line="86" name="legendreHighPrecision">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(IDD)Lorg/apache/commons/math3/analysis/integration/gauss/GaussIntegrator;" line="104" name="legendreHighPrecision">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)Lorg/apache/commons/math3/analysis/integration/gauss/SymmetricGaussIntegrator;" line="123" name="hermite">
+                <counter covered="0" missed="8" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/analysis/integration/gauss/BaseRuleFactory;I)Lorg/apache/commons/math3/util/Pair;" line="137" name="getRule">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/util/Pair;DD)Lorg/apache/commons/math3/util/Pair;" line="153" name="transform">
+                <counter covered="0" missed="49" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="117" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="BRANCH"/>
+            <counter covered="0" missed="18" type="LINE"/>
+            <counter covered="0" missed="9" type="COMPLEXITY"/>
+            <counter covered="0" missed="8" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/integration/gauss/LegendreRuleFactory" sourcefilename="LegendreRuleFactory.java">
+            <method desc="()V" line="32" name="&lt;init&gt;">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)Lorg/apache/commons/math3/util/Pair;" line="38" name="computeRule">
+                <counter covered="0" missed="318" type="INSTRUCTION"/>
+                <counter covered="0" missed="24" type="BRANCH"/>
+                <counter covered="0" missed="59" type="LINE"/>
+                <counter covered="0" missed="13" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="321" type="INSTRUCTION"/>
+            <counter covered="0" missed="24" type="BRANCH"/>
+            <counter covered="0" missed="60" type="LINE"/>
+            <counter covered="0" missed="14" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/analysis/integration/gauss/GaussIntegrator" sourcefilename="GaussIntegrator.java">
+            <method desc="([D[D)V" line="51" name="&lt;init&gt;">
+                <counter covered="0" missed="32" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="7" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/util/Pair;)V" line="75" name="&lt;init&gt;">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/analysis/UnivariateFunction;)D" line="89" name="integrate">
+                <counter covered="0" missed="45" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="10" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()I" line="107" name="getNumberOfPoints">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)D" line="117" name="getPoint">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)D" line="127" name="getWeight">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="100" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="BRANCH"/>
+            <counter covered="0" missed="22" type="LINE"/>
+            <counter covered="0" missed="8" type="COMPLEXITY"/>
+            <counter covered="0" missed="6" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <sourcefile name="LegendreHighPrecisionRuleFactory.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="49"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="50"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="55"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="56"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="57"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="58"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="59"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="60"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="67"/>
+            <line cb="0" ci="0" mb="0" mi="17" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="76"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="83"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="84"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="86"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="88"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="90"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="92"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="96"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="97"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="98"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="99"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="100"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="105"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="106"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="107"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="109"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="110"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="115"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="116"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="117"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="119"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="120"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="122"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="123"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="124"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="125"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="129"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="131"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="133"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="134"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="135"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="136"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="137"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="138"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="139"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="140"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="141"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="142"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="143"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="144"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="147"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="148"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="149"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="151"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="152"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="154"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="155"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="158"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="159"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="161"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="162"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="164"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="165"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="166"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="168"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="170"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="171"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="172"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="173"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="174"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="175"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="176"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="177"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="178"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="180"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="181"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="183"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="184"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="185"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="191"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="192"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="193"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="194"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="195"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="198"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="199"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="200"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="204"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="205"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="206"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="207"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="209"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="210"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="213"/>
+            <counter covered="0" missed="514" type="INSTRUCTION"/>
+            <counter covered="0" missed="24" type="BRANCH"/>
+            <counter covered="0" missed="98" type="LINE"/>
+            <counter covered="0" missed="15" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="SymmetricGaussIntegrator.java">
+            <line cb="0" ci="0" mb="0" mi="4" nr="46"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="47"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="61"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="69"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="71"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="72"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="75"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="76"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="77"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="82"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="83"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="85"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="88"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="89"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="92"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="93"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="95"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="96"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="98"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="101"/>
+            <counter covered="0" missed="104" type="INSTRUCTION"/>
+            <counter covered="0" missed="6" type="BRANCH"/>
+            <counter covered="0" missed="25" type="LINE"/>
+            <counter covered="0" missed="6" type="COMPLEXITY"/>
+            <counter covered="0" missed="3" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="GaussIntegrator.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="51"/>
+            <line cb="0" ci="0" mb="2" mi="5" nr="52"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="53"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="57"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="59"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="60"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="61"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="75"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="76"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="89"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="90"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="91"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="92"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="93"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="95"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="96"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="97"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="99"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="107"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="117"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="127"/>
+            <counter covered="0" missed="100" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="BRANCH"/>
+            <counter covered="0" missed="22" type="LINE"/>
+            <counter covered="0" missed="8" type="COMPLEXITY"/>
+            <counter covered="0" missed="6" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="HermiteRuleFactory.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="51"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="64"/>
+            <line cb="0" ci="0" mb="0" mi="18" nr="66"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="73"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="74"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="81"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="84"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="85"/>
+            <line cb="0" ci="0" mb="2" mi="12" nr="87"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="89"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="92"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="96"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="98"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="99"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="101"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="103"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="105"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="106"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="107"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="108"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="109"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="114"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="116"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="118"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="119"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="120"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="121"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="122"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="123"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="124"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="126"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="127"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="128"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="129"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="130"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="131"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="134"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="135"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="136"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="137"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="138"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="140"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="141"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="142"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="144"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="147"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="148"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="150"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="151"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="153"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="154"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="155"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="162"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="163"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="164"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="165"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="166"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="168"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="169"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="171"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="172"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="175"/>
+            <counter covered="0" missed="334" type="INSTRUCTION"/>
+            <counter covered="0" missed="24" type="BRANCH"/>
+            <counter covered="0" missed="68" type="LINE"/>
+            <counter covered="0" missed="14" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="BaseRuleFactory.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="36"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="38"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="41"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="57"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="58"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="63"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="65"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="73"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="94"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="95"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="96"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="98"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="100"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="111"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="112"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="116"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="117"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="139"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="140"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="142"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="143"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="144"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="146"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="147"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="148"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="151"/>
+            <counter covered="0" missed="153" type="INSTRUCTION"/>
+            <counter covered="0" missed="10" type="BRANCH"/>
+            <counter covered="0" missed="29" type="LINE"/>
+            <counter covered="0" missed="10" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="GaussIntegratorFactory.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="31"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="33"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="35"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="37"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="50"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="104"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="123"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="137"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="153"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="154"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="157"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="158"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="161"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="162"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="165"/>
+            <counter covered="0" missed="117" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="BRANCH"/>
+            <counter covered="0" missed="18" type="LINE"/>
+            <counter covered="0" missed="9" type="COMPLEXITY"/>
+            <counter covered="0" missed="8" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="LegendreRuleFactory.java">
+            <line cb="0" ci="0" mb="0" mi="3" nr="32"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="38"/>
+            <line cb="0" ci="0" mb="0" mi="18" nr="40"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="47"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="50"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="51"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="54"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="55"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="57"/>
+            <line cb="0" ci="0" mb="2" mi="10" nr="59"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="61"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="63"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="65"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="67"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="68"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="70"/>
+            <line cb="0" ci="0" mb="0" mi="15" nr="72"/>
+            <line cb="0" ci="0" mb="0" mi="15" nr="74"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="75"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="76"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="82"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="84"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="86"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="87"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="88"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="89"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="90"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="91"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="92"/>
+            <line cb="0" ci="0" mb="0" mi="21" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="95"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="96"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="99"/>
+            <line cb="0" ci="0" mb="2" mi="6" nr="100"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="101"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="103"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="105"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="106"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="107"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="109"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="112"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="113"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="115"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="116"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="118"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="119"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="120"/>
+            <line cb="0" ci="0" mb="2" mi="4" nr="126"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="127"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="128"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="129"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="131"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="132"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="134"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="135"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="138"/>
+            <counter covered="0" missed="321" type="INSTRUCTION"/>
+            <counter covered="0" missed="24" type="BRANCH"/>
+            <counter covered="0" missed="60" type="LINE"/>
+            <counter covered="0" missed="14" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <counter covered="0" missed="1643" type="INSTRUCTION"/>
+        <counter covered="0" missed="94" type="BRANCH"/>
+        <counter covered="0" missed="320" type="LINE"/>
+        <counter covered="0" missed="76" type="COMPLEXITY"/>
+        <counter covered="0" missed="29" type="METHOD"/>
+        <counter covered="0" missed="7" type="CLASS"/>
+    </package></report>

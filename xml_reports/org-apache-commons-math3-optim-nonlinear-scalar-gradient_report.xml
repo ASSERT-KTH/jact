@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><report><package name="org/apache/commons/math3/optim/nonlinear/scalar/gradient">
+        <class name="org/apache/commons/math3/optim/nonlinear/scalar/gradient/Preconditioner" sourcefilename="Preconditioner.java"/>
+        <class name="org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer$IdentityPreconditioner" sourcefilename="NonLinearConjugateGradientOptimizer.java">
+            <method desc="()V" line="348" name="&lt;init&gt;">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([D[D)[D" line="351" name="precondition">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="7" type="INSTRUCTION"/>
+            <counter covered="0" missed="2" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer$Formula" sourcefilename="NonLinearConjugateGradientOptimizer.java">
+            <method desc="()V" line="73" name="&lt;clinit&gt;">
+                <counter covered="0" missed="24" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="24" type="INSTRUCTION"/>
+            <counter covered="0" missed="3" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer" sourcefilename="NonLinearConjugateGradientOptimizer.java">
+            <method desc="(Lorg/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer$Formula;Lorg/apache/commons/math3/optim/ConvergenceChecker;)V" line="125" name="&lt;init&gt;">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer$Formula;Lorg/apache/commons/math3/optim/ConvergenceChecker;Lorg/apache/commons/math3/analysis/solvers/UnivariateSolver;)V" line="148" name="&lt;init&gt;">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer$Formula;Lorg/apache/commons/math3/optim/ConvergenceChecker;DDD)V" line="175" name="&lt;init&gt;">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer$Formula;Lorg/apache/commons/math3/optim/ConvergenceChecker;Lorg/apache/commons/math3/analysis/solvers/UnivariateSolver;Lorg/apache/commons/math3/optim/nonlinear/scalar/gradient/Preconditioner;)V" line="198" name="&lt;init&gt;">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer$Formula;Lorg/apache/commons/math3/optim/ConvergenceChecker;DDDLorg/apache/commons/math3/optim/nonlinear/scalar/gradient/Preconditioner;)V" line="227" name="&lt;init&gt;">
+                <counter covered="0" missed="19" type="INSTRUCTION"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([Lorg/apache/commons/math3/optim/OptimizationData;)Lorg/apache/commons/math3/optim/PointValuePair;" line="244" name="optimize">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/optim/PointValuePair;" line="250" name="doOptimize">
+                <counter covered="0" missed="241" type="INSTRUCTION"/>
+                <counter covered="0" missed="29" type="BRANCH"/>
+                <counter covered="0" missed="47" type="LINE"/>
+                <counter covered="0" missed="16" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([Lorg/apache/commons/math3/optim/OptimizationData;)V" line="342" name="parseOptimizationData">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="410" name="checkParameters">
+                <counter covered="0" missed="14" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="327" type="INSTRUCTION"/>
+            <counter covered="0" missed="33" type="BRANCH"/>
+            <counter covered="0" missed="67" type="LINE"/>
+            <counter covered="0" missed="26" type="COMPLEXITY"/>
+            <counter covered="0" missed="9" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/optim/nonlinear/scalar/gradient/NonLinearConjugateGradientOptimizer$BracketingStep" sourcefilename="NonLinearConjugateGradientOptimizer.java">
+            <method desc="(D)V" line="100" name="&lt;init&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="110" name="getBracketingStep">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="9" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="2" type="COMPLEXITY"/>
+            <counter covered="0" missed="2" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <sourcefile name="Preconditioner.java"/>
+        <sourcefile name="NonLinearConjugateGradientOptimizer.java">
+            <line cb="0" ci="0" mb="0" mi="12" nr="73"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="75"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="100"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="101"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="102"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="110"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="125"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="131"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="148"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="152"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="175"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="181"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="198"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="204"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="227"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="229"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="230"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="231"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="235"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="244"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="250"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="251"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="252"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="253"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="254"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="255"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="256"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="257"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="262"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="263"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="265"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="266"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="267"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="270"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="272"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="274"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="275"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="276"/>
+            <line cb="0" ci="0" mb="4" mi="9" nr="277"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="279"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="282"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="285"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="286"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="289"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="290"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="291"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="292"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="297"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="298"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="299"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="300"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="301"/>
+            <line cb="0" ci="0" mb="3" mi="6" nr="305"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="307"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="308"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="310"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="311"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="312"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="314"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="315"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="318"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="320"/>
+            <line cb="0" ci="0" mb="4" mi="9" nr="323"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="326"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="329"/>
+            <line cb="0" ci="0" mb="0" mi="12" nr="330"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="333"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="342"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="344"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="345"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="348"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="351"/>
+            <line cb="0" ci="0" mb="4" mi="6" nr="410"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="412"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="414"/>
+            <counter covered="0" missed="367" type="INSTRUCTION"/>
+            <counter covered="0" missed="33" type="BRANCH"/>
+            <counter covered="0" missed="76" type="LINE"/>
+            <counter covered="0" missed="31" type="COMPLEXITY"/>
+            <counter covered="0" missed="14" type="METHOD"/>
+            <counter covered="0" missed="4" type="CLASS"/>
+        </sourcefile>
+        <counter covered="0" missed="367" type="INSTRUCTION"/>
+        <counter covered="0" missed="33" type="BRANCH"/>
+        <counter covered="0" missed="76" type="LINE"/>
+        <counter covered="0" missed="31" type="COMPLEXITY"/>
+        <counter covered="0" missed="14" type="METHOD"/>
+        <counter covered="0" missed="4" type="CLASS"/>
+    </package></report>

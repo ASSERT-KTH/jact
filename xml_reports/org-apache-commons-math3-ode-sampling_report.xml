@@ -1,0 +1,1006 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><report><package name="org/apache/commons/math3/ode/sampling">
+        <class name="org/apache/commons/math3/ode/sampling/DummyStepHandler" sourcefilename="DummyStepHandler.java">
+            <method desc="()Lorg/apache/commons/math3/ode/sampling/DummyStepHandler;" line="49" name="getInstance">
+                <counter covered="0" missed="2" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D[DD)V" line="54" name="init">
+                <counter covered="0" missed="1" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/ode/sampling/StepInterpolator;Z)V" line="69" name="handleStep">
+                <counter covered="0" missed="1" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Ljava/lang/Object;" line="86" name="readResolve">
+                <counter covered="0" missed="2" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="6" type="INSTRUCTION"/>
+            <counter covered="0" missed="4" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ode/sampling/AbstractStepInterpolator" sourcefilename="AbstractStepInterpolator.java">
+            <method desc="()V" line="111" name="&lt;init&gt;">
+                <counter covered="0" missed="42" type="INSTRUCTION"/>
+                <counter covered="0" missed="15" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([DZLorg/apache/commons/math3/ode/EquationsMapper;[Lorg/apache/commons/math3/ode/EquationsMapper;)V" line="136" name="&lt;init&gt;">
+                <counter covered="0" missed="49" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="15" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/ode/sampling/AbstractStepInterpolator;)V" line="171" name="&lt;init&gt;">
+                <counter covered="0" missed="141" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="28" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)V" line="212" name="allocateInterpolatedArrays">
+                <counter covered="0" missed="97" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="20" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([DZLorg/apache/commons/math3/ode/EquationsMapper;[Lorg/apache/commons/math3/ode/EquationsMapper;)V" line="248" name="reinitialize">
+                <counter covered="0" missed="43" type="INSTRUCTION"/>
+                <counter covered="0" missed="14" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/ode/sampling/StepInterpolator;" line="268" name="copy">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="289" name="shift">
+                <counter covered="0" missed="13" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="299" name="storeTime">
+                <counter covered="0" missed="21" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="320" name="setSoftPreviousTime">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="334" name="setSoftCurrentTime">
+                <counter covered="0" missed="4" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="342" name="getGlobalPreviousTime">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="350" name="getGlobalCurrentTime">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="359" name="getPreviousTime">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="368" name="getCurrentTime">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()D" line="373" name="getInterpolatedTime">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="378" name="setInterpolatedTime">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Z" line="384" name="isForward">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="406" name="evaluateCompleteInterpolatedState">
+                <counter covered="0" missed="32" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="416" name="getInterpolatedState">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="424" name="getInterpolatedDerivatives">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)[D" line="432" name="getInterpolatedSecondaryState">
+                <counter covered="0" missed="18" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(I)[D" line="440" name="getInterpolatedSecondaryDerivatives">
+                <counter covered="0" missed="18" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="488" name="finalizeStep">
+                <counter covered="0" missed="9" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="2" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="500" name="doFinalize">
+                <counter covered="0" missed="1" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/io/ObjectOutput;)V" line="519" name="writeBaseExternal">
+                <counter covered="0" missed="104" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="24" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/io/ObjectInput;)D" line="572" name="readBaseExternal">
+                <counter covered="0" missed="93" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="21" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="743" type="INSTRUCTION"/>
+            <counter covered="0" missed="34" type="BRANCH"/>
+            <counter covered="0" missed="185" type="LINE"/>
+            <counter covered="0" missed="43" type="COMPLEXITY"/>
+            <counter covered="0" missed="26" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ode/sampling/StepNormalizer" sourcefilename="StepNormalizer.java">
+            <method desc="(DLorg/apache/commons/math3/ode/sampling/FixedStepHandler;)V" line="126" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DLorg/apache/commons/math3/ode/sampling/FixedStepHandler;Lorg/apache/commons/math3/ode/sampling/StepNormalizerMode;)V" line="139" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DLorg/apache/commons/math3/ode/sampling/FixedStepHandler;Lorg/apache/commons/math3/ode/sampling/StepNormalizerBounds;)V" line="151" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DLorg/apache/commons/math3/ode/sampling/FixedStepHandler;Lorg/apache/commons/math3/ode/sampling/StepNormalizerMode;Lorg/apache/commons/math3/ode/sampling/StepNormalizerBounds;)V" line="163" name="&lt;init&gt;">
+                <counter covered="0" missed="31" type="INSTRUCTION"/>
+                <counter covered="0" missed="11" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D[DD)V" line="178" name="init">
+                <counter covered="0" missed="22" type="INSTRUCTION"/>
+                <counter covered="0" missed="7" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/ode/sampling/StepInterpolator;Z)V" line="205" name="handleStep">
+                <counter covered="0" missed="142" type="INSTRUCTION"/>
+                <counter covered="0" missed="24" type="BRANCH"/>
+                <counter covered="0" missed="25" type="LINE"/>
+                <counter covered="0" missed="13" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DLorg/apache/commons/math3/ode/sampling/StepInterpolator;)Z" line="267" name="isNextInStep">
+                <counter covered="0" missed="21" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Z)V" line="277" name="doNormalizedStep">
+                <counter covered="0" missed="22" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/ode/sampling/StepInterpolator;D)V" line="293" name="storeStep">
+                <counter covered="0" missed="28" type="INSTRUCTION"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="287" type="INSTRUCTION"/>
+            <counter covered="0" missed="34" type="BRANCH"/>
+            <counter covered="0" missed="59" type="LINE"/>
+            <counter covered="0" missed="26" type="COMPLEXITY"/>
+            <counter covered="0" missed="9" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ode/sampling/StepNormalizerBounds" sourcefilename="StepNormalizerBounds.java">
+            <method desc="(Ljava/lang/String;IZZ)V" line="60" name="&lt;init&gt;">
+                <counter covered="0" missed="11" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Z" line="72" name="firstIncluded">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Z" line="82" name="lastIncluded">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()V" line="30" name="&lt;clinit&gt;">
+                <counter covered="0" missed="52" type="INSTRUCTION"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="69" type="INSTRUCTION"/>
+            <counter covered="0" missed="11" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ode/sampling/FieldStepHandler" sourcefilename="FieldStepHandler.java"/>
+        <class name="org/apache/commons/math3/ode/sampling/FieldFixedStepHandler" sourcefilename="FieldFixedStepHandler.java"/>
+        <class name="org/apache/commons/math3/ode/sampling/NordsieckStepInterpolator" sourcefilename="NordsieckStepInterpolator.java">
+            <method desc="()V" line="73" name="&lt;init&gt;">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/ode/sampling/NordsieckStepInterpolator;)V" line="82" name="&lt;init&gt;">
+                <counter covered="0" missed="42" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="10" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/ode/sampling/StepInterpolator;" line="99" name="doCopy">
+                <counter covered="0" missed="5" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="([DZLorg/apache/commons/math3/ode/EquationsMapper;[Lorg/apache/commons/math3/ode/EquationsMapper;)V" line="115" name="reinitialize">
+                <counter covered="0" missed="12" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD[DLorg/apache/commons/math3/linear/Array2DRowRealMatrix;)V" line="132" name="reinitialize">
+                <counter covered="0" missed="17" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(D)V" line="149" name="rescale">
+                <counter covered="0" missed="63" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="12" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()[D" line="183" name="getInterpolatedStateVariation">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DD)V" line="191" name="computeInterpolatedStateAndDerivatives">
+                <counter covered="0" missed="130" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="18" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/io/ObjectOutput;)V" line="226" name="writeExternal">
+                <counter covered="0" missed="58" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="BRANCH"/>
+                <counter covered="0" missed="14" type="LINE"/>
+                <counter covered="0" missed="5" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Ljava/io/ObjectInput;)V" line="259" name="readExternal">
+                <counter covered="0" missed="77" type="INSTRUCTION"/>
+                <counter covered="0" missed="12" type="BRANCH"/>
+                <counter covered="0" missed="19" type="LINE"/>
+                <counter covered="0" missed="7" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="413" type="INSTRUCTION"/>
+            <counter covered="0" missed="38" type="BRANCH"/>
+            <counter covered="0" missed="87" type="LINE"/>
+            <counter covered="0" missed="29" type="COMPLEXITY"/>
+            <counter covered="0" missed="10" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ode/sampling/DummyStepHandler$LazyHolder" sourcefilename="DummyStepHandler.java">
+            <method desc="()V" line="77" name="&lt;clinit&gt;">
+                <counter covered="0" missed="6" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="6" type="INSTRUCTION"/>
+            <counter covered="0" missed="1" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ode/sampling/StepNormalizerMode" sourcefilename="StepNormalizerMode.java">
+            <method desc="()V" line="28" name="&lt;clinit&gt;">
+                <counter covered="0" missed="24" type="INSTRUCTION"/>
+                <counter covered="0" missed="3" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="24" type="INSTRUCTION"/>
+            <counter covered="0" missed="3" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ode/sampling/StepInterpolator" sourcefilename="StepInterpolator.java"/>
+        <class name="org/apache/commons/math3/ode/sampling/FixedStepHandler" sourcefilename="FixedStepHandler.java"/>
+        <class name="org/apache/commons/math3/ode/sampling/AbstractFieldStepInterpolator" sourcefilename="AbstractFieldStepInterpolator.java">
+            <method desc="(ZLorg/apache/commons/math3/ode/FieldODEStateAndDerivative;Lorg/apache/commons/math3/ode/FieldODEStateAndDerivative;Lorg/apache/commons/math3/ode/FieldODEStateAndDerivative;Lorg/apache/commons/math3/ode/FieldODEStateAndDerivative;Lorg/apache/commons/math3/ode/FieldEquationsMapper;)V" line="74" name="&lt;init&gt;">
+                <counter covered="0" missed="21" type="INSTRUCTION"/>
+                <counter covered="0" missed="8" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/ode/FieldODEStateAndDerivative;Lorg/apache/commons/math3/ode/FieldODEStateAndDerivative;)Lorg/apache/commons/math3/ode/sampling/AbstractFieldStepInterpolator;" line="95" name="restrictStep">
+                <counter covered="0" missed="13" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/ode/FieldODEStateAndDerivative;" line="119" name="getGlobalPreviousState">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/ode/FieldODEStateAndDerivative;" line="127" name="getGlobalCurrentState">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/ode/FieldODEStateAndDerivative;" line="132" name="getPreviousState">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Lorg/apache/commons/math3/ode/FieldODEStateAndDerivative;" line="137" name="getCurrentState">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/RealFieldElement;)Lorg/apache/commons/math3/ode/FieldODEStateAndDerivative;" line="142" name="getInterpolatedState">
+                <counter covered="0" missed="34" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="()Z" line="150" name="isForward">
+                <counter covered="0" missed="3" type="INSTRUCTION"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="83" type="INSTRUCTION"/>
+            <counter covered="0" missed="18" type="LINE"/>
+            <counter covered="0" missed="8" type="COMPLEXITY"/>
+            <counter covered="0" missed="8" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <class name="org/apache/commons/math3/ode/sampling/StepHandler" sourcefilename="StepHandler.java"/>
+        <class name="org/apache/commons/math3/ode/sampling/FieldStepInterpolator" sourcefilename="FieldStepInterpolator.java"/>
+        <class name="org/apache/commons/math3/ode/sampling/FieldStepNormalizer" sourcefilename="FieldStepNormalizer.java">
+            <method desc="(DLorg/apache/commons/math3/ode/sampling/FieldFixedStepHandler;)V" line="124" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DLorg/apache/commons/math3/ode/sampling/FieldFixedStepHandler;Lorg/apache/commons/math3/ode/sampling/StepNormalizerMode;)V" line="137" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DLorg/apache/commons/math3/ode/sampling/FieldFixedStepHandler;Lorg/apache/commons/math3/ode/sampling/StepNormalizerBounds;)V" line="149" name="&lt;init&gt;">
+                <counter covered="0" missed="7" type="INSTRUCTION"/>
+                <counter covered="0" missed="2" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(DLorg/apache/commons/math3/ode/sampling/FieldFixedStepHandler;Lorg/apache/commons/math3/ode/sampling/StepNormalizerMode;Lorg/apache/commons/math3/ode/sampling/StepNormalizerBounds;)V" line="160" name="&lt;init&gt;">
+                <counter covered="0" missed="25" type="INSTRUCTION"/>
+                <counter covered="0" missed="9" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/ode/FieldODEStateAndDerivative;Lorg/apache/commons/math3/RealFieldElement;)V" line="173" name="init">
+                <counter covered="0" missed="15" type="INSTRUCTION"/>
+                <counter covered="0" missed="5" type="LINE"/>
+                <counter covered="0" missed="1" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/ode/sampling/FieldStepInterpolator;Z)V" line="198" name="handleStep">
+                <counter covered="0" missed="140" type="INSTRUCTION"/>
+                <counter covered="0" missed="22" type="BRANCH"/>
+                <counter covered="0" missed="22" type="LINE"/>
+                <counter covered="0" missed="12" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Lorg/apache/commons/math3/RealFieldElement;Lorg/apache/commons/math3/ode/sampling/FieldStepInterpolator;)Z" line="257" name="isNextInStep">
+                <counter covered="0" missed="27" type="INSTRUCTION"/>
+                <counter covered="0" missed="6" type="BRANCH"/>
+                <counter covered="0" missed="1" type="LINE"/>
+                <counter covered="0" missed="4" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <method desc="(Z)V" line="267" name="doNormalizedStep">
+                <counter covered="0" missed="22" type="INSTRUCTION"/>
+                <counter covered="0" missed="4" type="BRANCH"/>
+                <counter covered="0" missed="4" type="LINE"/>
+                <counter covered="0" missed="3" type="COMPLEXITY"/>
+                <counter covered="0" missed="1" type="METHOD"/>
+            </method>
+            <counter covered="0" missed="250" type="INSTRUCTION"/>
+            <counter covered="0" missed="32" type="BRANCH"/>
+            <counter covered="0" missed="47" type="LINE"/>
+            <counter covered="0" missed="24" type="COMPLEXITY"/>
+            <counter covered="0" missed="8" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </class>
+        <sourcefile name="AbstractFieldStepInterpolator.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="74"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="75"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="76"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="78"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="79"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="80"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="81"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="95"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="119"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="127"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="132"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="137"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="142"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="143"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="144"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="145"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="150"/>
+            <counter covered="0" missed="83" type="INSTRUCTION"/>
+            <counter covered="0" missed="18" type="LINE"/>
+            <counter covered="0" missed="8" type="COMPLEXITY"/>
+            <counter covered="0" missed="8" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="FieldStepNormalizer.java">
+            <line cb="0" ci="0" mb="0" mi="6" nr="124"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="126"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="137"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="138"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="149"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="150"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="161"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="162"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="163"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="164"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="165"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="166"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="167"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="168"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="173"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="174"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="175"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="178"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="180"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="198"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="200"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="201"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="204"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="205"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="206"/>
+            <line cb="0" ci="0" mb="2" mi="34" nr="211"/>
+            <line cb="0" ci="0" mb="4" mi="13" nr="214"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="216"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="220"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="221"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="223"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="226"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="229"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="230"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="233"/>
+            <line cb="0" ci="0" mb="4" mi="18" nr="237"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="239"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="240"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="241"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="242"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="245"/>
+            <line cb="0" ci="0" mb="6" mi="27" nr="257"/>
+            <line cb="0" ci="0" mb="4" mi="14" nr="267"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="268"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="270"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="271"/>
+            <counter covered="0" missed="250" type="INSTRUCTION"/>
+            <counter covered="0" missed="32" type="BRANCH"/>
+            <counter covered="0" missed="47" type="LINE"/>
+            <counter covered="0" missed="24" type="COMPLEXITY"/>
+            <counter covered="0" missed="8" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="AbstractStepInterpolator.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="111"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="112"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="113"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="114"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="115"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="116"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="117"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="118"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="119"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="120"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="121"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="122"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="123"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="124"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="125"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="136"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="138"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="139"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="140"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="141"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="142"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="143"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="144"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="145"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="146"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="147"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="148"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="149"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="150"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="152"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="171"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="173"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="174"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="175"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="176"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="177"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="178"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="180"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="181"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="182"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="183"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="184"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="186"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="187"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="188"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="189"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="190"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="191"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="192"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="193"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="194"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="195"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="199"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="200"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="201"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="202"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="203"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="206"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="212"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="213"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="214"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="215"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="216"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="217"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="218"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="220"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="221"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="222"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="223"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="224"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="225"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="226"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="228"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="229"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="230"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="231"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="232"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="236"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="248"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="249"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="250"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="251"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="252"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="253"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="254"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="255"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="256"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="257"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="258"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="259"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="260"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="262"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="268"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="271"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="289"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="290"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="291"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="292"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="299"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="300"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="301"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="302"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="305"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="307"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="320"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="321"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="334"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="335"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="342"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="350"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="359"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="368"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="373"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="378"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="379"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="380"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="384"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="406"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="407"/>
+            <line cb="0" ci="0" mb="2" mi="15" nr="408"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="409"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="410"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="412"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="416"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="417"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="419"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="424"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="425"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="427"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="432"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="433"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="435"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="440"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="441"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="443"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="488"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="489"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="490"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="492"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="500"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="519"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="520"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="522"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="524"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="525"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="526"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="527"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="528"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="529"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="530"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="531"/>
+            <line cb="0" ci="0" mb="2" mi="17" nr="532"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="533"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="536"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="537"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="538"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="542"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="549"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="550"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="551"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="552"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="553"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="554"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="556"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="572"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="573"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="574"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="575"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="576"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="577"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="578"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="579"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="580"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="581"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="582"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="584"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="586"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="587"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="589"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="590"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="591"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="596"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="597"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="599"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="601"/>
+            <counter covered="0" missed="743" type="INSTRUCTION"/>
+            <counter covered="0" missed="34" type="BRANCH"/>
+            <counter covered="0" missed="185" type="LINE"/>
+            <counter covered="0" missed="43" type="COMPLEXITY"/>
+            <counter covered="0" missed="26" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="DummyStepHandler.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="49"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="54"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="69"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="77"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="86"/>
+            <counter covered="0" missed="12" type="INSTRUCTION"/>
+            <counter covered="0" missed="5" type="LINE"/>
+            <counter covered="0" missed="5" type="COMPLEXITY"/>
+            <counter covered="0" missed="5" type="METHOD"/>
+            <counter covered="0" missed="2" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="FieldFixedStepHandler.java"/>
+        <sourcefile name="NordsieckStepInterpolator.java">
+            <line cb="0" ci="0" mb="0" mi="2" nr="73"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="74"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="82"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="83"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="84"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="85"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="86"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="88"/>
+            <line cb="0" ci="0" mb="0" mi="9" nr="89"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="91"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="92"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="94"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="99"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="115"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="116"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="117"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="132"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="133"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="134"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="135"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="138"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="140"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="149"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="150"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="151"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="154"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="155"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="156"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="157"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="158"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="159"/>
+            <line cb="0" ci="0" mb="0" mi="7" nr="160"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="164"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="166"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="183"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="184"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="191"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="192"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="194"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="195"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="199"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="200"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="201"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="202"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="203"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="204"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="205"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="206"/>
+            <line cb="0" ci="0" mb="0" mi="11" nr="207"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="211"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="212"/>
+            <line cb="0" ci="0" mb="0" mi="13" nr="213"/>
+            <line cb="0" ci="0" mb="0" mi="17" nr="214"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="218"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="226"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="229"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="230"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="232"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="233"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="234"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="236"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="237"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="238"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="242"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="243"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="245"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="246"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="251"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="259"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="262"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="263"/>
+            <line cb="0" ci="0" mb="2" mi="9" nr="265"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="266"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="267"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="268"/>
+            <line cb="0" ci="0" mb="2" mi="8" nr="269"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="270"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="273"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="276"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="277"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="278"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="280"/>
+            <line cb="0" ci="0" mb="4" mi="4" nr="283"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="285"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="286"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="288"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="291"/>
+            <counter covered="0" missed="413" type="INSTRUCTION"/>
+            <counter covered="0" missed="38" type="BRANCH"/>
+            <counter covered="0" missed="87" type="LINE"/>
+            <counter covered="0" missed="29" type="COMPLEXITY"/>
+            <counter covered="0" missed="10" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="StepNormalizerBounds.java">
+            <line cb="0" ci="0" mb="0" mi="20" nr="30"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="32"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="35"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="38"/>
+            <line cb="0" ci="0" mb="0" mi="8" nr="41"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="60"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="61"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="62"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="63"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="72"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="82"/>
+            <counter covered="0" missed="69" type="INSTRUCTION"/>
+            <counter covered="0" missed="11" type="LINE"/>
+            <counter covered="0" missed="4" type="COMPLEXITY"/>
+            <counter covered="0" missed="4" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="StepNormalizer.java">
+            <line cb="0" ci="0" mb="0" mi="6" nr="126"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="128"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="139"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="140"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="151"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="152"/>
+            <line cb="0" ci="0" mb="0" mi="2" nr="163"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="164"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="165"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="166"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="167"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="168"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="169"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="170"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="171"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="172"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="173"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="178"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="179"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="180"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="181"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="182"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="185"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="187"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="205"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="206"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="207"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="208"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="209"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="210"/>
+            <line cb="0" ci="0" mb="2" mi="11" nr="213"/>
+            <line cb="0" ci="0" mb="2" mi="3" nr="214"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="215"/>
+            <line cb="0" ci="0" mb="2" mi="22" nr="220"/>
+            <line cb="0" ci="0" mb="4" mi="10" nr="223"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="225"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="229"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="230"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="232"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="235"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="238"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="239"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="242"/>
+            <line cb="0" ci="0" mb="4" mi="14" nr="246"/>
+            <line cb="0" ci="0" mb="2" mi="7" nr="248"/>
+            <line cb="0" ci="0" mb="2" mi="2" nr="249"/>
+            <line cb="0" ci="0" mb="0" mi="5" nr="250"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="251"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="254"/>
+            <line cb="0" ci="0" mb="6" mi="21" nr="267"/>
+            <line cb="0" ci="0" mb="4" mi="10" nr="277"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="278"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="280"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="281"/>
+            <line cb="0" ci="0" mb="0" mi="3" nr="293"/>
+            <line cb="0" ci="0" mb="0" mi="4" nr="294"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="295"/>
+            <line cb="0" ci="0" mb="0" mi="10" nr="297"/>
+            <line cb="0" ci="0" mb="0" mi="1" nr="299"/>
+            <counter covered="0" missed="287" type="INSTRUCTION"/>
+            <counter covered="0" missed="34" type="BRANCH"/>
+            <counter covered="0" missed="59" type="LINE"/>
+            <counter covered="0" missed="26" type="COMPLEXITY"/>
+            <counter covered="0" missed="9" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="FixedStepHandler.java"/>
+        <sourcefile name="StepHandler.java"/>
+        <sourcefile name="StepNormalizerMode.java">
+            <line cb="0" ci="0" mb="0" mi="12" nr="28"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="47"/>
+            <line cb="0" ci="0" mb="0" mi="6" nr="69"/>
+            <counter covered="0" missed="24" type="INSTRUCTION"/>
+            <counter covered="0" missed="3" type="LINE"/>
+            <counter covered="0" missed="1" type="COMPLEXITY"/>
+            <counter covered="0" missed="1" type="METHOD"/>
+            <counter covered="0" missed="1" type="CLASS"/>
+        </sourcefile>
+        <sourcefile name="FieldStepHandler.java"/>
+        <sourcefile name="FieldStepInterpolator.java"/>
+        <sourcefile name="StepInterpolator.java"/>
+        <counter covered="0" missed="1881" type="INSTRUCTION"/>
+        <counter covered="0" missed="138" type="BRANCH"/>
+        <counter covered="0" missed="415" type="LINE"/>
+        <counter covered="0" missed="140" type="COMPLEXITY"/>
+        <counter covered="0" missed="71" type="METHOD"/>
+        <counter covered="0" missed="9" type="CLASS"/>
+    </package></report>
