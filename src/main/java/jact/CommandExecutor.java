@@ -1,5 +1,7 @@
 package jact;
 
+import jact.plugin.AbstractReportMojo;
+import jact.plugin.HtmlReportMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 
 import java.io.*;
@@ -10,11 +12,11 @@ import java.nio.file.Paths;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
-public class CommandExecutor extends HtmlReportMojo {
+public class CommandExecutor {
 
     public static void copyJacocoCliJar() throws IOException, URISyntaxException {
         // Get the path to the plugin JAR file
-        Path pluginJarPath = Paths.get(HtmlReportMojo.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+        Path pluginJarPath = Paths.get(AbstractReportMojo.class.getProtectionDomain().getCodeSource().getLocation().toURI());
 
         // Create a JarInputStream to read from the plugin JAR
         try (JarInputStream jarInputStream = new JarInputStream(new FileInputStream(pluginJarPath.toFile()))) {
@@ -86,9 +88,9 @@ public class CommandExecutor extends HtmlReportMojo {
 
             // Adapts the command based on OS:
             ProcessBuilder processBuilder;
-            if (HtmlReportMojo.getHostOS().contains("linux")) {
+            if (getHostOS().contains("linux")) {
                 processBuilder = new ProcessBuilder("/bin/bash", "-c", command);
-            } else if (HtmlReportMojo.getHostOS().contains("windows")) {
+            } else if (getHostOS().contains("windows")) {
                 processBuilder = new ProcessBuilder("cmd", "/c", command); // For Windows
             } else {
                 // No support for MacOS currently
@@ -144,12 +146,20 @@ public class CommandExecutor extends HtmlReportMojo {
         }
     }
 
-    public void executeJacocoCLI(String jarName) throws MojoExecutionException {
+    public void executeJacocoCLI(String jarName, boolean htmlReport) throws MojoExecutionException {
         try {
             // Retrieve the URL to the jacococli.jar file
             // Command to execute Jacoco CLI
-            String command = String.format("java -jar ./target/jact-resources/jacococli.jar report ./target/jacoco.exec " +
-                    "--classfiles " + "./target/" + jarName + ".jar --html ./target/jact-report");
+            String command;
+            if(htmlReport){
+                command = String.format("java -jar ./target/jact-resources/jacococli.jar report ./target/jacoco.exec " +
+                        "--classfiles " + "./target/" + jarName + ".jar --html ./target/jact-report");
+            }else{
+                // XML report:
+                command = String.format("java -jar ./target/jact-resources/jacococli.jar report ./target/jacoco.exec " +
+                        "--classfiles " + "./target/" + jarName + ".jar --xml ./target/jact-report/jacoco_report.xml");
+            }
+
 
             // Adapts the command based on OS:
             ProcessBuilder processBuilder;
@@ -179,7 +189,6 @@ public class CommandExecutor extends HtmlReportMojo {
             // Print the output
             InputStream inputStream = process.getInputStream();
             String output = readInputStream(inputStream);
-            getLog().info(output);
             copyPNGImage("jact-logo.png", "./target/jact-report/jacoco-resources");
         } catch (IOException | InterruptedException e) {
             throw new MojoExecutionException("Error executing Jacoco CLI", e);

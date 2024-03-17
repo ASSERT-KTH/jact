@@ -1,6 +1,6 @@
 package jact;
 
-import org.apache.maven.model.Dependency;
+import jact.plugin.XmlReportMojo;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -15,12 +15,13 @@ import java.io.File;
 import java.util.*;
 
 import static jact.PackageToDependencyResolver.packageToDepPaths;
+import static jact.plugin.AbstractReportMojo.*;
 
 public class JacocoXMLParser {
 
     public static final String REPORTPATH = "./target/jact-report/";
-    private static final String projId = HtmlReportMojo.getProjectGroupId() + ":" +
-            HtmlReportMojo.getProjectArtifactId() + ":" + HtmlReportMojo.getProjectVersion();
+    private static final String projId = getProjectGroupId() + ":" +
+            getProjectArtifactId() + ":" + getProjectVersion();
     private static ProjectDependency thisProject = new ProjectDependency();
 
 
@@ -38,7 +39,7 @@ public class JacocoXMLParser {
 
         try {
             // Load Jacoco XML report
-            File xmlFile = new File("jacoco_report.xml"); // Currently manually generated.
+            File xmlFile = new File(REPORTPATH + "jacoco_report.xml"); // Currently manually generated.
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             dbFactory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false); // Disable DTD validation
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -60,7 +61,7 @@ public class JacocoXMLParser {
                 String packageName = entry.getKey();
                 Document packageReport = entry.getValue();
                 String filename = packageName.replace("/", "-") + ".xml"; // Use package name for filename
-                writeXML(packageReport, "./xml_reports/" + filename);
+                writeXML(packageReport, REPORTPATH + "xml_reports/" + filename);
                 //System.out.println("filename: " + filename);
             }
 
@@ -69,7 +70,7 @@ public class JacocoXMLParser {
             e.printStackTrace();
         }
 
-        File reportDir = new File("./xml_reports");
+        File reportDir = new File(REPORTPATH + "xml_reports/");
 
         // Check if the directory exists
         if (reportDir.exists() && reportDir.isDirectory()) {

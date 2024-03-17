@@ -3,22 +3,18 @@ package jact.plugin;
 import jact.CommandExecutor;
 import jact.ProjectDependencies;
 import jact.ProjectDependency;
-import org.apache.maven.execution.MavenSession;
+
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
-import org.apache.maven.plugins.annotations.Parameter;
-import org.apache.maven.project.MavenProject;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.*;
 
-import static jact.JacocoHTMLAugmenter.createDependencyReports;
-import static jact.JacocoHTMLAugmenter.extractReportAndMoveDirs;
+import static jact.JacocoXMLParser.groupPackageByDep;
 
 
 /**
@@ -26,66 +22,15 @@ import static jact.JacocoHTMLAugmenter.extractReportAndMoveDirs;
  * dependencies along with their transitive dependencies.
  */
 @Mojo(name = "xml-report", defaultPhase = LifecyclePhase.INSTALL, threadSafe = false)
-public class XmlReportMojo extends AbstractMojo {
+public class XmlReportMojo extends AbstractReportMojo {
 
-    private static String hostOS;
-    private static String localRepoPath;
-    private static String projectGroupId;
-    private static String artifactId;
-    private static String version;
-    private static Map<String, Set<String>> packageClassMap = new HashMap<>();
-    @Parameter(property = "scope")
-    String scope;
-    /**
-     * Gives access to the Maven project information.
-     */
-    @Parameter(defaultValue = "${project}", required = true, readonly = true)
-    MavenProject project;
-    /**
-     * The Maven session.
-     */
-    @Parameter(defaultValue = "${session}", required = true, readonly = true)
-    private MavenSession session;
-
-    public static String getHostOS() {
-        return hostOS;
-    }
-
-    public static String getLocalRepoPath() {
-        return localRepoPath;
-    }
-
-    public static String getProjectGroupId() {
-        return projectGroupId;
-    }
-
-    public static String getProjectArtifactId() {
-        return artifactId;
-    }
-
-    public static String getProjectVersion() {
-        return version;
-    }
-
-    public static Map<String, Set<String>> getProjectPackagesAndClasses() {
-        return packageClassMap;
-    }
-
-    public void execute() throws MojoExecutionException, MojoFailureException {
-        String outputJarName = project.getBuild().getFinalName();
-        localRepoPath = session.getLocalRepository().getBasedir();
-        hostOS = session.getSystemProperties().getProperty("os.name").toLowerCase();
-        projectGroupId = project.getGroupId();
-        artifactId = project.getArtifactId();
-        version = project.getVersion();
-
-
-        // Collect class names and package names
-        collectClassNamesAndPackages();
+    @Override
+    public void doExecute() throws MojoExecutionException {
+        String outputJarName = getOutputJarName();
 
         // Print out packages and their classes
         getLog().info("Packages in project:");
-        for (Map.Entry<String, Set<String>> entry : packageClassMap.entrySet()) {
+        for (Map.Entry<String, Set<String>> entry : getProjectPackagesAndClasses().entrySet()) {
             getLog().info("- " + entry.getKey());
             for (String className : entry.getValue()) {
                 getLog().info("  - " + className);
@@ -112,36 +57,12 @@ public class XmlReportMojo extends AbstractMojo {
         }
 
         getLog().info("Creating the complete coverage report.");
-        cmdExec.executeJacocoCLI(outputJarName + "-shaded");
+        cmdExec.executeJacocoCLI(outputJarName + "-shaded", false);
 
         getLog().info("Organizing the complete coverage report.");
-        try {
-            extractReportAndMoveDirs(projectDependencies);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        createDependencyReports(projectDependencies);
-        getLog().info("JACT Report Successfully Generated!");
-    }
 
-    private void collectClassNamesAndPackages() {
-        String classesDirectory = project.getBuild().getOutputDirectory();
-        scanForClassesAndPackages(new File(classesDirectory), "");
-    }
+        groupPackageByDep(projectDependencies);
 
-    private void scanForClassesAndPackages(File directory, String parentPackage) {
-        for (File file : directory.listFiles()) {
-            if (file.isDirectory()) {
-                String currentPackage = parentPackage.isEmpty() ? file.getName() : parentPackage + "." + file.getName();
-                scanForClassesAndPackages(file, currentPackage);
-            } else if (file.getName().endsWith(".class")) {
-                // Extract package name from class file
-                String packageName = parentPackage.replace(File.separator, ".");
-                String className = file.getName().replace(".class", "");
-
-                // Store class name in package map
-                packageClassMap.computeIfAbsent(packageName, k -> new HashSet<>()).add(className);
-            }
-        }
+        getLog().info("JACT: XML Report Successfully Generated!");
     }
 }

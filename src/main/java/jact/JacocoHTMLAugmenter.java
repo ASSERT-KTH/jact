@@ -1,8 +1,5 @@
-package jact.html;
+package jact;
 
-import jact.DependencyUsage;
-import jact.PackageToDependencyResolver;
-import jact.ProjectDependency;
 import jact.plugin.HtmlReportMojo;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -15,12 +12,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static jact.DirectoryUtils.*;
+import static jact.plugin.AbstractReportMojo.*;
 
 public class JacocoHTMLAugmenter {
     public static final String REPORTPATH = "./target/jact-report/";
     public static final String jacocoResPath = REPORTPATH + "jacoco-resources";
-    private static final String projId = HtmlReportMojo.getProjectGroupId() + ":" +
-            HtmlReportMojo.getProjectArtifactId() + ":" + HtmlReportMojo.getProjectVersion();
+    private static final String projId = getProjectGroupId() + ":" +
+            getProjectArtifactId() + ":" + getProjectVersion();
     private static ProjectDependency thisProject = new ProjectDependency();
 
     public static void extractReportAndMoveDirs(List<ProjectDependency> dependencies) throws IOException {
@@ -57,7 +55,7 @@ public class JacocoHTMLAugmenter {
                     if (!dirName.equals("dependencies") && !dirName.equals("jacoco-resources")) {
                         ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(dirName, dependencies);
                         // Could become problematic if packages share name with packages in dependencies
-                        if (HtmlReportMojo.getProjectPackagesAndClasses().containsKey(dirName)) {
+                        if (getProjectPackagesAndClasses().containsKey(dirName)) {
                             extractAndAddPackageTotal(REPORTPATH + dirName +
                                     "/index.html", thisProject, dirName);
                             thisProject.addReportPath(REPORTPATH + dirName);

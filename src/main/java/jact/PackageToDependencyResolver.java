@@ -1,5 +1,7 @@
 package jact;
 
+import jact.plugin.HtmlReportMojo;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -7,6 +9,8 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 import static jact.JacocoHTMLAugmenter.REPORTPATH;
+import static jact.plugin.AbstractReportMojo.getLocalRepoPath;
+import static jact.plugin.AbstractReportMojo.getProjectPackagesAndClasses;
 
 public class PackageToDependencyResolver {
     /**
@@ -24,14 +28,14 @@ public class PackageToDependencyResolver {
         // List of dependencies along with their coordinates
 
         //List<ProjectDependency> currMatchedDeps = new ArrayList<>();
-        Map<String, Set<String>> projectPackages = HtmlReportMojo.getProjectPackagesAndClasses();
+        Map<String, Set<String>> projectPackages = getProjectPackagesAndClasses();
 
         boolean packageNameInProject = projectPackages.containsKey(packageName);
 
         //List<ProjectDependency> dependencies = ProjectDependencies.getAllProjectDependencies();
 
         // Directory where your Maven dependencies are stored
-        String mavenRepositoryDir = HtmlReportMojo.getLocalRepoPath();
+        String mavenRepositoryDir = getLocalRepoPath();
 
         ProjectDependency matchedDep = new ProjectDependency();
 
