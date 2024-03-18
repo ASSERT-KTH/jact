@@ -12,15 +12,15 @@ public class ProjectDependencies {
 
     public static List<ProjectDependency> projectDependencies = new ArrayList<>();
 
-    public static List<ProjectDependency> getAllProjectDependencies() {
+    public static List<ProjectDependency> getAllProjectDependencies(CommandExecutor cmdExec) {
         if (projectDependencies.isEmpty()) {
-            generateAllProjectDependencies();
+            generateAllProjectDependencies(cmdExec);
         }
         return projectDependencies;
     }
 
-    private static void generateAllProjectDependencies() {
-        CommandExecutor.generateDependencyLockfile();
+    private static void generateAllProjectDependencies(CommandExecutor cmdExec) {
+        cmdExec.generateDependencyLockfile();
         String filePath = "./target/jact-report/lockfile.json"; // Path to the JSON file
         try (FileReader reader = new FileReader(filePath)) {
             Gson gson = new GsonBuilder().registerTypeAdapter(ProjectDependency.class, new ProjectDependencyDeserializer()).create();

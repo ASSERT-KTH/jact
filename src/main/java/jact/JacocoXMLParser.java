@@ -20,17 +20,11 @@ import static jact.plugin.AbstractReportMojo.*;
 public class JacocoXMLParser {
 
     public static final String REPORTPATH = "./target/jact-report/";
-    private static final String projId = getProjectGroupId() + ":" +
-            getProjectArtifactId() + ":" + getProjectVersion();
     private static ProjectDependency thisProject = new ProjectDependency();
 
-
-    public static void main(String[] args){
-        List<ProjectDependency> pdList = new ArrayList<>();
-        groupPackageByDep(pdList);
-    }
-
-    public static void groupPackageByDep(List<ProjectDependency> dependencies) {
+    public static void groupPackageByDep(List<ProjectDependency> dependencies,
+                                         Map<String, Set<String>> projPackagesAndClassMap,
+                                         String localRepoPath, String projId){
         thisProject.setId(projId);
 
         // If the package-name contains artifactid + groupid then put that in its own report
@@ -83,7 +77,7 @@ public class JacocoXMLParser {
                     String filename = file.getName().replaceAll("\\.xml$", "");
                     System.out.println(filename);
                     // Call your function with the filename
-                    ProjectDependency matchedDep = packageToDepPaths(filename, dependencies);
+                    ProjectDependency matchedDep = packageToDepPaths(filename, dependencies, projPackagesAndClassMap, localRepoPath);
                     System.out.println(matchedDep.getId());
                 }
             } else {

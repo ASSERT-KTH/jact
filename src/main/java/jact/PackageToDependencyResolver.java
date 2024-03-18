@@ -9,8 +9,6 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 import static jact.JacocoHTMLAugmenter.REPORTPATH;
-import static jact.plugin.AbstractReportMojo.getLocalRepoPath;
-import static jact.plugin.AbstractReportMojo.getProjectPackagesAndClasses;
 
 public class PackageToDependencyResolver {
     /**
@@ -24,18 +22,15 @@ public class PackageToDependencyResolver {
     // Handle the scenario where two or more packages have the same name:
 
 
-    public static ProjectDependency packageToDepPaths(String packageName, List<ProjectDependency> dependencies) {
+    public static ProjectDependency packageToDepPaths(String packageName, List<ProjectDependency> dependencies,
+                                                      Map<String, Set<String>> projPackagesAndClassMap, String localRepoPath) {
         // List of dependencies along with their coordinates
 
         //List<ProjectDependency> currMatchedDeps = new ArrayList<>();
-        Map<String, Set<String>> projectPackages = getProjectPackagesAndClasses();
-
-        boolean packageNameInProject = projectPackages.containsKey(packageName);
+        boolean packageNameInProject = projPackagesAndClassMap.containsKey(packageName);
 
         //List<ProjectDependency> dependencies = ProjectDependencies.getAllProjectDependencies();
 
-        // Directory where your Maven dependencies are stored
-        String mavenRepositoryDir = getLocalRepoPath();
 
         ProjectDependency matchedDep = new ProjectDependency();
 
@@ -51,7 +46,7 @@ public class PackageToDependencyResolver {
             String version = dependency.getVersion();
 
             // Construct the path to the JAR file
-            String jarFilePath = mavenRepositoryDir + "/" + groupId.replace('.', '/') +
+            String jarFilePath = localRepoPath + "/" + groupId.replace('.', '/') +
                     "/" + artifactId + "/" + version + "/" + artifactId + "-" + version + ".jar";
             File jarFile = new File(jarFilePath);
 

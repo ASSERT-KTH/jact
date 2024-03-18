@@ -2,6 +2,7 @@ package jact;
 
 import jact.plugin.AbstractReportMojo;
 import jact.plugin.HtmlReportMojo;
+import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 
 import java.io.*;
@@ -13,6 +14,11 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
 public class CommandExecutor {
+    public String hostOS;
+
+    public CommandExecutor(String hostOS){
+        this.hostOS = hostOS;
+    }
 
     public static void copyJacocoCliJar() throws IOException, URISyntaxException {
         // Get the path to the plugin JAR file
@@ -81,16 +87,16 @@ public class CommandExecutor {
         System.out.println("PNG image copied successfully to: " + destinationPath);
     }
 
-    public static void generateDependencyLockfile() {
+    public void generateDependencyLockfile() {
         try {
             // Command to be executed
             String command = "mvn io.github.chains-project:maven-lockfile:generate -Dreduced=true";
 
             // Adapts the command based on OS:
             ProcessBuilder processBuilder;
-            if (getHostOS().contains("linux")) {
+            if (this.hostOS.contains("linux")) {
                 processBuilder = new ProcessBuilder("/bin/bash", "-c", command);
-            } else if (getHostOS().contains("windows")) {
+            } else if (this.hostOS.contains("windows")) {
                 processBuilder = new ProcessBuilder("cmd", "/c", command); // For Windows
             } else {
                 // No support for MacOS currently
@@ -163,9 +169,9 @@ public class CommandExecutor {
 
             // Adapts the command based on OS:
             ProcessBuilder processBuilder;
-            if (getHostOS().contains("linux")) {
+            if (hostOS.contains("linux")) {
                 processBuilder = new ProcessBuilder("/bin/bash", "-c", command);
-            } else if (getHostOS().contains("windows")) {
+            } else if (hostOS.contains("windows")) {
                 processBuilder = new ProcessBuilder("cmd", "/c", command); // For Windows
             } else {
                 // No support for MacOS currently

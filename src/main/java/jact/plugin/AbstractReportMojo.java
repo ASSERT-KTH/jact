@@ -69,6 +69,10 @@ public abstract class AbstractReportMojo extends AbstractMojo {
         return packageClassMap;
     }
 
+    public String getProjId(){
+        return getProjectGroupId() + ":" + getProjectArtifactId() + ":" + getProjectVersion();
+    }
+
     /**
      * Skip plugin execution completely.
      */

@@ -8,6 +8,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,11 +18,12 @@ import static jact.plugin.AbstractReportMojo.*;
 public class JacocoHTMLAugmenter {
     public static final String REPORTPATH = "./target/jact-report/";
     public static final String jacocoResPath = REPORTPATH + "jacoco-resources";
-    private static final String projId = getProjectGroupId() + ":" +
-            getProjectArtifactId() + ":" + getProjectVersion();
     private static ProjectDependency thisProject = new ProjectDependency();
 
-    public static void extractReportAndMoveDirs(List<ProjectDependency> dependencies) throws IOException {
+    public static void extractReportAndMoveDirs(List<ProjectDependency> dependencies,
+                                                Map<String, Set<String>> projPackagesAndClassMap,
+                                                String localRepoPath, String projId) throws IOException {
+
         thisProject.setId(projId);
         // Create a directory for the dependency coverage
         createDir(REPORTPATH + "dependencies");
@@ -53,9 +55,9 @@ public class JacocoHTMLAugmenter {
                     String dirName = directory.getName();
                     //boolean packageDir = CompleteCoverageMojo.projGroupIdSet.stream().allMatch(dirName::contains);
                     if (!dirName.equals("dependencies") && !dirName.equals("jacoco-resources")) {
-                        ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(dirName, dependencies);
+                        ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(dirName, dependencies, projPackagesAndClassMap, localRepoPath);
                         // Could become problematic if packages share name with packages in dependencies
-                        if (getProjectPackagesAndClasses().containsKey(dirName)) {
+                        if (projPackagesAndClassMap.containsKey(dirName)) {
                             extractAndAddPackageTotal(REPORTPATH + dirName +
                                     "/index.html", thisProject, dirName);
                             thisProject.addReportPath(REPORTPATH + dirName);

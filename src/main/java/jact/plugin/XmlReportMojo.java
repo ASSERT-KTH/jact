@@ -42,9 +42,10 @@ public class XmlReportMojo extends AbstractReportMojo {
         getLog().info("JARNAME: " + outputJarName + "-shaded");
         //String outputDirectory = project.getBuild().getOutputDirectory();
 
-        List<ProjectDependency> projectDependencies = ProjectDependencies.getAllProjectDependencies();
 
-        CommandExecutor cmdExec = new CommandExecutor();
+
+        CommandExecutor cmdExec = new CommandExecutor(getHostOS());
+        List<ProjectDependency> projectDependencies = ProjectDependencies.getAllProjectDependencies(cmdExec);
 
         // Execute JaCoCoCLI to create the report WITH dependencies
         getLog().info("Copying the `jacococli.jar` to the project.");
@@ -61,7 +62,7 @@ public class XmlReportMojo extends AbstractReportMojo {
 
         getLog().info("Organizing the complete coverage report.");
 
-        groupPackageByDep(projectDependencies);
+        groupPackageByDep(projectDependencies, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
 
         getLog().info("JACT: XML Report Successfully Generated!");
     }

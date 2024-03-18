@@ -46,9 +46,11 @@ public class HtmlReportMojo extends AbstractReportMojo {
         getLog().info("JARNAME: " + outputJarName + "-shaded");
         //String outputDirectory = project.getBuild().getOutputDirectory();
 
-        List<ProjectDependency> projectDependencies = ProjectDependencies.getAllProjectDependencies();
 
-        CommandExecutor cmdExec = new CommandExecutor();
+
+        CommandExecutor cmdExec = new CommandExecutor(getHostOS());
+
+        List<ProjectDependency> projectDependencies = ProjectDependencies.getAllProjectDependencies(cmdExec);
 
         // Execute JaCoCoCLI to create the report WITH dependencies
         getLog().info("Copying the `jacococli.jar` to the project.");
@@ -65,7 +67,7 @@ public class HtmlReportMojo extends AbstractReportMojo {
 
         getLog().info("Organizing the complete coverage report.");
         try {
-            extractReportAndMoveDirs(projectDependencies);
+            extractReportAndMoveDirs(projectDependencies, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
