@@ -77,6 +77,7 @@ public class JacocoXMLParser {
                     String filename = file.getName().replaceAll("\\.xml$", "");
                     System.out.println(filename);
                     // Call your function with the filename
+                    filename = filename.replace("-", ".");
                     ProjectDependency matchedDep = packageToDepPaths(filename, dependencies, projPackagesAndClassMap, localRepoPath);
                     System.out.println(matchedDep.getId());
                 }
