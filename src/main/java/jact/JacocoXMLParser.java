@@ -4,6 +4,7 @@ import jact.plugin.XmlReportMojo;
 import org.jsoup.Jsoup;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -19,6 +20,13 @@ import java.util.*;
 import static jact.PackageToDependencyResolver.packageToDepPaths;
 
 public class JacocoXMLParser {
+    /*
+    TODO:
+        - Fix classnames
+        - Write the complete XML report
+     */
+    ProjectDependency dependencyUsage = new ProjectDependency();
+    ProjectDependency projectUsage = new ProjectDependency();
 
     public static final String REPORTPATH = "./target/jact-report/";
     private static ProjectDependency thisProject = new ProjectDependency();
@@ -28,13 +36,10 @@ public class JacocoXMLParser {
                                          String localRepoPath, String projId){
         thisProject.setId(projId);
 
-        // If the package-name contains artifactid + groupid then put that in its own report
-        //List<String> depWords = new ArrayList<>();
-
 
         try {
             // Load Jacoco XML report
-            File xmlFile = new File(REPORTPATH + "jacoco_report.xml"); // Currently manually generated.
+            File xmlFile = new File(REPORTPATH + "jacoco_report.xml");
 
             // Disable DTD validation
             System.setProperty("javax.xml.parsers.DocumentBuilderFactory", "com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl");
@@ -88,6 +93,8 @@ public class JacocoXMLParser {
                     filename = filename.replace("-", ".");
                     ProjectDependency matchedDep = packageToDepPaths(filename, dependencies, projPackagesAndClassMap, localRepoPath);
                     //System.out.println(matchedDep.getId());
+                    //extractUsage()
+                    extractCounterValues(REPORTPATH + "xml_reports/" + file.getName());
 
                     // Add the dependency usage to each matched dependency.
                     // Create templates or a way to write the xml package to the report.
@@ -101,6 +108,94 @@ public class JacocoXMLParser {
         }
 
     }
+
+    public static void extractCounterValues(String inputFilePath) {
+        try {
+            // Parse the XML file
+            File inputFile = new File(inputFilePath);
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(inputFile);
+            doc.getDocumentElement().normalize();
+
+            // Get the <package> nodes
+            NodeList packageNodes = doc.getElementsByTagName("package");
+            for (int i = 0; i < packageNodes.getLength(); i++) {
+                Element packageElement = (Element) packageNodes.item(i);
+                // Get the child nodes of the package
+                NodeList childNodes = packageElement.getChildNodes();
+                for (int j = 0; j < childNodes.getLength(); j++) {
+                    if (childNodes.item(j).getNodeType() == Node.ELEMENT_NODE) {
+                        Element childElement = (Element) childNodes.item(j);
+                        // Check if the child element is a counter
+                        if (childElement.getNodeName().equals("counter")) {
+                            // Extract the attributes and call a function with the values
+                            String type = childElement.getAttribute("type");
+                            int missed = Integer.parseInt(childElement.getAttribute("missed"));
+                            int covered = Integer.parseInt(childElement.getAttribute("covered"));
+                            processCounterValues(type, missed, covered);
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private static void processCounterValues(String type, int missed, int covered) {
+        // Process the counter values here
+        System.out.println("Type: " + type + ", Missed: " + missed + ", Covered: " + covered);
+        // You can call other functions or perform any other operations as needed
+    }
+
+
+//    public static void extractAndAddUsage(String inputFilePath, ProjectDependency matchedDep) throws IOException{
+//
+//    }
+//
+//
+//    // There are 6 cases
+//    private static void extractUsage(String line, int entryIndex, ProjectDependency matchedDep, DependencyUsage packageUsage) {
+//        switch (entryIndex) {
+//            case 1:
+//                // Missed and Covered instructions
+//                long[] instrUsage = extractBranchNInstrUsage(line);
+//                matchedDep.dependencyUsage.addMissedInstructions(instrUsage[0]);
+//                matchedDep.dependencyUsage.addTotalInstructions(instrUsage[1]);
+//                packageUsage.addMissedInstructions(instrUsage[0]);
+//                packageUsage.addTotalInstructions(instrUsage[1]);
+//                break;
+//            case 2:
+//                // Percentage (Don't care about this now)
+//                break;
+//            case 3:
+//                // Missed and Covered Branches
+//                long[] branchUsage = extractBranchNInstrUsage(line);
+//                matchedDep.dependencyUsage.addMissedBranches(branchUsage[0]);
+//                matchedDep.dependencyUsage.addTotalBranches(branchUsage[1]);
+//                packageUsage.addMissedBranches(branchUsage[0]);
+//                packageUsage.addTotalBranches(branchUsage[1]);
+//                break;
+//            case 4:
+//                // Percentage (Don't care about this now)
+//                break;
+//            case 5:
+//                // Missed cyclomatic complexity
+//                matchedDep.dependencyUsage.addMissedCyclomaticComplexity(extractUsageNumber(line));
+//                packageUsage.addMissedCyclomaticComplexity(extractUsageNumber(line));
+//                break;
+//            case 6:
+//                // Covered cyclomatic complexity
+//                matchedDep.dependencyUsage.addCyclomaticComplexity(extractUsageNumber(line));
+//                packageUsage.addCyclomaticComplexity(extractUsageNumber(line));
+//                break;
+//            default:
+//                System.out.println("Could not extract usage of line: " + line);
+//        }
+//    }
+
 
 //    public static void extractAndAddPackageTotal(String inputFilePath, ProjectDependency matchedDep, String packageName) throws IOException {
 //        try {
