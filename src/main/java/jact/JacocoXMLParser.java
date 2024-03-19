@@ -13,10 +13,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 import static jact.PackageToDependencyResolver.packageToDepPaths;
@@ -66,7 +63,7 @@ public class JacocoXMLParser {
                 String packageName = entry.getKey();
                 Document packageReport = entry.getValue();
                 String filename = packageName.replace("/", "-") + ".xml"; // Use package name for filename
-                writePackageXMLReport(packageReport, REPORTPATH + "xml_reports/" + filename);
+                writeXML(packageReport, REPORTPATH + "xml_reports/" + filename);
                 //System.out.println("filename: " + filename);
             }
 
@@ -175,7 +172,7 @@ public class JacocoXMLParser {
         return doc;
     }
 
-    private static void writePackageXMLReport(Document doc, String outputPath) throws Exception {
+    private static void writeXML(Document doc, String outputPath) throws Exception {
         File outputFile = new File(outputPath);
         File parentDir = outputFile.getParentFile();
 
@@ -184,43 +181,24 @@ public class JacocoXMLParser {
             throw new IllegalStateException("Couldn't create directory: " + parentDir);
         }
 
-        // Format the XML
-        Document formattedDoc = formatXmlPackageReport(doc);
-
-        // Write the formatted XML to the file
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
-
-        // Set indentation properties
-        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4"); // Indentation size
-
-        DOMSource source = new DOMSource(formattedDoc);
+        DOMSource source = new DOMSource(doc);
         StreamResult result = new StreamResult(outputFile);
         transformer.transform(source, result);
 
-        //System.out.println("Formatted XML has been written to: " + outputFile.getAbsolutePath());
-    }
 
-    private static Document formatXmlPackageReport(Document doc) throws Exception {
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = transformerFactory.newTransformer();
+        // Disable DTD validation
+        System.setProperty("javax.xml.parsers.DocumentBuilderFactory", "com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl");
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        dbFactory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
 
-        // Set indentation properties
-        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4"); // Indentation size
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        Document formattedDoc = dBuilder.parse(outputFile);
+        formattedDoc.getDocumentElement().normalize();
 
-        // Write the DOM document to a new DOMSource to perform the formatting
-        DOMSource source = new DOMSource(doc);
-        StreamResult result = new StreamResult(new java.io.StringWriter());
-        transformer.transform(source, result);
-
-        // Parse the formatted XML back to a new Document
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
-        DocumentBuilder builder = factory.newDocumentBuilder();
-        java.io.ByteArrayInputStream input = new java.io.ByteArrayInputStream(result.getWriter().toString().getBytes());
-        return builder.parse(input);
+        // Format and overwrite the XML file
+        formatXml(outputFile, formattedDoc);
     }
 
     private static void formatXml(File file, Document doc) throws Exception {
