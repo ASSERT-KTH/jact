@@ -116,8 +116,8 @@ public class JacocoXMLParser {
             System.out.println("Directory does not exist or is not a directory.");
         }
 
-        System.out.println("PROJECT USAGE TOTAL: " + projectUsage.totalUsageToHTML());
-        System.out.println("DEPENDENCY USAGE TOTAL: " + dependencyUsage.totalUsageToHTML());
+        System.out.println("PROJECT USAGE TOTAL: " + projectUsage.totalUsageToXML());
+        System.out.println("DEPENDENCY USAGE TOTAL: " + dependencyUsage.totalUsageToXML());
     }
 
     public static void extractCounterValues(String inputFilePath, ProjectDependency matchedDep, DependencyUsage usage) {

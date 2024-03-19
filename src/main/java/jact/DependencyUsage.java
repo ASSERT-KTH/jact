@@ -199,4 +199,23 @@ public class DependencyUsage {
         return htmlString;
     }
 
+    public String totalUsageToXML(){
+        long coveredInstructions = this.getTotalInstructions() - this.getMissedInstructions();
+        long coveredBranches = this.getTotalBranches() - this.getMissedBranches();
+        long coveredLines = this.getTotalLines() - this.getMissedLines();
+        long coveredCyclomaticComplexity = this.getCyclomaticComplexity() - this.getMissedCyclomaticComplexity();
+        long coveredMethods = this.getTotalMethods() - this.getMissedMethods();
+        long coveredClasses = this.getTotalClasses() - this.getMissedClasses();
+
+        String xmlString =
+                "<counter covered=\""+coveredInstructions+"\" missed=\""+ this.getMissedInstructions() +"\" type=\"INSTRUCTION\"/>\n" +
+                "<counter covered=\""+coveredBranches+"\" missed=\""+ this.getMissedBranches() +"\" type=\"BRANCH\"/>\n" +
+                "<counter covered=\""+coveredLines+"\" missed=\""+ this.getMissedLines() +"\" type=\"LINE\"/>\n" +
+                "<counter covered=\""+coveredCyclomaticComplexity+"\" missed=\""+ this.getMissedCyclomaticComplexity() +"\" type=\"COMPLEXITY\"/>\n" +
+                "<counter covered=\""+coveredMethods+"\" missed=\""+ this.getMissedMethods() +"\" type=\"METHOD\"/>\n" +
+                "<counter covered=\""+coveredClasses+"\" missed=\""+ this.getMissedClasses() +"\" type=\"CLASS\"/>";
+
+        return xmlString;
+    }
+
 }
