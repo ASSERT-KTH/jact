@@ -25,8 +25,8 @@ public class JacocoXMLParser {
         - Fix classnames
         - Write the complete XML report
      */
-    ProjectDependency dependencyUsage = new ProjectDependency();
-    ProjectDependency projectUsage = new ProjectDependency();
+    public static DependencyUsage dependencyUsage = new DependencyUsage();
+    public static DependencyUsage projectUsage = new DependencyUsage();
 
     public static final String REPORTPATH = "./target/jact-report/";
     private static ProjectDependency thisProject = new ProjectDependency();
@@ -72,7 +72,7 @@ public class JacocoXMLParser {
                 //System.out.println("filename: " + filename);
             }
 
-            System.out.println("Separate XML reports created for each package in the current directory.");
+            //System.out.println("Separate XML reports created for each package in the current directory.");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -94,7 +94,16 @@ public class JacocoXMLParser {
                     ProjectDependency matchedDep = packageToDepPaths(filename, dependencies, projPackagesAndClassMap, localRepoPath);
                     //System.out.println(matchedDep.getId());
                     //extractUsage()
-                    extractCounterValues(REPORTPATH + "xml_reports/" + file.getName());
+
+                    // It needs to add to either the dependencyUsage or the project usage,
+                    // If the matched dependency is a project package then
+                    if(matchedDep.getId() != null){
+                        // We know the package comes from a dependency
+                        extractCounterValues(REPORTPATH + "xml_reports/" + file.getName(), matchedDep, dependencyUsage);
+                    }else{
+                        extractCounterValues(REPORTPATH + "xml_reports/" + file.getName(), matchedDep, projectUsage);
+                    }
+
 
                     // Add the dependency usage to each matched dependency.
                     // Create templates or a way to write the xml package to the report.
@@ -107,9 +116,11 @@ public class JacocoXMLParser {
             System.out.println("Directory does not exist or is not a directory.");
         }
 
+        System.out.println("PROJECT USAGE TOTAL: " + projectUsage.totalUsageToHTML());
+        System.out.println("DEPENDENCY USAGE TOTAL: " + dependencyUsage.totalUsageToHTML());
     }
 
-    public static void extractCounterValues(String inputFilePath) {
+    public static void extractCounterValues(String inputFilePath, ProjectDependency matchedDep, DependencyUsage usage) {
         try {
             // Parse the XML file
             File inputFile = new File(inputFilePath);
@@ -131,9 +142,9 @@ public class JacocoXMLParser {
                         if (childElement.getNodeName().equals("counter")) {
                             // Extract the attributes and call a function with the values
                             String type = childElement.getAttribute("type");
-                            int missed = Integer.parseInt(childElement.getAttribute("missed"));
-                            int covered = Integer.parseInt(childElement.getAttribute("covered"));
-                            processCounterValues(type, missed, covered);
+                            long missed = Integer.parseInt(childElement.getAttribute("missed"));
+                            long covered = Integer.parseInt(childElement.getAttribute("covered"));
+                            processCounterValues(type, missed, covered, matchedDep, usage);
                         }
                     }
                 }
@@ -144,10 +155,66 @@ public class JacocoXMLParser {
         }
     }
 
-    private static void processCounterValues(String type, int missed, int covered) {
+    private static void processCounterValues(String type, long missed, long covered, ProjectDependency matchedDep, DependencyUsage usage) {
         // Process the counter values here
-        System.out.println("Type: " + type + ", Missed: " + missed + ", Covered: " + covered);
+        //System.out.println("Type: " + type + ", Missed: " + missed + ", Covered: " + covered);
         // You can call other functions or perform any other operations as needed
+
+        // Add the total here!
+        switch (type){
+            case "INSTRUCTION":
+                // do stuff
+                matchedDep.dependencyUsage.addMissedInstructions(missed);
+                matchedDep.dependencyUsage.addTotalInstructions(missed + covered);
+                usage.addMissedInstructions(missed);
+                usage.addTotalInstructions(missed + covered);
+                break;
+            case "BRANCH":
+                // do stuff
+                matchedDep.dependencyUsage.addMissedBranches(missed);
+                matchedDep.dependencyUsage.addTotalBranches(missed + covered);
+                usage.addMissedBranches(missed);
+                usage.addTotalBranches(missed + covered);
+                break;
+            case "LINE":
+                // do stuff
+                matchedDep.dependencyUsage.addMissedLines(missed);
+                matchedDep.dependencyUsage.addTotalLines(missed + covered);
+                usage.addMissedLines(missed);
+                usage.addTotalLines(missed + covered);
+                break;
+            case "COMPLEXITY":
+                // do stuff
+                matchedDep.dependencyUsage.addMissedCyclomaticComplexity(missed);
+                matchedDep.dependencyUsage.addCyclomaticComplexity(missed + covered);
+                usage.addMissedCyclomaticComplexity(missed);
+                usage.addCyclomaticComplexity(missed + covered);
+                break;
+            case "METHOD":
+                // do stuff
+                matchedDep.dependencyUsage.addMissedMethods(missed);
+                matchedDep.dependencyUsage.addTotalMethods(missed + covered);
+                usage.addMissedMethods(missed);
+                usage.addTotalMethods(missed + covered);
+                break;
+            case "CLASS":
+                // do stuff
+                matchedDep.dependencyUsage.addMissedClasses(missed);
+                matchedDep.dependencyUsage.addTotalClasses(missed + covered);
+                usage.addMissedClasses(missed);
+                usage.addTotalClasses(missed + covered);
+                break;
+            default:
+                System.out.println("Could not match usage type with parsed type: " + type);
+        }
+        /*
+        Type: INSTRUCTION, Missed: 11506, Covered: 2209
+        Type: BRANCH, Missed: 1717, Covered: 202
+        Type: LINE, Missed: 2839, Covered: 745
+        Type: COMPLEXITY, Missed: 1401, Covered: 204
+        Type: METHOD, Missed: 463, Covered: 146
+        Type: CLASS,
+         */
     }
 
 
@@ -309,7 +376,7 @@ public class JacocoXMLParser {
         StreamResult result = new StreamResult(file);
         transformer.transform(source, result);
 
-        System.out.println("Formatted XML has been written to: " + file.getAbsolutePath());
+        //System.out.println("Formatted XML has been written to: " + file.getAbsolutePath());
     }
 
 

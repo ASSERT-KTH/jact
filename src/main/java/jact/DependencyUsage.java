@@ -85,11 +85,11 @@ public class DependencyUsage {
         return this.missedLines;
     }
 
-    public void addCoveredLines(long clines) {
+    public void addTotalLines(long clines) {
         this.lines += clines;
     }
 
-    public long getCoveredLines() {
+    public long getTotalLines() {
         return this.lines;
     }
 
@@ -101,11 +101,11 @@ public class DependencyUsage {
         return this.missedMethods;
     }
 
-    public void addCoveredMethods(long cMethods) {
+    public void addTotalMethods(long cMethods) {
         this.methods += cMethods;
     }
 
-    public long getCoveredMethods() {
+    public long getTotalMethods() {
         return this.methods;
     }
 
@@ -117,11 +117,11 @@ public class DependencyUsage {
         return this.missedClasses;
     }
 
-    public void addCoveredClasses(long cClasses) {
+    public void addTotalClasses(long cClasses) {
         this.classes += cClasses;
     }
 
-    public long getCoveredClasses() {
+    public long getTotalClasses() {
         return this.classes;
     }
 
@@ -133,11 +133,11 @@ public class DependencyUsage {
         this.addMissedCyclomaticComplexity(depUsage.getMissedCyclomaticComplexity());
         this.addCyclomaticComplexity(depUsage.getCyclomaticComplexity());
         this.addMissedLines(depUsage.getMissedLines());
-        this.addCoveredLines(depUsage.getCoveredLines());
+        this.addTotalLines(depUsage.getTotalLines());
         this.addMissedMethods(depUsage.getMissedMethods());
-        this.addCoveredMethods(depUsage.getCoveredMethods());
+        this.addTotalMethods(depUsage.getTotalMethods());
         this.addMissedClasses(depUsage.getMissedClasses());
-        this.addCoveredClasses(depUsage.getCoveredClasses());
+        this.addTotalClasses(depUsage.getTotalClasses());
     }
 
     public String usageToHTML(String dependencyDirName, DependencyUsage total, Boolean isPackage) {
@@ -169,11 +169,11 @@ public class DependencyUsage {
                 "    <td class=\"ctr1\" id=\"f2\">" + String.format("%,d", this.getMissedCyclomaticComplexity()) + "</td>\n" +
                 "    <td class=\"ctr2\" id=\"g2\">" + String.format("%,d", this.getCyclomaticComplexity()) + "</td>\n" +
                 "    <td class=\"ctr1\" id=\"h2\">" + String.format("%,d", this.getMissedLines()) + "</td>\n" +
-                "    <td class=\"ctr2\" id=\"i2\">" + String.format("%,d", this.getCoveredLines()) + "</td>\n" +
+                "    <td class=\"ctr2\" id=\"i2\">" + String.format("%,d", this.getTotalLines()) + "</td>\n" +
                 "    <td class=\"ctr1\" id=\"j1\">" + String.format("%,d", this.getMissedMethods()) + "</td>\n" +
-                "    <td class=\"ctr2\" id=\"k1\">" + String.format("%,d", this.getCoveredMethods()) + "</td>\n" +
+                "    <td class=\"ctr2\" id=\"k1\">" + String.format("%,d", this.getTotalMethods()) + "</td>\n" +
                 "    <td class=\"ctr1\" id=\"l13\">" + String.format("%,d", this.getMissedClasses()) + "</td>\n" +
-                "    <td class=\"ctr2\" id=\"m11\">" + String.format("%,d", this.getCoveredClasses()) + "</td>\n" +
+                "    <td class=\"ctr2\" id=\"m11\">" + String.format("%,d", this.getTotalClasses()) + "</td>\n" +
                 "</tr>\n";
         return htmlString;
     }
@@ -190,11 +190,11 @@ public class DependencyUsage {
                 "    <td class=\"ctr1\" id=\"f2\">" + String.format("%,d", this.getMissedCyclomaticComplexity()) + "</td>\n" +
                 "    <td class=\"ctr2\" id=\"g2\">" + String.format("%,d", this.getCyclomaticComplexity()) + "</td>\n" +
                 "    <td class=\"ctr1\" id=\"h2\">" + String.format("%,d", this.getMissedLines()) + "</td>\n" +
-                "    <td class=\"ctr2\" id=\"i2\">" + String.format("%,d", this.getCoveredLines()) + "</td>\n" +
+                "    <td class=\"ctr2\" id=\"i2\">" + String.format("%,d", this.getTotalLines()) + "</td>\n" +
                 "    <td class=\"ctr1\" id=\"j1\">" + String.format("%,d", this.getMissedMethods()) + "</td>\n" +
-                "    <td class=\"ctr2\" id=\"k1\">" + String.format("%,d", this.getCoveredMethods()) + "</td>\n" +
+                "    <td class=\"ctr2\" id=\"k1\">" + String.format("%,d", this.getTotalMethods()) + "</td>\n" +
                 "    <td class=\"ctr1\" id=\"l13\">" + String.format("%,d", this.getMissedClasses()) + "</td>\n" +
-                "    <td class=\"ctr2\" id=\"m11\">" + String.format("%,d", this.getCoveredClasses()) + "</td>\n" +
+                "    <td class=\"ctr2\" id=\"m11\">" + String.format("%,d", this.getTotalClasses()) + "</td>\n" +
                 "</tr>\n";
         return htmlString;
     }

@@ -419,8 +419,8 @@ public class JacocoHTMLAugmenter {
                 break;
             case 8:
                 // Covered Lines
-                matchedDep.dependencyUsage.addCoveredLines(extractUsageNumber(line));
-                packageUsage.addCoveredLines(extractUsageNumber(line));
+                matchedDep.dependencyUsage.addTotalLines(extractUsageNumber(line));
+                packageUsage.addTotalLines(extractUsageNumber(line));
                 break;
             case 9:
                 // Missed Methods
@@ -429,8 +429,8 @@ public class JacocoHTMLAugmenter {
                 break;
             case 10:
                 // Covered Methods
-                matchedDep.dependencyUsage.addCoveredMethods(extractUsageNumber(line));
-                packageUsage.addCoveredMethods(extractUsageNumber(line));
+                matchedDep.dependencyUsage.addTotalMethods(extractUsageNumber(line));
+                packageUsage.addTotalMethods(extractUsageNumber(line));
                 break;
             case 11:
                 // Missed Classes
@@ -439,8 +439,8 @@ public class JacocoHTMLAugmenter {
                 break;
             case 12:
                 // Covered Classes
-                matchedDep.dependencyUsage.addCoveredClasses(extractUsageNumber(line));
-                packageUsage.addCoveredClasses(extractUsageNumber(line));
+                matchedDep.dependencyUsage.addTotalClasses(extractUsageNumber(line));
+                packageUsage.addTotalClasses(extractUsageNumber(line));
                 break;
             default:
                 System.out.println("Could not extract usage of line: " + line);
