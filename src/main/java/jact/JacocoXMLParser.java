@@ -1,7 +1,5 @@
 package jact;
 
-import jact.plugin.XmlReportMojo;
-import org.jsoup.Jsoup;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -22,7 +20,6 @@ import static jact.PackageToDependencyResolver.packageToDepPaths;
 public class JacocoXMLParser {
     /*
     TODO:
-        - Fix classnames
         - Write the complete XML report
      */
     public static DependencyUsage dependencyUsage = new DependencyUsage();
@@ -99,9 +96,10 @@ public class JacocoXMLParser {
                     // If the matched dependency is a project package then
                     if(matchedDep.getId() != null){
                         // We know the package comes from a dependency
-                        extractCounterValues(REPORTPATH + "xml_reports/" + file.getName(), matchedDep, dependencyUsage);
+                        extractCounterValues(REPORTPATH + "xml_reports/" + file.getName(), matchedDep, dependencyUsage, file.getName());
                     }else{
-                        extractCounterValues(REPORTPATH + "xml_reports/" + file.getName(), matchedDep, projectUsage);
+                        extractCounterValues(REPORTPATH + "xml_reports/" + file.getName(), matchedDep, projectUsage, file.getName());
+
                     }
 
 
@@ -120,7 +118,25 @@ public class JacocoXMLParser {
         System.out.println("DEPENDENCY USAGE TOTAL: " + dependencyUsage.totalUsageToXML());
     }
 
-    public static void extractCounterValues(String inputFilePath, ProjectDependency matchedDep, DependencyUsage usage) {
+    public static void writeCompleteReport(List<ProjectDependency> dependencies){
+        // Iterate through all the dependencies, get their package reports
+        // and write them.
+
+        for(ProjectDependency pd : dependencies){
+            // Write each package from that dependency.
+        }
+
+        // Write the total for all the dependencies
+
+        // Go through the project packages and write them
+
+        // Write the total for all the project packages
+
+        //
+    }
+
+
+    public static void extractCounterValues(String inputFilePath, ProjectDependency matchedDep, DependencyUsage usage, String packageName) {
         try {
             // Parse the XML file
             File inputFile = new File(inputFilePath);
@@ -142,9 +158,14 @@ public class JacocoXMLParser {
                         if (childElement.getNodeName().equals("counter")) {
                             // Extract the attributes and call a function with the values
                             String type = childElement.getAttribute("type");
-                            long missed = Integer.parseInt(childElement.getAttribute("missed"));
-                            long covered = Integer.parseInt(childElement.getAttribute("covered"));
-                            processCounterValues(type, missed, covered, matchedDep, usage);
+                            long missed = Long.parseLong(childElement.getAttribute("missed"));
+                            long covered = Long.parseLong(childElement.getAttribute("covered"));
+                            DependencyUsage packageUsage = new DependencyUsage();
+                            processCounterValues(type, missed, covered, matchedDep, packageUsage);
+                            //matchedDep.packageUsageMap.put(file.getName(), packageUsage);
+                            matchedDep.dependencyUsage.addAll(packageUsage);
+                            usage.addAll(packageUsage);
+                            matchedDep.packageUsageMap.put(packageName, packageUsage);
                         }
                     }
                 }
@@ -155,7 +176,7 @@ public class JacocoXMLParser {
         }
     }
 
-    private static void processCounterValues(String type, long missed, long covered, ProjectDependency matchedDep, DependencyUsage usage) {
+    private static void processCounterValues(String type, long missed, long covered, ProjectDependency matchedDep, DependencyUsage packageUsage) {
         // Process the counter values here
         //System.out.println("Type: " + type + ", Missed: " + missed + ", Covered: " + covered);
         // You can call other functions or perform any other operations as needed
@@ -164,159 +185,38 @@ public class JacocoXMLParser {
         switch (type){
             case "INSTRUCTION":
                 // do stuff
-                matchedDep.dependencyUsage.addMissedInstructions(missed);
-                matchedDep.dependencyUsage.addTotalInstructions(missed + covered);
-                usage.addMissedInstructions(missed);
-                usage.addTotalInstructions(missed + covered);
+                packageUsage.addMissedInstructions(missed);
+                packageUsage.addTotalInstructions(missed + covered);
                 break;
             case "BRANCH":
                 // do stuff
-                matchedDep.dependencyUsage.addMissedBranches(missed);
-                matchedDep.dependencyUsage.addTotalBranches(missed + covered);
-                usage.addMissedBranches(missed);
-                usage.addTotalBranches(missed + covered);
+                packageUsage.addMissedBranches(missed);
+                packageUsage.addTotalBranches(missed + covered);
                 break;
             case "LINE":
                 // do stuff
-                matchedDep.dependencyUsage.addMissedLines(missed);
-                matchedDep.dependencyUsage.addTotalLines(missed + covered);
-                usage.addMissedLines(missed);
-                usage.addTotalLines(missed + covered);
+                packageUsage.addMissedLines(missed);
+                packageUsage.addTotalLines(missed + covered);
                 break;
             case "COMPLEXITY":
                 // do stuff
-                matchedDep.dependencyUsage.addMissedCyclomaticComplexity(missed);
-                matchedDep.dependencyUsage.addCyclomaticComplexity(missed + covered);
-                usage.addMissedCyclomaticComplexity(missed);
-                usage.addCyclomaticComplexity(missed + covered);
+                packageUsage.addMissedCyclomaticComplexity(missed);
+                packageUsage.addCyclomaticComplexity(missed + covered);
                 break;
             case "METHOD":
                 // do stuff
-                matchedDep.dependencyUsage.addMissedMethods(missed);
-                matchedDep.dependencyUsage.addTotalMethods(missed + covered);
-                usage.addMissedMethods(missed);
-                usage.addTotalMethods(missed + covered);
+                packageUsage.addMissedMethods(missed);
+                packageUsage.addTotalMethods(missed + covered);
                 break;
             case "CLASS":
                 // do stuff
-                matchedDep.dependencyUsage.addMissedClasses(missed);
-                matchedDep.dependencyUsage.addTotalClasses(missed + covered);
-                usage.addMissedClasses(missed);
-                usage.addTotalClasses(missed + covered);
+                packageUsage.addMissedClasses(missed);
+                packageUsage.addTotalClasses(missed + covered);
                 break;
             default:
                 System.out.println("Could not match usage type with parsed type: " + type);
         }
-        /*
-        Type: INSTRUCTION, Missed: 11506, Covered: 2209
-        Type: BRANCH, Missed: 1717, Covered: 202
-        Type: LINE, Missed: 2839, Covered: 745
-        Type: COMPLEXITY, Missed: 1401, Covered: 204
-        Type: METHOD, Missed: 463, Covered: 146
-        Type: CLASS,
-         */
     }
-
-
-//    public static void extractAndAddUsage(String inputFilePath, ProjectDependency matchedDep) throws IOException{
-//
-//    }
-//
-//
-//    // There are 6 cases
-//    private static void extractUsage(String line, int entryIndex, ProjectDependency matchedDep, DependencyUsage packageUsage) {
-//        switch (entryIndex) {
-//            case 1:
-//                // Missed and Covered instructions
-//                long[] instrUsage = extractBranchNInstrUsage(line);
-//                matchedDep.dependencyUsage.addMissedInstructions(instrUsage[0]);
-//                matchedDep.dependencyUsage.addTotalInstructions(instrUsage[1]);
-//                packageUsage.addMissedInstructions(instrUsage[0]);
-//                packageUsage.addTotalInstructions(instrUsage[1]);
-//                break;
-//            case 2:
-//                // Percentage (Don't care about this now)
-//                break;
-//            case 3:
-//                // Missed and Covered Branches
-//                long[] branchUsage = extractBranchNInstrUsage(line);
-//                matchedDep.dependencyUsage.addMissedBranches(branchUsage[0]);
-//                matchedDep.dependencyUsage.addTotalBranches(branchUsage[1]);
-//                packageUsage.addMissedBranches(branchUsage[0]);
-//                packageUsage.addTotalBranches(branchUsage[1]);
-//                break;
-//            case 4:
-//                // Percentage (Don't care about this now)
-//                break;
-//            case 5:
-//                // Missed cyclomatic complexity
-//                matchedDep.dependencyUsage.addMissedCyclomaticComplexity(extractUsageNumber(line));
-//                packageUsage.addMissedCyclomaticComplexity(extractUsageNumber(line));
-//                break;
-//            case 6:
-//                // Covered cyclomatic complexity
-//                matchedDep.dependencyUsage.addCyclomaticComplexity(extractUsageNumber(line));
-//                packageUsage.addCyclomaticComplexity(extractUsageNumber(line));
-//                break;
-//            default:
-//                System.out.println("Could not extract usage of line: " + line);
-//        }
-//    }
-
-
-//    public static void extractAndAddPackageTotal(String inputFilePath, ProjectDependency matchedDep, String packageName) throws IOException {
-//        try {
-//            // Read the HTML file
-//            File inputFile = new File(inputFilePath);
-//            org.jsoup.nodes.Document doc = Jsoup.parse(inputFile, "UTF-8");
-//
-//            String formattedHtml = doc.outerHtml();
-//
-//            // Write the formatted HTML back to the original file, overwriting its previous content
-//            org.apache.commons.io.FileUtils.writeStringToFile(inputFile, formattedHtml, "UTF-8");
-//        } catch (IOException e) {
-//            System.err.println("Error: " + e.getMessage());
-//            e.printStackTrace();
-//        }
-//
-//        try (BufferedReader br = new BufferedReader(new FileReader(inputFilePath))) {
-//
-//            String line;
-//
-//            // Flag to indicate if we are inside the <tbody> tag
-//            boolean insideTbody = false;
-//
-//            // Iterate through the input HTML file
-//            while ((line = br.readLine()) != null) {
-//                // Check if we are inside the <tbody> tag
-//                if (line.contains("<tfoot>")) {
-//                    insideTbody = true;
-//                    line = br.readLine();
-//                }
-//                // Check if we are inside a <tr> element
-//                if (insideTbody && line.contains("<tr>")) {
-//                    line = br.readLine();
-//                    if (line != null) {
-//                        int entryIndex = 1;
-//                        DependencyUsage packageUsage = new DependencyUsage();
-//                        while ((line = br.readLine()) != null) {
-//                            //trContent.append(line).append("\n");
-//                            if (line.contains("</tr>")) {
-//                                break; // Stop processing when encountering </tr>
-//                            }
-//                            if (entryIndex > 0 && matchedDep.getId() != null) {
-//                                extractUsage(line, entryIndex, matchedDep, packageUsage);
-//                            }
-//                            entryIndex++;
-//                        }
-//                        matchedDep.packageUsageMap.put(packageName, packageUsage);
-//                        break;
-//                    }
-//                }
-//            }
-//        }
-//    }
-
 
 
     private static Document createPackageReport(Element packageElement) throws Exception {
