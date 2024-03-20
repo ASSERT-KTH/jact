@@ -20,7 +20,11 @@ import static jact.PackageToDependencyResolver.packageToDepPaths;
 public class JacocoXMLParser {
     /*
     TODO:
-        - Write the complete XML report
+        - Write an outer group for the dependencies
+            - Write its totals
+        - Write an outer group for the project
+            - Write its totals
+        - Extract the final total and add that to the end of the report
      */
     public static DependencyUsage dependencyUsage = new DependencyUsage();
     public static DependencyUsage projectUsage = new DependencyUsage();
@@ -29,6 +33,64 @@ public class JacocoXMLParser {
     private static ProjectDependency thisProject = new ProjectDependency();
 
     private static final String FINALREPORTPATH = REPORTPATH + "jact_report.xml";
+
+    private static String xmlHeader;
+
+
+    public static String extractXmlHeader(String xmlFilePath) {
+        StringBuilder xmlHeader = new StringBuilder();
+
+        try {
+            // Create a DocumentBuilder
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+
+            // Parse the XML file
+            Document doc = builder.parse(new File(xmlFilePath));
+
+            // Get the root element
+            Node root = doc.getDocumentElement();
+
+            // Append XML declaration
+            xmlHeader.append("<?xml ").append(root.getAttributes().item(0)).append("?>\n");
+
+            // Iterate over child nodes of the root element
+            NodeList childNodes = root.getChildNodes();
+            for (int i = 0; i < childNodes.getLength(); i++) {
+                Node childNode = childNodes.item(i);
+                if (childNode.getNodeType() == Node.ELEMENT_NODE) {
+                    // Append the node if it's a <sessioninfo> element
+                    if ("sessioninfo".equals(childNode.getNodeName())) {
+                        xmlHeader.append(nodeToString(childNode));
+                        break; // Stop appending nodes after sessioninfo
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Error reading XML file: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return xmlHeader.toString();
+    }
+
+    // Helper method to convert a Node to String
+    private static String nodeToString(Node node) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("<").append(node.getNodeName());
+
+        // Append attributes
+        if (node.hasAttributes()) {
+            for (int i = 0; i < node.getAttributes().getLength(); i++) {
+                Node attr = node.getAttributes().item(i);
+                stringBuilder.append(" ").append(attr.getNodeName()).append("=\"").append(attr.getNodeValue()).append("\"");
+            }
+        }
+
+        stringBuilder.append("/>");
+        return stringBuilder.toString();
+    }
+
 
     public static void groupPackageByDep(List<ProjectDependency> dependencies,
                                          Map<String, Set<String>> projPackagesAndClassMap,
@@ -39,6 +101,8 @@ public class JacocoXMLParser {
         try {
             // Load Jacoco XML report
             File xmlFile = new File(REPORTPATH + "jacoco_report.xml");
+
+            xmlHeader = extractXmlHeader(REPORTPATH + "jacoco_report.xml");
 
             // Disable DTD validation
             System.setProperty("javax.xml.parsers.DocumentBuilderFactory", "com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl");
@@ -123,17 +187,38 @@ public class JacocoXMLParser {
 
     }
 
-
     public static void writeCompleteReport(List<ProjectDependency> dependencies) {
         File finalReport = new File(FINALREPORTPATH);
 
         try (FileWriter writer = new FileWriter(finalReport)) {
+            writer.write(xmlHeader + "\n");
             for (ProjectDependency pd : dependencies) {
+                String openingTag = "<group name=\"" + pd.getId() + "\">";
+                String closingTag = "</group>";
+                writer.write(openingTag + "\n");
+
                 for (Map.Entry<String, DependencyUsage> entry : pd.packageUsageMap.entrySet()) {
                     File packageFile = new File(REPORTPATH + "xml_reports/" + entry.getKey());
                     try (BufferedReader reader = new BufferedReader(new FileReader(packageFile))) {
                         String line;
+                        boolean firstLineSkipped = false;
+                        boolean reportTagSkipped = false;
+
                         while ((line = reader.readLine()) != null) {
+                            if (!firstLineSkipped && line.startsWith("<?xml")) {
+                                // Skip the first line
+                                firstLineSkipped = true;
+                                continue;
+                            }
+                            if (!reportTagSkipped && line.trim().startsWith("<report")) {
+                                // Skip the report tag and its closing tag
+                                reportTagSkipped = true;
+                                continue;
+                            }
+                            if (reportTagSkipped && line.trim().startsWith("</report>")) {
+                                // Skip the closing tag
+                                continue;
+                            }
                             writer.write(line + "\n");
                         }
                     } catch (IOException e) {
@@ -141,6 +226,7 @@ public class JacocoXMLParser {
                         e.printStackTrace();
                     }
                 }
+                writer.write(closingTag + "\n");
             }
         } catch (IOException e) {
             System.err.println("Error writing final report: " + e.getMessage());
@@ -149,6 +235,8 @@ public class JacocoXMLParser {
 
         System.out.println("Final report has been written to: " + finalReport.getAbsolutePath());
     }
+
+
 
 
 
