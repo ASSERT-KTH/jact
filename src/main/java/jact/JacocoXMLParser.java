@@ -4,12 +4,12 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
@@ -27,6 +27,8 @@ public class JacocoXMLParser {
 
     public static final String REPORTPATH = "./target/jact-report/";
     private static ProjectDependency thisProject = new ProjectDependency();
+
+    private static final String FINALREPORTPATH = REPORTPATH + "jact_report.xml";
 
     public static void groupPackageByDep(List<ProjectDependency> dependencies,
                                          Map<String, Set<String>> projPackagesAndClassMap,
@@ -116,24 +118,38 @@ public class JacocoXMLParser {
 
         System.out.println("PROJECT USAGE TOTAL: " + projectUsage.totalUsageToXML());
         System.out.println("DEPENDENCY USAGE TOTAL: " + dependencyUsage.totalUsageToXML());
+
+        writeCompleteReport(dependencies);
+
     }
 
-    public static void writeCompleteReport(List<ProjectDependency> dependencies){
-        // Iterate through all the dependencies, get their package reports
-        // and write them.
 
-        for(ProjectDependency pd : dependencies){
-            // Write each package from that dependency.
+    public static void writeCompleteReport(List<ProjectDependency> dependencies) {
+        File finalReport = new File(FINALREPORTPATH);
+
+        try (FileWriter writer = new FileWriter(finalReport)) {
+            for (ProjectDependency pd : dependencies) {
+                for (Map.Entry<String, DependencyUsage> entry : pd.packageUsageMap.entrySet()) {
+                    File packageFile = new File(REPORTPATH + "xml_reports/" + entry.getKey());
+                    try (BufferedReader reader = new BufferedReader(new FileReader(packageFile))) {
+                        String line;
+                        while ((line = reader.readLine()) != null) {
+                            writer.write(line + "\n");
+                        }
+                    } catch (IOException e) {
+                        System.err.println("Error reading package file: " + e.getMessage());
+                        e.printStackTrace();
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error writing final report: " + e.getMessage());
+            e.printStackTrace();
         }
 
-        // Write the total for all the dependencies
-
-        // Go through the project packages and write them
-
-        // Write the total for all the project packages
-
-        //
+        System.out.println("Final report has been written to: " + finalReport.getAbsolutePath());
     }
+
 
 
     public static void extractCounterValues(String inputFilePath, ProjectDependency matchedDep, DependencyUsage usage, String packageName) {
