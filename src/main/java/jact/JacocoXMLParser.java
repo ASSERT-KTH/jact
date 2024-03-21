@@ -1,9 +1,7 @@
 package jact;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -34,62 +32,94 @@ public class JacocoXMLParser {
 
     private static final String FINALREPORTPATH = REPORTPATH + "jact_report.xml";
 
-    private static String xmlHeader;
+    private static String xmlReportTag = "<report name=\"JACT Coverage Report (Generated with JaCoCo)\">";
+    private static String sessionInfo;
+
+    private static DependencyUsage totalUsage = new DependencyUsage();
 
 
     public static String extractXmlHeader(String xmlFilePath) {
-        StringBuilder xmlHeader = new StringBuilder();
 
-        try {
-            // Create a DocumentBuilder
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = factory.newDocumentBuilder();
+            StringBuilder sessionInfo = new StringBuilder();
 
-            // Parse the XML file
-            Document doc = builder.parse(new File(xmlFilePath));
+            try {
+                // Create a DocumentBuilder
+                DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+                factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+                DocumentBuilder builder = factory.newDocumentBuilder();
 
-            // Get the root element
-            Node root = doc.getDocumentElement();
+                // Parse the XML file
+                Document doc = builder.parse(new File(xmlFilePath));
 
-            // Append XML declaration
-            xmlHeader.append("<?xml ").append(root.getAttributes().item(0)).append("?>\n");
+                // Get the root element
+                Element root = doc.getDocumentElement();
 
-            // Iterate over child nodes of the root element
-            NodeList childNodes = root.getChildNodes();
-            for (int i = 0; i < childNodes.getLength(); i++) {
-                Node childNode = childNodes.item(i);
-                if (childNode.getNodeType() == Node.ELEMENT_NODE) {
-                    // Append the node if it's a <sessioninfo> element
-                    if ("sessioninfo".equals(childNode.getNodeName())) {
-                        xmlHeader.append(nodeToString(childNode));
-                        break; // Stop appending nodes after sessioninfo
-                    }
+                // Find the sessioninfo node
+                NodeList sessionInfoList = root.getElementsByTagName("sessioninfo");
+                if (sessionInfoList.getLength() > 0) {
+                    Node sessionInfoNode = sessionInfoList.item(0);
+                    sessionInfo.append(nodeToString(sessionInfoNode));
+                }
+            } catch (Exception e) {
+                System.err.println("Error reading XML file: " + e.getMessage());
+                e.printStackTrace();
+            }
+
+            return sessionInfo.toString();
+        }
+
+// Helper method to convert a Node to String
+        private static String nodeToString(Node node) {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("<").append(node.getNodeName());
+
+            // Append attributes
+            if (node.hasAttributes()) {
+                NamedNodeMap attributes = node.getAttributes();
+                for (int i = 0; i < attributes.getLength(); i++) {
+                    Node attr = attributes.item(i);
+                    stringBuilder.append(" ").append(attr.getNodeName()).append("=\"").append(attr.getNodeValue()).append("\"");
                 }
             }
-        } catch (Exception e) {
-            System.err.println("Error reading XML file: " + e.getMessage());
-            e.printStackTrace();
+
+            stringBuilder.append("/>");
+            return stringBuilder.toString();
         }
 
-        return xmlHeader.toString();
-    }
 
-    // Helper method to convert a Node to String
-    private static String nodeToString(Node node) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("<").append(node.getNodeName());
-
-        // Append attributes
-        if (node.hasAttributes()) {
-            for (int i = 0; i < node.getAttributes().getLength(); i++) {
-                Node attr = node.getAttributes().item(i);
-                stringBuilder.append(" ").append(attr.getNodeName()).append("=\"").append(attr.getNodeValue()).append("\"");
-            }
+    public static void writeXMLString(String xmlContent, String outputPath) throws Exception {
+        // Create parent directories if they don't exist
+        File outputFile = new File(outputPath);
+        File parentDir = outputFile.getParentFile();
+        if (!parentDir.exists() && !parentDir.mkdirs()) {
+            throw new IllegalStateException("Couldn't create directory: " + parentDir);
         }
 
-        stringBuilder.append("/>");
-        return stringBuilder.toString();
+        // Create a new Document from the XML content string
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document doc = builder.parse(new InputSource(new StringReader(xmlContent)));
+
+        // Write the Document to the output file
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        transformer.transform(new DOMSource(doc), new StreamResult(outputFile));
+
+        // Disable DTD validation
+        System.setProperty("javax.xml.parsers.DocumentBuilderFactory", "com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl");
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        dbFactory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+
+        // Parse the output file to reformat it
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        Document formattedDoc = dBuilder.parse(outputFile);
+        formattedDoc.getDocumentElement().normalize();
+
+        // Format and overwrite the XML file
+        formatXml(outputFile, formattedDoc);
     }
+
 
 
     public static void groupPackageByDep(List<ProjectDependency> dependencies,
@@ -101,8 +131,8 @@ public class JacocoXMLParser {
         try {
             // Load Jacoco XML report
             File xmlFile = new File(REPORTPATH + "jacoco_report.xml");
-
-            xmlHeader = extractXmlHeader(REPORTPATH + "jacoco_report.xml");
+            sessionInfo = extractXmlHeader(REPORTPATH + "jacoco_report.xml");
+            extractCounterValues(REPORTPATH + "jacoco_report.xml", new ProjectDependency(), totalUsage, "total");
 
             // Disable DTD validation
             System.setProperty("javax.xml.parsers.DocumentBuilderFactory", "com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl");
@@ -164,7 +194,7 @@ public class JacocoXMLParser {
                         // We know the package comes from a dependency
                         extractCounterValues(REPORTPATH + "xml_reports/" + file.getName(), matchedDep, dependencyUsage, file.getName());
                     }else{
-                        extractCounterValues(REPORTPATH + "xml_reports/" + file.getName(), matchedDep, projectUsage, file.getName());
+                        extractCounterValues(REPORTPATH + "xml_reports/" + file.getName(), thisProject, projectUsage, file.getName());
 
                     }
 
@@ -180,22 +210,26 @@ public class JacocoXMLParser {
             System.out.println("Directory does not exist or is not a directory.");
         }
 
-        System.out.println("PROJECT USAGE TOTAL: " + projectUsage.totalUsageToXML());
-        System.out.println("DEPENDENCY USAGE TOTAL: " + dependencyUsage.totalUsageToXML());
-
         writeCompleteReport(dependencies);
 
     }
 
     public static void writeCompleteReport(List<ProjectDependency> dependencies) {
+        String depOpeningTag = "<group name=\"Dependencies\">";
+        String projOpeningTag = "<group name=\"Project\">";
+        String closingTag = "</group>";
         File finalReport = new File(FINALREPORTPATH);
 
         try (FileWriter writer = new FileWriter(finalReport)) {
-            writer.write(xmlHeader + "\n");
+            writer.write(xmlReportTag);
+            writer.write(sessionInfo);
+            writer.write(depOpeningTag);
             for (ProjectDependency pd : dependencies) {
+                if(pd.getScope().equals("test")){
+                    continue;
+                }
                 String openingTag = "<group name=\"" + pd.getId() + "\">";
-                String closingTag = "</group>";
-                writer.write(openingTag + "\n");
+                writer.write(openingTag);
 
                 for (Map.Entry<String, DependencyUsage> entry : pd.packageUsageMap.entrySet()) {
                     File packageFile = new File(REPORTPATH + "xml_reports/" + entry.getKey());
@@ -219,19 +253,85 @@ public class JacocoXMLParser {
                                 // Skip the closing tag
                                 continue;
                             }
-                            writer.write(line + "\n");
+                            writer.write(line);
                         }
                     } catch (IOException e) {
                         System.err.println("Error reading package file: " + e.getMessage());
                         e.printStackTrace();
                     }
                 }
-                writer.write(closingTag + "\n");
+                writer.write(closingTag);
             }
+            // Write total dependency usage
+            writer.write(dependencyUsage.totalUsageToXML());
+            writer.write(closingTag);
+
+            // Write the project packages
+            String openingTag = "<group name=\"" + "Project Packages" + "\">";
+            writer.write(openingTag);
+            for (Map.Entry<String, DependencyUsage> entry : thisProject.packageUsageMap.entrySet()) {
+
+                File packageFile = new File(REPORTPATH + "xml_reports/" + entry.getKey());
+                try (BufferedReader reader = new BufferedReader(new FileReader(packageFile))) {
+                    String line;
+                    boolean firstLineSkipped = false;
+                    boolean reportTagSkipped = false;
+
+                    while ((line = reader.readLine()) != null) {
+                        if (!firstLineSkipped && line.startsWith("<?xml")) {
+                            // Skip the first line
+                            firstLineSkipped = true;
+                            continue;
+                        }
+                        if (!reportTagSkipped && line.trim().startsWith("<report")) {
+                            // Skip the report tag and its closing tag
+                            reportTagSkipped = true;
+                            continue;
+                        }
+                        if (reportTagSkipped && line.trim().startsWith("</report>")) {
+                            // Skip the closing tag
+                            continue;
+                        }
+                        writer.write(line);
+                    }
+                } catch (IOException e) {
+                    System.err.println("Error reading package file: " + e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+            writer.write(closingTag);
+
+            // Write overall total here
+            writer.write(totalUsage.totalUsageToXML());
+
+            writer.write("</report>");
+
         } catch (IOException e) {
             System.err.println("Error writing final report: " + e.getMessage());
             e.printStackTrace();
         }
+
+
+        try {
+            // Disable DTD validation
+            System.setProperty("javax.xml.parsers.DocumentBuilderFactory", "com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl");
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            dbFactory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document formattedDoc = dBuilder.parse(finalReport);
+            formattedDoc.getDocumentElement().normalize();
+            // Format and overwrite the XML file
+            formatXml(finalReport, formattedDoc);
+        } catch (ParserConfigurationException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (SAXException e) {
+            throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
 
         System.out.println("Final report has been written to: " + finalReport.getAbsolutePath());
     }
@@ -245,6 +345,7 @@ public class JacocoXMLParser {
             // Parse the XML file
             File inputFile = new File(inputFilePath);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            dbFactory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);
             doc.getDocumentElement().normalize();

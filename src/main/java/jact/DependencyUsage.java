@@ -208,11 +208,11 @@ public class DependencyUsage {
         long coveredClasses = this.getTotalClasses() - this.getMissedClasses();
 
         String xmlString =
-                "<counter covered=\""+coveredInstructions+"\" missed=\""+ this.getMissedInstructions() +"\" type=\"INSTRUCTION\"/>\n" +
-                "<counter covered=\""+coveredBranches+"\" missed=\""+ this.getMissedBranches() +"\" type=\"BRANCH\"/>\n" +
-                "<counter covered=\""+coveredLines+"\" missed=\""+ this.getMissedLines() +"\" type=\"LINE\"/>\n" +
-                "<counter covered=\""+coveredCyclomaticComplexity+"\" missed=\""+ this.getMissedCyclomaticComplexity() +"\" type=\"COMPLEXITY\"/>\n" +
-                "<counter covered=\""+coveredMethods+"\" missed=\""+ this.getMissedMethods() +"\" type=\"METHOD\"/>\n" +
+                "<counter covered=\""+coveredInstructions+"\" missed=\""+ this.getMissedInstructions() +"\" type=\"INSTRUCTION\"/>" +
+                "<counter covered=\""+coveredBranches+"\" missed=\""+ this.getMissedBranches() +"\" type=\"BRANCH\"/>" +
+                "<counter covered=\""+coveredLines+"\" missed=\""+ this.getMissedLines() +"\" type=\"LINE\"/>" +
+                "<counter covered=\""+coveredCyclomaticComplexity+"\" missed=\""+ this.getMissedCyclomaticComplexity() +"\" type=\"COMPLEXITY\"/>" +
+                "<counter covered=\""+coveredMethods+"\" missed=\""+ this.getMissedMethods() +"\" type=\"METHOD\"/>" +
                 "<counter covered=\""+coveredClasses+"\" missed=\""+ this.getMissedClasses() +"\" type=\"CLASS\"/>";
 
         return xmlString;
