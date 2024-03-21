@@ -1,24 +1,18 @@
 package jact.plugin;
 
-import jact.CommandExecutor;
-import jact.ProjectDependencies;
-import jact.ProjectDependency;
-import org.apache.maven.execution.MavenSession;
-import org.apache.maven.plugin.AbstractMojo;
+import jact.utils.CommandExecutor;
+import jact.depUtils.ProjectDependencies;
+import jact.depUtils.ProjectDependency;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
-import org.apache.maven.plugins.annotations.Parameter;
-import org.apache.maven.project.MavenProject;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.*;
 
-import static jact.JacocoHTMLAugmenter.createDependencyReports;
-import static jact.JacocoHTMLAugmenter.extractReportAndMoveDirs;
+import static jact.core.HtmlAugmenter.createDependencyReports;
+import static jact.core.HtmlAugmenter.extractReportAndMoveDirs;
 
 
 /**

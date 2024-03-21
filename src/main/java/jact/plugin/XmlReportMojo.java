@@ -1,12 +1,10 @@
 package jact.plugin;
 
-import jact.CommandExecutor;
-import jact.ProjectDependencies;
-import jact.ProjectDependency;
+import jact.utils.CommandExecutor;
+import jact.depUtils.ProjectDependencies;
+import jact.depUtils.ProjectDependency;
 
-import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 
@@ -14,7 +12,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.*;
 
-import static jact.JacocoXMLParser.groupPackageByDep;
+import static jact.core.XmlAugmenter.groupPackageByDep;
 
 
 /**
