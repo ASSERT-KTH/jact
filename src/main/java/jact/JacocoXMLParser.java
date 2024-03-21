@@ -95,7 +95,7 @@ public class JacocoXMLParser {
             throw new IllegalStateException("Couldn't create directory: " + parentDir);
         }
 
-        // Create a new Document from the XML content string
+        // Create a new Document from the cleaned XML content string
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document doc = builder.parse(new InputSource(new StringReader(xmlContent)));
@@ -105,19 +105,6 @@ public class JacocoXMLParser {
         Transformer transformer = transformerFactory.newTransformer();
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
         transformer.transform(new DOMSource(doc), new StreamResult(outputFile));
-
-        // Disable DTD validation
-        System.setProperty("javax.xml.parsers.DocumentBuilderFactory", "com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl");
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        dbFactory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
-
-        // Parse the output file to reformat it
-        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document formattedDoc = dBuilder.parse(outputFile);
-        formattedDoc.getDocumentElement().normalize();
-
-        // Format and overwrite the XML file
-        formatXml(outputFile, formattedDoc);
     }
 
 
@@ -127,7 +114,7 @@ public class JacocoXMLParser {
                                          String localRepoPath, String projId){
         thisProject.setId(projId);
 
-
+        Map<String, Document> packageReports2 = new HashMap<>();
         try {
             // Load Jacoco XML report
             File xmlFile = new File(REPORTPATH + "jacoco_report.xml");
@@ -155,7 +142,7 @@ public class JacocoXMLParser {
                 Document packageReport = createPackageReport(packageElement);
                 packageReports.put(packageName, packageReport);
             }
-
+            packageReports2 = packageReports;
             // Write separate XML reports for each package in the current directory
             for (Map.Entry<String, Document> entry : packageReports.entrySet()) {
                 String packageName = entry.getKey();
@@ -210,15 +197,17 @@ public class JacocoXMLParser {
             System.out.println("Directory does not exist or is not a directory.");
         }
 
-        writeCompleteReport(dependencies);
+        writeCompleteReport(dependencies, packageReports2);
 
     }
 
-    public static void writeCompleteReport(List<ProjectDependency> dependencies) {
+    public static void writeCompleteReport(List<ProjectDependency> dependencies, Map<String, Document> packageReports) {
         String depOpeningTag = "<group name=\"Dependencies\">";
         String projOpeningTag = "<group name=\"Project\">";
         String closingTag = "</group>";
         File finalReport = new File(FINALREPORTPATH);
+
+        StringBuilder finalReportString = new StringBuilder();
 
         try (FileWriter writer = new FileWriter(finalReport)) {
             writer.write(xmlReportTag);
@@ -229,7 +218,7 @@ public class JacocoXMLParser {
                     continue;
                 }
                 String openingTag = "<group name=\"" + pd.getId() + "\">";
-                writer.write(openingTag);
+                writer.write(openingTag.trim());
 
                 for (Map.Entry<String, DependencyUsage> entry : pd.packageUsageMap.entrySet()) {
                     File packageFile = new File(REPORTPATH + "xml_reports/" + entry.getKey());
@@ -253,7 +242,7 @@ public class JacocoXMLParser {
                                 // Skip the closing tag
                                 continue;
                             }
-                            writer.write(line);
+                            writer.write(line.trim());
                         }
                     } catch (IOException e) {
                         System.err.println("Error reading package file: " + e.getMessage());
@@ -292,7 +281,7 @@ public class JacocoXMLParser {
                             // Skip the closing tag
                             continue;
                         }
-                        writer.write(line);
+                        writer.write(line.trim());
                     }
                 } catch (IOException e) {
                     System.err.println("Error reading package file: " + e.getMessage());
@@ -310,6 +299,12 @@ public class JacocoXMLParser {
             System.err.println("Error writing final report: " + e.getMessage());
             e.printStackTrace();
         }
+
+//        try {
+//            writeXMLString(finalReportString.toString(), FINALREPORTPATH);
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
 
 
         try {
