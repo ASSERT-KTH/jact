@@ -73,3 +73,33 @@ Now just add the JACT plugin to the pom.xml file in your project:
 
 JACT creates the report during the `install`-phase since it requires a packaged FAT-jar. Executing `mvn clean install`
 in your project will create a `jact-report` directory under `./target/jact-report`. 
+
+
+
+XML Report Structure:
+```xml
+<report name="JACT Coverage Report (Generated with JaCoCo)">
+    <category name="Dependencies">
+      <group name="dependencyId">
+        <package name="packageName">
+          <!-- Package usage info -->
+        </package>
+        <!-- Rest the packages in the dependency -->
+            <!-- ... -->
+      </group>
+      <!-- Rest of the dependencies-->
+        <!-- ... -->
+      <!-- Dependency Coverage Total -->
+    </category>
+    <category name="ProjectPackages">
+      <package name="packageName">
+        <!-- Project packages -->
+      </package>
+      <!-- Rest of the dependencies-->
+        <!-- ... -->
+      <!-- Project Coverage Total -->
+    </category>
+  <!-- Overall Total Coverage -->
+</report>
+```
+

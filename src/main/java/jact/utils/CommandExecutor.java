@@ -50,6 +50,36 @@ public class CommandExecutor {
         }
     }
 
+    public static void copyDtdFile(String filename, String destinationDirectory) throws IOException {
+        // Load the DTD file from the plugin's resources/xml-resources directory
+        ClassLoader classLoader = CommandExecutor.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream("xml-resources/" + filename);
+
+        if (inputStream == null) {
+            throw new IOException("File not found in plugin resources: " + filename);
+        }
+
+        // Create the destination directory if it doesn't exist
+        File destinationDir = new File(destinationDirectory);
+        if (!destinationDir.exists()) {
+            destinationDir.mkdirs();
+        }
+
+        // Construct the destination path
+        Path destinationPath = new File(destinationDirectory, filename).toPath();
+
+        // Copy the DTD file to the destination directory
+        try (OutputStream outputStream = new FileOutputStream(destinationPath.toFile())) {
+            byte[] buffer = new byte[4096];
+            int bytesRead;
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, bytesRead);
+            }
+        }
+
+        System.out.println("DTD file copied successfully to: " + destinationPath);
+    }
+
     public static void copyPNGImage(String filename, String destinationDirectory) throws IOException {
         // Check if the filename ends with .png
         if (!filename.toLowerCase().endsWith(".png")) {

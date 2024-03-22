@@ -2,9 +2,11 @@ package jact.core;
 
 import jact.depUtils.DependencyUsage;
 import jact.depUtils.ProjectDependency;
+import jact.utils.CommandExecutor;
 import org.w3c.dom.*;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -26,6 +28,7 @@ public class XmlAugmenter {
 
     private static final String FINALREPORTPATH = REPORTPATH + "jact_report.xml";
 
+    private static String xmlDtd = "<!DOCTYPE report PUBLIC \"-//JACOCO//DTD Report 1.1//EN\" \"report.dtd\">";
     private static String xmlReportTag = "<report name=\"JACT Coverage Report (Generated with JaCoCo)\">";
     private static String sessionInfo;
 
@@ -125,7 +128,7 @@ public class XmlAugmenter {
             doc.getDocumentElement().normalize();
 
             // Format and overwrite the XML file
-            formatXml(xmlFile, doc);
+            formatXml(xmlFile, doc, false);
 
             // Group coverage data by package name
             Map<String, Document> packageReports = new HashMap<>();
@@ -178,11 +181,6 @@ public class XmlAugmenter {
                         extractCounterValues(REPORTPATH + "xml_reports/" + file.getName(), thisProject, projectUsage, file.getName());
 
                     }
-
-
-                    // Add the dependency usage to each matched dependency.
-                    // Create templates or a way to write the xml package to the report.
-                    //matchedDep.
                 }
             } else {
                 System.out.println("No files found in the directory.");
@@ -196,17 +194,26 @@ public class XmlAugmenter {
     }
 
     public static void writeCompleteReport(List<ProjectDependency> dependencies, Map<String, Document> packageReports) {
+        try {
+            CommandExecutor.copyDtdFile("report.dtd", "./target/jact-report");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         String depOpeningTag = "<group name=\"Dependencies\">";
-        String projOpeningTag = "<group name=\"Project\">";
-        String closingTag = "</group>";
+        String projOpeningTag = "<group name=\"" + "Project Packages" + "\">";
+        String groupClosingTag = "</group>";
+        String categoryClosingTag = "</group>";
         File finalReport = new File(FINALREPORTPATH);
 
         StringBuilder finalReportString = new StringBuilder();
 
         try (FileWriter writer = new FileWriter(finalReport)) {
+            writer.write(xmlDtd);
             writer.write(xmlReportTag);
             writer.write(sessionInfo);
             writer.write(depOpeningTag);
+
             for (ProjectDependency pd : dependencies) {
                 if(pd.getScope().equals("test")){
                     continue;
@@ -232,7 +239,7 @@ public class XmlAugmenter {
                                 reportTagSkipped = true;
                                 continue;
                             }
-                            if (reportTagSkipped && line.trim().startsWith("</report>")) {
+                            if (line.trim().equals("</report>")) {
                                 // Skip the closing tag
                                 continue;
                             }
@@ -243,15 +250,15 @@ public class XmlAugmenter {
                         e.printStackTrace();
                     }
                 }
-                writer.write(closingTag);
+                writer.write(groupClosingTag);
             }
+
             // Write total dependency usage
             writer.write(dependencyUsage.totalUsageToXML());
-            writer.write(closingTag);
+            writer.write(categoryClosingTag);
 
             // Write the project packages
-            String openingTag = "<group name=\"" + "Project Packages" + "\">";
-            writer.write(openingTag);
+            writer.write(projOpeningTag);
             for (Map.Entry<String, DependencyUsage> entry : thisProject.packageUsageMap.entrySet()) {
 
                 File packageFile = new File(REPORTPATH + "xml_reports/" + entry.getKey());
@@ -271,7 +278,7 @@ public class XmlAugmenter {
                             reportTagSkipped = true;
                             continue;
                         }
-                        if (reportTagSkipped && line.trim().startsWith("</report>")) {
+                        if (line.trim().equals("</report>")) {
                             // Skip the closing tag
                             continue;
                         }
@@ -282,7 +289,8 @@ public class XmlAugmenter {
                     e.printStackTrace();
                 }
             }
-            writer.write(closingTag);
+            writer.write(projectUsage.totalUsageToXML());
+            writer.write(categoryClosingTag);
 
             // Write overall total here
             writer.write(totalUsage.totalUsageToXML());
@@ -294,29 +302,38 @@ public class XmlAugmenter {
             e.printStackTrace();
         }
 
+
         try {
-            // Disable DTD validation
+            String dtdPath = "./target/jact-report/report.dtd";
+
+            // Set system property to specify the DTD location
             System.setProperty("javax.xml.parsers.DocumentBuilderFactory", "com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl");
+            System.setProperty("javax.xml.parsers.SAXParserFactory", "com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl");
+            System.setProperty("org.xml.sax.driver", "com.sun.org.apache.xerces.internal.parsers.SAXParser");
+            System.setProperty("javax.xml.validation.SchemaFactory:http://www.w3.org/2001/XMLSchema", dtdPath);
+
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            dbFactory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+            dbFactory.setNamespaceAware(true);
+            dbFactory.setValidating(true);
+
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+
+            // Set ErrorHandler
+            dBuilder.setErrorHandler(new DefaultHandler());
+
             Document formattedDoc = dBuilder.parse(finalReport);
             formattedDoc.getDocumentElement().normalize();
+
             // Format and overwrite the XML file
-            formatXml(finalReport, formattedDoc);
-        } catch (ParserConfigurationException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (SAXException e) {
+            formatXml(finalReport, formattedDoc, true);
+        } catch (ParserConfigurationException | IOException | SAXException e) {
             throw new RuntimeException(e);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-
         System.out.println("Final report has been written to: " + finalReport.getAbsolutePath());
     }
+
 
 
 
@@ -436,10 +453,12 @@ public class XmlAugmenter {
         formattedDoc.getDocumentElement().normalize();
 
         // Format and overwrite the XML file
-        formatXml(outputFile, formattedDoc);
+        formatXml(outputFile, formattedDoc, false);
     }
 
-    private static void formatXml(File file, Document doc) throws Exception {
+
+    private static void formatXml(File file, Document doc, boolean validateWithDTD) throws Exception {
+        // Create transformer
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
 
@@ -447,13 +466,30 @@ public class XmlAugmenter {
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
         transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4"); // Indentation size
 
-        // Write the DOM document to the file
-        DOMSource source = new DOMSource(doc);
-        StreamResult result = new StreamResult(file);
-        transformer.transform(source, result);
+        // Set standalone="yes" in the XML declaration
+        doc.setXmlStandalone(true);
 
-        //System.out.println("Formatted XML has been written to: " + file.getAbsolutePath());
+        // Write the XML declaration with standalone="yes"
+        StringWriter writer = new StringWriter();
+        transformer.transform(new DOMSource(doc), new StreamResult(writer));
+        String xmlString = writer.toString();
+
+        // Add standalone="yes" to the XML declaration if not already present
+        if (!xmlString.contains("standalone=\"yes\"")) {
+            int index = xmlString.indexOf("?>");
+            if (index != -1) {
+                xmlString = xmlString.substring(0, index) + " standalone=\"yes\"" + xmlString.substring(index);
+            }
+        }
+
+        // Write the modified XML to the file
+        try (PrintWriter printWriter = new PrintWriter(file)) {
+            printWriter.write(xmlString);
+        }
     }
+
+
+
 
 
 
