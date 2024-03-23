@@ -1,19 +1,12 @@
 package jact.test.utils;
 
-import jact.utils.CommandExecutor;
+import static jact.utils.CommandExecutor.copyPNGImage;
+import static jact.utils.DirectoryUtils.*;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static jact.utils.CommandExecutor.copyPNGImage;
-import static jact.utils.DirectoryUtils.*;
-import static junit.framework.TestCase.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import jact.utils.DirectoryUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,12 +19,6 @@ public class DirectoryUtilsTest {
     public static void cleanUpTestDirs(){
         removeDirectory(new File(testDirectory));
         Assertions.assertFalse(new File(testDirectory).exists());
-    }
-
-    @Test
-    public void yourTestMethod() {
-        // Your test logic goes here
-        assertEquals(4, 2 + 2);
     }
 
     @Test

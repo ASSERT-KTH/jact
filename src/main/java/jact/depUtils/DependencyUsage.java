@@ -18,13 +18,13 @@ public class DependencyUsage {
     private long missedClasses = 0L;
     private long classes = 0L;
 
-    private static String percentage(long part, long whole) {
+    public static String percentage(long part, long whole) {
         double percentage = (double) part / whole * 100;
         long roundedPercentage = (long) Math.floor(percentage);
         return String.format("%d%%", roundedPercentage);
     }
 
-    private static int barLength(long part, long whole) {
+    public static int barLength(long part, long whole) {
         double percentage = (double) part / whole * 100;
         return (int) Math.floor(percentage);
     }
