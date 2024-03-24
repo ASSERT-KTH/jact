@@ -7,6 +7,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+/**
+ * Utilities for creating/removing and moving directories.
+ */
 public class DirectoryUtils {
     public static void copyDirectory(File sourceDir, File destDir) {
         // Create the destination directory if it doesn't exist

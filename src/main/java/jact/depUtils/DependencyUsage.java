@@ -1,5 +1,8 @@
 package jact.depUtils;
 
+/**
+ * Tracks the usage of a dependency in all the recorded metrics.
+ */
 public class DependencyUsage {
     // Dependency usage, in their entry order
     private long missedInstructions = 0L;

@@ -8,6 +8,9 @@ import java.util.Map;
 
 import static jact.core.HtmlAugmenter.writeHTMLStringToFile;
 
+/**
+ * Tracks the usage of a dependency.
+ */
 public class ProjectDependency {
     public DependencyUsage dependencyUsage = new DependencyUsage();
     public Map<String, DependencyUsage> packageUsageMap = new HashMap<>();

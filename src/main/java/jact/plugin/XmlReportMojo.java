@@ -16,6 +16,7 @@ import static jact.core.XmlAugmenter.groupPackageByDep;
 
 
 /**
+ * JACT XML Report:
  * Generates a complete code coverage report including all
  * dependencies along with their transitive dependencies.
  */

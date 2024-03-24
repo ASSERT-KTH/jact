@@ -10,6 +10,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Creates all the project dependencies and their ProjectDependency objects
+ * in order to calculate and write the reported usage from jacoco.
+ */
 public class ProjectDependencies {
 
     public static List<ProjectDependency> projectDependencies = new ArrayList<>();
@@ -21,6 +25,14 @@ public class ProjectDependencies {
         return projectDependencies;
     }
 
+    /**
+     * Generate the project lockfile containing all the project dependencies
+     * including their transitive dependencies and creates their corresponding
+     * ProjectDependency object with child/parent dependencies.
+     * @param cmdExec
+     * @param targetDirectory
+     * @param genLockfile
+     */
     private static void generateAllProjectDependencies(CommandExecutor cmdExec, String targetDirectory, boolean genLockfile) {
         if(genLockfile){
             cmdExec.generateDependencyLockfile(targetDirectory);

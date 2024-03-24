@@ -16,11 +16,24 @@ import java.util.regex.Pattern;
 
 import static jact.utils.DirectoryUtils.*;
 
+/**
+ * Creates the HTML version of the JACT Report
+ */
 public class HtmlAugmenter {
     public static final String REPORTPATH = "./target/jact-report/";
     public static final String jacocoResPath = REPORTPATH + "jacoco-resources";
     private static ProjectDependency thisProject = new ProjectDependency();
 
+    /**
+     * Reads the html jacoco report to create corresponding ProjectDependency objects
+     * for augmentation and usage tracking as well as sets up the required resources
+     * and folder structure.
+     * @param dependencies
+     * @param projPackagesAndClassMap
+     * @param localRepoPath
+     * @param projId
+     * @throws IOException
+     */
     public static void extractReportAndMoveDirs(List<ProjectDependency> dependencies,
                                                 Map<String, Set<String>> projPackagesAndClassMap,
                                                 String localRepoPath, String projId) throws IOException {
@@ -128,6 +141,11 @@ public class HtmlAugmenter {
         }
     }
 
+    /**
+     * Gets the full filepath for a certain dependency within the report.
+     * @param projectDependency
+     * @return
+     */
     public static String getFullDepPath(ProjectDependency projectDependency) {
         StringBuilder fullPath = new StringBuilder();
         List<ProjectDependency> parentDeps = projectDependency.getParentDeps();
@@ -156,12 +174,21 @@ public class HtmlAugmenter {
         return fullPath.toString();
     }
 
+    /**
+     * Gets the corresponding directory name for a dependency.
+     * @param dependency
+     * @return String
+     */
     public static String depToDirName(ProjectDependency dependency) {
         return dependency.getGroupId().replace("-", ".") + "." +
                 dependency.getArtifactId().replace("-", ".") + "-v" + dependency.getVersion();
     }
 
-
+    /**
+     * Creates the complete jact-report by reading the usage and writing
+     * to the corresponding files.
+     * @param dependencies
+     */
     public static void createDependencyReports(List<ProjectDependency> dependencies) {
 
         // Rename the original index.html file
@@ -298,7 +325,16 @@ public class HtmlAugmenter {
 
     }
 
-
+    /**
+     * Calculates the total usage for all layers of the report.
+     * Layers include the complete overview, dependency overview
+     * individual dependencies and their transitive dependencies.
+     * @param currDependency
+     * @param writtenPaths
+     * @param writtenEntryPaths
+     * @param currTotal
+     * @return DependencyUsage
+     */
     public static DependencyUsage calculateTotalForAllLayers(ProjectDependency currDependency, List<String> writtenPaths, List<String> writtenEntryPaths, DependencyUsage currTotal) {
         List<String> writtenTotalPaths = new ArrayList<>();
         // Keep track of dependencies that have already been checked out.
@@ -355,6 +391,12 @@ public class HtmlAugmenter {
     }
 
 
+    /**
+     * Loads a html template from resources.
+     * @param resourceName
+     * @return
+     * @throws IOException
+     */
     public static String loadTemplate(String resourceName) throws IOException {
         try (InputStream inputStream = HtmlAugmenter.class.getClassLoader().getResourceAsStream(resourceName)) {
             if (inputStream == null) {
@@ -371,6 +413,12 @@ public class HtmlAugmenter {
         }
     }
 
+    /**
+     * Writes a html template from resources.
+     * @param filename
+     * @param outputFilePath
+     * @throws IOException
+     */
     public static void writeTemplateToFile(String filename, String outputFilePath) throws IOException {
         String templateContent = loadTemplate(filename);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath, true))) {
@@ -379,6 +427,14 @@ public class HtmlAugmenter {
     }
 
 
+    /**
+     * Extracts and adds the usage of a package to its
+     * corresponding dependency.
+     * @param line
+     * @param entryIndex
+     * @param matchedDep
+     * @param packageUsage
+     */
     private static void extractUsage(String line, int entryIndex, ProjectDependency matchedDep, DependencyUsage packageUsage) {
         switch (entryIndex) {
             case 1:
@@ -449,6 +505,12 @@ public class HtmlAugmenter {
     }
 
 
+    /**
+     * Extracts the usage of all but the instructions/branches from
+     * the jacoco report.
+     * @param input
+     * @return long
+     */
     public static long extractUsageNumber(String input) {
         // Define a regex pattern to match the number within <td> tags
         Pattern pattern = Pattern.compile("<td[^>]*>(\\d+(?:,\\d+)*)</td>");
@@ -469,6 +531,12 @@ public class HtmlAugmenter {
         }
     }
 
+    /**
+     * Extracts the usage of instructions/branches from
+     * the jacoco report.
+     * @param input
+     * @return
+     */
     public static long[] extractBranchNInstrUsage(String input) {
         // Define regex pattern to match the numbers inside <td> tags
         Pattern pattern = Pattern.compile("<td[^>]*>(\\d+(?:,\\d+)*)\\s+of\\s+(\\d+(?:,\\d+)*)</td>");
@@ -497,7 +565,13 @@ public class HtmlAugmenter {
         return numbers;
     }
 
-
+    /**
+     * Reads the jacoco report and extracts its usage.
+     * @param inputFilePath
+     * @param matchedDep
+     * @param packageName
+     * @throws IOException
+     */
     public static void extractAndAddPackageTotal(String inputFilePath, ProjectDependency matchedDep, String packageName) throws IOException {
         try {
             // Read the HTML file
@@ -551,6 +625,7 @@ public class HtmlAugmenter {
         }
     }
 
+
     public static void writeModifiedTemplateToFile(String filename, String outputFilePath, String dependencyName) throws IOException {
         String templateContent = loadTemplateWithReplacement(filename, dependencyName);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath, true))) {
@@ -558,12 +633,19 @@ public class HtmlAugmenter {
         }
     }
 
+
     public static void writeHTMLStringToFile(String outputFilePath, String inputString) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath, true))) {
             writer.write(inputString);
         }
     }
 
+    /**
+     * Writes the total usage to the html report.
+     * @param outputFilePath
+     * @param inputString
+     * @throws IOException
+     */
     public static void writeHTMLTotalToFile(String outputFilePath, String inputString) throws IOException {
         // Create a temporary file to store the modified content
         File tempFile = new File(outputFilePath + ".temp");

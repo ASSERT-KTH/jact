@@ -19,6 +19,9 @@ import java.util.*;
 
 import static jact.depUtils.PackageToDependencyResolver.packageToDepPaths;
 
+/**
+ * Creates the XML version of the JACT Report
+ */
 public class XmlAugmenter {
     public static DependencyUsage dependencyUsage = new DependencyUsage();
     public static DependencyUsage projectUsage = new DependencyUsage();
@@ -35,6 +38,11 @@ public class XmlAugmenter {
     private static DependencyUsage totalUsage = new DependencyUsage();
 
 
+    /**
+     * Extracts the header information form the jacoco XML report.
+     * @param xmlFilePath
+     * @return String
+     */
     public static String extractXmlHeader(String xmlFilePath) {
 
             StringBuilder sessionInfo = new StringBuilder();
@@ -65,7 +73,7 @@ public class XmlAugmenter {
             return sessionInfo.toString();
         }
 
-// Helper method to convert a Node to String
+        // Helper method to convert a Node to String
         private static String nodeToString(Node node) {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("<").append(node.getNodeName());
@@ -105,7 +113,14 @@ public class XmlAugmenter {
     }
 
 
-
+    /**
+     * Creates individual XML reports for each package
+     * in the jacoco XML report.
+     * @param dependencies
+     * @param projPackagesAndClassMap
+     * @param localRepoPath
+     * @param projId
+     */
     public static void groupPackageByDep(List<ProjectDependency> dependencies,
                                          Map<String, Set<String>> projPackagesAndClassMap,
                                          String localRepoPath, String projId){
@@ -193,6 +208,16 @@ public class XmlAugmenter {
 
     }
 
+    /**
+     * Writes the complete XML report from the individual
+     * project XML reports. The report is separated by
+     * Dependency/Project packages easily identifying
+     * the source of packages where totals for the
+     * all dependencies, project and the overall
+     * total is written in each section.
+     * @param dependencies
+     * @param packageReports
+     */
     public static void writeCompleteReport(List<ProjectDependency> dependencies, Map<String, Document> packageReports) {
         try {
             CommandExecutor.copyDtdFile("report.dtd", "./target/jact-report");
@@ -335,10 +360,13 @@ public class XmlAugmenter {
     }
 
 
-
-
-
-
+    /**
+     * Extracts the total values from the jacoco XML report.
+     * @param inputFilePath
+     * @param matchedDep
+     * @param usage
+     * @param packageName
+     */
     public static void extractCounterValues(String inputFilePath, ProjectDependency matchedDep, DependencyUsage usage, String packageName) {
         try {
             // Parse the XML file
@@ -411,7 +439,13 @@ public class XmlAugmenter {
         }
     }
 
-
+    /**
+     * Creates the individual XML package reports
+     * from the jacoco XML report.
+     * @param packageElement
+     * @return
+     * @throws Exception
+     */
     private static Document createPackageReport(Element packageElement) throws Exception {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         dbFactory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false); // Disable DTD validation
@@ -456,7 +490,13 @@ public class XmlAugmenter {
         formatXml(outputFile, formattedDoc, false);
     }
 
-
+    /**
+     * Formats the XML to correctly ident each line.
+     * @param file
+     * @param doc
+     * @param validateWithDTD
+     * @throws Exception
+     */
     private static void formatXml(File file, Document doc, boolean validateWithDTD) throws Exception {
         // Create transformer
         TransformerFactory transformerFactory = TransformerFactory.newInstance();

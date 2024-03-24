@@ -11,6 +11,7 @@ import java.nio.file.Paths;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
+
 public class CommandExecutor {
     public String hostOS;
 
@@ -18,6 +19,12 @@ public class CommandExecutor {
         this.hostOS = hostOS.toLowerCase();
     }
 
+    /**
+     * Copies the jacoco cli jar for generating the jacoco
+     * report before augmenting it.
+     * @throws IOException
+     * @throws URISyntaxException
+     */
     public static void copyJacocoCliJar() throws IOException, URISyntaxException {
         // Get the path to the plugin JAR file
         Path pluginJarPath = Paths.get(AbstractReportMojo.class.getProtectionDomain().getCodeSource().getLocation().toURI());
@@ -50,6 +57,14 @@ public class CommandExecutor {
         }
     }
 
+    /**
+     * Copies the jacoco report.dtd file containing
+     * the jacoco xml report specification for verifying
+     * the JACT XML report.
+     * @param filename
+     * @param destinationDirectory
+     * @throws IOException
+     */
     public static void copyDtdFile(String filename, String destinationDirectory) throws IOException {
         // Load the DTD file from the plugin's resources/xml-resources directory
         ClassLoader classLoader = CommandExecutor.class.getClassLoader();
@@ -80,6 +95,12 @@ public class CommandExecutor {
         System.out.println("DTD file copied successfully to: " + destinationPath);
     }
 
+    /**
+     * Copies the JACT logo for the HTML report.
+     * @param filename
+     * @param destinationDirectory
+     * @throws IOException
+     */
     public static void copyPNGImage(String filename, String destinationDirectory) throws IOException {
         // Check if the filename ends with .png
         if (!filename.toLowerCase().endsWith(".png")) {
@@ -115,6 +136,11 @@ public class CommandExecutor {
         System.out.println("PNG image copied successfully to: " + destinationPath);
     }
 
+    /**
+     * Generates the dependency lockfile for identifying
+     * all dependencies in the project and their heritage.
+     * @param targetDirectory
+     */
     public void generateDependencyLockfile(String targetDirectory) {
         try {
             // Command to be executed
@@ -179,6 +205,7 @@ public class CommandExecutor {
             return output.toString();
         }
     }
+
 
     public void executeJacocoCLI(String jarName, boolean htmlReport) throws MojoExecutionException {
         try {

@@ -16,6 +16,7 @@ import static jact.core.HtmlAugmenter.extractReportAndMoveDirs;
 
 
 /**
+ * JACT HTML Report:
  * Generates a complete code coverage report including all
  * dependencies along with their transitive dependencies.
  */

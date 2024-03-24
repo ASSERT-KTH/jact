@@ -8,6 +8,9 @@ import java.util.zip.ZipFile;
 
 import static jact.core.HtmlAugmenter.REPORTPATH;
 
+/**
+ * Resolves a package name to a dependency in the local .m2 folder.
+ */
 public class PackageToDependencyResolver {
     /**
      * Take a list of all dependencies,
