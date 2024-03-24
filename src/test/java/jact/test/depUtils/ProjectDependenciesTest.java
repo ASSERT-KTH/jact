@@ -26,6 +26,8 @@ public class ProjectDependenciesTest {
     public static final String testResourcesDir = "./src/test/resources/";
     static String OS = System.getProperty("os.name");
 
+
+    //All dependency IDs from the pre-defined lockfile for testing
     public static final List<String> dependencyIds = Arrays.asList(
             "com.google.guava:guava:33.0.0-jre",
             "com.google.code.findbugs:jsr305:3.0.2",
@@ -45,6 +47,7 @@ public class ProjectDependenciesTest {
             "org.opentest4j:opentest4j:1.3.0"
     );
 
+    // All children dependencies of Google Guava
     public static final List<String> googleGuavaChildrenDeps = Arrays.asList(
             "com.google.code.findbugs:jsr305:3.0.2",
             "com.google.errorprone:error_prone_annotations:2.23.0",
@@ -63,6 +66,12 @@ public class ProjectDependenciesTest {
     }
 
     @BeforeAll
+    /**
+     * Generates the test-project Dependencies from the
+     * pre-defined lockfile. The dependencies are represented
+     * by ProjectDependency objects which contain all the required
+     * fields for identification and recording usage.
+     */
     public static void initTestDependencies(){
         CommandExecutor cmdExecTest = new CommandExecutor(OS);
         assertTrue(new File(testResourcesDir + "lockfile.json").exists());
@@ -70,6 +79,17 @@ public class ProjectDependenciesTest {
     }
 
     @Test
+    /**
+     * Requirements: See `initTestDependencies()`.
+     * Contract:
+     *      Pre-condition: A valid lockfile.json from
+     *                     test resources has generated all defined
+     *                     dependencies to a list of ProjectDependency
+     *                     objects.
+     *     Post-condition: There is a total of 16 dependencies.
+     *                     All dependencies are present with their
+     *                     unique ID in the pre-defined list of IDs.
+     */
     public void allDepIdsPresentTest(){
         // Check the number of dependencies
         assertEquals(16, dependencies.size());
@@ -81,11 +101,22 @@ public class ProjectDependenciesTest {
     }
 
     @Test
+    /**
+     * Requirements: See `initTestDependencies()`.
+     * Contract:
+     *      Pre-condition: A valid lockfile.json from
+     *                     test resources has generated all defined
+     *                     dependencies to a list of ProjectDependency
+     *                     objects.
+     *     Post-condition: All child dependencies of Google Guava are
+     *                     correctly generated and the children mention
+     *                     Google Guava in their `parents` list.
+     */
     public void parentAndChildrenDepsTest(){
         // Check that Google Guavas children dependencies are correct
         for(ProjectDependency childDep : dependencies.get(0).getChildDeps()){
             assertTrue(googleGuavaChildrenDeps.contains(childDep.getId()));
-            // Check that the parent is Google Guava
+            // Check that the parent-list contains Google Guava
             boolean foundChildDep = false;
             for(ProjectDependency deps : childDep.getParentDeps()){
                 if(deps.getId().equals(dependencies.get(0).getId())){
@@ -97,6 +128,18 @@ public class ProjectDependenciesTest {
     }
 
     @Test
+    /**
+     * Requirements: See `initTestDependencies()`.
+     * Contract:
+     *      Pre-condition: A valid lockfile.json from
+     *                     test resources has generated all defined
+     *                     dependencies to a list of ProjectDependency
+     *                     objects.
+     *     Post-condition: Transitive dependencies of
+     *                     "org.junit.platform:junit-platform-commons:1.10.2"
+     *                     are correctly generated and correctly defined in
+     *                     the chain of child-dependencies.
+     */
     public void multipleTransitiveDepsTest(){
         // Check that "org.junit.platform:junit-platform-commons:1.10.2"
         // is the second child in "org.junit.jupiter:junit-jupiter-api:5.10.2"

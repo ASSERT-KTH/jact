@@ -17,6 +17,13 @@ public class DependencyUsageTest {
     DependencyUsage testUsage = new DependencyUsage();
 
     @Test
+    /**
+     * Requirements: An initialized DependencyUsage object.
+     * Contract:
+     *      Pre-condition: A newly initialized DependencyUsage Object.
+     *     Post-condition: Adding missed/total branches correctly updates
+     *                     its corresponding fields.
+     */
     public void addBranchNrTest(){
         Assertions.assertEquals(0, testUsage.getMissedBranches());
         testUsage.addMissedBranches(3);
@@ -27,6 +34,13 @@ public class DependencyUsageTest {
     }
 
     @Test
+    /**
+     * Requirements: An initialized DependencyUsage object.
+     * Contract:
+     *      Pre-condition: A newly initialized DependencyUsage Object.
+     *     Post-condition: Adding missed/total lines correctly updates
+     *                     its corresponding fields.
+     */
     public void addLinesNrTest(){
         Assertions.assertEquals(0, testUsage.getMissedLines());
         testUsage.addMissedLines(3);
@@ -37,6 +51,13 @@ public class DependencyUsageTest {
     }
 
     @Test
+    /**
+     * Requirements: An initialized DependencyUsage object.
+     * Contract:
+     *      Pre-condition: A newly initialized DependencyUsage Object.
+     *     Post-condition: Adding missed/total instructions correctly updates
+     *                     its corresponding fields.
+     */
     public void addInstructionsNrTest(){
         Assertions.assertEquals(0, testUsage.getMissedInstructions());
         testUsage.addMissedInstructions(3);
@@ -47,6 +68,13 @@ public class DependencyUsageTest {
     }
 
     @Test
+    /**
+     * Requirements: An initialized DependencyUsage object.
+     * Contract:
+     *      Pre-condition: A newly initialized DependencyUsage Object.
+     *     Post-condition: Adding missed/total Cyclomatic Complexity correctly
+     *                     updates its corresponding fields.
+     */
     public void addCyclomaticComplexityNrTest(){
         Assertions.assertEquals(0, testUsage.getMissedCyclomaticComplexity());
         testUsage.addMissedCyclomaticComplexity(3);
@@ -57,6 +85,13 @@ public class DependencyUsageTest {
     }
 
     @Test
+    /**
+     * Requirements: An initialized DependencyUsage object.
+     * Contract:
+     *      Pre-condition: A newly initialized DependencyUsage Object.
+     *     Post-condition: Adding missed/total methods correctly updates
+     *                     its corresponding fields.
+     */
     public void addMethodNrTest(){
         Assertions.assertEquals(0, testUsage.getMissedMethods());
         testUsage.addMissedMethods(3);
@@ -67,6 +102,13 @@ public class DependencyUsageTest {
     }
 
     @Test
+    /**
+     * Requirements: An initialized DependencyUsage object.
+     * Contract:
+     *      Pre-condition: A newly initialized DependencyUsage Object.
+     *     Post-condition: Adding missed/total classes correctly updates
+     *                     its corresponding fields.
+     */
     public void addClassesNrTest(){
         Assertions.assertEquals(0, testUsage.getMissedClasses());
         testUsage.addMissedClasses(3);
@@ -77,6 +119,13 @@ public class DependencyUsageTest {
     }
 
     @Test
+    /**
+     * Requirements: An initialized DependencyUsage object.
+     * Contract:
+     *     Pre-condition: A newly initialized DependencyUsage Object.
+     *     Post-condition: Calculating the percentage correctly returns
+     *                     a string representation of the result.
+     */
     public void percentageTest(){
         assertEquals("44%", percentage(44, 100));
         assertEquals("67%", percentage(67, 100));
@@ -85,6 +134,13 @@ public class DependencyUsageTest {
     }
 
     @Test
+    /**
+     * Requirements: An initialized DependencyUsage object.
+     * Contract:
+     *     Pre-condition: A newly initialized DependencyUsage Object.
+     *     Post-condition: Calculating the bar-length correctly returns
+     *                     the percentage number.
+     */
     public void barLengthTest(){
         assertEquals(44, barLength(44, 100));
         assertEquals(67, barLength(67, 100));

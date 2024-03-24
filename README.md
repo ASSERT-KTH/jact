@@ -79,10 +79,11 @@ in your project will create a `jact-report` directory under `./target/jact-repor
 XML Report Structure:
 ```xml
 <report name="JACT Coverage Report (Generated with JaCoCo)">
-    <category name="Dependencies">
+    <group name="Dependencies">
       <group name="dependencyId">
         <package name="packageName">
           <!-- Package usage info -->
+          <!-- Total Package Coverage -->
         </package>
         <!-- Rest the packages in the dependency -->
             <!-- ... -->
@@ -90,16 +91,17 @@ XML Report Structure:
       <!-- Rest of the dependencies-->
         <!-- ... -->
       <!-- Dependency Coverage Total -->
-    </category>
-    <category name="ProjectPackages">
+    </group>
+    <group name="Project Packages">
       <package name="packageName">
-        <!-- Project packages -->
+        <!-- Package usage info -->
+        <!-- Total Package Coverage -->
       </package>
-      <!-- Rest of the dependencies-->
+      <!-- Rest of the project packages-->
         <!-- ... -->
       <!-- Project Coverage Total -->
-    </category>
-  <!-- Overall Total Coverage -->
+    </group>
+  <!-- Overall Coverage Total -->
 </report>
 ```
 

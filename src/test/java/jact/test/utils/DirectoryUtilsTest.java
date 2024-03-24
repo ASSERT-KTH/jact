@@ -22,6 +22,12 @@ public class DirectoryUtilsTest {
     }
 
     @Test
+    /**
+     * Requirements: Nothing.
+     * Contract:
+     *     Post-condition: Creating and removing empty directories
+     *                     is performed correctly.
+     */
     public void createAndRemoveEmptyDirectoryTest(){
         Assertions.assertFalse(new File(testDirectory + "createdDir").exists());
         createDir(testDirectory + "createdDir");
@@ -32,6 +38,12 @@ public class DirectoryUtilsTest {
     }
 
     @Test
+    /**
+     * Requirements: Nothing.
+     * Contract:
+     *     Post-condition: Creating and removing directories with content
+     *                     is performed correctly.
+     */
     public void createAndRemoveDirectoryTest() throws IOException {
         createDir(testDirectory + "createdDir");
         assertTrue(new File(testDirectory + "createdDir").exists());
@@ -47,6 +59,12 @@ public class DirectoryUtilsTest {
 
 
     @Test
+    /**
+     * Requirements: Nothing.
+     * Contract:
+     *     Post-condition: Copying and moving directories with content
+     *                     is performed correctly.
+     */
     public void copyAndMoveDirectoryTest() throws IOException {
         createDir(testDirectory + "createdDir");
         assertTrue(new File(testDirectory + "createdDir").exists());
