@@ -14,16 +14,18 @@ public class ProjectDependencies {
 
     public static List<ProjectDependency> projectDependencies = new ArrayList<>();
 
-    public static List<ProjectDependency> getAllProjectDependencies(CommandExecutor cmdExec) {
+    public static List<ProjectDependency> getAllProjectDependencies(CommandExecutor cmdExec, String targetDirectory, boolean genLockfile) {
         if (projectDependencies.isEmpty()) {
-            generateAllProjectDependencies(cmdExec);
+            generateAllProjectDependencies(cmdExec, targetDirectory, genLockfile);
         }
         return projectDependencies;
     }
 
-    private static void generateAllProjectDependencies(CommandExecutor cmdExec) {
-        cmdExec.generateDependencyLockfile();
-        String filePath = "./target/jact-report/lockfile.json"; // Path to the JSON file
+    private static void generateAllProjectDependencies(CommandExecutor cmdExec, String targetDirectory, boolean genLockfile) {
+        if(genLockfile){
+            cmdExec.generateDependencyLockfile(targetDirectory);
+        }
+        String filePath = targetDirectory + "lockfile.json"; // Path to the JSON file
         try (FileReader reader = new FileReader(filePath)) {
             Gson gson = new GsonBuilder().registerTypeAdapter(ProjectDependency.class, new ProjectDependencyDeserializer()).create();
             JsonElement jsonElement = gson.fromJson(reader, JsonElement.class);

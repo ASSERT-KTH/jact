@@ -43,7 +43,7 @@ public class XmlReportMojo extends AbstractReportMojo {
 
 
         CommandExecutor cmdExec = new CommandExecutor(getHostOS());
-        List<ProjectDependency> projectDependencies = ProjectDependencies.getAllProjectDependencies(cmdExec);
+        List<ProjectDependency> projectDependencies = ProjectDependencies.getAllProjectDependencies(cmdExec, "./target/jact-report/", true);
 
         // Execute JaCoCoCLI to create the report WITH dependencies
         getLog().info("Copying the `jacococli.jar` to the project.");

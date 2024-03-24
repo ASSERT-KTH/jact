@@ -15,7 +15,7 @@ public class CommandExecutor {
     public String hostOS;
 
     public CommandExecutor(String hostOS){
-        this.hostOS = hostOS;
+        this.hostOS = hostOS.toLowerCase();
     }
 
     public static void copyJacocoCliJar() throws IOException, URISyntaxException {
@@ -115,7 +115,7 @@ public class CommandExecutor {
         System.out.println("PNG image copied successfully to: " + destinationPath);
     }
 
-    public void generateDependencyLockfile() {
+    public void generateDependencyLockfile(String targetDirectory) {
         try {
             // Command to be executed
             String command = "mvn io.github.chains-project:maven-lockfile:generate -Dreduced=true";
@@ -127,7 +127,7 @@ public class CommandExecutor {
             } else if (this.hostOS.contains("windows")) {
                 processBuilder = new ProcessBuilder("cmd", "/c", command); // For Windows
             } else {
-                // No support for MacOS currently
+                // No support for macOS currently
                 throw new RuntimeException("Could not identify operating system for lock file generation.");
             }
 
@@ -152,7 +152,7 @@ public class CommandExecutor {
 
             // Move the generated lockfile.json to ./target/jact-report/lockfile.json
             File sourceFile = new File("./lockfile.json");
-            File targetDir = new File("./target/jact-report/");
+            File targetDir = new File(targetDirectory);
             if (!targetDir.exists()) {
                 targetDir.mkdirs();
             }
