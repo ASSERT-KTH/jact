@@ -27,7 +27,6 @@ public class XmlReportMojo extends AbstractReportMojo {
 
     @Override
     public void doExecute() throws MojoExecutionException {
-        String outputJarName = getOutputJarName();
 
         // Print out packages and their classes
         getLog().info("Packages in project:");
@@ -40,7 +39,7 @@ public class XmlReportMojo extends AbstractReportMojo {
 
 
         getLog().info("STARTING: JACT - Java Complete Coverage Tracker");
-        getLog().info("JARNAME: " + outputJarName + "-shaded");
+        getLog().info("JARNAME: " + getOutputJarName());
         //String outputDirectory = project.getBuild().getOutputDirectory();
 
 
@@ -57,7 +56,7 @@ public class XmlReportMojo extends AbstractReportMojo {
         }
 
         getLog().info("Creating the complete coverage report.");
-        executeJacocoCLI(outputJarName + "-shaded", false);
+        executeJacocoCLI(getOutputJarName(), false);
 
         getLog().info("Organizing the complete coverage report.");
 

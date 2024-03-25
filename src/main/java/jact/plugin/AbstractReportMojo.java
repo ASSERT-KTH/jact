@@ -37,6 +37,9 @@ public abstract class AbstractReportMojo extends AbstractMojo {
     @Parameter(defaultValue = "${session}", required = true, readonly = true)
     private MavenSession session;
 
+    @Parameter(property = "shadedJarName")
+    private String shadedJarName;
+
 
     public String getLocalRepoPath() {
         return this.session.getLocalRepository().getBasedir();
@@ -55,7 +58,10 @@ public abstract class AbstractReportMojo extends AbstractMojo {
     }
 
     public String getOutputJarName() {
-        return this.project.getBuild().getFinalName();
+        if(shadedJarName == null){
+            shadedJarName = this.project.getBuild().getFinalName() + "-shaded";
+        }
+        return shadedJarName;
     }
 
     public Map<String, Set<String>> getProjectPackagesAndClasses() {

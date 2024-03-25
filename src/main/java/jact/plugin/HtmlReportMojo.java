@@ -28,7 +28,6 @@ public class HtmlReportMojo extends AbstractReportMojo {
 
     @Override
     public void doExecute() throws MojoExecutionException {
-        String outputJarName = getOutputJarName();
 
         // Print out packages and their classes
         getLog().info("Packages in project:");
@@ -41,7 +40,7 @@ public class HtmlReportMojo extends AbstractReportMojo {
 
 
         getLog().info("STARTING: JACT - Java Complete Coverage Tracker");
-        getLog().info("JARNAME: " + outputJarName + "-shaded");
+        getLog().info("JARNAME: " + getOutputJarName());
         //String outputDirectory = project.getBuild().getOutputDirectory();
 
         List<ProjectDependency> projectDependencies = ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true);
@@ -57,7 +56,7 @@ public class HtmlReportMojo extends AbstractReportMojo {
         }
 
         getLog().info("Creating the complete coverage report.");
-        executeJacocoCLI(outputJarName + "-shaded", true);
+        executeJacocoCLI(getOutputJarName(), true);
 
         getLog().info("Organizing the complete coverage report.");
         try {
