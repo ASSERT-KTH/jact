@@ -19,8 +19,6 @@ public abstract class AbstractReportMojo extends AbstractMojo {
 
     private static final String LINE_SEPARATOR = "------------------------------------------------------------------------";
 
-
-    private static String hostOS;
     private static String localRepoPath;
     private static String projectGroupId;
     private static String artifactId;
@@ -39,11 +37,6 @@ public abstract class AbstractReportMojo extends AbstractMojo {
     @Parameter(defaultValue = "${session}", required = true, readonly = true)
     private MavenSession session;
 
-
-
-    public String getHostOS() {
-        return this.session.getSystemProperties().getProperty("os.name").toLowerCase();
-    }
 
     public String getLocalRepoPath() {
         return this.session.getLocalRepository().getBasedir();

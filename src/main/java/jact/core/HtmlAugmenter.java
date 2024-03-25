@@ -2,6 +2,7 @@ package jact.core;
 
 import jact.depUtils.DependencyUsage;
 import jact.depUtils.PackageToDependencyResolver;
+import jact.depUtils.ProjectDependencies;
 import jact.depUtils.ProjectDependency;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -254,7 +255,9 @@ public class HtmlAugmenter {
         List<String> writtenPaths = new ArrayList<>();
         List<String> writtenEntryPaths = new ArrayList<>();
 
-        DependencyUsage totalDepUsage = new DependencyUsage();
+        // Get total dependency usage
+        DependencyUsage totalDepUsage = getTotalDependencyUsage(dependencies);
+
         for (ProjectDependency pd : dependencies) {
             DependencyUsage currTotal = new DependencyUsage();
             currTotal = calculateTotalForAllLayers(pd, writtenPaths, writtenEntryPaths, currTotal);
@@ -264,15 +267,14 @@ public class HtmlAugmenter {
                     File currDir = new File(path);
                     File parentDir = currDir.getParentFile();
                     try {
-                        writeHTMLStringToFile(parentDir + "/index.html", pd.dependencyUsage.usageToHTML(currDir.getName(), currTotal, false));
+                        // Only writes if it is a base layer dependency (it has no parent dependencies)
+                        writeHTMLStringToFile(parentDir + "/index.html", pd.dependencyUsage.usageToHTML(currDir.getName(), totalDepUsage, false));
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
                 }
             }
             pd.writePackagesToFile(currTotal);
-
-            totalDepUsage.addAll(pd.dependencyUsage);
         }
 
         try {
@@ -321,8 +323,19 @@ public class HtmlAugmenter {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
 
-
+    /**
+     * Gets the total usage for all dependencies.
+     * @param dependencies
+     * @return DependencyUsage
+     */
+    public static DependencyUsage getTotalDependencyUsage(List<ProjectDependency> dependencies){
+        DependencyUsage totalDepUsage = new DependencyUsage();
+        for (ProjectDependency pd : dependencies) {
+            totalDepUsage.addAll(pd.dependencyUsage);
+        }
+        return totalDepUsage;
     }
 
     /**
@@ -347,6 +360,21 @@ public class HtmlAugmenter {
                 currDependency.dependencyUsage.addAll(childTotal);
             }
 
+            for (ProjectDependency child : currDependency.getChildDeps()) {
+                if (!child.writtenEntryToFile) {
+                    child.writtenEntryToFile = true;
+                    for (String path : child.getReportPaths()) {
+                        File currDir = new File(path);
+                        File parentDir = currDir.getParentFile();
+                        try {
+                            writeHTMLStringToFile(parentDir + "/index.html", child.dependencyUsage.usageToHTML(currDir.getName(), childTotal, false));
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                }
+            }
+
             for (String path : currDependency.getReportPaths()) {
                 if (!writtenPaths.contains(path)) {
                     writtenPaths.add(path);
@@ -354,8 +382,9 @@ public class HtmlAugmenter {
                     File parentDir = currDir.getParentFile();
                     try {
                         // Writing the dependency total as an entry
-                        DependencyUsage totalForBars = currTotal;
+                        DependencyUsage totalForBars = new DependencyUsage();
                         totalForBars.addAll(currDependency.dependencyUsage);
+                        totalForBars.addAll(currTotal);
                         writeHTMLStringToFile(currDir + "/index.html", childTotal.usageToHTML("transitive-dependencies", totalForBars, false));
                         writeHTMLTotalToFile(currDir + "/transitive-dependencies/index.html", childTotal.totalUsageToHTML());
                     } catch (IOException e) {
@@ -385,7 +414,6 @@ public class HtmlAugmenter {
                 }
             }
         }
-
 
         return currTotal;
     }
