@@ -1,14 +1,14 @@
 package jact.depUtils;
 
 import com.google.gson.*;
-import jact.depUtils.ProjectDependency;
-import jact.utils.CommandExecutor;
 
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import static jact.utils.CommandExecutor.generateDependencyLockfile;
 
 /**
  * Creates all the project dependencies and their ProjectDependency objects
@@ -18,9 +18,9 @@ public class ProjectDependencies {
 
     public static List<ProjectDependency> projectDependencies = new ArrayList<>();
 
-    public static List<ProjectDependency> getAllProjectDependencies(CommandExecutor cmdExec, String targetDirectory, boolean genLockfile) {
+    public static List<ProjectDependency> getAllProjectDependencies(String targetDirectory, boolean genLockfile) {
         if (projectDependencies.isEmpty()) {
-            generateAllProjectDependencies(cmdExec, targetDirectory, genLockfile);
+            generateAllProjectDependencies(targetDirectory, genLockfile);
         }
         return projectDependencies;
     }
@@ -29,13 +29,12 @@ public class ProjectDependencies {
      * Generate the project lockfile containing all the project dependencies
      * including their transitive dependencies and creates their corresponding
      * ProjectDependency object with child/parent dependencies.
-     * @param cmdExec
      * @param targetDirectory
      * @param genLockfile
      */
-    private static void generateAllProjectDependencies(CommandExecutor cmdExec, String targetDirectory, boolean genLockfile) {
+    private static void generateAllProjectDependencies(String targetDirectory, boolean genLockfile) {
         if(genLockfile){
-            cmdExec.generateDependencyLockfile(targetDirectory);
+            generateDependencyLockfile(targetDirectory);
         }
         String filePath = targetDirectory + "lockfile.json"; // Path to the JSON file
         try (FileReader reader = new FileReader(filePath)) {

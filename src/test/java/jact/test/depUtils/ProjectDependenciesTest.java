@@ -1,10 +1,6 @@
 package jact.test.depUtils;
 
-import jact.depUtils.ProjectDependencies;
-
 import jact.depUtils.ProjectDependency;
-import jact.plugin.AbstractReportMojo;
-import jact.utils.CommandExecutor;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -14,8 +10,6 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-import static jact.depUtils.DependencyUsage.barLength;
-import static jact.depUtils.DependencyUsage.percentage;
 import static jact.depUtils.ProjectDependencies.getAllProjectDependencies;
 import static jact.utils.DirectoryUtils.removeDirectory;
 import static junit.framework.TestCase.assertEquals;
@@ -24,7 +18,6 @@ import static junit.framework.TestCase.assertTrue;
 public class ProjectDependenciesTest {
     static String testDirectory = "./src/test/java/jact/test/testingDir/";
     public static final String testResourcesDir = "./src/test/resources/";
-    static String OS = System.getProperty("os.name");
 
 
     //All dependency IDs from the pre-defined lockfile for testing
@@ -73,9 +66,8 @@ public class ProjectDependenciesTest {
      * fields for identification and recording usage.
      */
     public static void initTestDependencies(){
-        CommandExecutor cmdExecTest = new CommandExecutor(OS);
         assertTrue(new File(testResourcesDir + "lockfile.json").exists());
-        dependencies = getAllProjectDependencies(cmdExecTest, testResourcesDir, false);
+        dependencies = getAllProjectDependencies(testResourcesDir, false);
     }
 
     @Test
@@ -151,5 +143,33 @@ public class ProjectDependenciesTest {
         // Check that "org.apiguardian:apiguardian-api:1.1.2" has an empty 'children' list:
         assertTrue(dependencies.get(13).getChildDeps().get(0).getChildDeps().isEmpty());
     }
+
+    @Test
+    /**
+     * Requirements: See `initTestDependencies()`.
+     * Contract:
+     *      Pre-condition: A valid lockfile.json from
+     *                     test resources has generated all defined
+     *                     dependencies to a list of ProjectDependency
+     *                     objects.
+     *     Post-condition: Created ProjectDependency objects have the
+     *                     correct corresponding values within their fields.
+     */
+    public void properFieldValuesTest(){
+        // Check that "org.apache.commons:commons-math3:3.6.1" has correct field values
+        assertTrue(dependencies.get(10).getId().equals("org.apache.commons:commons-math3:3.6.1"));
+        assertTrue(dependencies.get(10).getGroupId().equals("org.apache.commons"));
+        assertTrue(dependencies.get(10).getArtifactId().equals("commons-math3"));
+        assertTrue(dependencies.get(10).getVersion().equals("3.6.1"));
+        assertTrue(dependencies.get(10).getScope().equals("compile"));
+
+        // Check that "com.google.guava:guava:33.0.0-jre" has correct field values
+        assertTrue(dependencies.get(0).getId().equals("com.google.guava:guava:33.0.0-jre"));
+        assertTrue(dependencies.get(0).getGroupId().equals("com.google.guava"));
+        assertTrue(dependencies.get(0).getArtifactId().equals("guava"));
+        assertTrue(dependencies.get(0).getVersion().equals("33.0.0-jre"));
+        assertTrue(dependencies.get(0).getScope().equals("compile"));
+    }
+
 
 }

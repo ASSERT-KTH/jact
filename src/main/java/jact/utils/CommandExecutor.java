@@ -13,11 +13,7 @@ import java.util.jar.JarInputStream;
 
 
 public class CommandExecutor {
-    public String hostOS;
-
-    public CommandExecutor(String hostOS){
-        this.hostOS = hostOS.toLowerCase();
-    }
+    public static String hostOS = System.getProperty("os.name").toLowerCase();
 
     /**
      * Copies the jacoco cli jar for generating the jacoco
@@ -141,16 +137,16 @@ public class CommandExecutor {
      * all dependencies in the project and their heritage.
      * @param targetDirectory
      */
-    public void generateDependencyLockfile(String targetDirectory) {
+    public static void generateDependencyLockfile(String targetDirectory) {
         try {
             // Command to be executed
             String command = "mvn io.github.chains-project:maven-lockfile:generate -Dreduced=true";
 
             // Adapts the command based on OS:
             ProcessBuilder processBuilder;
-            if (this.hostOS.contains("linux")) {
+            if (hostOS.contains("linux")) {
                 processBuilder = new ProcessBuilder("/bin/bash", "-c", command);
-            } else if (this.hostOS.contains("windows")) {
+            } else if (hostOS.contains("windows")) {
                 processBuilder = new ProcessBuilder("cmd", "/c", command); // For Windows
             } else {
                 // No support for macOS currently
@@ -207,7 +203,7 @@ public class CommandExecutor {
     }
 
 
-    public void executeJacocoCLI(String jarName, boolean htmlReport) throws MojoExecutionException {
+    public static void executeJacocoCLI(String jarName, boolean htmlReport) throws MojoExecutionException {
         try {
             // Retrieve the URL to the jacococli.jar file
             // Command to execute Jacoco CLI

@@ -1,8 +1,8 @@
 package jact.core;
 
 import jact.depUtils.DependencyUsage;
-import jact.depUtils.ProjectDependency;
 import jact.depUtils.PackageToDependencyResolver;
+import jact.depUtils.ProjectDependency;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -20,8 +20,8 @@ import static jact.utils.DirectoryUtils.*;
  * Creates the HTML version of the JACT Report
  */
 public class HtmlAugmenter {
-    public static final String REPORTPATH = "./target/jact-report/";
-    public static final String jacocoResPath = REPORTPATH + "jacoco-resources";
+    public static String REPORTPATH = "./target/jact-report/";
+    public static String jacocoResPath = REPORTPATH + "jacoco-resources";
     private static ProjectDependency thisProject = new ProjectDependency();
 
     /**

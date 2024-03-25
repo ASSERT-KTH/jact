@@ -1,15 +1,16 @@
 package jact.test.utils;
 
-import static jact.utils.CommandExecutor.copyPNGImage;
-import static jact.utils.DirectoryUtils.*;
-
+import org.junit.AfterClass;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
+
+import static jact.utils.CommandExecutor.copyPNGImage;
+import static jact.utils.DirectoryUtils.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DirectoryUtilsTest {
 

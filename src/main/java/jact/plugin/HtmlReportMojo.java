@@ -1,6 +1,5 @@
 package jact.plugin;
 
-import jact.utils.CommandExecutor;
 import jact.depUtils.ProjectDependencies;
 import jact.depUtils.ProjectDependency;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -9,10 +8,14 @@ import org.apache.maven.plugins.annotations.Mojo;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import static jact.core.HtmlAugmenter.createDependencyReports;
 import static jact.core.HtmlAugmenter.extractReportAndMoveDirs;
+import static jact.utils.CommandExecutor.copyJacocoCliJar;
+import static jact.utils.CommandExecutor.executeJacocoCLI;
 
 
 /**
@@ -41,16 +44,12 @@ public class HtmlReportMojo extends AbstractReportMojo {
         getLog().info("JARNAME: " + outputJarName + "-shaded");
         //String outputDirectory = project.getBuild().getOutputDirectory();
 
-
-
-        CommandExecutor cmdExec = new CommandExecutor(getHostOS());
-
-        List<ProjectDependency> projectDependencies = ProjectDependencies.getAllProjectDependencies(cmdExec, "./target/jact-report/", true);
+        List<ProjectDependency> projectDependencies = ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true);
 
         // Execute JaCoCoCLI to create the report WITH dependencies
         getLog().info("Copying the `jacococli.jar` to the project.");
         try {
-            cmdExec.copyJacocoCliJar();
+            copyJacocoCliJar();
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (URISyntaxException e) {
@@ -58,7 +57,7 @@ public class HtmlReportMojo extends AbstractReportMojo {
         }
 
         getLog().info("Creating the complete coverage report.");
-        cmdExec.executeJacocoCLI(outputJarName + "-shaded", true);
+        executeJacocoCLI(outputJarName + "-shaded", true);
 
         getLog().info("Organizing the complete coverage report.");
         try {
