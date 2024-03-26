@@ -1,0 +1,3 @@
+[submodule "src/main/it/sanity-check-project/src/main/java/joda-time"]
+	path = src/main/it/sanity-check-project/src/main/java/joda-time
+	url = https://github.com/JodaOrg/joda-time.git
