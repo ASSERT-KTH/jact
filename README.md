@@ -76,7 +76,11 @@ The property `${report-format}` can take one of the following values depending o
 * **xml-report** Generates the XML report.
 * **combined-report** Generates both the HTML and XML report.
 
-Custom Maven-Shade-Plugin jar name:
+JACT creates the report during the `install`-phase since it requires a packaged FAT-jar. Executing `mvn clean install`
+in your project will create a `jact-report` directory under `./target/jact-report`.
+
+
+**_Custom Maven-Shade-Plugin jar name:_** </br>
 If your project packages a FAT-jar under a custom name the custom name can be provided by adding this to your JACT
 configuration:
 
@@ -87,10 +91,7 @@ configuration:
 </configuration>
 ```
 
-JACT creates the report during the `install`-phase since it requires a packaged FAT-jar. Executing `mvn clean install`
-in your project will create a `jact-report` directory under `./target/jact-report`. 
-
-Example JACT configuration with a custom jar-name:
+#### Example JACT configuration with a custom jar-name:
 ```xml
 <plugin>
     <groupId>java.absolute.coverage.tracker</groupId>
