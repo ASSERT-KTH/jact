@@ -184,15 +184,17 @@ public class HtmlAugmenter {
                 dependency.getArtifactId().replace("-", ".") + "-v" + dependency.getVersion();
     }
 
-
+    /**
+     * Formats the input HTML report with
+     * newlines and correct indentation.
+     * @param inputFilePath
+     */
     public static void formatHtmlReport(String inputFilePath){
         try {
             // Read the HTML file
             File inputFile = new File(inputFilePath);
             Document doc = Jsoup.parse(inputFile, "UTF-8");
-
             String formattedHtml = doc.outerHtml();
-
             // Write the formatted HTML back to the original file, overwriting its previous content
             org.apache.commons.io.FileUtils.writeStringToFile(inputFile, formattedHtml, "UTF-8");
         } catch (IOException e) {
@@ -319,7 +321,6 @@ public class HtmlAugmenter {
      * @return DependencyUsage
      */
     public static DependencyUsage calculateTotalForAllLayers(ProjectDependency currDependency, List<String> writtenPaths, List<String> writtenEntryPaths, DependencyUsage currTotal) {
-        List<String> writtenTotalPaths = new ArrayList<>();
         // Keep track of dependencies that have already been checked out.
         //DependencyUsage currTotal = new DependencyUsage();
         if (!currDependency.getChildDeps().isEmpty()) {
@@ -361,12 +362,10 @@ public class HtmlAugmenter {
                         throw new RuntimeException(e);
                     }
                 }
-
             }
         }
         // Calculate the total.
         currTotal.addAll(currDependency.dependencyUsage);
-
 
         // Write here
         if (!currDependency.writtenTotalToFile) {
@@ -384,7 +383,6 @@ public class HtmlAugmenter {
                 }
             }
         }
-
         return currTotal;
     }
 

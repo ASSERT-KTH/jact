@@ -153,6 +153,15 @@ public class XmlAugmenter {
 
     }
 
+    /**
+     * Reads the individual package reports and
+     * extracts the usage of each dependency or
+     * project code.
+     * @param pathToReport
+     * @param dependencies
+     * @param projPackagesAndClassMap
+     * @param localRepoPath
+     */
     public static void readAndExtractPackageUsage(String pathToReport,
                                            List<ProjectDependency> dependencies,
                                            Map<String, Set<String>> projPackagesAndClassMap,
@@ -283,6 +292,12 @@ public class XmlAugmenter {
     }
 
 
+    /**
+     * Writes the dependency packages
+     * to the complete XML report.
+     * @param dependency
+     * @param writer
+     */
     public static void writePackageReportsFromMap(ProjectDependency dependency, FileWriter writer){
         for (Map.Entry<String, DependencyUsage> entry : dependency.packageUsageMap.entrySet()) {
             File packageFile = new File(REPORTPATH + "xml_reports/" + entry.getKey());

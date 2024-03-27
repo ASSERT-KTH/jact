@@ -25,6 +25,8 @@ public class FileSystemUtilsTest {
     /**
      * Requirements: Nothing.
      * Contract:
+     *     Pre-condition:  Need to create an empty directory
+     *                     or remove an empty directory.
      *     Post-condition: Creating and removing empty directories
      *                     is performed correctly.
      */
@@ -41,6 +43,8 @@ public class FileSystemUtilsTest {
     /**
      * Requirements: Nothing.
      * Contract:
+     *     Pre-condition:  A directory needs to be deleted
+     *                     or a directory needs to be created.
      *     Post-condition: Creating and removing directories with content
      *                     is performed correctly.
      */
@@ -60,8 +64,10 @@ public class FileSystemUtilsTest {
 
     @Test
     /**
-     * Requirements: Nothing.
+     * Requirements: An existing directory.
      * Contract:
+     *     Pre-condition:  An existing directory requires moving
+     *                     or copying to another directory.
      *     Post-condition: Copying and moving directories with content
      *                     is performed correctly.
      */
@@ -85,4 +91,29 @@ public class FileSystemUtilsTest {
         Assertions.assertFalse(new File(testDirectory + "/movedDir" +"/createdDir" + "/jact-logo.png").exists());
         Assertions.assertFalse(new File(testDirectory + "/movedDir" +"/createdDir").exists());
     }
+
+    @Test
+    /**
+     * Requirements: An existing file.
+     * Contract:
+     *     Pre-condition:  An existing file in a directory
+     *                     requires renaming.
+     *     Post-condition: The file is correctly renamed
+     *                     and the old one doesn't exist.
+     */
+    public void renameFileTest() throws IOException {
+        createDir(testDirectory + "createdDir");
+        assertTrue(new File(testDirectory + "createdDir").exists());
+        copyPNGImage("jact-logo.png", testDirectory + "createdDir");
+        assertTrue(new File(testDirectory + "createdDir" + "/jact-logo.png").exists());
+
+        renameFile(testDirectory + "createdDir" + "/jact-logo.png", "new-name-jact-logo.png");
+
+        assertTrue(new File(testDirectory + "createdDir" + "/new-name-jact-logo.png").exists());
+
+        // Remove the moved directory
+        removeDirectory(new File(testDirectory + "createdDir"));
+        Assertions.assertFalse(new File(testDirectory + "createdDir").exists());
+    }
+
 }
