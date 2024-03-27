@@ -8,8 +8,9 @@
 ### What is JACT?
 JACT is a work in progress Maven plugin for my master's thesis which will generate a complete code coverage report of a
 Java project using Maven. The report includes coverage of both the project and all of its dependencies (even transitive).
-It currently uses JaCoCo together with its CLI-module to generate the coverage report, and the goal is to later improve 
-upon JaCoCo to capture even more accurate coverage.
+JACT uses the JaCoCo CLI to generate the coverage report on the packaged FAT-jar and augments the unorganized package 
+report by resolving the package dependency heritage uncovering the complete dependency usage by including the transitive
+dependency usage.
 
 ##### Current prerequisites:
 - Required to use JaCoCo
@@ -73,9 +74,40 @@ Now just add the JACT plugin to the pom.xml file in your project:
 The property `${report-format}` can take one of the following values depending on the desired report format:
 * **html-report** Generates the HTML report.
 * **xml-report** Generates the XML report.
+* **combined-report** Generates both the HTML and XML report.
+
+Custom Maven-Shade-Plugin jar name:
+If your project packages a FAT-jar under a custom name the custom name can be provided by adding this to your JACT
+configuration:
+
+```xml
+
+<configuration>
+  <shadedJarName>${Custom-Jar-Name}</shadedJarName> <!-- Without .jar -->
+</configuration>
+```
 
 JACT creates the report during the `install`-phase since it requires a packaged FAT-jar. Executing `mvn clean install`
 in your project will create a `jact-report` directory under `./target/jact-report`. 
+
+Example JACT configuration with a custom jar-name:
+```xml
+<plugin>
+    <groupId>java.absolute.coverage.tracker</groupId>
+    <artifactId>jact</artifactId>
+    <version>1.0</version> <!-- Adjust version if needed -->
+    <configuration>
+      <shadedJarName>jact-example</shadedJarName> <!-- Without .jar -->
+    </configuration>
+    <executions>
+        <execution>
+            <goals>
+                <goal>html-report</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+```
 
 ### Report Formats Details
 JACT supports both HTML and XML report formats. The intended usage for the HTML version is to create a human-readable
