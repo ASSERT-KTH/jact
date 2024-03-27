@@ -116,7 +116,7 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>xml-report</goal>
+                            <goal>combined-report</goal>
                         </goals>
                     </execution>
                 </executions>

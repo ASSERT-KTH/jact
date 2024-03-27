@@ -14,17 +14,19 @@ import java.util.Set;
 
 import static jact.core.HtmlAugmenter.createDependencyReports;
 import static jact.core.HtmlAugmenter.extractReportAndMoveDirs;
+import static jact.core.XmlAugmenter.groupPackageByDep;
 import static jact.utils.CommandExecutor.copyJacocoCliJar;
 import static jact.utils.CommandExecutor.executeJacocoCLI;
 
 
 /**
- * JACT HTML Report:
+ * JACT Combined Report:
  * Generates a complete code coverage report including all
  * dependencies along with their transitive dependencies.
+ * This Mojo generates both the HTML and XML reports.
  */
-@Mojo(name = "html-report", defaultPhase = LifecyclePhase.INSTALL, threadSafe = false)
-public class HtmlReportMojo extends AbstractReportMojo {
+@Mojo(name = "combined-report", defaultPhase = LifecyclePhase.INSTALL, threadSafe = false)
+public class CombinedReportMojo extends AbstractReportMojo {
 
     @Override
     public void doExecute() throws MojoExecutionException {
@@ -55,6 +57,19 @@ public class HtmlReportMojo extends AbstractReportMojo {
             throw new RuntimeException(e);
         }
 
+        // XML VERSION:
+        List<ProjectDependency> projectDependenciesXML = ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true);
+        getLog().info("Creating the complete coverage report.");
+        executeJacocoCLI(getOutputJarName(), false);
+
+        getLog().info("Organizing the complete coverage report.");
+
+        groupPackageByDep(projectDependenciesXML, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
+
+        getLog().info("JACT: XML Report Successfully Generated!");
+
+
+        // HTML VERSION:
         getLog().info("Creating the complete coverage report.");
         executeJacocoCLI(getOutputJarName(), true);
 
