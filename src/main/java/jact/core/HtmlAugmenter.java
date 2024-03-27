@@ -2,7 +2,6 @@ package jact.core;
 
 import jact.depUtils.DependencyUsage;
 import jact.depUtils.PackageToDependencyResolver;
-import jact.depUtils.ProjectDependencies;
 import jact.depUtils.ProjectDependency;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -15,7 +14,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static jact.utils.DirectoryUtils.*;
+import static jact.utils.FileSystemUtils.*;
 
 /**
  * Creates the HTML version of the JACT Report
@@ -186,53 +185,45 @@ public class HtmlAugmenter {
     }
 
     /**
-     * Creates the complete jact-report by reading the usage and writing
-     * to the corresponding files.
-     * @param dependencies
+     * Formats the input HTML report with
+     * newlines and correct indentation.
+     * @param inputFilePath
      */
-    public static void createDependencyReports(List<ProjectDependency> dependencies) {
-
-        // Rename the original index.html file
-        String originalFilePath = REPORTPATH + "index.html";
-        File originalFile = new File(originalFilePath);
-        File newFile = new File(originalFile.getParent(), "originalIndex.html");
-        if (originalFile.exists()) {
-            if (originalFile.renameTo(newFile)) {
-                System.out.println("File renamed successfully.");
-            } else {
-                System.err.println("Failed to rename the file.");
-            }
-        } else {
-            System.err.println("File doesn't exist.");
-        }
-
-        // Path to the original jacoco html report.
-        String inputFilePath = REPORTPATH + "originalIndex.html";
-
-        // Format the index.html report:
+    public static void formatHtmlReport(String inputFilePath){
         try {
             // Read the HTML file
             File inputFile = new File(inputFilePath);
             Document doc = Jsoup.parse(inputFile, "UTF-8");
-
             String formattedHtml = doc.outerHtml();
-
             // Write the formatted HTML back to the original file, overwriting its previous content
             org.apache.commons.io.FileUtils.writeStringToFile(inputFile, formattedHtml, "UTF-8");
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Creates the complete jact-report by reading the usage and writing
+     * to the corresponding files.
+     * @param dependencies
+     */
+    public static void createDependencyReports(List<ProjectDependency> dependencies) throws IOException{
+
+        // Rename the original index.html file
+        String originalFilePath = REPORTPATH + "index.html";
+        // Path to the original jacoco html report.
+        String inputFilePath = renameFile(originalFilePath, "originalIndex.html");
+
+        // Format the index.html report:
+        formatHtmlReport(inputFilePath);
 
 
         // Create the whole project overview
         String outputFilePath = REPORTPATH + "index.html";
-        String templateFilePath1 = "html-templates/overviewTemplateStart.html";
-        String templateFilePath2 = "html-templates/overviewTemplateEnd.html";
-
         try {
             // Writes the overview HTML template
-            writeTemplateToFile(templateFilePath1, outputFilePath);
+            writeTemplateToFile("html-templates/overviewTemplateStart.html", outputFilePath);
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
@@ -241,16 +232,9 @@ public class HtmlAugmenter {
 
         // Create the dependencies overview
         outputFilePath = REPORTPATH + "dependencies/index.html";
-        templateFilePath1 = "html-templates/depOverviewTemplateStart.html";
-        templateFilePath2 = "html-templates/depOverviewTemplateEnd.html";
-        try {
-            // Writes the HTML template for the Dependency Overview
-            writeTemplateToFile(templateFilePath1, outputFilePath);
-            //writeTemplateToFile(templateFilePath2, outputFilePath);
-        } catch (IOException e) {
-            System.err.println("Error: " + e.getMessage());
-            e.printStackTrace();
-        }
+        // Writes the HTML template for the Dependency Overview
+        writeTemplateToFile("html-templates/depOverviewTemplateStart.html", outputFilePath);
+
 
         List<String> writtenPaths = new ArrayList<>();
         List<String> writtenEntryPaths = new ArrayList<>();
@@ -277,13 +261,8 @@ public class HtmlAugmenter {
             pd.writePackagesToFile(currTotal);
         }
 
-        try {
-            // Writes the HTML template for the Dependency Overview
-            writeTemplateToFile(templateFilePath2, outputFilePath);
-        } catch (IOException e) {
-            System.err.println("Error: " + e.getMessage());
-            e.printStackTrace();
-        }
+        // Writes the HTML template for the Dependency Overview
+        writeTemplateToFile("html-templates/depOverviewTemplateEnd.html", outputFilePath);
 
         try {
             DependencyUsage overallTotal = new DependencyUsage();
@@ -310,15 +289,8 @@ public class HtmlAugmenter {
 
             // Create the whole project overview
             outputFilePath = REPORTPATH + "index.html";
-            templateFilePath2 = "html-templates/overviewTemplateEnd.html";
-
-            try {
-                // Writes the overview HTML template
-                writeTemplateToFile(templateFilePath2, outputFilePath);
-            } catch (IOException e) {
-                System.err.println("Error: " + e.getMessage());
-                e.printStackTrace();
-            }
+            // Writes the overview HTML template
+            writeTemplateToFile("html-templates/overviewTemplateEnd.html", outputFilePath);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -349,7 +321,6 @@ public class HtmlAugmenter {
      * @return DependencyUsage
      */
     public static DependencyUsage calculateTotalForAllLayers(ProjectDependency currDependency, List<String> writtenPaths, List<String> writtenEntryPaths, DependencyUsage currTotal) {
-        List<String> writtenTotalPaths = new ArrayList<>();
         // Keep track of dependencies that have already been checked out.
         //DependencyUsage currTotal = new DependencyUsage();
         if (!currDependency.getChildDeps().isEmpty()) {
@@ -391,12 +362,10 @@ public class HtmlAugmenter {
                         throw new RuntimeException(e);
                     }
                 }
-
             }
         }
         // Calculate the total.
         currTotal.addAll(currDependency.dependencyUsage);
-
 
         // Write here
         if (!currDependency.writtenTotalToFile) {
@@ -414,7 +383,6 @@ public class HtmlAugmenter {
                 }
             }
         }
-
         return currTotal;
     }
 

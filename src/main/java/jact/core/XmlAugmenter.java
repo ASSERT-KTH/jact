@@ -96,28 +96,6 @@ public class XmlAugmenter {
             return stringBuilder.toString();
         }
 
-
-    public static void writeXMLString(String xmlContent, String outputPath) throws Exception {
-        // Create parent directories if they don't exist
-        File outputFile = new File(outputPath);
-        File parentDir = outputFile.getParentFile();
-        if (!parentDir.exists() && !parentDir.mkdirs()) {
-            throw new IllegalStateException("Couldn't create directory: " + parentDir);
-        }
-
-        // Create a new Document from the cleaned XML content string
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
-        Document doc = builder.parse(new InputSource(new StringReader(xmlContent)));
-
-        // Write the Document to the output file
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = transformerFactory.newTransformer();
-        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-        transformer.transform(new DOMSource(doc), new StreamResult(outputFile));
-    }
-
-
     /**
      * Creates individual XML reports for each package
      * in the jacoco XML report.
@@ -130,8 +108,6 @@ public class XmlAugmenter {
                                          Map<String, Set<String>> projPackagesAndClassMap,
                                          String localRepoPath, String projId){
         thisProject.setId(projId);
-
-        Map<String, Document> packageReports2 = new HashMap<>();
         try {
             // Load Jacoco XML report
             File xmlFile = new File(REPORTPATH + "jacoco_report.xml");
@@ -159,23 +135,38 @@ public class XmlAugmenter {
                 Document packageReport = createPackageReport(packageElement);
                 packageReports.put(packageName, packageReport);
             }
-            packageReports2 = packageReports;
             // Write separate XML reports for each package in the current directory
             for (Map.Entry<String, Document> entry : packageReports.entrySet()) {
                 String packageName = entry.getKey();
                 Document packageReport = entry.getValue();
                 String filename = packageName.replace("/", "-") + ".xml"; // Use package name for filename
                 writeXML(packageReport, REPORTPATH + "xml_reports/" + filename);
-                //System.out.println("filename: " + filename);
             }
 
             //System.out.println("Separate XML reports created for each package in the current directory.");
+            readAndExtractPackageUsage(REPORTPATH + "xml_reports/", dependencies, projPackagesAndClassMap, localRepoPath);
+
+            writeCompleteReport(dependencies, packageReports);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        File reportDir = new File(REPORTPATH + "xml_reports/");
+    }
 
+    /**
+     * Reads the individual package reports and
+     * extracts the usage of each dependency or
+     * project code.
+     * @param pathToReport
+     * @param dependencies
+     * @param projPackagesAndClassMap
+     * @param localRepoPath
+     */
+    public static void readAndExtractPackageUsage(String pathToReport,
+                                           List<ProjectDependency> dependencies,
+                                           Map<String, Set<String>> projPackagesAndClassMap,
+                                           String localRepoPath){
+        File reportDir = new File(pathToReport);
         // Check if the directory exists
         if (reportDir.exists() && reportDir.isDirectory()) {
             // List all files in the directory
@@ -189,9 +180,6 @@ public class XmlAugmenter {
                     // Call your function with the filename
                     filename = filename.replace("-", ".");
                     ProjectDependency matchedDep = packageToDepPaths(filename, dependencies, projPackagesAndClassMap, localRepoPath);
-                    //System.out.println(matchedDep.getId());
-                    //extractUsage()
-
                     // It needs to add to either the dependencyUsage or the project usage,
                     // If the matched dependency is a project package then
                     if(matchedDep.getId() != null){
@@ -208,9 +196,6 @@ public class XmlAugmenter {
         } else {
             System.out.println("Directory does not exist or is not a directory.");
         }
-
-        writeCompleteReport(dependencies, packageReports2);
-
     }
 
     /**
@@ -233,10 +218,7 @@ public class XmlAugmenter {
         String depOpeningTag = "<group name=\"Dependencies\">";
         String projOpeningTag = "<group name=\"" + "Project Packages" + "\">";
         String groupClosingTag = "</group>";
-        String categoryClosingTag = "</group>";
         File finalReport = new File(FINALREPORTPATH);
-
-        StringBuilder finalReportString = new StringBuilder();
 
         try (FileWriter writer = new FileWriter(finalReport)) {
             writer.write(xmlDtd);
@@ -251,76 +233,22 @@ public class XmlAugmenter {
                 String openingTag = "<group name=\"" + pd.getId() + "\">";
                 writer.write(openingTag.trim());
 
-                for (Map.Entry<String, DependencyUsage> entry : pd.packageUsageMap.entrySet()) {
-                    File packageFile = new File(REPORTPATH + "xml_reports/" + entry.getKey());
-                    try (BufferedReader reader = new BufferedReader(new FileReader(packageFile))) {
-                        String line;
-                        boolean firstLineSkipped = false;
-                        boolean reportTagSkipped = false;
+                writePackageReportsFromMap(pd, writer);
 
-                        while ((line = reader.readLine()) != null) {
-                            if (!firstLineSkipped && line.startsWith("<?xml")) {
-                                // Skip the first line
-                                firstLineSkipped = true;
-                                continue;
-                            }
-                            if (!reportTagSkipped && line.trim().startsWith("<report")) {
-                                // Skip the report tag and its closing tag
-                                reportTagSkipped = true;
-                                continue;
-                            }
-                            if (line.trim().equals("</report>")) {
-                                // Skip the closing tag
-                                continue;
-                            }
-                            writer.write(line.trim());
-                        }
-                    } catch (IOException e) {
-                        System.err.println("Error reading package file: " + e.getMessage());
-                        e.printStackTrace();
-                    }
-                }
                 writer.write(groupClosingTag);
             }
 
             // Write total dependency usage
             writer.write(dependencyUsage.totalUsageToXML());
-            writer.write(categoryClosingTag);
+            writer.write(groupClosingTag);
 
             // Write the project packages
             writer.write(projOpeningTag);
-            for (Map.Entry<String, DependencyUsage> entry : thisProject.packageUsageMap.entrySet()) {
 
-                File packageFile = new File(REPORTPATH + "xml_reports/" + entry.getKey());
-                try (BufferedReader reader = new BufferedReader(new FileReader(packageFile))) {
-                    String line;
-                    boolean firstLineSkipped = false;
-                    boolean reportTagSkipped = false;
+            writePackageReportsFromMap(thisProject, writer);
 
-                    while ((line = reader.readLine()) != null) {
-                        if (!firstLineSkipped && line.startsWith("<?xml")) {
-                            // Skip the first line
-                            firstLineSkipped = true;
-                            continue;
-                        }
-                        if (!reportTagSkipped && line.trim().startsWith("<report")) {
-                            // Skip the report tag and its closing tag
-                            reportTagSkipped = true;
-                            continue;
-                        }
-                        if (line.trim().equals("</report>")) {
-                            // Skip the closing tag
-                            continue;
-                        }
-                        writer.write(line.trim());
-                    }
-                } catch (IOException e) {
-                    System.err.println("Error reading package file: " + e.getMessage());
-                    e.printStackTrace();
-                }
-            }
             writer.write(projectUsage.totalUsageToXML());
-            writer.write(categoryClosingTag);
+            writer.write(groupClosingTag);
 
             // Write overall total here
             writer.write(totalUsage.totalUsageToXML());
@@ -331,7 +259,6 @@ public class XmlAugmenter {
             System.err.println("Error writing final report: " + e.getMessage());
             e.printStackTrace();
         }
-
 
         try {
             String dtdPath = "./target/jact-report/report.dtd";
@@ -362,6 +289,45 @@ public class XmlAugmenter {
             throw new RuntimeException(e);
         }
         System.out.println("Final report has been written to: " + finalReport.getAbsolutePath());
+    }
+
+
+    /**
+     * Writes the dependency packages
+     * to the complete XML report.
+     * @param dependency
+     * @param writer
+     */
+    public static void writePackageReportsFromMap(ProjectDependency dependency, FileWriter writer){
+        for (Map.Entry<String, DependencyUsage> entry : dependency.packageUsageMap.entrySet()) {
+            File packageFile = new File(REPORTPATH + "xml_reports/" + entry.getKey());
+            try (BufferedReader reader = new BufferedReader(new FileReader(packageFile))) {
+                String line;
+                boolean firstLineSkipped = false;
+                boolean reportTagSkipped = false;
+
+                while ((line = reader.readLine()) != null) {
+                    if (!firstLineSkipped && line.startsWith("<?xml")) {
+                        // Skip the first line
+                        firstLineSkipped = true;
+                        continue;
+                    }
+                    if (!reportTagSkipped && line.trim().startsWith("<report")) {
+                        // Skip the report tag and its closing tag
+                        reportTagSkipped = true;
+                        continue;
+                    }
+                    if (line.trim().equals("</report>")) {
+                        // Skip the closing tag
+                        continue;
+                    }
+                    writer.write(line.trim());
+                }
+            } catch (IOException e) {
+                System.err.println("Error reading package file: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
     }
 
 
@@ -532,12 +498,6 @@ public class XmlAugmenter {
             printWriter.write(xmlString);
         }
     }
-
-
-
-
-
-
 }
 
 

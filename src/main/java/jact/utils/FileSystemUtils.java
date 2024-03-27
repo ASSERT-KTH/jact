@@ -10,7 +10,7 @@ import java.nio.file.StandardCopyOption;
 /**
  * Utilities for creating/removing and moving directories.
  */
-public class DirectoryUtils {
+public class FileSystemUtils {
     public static void copyDirectory(File sourceDir, File destDir) {
         // Create the destination directory if it doesn't exist
         if (!destDir.exists()) {
@@ -76,6 +76,21 @@ public class DirectoryUtils {
             Files.move(sourcePath, destPath);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static String renameFile(String originalFilePath, String newFileName) throws RuntimeException {
+        File originalFile = new File(originalFilePath);
+        File newFile = new File(originalFile.getParent(), newFileName);
+        if (originalFile.exists()) {
+            if (originalFile.renameTo(newFile)) {
+                System.out.println("File renamed successfully.");
+                return newFile.getPath(); // Return the full path of the renamed file
+            } else {
+                throw new RuntimeException("Failed to rename the file.");
+            }
+        } else {
+            throw new RuntimeException("File doesn't exist.");
         }
     }
 }
