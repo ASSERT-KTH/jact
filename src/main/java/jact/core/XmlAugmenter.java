@@ -96,28 +96,6 @@ public class XmlAugmenter {
             return stringBuilder.toString();
         }
 
-
-    public static void writeXMLString(String xmlContent, String outputPath) throws Exception {
-        // Create parent directories if they don't exist
-        File outputFile = new File(outputPath);
-        File parentDir = outputFile.getParentFile();
-        if (!parentDir.exists() && !parentDir.mkdirs()) {
-            throw new IllegalStateException("Couldn't create directory: " + parentDir);
-        }
-
-        // Create a new Document from the cleaned XML content string
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
-        Document doc = builder.parse(new InputSource(new StringReader(xmlContent)));
-
-        // Write the Document to the output file
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = transformerFactory.newTransformer();
-        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-        transformer.transform(new DOMSource(doc), new StreamResult(outputFile));
-    }
-
-
     /**
      * Creates individual XML reports for each package
      * in the jacoco XML report.
@@ -166,7 +144,6 @@ public class XmlAugmenter {
                 Document packageReport = entry.getValue();
                 String filename = packageName.replace("/", "-") + ".xml"; // Use package name for filename
                 writeXML(packageReport, REPORTPATH + "xml_reports/" + filename);
-                //System.out.println("filename: " + filename);
             }
 
             //System.out.println("Separate XML reports created for each package in the current directory.");
@@ -532,12 +509,6 @@ public class XmlAugmenter {
             printWriter.write(xmlString);
         }
     }
-
-
-
-
-
-
 }
 
 

@@ -185,31 +185,22 @@ public class HtmlAugmenter {
                 dependency.getArtifactId().replace("-", ".") + "-v" + dependency.getVersion();
     }
 
-    /**
-     * Creates the complete jact-report by reading the usage and writing
-     * to the corresponding files.
-     * @param dependencies
-     */
-    public static void createDependencyReports(List<ProjectDependency> dependencies) {
-
-        // Rename the original index.html file
-        String originalFilePath = REPORTPATH + "index.html";
+    public static String renameFile(String originalFilePath, String newFileName) throws RuntimeException {
         File originalFile = new File(originalFilePath);
-        File newFile = new File(originalFile.getParent(), "originalIndex.html");
+        File newFile = new File(originalFile.getParent(), newFileName);
         if (originalFile.exists()) {
             if (originalFile.renameTo(newFile)) {
                 System.out.println("File renamed successfully.");
+                return newFile.getPath(); // Return the full path of the renamed file
             } else {
-                System.err.println("Failed to rename the file.");
+                throw new RuntimeException("Failed to rename the file.");
             }
         } else {
-            System.err.println("File doesn't exist.");
+            throw new RuntimeException("File doesn't exist.");
         }
+    }
 
-        // Path to the original jacoco html report.
-        String inputFilePath = REPORTPATH + "originalIndex.html";
-
-        // Format the index.html report:
+    public static void formatHtmlReport(String inputFilePath){
         try {
             // Read the HTML file
             File inputFile = new File(inputFilePath);
@@ -223,6 +214,22 @@ public class HtmlAugmenter {
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Creates the complete jact-report by reading the usage and writing
+     * to the corresponding files.
+     * @param dependencies
+     */
+    public static void createDependencyReports(List<ProjectDependency> dependencies) {
+
+        // Rename the original index.html file
+        String originalFilePath = REPORTPATH + "index.html";
+        // Path to the original jacoco html report.
+        String inputFilePath = renameFile(originalFilePath, "originalIndex.html");
+
+        // Format the index.html report:
+        formatHtmlReport(inputFilePath);
 
 
         // Create the whole project overview
