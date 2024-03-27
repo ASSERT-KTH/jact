@@ -61,10 +61,10 @@ public class HtmlReportMojo extends AbstractReportMojo {
         getLog().info("Organizing the complete coverage report.");
         try {
             extractReportAndMoveDirs(projectDependencies, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
+            createDependencyReports(projectDependencies);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        createDependencyReports(projectDependencies);
         getLog().info("JACT: HTML Report Successfully Generated!");
     }
 

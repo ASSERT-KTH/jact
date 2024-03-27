@@ -2,7 +2,6 @@ package jact.core;
 
 import jact.depUtils.DependencyUsage;
 import jact.depUtils.PackageToDependencyResolver;
-import jact.depUtils.ProjectDependencies;
 import jact.depUtils.ProjectDependency;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -15,7 +14,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static jact.utils.DirectoryUtils.*;
+import static jact.utils.FileSystemUtils.*;
 
 /**
  * Creates the HTML version of the JACT Report
@@ -185,20 +184,6 @@ public class HtmlAugmenter {
                 dependency.getArtifactId().replace("-", ".") + "-v" + dependency.getVersion();
     }
 
-    public static String renameFile(String originalFilePath, String newFileName) throws RuntimeException {
-        File originalFile = new File(originalFilePath);
-        File newFile = new File(originalFile.getParent(), newFileName);
-        if (originalFile.exists()) {
-            if (originalFile.renameTo(newFile)) {
-                System.out.println("File renamed successfully.");
-                return newFile.getPath(); // Return the full path of the renamed file
-            } else {
-                throw new RuntimeException("Failed to rename the file.");
-            }
-        } else {
-            throw new RuntimeException("File doesn't exist.");
-        }
-    }
 
     public static void formatHtmlReport(String inputFilePath){
         try {
@@ -221,7 +206,7 @@ public class HtmlAugmenter {
      * to the corresponding files.
      * @param dependencies
      */
-    public static void createDependencyReports(List<ProjectDependency> dependencies) {
+    public static void createDependencyReports(List<ProjectDependency> dependencies) throws IOException{
 
         // Rename the original index.html file
         String originalFilePath = REPORTPATH + "index.html";
@@ -234,12 +219,9 @@ public class HtmlAugmenter {
 
         // Create the whole project overview
         String outputFilePath = REPORTPATH + "index.html";
-        String templateFilePath1 = "html-templates/overviewTemplateStart.html";
-        String templateFilePath2 = "html-templates/overviewTemplateEnd.html";
-
         try {
             // Writes the overview HTML template
-            writeTemplateToFile(templateFilePath1, outputFilePath);
+            writeTemplateToFile("html-templates/overviewTemplateStart.html", outputFilePath);
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
@@ -248,16 +230,9 @@ public class HtmlAugmenter {
 
         // Create the dependencies overview
         outputFilePath = REPORTPATH + "dependencies/index.html";
-        templateFilePath1 = "html-templates/depOverviewTemplateStart.html";
-        templateFilePath2 = "html-templates/depOverviewTemplateEnd.html";
-        try {
-            // Writes the HTML template for the Dependency Overview
-            writeTemplateToFile(templateFilePath1, outputFilePath);
-            //writeTemplateToFile(templateFilePath2, outputFilePath);
-        } catch (IOException e) {
-            System.err.println("Error: " + e.getMessage());
-            e.printStackTrace();
-        }
+        // Writes the HTML template for the Dependency Overview
+        writeTemplateToFile("html-templates/depOverviewTemplateStart.html", outputFilePath);
+
 
         List<String> writtenPaths = new ArrayList<>();
         List<String> writtenEntryPaths = new ArrayList<>();
@@ -284,13 +259,8 @@ public class HtmlAugmenter {
             pd.writePackagesToFile(currTotal);
         }
 
-        try {
-            // Writes the HTML template for the Dependency Overview
-            writeTemplateToFile(templateFilePath2, outputFilePath);
-        } catch (IOException e) {
-            System.err.println("Error: " + e.getMessage());
-            e.printStackTrace();
-        }
+        // Writes the HTML template for the Dependency Overview
+        writeTemplateToFile("html-templates/depOverviewTemplateEnd.html", outputFilePath);
 
         try {
             DependencyUsage overallTotal = new DependencyUsage();
@@ -317,15 +287,8 @@ public class HtmlAugmenter {
 
             // Create the whole project overview
             outputFilePath = REPORTPATH + "index.html";
-            templateFilePath2 = "html-templates/overviewTemplateEnd.html";
-
-            try {
-                // Writes the overview HTML template
-                writeTemplateToFile(templateFilePath2, outputFilePath);
-            } catch (IOException e) {
-                System.err.println("Error: " + e.getMessage());
-                e.printStackTrace();
-            }
+            // Writes the overview HTML template
+            writeTemplateToFile("html-templates/overviewTemplateEnd.html", outputFilePath);
 
         } catch (IOException e) {
             throw new RuntimeException(e);

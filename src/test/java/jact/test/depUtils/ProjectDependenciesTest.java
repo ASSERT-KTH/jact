@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static jact.depUtils.ProjectDependencies.getAllProjectDependencies;
-import static jact.utils.DirectoryUtils.removeDirectory;
+import static jact.utils.FileSystemUtils.removeDirectory;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 

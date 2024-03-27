@@ -8,10 +8,10 @@ import java.io.File;
 import java.io.IOException;
 
 import static jact.utils.CommandExecutor.copyPNGImage;
-import static jact.utils.DirectoryUtils.*;
+import static jact.utils.FileSystemUtils.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class DirectoryUtilsTest {
+public class FileSystemUtilsTest {
 
     static String testDirectory = "./src/test/java/jact/test/testingDir/";
 
