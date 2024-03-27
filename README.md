@@ -64,19 +64,25 @@ Now just add the JACT plugin to the pom.xml file in your project:
     <executions>
         <execution>
             <goals>
-                <goal>coverage-report</goal>
+                <goal>${report-format}</goal>
             </goals>
         </execution>
     </executions>
 </plugin>
 ```
+The property `${report-format}` can take one of the following values depending on the desired report format:
+* **html-report** Generates the HTML report.
+* **xml-report** Generates the XML report.
 
 JACT creates the report during the `install`-phase since it requires a packaged FAT-jar. Executing `mvn clean install`
 in your project will create a `jact-report` directory under `./target/jact-report`. 
 
+### Report Formats Details
+JACT supports both HTML and XML report formats. The intended usage for the HTML version is to create a human-readable
+format that is quickly interpreted. The XML format is intended as a raw report format for any purpose, which could for
+instance be to get dependency coverage down to the method level for removing unwanted bytecode.
 
-
-XML Report Structure:
+##### The XML report structure can be seen in the following example:
 ```xml
 <report name="JACT Coverage Report (Generated with JaCoCo)">
     <group name="Dependencies">
