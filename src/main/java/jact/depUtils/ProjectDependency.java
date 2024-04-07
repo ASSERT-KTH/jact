@@ -15,6 +15,8 @@ public class ProjectDependency {
     public DependencyUsage dependencyUsage = new DependencyUsage();
     public Map<String, DependencyUsage> packageUsageMap = new HashMap<>();
     public boolean writtenEntryToFile = false;
+
+    public boolean writtenTransitive = false;
     public boolean writtenTotalToFile = false;
     private String id;
     private String groupId;

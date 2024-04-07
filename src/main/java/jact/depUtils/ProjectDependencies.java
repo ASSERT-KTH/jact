@@ -54,17 +54,23 @@ public class ProjectDependencies {
         public ProjectDependency deserialize(JsonElement json, java.lang.reflect.Type typeOfT, com.google.gson.JsonDeserializationContext context) {
             JsonObject jsonObject = json.getAsJsonObject();
             Set<String> visited = new HashSet<>();
-            List<ProjectDependency> parentDeps = new ArrayList<>();
-            return parseDependency(jsonObject, parentDeps);
+            ProjectDependency parentDeps = new ProjectDependency();
+            return parseDependency(jsonObject, parentDeps, visited);
         }
 
-        private ProjectDependency parseDependency(JsonObject jsonObject, List<ProjectDependency> parentDeps) {
-//            String dependencyId = jsonObject.get("id").getAsString();
-//            if (visited.contains(dependencyId)) {
-//                // If the dependency has been visited before, return null to avoid infinite recursion
-//                return null;
-//            }
-//            visited.add(dependencyId);
+        private ProjectDependency parseDependency(JsonObject jsonObject, ProjectDependency parentDep, Set<String> visited) {
+            String dependencyId = jsonObject.get("id").getAsString();
+            if (visited.contains(dependencyId)) {
+                // If the dependency has been visited before, find it, add the parent and return it.
+                for(ProjectDependency pd : projectDependencies){
+                    if(dependencyId.equals(pd.getId())){
+                        pd.addParentDep(parentDep);
+                        return pd;
+                    }
+                }
+                throw new RuntimeException("Could not find a visited dependency.");
+            }
+            visited.add(dependencyId);
 
             ProjectDependency projectDependency = new ProjectDependency();
             projectDependency.setId(jsonObject.has("id") ? jsonObject.get("id").getAsString() : "");
@@ -75,10 +81,6 @@ public class ProjectDependencies {
 
             String parentString = jsonObject.has("parent") ? jsonObject.get("parent").getAsString() : "";
 
-            // First add the previous parents in order
-            for (ProjectDependency parentDep : parentDeps) {
-                projectDependency.addParentDep(parentDep);
-            }
             // Then add the immediate parent
             if (!parentString.isEmpty()) {
                 for (ProjectDependency pd : projectDependencies) {
@@ -93,11 +95,10 @@ public class ProjectDependencies {
             JsonArray childrenJsonArray = jsonObject.getAsJsonArray("children");
             if (childrenJsonArray != null) {
                 for (JsonElement element : childrenJsonArray) {
-                    ProjectDependency child = parseDependency(element.getAsJsonObject(), projectDependency.getParentDeps());
+                    ProjectDependency child = parseDependency(element.getAsJsonObject(), projectDependency, visited);
                     projectDependency.addChildDep(child);
                 }
             }
-
             return projectDependency;
         }
     }

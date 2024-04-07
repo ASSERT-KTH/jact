@@ -248,14 +248,14 @@ public class HtmlAugmenter {
             if (!pd.writtenEntryToFile) {
                 pd.writtenEntryToFile = true;
                 for (String path : pd.getReportPaths()) {
-                    File currDir = new File(path);
-                    File parentDir = currDir.getParentFile();
-                    try {
-                        // Only writes if it is a base layer dependency (it has no parent dependencies)
-                        writeHTMLStringToFile(parentDir + "/index.html", pd.dependencyUsage.usageToHTML(currDir.getName(), totalDepUsage, false));
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+                        File currDir = new File(path);
+                        File parentDir = currDir.getParentFile();
+                        try {
+                            // Only writes if it is a base layer dependency (it has no parent dependencies)
+                            writeHTMLStringToFile(parentDir + "/index.html", pd.dependencyUsage.usageToHTML(currDir.getName(), totalDepUsage, false));
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                 }
             }
             pd.writePackagesToFile(currTotal);
@@ -345,10 +345,10 @@ public class HtmlAugmenter {
                     }
                 }
             }
+            if (!currDependency.writtenTransitive) {
+                currDependency.writtenTransitive = true;
+                for (String path : currDependency.getReportPaths()) {
 
-            for (String path : currDependency.getReportPaths()) {
-                if (!writtenPaths.contains(path)) {
-                    writtenPaths.add(path);
                     File currDir = new File(path);
                     File parentDir = currDir.getParentFile();
                     try {

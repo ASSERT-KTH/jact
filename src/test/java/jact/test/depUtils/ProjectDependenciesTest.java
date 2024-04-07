@@ -36,7 +36,6 @@ public class ProjectDependenciesTest {
             "org.junit.jupiter:junit-jupiter-api:5.10.2",
             "org.apiguardian:apiguardian-api:1.1.2",
             "org.junit.platform:junit-platform-commons:1.10.2",
-            "org.apiguardian:apiguardian-api:1.1.2",
             "org.opentest4j:opentest4j:1.3.0"
     );
 
@@ -84,7 +83,7 @@ public class ProjectDependenciesTest {
      */
     public void allDepIdsPresentTest(){
         // Check the number of dependencies
-        assertEquals(16, dependencies.size());
+        assertEquals(15, dependencies.size());
 
         // Check that all dependencies are present
         for(ProjectDependency pd : dependencies){
