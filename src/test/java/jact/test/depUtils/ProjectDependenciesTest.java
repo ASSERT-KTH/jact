@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import static jact.depUtils.ProjectDependencies.getAllProjectDependencies;
 import static jact.utils.FileSystemUtils.removeDirectory;
@@ -49,7 +50,7 @@ public class ProjectDependenciesTest {
             "org.checkerframework:checker-qual:3.41.0"
     );
 
-    public static List<ProjectDependency> dependencies;
+    public static Map<String, ProjectDependency> dependencies;
 
     @AfterAll
     public static void cleanUpTestDirs(){
@@ -86,8 +87,8 @@ public class ProjectDependenciesTest {
         assertEquals(15, dependencies.size());
 
         // Check that all dependencies are present
-        for(ProjectDependency pd : dependencies){
-            assertTrue(dependencyIds.contains(pd.getId()));
+        for (Map.Entry<String, ProjectDependency> pdEntry : dependencies.entrySet()){
+            assertTrue(dependencyIds.contains(pdEntry.getValue().getId()));
         }
     }
 
@@ -105,12 +106,12 @@ public class ProjectDependenciesTest {
      */
     public void parentAndChildrenDepsTest(){
         // Check that Google Guavas children dependencies are correct
-        for(ProjectDependency childDep : dependencies.get(0).getChildDeps()){
+        for(ProjectDependency childDep : dependencies.get("com.google.guava:guava:33.0.0-jre").getChildDeps()){
             assertTrue(googleGuavaChildrenDeps.contains(childDep.getId()));
             // Check that the parent-list contains Google Guava
             boolean foundChildDep = false;
             for(ProjectDependency deps : childDep.getParentDeps()){
-                if(deps.getId().equals(dependencies.get(0).getId())){
+                if(deps.getId().equals(dependencies.get("com.google.guava:guava:33.0.0-jre").getId())){
                     foundChildDep = true;
                 }
             }
@@ -134,13 +135,13 @@ public class ProjectDependenciesTest {
     public void multipleTransitiveDepsTest(){
         // Check that "org.junit.platform:junit-platform-commons:1.10.2"
         // is the second child in "org.junit.jupiter:junit-jupiter-api:5.10.2"
-        System.out.println(dependencies.get(13).getId());
-        assertTrue(dependencies.get(11).getChildDeps().get(1).getId().equals("org.junit.platform:junit-platform-commons:1.10.2"));
+        System.out.println(dependencies.get("org.junit.platform:junit-platform-commons:1.10.2").getId());
+        assertTrue(dependencies.get("org.junit.jupiter:junit-jupiter-api:5.10.2").getChildDeps().get(1).getId().equals("org.junit.platform:junit-platform-commons:1.10.2"));
         // Check that "org.junit.platform:junit-platform-commons:1.10.2"
         // has the correct child: "org.apiguardian:apiguardian-api:1.1.2"
-        assertTrue(dependencies.get(13).getChildDeps().get(0).getId().equals("org.apiguardian:apiguardian-api:1.1.2"));
+        assertTrue(dependencies.get("org.junit.platform:junit-platform-commons:1.10.2").getChildDeps().get(0).getId().equals("org.apiguardian:apiguardian-api:1.1.2"));
         // Check that "org.apiguardian:apiguardian-api:1.1.2" has an empty 'children' list:
-        assertTrue(dependencies.get(13).getChildDeps().get(0).getChildDeps().isEmpty());
+        assertTrue(dependencies.get("org.junit.platform:junit-platform-commons:1.10.2").getChildDeps().get(0).getChildDeps().isEmpty());
     }
 
     @Test
@@ -156,18 +157,18 @@ public class ProjectDependenciesTest {
      */
     public void properFieldValuesTest(){
         // Check that "org.apache.commons:commons-math3:3.6.1" has correct field values
-        assertTrue(dependencies.get(10).getId().equals("org.apache.commons:commons-math3:3.6.1"));
-        assertTrue(dependencies.get(10).getGroupId().equals("org.apache.commons"));
-        assertTrue(dependencies.get(10).getArtifactId().equals("commons-math3"));
-        assertTrue(dependencies.get(10).getVersion().equals("3.6.1"));
-        assertTrue(dependencies.get(10).getScope().equals("compile"));
+        assertTrue(dependencies.get("org.apache.commons:commons-math3:3.6.1").getId().equals("org.apache.commons:commons-math3:3.6.1"));
+        assertTrue(dependencies.get("org.apache.commons:commons-math3:3.6.1").getGroupId().equals("org.apache.commons"));
+        assertTrue(dependencies.get("org.apache.commons:commons-math3:3.6.1").getArtifactId().equals("commons-math3"));
+        assertTrue(dependencies.get("org.apache.commons:commons-math3:3.6.1").getVersion().equals("3.6.1"));
+        assertTrue(dependencies.get("org.apache.commons:commons-math3:3.6.1").getScope().equals("compile"));
 
         // Check that "com.google.guava:guava:33.0.0-jre" has correct field values
-        assertTrue(dependencies.get(0).getId().equals("com.google.guava:guava:33.0.0-jre"));
-        assertTrue(dependencies.get(0).getGroupId().equals("com.google.guava"));
-        assertTrue(dependencies.get(0).getArtifactId().equals("guava"));
-        assertTrue(dependencies.get(0).getVersion().equals("33.0.0-jre"));
-        assertTrue(dependencies.get(0).getScope().equals("compile"));
+        assertTrue(dependencies.get("com.google.guava:guava:33.0.0-jre").getId().equals("com.google.guava:guava:33.0.0-jre"));
+        assertTrue(dependencies.get("com.google.guava:guava:33.0.0-jre").getGroupId().equals("com.google.guava"));
+        assertTrue(dependencies.get("com.google.guava:guava:33.0.0-jre").getArtifactId().equals("guava"));
+        assertTrue(dependencies.get("com.google.guava:guava:33.0.0-jre").getVersion().equals("33.0.0-jre"));
+        assertTrue(dependencies.get("com.google.guava:guava:33.0.0-jre").getScope().equals("compile"));
     }
 
 

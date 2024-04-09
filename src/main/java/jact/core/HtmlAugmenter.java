@@ -14,6 +14,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static jact.depUtils.ProjectDependency.depToDirName;
 import static jact.utils.FileSystemUtils.*;
 
 /**
@@ -147,6 +148,7 @@ public class HtmlAugmenter {
      * @return
      */
     public static String getFullDepPath(ProjectDependency projectDependency) {
+
         StringBuilder fullPath = new StringBuilder();
         List<ProjectDependency> parentDeps = projectDependency.getParentDeps();
         String path;
@@ -172,16 +174,6 @@ public class HtmlAugmenter {
         fullPath.append(path);
 
         return fullPath.toString();
-    }
-
-    /**
-     * Gets the corresponding directory name for a dependency.
-     * @param dependency
-     * @return String
-     */
-    public static String depToDirName(ProjectDependency dependency) {
-        return dependency.getGroupId().replace("-", ".") + "." +
-                dependency.getArtifactId().replace("-", ".") + "-v" + dependency.getVersion();
     }
 
     /**

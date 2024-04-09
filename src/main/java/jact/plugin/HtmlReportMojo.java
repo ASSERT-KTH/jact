@@ -8,6 +8,7 @@ import org.apache.maven.plugins.annotations.Mojo;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -43,7 +44,10 @@ public class HtmlReportMojo extends AbstractReportMojo {
         getLog().info("JARNAME: " + getOutputJarName());
         //String outputDirectory = project.getBuild().getOutputDirectory();
 
-        List<ProjectDependency> projectDependencies = ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true);
+        Map<String, ProjectDependency> projectDependenciesMap = ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true);
+
+        List<ProjectDependency> projectDependencies = new ArrayList<>(projectDependenciesMap.values());
+
 
         // Execute JaCoCoCLI to create the report WITH dependencies
         getLog().info("Copying the `jacococli.jar` to the project.");

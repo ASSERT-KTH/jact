@@ -3,11 +3,9 @@ package jact.depUtils;
 import com.google.gson.*;
 
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
+import static jact.depUtils.ProjectDependency.depToDirName;
 import static jact.utils.CommandExecutor.generateDependencyLockfile;
 
 /**
@@ -17,12 +15,13 @@ import static jact.utils.CommandExecutor.generateDependencyLockfile;
 public class ProjectDependencies {
 
     public static List<ProjectDependency> projectDependencies = new ArrayList<>();
+    public static Map<String, ProjectDependency> projectDependenciesMap = new HashMap<>();
 
-    public static List<ProjectDependency> getAllProjectDependencies(String targetDirectory, boolean genLockfile) {
-        if (projectDependencies.isEmpty()) {
+    public static Map<String, ProjectDependency> getAllProjectDependencies(String targetDirectory, boolean genLockfile) {
+        if (projectDependenciesMap.isEmpty()) {
             generateAllProjectDependencies(targetDirectory, genLockfile);
         }
-        return projectDependencies;
+        return projectDependenciesMap;
     }
 
     /**
@@ -62,13 +61,17 @@ public class ProjectDependencies {
             String dependencyId = jsonObject.get("id").getAsString();
             if (visited.contains(dependencyId)) {
                 // If the dependency has been visited before, find it, add the parent and return it.
-                for(ProjectDependency pd : projectDependencies){
-                    if(dependencyId.equals(pd.getId())){
-                        pd.addParentDep(parentDep);
-                        return pd;
+                ProjectDependency pd = projectDependenciesMap.get(dependencyId);
+                if (parentDep.getId() != null) {
+                    pd.addParentDep(parentDep);
+                    // Add all parent paths, a transitive dependency.
+                    for (String path : parentDep.getReportPaths()) {
+                        pd.addReportPath(path + "/transitive-dependencies/" + depToDirName(pd));
                     }
+                } else {
+                    pd.addReportPath("dependencies/" + depToDirName(pd));
                 }
-                throw new RuntimeException("Could not find a visited dependency.");
+                return pd;
             }
             visited.add(dependencyId);
 
@@ -81,17 +84,23 @@ public class ProjectDependencies {
 
             String parentString = jsonObject.has("parent") ? jsonObject.get("parent").getAsString() : "";
 
-            // Then add the immediate parent
-            if (!parentString.isEmpty()) {
-                for (ProjectDependency pd : projectDependencies) {
-                    if (pd.getId().equals(parentString)) {
-                        projectDependency.addParentDep(pd);
-                        break;
-                    }
+            // Adding the directory name to the potential paths to report the usage
+            // Build the report path
+            if(parentDep.getId() != null){
+                projectDependency.addParentDep(parentDep);
+                // Add all parent paths, a transitive dependency.
+                for(String path : parentDep.getReportPaths()){
+                    projectDependency.addReportPath(path + "/transitive-dependencies/" + depToDirName(projectDependency));
                 }
+            }else{
+                projectDependency.addReportPath("dependencies/" + depToDirName(projectDependency));
             }
+
+            // Then add the immediate parent
+            projectDependency.addParentDep(projectDependenciesMap.get(parentString));
+
             //System.out.println("ADDING: " + projectDependency.toString());
-            projectDependencies.add(projectDependency);
+            projectDependenciesMap.put(projectDependency.getId(), projectDependency);
             JsonArray childrenJsonArray = jsonObject.getAsJsonArray("children");
             if (childrenJsonArray != null) {
                 for (JsonElement element : childrenJsonArray) {
@@ -102,4 +111,5 @@ public class ProjectDependencies {
             return projectDependency;
         }
     }
+
 }

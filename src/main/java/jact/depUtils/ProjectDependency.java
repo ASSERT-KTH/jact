@@ -84,7 +84,9 @@ public class ProjectDependency {
     }
 
     public void addReportPath(String reportPath) {
-        this.raportPaths.add(reportPath);
+        if(!presentReportPath(reportPath)){
+            this.raportPaths.add(reportPath);
+        }
     }
 
     public List<String> getReportPaths() {
@@ -146,6 +148,27 @@ public class ProjectDependency {
             }
 
         }
+    }
+
+    /**
+     * Gets the corresponding directory name for a dependency.
+     * @param dependency
+     * @return String
+     */
+    public static String depToDirName(ProjectDependency dependency) {
+        return dependency.getGroupId().replace("-", ".") + "." +
+                dependency.getArtifactId().replace("-", ".") + "-v" + dependency.getVersion();
+    }
+
+    public boolean presentReportPath(String reportPath){
+        boolean present = false;
+        for(String path : this.getReportPaths()){
+            if(path.equals(reportPath)){
+                present = true;
+                break;
+            }
+        }
+        return present;
     }
 
 }
