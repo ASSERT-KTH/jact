@@ -1,11 +1,13 @@
 package jact.depUtils;
 
 import com.google.gson.*;
+import jact.plugin.AbstractReportMojo;
 
 import java.io.FileReader;
 import java.util.*;
 
 import static jact.depUtils.ProjectDependency.depToDirName;
+import static jact.plugin.AbstractReportMojo.getReportPath;
 import static jact.utils.CommandExecutor.generateDependencyLockfile;
 
 /**
@@ -20,8 +22,6 @@ public class ProjectDependencies {
     public static List<String> totalReportPaths = new ArrayList<>();
 
     private static boolean skipTestDependencies;
-
-    public static String REPORTPATH = "./target/jact-report/";
 
     public static Map<String, ProjectDependency> getAllProjectDependencies(String targetDirectory,
                                                                            boolean genLockfile,
@@ -87,7 +87,7 @@ public class ProjectDependencies {
                         pd.addReportPath(path + "/transitive-dependencies/" + depToDirName(pd));
                     }
                 } else {
-                    pd.addReportPath(REPORTPATH + "dependencies/" + depToDirName(pd));
+                    pd.addReportPath(getReportPath() + "dependencies/" + depToDirName(pd));
                 }
                 return pd;
             }
@@ -111,7 +111,7 @@ public class ProjectDependencies {
                     projectDependency.addReportPath(path + "/transitive-dependencies/" + depToDirName(projectDependency));
                 }
             }else{
-                projectDependency.addReportPath(REPORTPATH + "dependencies/" + depToDirName(projectDependency));
+                projectDependency.addReportPath(getReportPath() + "dependencies/" + depToDirName(projectDependency));
             }
 
             // Then add the immediate parent

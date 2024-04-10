@@ -44,7 +44,8 @@ public class XmlReportMojo extends AbstractReportMojo {
         //String outputDirectory = project.getBuild().getOutputDirectory();
 
 
-        Map<String, ProjectDependency> projectDependenciesMap = ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true, getDepFilterParam());
+        Map<String, ProjectDependency> projectDependenciesMap =
+                ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true, getDepFilterParam());
 
         List<ProjectDependency> projectDependencies = new ArrayList<>(projectDependenciesMap.values());
 

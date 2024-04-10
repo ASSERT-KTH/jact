@@ -15,14 +15,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static jact.depUtils.ProjectDependency.depToDirName;
+import static jact.plugin.AbstractReportMojo.getReportPath;
 import static jact.utils.FileSystemUtils.*;
 
 /**
  * Creates the HTML version of the JACT Report
  */
 public class HtmlAugmenter {
-    public static String REPORTPATH = "./target/jact-report/";
-    public static String jacocoResPath = REPORTPATH + "jacoco-resources";
+    public static String jacocoResPath = getReportPath() + "jacoco-resources";
     private static ProjectDependency thisProject = new ProjectDependency();
 
     /**
@@ -41,15 +41,14 @@ public class HtmlAugmenter {
 
         thisProject.setId(projId);
         // Create a directory for the dependency coverage
-        createDir(REPORTPATH + "dependencies");
+        createDir(getReportPath() + "dependencies");
 
         // Path to jacoco-resources (to be copied to subdirectories for correct icons and styling)
         copyDirectory(new File(jacocoResPath),
-                new File(REPORTPATH + "dependencies/jacoco-resources"));
+                new File(getReportPath() + "dependencies/jacoco-resources"));
 
         // Creates the dependency report directories
         for (ProjectDependency dependency : dependencies) {
-            if (!dependency.getScope().equals("test")) {
                 //String fullPath = getFullDepPath(dependency);
 
                 // Adding the path to easily get the report location.
@@ -59,12 +58,11 @@ public class HtmlAugmenter {
                     copyDirectory(new File(jacocoResPath),
                             new File(path + "/jacoco-resources"));
                 }
-            }
         }
 
         // Traverse the "report" directory:
         // Moves packages to their respective dependency directory and create their `index.html` file
-        File reportDir = new File(REPORTPATH);
+        File reportDir = new File(getReportPath());
         if (reportDir.exists() && reportDir.isDirectory()) {
             File[] directories = reportDir.listFiles(File::isDirectory);
             if (directories != null) {
@@ -75,12 +73,12 @@ public class HtmlAugmenter {
                         ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(dirName, dependencies, projPackagesAndClassMap, localRepoPath);
                         // Could become problematic if packages share name with packages in dependencies
                         if (projPackagesAndClassMap.containsKey(dirName)) {
-                            extractAndAddPackageTotal(REPORTPATH + dirName +
+                            extractAndAddPackageTotal(getReportPath() + dirName +
                                     "/index.html", thisProject, dirName);
-                            thisProject.addReportPath(REPORTPATH + dirName);
+                            thisProject.addReportPath(getReportPath() + dirName);
                         } else {
                             if (matchedDep.getId() != null) {
-                                extractAndAddPackageTotal(REPORTPATH + dirName +
+                                extractAndAddPackageTotal(getReportPath() + dirName +
                                         "/index.html", matchedDep, dirName);
                             }
                             if (matchedDep.getReportPaths().size() == 1) {
@@ -145,39 +143,6 @@ public class HtmlAugmenter {
         }
     }
 
-    /**
-     * Gets the full filepath for a certain dependency within the report.
-     * @param projectDependency
-     * @return
-     */
-    public static String getFullDepPath(ProjectDependency projectDependency) {
-
-        StringBuilder fullPath = new StringBuilder();
-        List<ProjectDependency> parentDeps = projectDependency.getParentDeps();
-        String path;
-        ProjectDependency currProjDep;
-
-        // Creating the file path to the dependency
-        for (int i = 0; i < parentDeps.size(); i++) {
-            currProjDep = parentDeps.get(i);
-            path = depToDirName(currProjDep);
-            fullPath.append(path);
-
-            // Add a transitive dependencies directory here:
-            fullPath.append("/transitive-dependencies/");
-
-            // Copy jacoco-resources if it's not already there.
-            if (!new File(fullPath + "jacoco-resources").exists()) {
-                copyDirectory(new File(jacocoResPath),
-                        new File(REPORTPATH + "dependencies/" + fullPath + "/jacoco-resources"));
-            }
-        }
-        // Adding dependency directory
-        path = depToDirName(projectDependency);
-        fullPath.append(path);
-
-        return fullPath.toString();
-    }
 
     /**
      * Formats the input HTML report with
@@ -206,7 +171,7 @@ public class HtmlAugmenter {
     public static void createDependencyReports(List<ProjectDependency> dependencies) throws IOException{
 
         // Rename the original index.html file
-        String originalFilePath = REPORTPATH + "index.html";
+        String originalFilePath = getReportPath() + "index.html";
         // Path to the original jacoco html report.
         String inputFilePath = renameFile(originalFilePath, "originalIndex.html");
 
@@ -215,7 +180,7 @@ public class HtmlAugmenter {
 
 
         // Create the whole project overview
-        String outputFilePath = REPORTPATH + "index.html";
+        String outputFilePath = getReportPath() + "index.html";
         try {
             // Writes the overview HTML template
             writeTemplateToFile("html-templates/overviewTemplateStart.html", outputFilePath);
@@ -226,7 +191,7 @@ public class HtmlAugmenter {
 
 
         // Create the dependencies overview
-        outputFilePath = REPORTPATH + "dependencies/index.html";
+        outputFilePath = getReportPath() + "dependencies/index.html";
         // Writes the HTML template for the Dependency Overview
         writeTemplateToFile("html-templates/depOverviewTemplateStart.html", outputFilePath);
 
@@ -267,23 +232,23 @@ public class HtmlAugmenter {
             }
 
             // Write the total dependency usage AND its entry in the overview
-            writeHTMLStringToFile(REPORTPATH + "/index.html", totalDepUsage.usageToHTML("dependencies", overallTotal, false));
-            writeHTMLTotalToFile(REPORTPATH + "dependencies/index.html", totalDepUsage.totalUsageToHTML());
+            writeHTMLStringToFile(getReportPath() + "/index.html", totalDepUsage.usageToHTML("dependencies", overallTotal, false));
+            writeHTMLTotalToFile(getReportPath() + "dependencies/index.html", totalDepUsage.totalUsageToHTML());
 
             // Write the project package overview entries:
             for (Map.Entry<String, DependencyUsage> entry : thisProject.packageUsageMap.entrySet()) {
                 try {
-                    writeHTMLStringToFile(REPORTPATH + "/index.html", entry.getValue().usageToHTML(entry.getKey(),overallTotal, true));
+                    writeHTMLStringToFile(getReportPath() + "/index.html", entry.getValue().usageToHTML(entry.getKey(),overallTotal, true));
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
             // Write the overview total: Project + Dependencies (incl. transitive)
-            writeHTMLTotalToFile(REPORTPATH + "index.html", overallTotal.totalUsageToHTML());
+            writeHTMLTotalToFile(getReportPath() + "index.html", overallTotal.totalUsageToHTML());
 
 
             // Create the whole project overview
-            outputFilePath = REPORTPATH + "index.html";
+            outputFilePath = getReportPath() + "index.html";
             // Writes the overview HTML template
             writeTemplateToFile("html-templates/overviewTemplateEnd.html", outputFilePath);
 

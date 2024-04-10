@@ -19,6 +19,7 @@ public abstract class AbstractReportMojo extends AbstractMojo {
 
     private static final String LINE_SEPARATOR = "------------------------------------------------------------------------";
 
+    private static String REPORTPATH = "./target/jact-report/";
     private static String localRepoPath;
     private static String projectGroupId;
     private static String artifactId;
@@ -45,6 +46,10 @@ public abstract class AbstractReportMojo extends AbstractMojo {
 
     public boolean getDepFilterParam(){
         return Boolean.parseBoolean(this.skipTestDependencies);
+    }
+
+    public static String getReportPath(){
+        return REPORTPATH;
     }
     public String getLocalRepoPath() {
         return this.session.getLocalRepository().getBasedir();

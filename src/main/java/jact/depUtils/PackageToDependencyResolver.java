@@ -9,8 +9,6 @@ import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import static jact.core.HtmlAugmenter.REPORTPATH;
-
 /**
  * Resolves a package name to a dependency in the local .m2 folder.
  */
@@ -78,7 +76,6 @@ public class PackageToDependencyResolver {
 
         if(matchedDep.getId() != null && packageNameInProject){
             // Extract the classes in the project and put them in a separate directory
-            String projectPath = REPORTPATH + "/" + packageName;
             throw new RuntimeException("CANNOT RESOLVE PACKAGES: Package name: " + packageName +
                     " has an identical name to a package in " + matchedDep.getId());
         }

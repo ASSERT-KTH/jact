@@ -45,16 +45,10 @@ public class HtmlReportMojo extends AbstractReportMojo {
         getLog().info("JARNAME: " + getOutputJarName());
         //String outputDirectory = project.getBuild().getOutputDirectory();
 
-        Map<String, ProjectDependency> projectDependenciesMap = ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true, getDepFilterParam());
+        Map<String, ProjectDependency> projectDependenciesMap =
+                ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true, getDepFilterParam());
 
         List<ProjectDependency> projectDependencies = new ArrayList<>(projectDependenciesMap.values());
-
-//        List<ProjectDependency> projectDependencies = new ArrayList<>();
-//        for(ProjectDependency pd : projectDependencies1){
-//            if(!pd.getScope().equals("test")){
-//                projectDependencies.add(pd);
-//            }
-//        }
 
 
         // Execute JaCoCoCLI to create the report WITH dependencies
