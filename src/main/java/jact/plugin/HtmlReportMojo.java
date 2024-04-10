@@ -48,8 +48,6 @@ public class HtmlReportMojo extends AbstractReportMojo {
         Map<String, ProjectDependency> projectDependenciesMap =
                 ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true, getDepFilterParam());
 
-        List<ProjectDependency> projectDependencies = new ArrayList<>(projectDependenciesMap.values());
-
 
         // Execute JaCoCoCLI to create the report WITH dependencies
         getLog().info("Copying the `jacococli.jar` to the project.");
@@ -66,8 +64,8 @@ public class HtmlReportMojo extends AbstractReportMojo {
 
         getLog().info("Organizing the complete coverage report.");
         try {
-            extractReportAndMoveDirs(projectDependencies, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
-            createDependencyReports(projectDependencies);
+            extractReportAndMoveDirs(projectDependenciesMap, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
+            createDependencyReports(projectDependenciesMap);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

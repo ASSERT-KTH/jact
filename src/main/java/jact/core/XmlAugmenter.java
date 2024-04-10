@@ -98,12 +98,12 @@ public class XmlAugmenter {
     /**
      * Creates individual XML reports for each package
      * in the jacoco XML report.
-     * @param dependencies
+     * @param dependenciesMap
      * @param projPackagesAndClassMap
      * @param localRepoPath
      * @param projId
      */
-    public static void groupPackageByDep(List<ProjectDependency> dependencies,
+    public static void groupPackageByDep(Map<String, ProjectDependency> dependenciesMap,
                                          Map<String, Set<String>> projPackagesAndClassMap,
                                          String localRepoPath, String projId){
         thisProject.setId(projId);
@@ -143,9 +143,9 @@ public class XmlAugmenter {
             }
 
             //System.out.println("Separate XML reports created for each package in the current directory.");
-            readAndExtractPackageUsage(getReportPath() + "xml_reports/", dependencies, projPackagesAndClassMap, localRepoPath);
+            readAndExtractPackageUsage(getReportPath() + "xml_reports/", dependenciesMap, projPackagesAndClassMap, localRepoPath);
 
-            writeCompleteReport(dependencies, packageReports);
+            writeCompleteReport(dependenciesMap, packageReports);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -157,14 +157,14 @@ public class XmlAugmenter {
      * extracts the usage of each dependency or
      * project code.
      * @param pathToReport
-     * @param dependencies
+     * @param dependenciesMap
      * @param projPackagesAndClassMap
      * @param localRepoPath
      */
     public static void readAndExtractPackageUsage(String pathToReport,
-                                           List<ProjectDependency> dependencies,
-                                           Map<String, Set<String>> projPackagesAndClassMap,
-                                           String localRepoPath){
+                                                  Map<String, ProjectDependency> dependenciesMap,
+                                                  Map<String, Set<String>> projPackagesAndClassMap,
+                                                  String localRepoPath){
         File reportDir = new File(pathToReport);
         // Check if the directory exists
         if (reportDir.exists() && reportDir.isDirectory()) {
@@ -178,7 +178,7 @@ public class XmlAugmenter {
                     //System.out.println(filename);
                     // Call your function with the filename
                     filename = filename.replace("-", ".");
-                    ProjectDependency matchedDep = packageToDepPaths(filename, dependencies, projPackagesAndClassMap, localRepoPath);
+                    ProjectDependency matchedDep = packageToDepPaths(filename, dependenciesMap, projPackagesAndClassMap, localRepoPath);
                     // It needs to add to either the dependencyUsage or the project usage,
                     // If the matched dependency is a project package then
                     if(matchedDep.getId() != null){
@@ -204,10 +204,10 @@ public class XmlAugmenter {
      * the source of packages where totals for the
      * all dependencies, project and the overall
      * total is written in each section.
-     * @param dependencies
+     * @param dependenciesMap
      * @param packageReports
      */
-    public static void writeCompleteReport(List<ProjectDependency> dependencies, Map<String, Document> packageReports) {
+    public static void writeCompleteReport(Map<String, ProjectDependency> dependenciesMap, Map<String, Document> packageReports) {
         try {
             CommandExecutor.copyDtdFile("report.dtd", "./target/jact-report");
         } catch (IOException e) {
@@ -225,7 +225,7 @@ public class XmlAugmenter {
             writer.write(sessionInfo);
             writer.write(depOpeningTag);
 
-            for (ProjectDependency pd : dependencies) {
+            for (ProjectDependency pd : dependenciesMap.values()) {
                 if(pd.getScope().equals("test")){
                     continue;
                 }

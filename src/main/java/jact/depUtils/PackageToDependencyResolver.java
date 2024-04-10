@@ -24,7 +24,7 @@ public class PackageToDependencyResolver {
     // Handle the scenario where two or more packages have the same name:
 
 
-    public static ProjectDependency packageToDepPaths(String packageName, List<ProjectDependency> dependencies,
+    public static ProjectDependency packageToDepPaths(String packageName, Map<String, ProjectDependency> dependenciesMap,
                                                       Map<String, Set<String>> projPackagesAndClassMap, String localRepoPath) {
         // List of dependencies along with their coordinates
 
@@ -39,7 +39,7 @@ public class PackageToDependencyResolver {
         boolean foundDep = false;
 
         // Iterate over each dependency
-        for (ProjectDependency dependency : dependencies) {
+        for (ProjectDependency dependency : dependenciesMap.values()) {
             if(foundDep){
                 break;
             }

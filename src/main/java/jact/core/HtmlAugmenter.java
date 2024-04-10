@@ -29,13 +29,13 @@ public class HtmlAugmenter {
      * Reads the html jacoco report to create corresponding ProjectDependency objects
      * for augmentation and usage tracking as well as sets up the required resources
      * and folder structure.
-     * @param dependencies
+     * @param dependenciesMap
      * @param projPackagesAndClassMap
      * @param localRepoPath
      * @param projId
      * @throws IOException
      */
-    public static void extractReportAndMoveDirs(List<ProjectDependency> dependencies,
+    public static void extractReportAndMoveDirs(Map<String, ProjectDependency> dependenciesMap,
                                                 Map<String, Set<String>> projPackagesAndClassMap,
                                                 String localRepoPath, String projId) throws IOException {
 
@@ -48,7 +48,7 @@ public class HtmlAugmenter {
                 new File(getReportPath() + "dependencies/jacoco-resources"));
 
         // Creates the dependency report directories
-        for (ProjectDependency dependency : dependencies) {
+        for (ProjectDependency dependency : dependenciesMap.values()) {
                 //String fullPath = getFullDepPath(dependency);
 
                 // Adding the path to easily get the report location.
@@ -70,7 +70,7 @@ public class HtmlAugmenter {
                     String dirName = directory.getName();
                     //boolean packageDir = CompleteCoverageMojo.projGroupIdSet.stream().allMatch(dirName::contains);
                     if (!dirName.equals("dependencies") && !dirName.equals("jacoco-resources")) {
-                        ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(dirName, dependencies, projPackagesAndClassMap, localRepoPath);
+                        ProjectDependency matchedDep = PackageToDependencyResolver.packageToDepPaths(dirName, dependenciesMap, projPackagesAndClassMap, localRepoPath);
                         // Could become problematic if packages share name with packages in dependencies
                         if (projPackagesAndClassMap.containsKey(dirName)) {
                             extractAndAddPackageTotal(getReportPath() + dirName +
@@ -166,9 +166,9 @@ public class HtmlAugmenter {
     /**
      * Creates the complete jact-report by reading the usage and writing
      * to the corresponding files.
-     * @param dependencies
+     * @param dependenciesMap
      */
-    public static void createDependencyReports(List<ProjectDependency> dependencies) throws IOException{
+    public static void createDependencyReports(Map<String, ProjectDependency> dependenciesMap) throws IOException{
 
         // Rename the original index.html file
         String originalFilePath = getReportPath() + "index.html";
@@ -200,9 +200,9 @@ public class HtmlAugmenter {
         List<String> writtenEntryPaths = new ArrayList<>();
 
         // Get total dependency usage
-        DependencyUsage totalDepUsage = getTotalDependencyUsage(dependencies);
+        DependencyUsage totalDepUsage = getTotalDependencyUsage(dependenciesMap);
 
-        for (ProjectDependency pd : dependencies) {
+        for (ProjectDependency pd : dependenciesMap.values()) {
             DependencyUsage currTotal = new DependencyUsage();
             currTotal = calculateTotalForAllLayers(pd, writtenPaths, writtenEntryPaths, currTotal);
             if (!pd.writtenEntryToFile) {
@@ -259,12 +259,12 @@ public class HtmlAugmenter {
 
     /**
      * Gets the total usage for all dependencies.
-     * @param dependencies
+     * @param dependenciesMap
      * @return DependencyUsage
      */
-    public static DependencyUsage getTotalDependencyUsage(List<ProjectDependency> dependencies){
+    public static DependencyUsage getTotalDependencyUsage(Map<String, ProjectDependency> dependenciesMap){
         DependencyUsage totalDepUsage = new DependencyUsage();
-        for (ProjectDependency pd : dependencies) {
+        for (ProjectDependency pd : dependenciesMap.values()) {
             totalDepUsage.addAll(pd.dependencyUsage);
         }
         return totalDepUsage;

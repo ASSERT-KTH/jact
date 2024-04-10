@@ -46,9 +46,8 @@ public class CombinedReportMojo extends AbstractReportMojo {
         getLog().info("JARNAME: " + getOutputJarName());
         //String outputDirectory = project.getBuild().getOutputDirectory();
 
-        Map<String, ProjectDependency> projectDependenciesMap = ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true, getDepFilterParam());
-
-        List<ProjectDependency> projectDependencies = new ArrayList<>(projectDependenciesMap.values());
+        Map<String, ProjectDependency> projectDependenciesMap =
+                ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true, getDepFilterParam());
 
         // Execute JaCoCoCLI to create the report WITH dependencies
         getLog().info("Copying the `jacococli.jar` to the project.");
@@ -61,15 +60,15 @@ public class CombinedReportMojo extends AbstractReportMojo {
         }
 
         // XML VERSION:
-        Map<String, ProjectDependency> projectDependenciesMap2 = ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true, getDepFilterParam());
+        Map<String, ProjectDependency> projectDependenciesMapXML =
+                ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true, getDepFilterParam());
 
-        List<ProjectDependency> projectDependenciesXML = new ArrayList<>(projectDependenciesMap.values());
         getLog().info("Creating the complete coverage report.");
         executeJacocoCLI(getOutputJarName(), false);
 
         getLog().info("Organizing the complete coverage report.");
 
-        groupPackageByDep(projectDependenciesXML, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
+        groupPackageByDep(projectDependenciesMapXML, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
 
         getLog().info("JACT: XML Report Successfully Generated!");
 
@@ -80,8 +79,8 @@ public class CombinedReportMojo extends AbstractReportMojo {
 
         getLog().info("Organizing the complete coverage report.");
         try {
-            extractReportAndMoveDirs(projectDependencies, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
-            createDependencyReports(projectDependencies);
+            extractReportAndMoveDirs(projectDependenciesMap, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
+            createDependencyReports(projectDependenciesMap);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
