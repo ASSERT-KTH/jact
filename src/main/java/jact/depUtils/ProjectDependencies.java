@@ -19,9 +19,16 @@ public class ProjectDependencies {
 
     public static List<String> totalReportPaths = new ArrayList<>();
 
+    private static boolean skipTestDependencies;
+
     public static String REPORTPATH = "./target/jact-report/";
 
-    public static Map<String, ProjectDependency> getAllProjectDependencies(String targetDirectory, boolean genLockfile) {
+    public static Map<String, ProjectDependency> getAllProjectDependencies(String targetDirectory,
+                                                                           boolean genLockfile,
+                                                                           boolean skipTestDeps) {
+
+        skipTestDependencies = skipTestDeps;
+
         if (projectDependenciesMap.isEmpty()) {
             generateAllProjectDependencies(targetDirectory, genLockfile);
         }
@@ -63,6 +70,13 @@ public class ProjectDependencies {
 
         private ProjectDependency parseDependency(JsonObject jsonObject, ProjectDependency parentDep, Set<String> visited) {
             String dependencyId = jsonObject.get("id").getAsString();
+            String dependencyScope = jsonObject.get("scope").getAsString();
+
+            if(skipTestDependencies && dependencyScope.equals("test")){
+                //Skipping test-scope dependencies
+                return new ProjectDependency();
+            }
+
             if (visited.contains(dependencyId)) {
                 // If the dependency has been visited before, find it, add the parent and return it.
                 ProjectDependency pd = projectDependenciesMap.get(dependencyId);

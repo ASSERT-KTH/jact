@@ -40,7 +40,12 @@ public abstract class AbstractReportMojo extends AbstractMojo {
     @Parameter(property = "shadedJarName")
     private String shadedJarName;
 
+    @Parameter(property = "skipTestDependencies", defaultValue = "true")
+    private String skipTestDependencies;
 
+    public boolean getDepFilterParam(){
+        return Boolean.parseBoolean(this.skipTestDependencies);
+    }
     public String getLocalRepoPath() {
         return this.session.getLocalRepository().getBasedir();
     }

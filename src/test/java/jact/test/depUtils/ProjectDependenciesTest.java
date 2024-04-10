@@ -69,7 +69,7 @@ public class ProjectDependenciesTest {
      */
     public static void initTestDependencies(){
         assertTrue(new File(testResourcesDir + "lockfile.json").exists());
-        dependencies = getAllProjectDependencies(testResourcesDir, false);
+        dependencies = getAllProjectDependencies(testResourcesDir, false, false);
     }
 
     @Test

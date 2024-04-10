@@ -46,7 +46,7 @@ public class CombinedReportMojo extends AbstractReportMojo {
         getLog().info("JARNAME: " + getOutputJarName());
         //String outputDirectory = project.getBuild().getOutputDirectory();
 
-        Map<String, ProjectDependency> projectDependenciesMap = ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true);
+        Map<String, ProjectDependency> projectDependenciesMap = ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true, getDepFilterParam());
 
         List<ProjectDependency> projectDependencies = new ArrayList<>(projectDependenciesMap.values());
 
@@ -61,7 +61,7 @@ public class CombinedReportMojo extends AbstractReportMojo {
         }
 
         // XML VERSION:
-        Map<String, ProjectDependency> projectDependenciesMap2 = ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true);
+        Map<String, ProjectDependency> projectDependenciesMap2 = ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true, getDepFilterParam());
 
         List<ProjectDependency> projectDependenciesXML = new ArrayList<>(projectDependenciesMap.values());
         getLog().info("Creating the complete coverage report.");
