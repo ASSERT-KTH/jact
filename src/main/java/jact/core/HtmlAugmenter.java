@@ -50,13 +50,15 @@ public class HtmlAugmenter {
         // Creates the dependency report directories
         for (ProjectDependency dependency : dependencies) {
             if (!dependency.getScope().equals("test")) {
-                String fullPath = getFullDepPath(dependency);
+                //String fullPath = getFullDepPath(dependency);
 
                 // Adding the path to easily get the report location.
-                dependency.addReportPath(REPORTPATH + "dependencies/" + fullPath);
-                createDir(REPORTPATH + "dependencies/" + fullPath);
-                copyDirectory(new File(jacocoResPath),
-                        new File(REPORTPATH + "dependencies/" + fullPath + "/jacoco-resources"));
+                //dependency.addReportPath(REPORTPATH + "dependencies/" + fullPath);
+                for(String path : dependency.getReportPaths()){
+                    createDir(path);
+                    copyDirectory(new File(jacocoResPath),
+                            new File(path + "/jacoco-resources"));
+                }
             }
         }
 
@@ -114,18 +116,19 @@ public class HtmlAugmenter {
                             } else {
                                 // Handle dependencies with the same transitive dependencies.
                                 for (String path : matchedDep.getReportPaths()) {
-                                    copyDirectory(directory, new File(path + "/" + dirName));
+                                    copyDirectory(directory, new File(path));
 
                                     // Get the parent directory of the current path
                                     File parentDir = new File(path).getParentFile();
                                     // Ensure parentDir is not null and it's a directory
                                     if (parentDir != null && parentDir.isDirectory() && parentDir.getName().equals("transitive-dependencies")) {
-                                        String parentDepName = parentDir.getParentFile().getName();
                                         if (!new File(parentDir + "/index.html").exists()) {
+                                            String parentDepName = parentDir.getParentFile().getName();
                                             try {
                                                 writeModifiedTemplateToFile("html-templates/indivDepViewTemplateStart.html",
-                                                        parentDir + "/index.html", "Transitive Dependencies from: " + parentDepName);
-                                                //writeTemplateToFile("transitiveEntry.html", parentDir.getParentFile() + "/index.html");
+                                                        parentDir + "/index.html",
+                                                        "<span style=\"display: inline-block;\">Transitive Dependencies from: <br>" +
+                                                                parentDepName + "</span>");
                                             } catch (IOException e) {
                                                 throw new RuntimeException(e);
                                             }
@@ -240,14 +243,14 @@ public class HtmlAugmenter {
             if (!pd.writtenEntryToFile) {
                 pd.writtenEntryToFile = true;
                 for (String path : pd.getReportPaths()) {
-                        File currDir = new File(path);
-                        File parentDir = currDir.getParentFile();
-                        try {
-                            // Only writes if it is a base layer dependency (it has no parent dependencies)
-                            writeHTMLStringToFile(parentDir + "/index.html", pd.dependencyUsage.usageToHTML(currDir.getName(), totalDepUsage, false));
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
+                    File currDir = new File(path);
+                    File parentDir = currDir.getParentFile();
+                    try {
+                        // Only writes if it is a base layer dependency (it has no parent dependencies)
+                        writeHTMLStringToFile(parentDir + "/index.html", pd.dependencyUsage.usageToHTML(currDir.getName(), totalDepUsage, false));
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
             pd.writePackagesToFile(currTotal);

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static jact.core.HtmlAugmenter.createDependencyReports;
 import static jact.core.HtmlAugmenter.extractReportAndMoveDirs;
@@ -46,7 +47,14 @@ public class HtmlReportMojo extends AbstractReportMojo {
 
         Map<String, ProjectDependency> projectDependenciesMap = ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true);
 
-        List<ProjectDependency> projectDependencies = new ArrayList<>(projectDependenciesMap.values());
+        List<ProjectDependency> projectDependencies1 = new ArrayList<>(projectDependenciesMap.values());
+
+        List<ProjectDependency> projectDependencies = new ArrayList<>();
+        for(ProjectDependency pd : projectDependencies1){
+            if(!pd.getScope().equals("test")){
+                projectDependencies.add(pd);
+            }
+        }
 
 
         // Execute JaCoCoCLI to create the report WITH dependencies

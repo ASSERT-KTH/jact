@@ -17,6 +17,10 @@ public class ProjectDependencies {
     public static List<ProjectDependency> projectDependencies = new ArrayList<>();
     public static Map<String, ProjectDependency> projectDependenciesMap = new HashMap<>();
 
+    public static List<String> totalReportPaths = new ArrayList<>();
+
+    public static String REPORTPATH = "./target/jact-report/";
+
     public static Map<String, ProjectDependency> getAllProjectDependencies(String targetDirectory, boolean genLockfile) {
         if (projectDependenciesMap.isEmpty()) {
             generateAllProjectDependencies(targetDirectory, genLockfile);
@@ -69,7 +73,7 @@ public class ProjectDependencies {
                         pd.addReportPath(path + "/transitive-dependencies/" + depToDirName(pd));
                     }
                 } else {
-                    pd.addReportPath("dependencies/" + depToDirName(pd));
+                    pd.addReportPath(REPORTPATH + "dependencies/" + depToDirName(pd));
                 }
                 return pd;
             }
@@ -93,7 +97,7 @@ public class ProjectDependencies {
                     projectDependency.addReportPath(path + "/transitive-dependencies/" + depToDirName(projectDependency));
                 }
             }else{
-                projectDependency.addReportPath("dependencies/" + depToDirName(projectDependency));
+                projectDependency.addReportPath(REPORTPATH + "dependencies/" + depToDirName(projectDependency));
             }
 
             // Then add the immediate parent

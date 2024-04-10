@@ -20,6 +20,8 @@ public class ProjectDependenciesTest {
     static String testDirectory = "./src/test/java/jact/test/testingDir/";
     public static final String testResourcesDir = "./src/test/resources/";
 
+    public static String REPORTPATH = "./target/jact-report/";
+
 
     //All dependency IDs from the pre-defined lockfile for testing
     public static final List<String> dependencyIds = Arrays.asList(
@@ -178,12 +180,12 @@ public class ProjectDependenciesTest {
         // manually checked report paths
         ProjectDependency currDep = dependencies.get("com.google.guava:guava:33.0.0-jre");
         assertEquals(1, currDep.getReportPaths().size());
-        assertEquals("dependencies/com.google.guava.guava-v33.0.0-jre", currDep.getReportPaths().get(0));
+        assertEquals(REPORTPATH + "dependencies/com.google.guava.guava-v33.0.0-jre", currDep.getReportPaths().get(0));
 
 
         currDep = dependencies.get("com.google.code.findbugs:jsr305:3.0.2");
         assertEquals(1, currDep.getReportPaths().size());
-        assertEquals("dependencies/com.google.guava.guava-v33.0.0-jre/" +
+        assertEquals(REPORTPATH + "dependencies/com.google.guava.guava-v33.0.0-jre/" +
                         "transitive-dependencies/" +
                         "com.google.code.findbugs.jsr305-v3.0.2",
                 currDep.getReportPaths().get(0));
@@ -191,7 +193,7 @@ public class ProjectDependenciesTest {
 
         currDep = dependencies.get("com.google.errorprone:error_prone_annotations:2.23.0");
         assertEquals(1, currDep.getReportPaths().size());
-        assertEquals("dependencies/com.google.guava.guava-v33.0.0-jre/" +
+        assertEquals(REPORTPATH + "dependencies/com.google.guava.guava-v33.0.0-jre/" +
                         "transitive-dependencies/" +
                         "com.google.errorprone.error_prone_annotations-v2.23.0",
                 currDep.getReportPaths().get(0));
@@ -199,14 +201,14 @@ public class ProjectDependenciesTest {
 
         currDep = dependencies.get("com.google.guava:failureaccess:1.0.2");
         assertEquals(1, currDep.getReportPaths().size());
-        assertEquals("dependencies/com.google.guava.guava-v33.0.0-jre/" +
+        assertEquals(REPORTPATH + "dependencies/com.google.guava.guava-v33.0.0-jre/" +
                         "transitive-dependencies/" +
                         "com.google.guava.failureaccess-v1.0.2",
                 currDep.getReportPaths().get(0));
 
         currDep = dependencies.get("com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava");
         assertEquals(1, currDep.getReportPaths().size());
-        assertEquals("dependencies/com.google.guava.guava-v33.0.0-jre/" +
+        assertEquals(REPORTPATH + "dependencies/com.google.guava.guava-v33.0.0-jre/" +
                         "transitive-dependencies/" +
                         "com.google.guava.listenablefuture-v9999.0-empty-to-avoid-conflict-with-guava",
                 currDep.getReportPaths().get(0));
@@ -214,14 +216,14 @@ public class ProjectDependenciesTest {
 
         currDep = dependencies.get("com.google.j2objc:j2objc-annotations:2.8");
         assertEquals(1, currDep.getReportPaths().size());
-        assertEquals("dependencies/com.google.guava.guava-v33.0.0-jre/" +
+        assertEquals(REPORTPATH + "dependencies/com.google.guava.guava-v33.0.0-jre/" +
                         "transitive-dependencies/" +
                         "com.google.j2objc.j2objc.annotations-v2.8",
                 currDep.getReportPaths().get(0));
 
         currDep = dependencies.get("org.checkerframework:checker-qual:3.41.0");
         assertEquals(1, currDep.getReportPaths().size());
-        assertEquals("dependencies/com.google.guava.guava-v33.0.0-jre/" +
+        assertEquals(REPORTPATH + "dependencies/com.google.guava.guava-v33.0.0-jre/" +
                         "transitive-dependencies/" +
                         "org.checkerframework.checker.qual-v3.41.0",
                 currDep.getReportPaths().get(0));
@@ -229,35 +231,35 @@ public class ProjectDependenciesTest {
 
         currDep = dependencies.get("joda-time:joda-time:2.12.7");
         assertEquals(1, currDep.getReportPaths().size());
-        assertEquals("dependencies/joda.time.joda.time-v2.12.7", currDep.getReportPaths().get(0));
+        assertEquals(REPORTPATH + "dependencies/joda.time.joda.time-v2.12.7", currDep.getReportPaths().get(0));
 
         currDep = dependencies.get("junit:junit:4.13.2");
         assertEquals(1, currDep.getReportPaths().size());
-        assertEquals("dependencies/junit.junit-v4.13.2", currDep.getReportPaths().get(0));
+        assertEquals(REPORTPATH + "dependencies/junit.junit-v4.13.2", currDep.getReportPaths().get(0));
 
 
         currDep = dependencies.get("org.hamcrest:hamcrest-core:1.3");
         assertEquals(1, currDep.getReportPaths().size());
-        assertEquals("dependencies/junit.junit-v4.13.2/" +
+        assertEquals(REPORTPATH + "dependencies/junit.junit-v4.13.2/" +
                         "transitive-dependencies/" +
                         "org.hamcrest.hamcrest.core-v1.3",
                 currDep.getReportPaths().get(0));
 
         currDep = dependencies.get("org.apache.commons:commons-math3:3.6.1");
         assertEquals(1, currDep.getReportPaths().size());
-        assertEquals("dependencies/org.apache.commons.commons.math3-v3.6.1", currDep.getReportPaths().get(0));
+        assertEquals(REPORTPATH + "dependencies/org.apache.commons.commons.math3-v3.6.1", currDep.getReportPaths().get(0));
 
         currDep = dependencies.get("org.junit.jupiter:junit-jupiter-api:5.10.2");
         assertEquals(1, currDep.getReportPaths().size());
-        assertEquals("dependencies/org.junit.jupiter.junit.jupiter.api-v5.10.2", currDep.getReportPaths().get(0));
+        assertEquals(REPORTPATH + "dependencies/org.junit.jupiter.junit.jupiter.api-v5.10.2", currDep.getReportPaths().get(0));
 
         currDep = dependencies.get("org.apiguardian:apiguardian-api:1.1.2");
         assertEquals(2, currDep.getReportPaths().size());
-        assertEquals("dependencies/org.junit.jupiter.junit.jupiter.api-v5.10.2/" +
+        assertEquals(REPORTPATH + "dependencies/org.junit.jupiter.junit.jupiter.api-v5.10.2/" +
                         "transitive-dependencies/" +
                         "org.apiguardian.apiguardian.api-v1.1.2",
                 currDep.getReportPaths().get(0));
-        assertEquals("dependencies/org.junit.jupiter.junit.jupiter.api-v5.10.2/" +
+        assertEquals(REPORTPATH + "dependencies/org.junit.jupiter.junit.jupiter.api-v5.10.2/" +
                         "transitive-dependencies/" +
                         "org.junit.platform.junit.platform.commons-v1.10.2/" +
                         "transitive-dependencies/" +
@@ -266,14 +268,14 @@ public class ProjectDependenciesTest {
 
         currDep = dependencies.get("org.junit.platform:junit-platform-commons:1.10.2");
         assertEquals(1, currDep.getReportPaths().size());
-        assertEquals("dependencies/org.junit.jupiter.junit.jupiter.api-v5.10.2/" +
+        assertEquals(REPORTPATH + "dependencies/org.junit.jupiter.junit.jupiter.api-v5.10.2/" +
                         "transitive-dependencies/" +
                         "org.junit.platform.junit.platform.commons-v1.10.2",
                 currDep.getReportPaths().get(0));
 
         currDep = dependencies.get("org.opentest4j:opentest4j:1.3.0");
         assertEquals(1, currDep.getReportPaths().size());
-        assertEquals("dependencies/org.junit.jupiter.junit.jupiter.api-v5.10.2/" +
+        assertEquals(REPORTPATH + "dependencies/org.junit.jupiter.junit.jupiter.api-v5.10.2/" +
                         "transitive-dependencies/" +
                         "org.opentest4j.opentest4j-v1.3.0",
                 currDep.getReportPaths().get(0));

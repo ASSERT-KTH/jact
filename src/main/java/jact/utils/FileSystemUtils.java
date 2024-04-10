@@ -13,9 +13,10 @@ import java.nio.file.StandardCopyOption;
 public class FileSystemUtils {
     public static void copyDirectory(File sourceDir, File destDir) {
         // Create the destination directory if it doesn't exist
-        if (!destDir.exists()) {
-            destDir.mkdirs();
+        if (destDir.exists()) {
+            return;
         }
+        destDir.mkdirs();
 
         // Get all files from the source directory
         File[] files = sourceDir.listFiles();
