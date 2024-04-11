@@ -3,6 +3,7 @@ package jact.core;
 import jact.depUtils.DependencyUsage;
 import jact.depUtils.PackageToDependencyResolver;
 import jact.depUtils.ProjectDependency;
+import jact.depUtils.TransitiveDependencies;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -14,7 +15,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static jact.depUtils.ProjectDependencies.transitiveReportPaths;
+import static jact.depUtils.ProjectDependencies.transitiveUsageMap;
 import static jact.depUtils.ProjectDependency.depToDirName;
 import static jact.plugin.AbstractReportMojo.getReportPath;
 import static jact.utils.FileSystemUtils.*;
@@ -46,19 +47,20 @@ public class HtmlAugmenter {
 
 
     private static void setupTransitivePaths(){
-        for(String path : transitiveReportPaths){
-            copyDirectory(new File(jacocoResPath),
-                    new File(path + "jacoco-resources"));
-            String parentDir = new File(path).getParent();
-            if (new File(parentDir).exists()) {
-                String parentDepName = new File(parentDir).getName();
-                try {
-                    writeModifiedTemplateToFile("html-templates/indivDepViewTemplateStart.html",
-                            path + "index.html",
-                            "<span style=\"display: inline-block;\">Transitive Dependencies from: <br>" +
-                                    parentDepName + "</span>");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+        for(TransitiveDependencies transitiveDeps : transitiveUsageMap.values()){
+            for(String path : transitiveDeps.getReportPaths()){
+                copyDirectory(new File(jacocoResPath),
+                        new File(path + "jacoco-resources"));
+                String parentDir = new File(path).getParent();
+                if (new File(parentDir).exists()) {
+                    try {
+                        writeModifiedTemplateToFile("html-templates/indivDepViewTemplateStart.html",
+                                path + "index.html",
+                                "<span style=\"display: inline-block;\">Transitive Dependencies from: <br>" +
+                                        transitiveDeps.getParentDirName() + "</span>");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
         }
@@ -258,6 +260,18 @@ public class HtmlAugmenter {
             throw new RuntimeException(e);
         }
     }
+
+
+    /**
+     * TODO
+     *  - Calculate the total for each dependency
+     *      - Also calculate the total child usage
+     *  - Calculate the overall total using the ROOT dependencies
+     *  - Write the dependency usage
+     *  - Write the totals, the totals for the dependency --> Totals for its transitive
+     *
+     */
+
 
     /**
      * Gets the total usage for all dependencies.

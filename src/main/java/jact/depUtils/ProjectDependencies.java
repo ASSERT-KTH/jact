@@ -15,11 +15,10 @@ import static jact.utils.CommandExecutor.generateDependencyLockfile;
  * in order to calculate and write the reported usage from jacoco.
  */
 public class ProjectDependencies {
-
-    public static List<ProjectDependency> projectDependencies = new ArrayList<>();
     public static Map<String, ProjectDependency> projectDependenciesMap = new HashMap<>();
 
-    public static List<String> transitiveReportPaths = new ArrayList<>();
+    public static Map<String, TransitiveDependencies> transitiveUsageMap = new HashMap<>();
+
 
     private static boolean skipTestDependencies;
 
@@ -68,6 +67,19 @@ public class ProjectDependencies {
             return parseDependency(jsonObject, parentDeps, visited);
         }
 
+        private void setupChildDependency(ProjectDependency projectDependency, ProjectDependency parentDep){
+            projectDependency.addParentDep(parentDep);
+            // Add all parent paths, a transitive dependency.
+            for (String path : parentDep.getReportPaths()) {
+                projectDependency.addReportPath(path + "transitive-dependencies/" + depToDirName(projectDependency) + "/");
+            }
+            if(!transitiveUsageMap.containsKey(parentDep.getId())){
+                transitiveUsageMap.put(parentDep.getId(), new TransitiveDependencies(parentDep));
+            }else{
+                transitiveUsageMap.get(parentDep.getId()).addReportPaths(parentDep);
+            }
+        }
+
         private ProjectDependency parseDependency(JsonObject jsonObject, ProjectDependency parentDep, Set<String> visited) {
             String dependencyId = jsonObject.get("id").getAsString();
             String dependencyScope = jsonObject.get("scope").getAsString();
@@ -81,15 +93,7 @@ public class ProjectDependencies {
                 // If the dependency has been visited before, find it, add the parent and return it.
                 ProjectDependency pd = projectDependenciesMap.get(dependencyId);
                 if (parentDep.getId() != null) {
-                    pd.addParentDep(parentDep);
-                    // Add all parent paths, a transitive dependency.
-                    for (String path : parentDep.getReportPaths()) {
-                        if(!transitiveReportPaths.contains(path + "transitive-dependencies/")){
-                            transitiveReportPaths.add(path + "transitive-dependencies/");
-                        }
-                        pd.addReportPath(path + "transitive-dependencies/" + depToDirName(pd) + "/");
-                    }
-
+                    setupChildDependency(pd, parentDep);
                 } else {
                     pd.addReportPath(getReportPath() + "dependencies/" + depToDirName(pd) + "/");
                 }
@@ -109,14 +113,7 @@ public class ProjectDependencies {
             // Adding the directory name to the potential paths to report the usage
             // Build the report path
             if(parentDep.getId() != null){
-                projectDependency.addParentDep(parentDep);
-                // Add all parent paths, a transitive dependency.
-                for(String path : parentDep.getReportPaths()){
-                    if(!transitiveReportPaths.contains(path + "transitive-dependencies/")){
-                        transitiveReportPaths.add(path + "transitive-dependencies/");
-                    }
-                    projectDependency.addReportPath(path + "transitive-dependencies/" + depToDirName(projectDependency) + "/");
-                }
+                setupChildDependency(projectDependency, parentDep);
             }else{
                 projectDependency.addReportPath(getReportPath() + "dependencies/" + depToDirName(projectDependency) + "/");
             }
