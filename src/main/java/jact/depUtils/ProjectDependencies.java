@@ -73,10 +73,10 @@ public class ProjectDependencies {
             for (String path : parentDep.getReportPaths()) {
                 projectDependency.addReportPath(path + "transitive-dependencies/" + depToDirName(projectDependency) + "/");
             }
-            if(!transitiveUsageMap.containsKey(parentDep.getId())){
-                transitiveUsageMap.put(parentDep.getId(), new TransitiveDependencies(parentDep));
+            if(!transitiveUsageMap.containsKey(depToDirName(parentDep))){
+                transitiveUsageMap.put(depToDirName(parentDep), new TransitiveDependencies(parentDep));
             }else{
-                transitiveUsageMap.get(parentDep.getId()).addReportPaths(parentDep);
+                transitiveUsageMap.get(depToDirName(parentDep)).addReportPaths(parentDep);
             }
         }
 

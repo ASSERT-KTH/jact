@@ -26,12 +26,19 @@ import static jact.utils.FileSystemUtils.*;
 public class HtmlAugmenter {
     public static String jacocoResPath = getReportPath() + "jacoco-resources";
     private static ProjectDependency thisProject = new ProjectDependency();
+    private static DependencyUsage totalDependencyUsage = new DependencyUsage();
+    private static DependencyUsage completeUsage = new DependencyUsage();
 
     public static void generateHtmlReport(Map<String, ProjectDependency> dependenciesMap,
                                           Map<String, Set<String>> projPackagesAndClassMap,
                                           String localRepoPath, String projId){
-        setupDependencyPaths(dependenciesMap);
-        setupTransitivePaths();
+        // Rename the original index.html file
+        String inputFilePath =
+                renameFile(getReportPath() + "index.html", "originalIndex.html");
+        // Format the index.html report:
+        formatHtmlReport(inputFilePath);
+
+        setupReportPaths(dependenciesMap);
 
         try {
             extractReportAndMoveDirs(dependenciesMap, projPackagesAndClassMap, localRepoPath, projId);
@@ -73,7 +80,6 @@ public class HtmlAugmenter {
         // Path to jacoco-resources (to be copied to subdirectories for correct icons and styling)
         copyDirectory(new File(jacocoResPath),
                 new File(getReportPath() + "dependencies/jacoco-resources"));
-
         // Create the dependencies overview
         // Writes the HTML template for the Dependency Overview
         try {
@@ -81,7 +87,6 @@ public class HtmlAugmenter {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
         for (ProjectDependency dependency : dependenciesMap.values()){
             for(String path : dependency.getReportPaths()){
                 // Set up the directory and copy the jacoco-resources
@@ -97,6 +102,22 @@ public class HtmlAugmenter {
                 }
             }
         }
+    }
+
+
+    private static void setupReportPaths(Map<String, ProjectDependency> dependenciesMap){
+
+        // Create the whole project overview
+        try {
+            // Writes the overview HTML template
+            writeTemplateToFile("html-templates/overviewTemplateStart.html", getReportPath() + "index.html");
+        } catch (IOException e) {
+            System.err.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        setupDependencyPaths(dependenciesMap);
+        setupTransitivePaths();
     }
 
     /**
@@ -179,86 +200,15 @@ public class HtmlAugmenter {
      * @param dependenciesMap
      */
     public static void createDependencyReports(Map<String, ProjectDependency> dependenciesMap) throws IOException{
+        // Get all the project/dependency/package usage
+        calculateAllUsages(dependenciesMap);
 
-        // Rename the original index.html file
-        String originalFilePath = getReportPath() + "index.html";
-        // Path to the original jacoco html report.
-        String inputFilePath = renameFile(originalFilePath, "originalIndex.html");
+        // Write dependency usage
+        writeDependenciesToFile(dependenciesMap);
+        writeTransitiveTotalsToFile();
 
-        // Format the index.html report:
-        formatHtmlReport(inputFilePath);
-
-
-        // Create the whole project overview
-        String outputFilePath = getReportPath() + "index.html";
-        try {
-            // Writes the overview HTML template
-            writeTemplateToFile("html-templates/overviewTemplateStart.html", outputFilePath);
-        } catch (IOException e) {
-            System.err.println("Error: " + e.getMessage());
-            e.printStackTrace();
-        }
-
-
-        List<String> writtenPaths = new ArrayList<>();
-        List<String> writtenEntryPaths = new ArrayList<>();
-
-        // Get total dependency usage
-        DependencyUsage totalDepUsage = getTotalDependencyUsage(dependenciesMap);
-
-        for (ProjectDependency pd : dependenciesMap.values()) {
-            DependencyUsage currTotal = new DependencyUsage();
-            currTotal = calculateTotalForAllLayers(pd, writtenPaths, writtenEntryPaths, currTotal);
-            if (!pd.writtenEntryToFile) {
-                pd.writtenEntryToFile = true;
-                for (String path : pd.getReportPaths()) {
-                    File currDir = new File(path);
-                    File parentDir = currDir.getParentFile();
-                    try {
-                        // Only writes if it is a base layer dependency (it has no parent dependencies)
-                        writeHTMLStringToFile(parentDir + "/index.html", pd.dependencyUsage.usageToHTML(currDir.getName(), totalDepUsage, false));
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-            }
-            pd.writePackagesToFile(currTotal);
-        }
-
-        // Writes the HTML template for the Dependency Overview
-        writeTemplateToFile("html-templates/depOverviewTemplateEnd.html", getReportPath() + "dependencies/index.html");
-
-        try {
-            DependencyUsage overallTotal = new DependencyUsage();
-            overallTotal.addAll(totalDepUsage);
-            for (Map.Entry<String, DependencyUsage> entry : thisProject.packageUsageMap.entrySet()) {
-                overallTotal.addAll(entry.getValue());
-            }
-
-            // Write the total dependency usage AND its entry in the overview
-            writeHTMLStringToFile(getReportPath() + "index.html", totalDepUsage.usageToHTML("dependencies", overallTotal, false));
-            writeHTMLTotalToFile(getReportPath() + "dependencies/index.html", totalDepUsage.totalUsageToHTML());
-
-            // Write the project package overview entries:
-            for (Map.Entry<String, DependencyUsage> entry : thisProject.packageUsageMap.entrySet()) {
-                try {
-                    writeHTMLStringToFile(getReportPath() + "index.html", entry.getValue().usageToHTML(entry.getKey(),overallTotal, true));
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            // Write the overview total: Project + Dependencies (incl. transitive)
-            writeHTMLTotalToFile(getReportPath() + "index.html", overallTotal.totalUsageToHTML());
-
-
-            // Create the whole project overview
-            outputFilePath = getReportPath() + "index.html";
-            // Writes the overview HTML template
-            writeTemplateToFile("html-templates/overviewTemplateEnd.html", outputFilePath);
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        // Write project packages and overview usage
+        writeOverviewToFile();
     }
 
 
@@ -284,6 +234,91 @@ public class HtmlAugmenter {
             totalDepUsage.addAll(pd.dependencyUsage);
         }
         return totalDepUsage;
+    }
+
+
+    private static DependencyUsage calculateTransitiveDepUsage(ProjectDependency dependency){
+        DependencyUsage currUsage = new DependencyUsage();
+        for(ProjectDependency child : dependency.getChildDeps()){
+            currUsage.addAll(calculateTransitiveDepUsage(child));
+        }
+        currUsage.addAll(dependency.dependencyUsage);
+        return currUsage;
+    }
+
+
+    private static void writeTransitiveTotalsToFile() throws IOException {
+        for(TransitiveDependencies transitiveDeps : transitiveUsageMap.values()){
+            for(String path : transitiveDeps.getReportPaths()){
+                writeHTMLTotalToFile(path + "index.html", transitiveDeps.transitiveUsage.totalUsageToHTML());
+                writeTemplateToFile("html-templates/overviewTemplateEnd.html", path + "index.html");
+            }
+        }
+    }
+
+    private static void writeDependenciesToFile(Map<String, ProjectDependency> dependenciesMap) throws IOException {
+        for (ProjectDependency pd : dependenciesMap.values()) {
+            DependencyUsage entryReferenceUsage = new DependencyUsage();
+            for (String path : pd.getReportPaths()) {
+                File currDir = new File(path);
+                File parentDir = currDir.getParentFile();
+//                if(pd.getParentDeps().isEmpty()){
+//                    entryReferenceUsage = totalDependencyUsage;
+//                }else{
+//                    String parentDepDir = parentDir.getParentFile().getName();
+//                    System.out.println("PARENT DEP DIR: " + parentDepDir);
+//                    entryReferenceUsage = transitiveUsageMap.get(parentDepDir).transitiveUsage;
+//                }
+                writeHTMLStringToFile(parentDir + "/index.html",
+                        pd.dependencyUsage.usageToHTML(currDir.getName(), entryReferenceUsage, false));
+                writeHTMLTotalToFile(path + "index.html", pd.dependencyUsage.totalUsageToHTML());
+                pd.writePackagesToFile(path, pd.dependencyUsage);
+                // Write the end of the template here
+                writeModifiedTemplateToFile("html-templates/indivDepViewTemplateStart.html",
+                        path + "index.html", depToDirName(pd));
+            }
+        }
+        // Writes the HTML template for the Dependency Overview
+        writeTemplateToFile("html-templates/depOverviewTemplateEnd.html", getReportPath() + "dependencies/index.html");
+    }
+
+    private static void writeOverviewToFile() throws IOException {
+        // Write the total dependency usage AND its entry in the overview
+        writeHTMLStringToFile(getReportPath() + "index.html", totalDependencyUsage.usageToHTML("dependencies", completeUsage, false));
+        writeHTMLTotalToFile(getReportPath() + "dependencies/index.html", totalDependencyUsage.totalUsageToHTML());
+
+        // Write the project package overview entries:
+        for (Map.Entry<String, DependencyUsage> entry : thisProject.packageUsageMap.entrySet()) {
+            try {
+                writeHTMLStringToFile(getReportPath() + "index.html", entry.getValue().usageToHTML(entry.getKey(),completeUsage, true));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        // Write the overview total: Project + Dependencies (incl. transitive)
+        writeHTMLTotalToFile(getReportPath() + "index.html", completeUsage.totalUsageToHTML());
+
+        // Writes the overview HTML template
+        writeTemplateToFile("html-templates/overviewTemplateEnd.html", getReportPath() + "index.html");
+    }
+
+    private static void calculateAllUsages(Map<String, ProjectDependency> dependenciesMap){
+        for(ProjectDependency dependency : dependenciesMap.values()){
+            if(!dependency.getChildDeps().isEmpty()){
+                DependencyUsage transitiveDepsUsage = calculateTransitiveDepUsage(dependency);
+                dependency.dependencyUsage.addAll(transitiveDepsUsage);
+                transitiveUsageMap.get(depToDirName(dependency)).transitiveUsage.addAll(transitiveDepsUsage);
+            }
+            // Calculate the total
+            // Only ROOT dependencies are added, since the transitive
+            // cost was included in the previous if-statement.
+            if(dependency.getParentDeps().isEmpty()){
+                totalDependencyUsage.addAll(dependency.dependencyUsage);
+            }
+        }
+        // Calculate the overall total (project + dependencies)
+        completeUsage.addAll(totalDependencyUsage);
+        completeUsage.addAll(thisProject.dependencyUsage);
     }
 
     /**

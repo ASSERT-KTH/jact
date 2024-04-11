@@ -135,17 +135,14 @@ public class ProjectDependency {
         return sb.toString();
     }
 
-    public void writePackagesToFile(DependencyUsage total) {
+    public void writePackagesToFile(String path, DependencyUsage total) {
         // Iterate through the map entries
         for (Map.Entry<String, DependencyUsage> entry : this.packageUsageMap.entrySet()) {
-            for (String path : this.getReportPaths()) {
-                try {
-                    writeHTMLStringToFile(path + "/index.html", entry.getValue().usageToHTML(entry.getKey(), total, true));
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+            try {
+                writeHTMLStringToFile(path + "/index.html", entry.getValue().usageToHTML(entry.getKey(), total, true));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-
         }
     }
 
