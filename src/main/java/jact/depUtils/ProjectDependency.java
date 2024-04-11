@@ -156,6 +156,12 @@ public class ProjectDependency {
                 dependency.getArtifactId().replace("-", ".") + "-v" + dependency.getVersion();
     }
 
+    public static String depIdToDirName(String depId) {
+        String[] split = depId.split(":");
+        return split[0].replace("-", ".") + "." +
+                split[1].replace("-", ".") + "-v" + split[2];
+    }
+
     public boolean presentReportPath(String reportPath){
         boolean present = false;
         for(String path : this.getReportPaths()){

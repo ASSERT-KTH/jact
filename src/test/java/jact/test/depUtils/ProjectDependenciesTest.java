@@ -112,12 +112,12 @@ public class ProjectDependenciesTest {
      */
     public void parentAndChildrenDepsTest(){
         // Check that Google Guavas children dependencies are correct
-        for(ProjectDependency childDep : dependencies.get("com.google.guava:guava:33.0.0-jre").getChildDeps()){
+        for(ProjectDependency childDep : dependencies.get("com.google.guava.guava-v33.0.0-jre").getChildDeps()){
             assertTrue(googleGuavaChildrenDeps.contains(childDep.getId()));
             // Check that the parent-list contains Google Guava
             boolean foundChildDep = false;
             for(ProjectDependency deps : childDep.getParentDeps()){
-                if(deps.getId().equals(dependencies.get("com.google.guava:guava:33.0.0-jre").getId())){
+                if(deps.getId().equals(dependencies.get("com.google.guava.guava-v33.0.0-jre").getId())){
                     foundChildDep = true;
                 }
             }
@@ -141,13 +141,13 @@ public class ProjectDependenciesTest {
     public void multipleTransitiveDepsTest(){
         // Check that "org.junit.platform:junit-platform-commons:1.10.2"
         // is the second child in "org.junit.jupiter:junit-jupiter-api:5.10.2"
-        System.out.println(dependencies.get("org.junit.platform:junit-platform-commons:1.10.2").getId());
-        assertTrue(dependencies.get("org.junit.jupiter:junit-jupiter-api:5.10.2").getChildDeps().get(1).getId().equals("org.junit.platform:junit-platform-commons:1.10.2"));
+        System.out.println(dependencies.get("org.junit.platform.junit.platform.commons-v1.10.2").getId());
+        assertTrue(dependencies.get("org.junit.jupiter.junit.jupiter.api-v5.10.2").getChildDeps().get(1).getId().equals("org.junit.platform:junit-platform-commons:1.10.2"));
         // Check that "org.junit.platform:junit-platform-commons:1.10.2"
         // has the correct child: "org.apiguardian:apiguardian-api:1.1.2"
-        assertTrue(dependencies.get("org.junit.platform:junit-platform-commons:1.10.2").getChildDeps().get(0).getId().equals("org.apiguardian:apiguardian-api:1.1.2"));
+        assertTrue(dependencies.get("org.junit.platform.junit.platform.commons-v1.10.2").getChildDeps().get(0).getId().equals("org.apiguardian:apiguardian-api:1.1.2"));
         // Check that "org.apiguardian:apiguardian-api:1.1.2" has an empty 'children' list:
-        assertTrue(dependencies.get("org.junit.platform:junit-platform-commons:1.10.2").getChildDeps().get(0).getChildDeps().isEmpty());
+        assertTrue(dependencies.get("org.junit.platform.junit.platform.commons-v1.10.2").getChildDeps().get(0).getChildDeps().isEmpty());
     }
 
     @Test
@@ -163,18 +163,18 @@ public class ProjectDependenciesTest {
      */
     public void properFieldValuesTest(){
         // Check that "org.apache.commons:commons-math3:3.6.1" has correct field values
-        assertTrue(dependencies.get("org.apache.commons:commons-math3:3.6.1").getId().equals("org.apache.commons:commons-math3:3.6.1"));
-        assertTrue(dependencies.get("org.apache.commons:commons-math3:3.6.1").getGroupId().equals("org.apache.commons"));
-        assertTrue(dependencies.get("org.apache.commons:commons-math3:3.6.1").getArtifactId().equals("commons-math3"));
-        assertTrue(dependencies.get("org.apache.commons:commons-math3:3.6.1").getVersion().equals("3.6.1"));
-        assertTrue(dependencies.get("org.apache.commons:commons-math3:3.6.1").getScope().equals("compile"));
+        assertTrue(dependencies.get("org.apache.commons.commons.math3-v3.6.1").getId().equals("org.apache.commons:commons-math3:3.6.1"));
+        assertTrue(dependencies.get("org.apache.commons.commons.math3-v3.6.1").getGroupId().equals("org.apache.commons"));
+        assertTrue(dependencies.get("org.apache.commons.commons.math3-v3.6.1").getArtifactId().equals("commons-math3"));
+        assertTrue(dependencies.get("org.apache.commons.commons.math3-v3.6.1").getVersion().equals("3.6.1"));
+        assertTrue(dependencies.get("org.apache.commons.commons.math3-v3.6.1").getScope().equals("compile"));
 
         // Check that "com.google.guava:guava:33.0.0-jre" has correct field values
-        assertTrue(dependencies.get("com.google.guava:guava:33.0.0-jre").getId().equals("com.google.guava:guava:33.0.0-jre"));
-        assertTrue(dependencies.get("com.google.guava:guava:33.0.0-jre").getGroupId().equals("com.google.guava"));
-        assertTrue(dependencies.get("com.google.guava:guava:33.0.0-jre").getArtifactId().equals("guava"));
-        assertTrue(dependencies.get("com.google.guava:guava:33.0.0-jre").getVersion().equals("33.0.0-jre"));
-        assertTrue(dependencies.get("com.google.guava:guava:33.0.0-jre").getScope().equals("compile"));
+        assertTrue(dependencies.get("com.google.guava.guava-v33.0.0-jre").getId().equals("com.google.guava:guava:33.0.0-jre"));
+        assertTrue(dependencies.get("com.google.guava.guava-v33.0.0-jre").getGroupId().equals("com.google.guava"));
+        assertTrue(dependencies.get("com.google.guava.guava-v33.0.0-jre").getArtifactId().equals("guava"));
+        assertTrue(dependencies.get("com.google.guava.guava-v33.0.0-jre").getVersion().equals("33.0.0-jre"));
+        assertTrue(dependencies.get("com.google.guava.guava-v33.0.0-jre").getScope().equals("compile"));
     }
 
 
@@ -182,12 +182,12 @@ public class ProjectDependenciesTest {
     public void reportPathsTest(){
         // Brute force check that all dependencies have their
         // manually checked report paths
-        ProjectDependency currDep = dependencies.get("com.google.guava:guava:33.0.0-jre");
+        ProjectDependency currDep = dependencies.get("com.google.guava.guava-v33.0.0-jre");
         assertEquals(1, currDep.getReportPaths().size());
         assertEquals(REPORTPATH + "dependencies/com.google.guava.guava-v33.0.0-jre/", currDep.getReportPaths().get(0));
 
 
-        currDep = dependencies.get("com.google.code.findbugs:jsr305:3.0.2");
+        currDep = dependencies.get("com.google.code.findbugs.jsr305-v3.0.2");
         assertEquals(1, currDep.getReportPaths().size());
         assertEquals(REPORTPATH + "dependencies/com.google.guava.guava-v33.0.0-jre/" +
                         "transitive-dependencies/" +
@@ -195,7 +195,7 @@ public class ProjectDependenciesTest {
                 currDep.getReportPaths().get(0));
 
 
-        currDep = dependencies.get("com.google.errorprone:error_prone_annotations:2.23.0");
+        currDep = dependencies.get("com.google.errorprone.error_prone_annotations-v2.23.0");
         assertEquals(1, currDep.getReportPaths().size());
         assertEquals(REPORTPATH + "dependencies/com.google.guava.guava-v33.0.0-jre/" +
                         "transitive-dependencies/" +
@@ -203,14 +203,14 @@ public class ProjectDependenciesTest {
                 currDep.getReportPaths().get(0));
 
 
-        currDep = dependencies.get("com.google.guava:failureaccess:1.0.2");
+        currDep = dependencies.get("com.google.guava.failureaccess-v1.0.2");
         assertEquals(1, currDep.getReportPaths().size());
         assertEquals(REPORTPATH + "dependencies/com.google.guava.guava-v33.0.0-jre/" +
                         "transitive-dependencies/" +
                         "com.google.guava.failureaccess-v1.0.2/",
                 currDep.getReportPaths().get(0));
 
-        currDep = dependencies.get("com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava");
+        currDep = dependencies.get("com.google.guava.listenablefuture-v9999.0-empty-to-avoid-conflict-with-guava");
         assertEquals(1, currDep.getReportPaths().size());
         assertEquals(REPORTPATH + "dependencies/com.google.guava.guava-v33.0.0-jre/" +
                         "transitive-dependencies/" +
@@ -218,14 +218,14 @@ public class ProjectDependenciesTest {
                 currDep.getReportPaths().get(0));
 
 
-        currDep = dependencies.get("com.google.j2objc:j2objc-annotations:2.8");
+        currDep = dependencies.get("com.google.j2objc.j2objc.annotations-v2.8");
         assertEquals(1, currDep.getReportPaths().size());
         assertEquals(REPORTPATH + "dependencies/com.google.guava.guava-v33.0.0-jre/" +
                         "transitive-dependencies/" +
                         "com.google.j2objc.j2objc.annotations-v2.8/",
                 currDep.getReportPaths().get(0));
 
-        currDep = dependencies.get("org.checkerframework:checker-qual:3.41.0");
+        currDep = dependencies.get("org.checkerframework.checker.qual-v3.41.0");
         assertEquals(1, currDep.getReportPaths().size());
         assertEquals(REPORTPATH + "dependencies/com.google.guava.guava-v33.0.0-jre/" +
                         "transitive-dependencies/" +
@@ -233,31 +233,31 @@ public class ProjectDependenciesTest {
                 currDep.getReportPaths().get(0));
 
 
-        currDep = dependencies.get("joda-time:joda-time:2.12.7");
+        currDep = dependencies.get("joda.time.joda.time-v2.12.7");
         assertEquals(1, currDep.getReportPaths().size());
         assertEquals(REPORTPATH + "dependencies/joda.time.joda.time-v2.12.7/", currDep.getReportPaths().get(0));
 
-        currDep = dependencies.get("junit:junit:4.13.2");
+        currDep = dependencies.get("junit.junit-v4.13.2");
         assertEquals(1, currDep.getReportPaths().size());
         assertEquals(REPORTPATH + "dependencies/junit.junit-v4.13.2/", currDep.getReportPaths().get(0));
 
 
-        currDep = dependencies.get("org.hamcrest:hamcrest-core:1.3");
+        currDep = dependencies.get("org.hamcrest.hamcrest.core-v1.3");
         assertEquals(1, currDep.getReportPaths().size());
         assertEquals(REPORTPATH + "dependencies/junit.junit-v4.13.2/" +
                         "transitive-dependencies/" +
                         "org.hamcrest.hamcrest.core-v1.3/",
                 currDep.getReportPaths().get(0));
 
-        currDep = dependencies.get("org.apache.commons:commons-math3:3.6.1");
+        currDep = dependencies.get("org.apache.commons.commons.math3-v3.6.1");
         assertEquals(1, currDep.getReportPaths().size());
         assertEquals(REPORTPATH + "dependencies/org.apache.commons.commons.math3-v3.6.1/", currDep.getReportPaths().get(0));
 
-        currDep = dependencies.get("org.junit.jupiter:junit-jupiter-api:5.10.2");
+        currDep = dependencies.get("org.junit.jupiter.junit.jupiter.api-v5.10.2");
         assertEquals(1, currDep.getReportPaths().size());
         assertEquals(REPORTPATH + "dependencies/org.junit.jupiter.junit.jupiter.api-v5.10.2/", currDep.getReportPaths().get(0));
 
-        currDep = dependencies.get("org.apiguardian:apiguardian-api:1.1.2");
+        currDep = dependencies.get("org.apiguardian.apiguardian.api-v1.1.2");
         assertEquals(2, currDep.getReportPaths().size());
         assertEquals(REPORTPATH + "dependencies/org.junit.jupiter.junit.jupiter.api-v5.10.2/" +
                         "transitive-dependencies/" +
@@ -270,14 +270,14 @@ public class ProjectDependenciesTest {
                         "org.apiguardian.apiguardian.api-v1.1.2/",
                 currDep.getReportPaths().get(1));
 
-        currDep = dependencies.get("org.junit.platform:junit-platform-commons:1.10.2");
+        currDep = dependencies.get("org.junit.platform.junit.platform.commons-v1.10.2");
         assertEquals(1, currDep.getReportPaths().size());
         assertEquals(REPORTPATH + "dependencies/org.junit.jupiter.junit.jupiter.api-v5.10.2/" +
                         "transitive-dependencies/" +
                         "org.junit.platform.junit.platform.commons-v1.10.2/",
                 currDep.getReportPaths().get(0));
 
-        currDep = dependencies.get("org.opentest4j:opentest4j:1.3.0");
+        currDep = dependencies.get("org.opentest4j.opentest4j-v1.3.0");
         assertEquals(1, currDep.getReportPaths().size());
         assertEquals(REPORTPATH + "dependencies/org.junit.jupiter.junit.jupiter.api-v5.10.2/" +
                         "transitive-dependencies/" +

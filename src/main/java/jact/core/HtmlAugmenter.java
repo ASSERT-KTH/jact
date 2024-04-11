@@ -15,6 +15,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static jact.depUtils.ProjectDependencies.rootDepIds;
 import static jact.depUtils.ProjectDependencies.transitiveUsageMap;
 import static jact.depUtils.ProjectDependency.depToDirName;
 import static jact.plugin.AbstractReportMojo.getReportPath;
@@ -205,7 +206,7 @@ public class HtmlAugmenter {
 
         // Write dependency usage
         writeDependenciesToFile(dependenciesMap);
-        writeTransitiveTotalsToFile();
+        writeTransitiveToFile(dependenciesMap);
 
         // Write project packages and overview usage
         writeOverviewToFile();
@@ -237,19 +238,14 @@ public class HtmlAugmenter {
     }
 
 
-    private static DependencyUsage calculateTransitiveDepUsage(ProjectDependency dependency){
-        DependencyUsage currUsage = new DependencyUsage();
-        for(ProjectDependency child : dependency.getChildDeps()){
-            currUsage.addAll(calculateTransitiveDepUsage(child));
-        }
-        currUsage.addAll(dependency.dependencyUsage);
-        return currUsage;
-    }
-
-
-    private static void writeTransitiveTotalsToFile() throws IOException {
+    private static void writeTransitiveToFile(Map<String, ProjectDependency> dependenciesMap) throws IOException {
         for(TransitiveDependencies transitiveDeps : transitiveUsageMap.values()){
             for(String path : transitiveDeps.getReportPaths()){
+                File currDir = new File(path);
+                File parentDir = currDir.getParentFile();
+                writeHTMLStringToFile(parentDir + "/index.html",
+                        transitiveDeps.transitiveUsage.usageToHTML("transitive-dependencies",
+                                dependenciesMap.get(parentDir.getName()).dependencyUsage, false));
                 writeHTMLTotalToFile(path + "index.html", transitiveDeps.transitiveUsage.totalUsageToHTML());
                 writeTemplateToFile("html-templates/overviewTemplateEnd.html", path + "index.html");
             }
@@ -258,23 +254,23 @@ public class HtmlAugmenter {
 
     private static void writeDependenciesToFile(Map<String, ProjectDependency> dependenciesMap) throws IOException {
         for (ProjectDependency pd : dependenciesMap.values()) {
-            DependencyUsage entryReferenceUsage = new DependencyUsage();
+            DependencyUsage entryReferenceUsage;
             for (String path : pd.getReportPaths()) {
                 File currDir = new File(path);
                 File parentDir = currDir.getParentFile();
-//                if(pd.getParentDeps().isEmpty()){
-//                    entryReferenceUsage = totalDependencyUsage;
-//                }else{
-//                    String parentDepDir = parentDir.getParentFile().getName();
-//                    System.out.println("PARENT DEP DIR: " + parentDepDir);
-//                    entryReferenceUsage = transitiveUsageMap.get(parentDepDir).transitiveUsage;
-//                }
+                if(parentDir.getName().equals("dependencies")){
+                    entryReferenceUsage = totalDependencyUsage;
+                }else{
+                    String parentDepDir = parentDir.getParentFile().getName();
+                    System.out.println("PARENT DEP DIR: " + parentDepDir);
+                    entryReferenceUsage = transitiveUsageMap.get(parentDepDir).transitiveUsage;
+                }
                 writeHTMLStringToFile(parentDir + "/index.html",
                         pd.dependencyUsage.usageToHTML(currDir.getName(), entryReferenceUsage, false));
                 writeHTMLTotalToFile(path + "index.html", pd.dependencyUsage.totalUsageToHTML());
                 pd.writePackagesToFile(path, pd.dependencyUsage);
                 // Write the end of the template here
-                writeModifiedTemplateToFile("html-templates/indivDepViewTemplateStart.html",
+                writeModifiedTemplateToFile("html-templates/indivDepViewTemplateEnd.html",
                         path + "index.html", depToDirName(pd));
             }
         }
@@ -302,6 +298,15 @@ public class HtmlAugmenter {
         writeTemplateToFile("html-templates/overviewTemplateEnd.html", getReportPath() + "index.html");
     }
 
+    private static DependencyUsage calculateTransitiveDepUsage(ProjectDependency dependency){
+        DependencyUsage currUsage = new DependencyUsage();
+        for(ProjectDependency child : dependency.getChildDeps()){
+            currUsage.addAll(calculateTransitiveDepUsage(child));
+        }
+        currUsage.addAll(dependency.dependencyUsage);
+        return currUsage;
+    }
+
     private static void calculateAllUsages(Map<String, ProjectDependency> dependenciesMap){
         for(ProjectDependency dependency : dependenciesMap.values()){
             if(!dependency.getChildDeps().isEmpty()){
@@ -312,7 +317,7 @@ public class HtmlAugmenter {
             // Calculate the total
             // Only ROOT dependencies are added, since the transitive
             // cost was included in the previous if-statement.
-            if(dependency.getParentDeps().isEmpty()){
+            if(rootDepIds.contains(dependency.getId())){
                 totalDependencyUsage.addAll(dependency.dependencyUsage);
             }
         }

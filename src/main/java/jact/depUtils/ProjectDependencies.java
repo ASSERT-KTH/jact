@@ -6,6 +6,7 @@ import jact.plugin.AbstractReportMojo;
 import java.io.FileReader;
 import java.util.*;
 
+import static jact.depUtils.ProjectDependency.depIdToDirName;
 import static jact.depUtils.ProjectDependency.depToDirName;
 import static jact.plugin.AbstractReportMojo.getReportPath;
 import static jact.utils.CommandExecutor.generateDependencyLockfile;
@@ -18,6 +19,8 @@ public class ProjectDependencies {
     public static Map<String, ProjectDependency> projectDependenciesMap = new HashMap<>();
 
     public static Map<String, TransitiveDependencies> transitiveUsageMap = new HashMap<>();
+
+    public static List<String> rootDepIds = new ArrayList<>();
 
 
     private static boolean skipTestDependencies;
@@ -63,15 +66,17 @@ public class ProjectDependencies {
         public ProjectDependency deserialize(JsonElement json, java.lang.reflect.Type typeOfT, com.google.gson.JsonDeserializationContext context) {
             JsonObject jsonObject = json.getAsJsonObject();
             Set<String> visited = new HashSet<>();
-            ProjectDependency parentDeps = new ProjectDependency();
-            return parseDependency(jsonObject, parentDeps, visited);
+            ProjectDependency parentDep = new ProjectDependency();
+            return parseDependency(jsonObject, parentDep, visited);
         }
 
         private void setupChildDependency(ProjectDependency projectDependency, ProjectDependency parentDep){
             projectDependency.addParentDep(parentDep);
             // Add all parent paths, a transitive dependency.
             for (String path : parentDep.getReportPaths()) {
-                projectDependency.addReportPath(path + "transitive-dependencies/" + depToDirName(projectDependency) + "/");
+                if(!projectDependency.getReportPaths().contains(path + "transitive-dependencies/" + depToDirName(projectDependency) + "/")){
+                    projectDependency.addReportPath(path + "transitive-dependencies/" + depToDirName(projectDependency) + "/");
+                }
             }
             if(!transitiveUsageMap.containsKey(depToDirName(parentDep))){
                 transitiveUsageMap.put(depToDirName(parentDep), new TransitiveDependencies(parentDep));
@@ -83,18 +88,23 @@ public class ProjectDependencies {
         private ProjectDependency parseDependency(JsonObject jsonObject, ProjectDependency parentDep, Set<String> visited) {
             String dependencyId = jsonObject.get("id").getAsString();
             String dependencyScope = jsonObject.get("scope").getAsString();
+            String parentString = jsonObject.has("parent") ? jsonObject.get("parent").getAsString() : "";
 
             if(skipTestDependencies && dependencyScope.equals("test")){
                 //Skipping test-scope dependencies
                 return new ProjectDependency();
             }
-
             if (visited.contains(dependencyId)) {
                 // If the dependency has been visited before, find it, add the parent and return it.
-                ProjectDependency pd = projectDependenciesMap.get(dependencyId);
-                if (parentDep.getId() != null) {
+                ProjectDependency pd = projectDependenciesMap.get(depIdToDirName(dependencyId));
+                if(parentDep.getId() != null){
                     setupChildDependency(pd, parentDep);
-                } else {
+                }else if(!parentString.isEmpty()){
+                    setupChildDependency(pd, projectDependenciesMap.get(depIdToDirName(parentString)));
+                }else{
+                    if(!rootDepIds.contains(dependencyId)){
+                        rootDepIds.add(dependencyId);
+                    }
                     pd.addReportPath(getReportPath() + "dependencies/" + depToDirName(pd) + "/");
                 }
                 return pd;
@@ -108,21 +118,23 @@ public class ProjectDependencies {
             projectDependency.setVersion(jsonObject.has("selectedVersion") ? jsonObject.get("selectedVersion").getAsString() : "");
             projectDependency.setScope(jsonObject.has("scope") ? jsonObject.get("scope").getAsString() : "");
 
-            String parentString = jsonObject.has("parent") ? jsonObject.get("parent").getAsString() : "";
+
 
             // Adding the directory name to the potential paths to report the usage
             // Build the report path
             if(parentDep.getId() != null){
                 setupChildDependency(projectDependency, parentDep);
+            }else if(!parentString.isEmpty()){
+                setupChildDependency(projectDependency, projectDependenciesMap.get(depIdToDirName(parentString)));
             }else{
+                if(!rootDepIds.contains(dependencyId)){
+                    rootDepIds.add(dependencyId);
+                }
                 projectDependency.addReportPath(getReportPath() + "dependencies/" + depToDirName(projectDependency) + "/");
             }
 
-            // Then add the immediate parent
-            projectDependency.addParentDep(projectDependenciesMap.get(parentString));
-
             //System.out.println("ADDING: " + projectDependency.toString());
-            projectDependenciesMap.put(projectDependency.getId(), projectDependency);
+            projectDependenciesMap.put(depToDirName(projectDependency), projectDependency);
             JsonArray childrenJsonArray = jsonObject.getAsJsonArray("children");
             if (childrenJsonArray != null) {
                 for (JsonElement element : childrenJsonArray) {
