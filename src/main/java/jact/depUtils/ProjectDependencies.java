@@ -19,7 +19,7 @@ public class ProjectDependencies {
     public static List<ProjectDependency> projectDependencies = new ArrayList<>();
     public static Map<String, ProjectDependency> projectDependenciesMap = new HashMap<>();
 
-    public static List<String> totalReportPaths = new ArrayList<>();
+    public static List<String> transitiveReportPaths = new ArrayList<>();
 
     private static boolean skipTestDependencies;
 
@@ -84,10 +84,14 @@ public class ProjectDependencies {
                     pd.addParentDep(parentDep);
                     // Add all parent paths, a transitive dependency.
                     for (String path : parentDep.getReportPaths()) {
-                        pd.addReportPath(path + "/transitive-dependencies/" + depToDirName(pd));
+                        if(!transitiveReportPaths.contains(path + "transitive-dependencies/")){
+                            transitiveReportPaths.add(path + "transitive-dependencies/");
+                        }
+                        pd.addReportPath(path + "transitive-dependencies/" + depToDirName(pd) + "/");
                     }
+
                 } else {
-                    pd.addReportPath(getReportPath() + "dependencies/" + depToDirName(pd));
+                    pd.addReportPath(getReportPath() + "dependencies/" + depToDirName(pd) + "/");
                 }
                 return pd;
             }
@@ -108,10 +112,13 @@ public class ProjectDependencies {
                 projectDependency.addParentDep(parentDep);
                 // Add all parent paths, a transitive dependency.
                 for(String path : parentDep.getReportPaths()){
-                    projectDependency.addReportPath(path + "/transitive-dependencies/" + depToDirName(projectDependency));
+                    if(!transitiveReportPaths.contains(path + "transitive-dependencies/")){
+                        transitiveReportPaths.add(path + "transitive-dependencies/");
+                    }
+                    projectDependency.addReportPath(path + "transitive-dependencies/" + depToDirName(projectDependency) + "/");
                 }
             }else{
-                projectDependency.addReportPath(getReportPath() + "dependencies/" + depToDirName(projectDependency));
+                projectDependency.addReportPath(getReportPath() + "dependencies/" + depToDirName(projectDependency) + "/");
             }
 
             // Then add the immediate parent

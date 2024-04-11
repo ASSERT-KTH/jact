@@ -14,8 +14,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static jact.core.HtmlAugmenter.createDependencyReports;
-import static jact.core.HtmlAugmenter.extractReportAndMoveDirs;
+import static jact.core.HtmlAugmenter.*;
 import static jact.utils.CommandExecutor.copyJacocoCliJar;
 import static jact.utils.CommandExecutor.executeJacocoCLI;
 
@@ -63,12 +62,9 @@ public class HtmlReportMojo extends AbstractReportMojo {
         executeJacocoCLI(getOutputJarName(), true);
 
         getLog().info("Organizing the complete coverage report.");
-        try {
-            extractReportAndMoveDirs(projectDependenciesMap, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
-            createDependencyReports(projectDependenciesMap);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
+        generateHtmlReport(projectDependenciesMap, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
+
         getLog().info("JACT: HTML Report Successfully Generated!");
     }
 }
