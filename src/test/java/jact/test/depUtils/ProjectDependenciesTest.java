@@ -1,17 +1,21 @@
 package jact.test.depUtils;
 
 import jact.depUtils.ProjectDependency;
+import jact.depUtils.TransitiveDependencies;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 import static jact.depUtils.ProjectDependencies.getAllProjectDependencies;
+import static jact.depUtils.ProjectDependencies.transitiveUsageMap;
+import static jact.utils.FileSystemUtils.copyDirectory;
 import static jact.utils.FileSystemUtils.removeDirectory;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
@@ -281,5 +285,27 @@ public class ProjectDependenciesTest {
                 currDep.getReportPaths().get(0));
     }
 
+    @Test
+    public void transitiveReportPathsTest(){
+        assertEquals(4, transitiveUsageMap.size());
+
+        assertEquals(REPORTPATH + "dependencies/org.junit.jupiter.junit.jupiter.api-v5.10.2/" +
+                        "transitive-dependencies/",
+                transitiveUsageMap.get("org.junit.jupiter:junit-jupiter-api:5.10.2").getReportPaths().get(0));
+
+        assertEquals(REPORTPATH + "dependencies/org.junit.jupiter.junit.jupiter.api-v5.10.2/" +
+                        "transitive-dependencies/" +
+                        "org.junit.platform.junit.platform.commons-v1.10.2/" +
+                        "transitive-dependencies/",
+                transitiveUsageMap.get("org.junit.platform:junit-platform-commons:1.10.2").getReportPaths().get(0));
+
+        assertEquals(REPORTPATH + "dependencies/junit.junit-v4.13.2/" +
+                        "transitive-dependencies/",
+                transitiveUsageMap.get("junit:junit:4.13.2").getReportPaths().get(0));
+
+        assertEquals(REPORTPATH + "dependencies/com.google.guava.guava-v33.0.0-jre/" +
+                        "transitive-dependencies/",
+                transitiveUsageMap.get("com.google.guava:guava:33.0.0-jre").getReportPaths().get(0));
+    }
 
 }
