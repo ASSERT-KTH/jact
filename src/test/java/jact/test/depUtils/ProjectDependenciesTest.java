@@ -1,21 +1,18 @@
 package jact.test.depUtils;
 
 import jact.depUtils.ProjectDependency;
-import jact.depUtils.TransitiveDependencies;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 import static jact.depUtils.ProjectDependencies.getAllProjectDependencies;
 import static jact.depUtils.ProjectDependencies.transitiveUsageMap;
-import static jact.utils.FileSystemUtils.copyDirectory;
 import static jact.utils.FileSystemUtils.removeDirectory;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
@@ -57,7 +54,6 @@ public class ProjectDependenciesTest {
     );
 
     public static Map<String, ProjectDependency> dependencies;
-    public static Map<String, ProjectDependency> complexDeps;
 
     @AfterAll
     public static void cleanUpTestDirs(){
@@ -75,7 +71,6 @@ public class ProjectDependenciesTest {
     public static void initTestDependencies(){
         assertTrue(new File(testResourcesDir + "lockfile.json").exists());
         dependencies = getAllProjectDependencies(testResourcesDir, false, false);
-        complexDeps = getAllProjectDependencies(testResourcesDir, false, false);
     }
 
     @Test

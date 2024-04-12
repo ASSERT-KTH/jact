@@ -20,6 +20,8 @@ public class ProjectDependencies {
     public static Map<String, TransitiveDependencies> transitiveUsageMap;
     public static List<String> rootDepIds;
 
+    private static Set<String> visited;
+
     private static boolean skipTestDependencies;
 
     public static Map<String, ProjectDependency> getAllProjectDependencies(String targetDirectory,
@@ -28,6 +30,7 @@ public class ProjectDependencies {
         projectDependenciesMap = new HashMap<>();
         transitiveUsageMap = new HashMap<>();
         rootDepIds = new ArrayList<>();
+        visited = new HashSet<>();
 
         skipTestDependencies = skipTestDeps;
 
@@ -65,9 +68,8 @@ public class ProjectDependencies {
         @Override
         public ProjectDependency deserialize(JsonElement json, java.lang.reflect.Type typeOfT, com.google.gson.JsonDeserializationContext context) {
             JsonObject jsonObject = json.getAsJsonObject();
-            Set<String> visited = new HashSet<>();
             ProjectDependency parentDep = new ProjectDependency();
-            return parseDependency(jsonObject, parentDep, visited);
+            return parseDependency(jsonObject, parentDep);
         }
 
         private void setupChildDependency(ProjectDependency projectDependency, ProjectDependency parentDep){
@@ -85,7 +87,7 @@ public class ProjectDependencies {
             }
         }
 
-        private ProjectDependency parseDependency(JsonObject jsonObject, ProjectDependency parentDep, Set<String> visited) {
+        private ProjectDependency parseDependency(JsonObject jsonObject, ProjectDependency parentDep) {
             String dependencyId = jsonObject.get("id").getAsString();
             String dependencyScope = jsonObject.get("scope").getAsString();
             String parentString = jsonObject.has("parent") ? jsonObject.get("parent").getAsString() : "";
@@ -110,7 +112,7 @@ public class ProjectDependencies {
                 JsonArray childrenJsonArray = jsonObject.getAsJsonArray("children");
                 if (childrenJsonArray != null) {
                     for (JsonElement element : childrenJsonArray) {
-                        ProjectDependency child = parseDependency(element.getAsJsonObject(), pd, visited);
+                        ProjectDependency child = parseDependency(element.getAsJsonObject(), pd);
                         pd.addChildDep(child);
                     }
                 }
@@ -124,7 +126,6 @@ public class ProjectDependencies {
             projectDependency.setArtifactId(jsonObject.has("artifactId") ? jsonObject.get("artifactId").getAsString() : "");
             projectDependency.setVersion(jsonObject.has("selectedVersion") ? jsonObject.get("selectedVersion").getAsString() : "");
             projectDependency.setScope(jsonObject.has("scope") ? jsonObject.get("scope").getAsString() : "");
-
 
 
             // Adding the directory name to the potential paths to report the usage
@@ -145,7 +146,7 @@ public class ProjectDependencies {
             JsonArray childrenJsonArray = jsonObject.getAsJsonArray("children");
             if (childrenJsonArray != null) {
                 for (JsonElement element : childrenJsonArray) {
-                    ProjectDependency child = parseDependency(element.getAsJsonObject(), projectDependency, visited);
+                    ProjectDependency child = parseDependency(element.getAsJsonObject(), projectDependency);
                     projectDependency.addChildDep(child);
                 }
             }
