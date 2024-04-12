@@ -8,8 +8,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -195,6 +193,7 @@ public class HtmlAugmenter {
         }
     }
 
+
     /**
      * Creates the complete jact-report by reading the usage and writing
      * to the corresponding files.
@@ -211,31 +210,6 @@ public class HtmlAugmenter {
 
         // Write project packages and overview usage
         writeOverviewToFile();
-    }
-
-
-    /**
-     * TODO
-     *  - Calculate the total for each dependency
-     *      - Also calculate the total child usage
-     *  - Calculate the overall total using the ROOT dependencies
-     *  - Write the dependency usage
-     *  - Write the totals, the totals for the dependency --> Totals for its transitive
-     *
-     */
-
-
-    /**
-     * Gets the total usage for all dependencies.
-     * @param dependenciesMap
-     * @return DependencyUsage
-     */
-    public static DependencyUsage getTotalDependencyUsage(Map<String, ProjectDependency> dependenciesMap){
-        DependencyUsage totalDepUsage = new DependencyUsage();
-        for (ProjectDependency pd : dependenciesMap.values()) {
-            totalDepUsage.addAll(pd.dependencyUsage);
-        }
-        return totalDepUsage;
     }
 
 
@@ -286,6 +260,7 @@ public class HtmlAugmenter {
         writeTemplateToFile("html-templates/depOverviewTemplateEnd.html", getReportPath() + "dependencies/index.html");
     }
 
+
     private static void writeOverviewToFile() throws IOException {
         // Write the total dependency usage AND its entry in the overview
         writeHTMLStringToFile(getReportPath() + "index.html", totalDependencyUsage.usageToHTML("dependencies", completeUsage, false));
@@ -306,6 +281,7 @@ public class HtmlAugmenter {
         writeTemplateToFile("html-templates/overviewTemplateEnd.html", getReportPath() + "index.html");
     }
 
+
     private static DependencyUsage calculateTransitiveDepUsage(ProjectDependency dependency, boolean includeSelf){
         DependencyUsage currUsage = new DependencyUsage();
         for(ProjectDependency child : dependency.getChildDeps()){
@@ -317,6 +293,13 @@ public class HtmlAugmenter {
         return currUsage;
     }
 
+
+    /**
+     * Calculates the total usage for all layers of the report.
+     * Layers include the complete overview, dependency overview
+     * individual dependencies and their transitive dependencies.
+     * @param dependenciesMap
+     */
     private static void calculateAllUsages(Map<String, ProjectDependency> dependenciesMap){
         for(ProjectDependency dependency : dependenciesMap.values()){
             if(!dependency.getChildDeps().isEmpty()){
@@ -334,82 +317,6 @@ public class HtmlAugmenter {
         // Calculate the overall total (project + dependencies)
         completeUsage.addAll(totalDependencyUsage);
         completeUsage.addAll(thisProject.dependencyUsage);
-    }
-
-    /**
-     * Calculates the total usage for all layers of the report.
-     * Layers include the complete overview, dependency overview
-     * individual dependencies and their transitive dependencies.
-     * @param currDependency
-     * @param writtenPaths
-     * @param writtenEntryPaths
-     * @param currTotal
-     * @return DependencyUsage
-     */
-    public static DependencyUsage calculateTotalForAllLayers(ProjectDependency currDependency, List<String> writtenPaths, List<String> writtenEntryPaths, DependencyUsage currTotal) {
-        // Keep track of dependencies that have already been checked out.
-        //DependencyUsage currTotal = new DependencyUsage();
-        if (!currDependency.getChildDeps().isEmpty()) {
-            DependencyUsage childTotal = new DependencyUsage();
-            for (ProjectDependency child : currDependency.getChildDeps()) {
-                DependencyUsage childUsage = new DependencyUsage();
-                childTotal.addAll(calculateTotalForAllLayers(child, writtenPaths, writtenEntryPaths, childUsage));
-                currDependency.dependencyUsage.addAll(childTotal);
-            }
-
-            for (ProjectDependency child : currDependency.getChildDeps()) {
-                if (!child.writtenEntryToFile) {
-                    child.writtenEntryToFile = true;
-                    for (String path : child.getReportPaths()) {
-                        File currDir = new File(path);
-                        File parentDir = currDir.getParentFile();
-                        try {
-                            writeHTMLStringToFile(parentDir + "/index.html", child.dependencyUsage.usageToHTML(currDir.getName(), childTotal, false));
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                }
-            }
-            if (!currDependency.writtenTransitive) {
-                currDependency.writtenTransitive = true;
-                for (String path : currDependency.getReportPaths()) {
-
-                    File currDir = new File(path);
-                    File parentDir = currDir.getParentFile();
-                    try {
-                        // Writing the dependency total as an entry
-                        DependencyUsage totalForBars = new DependencyUsage();
-                        totalForBars.addAll(currDependency.dependencyUsage);
-                        totalForBars.addAll(currTotal);
-                        writeHTMLStringToFile(currDir + "/index.html", childTotal.usageToHTML("transitive-dependencies", totalForBars, false));
-                        writeHTMLTotalToFile(currDir + "/transitive-dependencies/index.html", childTotal.totalUsageToHTML());
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-            }
-        }
-        // Calculate the total.
-        currTotal.addAll(currDependency.dependencyUsage);
-
-        // Write here
-        if (!currDependency.writtenTotalToFile) {
-            currDependency.writtenTotalToFile = true;
-            for (String path : currDependency.getReportPaths()) {
-                File currDir = new File(path);
-                try {
-                    // Writing the dependency total as an entry
-                    writtenEntryPaths.add(path);
-                    if (new File(currDir + "/index.html").exists()) {
-                        writeHTMLTotalToFile(currDir + "/index.html", currDependency.dependencyUsage.totalUsageToHTML());
-                    }
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
-        return currTotal;
     }
 
 
