@@ -205,8 +205,9 @@ public class HtmlAugmenter {
         calculateAllUsages(dependenciesMap);
 
         // Write dependency usage
-        writeDependenciesToFile(dependenciesMap);
         writeTransitiveToFile(dependenciesMap);
+        writeDependenciesToFile(dependenciesMap);
+        writeTransitiveEndToFile();
 
         // Write project packages and overview usage
         writeOverviewToFile();
@@ -247,10 +248,18 @@ public class HtmlAugmenter {
                         transitiveDeps.transitiveUsage.usageToHTML("transitive-dependencies",
                                 dependenciesMap.get(parentDir.getName()).dependencyUsage, false));
                 writeHTMLTotalToFile(path + "index.html", transitiveDeps.transitiveUsage.totalUsageToHTML());
+            }
+        }
+    }
+
+    private static void writeTransitiveEndToFile() throws IOException {
+        for(TransitiveDependencies transitiveDeps : transitiveUsageMap.values()){
+            for(String path : transitiveDeps.getReportPaths()){
                 writeTemplateToFile("html-templates/overviewTemplateEnd.html", path + "index.html");
             }
         }
     }
+
 
     private static void writeDependenciesToFile(Map<String, ProjectDependency> dependenciesMap) throws IOException {
         for (ProjectDependency pd : dependenciesMap.values()) {
@@ -262,7 +271,6 @@ public class HtmlAugmenter {
                     entryReferenceUsage = totalDependencyUsage;
                 }else{
                     String parentDepDir = parentDir.getParentFile().getName();
-                    System.out.println("PARENT DEP DIR: " + parentDepDir);
                     entryReferenceUsage = transitiveUsageMap.get(parentDepDir).transitiveUsage;
                 }
                 writeHTMLStringToFile(parentDir + "/index.html",
@@ -298,19 +306,21 @@ public class HtmlAugmenter {
         writeTemplateToFile("html-templates/overviewTemplateEnd.html", getReportPath() + "index.html");
     }
 
-    private static DependencyUsage calculateTransitiveDepUsage(ProjectDependency dependency){
+    private static DependencyUsage calculateTransitiveDepUsage(ProjectDependency dependency, boolean includeSelf){
         DependencyUsage currUsage = new DependencyUsage();
         for(ProjectDependency child : dependency.getChildDeps()){
-            currUsage.addAll(calculateTransitiveDepUsage(child));
+            currUsage.addAll(calculateTransitiveDepUsage(child, true));
         }
-        currUsage.addAll(dependency.dependencyUsage);
+        if(includeSelf){
+            currUsage.addAll(dependency.dependencyUsage);
+        }
         return currUsage;
     }
 
     private static void calculateAllUsages(Map<String, ProjectDependency> dependenciesMap){
         for(ProjectDependency dependency : dependenciesMap.values()){
             if(!dependency.getChildDeps().isEmpty()){
-                DependencyUsage transitiveDepsUsage = calculateTransitiveDepUsage(dependency);
+                DependencyUsage transitiveDepsUsage = calculateTransitiveDepUsage(dependency, false);
                 dependency.dependencyUsage.addAll(transitiveDepsUsage);
                 transitiveUsageMap.get(depToDirName(dependency)).transitiveUsage.addAll(transitiveDepsUsage);
             }
