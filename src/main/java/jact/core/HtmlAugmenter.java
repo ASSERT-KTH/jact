@@ -24,13 +24,17 @@ import static jact.utils.FileSystemUtils.*;
  */
 public class HtmlAugmenter {
     public static String jacocoResPath = getReportPath() + "jacoco-resources";
-    private static ProjectDependency thisProject = new ProjectDependency();
-    private static DependencyUsage totalDependencyUsage = new DependencyUsage();
-    private static DependencyUsage completeUsage = new DependencyUsage();
+    private static ProjectDependency thisProject;
+    private static DependencyUsage totalDependencyUsage;
+    private static DependencyUsage completeUsage;
 
     public static void generateHtmlReport(Map<String, ProjectDependency> dependenciesMap,
                                           Map<String, Set<String>> projPackagesAndClassMap,
                                           String localRepoPath, String projId){
+        thisProject = new ProjectDependency();
+        totalDependencyUsage = new DependencyUsage();
+        completeUsage = new DependencyUsage();
+
         // Rename the original index.html file
         String inputFilePath =
                 renameFile(getReportPath() + "index.html", "originalIndex.html");

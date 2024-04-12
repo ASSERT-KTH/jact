@@ -90,7 +90,6 @@ public class XmlAugmenter {
                     stringBuilder.append(" ").append(attr.getNodeName()).append("=\"").append(attr.getNodeValue()).append("\"");
                 }
             }
-
             stringBuilder.append("/>");
             return stringBuilder.toString();
         }

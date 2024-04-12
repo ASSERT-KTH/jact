@@ -16,18 +16,18 @@ import static jact.utils.CommandExecutor.generateDependencyLockfile;
  * in order to calculate and write the reported usage from jacoco.
  */
 public class ProjectDependencies {
-    public static Map<String, ProjectDependency> projectDependenciesMap = new HashMap<>();
-
-    public static Map<String, TransitiveDependencies> transitiveUsageMap = new HashMap<>();
-
-    public static List<String> rootDepIds = new ArrayList<>();
-
+    public static Map<String, ProjectDependency> projectDependenciesMap;
+    public static Map<String, TransitiveDependencies> transitiveUsageMap;
+    public static List<String> rootDepIds;
 
     private static boolean skipTestDependencies;
 
     public static Map<String, ProjectDependency> getAllProjectDependencies(String targetDirectory,
                                                                            boolean genLockfile,
                                                                            boolean skipTestDeps) {
+        projectDependenciesMap = new HashMap<>();
+        transitiveUsageMap = new HashMap<>();
+        rootDepIds = new ArrayList<>();
 
         skipTestDependencies = skipTestDeps;
 
@@ -90,8 +90,8 @@ public class ProjectDependencies {
             String dependencyScope = jsonObject.get("scope").getAsString();
             String parentString = jsonObject.has("parent") ? jsonObject.get("parent").getAsString() : "";
 
-            if(skipTestDependencies && dependencyScope.equals("test")){
-                //Skipping test-scope dependencies
+            if((skipTestDependencies && dependencyScope.equals("test")) || dependencyScope.equals("provided")){
+                //Skipping provided- and test-scope dependencies
                 return new ProjectDependency();
             }
             if (visited.contains(dependencyId)) {
@@ -106,6 +106,13 @@ public class ProjectDependencies {
                         rootDepIds.add(dependencyId);
                     }
                     pd.addReportPath(getReportPath() + "dependencies/" + depToDirName(pd) + "/");
+                }
+                JsonArray childrenJsonArray = jsonObject.getAsJsonArray("children");
+                if (childrenJsonArray != null) {
+                    for (JsonElement element : childrenJsonArray) {
+                        ProjectDependency child = parseDependency(element.getAsJsonObject(), pd, visited);
+                        pd.addChildDep(child);
+                    }
                 }
                 return pd;
             }

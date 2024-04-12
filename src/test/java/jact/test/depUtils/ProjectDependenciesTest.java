@@ -57,6 +57,7 @@ public class ProjectDependenciesTest {
     );
 
     public static Map<String, ProjectDependency> dependencies;
+    public static Map<String, ProjectDependency> complexDeps;
 
     @AfterAll
     public static void cleanUpTestDirs(){
@@ -74,6 +75,7 @@ public class ProjectDependenciesTest {
     public static void initTestDependencies(){
         assertTrue(new File(testResourcesDir + "lockfile.json").exists());
         dependencies = getAllProjectDependencies(testResourcesDir, false, false);
+        complexDeps = getAllProjectDependencies(testResourcesDir, false, false);
     }
 
     @Test
