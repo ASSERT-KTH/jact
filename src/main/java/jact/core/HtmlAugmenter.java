@@ -165,7 +165,7 @@ public class HtmlAugmenter {
                             } else {
                                 // Handle dependencies with the same transitive dependencies.
                                 for (String path : matchedDep.getReportPaths()) {
-                                    copyDirectory(directory, new File(path));
+                                    copyDirectory(directory, new File(path + directory.getName()));
                                 }
                                 System.out.println("REMOVING: " + directory.getPath());
                                 removeDirectory(directory);

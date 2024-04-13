@@ -59,15 +59,17 @@ public class FileSystemUtils {
         // Will take a list of dependencies later
 
         File dir = new File(directoryPath);
-
-        boolean success = dir.mkdirs();
-
-        // Check if directory creation was successful
-        if (success) {
-            System.out.println("Report directory created successfully.");
-        } else {
-            System.out.println("Failed to create dependency report directory." + directoryPath);
+        boolean success;
+        if(!dir.exists()){
+            success = dir.mkdirs();
+            // Check if directory creation was successful
+            if (success) {
+                System.out.println("Report directory created successfully.");
+            } else {
+                throw new RuntimeException("Failed to create dependency report directory." + directoryPath);
+            }
         }
+        System.out.println("Report directory already present.");
     }
 
     public static void moveDirectory(File sourceDir, String destDirName) {

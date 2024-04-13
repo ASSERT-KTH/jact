@@ -162,6 +162,20 @@ public class ComplexProjectDependenciesTest {
                 "transitive-dependencies/com.google.code.findbugs.jsr305-v3.0.2/", currDep.getReportPaths().get(0));
         assertEquals(REPORTPATH + "dependencies/org.reflections.reflections-v0.10.2/" +
                 "transitive-dependencies/com.google.code.findbugs.jsr305-v3.0.2/", currDep.getReportPaths().get(1));
+
+        currDep = dependencies.get("org.xmlresolver.xmlresolver-v5.2.2");
+        assertEquals(1, currDep.getReportPaths().size());
+
+        currDep = dependencies.get("org.apache.httpcomponents.client5.httpclient5-v5.1.3");
+        assertEquals(1, currDep.getReportPaths().size());
+
+        currDep = dependencies.get("org.apache.httpcomponents.core5.httpcore5-v5.1.3");
+        assertEquals(3, currDep.getReportPaths().size());
+
+        currDep = dependencies.get("org.apache.httpcomponents.core5.httpcore5.h2-v5.1.3");
+        assertEquals(1, currDep.getReportPaths().size());
+
+
     }
 
 }
