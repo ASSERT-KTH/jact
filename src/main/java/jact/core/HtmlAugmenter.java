@@ -8,6 +8,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -28,12 +30,15 @@ public class HtmlAugmenter {
     private static DependencyUsage totalDependencyUsage;
     private static DependencyUsage completeUsage;
 
+    private static List<String> calculatedChildIds;
+
     public static void generateHtmlReport(Map<String, ProjectDependency> dependenciesMap,
                                           Map<String, Set<String>> projPackagesAndClassMap,
                                           String localRepoPath, String projId){
         thisProject = new ProjectDependency();
         totalDependencyUsage = new DependencyUsage();
         completeUsage = new DependencyUsage();
+        calculatedChildIds = new ArrayList<>();
 
         // Rename the original index.html file
         String inputFilePath =
@@ -288,8 +293,10 @@ public class HtmlAugmenter {
 
     private static DependencyUsage calculateTransitiveDepUsage(ProjectDependency dependency, boolean includeSelf){
         DependencyUsage currUsage = new DependencyUsage();
-        for(ProjectDependency child : dependency.getChildDeps()){
-            currUsage.addAll(calculateTransitiveDepUsage(child, true));
+        if(!calculatedChildIds.contains(dependency.getId())){
+            for(ProjectDependency child : dependency.getChildDeps().values()){
+                currUsage.addAll(calculateTransitiveDepUsage(child, true));
+            }
         }
         if(includeSelf){
             currUsage.addAll(dependency.dependencyUsage);
@@ -310,6 +317,7 @@ public class HtmlAugmenter {
                 DependencyUsage transitiveDepsUsage = calculateTransitiveDepUsage(dependency, false);
                 dependency.dependencyUsage.addAll(transitiveDepsUsage);
                 transitiveUsageMap.get(depToDirName(dependency)).transitiveUsage.addAll(transitiveDepsUsage);
+                calculatedChildIds.add(dependency.getId());
             }
             // Calculate the total
             // Only ROOT dependencies are added, since the transitive

@@ -1,10 +1,7 @@
 package jact.depUtils;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static jact.core.HtmlAugmenter.writeHTMLStringToFile;
 
@@ -22,8 +19,12 @@ public class ProjectDependency {
     private String artifactId;
     private String version;
     private String scope;
-    private List<ProjectDependency> children = new ArrayList<>();
-    private List<ProjectDependency> parents = new ArrayList<>();
+    //private List<ProjectDependency> children = new ArrayList<>();
+    //private List<ProjectDependency> parents = new ArrayList<>();
+
+    private Map<String, ProjectDependency> children = new HashMap<>();
+    private Map<String, ProjectDependency> parents = new HashMap<>();
+
     private List<String> raportPaths = new ArrayList<>();
 
     public String getId() {
@@ -67,18 +68,22 @@ public class ProjectDependency {
     }
 
     public void addChildDep(ProjectDependency child) {
-        children.add(child);
+        if(!this.children.containsKey(child.getId())){
+            this.children.put(child.getId(), child);
+        }
     }
 
-    public List<ProjectDependency> getChildDeps() {
+    public Map<String, ProjectDependency> getChildDeps() {
         return this.children;
     }
 
     public void addParentDep(ProjectDependency parent) {
-        this.parents.add(parent);
+        if(!this.parents.containsKey(parent.getId())){
+            this.parents.put(parent.getId(), parent);
+        }
     }
 
-    public List<ProjectDependency> getParentDeps() {
+    public Map<String, ProjectDependency> getParentDeps() {
         return this.parents;
     }
 
@@ -109,12 +114,13 @@ public class ProjectDependency {
     private String childrenToString() {
         StringBuilder sb = new StringBuilder();
         if (!this.getChildDeps().isEmpty()) {
-
-            for (int i = 0; i < this.getChildDeps().size(); i++) {
-                if (i > 0) {
+            boolean comma = false;
+            for(ProjectDependency child : this.getChildDeps().values()){
+                if (comma) {
                     sb.append(", ");
                 }
-                sb.append(this.children.get(i).id);
+                comma = true;
+                sb.append(child.getId());
             }
             return sb.toString();
         }
@@ -126,11 +132,13 @@ public class ProjectDependency {
             return "";
         }
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < this.getParentDeps().size(); i++) {
-            if (i > 0) {
+        boolean comma = false;
+        for(ProjectDependency parent : this.getParentDeps().values()){
+            if (comma) {
                 sb.append(", ");
             }
-            sb.append(this.getParentDeps().get(i).getId());
+            comma = true;
+            sb.append(parent.getId());
         }
         return sb.toString();
     }

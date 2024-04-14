@@ -109,11 +109,11 @@ public class ProjectDependenciesTest {
      */
     public void parentAndChildrenDepsTest(){
         // Check that Google Guavas children dependencies are correct
-        for(ProjectDependency childDep : dependencies.get("com.google.guava.guava-v33.0.0-jre").getChildDeps()){
+        for(ProjectDependency childDep : dependencies.get("com.google.guava.guava-v33.0.0-jre").getChildDeps().values()){
             assertTrue(googleGuavaChildrenDeps.contains(childDep.getId()));
             // Check that the parent-list contains Google Guava
             boolean foundChildDep = false;
-            for(ProjectDependency deps : childDep.getParentDeps()){
+            for(ProjectDependency deps : childDep.getParentDeps().values()){
                 if(deps.getId().equals(dependencies.get("com.google.guava.guava-v33.0.0-jre").getId())){
                     foundChildDep = true;
                 }
@@ -138,13 +138,15 @@ public class ProjectDependenciesTest {
     public void multipleTransitiveDepsTest(){
         // Check that "org.junit.platform:junit-platform-commons:1.10.2"
         // is the second child in "org.junit.jupiter:junit-jupiter-api:5.10.2"
-        System.out.println(dependencies.get("org.junit.platform.junit.platform.commons-v1.10.2").getId());
-        assertTrue(dependencies.get("org.junit.jupiter.junit.jupiter.api-v5.10.2").getChildDeps().get(1).getId().equals("org.junit.platform:junit-platform-commons:1.10.2"));
+        assertTrue(dependencies.get("org.junit.jupiter.junit.jupiter.api-v5.10.2").getChildDeps().get("org.junit.platform:junit-platform-commons:1.10.2").getId().equals("org.junit.platform:junit-platform-commons:1.10.2"));
+        assertEquals(3, dependencies.get("org.junit.jupiter.junit.jupiter.api-v5.10.2").getChildDeps().size());
         // Check that "org.junit.platform:junit-platform-commons:1.10.2"
         // has the correct child: "org.apiguardian:apiguardian-api:1.1.2"
-        assertTrue(dependencies.get("org.junit.platform.junit.platform.commons-v1.10.2").getChildDeps().get(0).getId().equals("org.apiguardian:apiguardian-api:1.1.2"));
+        assertTrue(dependencies.get("org.junit.platform.junit.platform.commons-v1.10.2").getChildDeps().get("org.apiguardian:apiguardian-api:1.1.2").getId().equals("org.apiguardian:apiguardian-api:1.1.2"));
+        assertEquals(1, dependencies.get("org.junit.platform.junit.platform.commons-v1.10.2").getChildDeps().size());
+
         // Check that "org.apiguardian:apiguardian-api:1.1.2" has an empty 'children' list:
-        assertTrue(dependencies.get("org.junit.platform.junit.platform.commons-v1.10.2").getChildDeps().get(0).getChildDeps().isEmpty());
+        assertTrue(dependencies.get("org.apiguardian.apiguardian.api-v1.1.2").getChildDeps().isEmpty());
     }
 
     @Test

@@ -175,7 +175,39 @@ public class ComplexProjectDependenciesTest {
         currDep = dependencies.get("org.apache.httpcomponents.core5.httpcore5.h2-v5.1.3");
         assertEquals(1, currDep.getReportPaths().size());
 
+        currDep = dependencies.get("org.apache.maven.doxia.doxia.core-v1.12.0");
+        assertEquals(2, currDep.getReportPaths().size());
+
+        assertEquals(2, transitiveUsageMap.get("org.apache.maven.doxia.doxia.core-v1.12.0").getReportPaths().size());
+
+        currDep = dependencies.get("org.apache.maven.doxia.doxia.sink.api-v1.12.0");
+        /**
+         * 1 "org.apache.maven.doxia:doxia-core:1.12.0"
+         * "org.apache.maven.doxia:doxia-module-xdoc:1.12.0"
+         */
+        assertEquals(3, currDep.getReportPaths().size());
+
 
     }
+
+//    @Test
+//    public void multipleTransitiveDepsTest(){
+//        // "org.apache.maven.doxia:doxia-sink-api:1.12.0"
+//        // Check that "org.junit.platform:junit-platform-commons:1.10.2"
+//        // is the second child in "org.junit.jupiter:junit-jupiter-api:5.10.2"
+//        for(String path : dependencies.get("org.apache.maven.doxia.doxia.sink.api-v1.12.0").getReportPaths()){
+//            System.out.println(path);
+//        }
+//        assertEquals(2, dependencies.get("org.apache.maven.doxia.doxia.sink.api-v1.12.0").getReportPaths().size());
+//
+////        assertEquals(3, dependencies.get("org.junit.jupiter.junit.jupiter.api-v5.10.2").getChildDeps().size());
+////        // Check that "org.junit.platform:junit-platform-commons:1.10.2"
+////        // has the correct child: "org.apiguardian:apiguardian-api:1.1.2"
+////        assertTrue(dependencies.get("org.junit.platform.junit.platform.commons-v1.10.2").getChildDeps().get("org.apiguardian:apiguardian-api:1.1.2").getId().equals("org.apiguardian:apiguardian-api:1.1.2"));
+////        assertEquals(1, dependencies.get("org.junit.platform.junit.platform.commons-v1.10.2").getChildDeps().size());
+////
+////        // Check that "org.apiguardian:apiguardian-api:1.1.2" has an empty 'children' list:
+////        assertTrue(dependencies.get("org.apiguardian.apiguardian.api-v1.1.2").getChildDeps().isEmpty());
+//    }
 
 }

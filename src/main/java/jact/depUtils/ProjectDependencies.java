@@ -74,17 +74,19 @@ public class ProjectDependencies {
 
         private void setupChildDependency(ProjectDependency projectDependency, ProjectDependency parentDep){
             projectDependency.addParentDep(parentDep);
+
             // Add all parent paths, a transitive dependency.
             for (String path : parentDep.getReportPaths()) {
                 if(!projectDependency.getReportPaths().contains(path + "transitive-dependencies/" + depToDirName(projectDependency) + "/")){
                     projectDependency.addReportPath(path + "transitive-dependencies/" + depToDirName(projectDependency) + "/");
+                    for(ProjectDependency child : projectDependency.getChildDeps().values()){
+                        child.addReportPath(path + "transitive-dependencies/" +
+                                depToDirName(projectDependency) + "/" +
+                                "transitive-dependencies/" + depToDirName(child) + "/");
+                    }
                 }
             }
-            if(!transitiveUsageMap.containsKey(depToDirName(parentDep))){
-                transitiveUsageMap.put(depToDirName(parentDep), new TransitiveDependencies(parentDep));
-            }else{
-                transitiveUsageMap.get(depToDirName(parentDep)).addReportPaths(parentDep);
-            }
+            addTransitivePaths(projectDependency, parentDep);
         }
 
         private ProjectDependency parseDependency(JsonObject jsonObject, ProjectDependency parentDep) {
@@ -151,6 +153,18 @@ public class ProjectDependencies {
                 }
             }
             return projectDependency;
+        }
+    }
+
+
+    private static void addTransitivePaths(ProjectDependency child, ProjectDependency parentDep){
+        if(!transitiveUsageMap.containsKey(depToDirName(parentDep))){
+            transitiveUsageMap.put(depToDirName(parentDep), new TransitiveDependencies(parentDep));
+        }else{
+            transitiveUsageMap.get(depToDirName(parentDep)).addReportPaths(parentDep);
+        }
+        if(transitiveUsageMap.containsKey(depToDirName(child))){
+            transitiveUsageMap.get(depToDirName(child)).addReportPaths(child);
         }
     }
 
