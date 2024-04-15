@@ -148,67 +148,45 @@ public class ComplexProjectDependenciesTest {
 
         // Check that all dependencies are present
         for (Map.Entry<String, ProjectDependency> pdEntry : dependencies.entrySet()){
-            System.out.println(pdEntry.getValue().getId());
             assertTrue(dependencyIds.contains(pdEntry.getValue().getId()));
             assertTrue(pdEntry.getValue().getReportPath().equals(REPORTPATH + "dependencies/" + depToDirName(pdEntry.getValue()) + "/"));
         }
     }
 
     @Test
-    public void reportPathsTest() {
-        // Brute force check that all dependencies have their
-        // manually checked report paths
-        ProjectDependency currDep = dependencies.get("com.google.code.findbugs:jsr305:3.0.2");
-        assertTrue(currDep.getReportPath().equals(REPORTPATH + "dependencies/com.google.code.findbugs.jsr305-v3.0.2/"));
+    public void transitiveReportPathsTest(){
+        assertEquals(30, transitiveUsageMap.size());
 
-        assertTrue(dependencies.containsKey("commons-codec:commons-codec:1.16.0"));
-        //"commons-codec:commons-codec:1.16.0"
-
-//        currDep = dependencies.get("org.xmlresolver.xmlresolver-v5.2.2");
-//        assertEquals(1, currDep.getReportPaths().size());
-//
-//        currDep = dependencies.get("org.apache.httpcomponents.client5.httpclient5-v5.1.3");
-//        assertEquals(1, currDep.getReportPaths().size());
-//
-//        currDep = dependencies.get("org.apache.httpcomponents.core5.httpcore5-v5.1.3");
-//        assertEquals(3, currDep.getReportPaths().size());
-//
-//        currDep = dependencies.get("org.apache.httpcomponents.core5.httpcore5.h2-v5.1.3");
-//        assertEquals(1, currDep.getReportPaths().size());
-//
-//        currDep = dependencies.get("org.apache.maven.doxia.doxia.core-v1.12.0");
-//        assertEquals(2, currDep.getReportPaths().size());
-//
-//        assertEquals(2, transitiveUsageMap.get("org.apache.maven.doxia.doxia.core-v1.12.0").getReportPaths().size());
-//
-//        currDep = dependencies.get("org.apache.maven.doxia.doxia.sink.api-v1.12.0");
-//        /**
-//         * 1 "org.apache.maven.doxia:doxia-core:1.12.0"
-//         * "org.apache.maven.doxia:doxia-module-xdoc:1.12.0"
-//         */
-//        assertEquals(3, currDep.getReportPaths().size());
-
-
+        assertTrue(transitiveUsageMap.containsKey("org.apache.maven.doxia:doxia-logging-api:1.12.0"));
+        assertTrue(transitiveUsageMap.containsKey("org.apache.maven.doxia:doxia-sink-api:1.12.0"));
+        assertTrue(transitiveUsageMap.containsKey("org.junit.jupiter:junit-jupiter-engine:5.10.2"));
+        assertTrue(transitiveUsageMap.containsKey("com.tngtech.archunit:archunit-junit5-api:1.2.1"));
+        assertTrue(transitiveUsageMap.containsKey("org.apache.httpcomponents.client5:httpclient5:5.1.3"));
+        assertTrue(transitiveUsageMap.containsKey("org.apache.httpcomponents:httpclient:4.5.13"));
+        assertTrue(transitiveUsageMap.containsKey("com.github.caciocavallosilano:cacio-tta:1.11"));
+        assertTrue(transitiveUsageMap.containsKey("org.xmlresolver:xmlresolver:5.2.2"));
+        assertTrue(transitiveUsageMap.containsKey("com.tngtech.archunit:archunit-junit5:1.2.1"));
+        assertTrue(transitiveUsageMap.containsKey("org.apache.httpcomponents.core5:httpcore5-h2:5.1.3"));
+        assertTrue(transitiveUsageMap.containsKey("com.google.truth:truth:1.4.2"));
+        assertTrue(transitiveUsageMap.containsKey("commons-beanutils:commons-beanutils:1.9.4"));
+        assertTrue(transitiveUsageMap.containsKey("junit:junit:4.13.2"));
+        assertTrue(transitiveUsageMap.containsKey("org.apache.maven.doxia:doxia-module-xdoc:1.12.0"));
+        assertTrue(transitiveUsageMap.containsKey("org.junit.platform:junit-platform-engine:1.10.2"));
+        assertTrue(transitiveUsageMap.containsKey("org.junit.jupiter:junit-jupiter-params:5.9.2"));
+        assertTrue(transitiveUsageMap.containsKey("org.eclipse.jgit:org.eclipse.jgit:6.9.0.202403050737-r"));
+        assertTrue(transitiveUsageMap.containsKey("org.mockito:mockito-inline:5.2.0"));
+        assertTrue(transitiveUsageMap.containsKey("org.junit-pioneer:junit-pioneer:2.2.0"));
+        assertTrue(transitiveUsageMap.containsKey("org.mockito:mockito-core:5.2.0"));
+        assertTrue(transitiveUsageMap.containsKey("org.junit.platform:junit-platform-commons:1.10.2"));
+        assertTrue(transitiveUsageMap.containsKey("org.codehaus.plexus:plexus-container-default:2.1.0"));
+        assertTrue(transitiveUsageMap.containsKey("nl.jqno.equalsverifier:equalsverifier:3.16"));
+        assertTrue(transitiveUsageMap.containsKey("org.junit.jupiter:junit-jupiter-api:5.10.2"));
+        assertTrue(transitiveUsageMap.containsKey("com.google.guava:guava:33.1.0-jre"));
+        assertTrue(transitiveUsageMap.containsKey("com.tngtech.archunit:archunit-junit5-engine:1.2.1"));
+        assertTrue(transitiveUsageMap.containsKey("net.sf.saxon:Saxon-HE:12.4"));
+        assertTrue(transitiveUsageMap.containsKey("org.junit.platform:junit-platform-launcher:1.9.2"));
+        assertTrue(transitiveUsageMap.containsKey("org.apache.maven.doxia:doxia-core:1.12.0"));
+        assertTrue(transitiveUsageMap.containsKey("org.reflections:reflections:0.10.2"));
     }
-
-//    @Test
-//    public void multipleTransitiveDepsTest(){
-//        // "org.apache.maven.doxia:doxia-sink-api:1.12.0"
-//        // Check that "org.junit.platform:junit-platform-commons:1.10.2"
-//        // is the second child in "org.junit.jupiter:junit-jupiter-api:5.10.2"
-//        for(String path : dependencies.get("org.apache.maven.doxia.doxia.sink.api-v1.12.0").getReportPaths()){
-//            System.out.println(path);
-//        }
-//        assertEquals(4, dependencies.get("org.apache.maven.doxia.doxia.logging.api-v1.12.0").getReportPaths().size());
-//
-////        assertEquals(3, dependencies.get("org.junit.jupiter.junit.jupiter.api-v5.10.2").getChildDeps().size());
-////        // Check that "org.junit.platform:junit-platform-commons:1.10.2"
-////        // has the correct child: "org.apiguardian:apiguardian-api:1.1.2"
-////        assertTrue(dependencies.get("org.junit.platform.junit.platform.commons-v1.10.2").getChildDeps().get("org.apiguardian:apiguardian-api:1.1.2").getId().equals("org.apiguardian:apiguardian-api:1.1.2"));
-////        assertEquals(1, dependencies.get("org.junit.platform.junit.platform.commons-v1.10.2").getChildDeps().size());
-////
-////        // Check that "org.apiguardian:apiguardian-api:1.1.2" has an empty 'children' list:
-////        assertTrue(dependencies.get("org.apiguardian.apiguardian.api-v1.1.2").getChildDeps().isEmpty());
-//    }
 
 }
