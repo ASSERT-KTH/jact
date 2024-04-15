@@ -78,11 +78,11 @@ public class PackageToDependencyResolver {
             // Extract the classes in the project and put them in a separate directory
             throw new RuntimeException("CANNOT RESOLVE PACKAGES: Package name: " + packageName +
                     " has an identical name to a package in " + matchedDep.getId());
+        }else if(matchedDep.getId() == null && !packageNameInProject){
+            // Usually a problem with a runtime dependency required by a test-dependency.
+            // Which jacoco occasionally includes. Remove it.
+            System.out.println("CANNOT MATCH PACKAGE TO ANY DEPENDENCY: " + packageName);
         }
-        // Handle the case when multiple dependencies has been matched
-        // Here I need to create a new directory for those classes
-        // that come from different dependencies
-
 
         //return currMatchedDeps;
         return matchedDep;

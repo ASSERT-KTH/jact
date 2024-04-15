@@ -153,11 +153,17 @@ public class HtmlAugmenter {
                             extractAndAddPackageTotal(getReportPath() + dirName +
                                     "/index.html", thisProject, dirName);
                         } else {
-                            if (matchedDep.getId() != null) {
+                            if(matchedDep.getId() != null){
+                                System.out.println("CURRENT DEP: " + matchedDep.getId());
+                                System.out.println("PACKAGE: " + dirName);
                                 extractAndAddPackageTotal(getReportPath() + dirName +
                                         "/index.html", matchedDep, dirName);
+                                System.out.println("EXTRACTING");
+                                moveDirectory(directory, matchedDep.getReportPath());
+                                System.out.println("MOVE COMPLETE");
+                            }else{
+                                removeDirectory(directory);
                             }
-                            moveDirectory(directory, matchedDep.getReportPath());
                         }
                     }
                 }
