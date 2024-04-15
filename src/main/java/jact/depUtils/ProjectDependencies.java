@@ -17,7 +17,7 @@ import static jact.utils.CommandExecutor.generateDependencyLockfile;
  */
 public class ProjectDependencies {
     public static Map<String, ProjectDependency> projectDependenciesMap;
-    public static Map<String, TransitiveDependencies> transitiveUsageMap;
+    public static Map<String, DependencyUsage> transitiveUsageMap;
     public static List<String> rootDepIds;
 
     private static Set<String> visited;
@@ -71,22 +71,6 @@ public class ProjectDependencies {
             ProjectDependency parentDep = new ProjectDependency();
             return parseDependency(jsonObject, parentDep);
         }
-
-//        private void setupChildDependency(ProjectDependency projectDependency, ProjectDependency parentDep){
-//            projectDependency.addParentDep(parentDep);
-//            // Add all parent paths, a transitive dependency.
-//            for (String path : parentDep.getReportPaths()) {
-//                if(!projectDependency.getReportPaths().contains(path + "transitive-dependencies/" + depToDirName(projectDependency) + "/")){
-//                    projectDependency.addReportPath(path + "transitive-dependencies/" + depToDirName(projectDependency) + "/");
-//                    for(ProjectDependency child : projectDependency.getChildDeps().values()){
-//                        child.addReportPath(path + "transitive-dependencies/" +
-//                                depToDirName(projectDependency) + "/" +
-//                                "transitive-dependencies/" + depToDirName(child) + "/");
-//                    }
-//                }
-//            }
-//            //addTransitivePaths(projectDependency, parentDep);
-//        }
 
         private ProjectDependency parseDependency(JsonObject jsonObject, ProjectDependency parentDep) {
             String dependencyId = jsonObject.get("id").getAsString();
@@ -160,7 +144,7 @@ public class ProjectDependencies {
 
     private static void addTransitive(ProjectDependency pd){
         if(!transitiveUsageMap.containsKey(pd.getId())){
-            transitiveUsageMap.put(pd.getId(), new TransitiveDependencies(pd));
+            transitiveUsageMap.put(pd.getId(), new DependencyUsage());
         }
     }
 

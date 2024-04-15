@@ -3,7 +3,6 @@ package jact.core;
 import jact.depUtils.DependencyUsage;
 import jact.depUtils.PackageToDependencyResolver;
 import jact.depUtils.ProjectDependency;
-import jact.depUtils.TransitiveDependencies;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -154,13 +153,9 @@ public class HtmlAugmenter {
                                     "/index.html", thisProject, dirName);
                         } else {
                             if(matchedDep.getId() != null){
-                                System.out.println("CURRENT DEP: " + matchedDep.getId());
-                                System.out.println("PACKAGE: " + dirName);
                                 extractAndAddPackageTotal(getReportPath() + dirName +
                                         "/index.html", matchedDep, dirName);
-                                System.out.println("EXTRACTING");
                                 moveDirectory(directory, matchedDep.getReportPath());
-                                System.out.println("MOVE COMPLETE");
                             }else{
                                 removeDirectory(directory);
                             }
@@ -213,13 +208,13 @@ public class HtmlAugmenter {
         if(transitiveUsageMap.containsKey(pd.getId())){
             String path = pd.getReportPath();
             writeHTMLStringToFile(path + "index.html",
-                    transitiveUsageMap.get(pd.getId()).transitiveUsage.usageToHTML("transitive-dependencies",
+                    transitiveUsageMap.get(pd.getId()).usageToHTML("transitive-dependencies",
                             pd.dependencyUsage, false, true));
-            writeHTMLTotalToFile(path + "transitive-dependencies.html", transitiveUsageMap.get(pd.getId()).transitiveUsage.totalUsageToHTML());
+            writeHTMLTotalToFile(path + "transitive-dependencies.html", transitiveUsageMap.get(pd.getId()).totalUsageToHTML());
             for(ProjectDependency child : pd.getChildDeps().values()){
                 writeHTMLStringToFile(path + "transitive-dependencies.html",
                         child.dependencyUsage.usageToHTML(depToDirName(child),
-                                transitiveUsageMap.get(pd.getId()).transitiveUsage, false, true));
+                                transitiveUsageMap.get(pd.getId()), false, true));
             }
             writeTemplateToFile("html-templates/overviewTemplateEnd.html", path + "transitive-dependencies.html");
         }
@@ -291,7 +286,7 @@ public class HtmlAugmenter {
             if(!dependency.getChildDeps().isEmpty()){
                 DependencyUsage transitiveDepsUsage = calculateTransitiveDepUsage(dependency, false);
                 dependency.dependencyUsage.addAll(transitiveDepsUsage);
-                transitiveUsageMap.get(dependency.getId()).transitiveUsage.addAll(transitiveDepsUsage);
+                transitiveUsageMap.get(dependency.getId()).addAll(transitiveDepsUsage);
                 calculatedChildIds.add(dependency.getId());
             }
             // Calculate the total
