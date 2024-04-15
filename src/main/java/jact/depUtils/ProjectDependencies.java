@@ -72,22 +72,21 @@ public class ProjectDependencies {
             return parseDependency(jsonObject, parentDep);
         }
 
-        private void setupChildDependency(ProjectDependency projectDependency, ProjectDependency parentDep){
-            projectDependency.addParentDep(parentDep);
-
-            // Add all parent paths, a transitive dependency.
-            for (String path : parentDep.getReportPaths()) {
-                if(!projectDependency.getReportPaths().contains(path + "transitive-dependencies/" + depToDirName(projectDependency) + "/")){
-                    projectDependency.addReportPath(path + "transitive-dependencies/" + depToDirName(projectDependency) + "/");
-                    for(ProjectDependency child : projectDependency.getChildDeps().values()){
-                        child.addReportPath(path + "transitive-dependencies/" +
-                                depToDirName(projectDependency) + "/" +
-                                "transitive-dependencies/" + depToDirName(child) + "/");
-                    }
-                }
-            }
-            addTransitivePaths(projectDependency, parentDep);
-        }
+//        private void setupChildDependency(ProjectDependency projectDependency, ProjectDependency parentDep){
+//            projectDependency.addParentDep(parentDep);
+//            // Add all parent paths, a transitive dependency.
+//            for (String path : parentDep.getReportPaths()) {
+//                if(!projectDependency.getReportPaths().contains(path + "transitive-dependencies/" + depToDirName(projectDependency) + "/")){
+//                    projectDependency.addReportPath(path + "transitive-dependencies/" + depToDirName(projectDependency) + "/");
+//                    for(ProjectDependency child : projectDependency.getChildDeps().values()){
+//                        child.addReportPath(path + "transitive-dependencies/" +
+//                                depToDirName(projectDependency) + "/" +
+//                                "transitive-dependencies/" + depToDirName(child) + "/");
+//                    }
+//                }
+//            }
+//            //addTransitivePaths(projectDependency, parentDep);
+//        }
 
         private ProjectDependency parseDependency(JsonObject jsonObject, ProjectDependency parentDep) {
             String dependencyId = jsonObject.get("id").getAsString();
@@ -100,19 +99,19 @@ public class ProjectDependencies {
             }
             if (visited.contains(dependencyId)) {
                 // If the dependency has been visited before, find it, add the parent and return it.
-                ProjectDependency pd = projectDependenciesMap.get(depIdToDirName(dependencyId));
+                ProjectDependency pd = projectDependenciesMap.get(dependencyId);
                 if(parentDep.getId() != null){
-                    setupChildDependency(pd, parentDep);
+                    pd.addParentDep(parentDep);
+                    //setupChildDependency(pd, parentDep);
                 }else if(!parentString.isEmpty()){
-                    setupChildDependency(pd, projectDependenciesMap.get(depIdToDirName(parentString)));
+                    pd.addParentDep(parentDep);
+                    //setupChildDependency(pd, projectDependenciesMap.get(depIdToDirName(parentString)));
                 }else{
-                    if(!rootDepIds.contains(dependencyId)){
-                        rootDepIds.add(dependencyId);
-                    }
-                    pd.addReportPath(getReportPath() + "dependencies/" + depToDirName(pd) + "/");
+                    pd.rootDep = true;
                 }
                 JsonArray childrenJsonArray = jsonObject.getAsJsonArray("children");
-                if (childrenJsonArray != null) {
+                if (!childrenJsonArray.isEmpty()) {
+                    addTransitive(pd);
                     for (JsonElement element : childrenJsonArray) {
                         ProjectDependency child = parseDependency(element.getAsJsonObject(), pd);
                         pd.addChildDep(child);
@@ -133,20 +132,22 @@ public class ProjectDependencies {
             // Adding the directory name to the potential paths to report the usage
             // Build the report path
             if(parentDep.getId() != null){
-                setupChildDependency(projectDependency, parentDep);
+                projectDependency.addParentDep(parentDep);
+                //setupChildDependency(projectDependency, parentDep);
             }else if(!parentString.isEmpty()){
-                setupChildDependency(projectDependency, projectDependenciesMap.get(depIdToDirName(parentString)));
+                projectDependency.addParentDep(parentDep);
+                //setupChildDependency(projectDependency, projectDependenciesMap.get(depIdToDirName(parentString)));
             }else{
-                if(!rootDepIds.contains(dependencyId)){
-                    rootDepIds.add(dependencyId);
-                }
-                projectDependency.addReportPath(getReportPath() + "dependencies/" + depToDirName(projectDependency) + "/");
+                projectDependency.rootDep = true;
             }
 
+            projectDependency.setReportPath(getReportPath() + "dependencies/" + depToDirName(projectDependency) + "/");
+
             //System.out.println("ADDING: " + projectDependency.toString());
-            projectDependenciesMap.put(depToDirName(projectDependency), projectDependency);
+            projectDependenciesMap.put(projectDependency.getId(), projectDependency);
             JsonArray childrenJsonArray = jsonObject.getAsJsonArray("children");
-            if (childrenJsonArray != null) {
+            if (!childrenJsonArray.isEmpty()) {
+                addTransitive(projectDependency);
                 for (JsonElement element : childrenJsonArray) {
                     ProjectDependency child = parseDependency(element.getAsJsonObject(), projectDependency);
                     projectDependency.addChildDep(child);
@@ -157,14 +158,9 @@ public class ProjectDependencies {
     }
 
 
-    private static void addTransitivePaths(ProjectDependency child, ProjectDependency parentDep){
-        if(!transitiveUsageMap.containsKey(depToDirName(parentDep))){
-            transitiveUsageMap.put(depToDirName(parentDep), new TransitiveDependencies(parentDep));
-        }else{
-            transitiveUsageMap.get(depToDirName(parentDep)).addReportPaths(parentDep);
-        }
-        if(transitiveUsageMap.containsKey(depToDirName(child))){
-            transitiveUsageMap.get(depToDirName(child)).addReportPaths(child);
+    private static void addTransitive(ProjectDependency pd){
+        if(!transitiveUsageMap.containsKey(pd.getId())){
+            transitiveUsageMap.put(pd.getId(), new TransitiveDependencies(pd));
         }
     }
 

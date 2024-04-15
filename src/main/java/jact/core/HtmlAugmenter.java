@@ -15,8 +15,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static jact.depUtils.ProjectDependencies.rootDepIds;
-import static jact.depUtils.ProjectDependencies.transitiveUsageMap;
+import static jact.depUtils.ProjectDependencies.*;
 import static jact.depUtils.ProjectDependency.depToDirName;
 import static jact.plugin.AbstractReportMojo.getReportPath;
 import static jact.utils.FileSystemUtils.*;
@@ -61,22 +60,15 @@ public class HtmlAugmenter {
     }
 
 
-    private static void setupTransitivePaths(){
-        for(TransitiveDependencies transitiveDeps : transitiveUsageMap.values()){
-            for(String path : transitiveDeps.getReportPaths()){
-                copyDirectory(new File(jacocoResPath),
-                        new File(path + "jacoco-resources"));
-                String parentDir = new File(path).getParent();
-                if (new File(parentDir).exists()) {
-                    try {
-                        writeModifiedTemplateToFile("html-templates/indivDepViewTemplateStart.html",
-                                path + "index.html",
-                                "<span style=\"display: inline-block;\">Transitive Dependencies from: <br>" +
-                                        transitiveDeps.getParentDirName() + "</span>");
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
+    private static void setupTransitivePaths(){ // Rename to setupTransitiveReports
+        for(String depId : transitiveUsageMap.keySet()){
+            try {
+                writeModifiedTemplateToFile("html-templates/indivDepViewTemplateStart.html",
+                        projectDependenciesMap.get(depId).getReportPath() + "transitive-dependencies.html",
+                        "<span style=\"display: inline-block;\">Transitive Dependencies from: <br>" +
+                                depToDirName(projectDependenciesMap.get(depId)) + "</span>");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         }
     }
@@ -96,7 +88,8 @@ public class HtmlAugmenter {
             throw new RuntimeException(e);
         }
         for (ProjectDependency dependency : dependenciesMap.values()){
-            for(String path : dependency.getReportPaths()){
+            String path = dependency.getReportPath();
+            //for(String path : dependency.getReportPaths()){
                 // Set up the directory and copy the jacoco-resources
                 createDir(path);
                 copyDirectory(new File(jacocoResPath),
@@ -108,7 +101,6 @@ public class HtmlAugmenter {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-            }
         }
     }
 
@@ -143,7 +135,7 @@ public class HtmlAugmenter {
                                                 String localRepoPath, String projId) throws IOException {
 
         thisProject.setId(projId);
-        thisProject.addReportPath(getReportPath());
+        thisProject.setReportPath(getReportPath());
 
         // Traverse the "report" directory:
         // Moves packages to their respective dependency directory and create their `index.html` file
@@ -165,16 +157,7 @@ public class HtmlAugmenter {
                                 extractAndAddPackageTotal(getReportPath() + dirName +
                                         "/index.html", matchedDep, dirName);
                             }
-                            if (matchedDep.getReportPaths().size() == 1) {
-                                moveDirectory(directory, matchedDep.getReportPaths().get(0));
-                            } else {
-                                // Handle dependencies with the same transitive dependencies.
-                                for (String path : matchedDep.getReportPaths()) {
-                                    copyDirectory(directory, new File(path + directory.getName()));
-                                }
-                                System.out.println("REMOVING: " + directory.getPath());
-                                removeDirectory(directory);
-                            }
+                            moveDirectory(directory, matchedDep.getReportPath());
                         }
                     }
                 }
@@ -213,57 +196,43 @@ public class HtmlAugmenter {
         calculateAllUsages(dependenciesMap);
 
         // Write dependency usage
-        writeTransitiveToFile(dependenciesMap);
         writeDependenciesToFile(dependenciesMap);
-        writeTransitiveEndToFile();
 
         // Write project packages and overview usage
         writeOverviewToFile();
     }
 
 
-    private static void writeTransitiveToFile(Map<String, ProjectDependency> dependenciesMap) throws IOException {
-        for(TransitiveDependencies transitiveDeps : transitiveUsageMap.values()){
-            for(String path : transitiveDeps.getReportPaths()){
-                File currDir = new File(path);
-                File parentDir = currDir.getParentFile();
-                writeHTMLStringToFile(parentDir + "/index.html",
-                        transitiveDeps.transitiveUsage.usageToHTML("transitive-dependencies",
-                                dependenciesMap.get(parentDir.getName()).dependencyUsage, false));
-                writeHTMLTotalToFile(path + "index.html", transitiveDeps.transitiveUsage.totalUsageToHTML());
+    private static void writeTransitiveToFile(ProjectDependency pd) throws IOException {
+        if(transitiveUsageMap.containsKey(pd.getId())){
+            String path = pd.getReportPath();
+            writeHTMLStringToFile(path + "index.html",
+                    transitiveUsageMap.get(pd.getId()).transitiveUsage.usageToHTML("transitive-dependencies",
+                            pd.dependencyUsage, false, true));
+            writeHTMLTotalToFile(path + "transitive-dependencies.html", transitiveUsageMap.get(pd.getId()).transitiveUsage.totalUsageToHTML());
+            for(ProjectDependency child : pd.getChildDeps().values()){
+                writeHTMLStringToFile(path + "transitive-dependencies.html",
+                        child.dependencyUsage.usageToHTML(depToDirName(child),
+                                transitiveUsageMap.get(pd.getId()).transitiveUsage, false, true));
             }
-        }
-    }
-
-    private static void writeTransitiveEndToFile() throws IOException {
-        for(TransitiveDependencies transitiveDeps : transitiveUsageMap.values()){
-            for(String path : transitiveDeps.getReportPaths()){
-                writeTemplateToFile("html-templates/overviewTemplateEnd.html", path + "index.html");
-            }
+            writeTemplateToFile("html-templates/overviewTemplateEnd.html", path + "transitive-dependencies.html");
         }
     }
 
 
     private static void writeDependenciesToFile(Map<String, ProjectDependency> dependenciesMap) throws IOException {
         for (ProjectDependency pd : dependenciesMap.values()) {
-            DependencyUsage entryReferenceUsage;
-            for (String path : pd.getReportPaths()) {
-                File currDir = new File(path);
-                File parentDir = currDir.getParentFile();
-                if(parentDir.getName().equals("dependencies")){
-                    entryReferenceUsage = totalDependencyUsage;
-                }else{
-                    String parentDepDir = parentDir.getParentFile().getName();
-                    entryReferenceUsage = transitiveUsageMap.get(parentDepDir).transitiveUsage;
+                String path = pd.getReportPath();
+                if(pd.rootDep){
+                    writeHTMLStringToFile(getReportPath() + "dependencies/" + "index.html",
+                            pd.dependencyUsage.usageToHTML(depToDirName(pd), totalDependencyUsage, false, false));
                 }
-                writeHTMLStringToFile(parentDir + "/index.html",
-                        pd.dependencyUsage.usageToHTML(currDir.getName(), entryReferenceUsage, false));
                 writeHTMLTotalToFile(path + "index.html", pd.dependencyUsage.totalUsageToHTML());
+                writeTransitiveToFile(pd);
                 pd.writePackagesToFile(path, pd.dependencyUsage);
                 // Write the end of the template here
                 writeModifiedTemplateToFile("html-templates/indivDepViewTemplateEnd.html",
                         path + "index.html", depToDirName(pd));
-            }
         }
         // Writes the HTML template for the Dependency Overview
         writeTemplateToFile("html-templates/depOverviewTemplateEnd.html", getReportPath() + "dependencies/index.html");
@@ -272,13 +241,13 @@ public class HtmlAugmenter {
 
     private static void writeOverviewToFile() throws IOException {
         // Write the total dependency usage AND its entry in the overview
-        writeHTMLStringToFile(getReportPath() + "index.html", totalDependencyUsage.usageToHTML("dependencies", completeUsage, false));
+        writeHTMLStringToFile(getReportPath() + "index.html", totalDependencyUsage.usageToHTML("dependencies", completeUsage, false, false));
         writeHTMLTotalToFile(getReportPath() + "dependencies/index.html", totalDependencyUsage.totalUsageToHTML());
 
         // Write the project package overview entries:
         for (Map.Entry<String, DependencyUsage> entry : thisProject.packageUsageMap.entrySet()) {
             try {
-                writeHTMLStringToFile(getReportPath() + "index.html", entry.getValue().usageToHTML(entry.getKey(),completeUsage, true));
+                writeHTMLStringToFile(getReportPath() + "index.html", entry.getValue().usageToHTML(entry.getKey(),completeUsage, true, false));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -316,13 +285,13 @@ public class HtmlAugmenter {
             if(!dependency.getChildDeps().isEmpty()){
                 DependencyUsage transitiveDepsUsage = calculateTransitiveDepUsage(dependency, false);
                 dependency.dependencyUsage.addAll(transitiveDepsUsage);
-                transitiveUsageMap.get(depToDirName(dependency)).transitiveUsage.addAll(transitiveDepsUsage);
+                transitiveUsageMap.get(dependency.getId()).transitiveUsage.addAll(transitiveDepsUsage);
                 calculatedChildIds.add(dependency.getId());
             }
             // Calculate the total
             // Only ROOT dependencies are added, since the transitive
             // cost was included in the previous if-statement.
-            if(rootDepIds.contains(dependency.getId())){
+            if(dependency.rootDep){
                 totalDependencyUsage.addAll(dependency.dependencyUsage);
             }
         }

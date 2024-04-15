@@ -1,5 +1,10 @@
 package jact.depUtils;
 
+import java.io.File;
+
+import static jact.depUtils.ProjectDependency.depIdToDirName;
+import static jact.plugin.AbstractReportMojo.getReportPath;
+
 /**
  * Tracks the usage of a dependency in all the recorded metrics.
  */
@@ -143,7 +148,8 @@ public class DependencyUsage {
         this.addTotalClasses(depUsage.getTotalClasses());
     }
 
-    public String usageToHTML(String dependencyDirName, DependencyUsage total, Boolean isPackage) {
+    public String usageToHTML(String dependencyDirName, DependencyUsage total, boolean isPackage, boolean transitiveEntry) {
+
         long coveredInstructions = this.getTotalInstructions() - this.getMissedInstructions();
         long coveredBranches = this.getTotalBranches() - this.getMissedBranches();
 
@@ -158,8 +164,16 @@ public class DependencyUsage {
         } else {
             icon = "el_group";
         }
+        String link = dependencyDirName + "/index.html";
+        if(dependencyDirName.equals("transitive-dependencies") && transitiveEntry){
+            link = "transitive-dependencies.html";
+        }else if(transitiveEntry){
+            String absolutePath = new File(getReportPath() + "dependencies/" + dependencyDirName).getAbsolutePath();
+            link = absolutePath + "/index.html";
+        }
+
         String htmlString = "<tr>\n" +
-                "    <td id=\"a47\"><a href=\"" + dependencyDirName + "/index.html\" class=\"" + icon + "\">" + dependencyDirName + "</a></td>\n" +
+                "    <td id=\"a47\"><a href=\"" + link + "\" class=\"" + icon + "\">" + dependencyDirName + "</a></td>\n" +
                 "    <td class=\"bar\" id=\"b5\"><img src=\"jacoco-resources/redbar.gif\" width=\"" + redInstrBar + "\" height=\"10\" title=\"" + String.format("%,d", this.getMissedInstructions()) + "\" alt=\"" + String.format("%,d", this.getMissedInstructions()) + "\">" +
                 "<img src=\"jacoco-resources/greenbar.gif\" width=\"" + greenInstrBar + "\" height=\"10\" title=\"" + String.format("%,d", coveredInstructions) + "\" alt=\"" + String.format("%,d", coveredInstructions) + "\"></td>\n" +
                 "    <td class=\"ctr2\" id=\"c5\">" + percentage(coveredInstructions, this.getTotalInstructions()) + "</td>\n" +

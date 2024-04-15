@@ -19,13 +19,15 @@ public class ProjectDependency {
     private String artifactId;
     private String version;
     private String scope;
+
+    public boolean rootDep = false;
     //private List<ProjectDependency> children = new ArrayList<>();
     //private List<ProjectDependency> parents = new ArrayList<>();
 
     private Map<String, ProjectDependency> children = new HashMap<>();
     private Map<String, ProjectDependency> parents = new HashMap<>();
 
-    private List<String> raportPaths = new ArrayList<>();
+    private String raportPath;
 
     public String getId() {
         return this.id;
@@ -87,14 +89,12 @@ public class ProjectDependency {
         return this.parents;
     }
 
-    public void addReportPath(String reportPath) {
-        if(!presentReportPath(reportPath)){
-            this.raportPaths.add(reportPath);
-        }
+    public void setReportPath(String reportPath) {
+        this.raportPath = reportPath;
     }
 
-    public List<String> getReportPaths() {
-        return this.raportPaths;
+    public String getReportPath() {
+        return this.raportPath;
     }
 
 
@@ -147,7 +147,7 @@ public class ProjectDependency {
         // Iterate through the map entries
         for (Map.Entry<String, DependencyUsage> entry : this.packageUsageMap.entrySet()) {
             try {
-                writeHTMLStringToFile(path + "/index.html", entry.getValue().usageToHTML(entry.getKey(), total, true));
+                writeHTMLStringToFile(path + "/index.html", entry.getValue().usageToHTML(entry.getKey(), total, true, false));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -170,15 +170,15 @@ public class ProjectDependency {
                 split[1].replace("-", ".") + "-v" + split[2];
     }
 
-    public boolean presentReportPath(String reportPath){
-        boolean present = false;
-        for(String path : this.getReportPaths()){
-            if(path.equals(reportPath)){
-                present = true;
-                break;
-            }
-        }
-        return present;
-    }
+//    public boolean presentReportPath(String reportPath){
+//        boolean present = false;
+//        for(String path : this.getReportPaths()){
+//            if(path.equals(reportPath)){
+//                present = true;
+//                break;
+//            }
+//        }
+//        return present;
+//    }
 
 }
