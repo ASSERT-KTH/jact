@@ -16,19 +16,26 @@ import java.util.regex.Pattern;
 
 import static jact.depUtils.ProjectDependencies.*;
 import static jact.depUtils.ProjectDependency.depToDirName;
-import static jact.plugin.AbstractReportMojo.getReportPath;
+import static jact.plugin.AbstractReportMojo.getJactReportPath;
 import static jact.utils.FileSystemUtils.*;
 
 /**
  * Creates the HTML version of the JACT Report
  */
 public class HtmlAugmenter {
-    public static String jacocoResPath = getReportPath() + "jacoco-resources";
+    public static String jacocoResPath = getJactReportPath() + "jacoco-resources";
     private static ProjectDependency thisProject;
     private static DependencyUsage totalDependencyUsage;
     private static DependencyUsage completeUsage;
     private static List<String> calculatedChildIds;
 
+    /**
+     * Generates the entire JACT HTML report.
+     * @param dependenciesMap
+     * @param projPackagesAndClassMap
+     * @param localRepoPath
+     * @param projId
+     */
     public static void generateHtmlReport(Map<String, ProjectDependency> dependenciesMap,
                                           Map<String, Set<String>> projPackagesAndClassMap,
                                           String localRepoPath, String projId){
@@ -39,11 +46,11 @@ public class HtmlAugmenter {
 
         // Rename the original index.html file
         String inputFilePath =
-                renameFile(getReportPath() + "index.html", "originalIndex.html");
+                renameFile(getJactReportPath() + "index.html", "originalIndex.html");
         // Format the index.html report:
         formatHtmlReport(inputFilePath);
-
-        setupReportPaths(dependenciesMap);
+        // Creates the report files and moves resource directories
+        setupReport(dependenciesMap);
 
         try {
             extractReportAndMoveDirs(dependenciesMap, projPackagesAndClassMap, localRepoPath, projId);
@@ -58,7 +65,7 @@ public class HtmlAugmenter {
     }
 
 
-    private static void setupTransitivePaths(Map<String, ProjectDependency> dependenciesMap){ // Rename to setupTransitiveReports
+    private static void setupTransitiveReports(Map<String, ProjectDependency> dependenciesMap){
         for(String depId : getTransitiveUsageMap().keySet()){
             try {
                 writeModifiedTemplateToFile("html-templates/indivDepViewTemplateStart.html",
@@ -71,14 +78,14 @@ public class HtmlAugmenter {
         }
     }
 
-    private static void setupDependencyPaths(Map<String, ProjectDependency> dependenciesMap){
+    private static void setupDependencyReports(Map<String, ProjectDependency> dependenciesMap){
         // Path to jacoco-resources (to be copied to subdirectories for correct icons and styling)
         copyDirectory(new File(jacocoResPath),
-                new File(getReportPath() + "dependencies/jacoco-resources"));
+                new File(getJactReportPath() + "dependencies/jacoco-resources"));
         // Create the dependencies overview
         // Writes the HTML template for the Dependency Overview
         try {
-            writeTemplateToFile("html-templates/depOverviewTemplateStart.html", getReportPath() + "dependencies/index.html");
+            writeTemplateToFile("html-templates/depOverviewTemplateStart.html", getJactReportPath() + "dependencies/index.html");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -97,20 +104,24 @@ public class HtmlAugmenter {
         }
     }
 
-
-    private static void setupReportPaths(Map<String, ProjectDependency> dependenciesMap){
+    /**
+     * Creates the report files and copies the required
+     * resources to each dependency directory.
+     * @param dependenciesMap
+     */
+    private static void setupReport(Map<String, ProjectDependency> dependenciesMap){
 
         // Create the whole project overview
         try {
             // Writes the overview HTML template
-            writeTemplateToFile("html-templates/overviewTemplateStart.html", getReportPath() + "index.html");
+            writeTemplateToFile("html-templates/overviewTemplateStart.html", getJactReportPath() + "index.html");
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
 
-        setupDependencyPaths(dependenciesMap);
-        setupTransitivePaths(dependenciesMap);
+        setupDependencyReports(dependenciesMap);
+        setupTransitiveReports(dependenciesMap);
     }
 
     /**
@@ -128,11 +139,11 @@ public class HtmlAugmenter {
                                                 String localRepoPath, String projId) throws IOException {
 
         thisProject.setId(projId);
-        thisProject.setReportPath(getReportPath());
+        thisProject.setReportPath(getJactReportPath());
 
         // Traverse the "report" directory:
         // Moves packages to their respective dependency directory and create their `index.html` file
-        File reportDir = new File(getReportPath());
+        File reportDir = new File(getJactReportPath());
         if (reportDir.exists() && reportDir.isDirectory()) {
             File[] directories = reportDir.listFiles(File::isDirectory);
             if (directories != null) {
@@ -143,11 +154,11 @@ public class HtmlAugmenter {
                                 PackageToDependencyResolver.packageToDepPaths(dirName, dependenciesMap, projPackagesAndClassMap, localRepoPath);
                         // Could become problematic if packages share name with packages in dependencies
                         if (projPackagesAndClassMap.containsKey(dirName)) {
-                            extractAndAddPackageTotal(getReportPath() + dirName +
+                            extractAndAddPackageTotal(getJactReportPath() + dirName +
                                     "/index.html", thisProject, dirName);
                         } else {
                             if(matchedDep.getId() != null){
-                                extractAndAddPackageTotal(getReportPath() + dirName +
+                                extractAndAddPackageTotal(getJactReportPath() + dirName +
                                         "/index.html", matchedDep, dirName);
                                 moveDirectory(directory, matchedDep.getReportPath());
                             }else{
@@ -214,12 +225,19 @@ public class HtmlAugmenter {
         }
     }
 
-
+    /**
+     * Writes all dependencies to the report. Dependencies
+     * without parents are written to the overview and
+     * child dependencies are written as entries in their
+     * respective transitive reports.
+     * @param dependenciesMap
+     * @throws IOException
+     */
     private static void writeDependenciesToFile(Map<String, ProjectDependency> dependenciesMap) throws IOException {
         for (ProjectDependency pd : dependenciesMap.values()) {
                 String path = pd.getReportPath();
                 if(pd.rootDep){
-                    writeHTMLStringToFile(getReportPath() + "dependencies/" + "index.html",
+                    writeHTMLStringToFile(getJactReportPath() + "dependencies/" + "index.html",
                             pd.dependencyUsage.usageToHTML(depToDirName(pd), totalDependencyUsage, false, false));
                 }
                 writeHTMLTotalToFile(path + "index.html", pd.dependencyUsage.totalUsageToHTML());
@@ -230,31 +248,43 @@ public class HtmlAugmenter {
                         path + "index.html", depToDirName(pd));
         }
         // Writes the HTML template for the Dependency Overview
-        writeTemplateToFile("html-templates/endTemplate.html", getReportPath() + "dependencies/index.html");
+        writeTemplateToFile("html-templates/endTemplate.html", getJactReportPath() + "dependencies/index.html");
     }
 
-
+    /**
+     * Writes the complete project overview
+     * as well as the dependency overview.
+     * @throws IOException
+     */
     private static void writeOverviewToFile() throws IOException {
         // Write the total dependency usage AND its entry in the overview
-        writeHTMLStringToFile(getReportPath() + "index.html", totalDependencyUsage.usageToHTML("dependencies", completeUsage, false, false));
-        writeHTMLTotalToFile(getReportPath() + "dependencies/index.html", totalDependencyUsage.totalUsageToHTML());
+        writeHTMLStringToFile(getJactReportPath() + "index.html", totalDependencyUsage.usageToHTML("dependencies", completeUsage, false, false));
+        writeHTMLTotalToFile(getJactReportPath() + "dependencies/index.html", totalDependencyUsage.totalUsageToHTML());
 
         // Write the project package overview entries:
         for (Map.Entry<String, DependencyUsage> entry : thisProject.packageUsageMap.entrySet()) {
             try {
-                writeHTMLStringToFile(getReportPath() + "index.html", entry.getValue().usageToHTML(entry.getKey(),completeUsage, true, false));
+                writeHTMLStringToFile(getJactReportPath() + "index.html", entry.getValue().usageToHTML(entry.getKey(),completeUsage, true, false));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
         // Write the overview total: Project + Dependencies (incl. transitive)
-        writeHTMLTotalToFile(getReportPath() + "index.html", completeUsage.totalUsageToHTML());
+        writeHTMLTotalToFile(getJactReportPath() + "index.html", completeUsage.totalUsageToHTML());
 
         // Writes the overview HTML template
-        writeTemplateToFile("html-templates/endTemplate.html", getReportPath() + "index.html");
+        writeTemplateToFile("html-templates/endTemplate.html", getJactReportPath() + "index.html");
     }
 
 
+    /**
+     * Calculates the transitive dependency usage
+     * for the input dependency recursively adding
+     * the children dependencies.
+     * @param dependency
+     * @param includeSelf
+     * @return DependencyUsage
+     */
     private static DependencyUsage calculateTransitiveDepUsage(ProjectDependency dependency, boolean includeSelf){
         DependencyUsage currUsage = new DependencyUsage();
         if(!calculatedChildIds.contains(dependency.getId())){

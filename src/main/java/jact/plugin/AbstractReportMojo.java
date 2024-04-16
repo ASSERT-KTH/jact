@@ -15,11 +15,7 @@ import java.util.Set;
 
 
 public abstract class AbstractReportMojo extends AbstractMojo {
-
-
-    private static final String LINE_SEPARATOR = "------------------------------------------------------------------------";
-
-    private static String REPORTPATH = "./target/jact-report/";
+    private static final String jactReportPath = "./target/jact-report/";
     private static String localRepoPath;
     private static String projectGroupId;
     private static String artifactId;
@@ -44,47 +40,6 @@ public abstract class AbstractReportMojo extends AbstractMojo {
     @Parameter(property = "skipTestDependencies", defaultValue = "true")
     private String skipTestDependencies;
 
-    public boolean getDepFilterParam(){
-        return Boolean.parseBoolean(this.skipTestDependencies);
-    }
-
-    public static String getReportPath(){
-        return REPORTPATH;
-    }
-    public String getLocalRepoPath() {
-        return this.session.getLocalRepository().getBasedir();
-    }
-
-    public String getProjectGroupId() {
-        return this.project.getGroupId();
-    }
-
-    public String getProjectArtifactId() {
-        return this.project.getArtifactId();
-    }
-
-    public String getProjectVersion() {
-        return this.project.getVersion();
-    }
-
-    public String getOutputJarName() {
-        if(shadedJarName == null){
-            shadedJarName = this.project.getBuild().getFinalName() + "-shaded";
-        }
-        return shadedJarName;
-    }
-
-    public Map<String, Set<String>> getProjectPackagesAndClasses() {
-        if(packageClassMap.isEmpty()){
-            collectClassNamesAndPackages();
-        }
-        return packageClassMap;
-    }
-
-    public String getProjId(){
-        return getProjectGroupId() + ":" + getProjectArtifactId() + ":" + getProjectVersion();
-    }
-
     /**
      * Skip plugin execution completely.
      */
@@ -105,6 +60,30 @@ public abstract class AbstractReportMojo extends AbstractMojo {
     protected abstract void doExecute()
             throws MojoExecutionException, MojoFailureException;
 
+
+    public boolean getDepFilterParam(){
+        return Boolean.parseBoolean(this.skipTestDependencies);
+    }
+
+    public static String getJactReportPath(){
+        return jactReportPath;
+    }
+    public String getLocalRepoPath() {
+        return this.session.getLocalRepository().getBasedir();
+    }
+
+    public String getProjectGroupId() {
+        return this.project.getGroupId();
+    }
+
+    public String getProjectArtifactId() {
+        return this.project.getArtifactId();
+    }
+
+    public String getProjectVersion() {
+        return this.project.getVersion();
+    }
+
     public boolean skipReportGeneration()
     {
         return this.skipJACT;
@@ -115,16 +94,22 @@ public abstract class AbstractReportMojo extends AbstractMojo {
         return this.project;
     }
 
-    public void printCustomStringToConsole(final String s)
-    {
-        this.getLog().info(LINE_SEPARATOR);
-        this.getLog().info(s);
-        this.getLog().info(LINE_SEPARATOR);
+    public String getProjId(){
+        return getProjectGroupId() + ":" + getProjectArtifactId() + ":" + getProjectVersion();
     }
 
-    public static String getLineSeparator()
-    {
-        return LINE_SEPARATOR;
+    public String getOutputJarName() {
+        if(shadedJarName == null){
+            shadedJarName = this.project.getBuild().getFinalName() + "-shaded";
+        }
+        return shadedJarName;
+    }
+
+    public Map<String, Set<String>> getProjectPackagesAndClasses() {
+        if(packageClassMap.isEmpty()){
+            collectClassNamesAndPackages();
+        }
+        return packageClassMap;
     }
 
     private void collectClassNamesAndPackages() {

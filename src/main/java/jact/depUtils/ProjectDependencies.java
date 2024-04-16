@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.util.*;
 
 import static jact.depUtils.ProjectDependency.depToDirName;
-import static jact.plugin.AbstractReportMojo.getReportPath;
+import static jact.plugin.AbstractReportMojo.getJactReportPath;
 import static jact.utils.CommandExecutor.generateDependencyLockfile;
 
 /**
@@ -22,6 +22,7 @@ public class ProjectDependencies {
     public static Map<String, ProjectDependency> getAllProjectDependencies(String targetDirectory,
                                                                            boolean genLockfile,
                                                                            boolean skipTestDeps) {
+        // Reset previous objects (for the combined report caused by static classes)
         projectDependenciesMap = new HashMap<>();
         transitiveUsageMap = new HashMap<>();
         visited = new HashSet<>();
@@ -102,9 +103,6 @@ public class ProjectDependencies {
             projectDependency.setVersion(jsonObject.has("selectedVersion") ? jsonObject.get("selectedVersion").getAsString() : "");
             projectDependency.setScope(jsonObject.has("scope") ? jsonObject.get("scope").getAsString() : "");
 
-
-            // Adding the directory name to the potential paths to report the usage
-            // Build the report path
             if(parentDep.getId() != null){
                 projectDependency.addParentDep(parentDep);
             }else if(!parentString.isEmpty()){
@@ -113,9 +111,8 @@ public class ProjectDependencies {
                 projectDependency.rootDep = true;
             }
 
-            projectDependency.setReportPath(getReportPath() + "dependencies/" + depToDirName(projectDependency) + "/");
+            projectDependency.setReportPath(getJactReportPath() + "dependencies/" + depToDirName(projectDependency) + "/");
 
-            //System.out.println("ADDING: " + projectDependency.toString());
             projectDependenciesMap.put(projectDependency.getId(), projectDependency);
             JsonArray childrenJsonArray = jsonObject.getAsJsonArray("children");
             if (!childrenJsonArray.isEmpty()) {
@@ -129,7 +126,11 @@ public class ProjectDependencies {
         }
     }
 
-
+    /**
+     * Adds a transitive entry for dependencies with
+     * children for keeping track of transitive usage.
+     * @param pd
+     */
     private static void addTransitive(ProjectDependency pd){
         if(!transitiveUsageMap.containsKey(pd.getId())){
             transitiveUsageMap.put(pd.getId(), new DependencyUsage());

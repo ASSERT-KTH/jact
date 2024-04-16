@@ -179,6 +179,16 @@ public class ProjectDependenciesTest {
 
 
     @Test
+    /**
+     * Requirements: See `initTestDependencies()`.
+     * Contract:
+     *      Pre-condition: A valid lockfile.json from
+     *                     test resources has generated all defined
+     *                     dependencies to a list of ProjectDependency
+     *                     objects.
+     *     Post-condition: All ProjectDependencies have the correct
+     *                     report path set.
+     */
     public void reportPathsTest(){
         // Brute force check that all dependencies have their
         // manually checked report paths
@@ -189,6 +199,17 @@ public class ProjectDependenciesTest {
     }
 
     @Test
+    /**
+     * Requirements: See `initTestDependencies()`.
+     * Contract:
+     *      Pre-condition: A valid lockfile.json from
+     *                     test resources has generated all defined
+     *                     dependencies to a list of ProjectDependency
+     *                     objects.
+     *     Post-condition: All ProjectDependencies with children
+     *                     have a corresponding entry in the
+     *                     transitiveUsageMap.
+     */
     public void transitiveReportPathsTest(){
         assertEquals(4, getTransitiveUsageMap().size());
         assertTrue(getTransitiveUsageMap().containsKey("com.google.guava:guava:33.0.0-jre"));

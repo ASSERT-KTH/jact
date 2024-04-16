@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.Set;
 
 import static jact.depUtils.PackageToDependencyResolver.packageToDepPaths;
-import static jact.plugin.AbstractReportMojo.getReportPath;
+import static jact.plugin.AbstractReportMojo.getJactReportPath;
 
 /**
  * Creates the XML version of the JACT Report
@@ -33,7 +33,7 @@ public class XmlAugmenter {
     public static DependencyUsage projectUsage = new DependencyUsage();
     private static ProjectDependency thisProject = new ProjectDependency();
 
-    private static final String FINALREPORTPATH = getReportPath() + "jact_report.xml";
+    private static final String FINALREPORTPATH = getJactReportPath() + "jact_report.xml";
 
     private static String xmlDtd = "<!DOCTYPE report PUBLIC \"-//JACOCO//DTD Report 1.1//EN\" \"report.dtd\">";
     private static String xmlReportTag = "<report name=\"JACT Coverage Report (Generated with JaCoCo)\">";
@@ -108,9 +108,9 @@ public class XmlAugmenter {
         thisProject.setId(projId);
         try {
             // Load Jacoco XML report
-            File xmlFile = new File(getReportPath() + "jacoco_report.xml");
-            sessionInfo = extractXmlHeader(getReportPath() + "jacoco_report.xml");
-            extractCounterValues(getReportPath() + "jacoco_report.xml", new ProjectDependency(), totalUsage, "total");
+            File xmlFile = new File(getJactReportPath() + "jacoco_report.xml");
+            sessionInfo = extractXmlHeader(getJactReportPath() + "jacoco_report.xml");
+            extractCounterValues(getJactReportPath() + "jacoco_report.xml", new ProjectDependency(), totalUsage, "total");
 
             // Disable DTD validation
             System.setProperty("javax.xml.parsers.DocumentBuilderFactory", "com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl");
@@ -138,11 +138,11 @@ public class XmlAugmenter {
                 String packageName = entry.getKey();
                 Document packageReport = entry.getValue();
                 String filename = packageName.replace("/", "-") + ".xml"; // Use package name for filename
-                writeXML(packageReport, getReportPath() + "xml_reports/" + filename);
+                writeXML(packageReport, getJactReportPath() + "xml_reports/" + filename);
             }
 
             //System.out.println("Separate XML reports created for each package in the current directory.");
-            readAndExtractPackageUsage(getReportPath() + "xml_reports/", dependenciesMap, projPackagesAndClassMap, localRepoPath);
+            readAndExtractPackageUsage(getJactReportPath() + "xml_reports/", dependenciesMap, projPackagesAndClassMap, localRepoPath);
 
             writeCompleteReport(dependenciesMap, packageReports);
         } catch (Exception e) {
@@ -182,9 +182,9 @@ public class XmlAugmenter {
                     // If the matched dependency is a project package then
                     if(matchedDep.getId() != null){
                         // We know the package comes from a dependency
-                        extractCounterValues(getReportPath() + "xml_reports/" + file.getName(), matchedDep, dependencyUsage, file.getName());
+                        extractCounterValues(getJactReportPath() + "xml_reports/" + file.getName(), matchedDep, dependencyUsage, file.getName());
                     }else{
-                        extractCounterValues(getReportPath() + "xml_reports/" + file.getName(), thisProject, projectUsage, file.getName());
+                        extractCounterValues(getJactReportPath() + "xml_reports/" + file.getName(), thisProject, projectUsage, file.getName());
 
                     }
                 }
@@ -298,7 +298,7 @@ public class XmlAugmenter {
      */
     public static void writePackageReportsFromMap(ProjectDependency dependency, FileWriter writer){
         for (Map.Entry<String, DependencyUsage> entry : dependency.packageUsageMap.entrySet()) {
-            File packageFile = new File(getReportPath() + "xml_reports/" + entry.getKey());
+            File packageFile = new File(getJactReportPath() + "xml_reports/" + entry.getKey());
             try (BufferedReader reader = new BufferedReader(new FileReader(packageFile))) {
                 String line;
                 boolean firstLineSkipped = false;

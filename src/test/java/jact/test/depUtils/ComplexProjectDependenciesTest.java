@@ -142,6 +142,17 @@ public class ComplexProjectDependenciesTest {
     }
 
     @Test
+    /**
+     * Requirements: See `initTestDependencies()`.
+     * Contract:
+     *      Pre-condition: A valid lockfile.json from
+     *                     test resources has generated all defined
+     *                     dependencies to a list of ProjectDependency
+     *                     objects.
+     *     Post-condition: All dependencies have a corresponding
+     *                     ProjectDependency object in the dependencies map.
+     *                     The corresponding object has the correct report path.
+     */
     public void allDepIdsPresentTest(){
         // Check the number of dependencies
         assertEquals(68, dependencies.size());
@@ -154,6 +165,17 @@ public class ComplexProjectDependenciesTest {
     }
 
     @Test
+    /**
+     * Requirements: See `initTestDependencies()`.
+     * Contract:
+     *      Pre-condition: A valid lockfile.json from
+     *                     test resources has generated all defined
+     *                     dependencies to a list of ProjectDependency
+     *                     objects.
+     *     Post-condition: All ProjectDependencies with children
+     *                     have a corresponding entry in the
+     *                     transitiveUsageMap.
+     */
     public void transitiveReportPathsTest(){
         assertEquals(30, getTransitiveUsageMap().size());
 

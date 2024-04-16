@@ -1,9 +1,5 @@
 package jact.depUtils;
 
-import java.io.File;
-
-import static jact.plugin.AbstractReportMojo.getReportPath;
-
 /**
  * Tracks the usage of a dependency in all the recorded metrics.
  */

@@ -56,8 +56,6 @@ public class FileSystemUtils {
 
 
     public static void createDir(String directoryPath) {
-        // Will take a list of dependencies later
-
         File dir = new File(directoryPath);
         boolean success;
         if(!dir.exists()){
@@ -87,7 +85,7 @@ public class FileSystemUtils {
         File newFile = new File(originalFile.getParent(), newFileName);
         if (originalFile.exists()) {
             if (originalFile.renameTo(newFile)) {
-                System.out.println("File renamed successfully.");
+                //System.out.println("File renamed successfully.");
                 return newFile.getPath(); // Return the full path of the renamed file
             } else {
                 throw new RuntimeException("Failed to rename the file.");
