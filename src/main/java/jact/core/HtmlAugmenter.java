@@ -210,7 +210,7 @@ public class HtmlAugmenter {
                         child.dependencyUsage.usageToHTML(depToDirName(child),
                                 getTransitiveUsageMap().get(pd.getId()), false, true));
             }
-            writeTemplateToFile("html-templates/overviewTemplateEnd.html", path + "transitive-dependencies.html");
+            writeTemplateToFile("html-templates/endTemplate.html", path + "transitive-dependencies.html");
         }
     }
 
@@ -226,11 +226,11 @@ public class HtmlAugmenter {
                 writeTransitiveToFile(pd);
                 pd.writePackagesToFile(path, pd.dependencyUsage);
                 // Write the end of the template here
-                writeModifiedTemplateToFile("html-templates/indivDepViewTemplateEnd.html",
+                writeModifiedTemplateToFile("html-templates/endTemplate.html",
                         path + "index.html", depToDirName(pd));
         }
         // Writes the HTML template for the Dependency Overview
-        writeTemplateToFile("html-templates/depOverviewTemplateEnd.html", getReportPath() + "dependencies/index.html");
+        writeTemplateToFile("html-templates/endTemplate.html", getReportPath() + "dependencies/index.html");
     }
 
 
@@ -251,7 +251,7 @@ public class HtmlAugmenter {
         writeHTMLTotalToFile(getReportPath() + "index.html", completeUsage.totalUsageToHTML());
 
         // Writes the overview HTML template
-        writeTemplateToFile("html-templates/overviewTemplateEnd.html", getReportPath() + "index.html");
+        writeTemplateToFile("html-templates/endTemplate.html", getReportPath() + "index.html");
     }
 
 
