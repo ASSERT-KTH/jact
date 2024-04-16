@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import static jact.core.XmlAugmenter.generateXmlReport;
 import static jact.core.XmlAugmenter.groupPackageByDep;
 import static jact.utils.CommandExecutor.copyJacocoCliJar;
 import static jact.utils.CommandExecutor.executeJacocoCLI;
@@ -62,7 +63,7 @@ public class XmlReportMojo extends AbstractReportMojo {
 
         getLog().info("Organizing the complete coverage report.");
 
-        groupPackageByDep(projectDependenciesMap, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
+        generateXmlReport(projectDependenciesMap, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
 
         getLog().info("JACT: XML Report Successfully Generated!");
     }

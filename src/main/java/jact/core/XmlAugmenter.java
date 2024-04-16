@@ -17,21 +17,19 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import static jact.depUtils.PackageToDependencyResolver.packageToDepPaths;
 import static jact.plugin.AbstractReportMojo.getJactReportPath;
+import static jact.utils.FileSystemUtils.renameFile;
 
 /**
  * Creates the XML version of the JACT Report
  */
 public class XmlAugmenter {
-    public static DependencyUsage dependencyUsage = new DependencyUsage();
-    public static DependencyUsage projectUsage = new DependencyUsage();
-    private static ProjectDependency thisProject = new ProjectDependency();
+    public static DependencyUsage dependencyUsage;
+    public static DependencyUsage projectUsage;
+    private static ProjectDependency thisProject;
 
     private static final String FINALREPORTPATH = getJactReportPath() + "jact_report.xml";
 
@@ -40,6 +38,18 @@ public class XmlAugmenter {
     private static String sessionInfo;
 
     private static DependencyUsage totalUsage = new DependencyUsage();
+
+
+
+    public static void generateXmlReport(Map<String, ProjectDependency> dependenciesMap,
+                                         Map<String, Set<String>> projPackagesAndClassMap,
+                                         String localRepoPath, String projId){
+        dependencyUsage = new DependencyUsage();
+        projectUsage = new DependencyUsage();
+        thisProject = new ProjectDependency();
+
+        groupPackageByDep(dependenciesMap, projPackagesAndClassMap, localRepoPath, projId);
+    }
 
 
     /**
@@ -225,9 +235,6 @@ public class XmlAugmenter {
             writer.write(depOpeningTag);
 
             for (ProjectDependency pd : dependenciesMap.values()) {
-                if(pd.getScope().equals("test")){
-                    continue;
-                }
                 String openingTag = "<group name=\"" + pd.getId() + "\">";
                 writer.write(openingTag.trim());
 
