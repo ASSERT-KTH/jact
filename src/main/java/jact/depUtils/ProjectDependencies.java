@@ -1,12 +1,10 @@
 package jact.depUtils;
 
 import com.google.gson.*;
-import jact.plugin.AbstractReportMojo;
 
 import java.io.FileReader;
 import java.util.*;
 
-import static jact.depUtils.ProjectDependency.depIdToDirName;
 import static jact.depUtils.ProjectDependency.depToDirName;
 import static jact.plugin.AbstractReportMojo.getReportPath;
 import static jact.utils.CommandExecutor.generateDependencyLockfile;
@@ -16,12 +14,9 @@ import static jact.utils.CommandExecutor.generateDependencyLockfile;
  * in order to calculate and write the reported usage from jacoco.
  */
 public class ProjectDependencies {
-    public static Map<String, ProjectDependency> projectDependenciesMap;
-    public static Map<String, DependencyUsage> transitiveUsageMap;
-    public static List<String> rootDepIds;
-
+    private static Map<String, ProjectDependency> projectDependenciesMap;
+    private static Map<String, DependencyUsage> transitiveUsageMap;
     private static Set<String> visited;
-
     private static boolean skipTestDependencies;
 
     public static Map<String, ProjectDependency> getAllProjectDependencies(String targetDirectory,
@@ -29,14 +24,11 @@ public class ProjectDependencies {
                                                                            boolean skipTestDeps) {
         projectDependenciesMap = new HashMap<>();
         transitiveUsageMap = new HashMap<>();
-        rootDepIds = new ArrayList<>();
         visited = new HashSet<>();
-
         skipTestDependencies = skipTestDeps;
 
-        if (projectDependenciesMap.isEmpty()) {
-            generateAllProjectDependencies(targetDirectory, genLockfile);
-        }
+        generateAllProjectDependencies(targetDirectory, genLockfile);
+
         return projectDependenciesMap;
     }
 
@@ -86,10 +78,8 @@ public class ProjectDependencies {
                 ProjectDependency pd = projectDependenciesMap.get(dependencyId);
                 if(parentDep.getId() != null){
                     pd.addParentDep(parentDep);
-                    //setupChildDependency(pd, parentDep);
                 }else if(!parentString.isEmpty()){
-                    pd.addParentDep(parentDep);
-                    //setupChildDependency(pd, projectDependenciesMap.get(depIdToDirName(parentString)));
+                    pd.addParentDep(projectDependenciesMap.get(parentString));
                 }else{
                     pd.rootDep = true;
                 }
@@ -117,10 +107,8 @@ public class ProjectDependencies {
             // Build the report path
             if(parentDep.getId() != null){
                 projectDependency.addParentDep(parentDep);
-                //setupChildDependency(projectDependency, parentDep);
             }else if(!parentString.isEmpty()){
-                projectDependency.addParentDep(parentDep);
-                //setupChildDependency(projectDependency, projectDependenciesMap.get(depIdToDirName(parentString)));
+                projectDependency.addParentDep(projectDependenciesMap.get(parentString));
             }else{
                 projectDependency.rootDep = true;
             }
@@ -146,6 +134,10 @@ public class ProjectDependencies {
         if(!transitiveUsageMap.containsKey(pd.getId())){
             transitiveUsageMap.put(pd.getId(), new DependencyUsage());
         }
+    }
+
+    public static Map<String, DependencyUsage> getTransitiveUsageMap(){
+        return transitiveUsageMap;
     }
 
 }

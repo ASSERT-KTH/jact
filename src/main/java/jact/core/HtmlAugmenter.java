@@ -27,7 +27,6 @@ public class HtmlAugmenter {
     private static ProjectDependency thisProject;
     private static DependencyUsage totalDependencyUsage;
     private static DependencyUsage completeUsage;
-
     private static List<String> calculatedChildIds;
 
     public static void generateHtmlReport(Map<String, ProjectDependency> dependenciesMap,
@@ -59,13 +58,13 @@ public class HtmlAugmenter {
     }
 
 
-    private static void setupTransitivePaths(){ // Rename to setupTransitiveReports
-        for(String depId : transitiveUsageMap.keySet()){
+    private static void setupTransitivePaths(Map<String, ProjectDependency> dependenciesMap){ // Rename to setupTransitiveReports
+        for(String depId : getTransitiveUsageMap().keySet()){
             try {
                 writeModifiedTemplateToFile("html-templates/indivDepViewTemplateStart.html",
-                        projectDependenciesMap.get(depId).getReportPath() + "transitive-dependencies.html",
+                        dependenciesMap.get(depId).getReportPath() + "transitive-dependencies.html",
                         "<span style=\"display: inline-block;\">Transitive Dependencies from: <br>" +
-                                depToDirName(projectDependenciesMap.get(depId)) + "</span>");
+                                depToDirName(dependenciesMap.get(depId)) + "</span>");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -73,9 +72,6 @@ public class HtmlAugmenter {
     }
 
     private static void setupDependencyPaths(Map<String, ProjectDependency> dependenciesMap){
-        // Create a directory for the dependency coverage
-        createDir(getReportPath() + "dependencies");
-
         // Path to jacoco-resources (to be copied to subdirectories for correct icons and styling)
         copyDirectory(new File(jacocoResPath),
                 new File(getReportPath() + "dependencies/jacoco-resources"));
@@ -88,18 +84,16 @@ public class HtmlAugmenter {
         }
         for (ProjectDependency dependency : dependenciesMap.values()){
             String path = dependency.getReportPath();
-            //for(String path : dependency.getReportPaths()){
-                // Set up the directory and copy the jacoco-resources
-                createDir(path);
-                copyDirectory(new File(jacocoResPath),
-                        new File(path + "jacoco-resources"));
-                // Set up the index.html file
-                try {
-                    writeModifiedTemplateToFile("html-templates/indivDepViewTemplateStart.html",
-                            path + "index.html", depToDirName(dependency));
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+            // Set up the directory and copy the jacoco-resources
+            copyDirectory(new File(jacocoResPath),
+                    new File(path + "jacoco-resources"));
+            // Set up the index.html file
+            try {
+                writeModifiedTemplateToFile("html-templates/indivDepViewTemplateStart.html",
+                        path + "index.html", depToDirName(dependency));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
@@ -116,7 +110,7 @@ public class HtmlAugmenter {
         }
 
         setupDependencyPaths(dependenciesMap);
-        setupTransitivePaths();
+        setupTransitivePaths(dependenciesMap);
     }
 
     /**
@@ -205,16 +199,16 @@ public class HtmlAugmenter {
 
 
     private static void writeTransitiveToFile(ProjectDependency pd) throws IOException {
-        if(transitiveUsageMap.containsKey(pd.getId())){
+        if(getTransitiveUsageMap().containsKey(pd.getId())){
             String path = pd.getReportPath();
             writeHTMLStringToFile(path + "index.html",
-                    transitiveUsageMap.get(pd.getId()).usageToHTML("transitive-dependencies",
+                    getTransitiveUsageMap().get(pd.getId()).usageToHTML("transitive-dependencies",
                             pd.dependencyUsage, false, true));
-            writeHTMLTotalToFile(path + "transitive-dependencies.html", transitiveUsageMap.get(pd.getId()).totalUsageToHTML());
+            writeHTMLTotalToFile(path + "transitive-dependencies.html", getTransitiveUsageMap().get(pd.getId()).totalUsageToHTML());
             for(ProjectDependency child : pd.getChildDeps().values()){
                 writeHTMLStringToFile(path + "transitive-dependencies.html",
                         child.dependencyUsage.usageToHTML(depToDirName(child),
-                                transitiveUsageMap.get(pd.getId()), false, true));
+                                getTransitiveUsageMap().get(pd.getId()), false, true));
             }
             writeTemplateToFile("html-templates/overviewTemplateEnd.html", path + "transitive-dependencies.html");
         }
@@ -286,7 +280,7 @@ public class HtmlAugmenter {
             if(!dependency.getChildDeps().isEmpty()){
                 DependencyUsage transitiveDepsUsage = calculateTransitiveDepUsage(dependency, false);
                 dependency.dependencyUsage.addAll(transitiveDepsUsage);
-                transitiveUsageMap.get(dependency.getId()).addAll(transitiveDepsUsage);
+                getTransitiveUsageMap().get(dependency.getId()).addAll(transitiveDepsUsage);
                 calculatedChildIds.add(dependency.getId());
             }
             // Calculate the total

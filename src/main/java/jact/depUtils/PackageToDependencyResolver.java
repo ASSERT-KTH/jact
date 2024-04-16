@@ -3,7 +3,6 @@ package jact.depUtils;
 import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.zip.ZipEntry;
@@ -13,30 +12,13 @@ import java.util.zip.ZipFile;
  * Resolves a package name to a dependency in the local .m2 folder.
  */
 public class PackageToDependencyResolver {
-    /**
-     * Take a list of all dependencies,
-     * add the package to that dependency
-     * Create a project 'dependency' for
-     * all project packages
-     */
-
-
-    // Handle the scenario where two or more packages have the same name:
-
 
     public static ProjectDependency packageToDepPaths(String packageName, Map<String, ProjectDependency> dependenciesMap,
                                                       Map<String, Set<String>> projPackagesAndClassMap, String localRepoPath) {
-        // List of dependencies along with their coordinates
 
-        //List<ProjectDependency> currMatchedDeps = new ArrayList<>();
         boolean packageNameInProject = projPackagesAndClassMap.containsKey(packageName);
-
-        //List<ProjectDependency> dependencies = ProjectDependencies.getAllProjectDependencies();
-
-
-        ProjectDependency matchedDep = new ProjectDependency();
-
         boolean foundDep = false;
+        ProjectDependency matchedDep = new ProjectDependency();
 
         // Iterate over each dependency
         for (ProjectDependency dependency : dependenciesMap.values()) {
@@ -60,12 +42,10 @@ public class PackageToDependencyResolver {
                         ZipEntry entry = entries.nextElement();
                         // Check if the entry is a class file within the desired package
                         if (entry.getName().startsWith(packageName.replace('.', '/')) && entry.getName().endsWith(".class")) {
-                            System.out.println("Package: " + packageName + " matched to dependency: " + groupId + ":" + artifactId + ":" + version);
-                            //currMatchedDeps.add(dependency);
+                            //System.out.println("Package: " + packageName + " matched to dependency: " + groupId + ":" + artifactId + ":" + version);
                             matchedDep = dependency;
                             foundDep = true;
                             break;
-                            //return dependency;
                         }
                     }
                 } catch (IOException e) {
@@ -81,10 +61,8 @@ public class PackageToDependencyResolver {
         }else if(matchedDep.getId() == null && !packageNameInProject){
             // Usually a problem with a runtime dependency required by a test-dependency.
             // Which jacoco occasionally includes. Remove it.
-            System.out.println("CANNOT MATCH PACKAGE TO ANY DEPENDENCY: " + packageName);
+            //System.out.println("CANNOT MATCH PACKAGE TO ANY DEPENDENCY: " + packageName);
         }
-
-        //return currMatchedDeps;
         return matchedDep;
     }
 }

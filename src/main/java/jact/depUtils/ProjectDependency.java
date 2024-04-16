@@ -11,23 +11,15 @@ import static jact.core.HtmlAugmenter.writeHTMLStringToFile;
 public class ProjectDependency {
     public DependencyUsage dependencyUsage = new DependencyUsage();
     public Map<String, DependencyUsage> packageUsageMap = new HashMap<>();
-    public boolean writtenEntryToFile = false;
-    public boolean writtenTransitive = false;
-    public boolean writtenTotalToFile = false;
     private String id;
     private String groupId;
     private String artifactId;
     private String version;
     private String scope;
-
     public boolean rootDep = false;
-    //private List<ProjectDependency> children = new ArrayList<>();
-    //private List<ProjectDependency> parents = new ArrayList<>();
-
     private Map<String, ProjectDependency> children = new HashMap<>();
     private Map<String, ProjectDependency> parents = new HashMap<>();
-
-    private String raportPath;
+    private String reportPath;
 
     public String getId() {
         return this.id;
@@ -90,11 +82,11 @@ public class ProjectDependency {
     }
 
     public void setReportPath(String reportPath) {
-        this.raportPath = reportPath;
+        this.reportPath = reportPath;
     }
 
     public String getReportPath() {
-        return this.raportPath;
+        return this.reportPath;
     }
 
 
@@ -169,16 +161,5 @@ public class ProjectDependency {
         return split[0].replace("-", ".") + "." +
                 split[1].replace("-", ".") + "-v" + split[2];
     }
-
-//    public boolean presentReportPath(String reportPath){
-//        boolean present = false;
-//        for(String path : this.getReportPaths()){
-//            if(path.equals(reportPath)){
-//                present = true;
-//                break;
-//            }
-//        }
-//        return present;
-//    }
 
 }

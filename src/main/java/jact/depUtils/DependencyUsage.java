@@ -2,7 +2,6 @@ package jact.depUtils;
 
 import java.io.File;
 
-import static jact.depUtils.ProjectDependency.depIdToDirName;
 import static jact.plugin.AbstractReportMojo.getReportPath;
 
 /**
@@ -168,8 +167,7 @@ public class DependencyUsage {
         if(dependencyDirName.equals("transitive-dependencies") && transitiveEntry){
             link = "transitive-dependencies.html";
         }else if(transitiveEntry){
-            String absolutePath = new File(getReportPath() + "dependencies/" + dependencyDirName).getAbsolutePath();
-            link = absolutePath + "/index.html";
+            link = "../" + dependencyDirName + "/index.html";
         }
 
         String htmlString = "<tr>\n" +

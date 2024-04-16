@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import static jact.depUtils.ProjectDependencies.getAllProjectDependencies;
-import static jact.depUtils.ProjectDependencies.transitiveUsageMap;
+import static jact.depUtils.ProjectDependencies.getTransitiveUsageMap;
 import static jact.depUtils.ProjectDependency.depToDirName;
 import static jact.utils.FileSystemUtils.removeDirectory;
 import static junit.framework.TestCase.assertEquals;
@@ -190,11 +190,11 @@ public class ProjectDependenciesTest {
 
     @Test
     public void transitiveReportPathsTest(){
-        assertEquals(4, transitiveUsageMap.size());
-        assertTrue(transitiveUsageMap.containsKey("com.google.guava:guava:33.0.0-jre"));
-        assertTrue(transitiveUsageMap.containsKey("junit:junit:4.13.2"));
-        assertTrue(transitiveUsageMap.containsKey("org.junit.jupiter:junit-jupiter-api:5.10.2"));
-        assertTrue(transitiveUsageMap.containsKey("org.junit.platform:junit-platform-commons:1.10.2"));
+        assertEquals(4, getTransitiveUsageMap().size());
+        assertTrue(getTransitiveUsageMap().containsKey("com.google.guava:guava:33.0.0-jre"));
+        assertTrue(getTransitiveUsageMap().containsKey("junit:junit:4.13.2"));
+        assertTrue(getTransitiveUsageMap().containsKey("org.junit.jupiter:junit-jupiter-api:5.10.2"));
+        assertTrue(getTransitiveUsageMap().containsKey("org.junit.platform:junit-platform-commons:1.10.2"));
     }
 
 }

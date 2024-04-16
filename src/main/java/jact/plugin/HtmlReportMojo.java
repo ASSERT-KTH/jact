@@ -8,11 +8,8 @@ import org.apache.maven.plugins.annotations.Mojo;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static jact.core.HtmlAugmenter.*;
 import static jact.utils.CommandExecutor.copyJacocoCliJar;
@@ -39,14 +36,12 @@ public class HtmlReportMojo extends AbstractReportMojo {
             }
         }
 
-
         getLog().info("STARTING: JACT - Java Complete Coverage Tracker");
         getLog().info("JARNAME: " + getOutputJarName());
-        //String outputDirectory = project.getBuild().getOutputDirectory();
 
         Map<String, ProjectDependency> projectDependenciesMap =
-                ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true, getDepFilterParam());
-
+                ProjectDependencies.getAllProjectDependencies("./target/jact-report/",
+                        true, getDepFilterParam());
 
         // Execute JaCoCoCLI to create the report WITH dependencies
         getLog().info("Copying the `jacococli.jar` to the project.");
@@ -60,11 +55,8 @@ public class HtmlReportMojo extends AbstractReportMojo {
 
         getLog().info("Creating the complete coverage report.");
         executeJacocoCLI(getOutputJarName(), true);
-
         getLog().info("Organizing the complete coverage report.");
-
         generateHtmlReport(projectDependenciesMap, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
-
         getLog().info("JACT: HTML Report Successfully Generated!");
     }
 }
