@@ -1,7 +1,6 @@
 package jact.core;
 
 import jact.depUtils.DependencyUsage;
-import jact.depUtils.PackageToDependencyResolver;
 import jact.depUtils.ProjectDependency;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -15,7 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static jact.depUtils.PackageToDependencyResolver.packageToDependency;
-import static jact.depUtils.ProjectDependencies.*;
+import static jact.depUtils.ProjectDependencies.getTransitiveUsageMap;
 import static jact.depUtils.ProjectDependency.depToDirName;
 import static jact.plugin.AbstractReportMojo.getJactReportPath;
 import static jact.utils.FileSystemUtils.*;
@@ -37,6 +36,7 @@ public class HtmlAugmenter {
 
     /**
      * Generates the entire JACT HTML report.
+     *
      * @param dependenciesMap
      * @param projPackagesAndClassMap
      * @param localRepoPath
@@ -44,7 +44,7 @@ public class HtmlAugmenter {
      */
     public static void generateHtmlReport(Map<String, ProjectDependency> dependenciesMap,
                                           Map<String, Set<String>> projPackagesAndClassMap,
-                                          String localRepoPath, String projId, boolean generateSummary){
+                                          String localRepoPath, String projId, boolean generateSummary) {
         thisProject = new ProjectDependency();
         totalDependencyUsage = new DependencyUsage();
         completeUsage = new DependencyUsage();
@@ -75,14 +75,14 @@ public class HtmlAugmenter {
         }
 
         // Creates a report summary (mainly for gathering results)
-        if(generateSummary){
+        if (generateSummary) {
             createReportSummary();
         }
     }
 
 
-    private static void setupTransitiveReports(Map<String, ProjectDependency> dependenciesMap){
-        for(String depId : getTransitiveUsageMap().keySet()){
+    private static void setupTransitiveReports(Map<String, ProjectDependency> dependenciesMap) {
+        for (String depId : getTransitiveUsageMap().keySet()) {
             try {
                 writeModifiedTemplateToFile("html-templates/indivDepViewTemplateStart.html",
                         dependenciesMap.get(depId).getReportPath() + "transitive-dependencies.html",
@@ -94,7 +94,7 @@ public class HtmlAugmenter {
         }
     }
 
-    private static void setupDependencyReports(Map<String, ProjectDependency> dependenciesMap){
+    private static void setupDependencyReports(Map<String, ProjectDependency> dependenciesMap) {
         // Path to jacoco-resources (to be copied to subdirectories for correct icons and styling)
         copyDirectory(new File(jacocoResPath),
                 new File(getJactReportPath() + "dependencies/jacoco-resources"));
@@ -105,7 +105,7 @@ public class HtmlAugmenter {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        for (ProjectDependency dependency : dependenciesMap.values()){
+        for (ProjectDependency dependency : dependenciesMap.values()) {
             String path = dependency.getReportPath();
             // Set up the directory and copy the jacoco-resources
             copyDirectory(new File(jacocoResPath),
@@ -123,9 +123,10 @@ public class HtmlAugmenter {
     /**
      * Creates the report files and copies the required
      * resources to each dependency directory.
+     *
      * @param dependenciesMap
      */
-    private static void setupReport(Map<String, ProjectDependency> dependenciesMap){
+    private static void setupReport(Map<String, ProjectDependency> dependenciesMap) {
 
         // Create the whole project overview
         try {
@@ -144,6 +145,7 @@ public class HtmlAugmenter {
      * Reads the html jacoco report to create corresponding ProjectDependency objects
      * for augmentation and usage tracking as well as sets up the required resources
      * and folder structure.
+     *
      * @param dependenciesMap
      * @param projPackagesAndClassMap
      * @param localRepoPath
@@ -151,8 +153,8 @@ public class HtmlAugmenter {
      * @throws IOException
      */
     private static void extractReportAndMoveDirs(Map<String, ProjectDependency> dependenciesMap,
-                                                Map<String, Set<String>> projPackagesAndClassMap,
-                                                String localRepoPath, String projId) throws IOException {
+                                                 Map<String, Set<String>> projPackagesAndClassMap,
+                                                 String localRepoPath, String projId) throws IOException {
 
         thisProject.setId(projId);
         thisProject.setReportPath(getJactReportPath());
@@ -173,11 +175,11 @@ public class HtmlAugmenter {
                             extractAndAddPackageTotal(getJactReportPath() + dirName +
                                     "/index.html", thisProject, dirName);
                         } else {
-                            if(matchedDep.getId() != null){
+                            if (matchedDep.getId() != null) {
                                 extractAndAddPackageTotal(getJactReportPath() + dirName +
                                         "/index.html", matchedDep, dirName);
                                 moveDirectory(directory, matchedDep.getReportPath());
-                            }else{
+                            } else {
                                 removeDirectory(directory);
                             }
                         }
@@ -191,9 +193,10 @@ public class HtmlAugmenter {
     /**
      * Formats the input HTML report with
      * newlines and correct indentation.
+     *
      * @param inputFilePath
      */
-    private static void formatHtmlReport(String inputFilePath){
+    private static void formatHtmlReport(String inputFilePath) {
         try {
             // Read the HTML file
             File inputFile = new File(inputFilePath);
@@ -211,9 +214,10 @@ public class HtmlAugmenter {
     /**
      * Creates the complete jact-report by reading the usage and writing
      * to the corresponding files.
+     *
      * @param dependenciesMap
      */
-    private static void createDependencyReports(Map<String, ProjectDependency> dependenciesMap) throws IOException{
+    private static void createDependencyReports(Map<String, ProjectDependency> dependenciesMap) throws IOException {
         // Get all the project/dependency/package usage
         calculateAllUsages(dependenciesMap);
 
@@ -226,13 +230,13 @@ public class HtmlAugmenter {
 
 
     private static void writeTransitiveToFile(ProjectDependency pd) throws IOException {
-        if(getTransitiveUsageMap().containsKey(pd.getId())){
+        if (getTransitiveUsageMap().containsKey(pd.getId())) {
             String path = pd.getReportPath();
             writeHTMLStringToFile(path + "index.html",
                     getTransitiveUsageMap().get(pd.getId()).usageToHTML("transitive-dependencies",
                             pd.dependencyUsage, false, true));
             writeHTMLTotalToFile(path + "transitive-dependencies.html", getTransitiveUsageMap().get(pd.getId()).totalUsageToHTML());
-            for(ProjectDependency child : pd.getChildDeps().values()){
+            for (ProjectDependency child : pd.getChildDeps().values()) {
                 writeHTMLStringToFile(path + "transitive-dependencies.html",
                         child.dependencyUsage.usageToHTML(depToDirName(child),
                                 getTransitiveUsageMap().get(pd.getId()), false, true));
@@ -246,22 +250,23 @@ public class HtmlAugmenter {
      * without parents are written to the overview and
      * child dependencies are written as entries in their
      * respective transitive reports.
+     *
      * @param dependenciesMap
      * @throws IOException
      */
     private static void writeDependenciesToFile(Map<String, ProjectDependency> dependenciesMap) throws IOException {
         for (ProjectDependency pd : dependenciesMap.values()) {
-                String path = pd.getReportPath();
-                if(pd.rootDep){
-                    writeHTMLStringToFile(getJactReportPath() + "dependencies/" + "index.html",
-                            pd.dependencyUsage.usageToHTML(depToDirName(pd), totalDependencyUsage, false, false));
-                }
-                writeHTMLTotalToFile(path + "index.html", pd.dependencyUsage.totalUsageToHTML());
-                writeTransitiveToFile(pd);
-                pd.writePackagesToFile(path, pd.dependencyUsage);
-                // Write the end of the template here
-                writeModifiedTemplateToFile("html-templates/endTemplate.html",
-                        path + "index.html", depToDirName(pd));
+            String path = pd.getReportPath();
+            if (pd.rootDep) {
+                writeHTMLStringToFile(getJactReportPath() + "dependencies/" + "index.html",
+                        pd.dependencyUsage.usageToHTML(depToDirName(pd), totalDependencyUsage, false, false));
+            }
+            writeHTMLTotalToFile(path + "index.html", pd.dependencyUsage.totalUsageToHTML());
+            writeTransitiveToFile(pd);
+            pd.writePackagesToFile(path, pd.dependencyUsage);
+            // Write the end of the template here
+            writeModifiedTemplateToFile("html-templates/endTemplate.html",
+                    path + "index.html", depToDirName(pd));
         }
         // Writes the HTML template for the Dependency Overview
         writeTemplateToFile("html-templates/endTemplate.html", getJactReportPath() + "dependencies/index.html");
@@ -270,6 +275,7 @@ public class HtmlAugmenter {
     /**
      * Writes the complete project overview
      * as well as the dependency overview.
+     *
      * @throws IOException
      */
     private static void writeOverviewToFile() throws IOException {
@@ -280,7 +286,7 @@ public class HtmlAugmenter {
         // Write the project package overview entries:
         for (Map.Entry<String, DependencyUsage> entry : thisProject.packageUsageMap.entrySet()) {
             try {
-                writeHTMLStringToFile(getJactReportPath() + "index.html", entry.getValue().usageToHTML(entry.getKey(),completeUsage, true, false));
+                writeHTMLStringToFile(getJactReportPath() + "index.html", entry.getValue().usageToHTML(entry.getKey(), completeUsage, true, false));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -297,18 +303,19 @@ public class HtmlAugmenter {
      * Calculates the transitive dependency usage
      * for the input dependency recursively adding
      * the children dependencies.
+     *
      * @param dependency
      * @param includeSelf
      * @return DependencyUsage
      */
-    private static DependencyUsage calculateTransitiveDepUsage(ProjectDependency dependency, boolean includeSelf){
+    private static DependencyUsage calculateTransitiveDepUsage(ProjectDependency dependency, boolean includeSelf) {
         DependencyUsage currUsage = new DependencyUsage();
-        if(!calculatedChildIds.contains(dependency.getId())){
-            for(ProjectDependency child : dependency.getChildDeps().values()){
+        if (!calculatedChildIds.contains(dependency.getId())) {
+            for (ProjectDependency child : dependency.getChildDeps().values()) {
                 currUsage.addAll(calculateTransitiveDepUsage(child, true));
             }
         }
-        if(includeSelf){
+        if (includeSelf) {
             currUsage.addAll(dependency.dependencyUsage);
         }
         return currUsage;
@@ -319,15 +326,16 @@ public class HtmlAugmenter {
      * Calculates the total usage for all layers of the report.
      * Layers include the complete overview, dependency overview
      * individual dependencies and their transitive dependencies.
+     *
      * @param dependenciesMap
      */
-    private static void calculateAllUsages(Map<String, ProjectDependency> dependenciesMap){
-        for(ProjectDependency dependency : dependenciesMap.values()){
+    private static void calculateAllUsages(Map<String, ProjectDependency> dependenciesMap) {
+        for (ProjectDependency dependency : dependenciesMap.values()) {
             summaryRawDependencyUsage.addAll(dependency.dependencyUsage);
-            if(dependency.getScope().equals("compile")){
+            if (dependency.getScope().equals("compile")) {
                 summaryCompileScopeDependencyUsage.addAll(dependency.dependencyUsage);
             }
-            if(!dependency.getChildDeps().isEmpty()){
+            if (!dependency.getChildDeps().isEmpty()) {
                 DependencyUsage transitiveDepsUsage = calculateTransitiveDepUsage(dependency, false);
                 summaryTransitiveUsage.addAll(transitiveDepsUsage);
                 dependency.dependencyUsage.addAll(transitiveDepsUsage);
@@ -337,7 +345,7 @@ public class HtmlAugmenter {
             // Calculate the total
             // Only ROOT dependencies are added, since the transitive
             // cost was included in the previous if-statement.
-            if(dependency.rootDep){
+            if (dependency.rootDep) {
                 totalDependencyUsage.addAll(dependency.dependencyUsage);
             }
         }
@@ -349,6 +357,7 @@ public class HtmlAugmenter {
 
     /**
      * Loads a html template from resources.
+     *
      * @param resourceName
      * @return
      * @throws IOException
@@ -371,6 +380,7 @@ public class HtmlAugmenter {
 
     /**
      * Writes a html template from resources.
+     *
      * @param filename
      * @param outputFilePath
      * @throws IOException
@@ -386,6 +396,7 @@ public class HtmlAugmenter {
     /**
      * Extracts and adds the usage of a package to its
      * corresponding dependency.
+     *
      * @param line
      * @param entryIndex
      * @param matchedDep
@@ -464,6 +475,7 @@ public class HtmlAugmenter {
     /**
      * Extracts the usage of all but the instructions/branches from
      * the jacoco report.
+     *
      * @param input
      * @return long
      */
@@ -490,6 +502,7 @@ public class HtmlAugmenter {
     /**
      * Extracts the usage of instructions/branches from
      * the jacoco report.
+     *
      * @param input
      * @return
      */
@@ -523,6 +536,7 @@ public class HtmlAugmenter {
 
     /**
      * Reads the jacoco report and extracts its usage.
+     *
      * @param inputFilePath
      * @param matchedDep
      * @param packageName
@@ -598,6 +612,7 @@ public class HtmlAugmenter {
 
     /**
      * Writes the total usage to the html report.
+     *
      * @param outputFilePath
      * @param inputString
      * @throws IOException
@@ -682,7 +697,7 @@ public class HtmlAugmenter {
         }
     }
 
-    private static void createReportSummary(){
+    private static void createReportSummary() {
         String outputFile = getJactReportPath() + "jactReportSummary.txt";
         DependencyUsage summaryRawCompleteUsage = new DependencyUsage();
         summaryRawCompleteUsage.addAll(summaryRawDependencyUsage);

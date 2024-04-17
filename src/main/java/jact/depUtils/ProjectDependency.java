@@ -1,7 +1,8 @@
 package jact.depUtils;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 import static jact.core.HtmlAugmenter.writeHTMLStringToFile;
 
@@ -62,7 +63,7 @@ public class ProjectDependency {
     }
 
     public void addChildDep(ProjectDependency child) {
-        if(!this.children.containsKey(child.getId())){
+        if (!this.children.containsKey(child.getId())) {
             this.children.put(child.getId(), child);
         }
     }
@@ -72,7 +73,7 @@ public class ProjectDependency {
     }
 
     public void addParentDep(ProjectDependency parent) {
-        if(!this.parents.containsKey(parent.getId())){
+        if (!this.parents.containsKey(parent.getId())) {
             this.parents.put(parent.getId(), parent);
         }
     }
@@ -107,7 +108,7 @@ public class ProjectDependency {
         StringBuilder sb = new StringBuilder();
         if (!this.getChildDeps().isEmpty()) {
             boolean comma = false;
-            for(ProjectDependency child : this.getChildDeps().values()){
+            for (ProjectDependency child : this.getChildDeps().values()) {
                 if (comma) {
                     sb.append(", ");
                 }
@@ -125,7 +126,7 @@ public class ProjectDependency {
         }
         StringBuilder sb = new StringBuilder();
         boolean comma = false;
-        for(ProjectDependency parent : this.getParentDeps().values()){
+        for (ProjectDependency parent : this.getParentDeps().values()) {
             if (comma) {
                 sb.append(", ");
             }
@@ -148,6 +149,7 @@ public class ProjectDependency {
 
     /**
      * Gets the corresponding directory name for a dependency.
+     *
      * @param dependency
      * @return String
      */

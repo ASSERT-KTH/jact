@@ -2,8 +2,8 @@ package jact.test.depUtils;
 
 import jact.depUtils.ProjectDependency;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -57,7 +57,7 @@ public class ProjectDependenciesTest {
     public static Map<String, ProjectDependency> dependencies;
 
     @AfterAll
-    public static void cleanUpTestDirs(){
+    public static void cleanUpTestDirs() {
         removeDirectory(new File(testDirectory));
         Assertions.assertFalse(new File(testDirectory).exists());
     }
@@ -69,7 +69,7 @@ public class ProjectDependenciesTest {
      * by ProjectDependency objects which contain all the required
      * fields for identification and recording usage.
      */
-    public static void initTestDependencies(){
+    public static void initTestDependencies() {
         assertTrue(new File(testResourcesDir + "lockfile.json").exists());
         dependencies = getAllProjectDependencies(testResourcesDir, false, false);
     }
@@ -86,12 +86,12 @@ public class ProjectDependenciesTest {
      *                     All dependencies are present with their
      *                     unique ID in the pre-defined list of IDs.
      */
-    public void allDepIdsPresentTest(){
+    public void allDepIdsPresentTest() {
         // Check the number of dependencies
         assertEquals(15, dependencies.size());
 
         // Check that all dependencies are present
-        for (Map.Entry<String, ProjectDependency> pdEntry : dependencies.entrySet()){
+        for (Map.Entry<String, ProjectDependency> pdEntry : dependencies.entrySet()) {
             assertTrue(dependencyIds.contains(pdEntry.getValue().getId()));
         }
     }
@@ -108,14 +108,14 @@ public class ProjectDependenciesTest {
      *                     correctly generated and the children mention
      *                     Google Guava in their `parents` list.
      */
-    public void parentAndChildrenDepsTest(){
+    public void parentAndChildrenDepsTest() {
         // Check that Google Guavas children dependencies are correct
-        for(ProjectDependency childDep : dependencies.get("com.google.guava:guava:33.0.0-jre").getChildDeps().values()){
+        for (ProjectDependency childDep : dependencies.get("com.google.guava:guava:33.0.0-jre").getChildDeps().values()) {
             assertTrue(googleGuavaChildrenDeps.contains(childDep.getId()));
             // Check that the parent-list contains Google Guava
             boolean foundChildDep = false;
-            for(ProjectDependency deps : childDep.getParentDeps().values()){
-                if(deps.getId().equals(dependencies.get("com.google.guava:guava:33.0.0-jre").getId())){
+            for (ProjectDependency deps : childDep.getParentDeps().values()) {
+                if (deps.getId().equals(dependencies.get("com.google.guava:guava:33.0.0-jre").getId())) {
                     foundChildDep = true;
                 }
             }
@@ -136,7 +136,7 @@ public class ProjectDependenciesTest {
      *                     are correctly generated and correctly defined in
      *                     the chain of child-dependencies.
      */
-    public void multipleTransitiveDepsTest(){
+    public void multipleTransitiveDepsTest() {
         // Check that "org.junit.platform:junit-platform-commons:1.10.2"
         // is the second child in "org.junit.jupiter:junit-jupiter-api:5.10.2"
         assertTrue(dependencies.get("org.junit.jupiter:junit-jupiter-api:5.10.2").getChildDeps().get("org.junit.platform:junit-platform-commons:1.10.2").getId().equals("org.junit.platform:junit-platform-commons:1.10.2"));
@@ -161,7 +161,7 @@ public class ProjectDependenciesTest {
      *     Post-condition: Created ProjectDependency objects have the
      *                     correct corresponding values within their fields.
      */
-    public void properFieldValuesTest(){
+    public void properFieldValuesTest() {
         // Check that "org.apache.commons:commons-math3:3.6.1" has correct field values
         assertTrue(dependencies.get("org.apache.commons:commons-math3:3.6.1").getId().equals("org.apache.commons:commons-math3:3.6.1"));
         assertTrue(dependencies.get("org.apache.commons:commons-math3:3.6.1").getGroupId().equals("org.apache.commons"));
@@ -189,10 +189,10 @@ public class ProjectDependenciesTest {
      *     Post-condition: All ProjectDependencies have the correct
      *                     report path set.
      */
-    public void reportPathsTest(){
+    public void reportPathsTest() {
         // Brute force check that all dependencies have their
         // manually checked report paths
-        for(String depId : dependencyIds){
+        for (String depId : dependencyIds) {
             ProjectDependency currDep = dependencies.get(depId);
             assertEquals(REPORTPATH + "dependencies/" + depToDirName(currDep) + "/", currDep.getReportPath());
         }
@@ -210,7 +210,7 @@ public class ProjectDependenciesTest {
      *                     have a corresponding entry in the
      *                     transitiveUsageMap.
      */
-    public void transitiveReportPathsTest(){
+    public void transitiveReportPathsTest() {
         assertEquals(4, getTransitiveUsageMap().size());
         assertTrue(getTransitiveUsageMap().containsKey("com.google.guava:guava:33.0.0-jre"));
         assertTrue(getTransitiveUsageMap().containsKey("junit:junit:4.13.2"));

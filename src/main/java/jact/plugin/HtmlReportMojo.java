@@ -11,7 +11,7 @@ import java.net.URISyntaxException;
 import java.util.Map;
 import java.util.Set;
 
-import static jact.core.HtmlAugmenter.*;
+import static jact.core.HtmlAugmenter.generateHtmlReport;
 import static jact.utils.CommandExecutor.copyJacocoCliJar;
 import static jact.utils.CommandExecutor.executeJacocoCLI;
 

@@ -49,8 +49,7 @@ public abstract class AbstractReportMojo extends AbstractMojo {
 
     @Override
     public final void execute()
-            throws MojoExecutionException, MojoFailureException
-    {
+            throws MojoExecutionException, MojoFailureException {
         if (skipReportGeneration()) {
             getLog().info("Skipping plugin execution...");
             return;
@@ -62,13 +61,14 @@ public abstract class AbstractReportMojo extends AbstractMojo {
             throws MojoExecutionException, MojoFailureException;
 
 
-    public boolean getDepFilterParam(){
+    public boolean getDepFilterParam() {
         return Boolean.parseBoolean(this.skipTestDependencies);
     }
 
-    public static String getJactReportPath(){
+    public static String getJactReportPath() {
         return jactReportPath;
     }
+
     public String getLocalRepoPath() {
         return this.session.getLocalRepository().getBasedir();
     }
@@ -85,33 +85,31 @@ public abstract class AbstractReportMojo extends AbstractMojo {
         return this.project.getVersion();
     }
 
-    public boolean skipReportGeneration()
-    {
+    public boolean skipReportGeneration() {
         return Boolean.parseBoolean(this.skipJACT);
     }
 
-    public MavenProject getProject()
-    {
+    public MavenProject getProject() {
         return this.project;
     }
 
-    public String getProjId(){
+    public String getProjId() {
         return getProjectGroupId() + ":" + getProjectArtifactId() + ":" + getProjectVersion();
     }
 
-    public boolean getSummaryProperty(){
+    public boolean getSummaryProperty() {
         return Boolean.parseBoolean(this.includeSummary);
     }
 
     public String getOutputJarName() {
-        if(shadedJarName == null){
+        if (shadedJarName == null) {
             shadedJarName = this.project.getBuild().getFinalName() + "-shaded";
         }
         return shadedJarName;
     }
 
     public Map<String, Set<String>> getProjectPackagesAndClasses() {
-        if(packageClassMap.isEmpty()){
+        if (packageClassMap.isEmpty()) {
             collectClassNamesAndPackages();
         }
         return packageClassMap;

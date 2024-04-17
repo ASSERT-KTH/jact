@@ -42,7 +42,7 @@ public class FileSystemUtils {
             if (!file.delete()) {
                 System.out.println("Failed to delete the file.");
             }
-        }else {
+        } else {
             System.out.println("File does not exist.");
         }
     }
@@ -72,7 +72,7 @@ public class FileSystemUtils {
     public static void createDir(String directoryPath) {
         File dir = new File(directoryPath);
         boolean success;
-        if(!dir.exists()){
+        if (!dir.exists()) {
             success = dir.mkdirs();
             // Check if directory creation was successful
             if (success) {

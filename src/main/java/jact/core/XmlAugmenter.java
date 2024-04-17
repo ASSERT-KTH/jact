@@ -16,7 +16,9 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 import static jact.depUtils.PackageToDependencyResolver.packageToDependency;
 import static jact.plugin.AbstractReportMojo.getJactReportPath;
@@ -40,10 +42,9 @@ public class XmlAugmenter {
     private static Map<String, String> fileNameToPackageMap = new HashMap<>();
 
 
-
     public static void generateXmlReport(Map<String, ProjectDependency> dependenciesMap,
                                          Map<String, Set<String>> projPackagesAndClassMap,
-                                         String localRepoPath, String projId){
+                                         String localRepoPath, String projId) {
         dependencyUsage = new DependencyUsage();
         projectUsage = new DependencyUsage();
         thisProject = new ProjectDependency();
@@ -57,67 +58,69 @@ public class XmlAugmenter {
 
     /**
      * Extracts the header information form the jacoco XML report.
+     *
      * @param xmlFilePath
      * @return String
      */
     private static String extractXmlHeader(String xmlFilePath) {
 
-            StringBuilder sessionInfo = new StringBuilder();
+        StringBuilder sessionInfo = new StringBuilder();
 
-            try {
-                // Create a DocumentBuilder
-                DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-                factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
-                DocumentBuilder builder = factory.newDocumentBuilder();
+        try {
+            // Create a DocumentBuilder
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+            DocumentBuilder builder = factory.newDocumentBuilder();
 
-                // Parse the XML file
-                Document doc = builder.parse(new File(xmlFilePath));
+            // Parse the XML file
+            Document doc = builder.parse(new File(xmlFilePath));
 
-                // Get the root element
-                Element root = doc.getDocumentElement();
+            // Get the root element
+            Element root = doc.getDocumentElement();
 
-                // Find the sessioninfo node
-                NodeList sessionInfoList = root.getElementsByTagName("sessioninfo");
-                if (sessionInfoList.getLength() > 0) {
-                    Node sessionInfoNode = sessionInfoList.item(0);
-                    sessionInfo.append(nodeToString(sessionInfoNode));
-                }
-            } catch (Exception e) {
-                System.err.println("Error reading XML file: " + e.getMessage());
-                e.printStackTrace();
+            // Find the sessioninfo node
+            NodeList sessionInfoList = root.getElementsByTagName("sessioninfo");
+            if (sessionInfoList.getLength() > 0) {
+                Node sessionInfoNode = sessionInfoList.item(0);
+                sessionInfo.append(nodeToString(sessionInfoNode));
             }
-
-            return sessionInfo.toString();
+        } catch (Exception e) {
+            System.err.println("Error reading XML file: " + e.getMessage());
+            e.printStackTrace();
         }
 
-        // Helper method to convert a Node to String
-        private static String nodeToString(Node node) {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("<").append(node.getNodeName());
+        return sessionInfo.toString();
+    }
 
-            // Append attributes
-            if (node.hasAttributes()) {
-                NamedNodeMap attributes = node.getAttributes();
-                for (int i = 0; i < attributes.getLength(); i++) {
-                    Node attr = attributes.item(i);
-                    stringBuilder.append(" ").append(attr.getNodeName()).append("=\"").append(attr.getNodeValue()).append("\"");
-                }
+    // Helper method to convert a Node to String
+    private static String nodeToString(Node node) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("<").append(node.getNodeName());
+
+        // Append attributes
+        if (node.hasAttributes()) {
+            NamedNodeMap attributes = node.getAttributes();
+            for (int i = 0; i < attributes.getLength(); i++) {
+                Node attr = attributes.item(i);
+                stringBuilder.append(" ").append(attr.getNodeName()).append("=\"").append(attr.getNodeValue()).append("\"");
             }
-            stringBuilder.append("/>");
-            return stringBuilder.toString();
         }
+        stringBuilder.append("/>");
+        return stringBuilder.toString();
+    }
 
     /**
      * Creates individual XML reports for each package
      * in the jacoco XML report.
+     *
      * @param dependenciesMap
      * @param projPackagesAndClassMap
      * @param localRepoPath
      * @param projId
      */
     private static Map<String, Document> extractUsageAndGeneratePackageReports(Map<String, ProjectDependency> dependenciesMap,
-                                         Map<String, Set<String>> projPackagesAndClassMap,
-                                         String localRepoPath, String projId){
+                                                                               Map<String, Set<String>> projPackagesAndClassMap,
+                                                                               String localRepoPath, String projId) {
         thisProject.setId(projId);
         Map<String, Document> packageReports = new HashMap<>();
         try {
@@ -167,15 +170,16 @@ public class XmlAugmenter {
      * Reads the individual package reports and
      * extracts the usage of each dependency or
      * project code.
+     *
      * @param pathToReport
      * @param dependenciesMap
      * @param projPackagesAndClassMap
      * @param localRepoPath
      */
     private static void readAndExtractPackageUsage(String pathToReport,
-                                                  Map<String, ProjectDependency> dependenciesMap,
-                                                  Map<String, Set<String>> projPackagesAndClassMap,
-                                                  String localRepoPath){
+                                                   Map<String, ProjectDependency> dependenciesMap,
+                                                   Map<String, Set<String>> projPackagesAndClassMap,
+                                                   String localRepoPath) {
         File reportDir = new File(pathToReport);
         // Check if the directory exists
         if (reportDir.exists() && reportDir.isDirectory()) {
@@ -186,12 +190,12 @@ public class XmlAugmenter {
                 for (File file : files) {
                     String packageName = fileNameToPackageMap.get(file.getName()).replaceAll("/", ".");
                     ProjectDependency matchedDep = packageToDependency(packageName, dependenciesMap, projPackagesAndClassMap, localRepoPath);
-                    if(matchedDep.getId() != null){
+                    if (matchedDep.getId() != null) {
                         // We know the package comes from a dependency
                         extractCounterValues(getJactReportPath() + "xml_reports/" + file.getName(), matchedDep, dependencyUsage, file.getName());
-                    }else if(projPackagesAndClassMap.containsKey(packageName)){
+                    } else if (projPackagesAndClassMap.containsKey(packageName)) {
                         extractCounterValues(getJactReportPath() + "xml_reports/" + file.getName(), thisProject, projectUsage, file.getName());
-                    }else{
+                    } else {
                         removeFile(getJactReportPath() + "xml_reports/" + file.getName());
                     }
                 }
@@ -212,6 +216,7 @@ public class XmlAugmenter {
      * the source of packages where totals for the
      * all dependencies, project and the overall
      * total is written in each section.
+     *
      * @param dependenciesMap
      * @param packageReports
      */
@@ -299,10 +304,11 @@ public class XmlAugmenter {
     /**
      * Writes the dependency packages
      * to the complete XML report.
+     *
      * @param dependency
      * @param writer
      */
-    private static void writePackageReportsFromMap(ProjectDependency dependency, FileWriter writer){
+    private static void writePackageReportsFromMap(ProjectDependency dependency, FileWriter writer) {
         for (Map.Entry<String, DependencyUsage> entry : dependency.packageUsageMap.entrySet()) {
             File packageFile = new File(getJactReportPath() + "xml_reports/" + entry.getKey());
             try (BufferedReader reader = new BufferedReader(new FileReader(packageFile))) {
@@ -337,6 +343,7 @@ public class XmlAugmenter {
 
     /**
      * Extracts the total values from the jacoco XML report.
+     *
      * @param inputFilePath
      * @param matchedDep
      * @param usage
@@ -381,14 +388,14 @@ public class XmlAugmenter {
             e.printStackTrace();
         }
         // No usage, such packages are not included in the html version.
-        if(!matchedDep.packageUsageMap.containsKey(packageFileName)){
+        if (!matchedDep.packageUsageMap.containsKey(packageFileName)) {
             removeFile(getJactReportPath() + "xml_reports/" + packageFileName);
         }
     }
 
     private static void processCounterValues(String type, long missed, long covered, ProjectDependency matchedDep, DependencyUsage packageUsage) {
         // Add the total here!
-        switch (type){
+        switch (type) {
             case "INSTRUCTION":
                 packageUsage.addMissedInstructions(missed);
                 packageUsage.addTotalInstructions(missed + covered);
@@ -421,6 +428,7 @@ public class XmlAugmenter {
     /**
      * Creates the individual XML package reports
      * from the jacoco XML report.
+     *
      * @param packageElement
      * @return
      * @throws Exception
@@ -471,6 +479,7 @@ public class XmlAugmenter {
 
     /**
      * Formats the XML to correctly ident each line.
+     *
      * @param file
      * @param doc
      * @param validateWithDTD

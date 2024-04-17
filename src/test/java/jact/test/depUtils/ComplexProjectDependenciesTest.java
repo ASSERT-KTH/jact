@@ -2,12 +2,15 @@ package jact.test.depUtils;
 
 import jact.depUtils.ProjectDependency;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 import static jact.depUtils.ProjectDependencies.getAllProjectDependencies;
 import static jact.depUtils.ProjectDependencies.getTransitiveUsageMap;
@@ -123,7 +126,7 @@ public class ComplexProjectDependenciesTest {
     public static Map<String, ProjectDependency> dependencies;
 
     @AfterAll
-    public static void cleanUpTestDirs(){
+    public static void cleanUpTestDirs() {
         removeDirectory(new File(testDirectory));
         Assertions.assertFalse(new File(testDirectory).exists());
     }
@@ -135,7 +138,7 @@ public class ComplexProjectDependenciesTest {
      * by ProjectDependency objects which contain all the required
      * fields for identification and recording usage.
      */
-    public static void initTestDependencies(){
+    public static void initTestDependencies() {
         dependencyIds = removeDuplicates(dependencyIds);
         assertTrue(new File(testResourcesDir + "lockfile.json").exists());
         dependencies = getAllProjectDependencies(testResourcesDir, false, false);
@@ -153,12 +156,12 @@ public class ComplexProjectDependenciesTest {
      *                     ProjectDependency object in the dependencies map.
      *                     The corresponding object has the correct report path.
      */
-    public void allDepIdsPresentTest(){
+    public void allDepIdsPresentTest() {
         // Check the number of dependencies
         assertEquals(68, dependencies.size());
 
         // Check that all dependencies are present
-        for (Map.Entry<String, ProjectDependency> pdEntry : dependencies.entrySet()){
+        for (Map.Entry<String, ProjectDependency> pdEntry : dependencies.entrySet()) {
             assertTrue(dependencyIds.contains(pdEntry.getValue().getId()));
             assertTrue(pdEntry.getValue().getReportPath().equals(REPORTPATH + "dependencies/" + depToDirName(pdEntry.getValue()) + "/"));
         }
@@ -176,7 +179,7 @@ public class ComplexProjectDependenciesTest {
      *                     have a corresponding entry in the
      *                     transitiveUsageMap.
      */
-    public void transitiveReportPathsTest(){
+    public void transitiveReportPathsTest() {
         assertEquals(30, getTransitiveUsageMap().size());
 
         assertTrue(getTransitiveUsageMap().containsKey("org.apache.maven.doxia:doxia-logging-api:1.12.0"));

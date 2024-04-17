@@ -14,7 +14,7 @@ import java.util.zip.ZipFile;
 public class PackageToDependencyResolver {
 
     public static ProjectDependency packageToDependency(String packageName, Map<String, ProjectDependency> dependenciesMap,
-                                                      Map<String, Set<String>> projPackagesAndClassMap, String localRepoPath) {
+                                                        Map<String, Set<String>> projPackagesAndClassMap, String localRepoPath) {
 
         boolean packageNameInProject = projPackagesAndClassMap.containsKey(packageName);
         boolean foundDep = false;
@@ -22,7 +22,7 @@ public class PackageToDependencyResolver {
 
         // Iterate over each dependency
         for (ProjectDependency dependency : dependenciesMap.values()) {
-            if(foundDep){
+            if (foundDep) {
                 break;
             }
             String groupId = dependency.getGroupId();
@@ -54,11 +54,11 @@ public class PackageToDependencyResolver {
             }
         }
 
-        if(matchedDep.getId() != null && packageNameInProject){
+        if (matchedDep.getId() != null && packageNameInProject) {
             // Extract the classes in the project and put them in a separate directory
             throw new RuntimeException("CANNOT RESOLVE PACKAGES: Package name: " + packageName +
                     " has an identical name to a package in " + matchedDep.getId());
-        }else if(matchedDep.getId() == null && !packageNameInProject){
+        } else if (matchedDep.getId() == null && !packageNameInProject) {
             // Usually a problem with a runtime dependency required by a test-dependency.
             // Which jacoco occasionally includes. Remove it.
             //System.out.println("CANNOT MATCH PACKAGE TO ANY DEPENDENCY: " + packageName);

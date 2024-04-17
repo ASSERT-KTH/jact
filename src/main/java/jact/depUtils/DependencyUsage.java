@@ -168,9 +168,9 @@ public class DependencyUsage {
             icon = "el_group";
         }
         String link = dependencyDirName + "/index.html";
-        if(dependencyDirName.equals("transitive-dependencies") && transitiveEntry){
+        if (dependencyDirName.equals("transitive-dependencies") && transitiveEntry) {
             link = "transitive-dependencies.html";
-        }else if(transitiveEntry){
+        } else if (transitiveEntry) {
             link = "../" + dependencyDirName + "/index.html";
         }
 
@@ -215,7 +215,7 @@ public class DependencyUsage {
         return htmlString;
     }
 
-    public String totalUsageToXML(){
+    public String totalUsageToXML() {
         long coveredInstructions = this.getTotalInstructions() - this.getMissedInstructions();
         long coveredBranches = this.getTotalBranches() - this.getMissedBranches();
         long coveredLines = this.getTotalLines() - this.getMissedLines();
@@ -224,17 +224,17 @@ public class DependencyUsage {
         long coveredClasses = this.getTotalClasses() - this.getMissedClasses();
 
         String xmlString =
-                "<counter covered=\""+coveredInstructions+"\" missed=\""+ this.getMissedInstructions() +"\" type=\"INSTRUCTION\"/>" +
-                "<counter covered=\""+coveredBranches+"\" missed=\""+ this.getMissedBranches() +"\" type=\"BRANCH\"/>" +
-                "<counter covered=\""+coveredLines+"\" missed=\""+ this.getMissedLines() +"\" type=\"LINE\"/>" +
-                "<counter covered=\""+coveredCyclomaticComplexity+"\" missed=\""+ this.getMissedCyclomaticComplexity() +"\" type=\"COMPLEXITY\"/>" +
-                "<counter covered=\""+coveredMethods+"\" missed=\""+ this.getMissedMethods() +"\" type=\"METHOD\"/>" +
-                "<counter covered=\""+coveredClasses+"\" missed=\""+ this.getMissedClasses() +"\" type=\"CLASS\"/>";
+                "<counter covered=\"" + coveredInstructions + "\" missed=\"" + this.getMissedInstructions() + "\" type=\"INSTRUCTION\"/>" +
+                        "<counter covered=\"" + coveredBranches + "\" missed=\"" + this.getMissedBranches() + "\" type=\"BRANCH\"/>" +
+                        "<counter covered=\"" + coveredLines + "\" missed=\"" + this.getMissedLines() + "\" type=\"LINE\"/>" +
+                        "<counter covered=\"" + coveredCyclomaticComplexity + "\" missed=\"" + this.getMissedCyclomaticComplexity() + "\" type=\"COMPLEXITY\"/>" +
+                        "<counter covered=\"" + coveredMethods + "\" missed=\"" + this.getMissedMethods() + "\" type=\"METHOD\"/>" +
+                        "<counter covered=\"" + coveredClasses + "\" missed=\"" + this.getMissedClasses() + "\" type=\"CLASS\"/>";
 
         return xmlString;
     }
 
-    public String usageToString(String name){
+    public String usageToString(String name) {
         long coveredInstructions = this.getTotalInstructions() - this.getMissedInstructions();
         String coveredInstructionsPercentage = lessRoundedPercentage(coveredInstructions, this.getTotalInstructions());
         String missedInstructionsPercentage = lessRoundedPercentage(this.getMissedInstructions(), this.getTotalInstructions());
@@ -271,7 +271,7 @@ public class DependencyUsage {
                         " | missed = " + this.getMissedLines() + " : " + missedLinesPercentage + " | total = " + this.getTotalLines() + "\n" +
 
                         "COMPLEXITY: " + "covered = " + coveredCyclomaticComplexity + " : " + coveredComplexityPercentage +
-                        " | missed = " + this.getMissedCyclomaticComplexity() +  " : " + missedComplexityPercentage + " | total = " + this.getCyclomaticComplexity() + "\n" +
+                        " | missed = " + this.getMissedCyclomaticComplexity() + " : " + missedComplexityPercentage + " | total = " + this.getCyclomaticComplexity() + "\n" +
 
                         "METHOD: " + "covered = " + coveredMethods + " : " + coveredMethodsPercentage +
                         " | missed = " + this.getMissedMethods() + " : " + missedMethodsPercentage + " | total = " + this.getTotalMethods() + "\n" +
