@@ -29,14 +29,13 @@ public class XmlAugmenter {
     private static DependencyUsage dependencyUsage;
     private static DependencyUsage projectUsage;
     private static ProjectDependency thisProject;
+    private static DependencyUsage totalUsage;
 
     private static final String FINALREPORTPATH = getJactReportPath() + "jact_report.xml";
 
     private static String xmlDtd = "<!DOCTYPE report PUBLIC \"-//JACOCO//DTD Report 1.1//EN\" \"report.dtd\">";
     private static String xmlReportTag = "<report name=\"JACT Coverage Report (Generated with JaCoCo)\">";
     private static String sessionInfo;
-
-    private static DependencyUsage totalUsage = new DependencyUsage();
 
     private static Map<String, String> fileNameToPackageMap = new HashMap<>();
 
@@ -48,6 +47,7 @@ public class XmlAugmenter {
         dependencyUsage = new DependencyUsage();
         projectUsage = new DependencyUsage();
         thisProject = new ProjectDependency();
+        totalUsage = new DependencyUsage();
 
         Map<String, Document> packageReports =
                 extractUsageAndGeneratePackageReports(dependenciesMap, projPackagesAndClassMap, localRepoPath, projId);
@@ -124,7 +124,6 @@ public class XmlAugmenter {
             // Load Jacoco XML report
             File xmlFile = new File(getJactReportPath() + "jacoco_report.xml");
             sessionInfo = extractXmlHeader(getJactReportPath() + "jacoco_report.xml");
-            extractCounterValues(getJactReportPath() + "jacoco_report.xml", new ProjectDependency(), totalUsage, "total");
 
             // Disable DTD validation
             System.setProperty("javax.xml.parsers.DocumentBuilderFactory", "com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl");
@@ -202,6 +201,8 @@ public class XmlAugmenter {
         } else {
             System.out.println("Directory does not exist or is not a directory.");
         }
+        totalUsage.addAll(projectUsage);
+        totalUsage.addAll(dependencyUsage);
     }
 
     /**
