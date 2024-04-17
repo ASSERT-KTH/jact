@@ -68,7 +68,7 @@ public class CombinedReportMojo extends AbstractReportMojo {
         executeJacocoCLI(getOutputJarName(), true);
 
         getLog().info("Organizing the complete HTML coverage report.");
-        generateHtmlReport(projectDependenciesMapHTML, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
+        generateHtmlReport(projectDependenciesMapHTML, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId(), getSummaryProperty());
         getLog().info("JACT: HTML Report Successfully Generated!");
     }
 }

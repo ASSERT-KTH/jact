@@ -55,7 +55,7 @@ public class HtmlReportMojo extends AbstractReportMojo {
         getLog().info("Creating the complete HTML coverage report.");
         executeJacocoCLI(getOutputJarName(), true);
         getLog().info("Organizing the complete HTML coverage report.");
-        generateHtmlReport(projectDependenciesMap, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
+        generateHtmlReport(projectDependenciesMap, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId(), getSummaryProperty());
         getLog().info("JACT: HTML Report Successfully Generated!");
     }
 }

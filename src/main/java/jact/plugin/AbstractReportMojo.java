@@ -21,8 +21,6 @@ public abstract class AbstractReportMojo extends AbstractMojo {
     private static String artifactId;
     private static String version;
     private static Map<String, Set<String>> packageClassMap = new HashMap<>();
-    @Parameter(property = "scope")
-    String scope;
     /**
      * Gives access to the Maven project information.
      */
@@ -44,7 +42,10 @@ public abstract class AbstractReportMojo extends AbstractMojo {
      * Skip plugin execution completely.
      */
     @Parameter(property = "skipJACT", defaultValue = "false")
-    private boolean skipJACT;
+    private String skipJACT;
+
+    @Parameter(property = "includeSummary", defaultValue = "false")
+    private String includeSummary;
 
     @Override
     public final void execute()
@@ -86,7 +87,7 @@ public abstract class AbstractReportMojo extends AbstractMojo {
 
     public boolean skipReportGeneration()
     {
-        return this.skipJACT;
+        return Boolean.parseBoolean(this.skipJACT);
     }
 
     public MavenProject getProject()
@@ -96,6 +97,10 @@ public abstract class AbstractReportMojo extends AbstractMojo {
 
     public String getProjId(){
         return getProjectGroupId() + ":" + getProjectArtifactId() + ":" + getProjectVersion();
+    }
+
+    public boolean getSummaryProperty(){
+        return Boolean.parseBoolean(this.includeSummary);
     }
 
     public String getOutputJarName() {

@@ -44,7 +44,7 @@ public class HtmlAugmenter {
      */
     public static void generateHtmlReport(Map<String, ProjectDependency> dependenciesMap,
                                           Map<String, Set<String>> projPackagesAndClassMap,
-                                          String localRepoPath, String projId){
+                                          String localRepoPath, String projId, boolean generateSummary){
         thisProject = new ProjectDependency();
         totalDependencyUsage = new DependencyUsage();
         completeUsage = new DependencyUsage();
@@ -74,21 +74,9 @@ public class HtmlAugmenter {
             throw new RuntimeException(e);
         }
 
-        createReportSummary(); // Make this optional
-    }
-
-    private static void createReportSummary(){
-        String outputFile = getJactReportPath() + "jactReportSummary.txt";
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
-            writer.write(thisProject.dependencyUsage.usageToString("PROJECT USAGE") + "\n");
-            writer.write(summaryRawDependencyUsage.usageToString("RAW DEPENDENCY USAGE") + "\n");
-            writer.write(totalDependencyUsage.usageToString("TOTAL DEPENDENCY USAGE") + "\n");
-            writer.write(summaryCompileScopeDependencyUsage.usageToString("COMPILE-SCOPE USAGE") + "\n");
-            writer.write(summaryTransitiveUsage.usageToString("TRANSITIVE USAGE") + "\n");
-            writer.write(completeUsage.usageToString("COMPLETE USAGE"));
-        } catch (IOException e) {
-            e.printStackTrace();
+        // Creates a report summary (mainly for gathering results)
+        if(generateSummary){
+            createReportSummary();
         }
     }
 
@@ -691,6 +679,21 @@ public class HtmlAugmenter {
                     return stringBuilder.toString();
                 }
             }
+        }
+    }
+
+    private static void createReportSummary(){
+        String outputFile = getJactReportPath() + "jactReportSummary.txt";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
+            writer.write(thisProject.dependencyUsage.usageToString("PROJECT USAGE") + "\n");
+            writer.write(summaryRawDependencyUsage.usageToString("RAW DEPENDENCY USAGE") + "\n");
+            writer.write(totalDependencyUsage.usageToString("TOTAL DEPENDENCY USAGE") + "\n");
+            writer.write(summaryCompileScopeDependencyUsage.usageToString("COMPILE-SCOPE USAGE") + "\n");
+            writer.write(summaryTransitiveUsage.usageToString("TRANSITIVE USAGE") + "\n");
+            writer.write(completeUsage.usageToString("COMPLETE USAGE"));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

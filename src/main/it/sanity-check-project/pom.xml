@@ -113,6 +113,9 @@
                 <groupId>java.absolute.coverage.tracker</groupId>
                 <artifactId>jact</artifactId>
                 <version>1.0</version>
+                <configuration>
+                    <includeSummary>true</includeSummary>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
