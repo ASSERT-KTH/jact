@@ -18,6 +18,7 @@ public class CommandExecutor {
     /**
      * Copies the jacoco cli jar for generating the jacoco
      * report before augmenting it.
+     *
      * @throws IOException
      * @throws URISyntaxException
      */
@@ -57,6 +58,7 @@ public class CommandExecutor {
      * Copies the jacoco report.dtd file containing
      * the jacoco xml report specification for verifying
      * the JACT XML report.
+     *
      * @param filename
      * @param destinationDirectory
      * @throws IOException
@@ -93,6 +95,7 @@ public class CommandExecutor {
 
     /**
      * Copies the JACT logo for the HTML report.
+     *
      * @param filename
      * @param destinationDirectory
      * @throws IOException
@@ -135,6 +138,7 @@ public class CommandExecutor {
     /**
      * Generates the dependency lockfile for identifying
      * all dependencies in the project and their heritage.
+     *
      * @param targetDirectory
      */
     public static void generateDependencyLockfile(String targetDirectory) {
@@ -208,10 +212,10 @@ public class CommandExecutor {
             // Retrieve the URL to the jacococli.jar file
             // Command to execute Jacoco CLI
             String command;
-            if(htmlReport){
+            if (htmlReport) {
                 command = String.format("java -jar ./target/jact-resources/jacococli.jar report ./target/jacoco.exec " +
                         "--classfiles " + "./target/" + jarName + ".jar --html ./target/jact-report");
-            }else{
+            } else {
                 // XML report:
                 command = String.format("java -jar ./target/jact-resources/jacococli.jar report ./target/jacoco.exec " +
                         "--classfiles " + "./target/" + jarName + ".jar --xml ./target/jact-report/jacoco_report.xml");

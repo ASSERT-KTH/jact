@@ -16,7 +16,7 @@ public class FileSystemUtilsTest {
     static String testDirectory = "./src/test/java/jact/test/testingDir/";
 
     @AfterAll
-    public static void cleanUpTestDirs(){
+    public static void cleanUpTestDirs() {
         removeDirectory(new File(testDirectory));
         Assertions.assertFalse(new File(testDirectory).exists());
     }
@@ -30,7 +30,7 @@ public class FileSystemUtilsTest {
      *     Post-condition: Creating and removing empty directories
      *                     is performed correctly.
      */
-    public void createAndRemoveEmptyDirectoryTest(){
+    public void createAndRemoveEmptyDirectoryTest() {
         Assertions.assertFalse(new File(testDirectory + "createdDir").exists());
         createDir(testDirectory + "createdDir");
         assertTrue(new File(testDirectory + "createdDir").exists());
@@ -82,14 +82,14 @@ public class FileSystemUtilsTest {
         moveDirectory(new File(testDirectory + "createdDir"), testDirectory + "movedDir");
         Assertions.assertFalse(new File(testDirectory + "createdDir" + "/jact-logo.png").exists());
         Assertions.assertFalse(new File(testDirectory + "createdDir").exists());
-        assertTrue(new File(testDirectory + "/movedDir" +"/createdDir").exists());
-        assertTrue(new File(testDirectory + "/movedDir" +"/createdDir" + "/jact-logo.png").exists());
+        assertTrue(new File(testDirectory + "/movedDir" + "/createdDir").exists());
+        assertTrue(new File(testDirectory + "/movedDir" + "/createdDir" + "/jact-logo.png").exists());
 
 
         // Remove the moved directory
         removeDirectory(new File(testDirectory + "movedDir"));
-        Assertions.assertFalse(new File(testDirectory + "/movedDir" +"/createdDir" + "/jact-logo.png").exists());
-        Assertions.assertFalse(new File(testDirectory + "/movedDir" +"/createdDir").exists());
+        Assertions.assertFalse(new File(testDirectory + "/movedDir" + "/createdDir" + "/jact-logo.png").exists());
+        Assertions.assertFalse(new File(testDirectory + "/movedDir" + "/createdDir").exists());
     }
 
     @Test

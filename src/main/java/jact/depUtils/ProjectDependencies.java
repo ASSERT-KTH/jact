@@ -3,11 +3,13 @@ package jact.depUtils;
 import com.google.gson.*;
 
 import java.io.FileReader;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import static jact.depUtils.ProjectDependency.depToDirName;
+import static jact.plugin.AbstractReportMojo.getJactReportPath;
 import static jact.utils.CommandExecutor.generateDependencyLockfile;
 
 /**
@@ -15,25 +17,35 @@ import static jact.utils.CommandExecutor.generateDependencyLockfile;
  * in order to calculate and write the reported usage from jacoco.
  */
 public class ProjectDependencies {
+    private static Map<String, ProjectDependency> projectDependenciesMap;
+    private static Map<String, DependencyUsage> transitiveUsageMap;
+    private static Set<String> visited;
+    private static boolean skipTestDependencies;
 
-    public static List<ProjectDependency> projectDependencies = new ArrayList<>();
+    public static Map<String, ProjectDependency> getAllProjectDependencies(String targetDirectory,
+                                                                           boolean genLockfile,
+                                                                           boolean skipTestDeps) {
+        // Reset previous objects (for the combined report caused by static classes)
+        projectDependenciesMap = new HashMap<>();
+        transitiveUsageMap = new HashMap<>();
+        visited = new HashSet<>();
+        skipTestDependencies = skipTestDeps;
 
-    public static List<ProjectDependency> getAllProjectDependencies(String targetDirectory, boolean genLockfile) {
-        if (projectDependencies.isEmpty()) {
-            generateAllProjectDependencies(targetDirectory, genLockfile);
-        }
-        return projectDependencies;
+        generateAllProjectDependencies(targetDirectory, genLockfile);
+
+        return projectDependenciesMap;
     }
 
     /**
      * Generate the project lockfile containing all the project dependencies
      * including their transitive dependencies and creates their corresponding
      * ProjectDependency object with child/parent dependencies.
+     *
      * @param targetDirectory
      * @param genLockfile
      */
     private static void generateAllProjectDependencies(String targetDirectory, boolean genLockfile) {
-        if(genLockfile){
+        if (genLockfile) {
             generateDependencyLockfile(targetDirectory);
         }
         String filePath = targetDirectory + "lockfile.json"; // Path to the JSON file
@@ -53,18 +65,40 @@ public class ProjectDependencies {
         @Override
         public ProjectDependency deserialize(JsonElement json, java.lang.reflect.Type typeOfT, com.google.gson.JsonDeserializationContext context) {
             JsonObject jsonObject = json.getAsJsonObject();
-            Set<String> visited = new HashSet<>();
-            List<ProjectDependency> parentDeps = new ArrayList<>();
-            return parseDependency(jsonObject, parentDeps);
+            ProjectDependency parentDep = new ProjectDependency();
+            return parseDependency(jsonObject, parentDep);
         }
 
-        private ProjectDependency parseDependency(JsonObject jsonObject, List<ProjectDependency> parentDeps) {
-//            String dependencyId = jsonObject.get("id").getAsString();
-//            if (visited.contains(dependencyId)) {
-//                // If the dependency has been visited before, return null to avoid infinite recursion
-//                return null;
-//            }
-//            visited.add(dependencyId);
+        private ProjectDependency parseDependency(JsonObject jsonObject, ProjectDependency parentDep) {
+            String dependencyId = jsonObject.get("id").getAsString();
+            String dependencyScope = jsonObject.get("scope").getAsString();
+            String parentString = jsonObject.has("parent") ? jsonObject.get("parent").getAsString() : "";
+
+            if ((skipTestDependencies && dependencyScope.equals("test")) || dependencyScope.equals("provided")) {
+                //Skipping provided- and test-scope dependencies
+                return new ProjectDependency();
+            }
+            if (visited.contains(dependencyId)) {
+                // If the dependency has been visited before, find it, add the parent and return it.
+                ProjectDependency pd = projectDependenciesMap.get(dependencyId);
+                if (parentDep.getId() != null) {
+                    pd.addParentDep(parentDep);
+                } else if (!parentString.isEmpty()) {
+                    pd.addParentDep(projectDependenciesMap.get(parentString));
+                } else {
+                    pd.rootDep = true;
+                }
+                JsonArray childrenJsonArray = jsonObject.getAsJsonArray("children");
+                if (!childrenJsonArray.isEmpty()) {
+                    addTransitive(pd);
+                    for (JsonElement element : childrenJsonArray) {
+                        ProjectDependency child = parseDependency(element.getAsJsonObject(), pd);
+                        pd.addChildDep(child);
+                    }
+                }
+                return pd;
+            }
+            visited.add(dependencyId);
 
             ProjectDependency projectDependency = new ProjectDependency();
             projectDependency.setId(jsonObject.has("id") ? jsonObject.get("id").getAsString() : "");
@@ -73,32 +107,43 @@ public class ProjectDependencies {
             projectDependency.setVersion(jsonObject.has("selectedVersion") ? jsonObject.get("selectedVersion").getAsString() : "");
             projectDependency.setScope(jsonObject.has("scope") ? jsonObject.get("scope").getAsString() : "");
 
-            String parentString = jsonObject.has("parent") ? jsonObject.get("parent").getAsString() : "";
-
-            // First add the previous parents in order
-            for (ProjectDependency parentDep : parentDeps) {
+            if (parentDep.getId() != null) {
                 projectDependency.addParentDep(parentDep);
+            } else if (!parentString.isEmpty()) {
+                projectDependency.addParentDep(projectDependenciesMap.get(parentString));
+            } else {
+                projectDependency.rootDep = true;
             }
-            // Then add the immediate parent
-            if (!parentString.isEmpty()) {
-                for (ProjectDependency pd : projectDependencies) {
-                    if (pd.getId().equals(parentString)) {
-                        projectDependency.addParentDep(pd);
-                        break;
-                    }
-                }
-            }
-            //System.out.println("ADDING: " + projectDependency.toString());
-            projectDependencies.add(projectDependency);
+
+            projectDependency.setReportPath(getJactReportPath() + "dependencies/" + depToDirName(projectDependency) + "/");
+
+            projectDependenciesMap.put(projectDependency.getId(), projectDependency);
             JsonArray childrenJsonArray = jsonObject.getAsJsonArray("children");
-            if (childrenJsonArray != null) {
+            if (!childrenJsonArray.isEmpty()) {
+                addTransitive(projectDependency);
                 for (JsonElement element : childrenJsonArray) {
-                    ProjectDependency child = parseDependency(element.getAsJsonObject(), projectDependency.getParentDeps());
+                    ProjectDependency child = parseDependency(element.getAsJsonObject(), projectDependency);
                     projectDependency.addChildDep(child);
                 }
             }
-
             return projectDependency;
         }
     }
+
+    /**
+     * Adds a transitive entry for dependencies with
+     * children for keeping track of transitive usage.
+     *
+     * @param pd
+     */
+    private static void addTransitive(ProjectDependency pd) {
+        if (!transitiveUsageMap.containsKey(pd.getId())) {
+            transitiveUsageMap.put(pd.getId(), new DependencyUsage());
+        }
+    }
+
+    public static Map<String, DependencyUsage> getTransitiveUsageMap() {
+        return transitiveUsageMap;
+    }
+
 }

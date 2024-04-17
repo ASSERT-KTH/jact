@@ -3,46 +3,26 @@ package jact.depUtils;
 import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import static jact.core.HtmlAugmenter.REPORTPATH;
-
 /**
  * Resolves a package name to a dependency in the local .m2 folder.
  */
 public class PackageToDependencyResolver {
-    /**
-     * Take a list of all dependencies,
-     * add the package to that dependency
-     * Create a project 'dependency' for
-     * all project packages
-     */
 
+    public static ProjectDependency packageToDependency(String packageName, Map<String, ProjectDependency> dependenciesMap,
+                                                        Map<String, Set<String>> projPackagesAndClassMap, String localRepoPath) {
 
-    // Handle the scenario where two or more packages have the same name:
-
-
-    public static ProjectDependency packageToDepPaths(String packageName, List<ProjectDependency> dependencies,
-                                                      Map<String, Set<String>> projPackagesAndClassMap, String localRepoPath) {
-        // List of dependencies along with their coordinates
-
-        //List<ProjectDependency> currMatchedDeps = new ArrayList<>();
         boolean packageNameInProject = projPackagesAndClassMap.containsKey(packageName);
-
-        //List<ProjectDependency> dependencies = ProjectDependencies.getAllProjectDependencies();
-
-
+        boolean foundDep = false;
         ProjectDependency matchedDep = new ProjectDependency();
 
-        boolean foundDep = false;
-
         // Iterate over each dependency
-        for (ProjectDependency dependency : dependencies) {
-            if(foundDep){
+        for (ProjectDependency dependency : dependenciesMap.values()) {
+            if (foundDep) {
                 break;
             }
             String groupId = dependency.getGroupId();
@@ -62,12 +42,10 @@ public class PackageToDependencyResolver {
                         ZipEntry entry = entries.nextElement();
                         // Check if the entry is a class file within the desired package
                         if (entry.getName().startsWith(packageName.replace('.', '/')) && entry.getName().endsWith(".class")) {
-                            System.out.println("Package: " + packageName + " matched to dependency: " + groupId + ":" + artifactId + ":" + version);
-                            //currMatchedDeps.add(dependency);
+                            //System.out.println("Package: " + packageName + " matched to dependency: " + groupId + ":" + artifactId + ":" + version);
                             matchedDep = dependency;
                             foundDep = true;
                             break;
-                            //return dependency;
                         }
                     }
                 } catch (IOException e) {
@@ -76,19 +54,15 @@ public class PackageToDependencyResolver {
             }
         }
 
-        if(matchedDep.getId() != null && packageNameInProject){
+        if (matchedDep.getId() != null && packageNameInProject) {
             // Extract the classes in the project and put them in a separate directory
-            String projectPath = REPORTPATH + "/" + packageName;
             throw new RuntimeException("CANNOT RESOLVE PACKAGES: Package name: " + packageName +
                     " has an identical name to a package in " + matchedDep.getId());
+        } else if (matchedDep.getId() == null && !packageNameInProject) {
+            // Usually a problem with a runtime dependency required by a test-dependency.
+            // Which jacoco occasionally includes. Remove it.
+            //System.out.println("CANNOT MATCH PACKAGE TO ANY DEPENDENCY: " + packageName);
         }
-        // Handle the case when multiple dependencies has been matched
-        // Here I need to create a new directory for those classes
-        // that come from different dependencies
-
-
-        //return currMatchedDeps;
         return matchedDep;
     }
 }
-

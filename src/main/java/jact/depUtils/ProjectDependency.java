@@ -1,9 +1,7 @@
 package jact.depUtils;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static jact.core.HtmlAugmenter.writeHTMLStringToFile;
@@ -14,16 +12,15 @@ import static jact.core.HtmlAugmenter.writeHTMLStringToFile;
 public class ProjectDependency {
     public DependencyUsage dependencyUsage = new DependencyUsage();
     public Map<String, DependencyUsage> packageUsageMap = new HashMap<>();
-    public boolean writtenEntryToFile = false;
-    public boolean writtenTotalToFile = false;
     private String id;
     private String groupId;
     private String artifactId;
     private String version;
     private String scope;
-    private List<ProjectDependency> children = new ArrayList<>();
-    private List<ProjectDependency> parents = new ArrayList<>();
-    private List<String> raportPaths = new ArrayList<>();
+    public boolean rootDep = false;
+    private Map<String, ProjectDependency> children = new HashMap<>();
+    private Map<String, ProjectDependency> parents = new HashMap<>();
+    private String reportPath;
 
     public String getId() {
         return this.id;
@@ -66,27 +63,31 @@ public class ProjectDependency {
     }
 
     public void addChildDep(ProjectDependency child) {
-        children.add(child);
+        if (!this.children.containsKey(child.getId())) {
+            this.children.put(child.getId(), child);
+        }
     }
 
-    public List<ProjectDependency> getChildDeps() {
+    public Map<String, ProjectDependency> getChildDeps() {
         return this.children;
     }
 
     public void addParentDep(ProjectDependency parent) {
-        this.parents.add(parent);
+        if (!this.parents.containsKey(parent.getId())) {
+            this.parents.put(parent.getId(), parent);
+        }
     }
 
-    public List<ProjectDependency> getParentDeps() {
+    public Map<String, ProjectDependency> getParentDeps() {
         return this.parents;
     }
 
-    public void addReportPath(String reportPath) {
-        this.raportPaths.add(reportPath);
+    public void setReportPath(String reportPath) {
+        this.reportPath = reportPath;
     }
 
-    public List<String> getReportPaths() {
-        return this.raportPaths;
+    public String getReportPath() {
+        return this.reportPath;
     }
 
 
@@ -106,12 +107,13 @@ public class ProjectDependency {
     private String childrenToString() {
         StringBuilder sb = new StringBuilder();
         if (!this.getChildDeps().isEmpty()) {
-
-            for (int i = 0; i < this.getChildDeps().size(); i++) {
-                if (i > 0) {
+            boolean comma = false;
+            for (ProjectDependency child : this.getChildDeps().values()) {
+                if (comma) {
                     sb.append(", ");
                 }
-                sb.append(this.children.get(i).id);
+                comma = true;
+                sb.append(child.getId());
             }
             return sb.toString();
         }
@@ -123,27 +125,43 @@ public class ProjectDependency {
             return "";
         }
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < this.getParentDeps().size(); i++) {
-            if (i > 0) {
+        boolean comma = false;
+        for (ProjectDependency parent : this.getParentDeps().values()) {
+            if (comma) {
                 sb.append(", ");
             }
-            sb.append(this.getParentDeps().get(i).getId());
+            comma = true;
+            sb.append(parent.getId());
         }
         return sb.toString();
     }
 
-    public void writePackagesToFile(DependencyUsage total) {
+    public void writePackagesToFile(String path, DependencyUsage total) {
         // Iterate through the map entries
         for (Map.Entry<String, DependencyUsage> entry : this.packageUsageMap.entrySet()) {
-            for (String path : this.getReportPaths()) {
-                try {
-                    writeHTMLStringToFile(path + "/index.html", entry.getValue().usageToHTML(entry.getKey(), total, true));
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+            try {
+                writeHTMLStringToFile(path + "/index.html", entry.getValue().usageToHTML(entry.getKey(), total, true, false));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-
         }
+    }
+
+    /**
+     * Gets the corresponding directory name for a dependency.
+     *
+     * @param dependency
+     * @return String
+     */
+    public static String depToDirName(ProjectDependency dependency) {
+        return dependency.getGroupId().replace("-", ".") + "." +
+                dependency.getArtifactId().replace("-", ".") + "-v" + dependency.getVersion();
+    }
+
+    public static String depIdToDirName(String depId) {
+        String[] split = depId.split(":");
+        return split[0].replace("-", ".") + "." +
+                split[1].replace("-", ".") + "-v" + split[2];
     }
 
 }

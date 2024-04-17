@@ -15,17 +15,12 @@ import java.util.Set;
 
 
 public abstract class AbstractReportMojo extends AbstractMojo {
-
-
-    private static final String LINE_SEPARATOR = "------------------------------------------------------------------------";
-
+    private static final String jactReportPath = "./target/jact-report/";
     private static String localRepoPath;
     private static String projectGroupId;
     private static String artifactId;
     private static String version;
     private static Map<String, Set<String>> packageClassMap = new HashMap<>();
-    @Parameter(property = "scope")
-    String scope;
     /**
      * Gives access to the Maven project information.
      */
@@ -40,6 +35,39 @@ public abstract class AbstractReportMojo extends AbstractMojo {
     @Parameter(property = "shadedJarName")
     private String shadedJarName;
 
+    @Parameter(property = "skipTestDependencies", defaultValue = "true")
+    private String skipTestDependencies;
+
+    /**
+     * Skip plugin execution completely.
+     */
+    @Parameter(property = "skipJACT", defaultValue = "false")
+    private String skipJACT;
+
+    @Parameter(property = "includeSummary", defaultValue = "false")
+    private String includeSummary;
+
+    @Override
+    public final void execute()
+            throws MojoExecutionException, MojoFailureException {
+        if (skipReportGeneration()) {
+            getLog().info("Skipping plugin execution...");
+            return;
+        }
+        this.doExecute();
+    }
+
+    protected abstract void doExecute()
+            throws MojoExecutionException, MojoFailureException;
+
+
+    public boolean getDepFilterParam() {
+        return Boolean.parseBoolean(this.skipTestDependencies);
+    }
+
+    public static String getJactReportPath() {
+        return jactReportPath;
+    }
 
     public String getLocalRepoPath() {
         return this.session.getLocalRepository().getBasedir();
@@ -57,64 +85,34 @@ public abstract class AbstractReportMojo extends AbstractMojo {
         return this.project.getVersion();
     }
 
+    public boolean skipReportGeneration() {
+        return Boolean.parseBoolean(this.skipJACT);
+    }
+
+    public MavenProject getProject() {
+        return this.project;
+    }
+
+    public String getProjId() {
+        return getProjectGroupId() + ":" + getProjectArtifactId() + ":" + getProjectVersion();
+    }
+
+    public boolean getSummaryProperty() {
+        return Boolean.parseBoolean(this.includeSummary);
+    }
+
     public String getOutputJarName() {
-        if(shadedJarName == null){
+        if (shadedJarName == null) {
             shadedJarName = this.project.getBuild().getFinalName() + "-shaded";
         }
         return shadedJarName;
     }
 
     public Map<String, Set<String>> getProjectPackagesAndClasses() {
-        if(packageClassMap.isEmpty()){
+        if (packageClassMap.isEmpty()) {
             collectClassNamesAndPackages();
         }
         return packageClassMap;
-    }
-
-    public String getProjId(){
-        return getProjectGroupId() + ":" + getProjectArtifactId() + ":" + getProjectVersion();
-    }
-
-    /**
-     * Skip plugin execution completely.
-     */
-    @Parameter(property = "skipJACT", defaultValue = "false")
-    private boolean skipJACT;
-
-    @Override
-    public final void execute()
-            throws MojoExecutionException, MojoFailureException
-    {
-        if (skipReportGeneration()) {
-            getLog().info("Skipping plugin execution...");
-            return;
-        }
-        this.doExecute();
-    }
-
-    protected abstract void doExecute()
-            throws MojoExecutionException, MojoFailureException;
-
-    public boolean skipReportGeneration()
-    {
-        return this.skipJACT;
-    }
-
-    public MavenProject getProject()
-    {
-        return this.project;
-    }
-
-    public void printCustomStringToConsole(final String s)
-    {
-        this.getLog().info(LINE_SEPARATOR);
-        this.getLog().info(s);
-        this.getLog().info(LINE_SEPARATOR);
-    }
-
-    public static String getLineSeparator()
-    {
-        return LINE_SEPARATOR;
     }
 
     private void collectClassNamesAndPackages() {

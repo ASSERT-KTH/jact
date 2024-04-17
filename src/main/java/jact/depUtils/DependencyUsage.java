@@ -1,5 +1,7 @@
 package jact.depUtils;
 
+import java.text.DecimalFormat;
+
 /**
  * Tracks the usage of a dependency in all the recorded metrics.
  */
@@ -25,6 +27,12 @@ public class DependencyUsage {
         double percentage = (double) part / whole * 100;
         long roundedPercentage = (long) Math.floor(percentage);
         return String.format("%d%%", roundedPercentage);
+    }
+
+    private static String lessRoundedPercentage(long part, long whole) {
+        double percentage = (double) part / whole * 100;
+        DecimalFormat decimalFormat = new DecimalFormat("#.####"); // Format to four decimal places
+        return decimalFormat.format(percentage) + "%";
     }
 
     public static int barLength(long part, long whole) {
@@ -143,7 +151,8 @@ public class DependencyUsage {
         this.addTotalClasses(depUsage.getTotalClasses());
     }
 
-    public String usageToHTML(String dependencyDirName, DependencyUsage total, Boolean isPackage) {
+    public String usageToHTML(String dependencyDirName, DependencyUsage total, boolean isPackage, boolean transitiveEntry) {
+
         long coveredInstructions = this.getTotalInstructions() - this.getMissedInstructions();
         long coveredBranches = this.getTotalBranches() - this.getMissedBranches();
 
@@ -158,8 +167,15 @@ public class DependencyUsage {
         } else {
             icon = "el_group";
         }
+        String link = dependencyDirName + "/index.html";
+        if (dependencyDirName.equals("transitive-dependencies") && transitiveEntry) {
+            link = "transitive-dependencies.html";
+        } else if (transitiveEntry) {
+            link = "../" + dependencyDirName + "/index.html";
+        }
+
         String htmlString = "<tr>\n" +
-                "    <td id=\"a47\"><a href=\"" + dependencyDirName + "/index.html\" class=\"" + icon + "\">" + dependencyDirName + "</a></td>\n" +
+                "    <td id=\"a47\"><a href=\"" + link + "\" class=\"" + icon + "\">" + dependencyDirName + "</a></td>\n" +
                 "    <td class=\"bar\" id=\"b5\"><img src=\"jacoco-resources/redbar.gif\" width=\"" + redInstrBar + "\" height=\"10\" title=\"" + String.format("%,d", this.getMissedInstructions()) + "\" alt=\"" + String.format("%,d", this.getMissedInstructions()) + "\">" +
                 "<img src=\"jacoco-resources/greenbar.gif\" width=\"" + greenInstrBar + "\" height=\"10\" title=\"" + String.format("%,d", coveredInstructions) + "\" alt=\"" + String.format("%,d", coveredInstructions) + "\"></td>\n" +
                 "    <td class=\"ctr2\" id=\"c5\">" + percentage(coveredInstructions, this.getTotalInstructions()) + "</td>\n" +
@@ -199,7 +215,7 @@ public class DependencyUsage {
         return htmlString;
     }
 
-    public String totalUsageToXML(){
+    public String totalUsageToXML() {
         long coveredInstructions = this.getTotalInstructions() - this.getMissedInstructions();
         long coveredBranches = this.getTotalBranches() - this.getMissedBranches();
         long coveredLines = this.getTotalLines() - this.getMissedLines();
@@ -208,14 +224,62 @@ public class DependencyUsage {
         long coveredClasses = this.getTotalClasses() - this.getMissedClasses();
 
         String xmlString =
-                "<counter covered=\""+coveredInstructions+"\" missed=\""+ this.getMissedInstructions() +"\" type=\"INSTRUCTION\"/>" +
-                "<counter covered=\""+coveredBranches+"\" missed=\""+ this.getMissedBranches() +"\" type=\"BRANCH\"/>" +
-                "<counter covered=\""+coveredLines+"\" missed=\""+ this.getMissedLines() +"\" type=\"LINE\"/>" +
-                "<counter covered=\""+coveredCyclomaticComplexity+"\" missed=\""+ this.getMissedCyclomaticComplexity() +"\" type=\"COMPLEXITY\"/>" +
-                "<counter covered=\""+coveredMethods+"\" missed=\""+ this.getMissedMethods() +"\" type=\"METHOD\"/>" +
-                "<counter covered=\""+coveredClasses+"\" missed=\""+ this.getMissedClasses() +"\" type=\"CLASS\"/>";
+                "<counter covered=\"" + coveredInstructions + "\" missed=\"" + this.getMissedInstructions() + "\" type=\"INSTRUCTION\"/>" +
+                        "<counter covered=\"" + coveredBranches + "\" missed=\"" + this.getMissedBranches() + "\" type=\"BRANCH\"/>" +
+                        "<counter covered=\"" + coveredLines + "\" missed=\"" + this.getMissedLines() + "\" type=\"LINE\"/>" +
+                        "<counter covered=\"" + coveredCyclomaticComplexity + "\" missed=\"" + this.getMissedCyclomaticComplexity() + "\" type=\"COMPLEXITY\"/>" +
+                        "<counter covered=\"" + coveredMethods + "\" missed=\"" + this.getMissedMethods() + "\" type=\"METHOD\"/>" +
+                        "<counter covered=\"" + coveredClasses + "\" missed=\"" + this.getMissedClasses() + "\" type=\"CLASS\"/>";
 
         return xmlString;
+    }
+
+    public String usageToString(String name) {
+        long coveredInstructions = this.getTotalInstructions() - this.getMissedInstructions();
+        String coveredInstructionsPercentage = lessRoundedPercentage(coveredInstructions, this.getTotalInstructions());
+        String missedInstructionsPercentage = lessRoundedPercentage(this.getMissedInstructions(), this.getTotalInstructions());
+
+        long coveredBranches = this.getTotalBranches() - this.getMissedBranches();
+        String coveredBranchesPercentage = lessRoundedPercentage(coveredBranches, this.getTotalBranches());
+        String missedBranchesPercentage = lessRoundedPercentage(this.getMissedBranches(), this.getTotalBranches());
+
+        long coveredLines = this.getTotalLines() - this.getMissedLines();
+        String coveredLinesPercentage = lessRoundedPercentage(coveredLines, this.getTotalLines());
+        String missedLinesPercentage = lessRoundedPercentage(this.getMissedLines(), this.getTotalLines());
+
+        long coveredCyclomaticComplexity = this.getCyclomaticComplexity() - this.getMissedCyclomaticComplexity();
+        String coveredComplexityPercentage = lessRoundedPercentage(coveredCyclomaticComplexity, this.getCyclomaticComplexity());
+        String missedComplexityPercentage = lessRoundedPercentage(this.getMissedCyclomaticComplexity(), this.getCyclomaticComplexity());
+
+        long coveredMethods = this.getTotalMethods() - this.getMissedMethods();
+        String coveredMethodsPercentage = lessRoundedPercentage(coveredMethods, this.getTotalMethods());
+        String missedMethodsPercentage = lessRoundedPercentage(this.getMissedMethods(), this.getTotalMethods());
+
+        long coveredClasses = this.getTotalClasses() - this.getMissedClasses();
+        String coveredClassesPercentage = lessRoundedPercentage(coveredClasses, this.getTotalClasses());
+        String missedClassesPercentage = lessRoundedPercentage(this.getMissedClasses(), this.getTotalClasses());
+
+        String usageString =
+                "#### " + name + " ############################" + "\n" +
+                        "INSTRUCTION: " + "covered = " + coveredInstructions + " : " + coveredInstructionsPercentage +
+                        " | missed = " + this.getMissedInstructions() + " : " + missedInstructionsPercentage + " | total = " + this.getTotalInstructions() + "\n" +
+
+                        "BRANCH: " + "covered = " + coveredBranches + " : " + coveredBranchesPercentage +
+                        " | missed = " + this.getMissedBranches() + " : " + missedBranchesPercentage + " | total = " + this.getTotalBranches() + "\n" +
+
+                        "LINE: " + "covered = " + coveredLines + " : " + coveredLinesPercentage +
+                        " | missed = " + this.getMissedLines() + " : " + missedLinesPercentage + " | total = " + this.getTotalLines() + "\n" +
+
+                        "COMPLEXITY: " + "covered = " + coveredCyclomaticComplexity + " : " + coveredComplexityPercentage +
+                        " | missed = " + this.getMissedCyclomaticComplexity() + " : " + missedComplexityPercentage + " | total = " + this.getCyclomaticComplexity() + "\n" +
+
+                        "METHOD: " + "covered = " + coveredMethods + " : " + coveredMethodsPercentage +
+                        " | missed = " + this.getMissedMethods() + " : " + missedMethodsPercentage + " | total = " + this.getTotalMethods() + "\n" +
+
+                        "CLASS: " + "covered = " + coveredClasses + " : " + coveredClassesPercentage +
+                        " | missed = " + this.getMissedClasses() + " : " + missedClassesPercentage + " | total = " + this.getTotalClasses() + "\n";
+
+        return usageString;
     }
 
 }

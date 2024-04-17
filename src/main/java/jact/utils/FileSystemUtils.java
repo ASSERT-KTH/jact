@@ -13,9 +13,10 @@ import java.nio.file.StandardCopyOption;
 public class FileSystemUtils {
     public static void copyDirectory(File sourceDir, File destDir) {
         // Create the destination directory if it doesn't exist
-        if (!destDir.exists()) {
-            destDir.mkdirs();
+        if (destDir.exists()) {
+            return;
         }
+        destDir.mkdirs();
 
         // Get all files from the source directory
         File[] files = sourceDir.listFiles();
@@ -29,6 +30,20 @@ public class FileSystemUtils {
                     throw new RuntimeException(e);
                 }
             }
+        }
+    }
+
+    public static void removeFile(String filePath) {
+        File file = new File(filePath);
+
+        // Check if the file exists
+        if (file.exists()) {
+            // Delete the file
+            if (!file.delete()) {
+                System.out.println("Failed to delete the file.");
+            }
+        } else {
+            System.out.println("File does not exist.");
         }
     }
 
@@ -55,18 +70,18 @@ public class FileSystemUtils {
 
 
     public static void createDir(String directoryPath) {
-        // Will take a list of dependencies later
-
         File dir = new File(directoryPath);
-
-        boolean success = dir.mkdirs();
-
-        // Check if directory creation was successful
-        if (success) {
-            System.out.println("Report directory created successfully.");
-        } else {
-            System.out.println("Failed to create dependency report directory." + directoryPath);
+        boolean success;
+        if (!dir.exists()) {
+            success = dir.mkdirs();
+            // Check if directory creation was successful
+            if (success) {
+                System.out.println("Report directory created successfully.");
+            } else {
+                throw new RuntimeException("Failed to create dependency report directory." + directoryPath);
+            }
         }
+        System.out.println("Report directory already present.");
     }
 
     public static void moveDirectory(File sourceDir, String destDirName) {
@@ -84,7 +99,7 @@ public class FileSystemUtils {
         File newFile = new File(originalFile.getParent(), newFileName);
         if (originalFile.exists()) {
             if (originalFile.renameTo(newFile)) {
-                System.out.println("File renamed successfully.");
+                //System.out.println("File renamed successfully.");
                 return newFile.getPath(); // Return the full path of the renamed file
             } else {
                 throw new RuntimeException("Failed to rename the file.");
