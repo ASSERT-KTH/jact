@@ -13,7 +13,7 @@ import java.util.zip.ZipFile;
  */
 public class PackageToDependencyResolver {
 
-    public static ProjectDependency packageToDepPaths(String packageName, Map<String, ProjectDependency> dependenciesMap,
+    public static ProjectDependency packageToDependency(String packageName, Map<String, ProjectDependency> dependenciesMap,
                                                       Map<String, Set<String>> projPackagesAndClassMap, String localRepoPath) {
 
         boolean packageNameInProject = projPackagesAndClassMap.containsKey(packageName);

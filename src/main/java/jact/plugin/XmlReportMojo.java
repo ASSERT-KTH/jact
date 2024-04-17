@@ -8,13 +8,10 @@ import org.apache.maven.plugins.annotations.Mojo;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import static jact.core.XmlAugmenter.generateXmlReport;
-import static jact.core.XmlAugmenter.groupPackageByDep;
 import static jact.utils.CommandExecutor.copyJacocoCliJar;
 import static jact.utils.CommandExecutor.executeJacocoCLI;
 
@@ -46,7 +43,7 @@ public class XmlReportMojo extends AbstractReportMojo {
 
 
         Map<String, ProjectDependency> projectDependenciesMap =
-                ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true, getDepFilterParam());
+                ProjectDependencies.getAllProjectDependencies(getJactReportPath(), true, getDepFilterParam());
 
         // Execute JaCoCoCLI to create the report WITH dependencies
         getLog().info("Copying the `jacococli.jar` to the project.");
@@ -58,13 +55,10 @@ public class XmlReportMojo extends AbstractReportMojo {
             throw new RuntimeException(e);
         }
 
-        getLog().info("Creating the complete coverage report.");
+        getLog().info("Creating the complete XML coverage report.");
         executeJacocoCLI(getOutputJarName(), false);
-
-        getLog().info("Organizing the complete coverage report.");
-
+        getLog().info("Organizing the complete XML coverage report.");
         generateXmlReport(projectDependenciesMap, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
-
         getLog().info("JACT: XML Report Successfully Generated!");
     }
 }

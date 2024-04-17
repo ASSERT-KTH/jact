@@ -13,9 +13,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static jact.core.HtmlAugmenter.createDependencyReports;
-import static jact.core.HtmlAugmenter.extractReportAndMoveDirs;
-import static jact.core.XmlAugmenter.groupPackageByDep;
+import static jact.core.HtmlAugmenter.*;
+import static jact.core.XmlAugmenter.generateXmlReport;
 import static jact.utils.CommandExecutor.copyJacocoCliJar;
 import static jact.utils.CommandExecutor.executeJacocoCLI;
 
@@ -46,8 +45,7 @@ public class CombinedReportMojo extends AbstractReportMojo {
         getLog().info("JARNAME: " + getOutputJarName());
         //String outputDirectory = project.getBuild().getOutputDirectory();
 
-        Map<String, ProjectDependency> projectDependenciesMap =
-                ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true, getDepFilterParam());
+
 
         // Execute JaCoCoCLI to create the report WITH dependencies
         getLog().info("Copying the `jacococli.jar` to the project.");
@@ -61,29 +59,23 @@ public class CombinedReportMojo extends AbstractReportMojo {
 
         // XML VERSION:
         Map<String, ProjectDependency> projectDependenciesMapXML =
-                ProjectDependencies.getAllProjectDependencies("./target/jact-report/", true, getDepFilterParam());
+                ProjectDependencies.getAllProjectDependencies(getJactReportPath(), true, getDepFilterParam());
 
         getLog().info("Creating the complete coverage report.");
         executeJacocoCLI(getOutputJarName(), false);
-
         getLog().info("Organizing the complete coverage report.");
-
-        groupPackageByDep(projectDependenciesMapXML, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
-
+        generateXmlReport(projectDependenciesMapXML, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
         getLog().info("JACT: XML Report Successfully Generated!");
 
 
+        Map<String, ProjectDependency> projectDependenciesMapHTML =
+                ProjectDependencies.getAllProjectDependencies(getJactReportPath(), false, getDepFilterParam());
         // HTML VERSION:
         getLog().info("Creating the complete coverage report.");
         executeJacocoCLI(getOutputJarName(), true);
 
         getLog().info("Organizing the complete coverage report.");
-        try {
-            extractReportAndMoveDirs(projectDependenciesMap, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
-            createDependencyReports(projectDependenciesMap);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        generateHtmlReport(projectDependenciesMapHTML, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
         getLog().info("JACT: HTML Report Successfully Generated!");
     }
 }

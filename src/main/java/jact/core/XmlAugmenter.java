@@ -4,7 +4,6 @@ import jact.depUtils.DependencyUsage;
 import jact.depUtils.ProjectDependency;
 import jact.utils.CommandExecutor;
 import org.w3c.dom.*;
-import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
@@ -19,17 +18,16 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.*;
 import java.util.*;
 
-import static jact.depUtils.PackageToDependencyResolver.packageToDepPaths;
+import static jact.depUtils.PackageToDependencyResolver.packageToDependency;
 import static jact.plugin.AbstractReportMojo.getJactReportPath;
 import static jact.utils.FileSystemUtils.removeFile;
-import static jact.utils.FileSystemUtils.renameFile;
 
 /**
  * Creates the XML version of the JACT Report
  */
 public class XmlAugmenter {
-    public static DependencyUsage dependencyUsage;
-    public static DependencyUsage projectUsage;
+    private static DependencyUsage dependencyUsage;
+    private static DependencyUsage projectUsage;
     private static ProjectDependency thisProject;
 
     private static final String FINALREPORTPATH = getJactReportPath() + "jact_report.xml";
@@ -51,7 +49,9 @@ public class XmlAugmenter {
         projectUsage = new DependencyUsage();
         thisProject = new ProjectDependency();
 
-        groupPackageByDep(dependenciesMap, projPackagesAndClassMap, localRepoPath, projId);
+        Map<String, Document> packageReports =
+                extractUsageAndGeneratePackageReports(dependenciesMap, projPackagesAndClassMap, localRepoPath, projId);
+        writeCompleteReport(dependenciesMap, packageReports);
     }
 
 
@@ -60,7 +60,7 @@ public class XmlAugmenter {
      * @param xmlFilePath
      * @return String
      */
-    public static String extractXmlHeader(String xmlFilePath) {
+    private static String extractXmlHeader(String xmlFilePath) {
 
             StringBuilder sessionInfo = new StringBuilder();
 
@@ -115,10 +115,11 @@ public class XmlAugmenter {
      * @param localRepoPath
      * @param projId
      */
-    public static void groupPackageByDep(Map<String, ProjectDependency> dependenciesMap,
+    private static Map<String, Document> extractUsageAndGeneratePackageReports(Map<String, ProjectDependency> dependenciesMap,
                                          Map<String, Set<String>> projPackagesAndClassMap,
                                          String localRepoPath, String projId){
         thisProject.setId(projId);
+        Map<String, Document> packageReports = new HashMap<>();
         try {
             // Load Jacoco XML report
             File xmlFile = new File(getJactReportPath() + "jacoco_report.xml");
@@ -138,7 +139,6 @@ public class XmlAugmenter {
             formatXml(xmlFile, doc, false);
 
             // Group coverage data by package name
-            Map<String, Document> packageReports = new HashMap<>();
             NodeList nodeList = doc.getElementsByTagName("package");
             for (int i = 0; i < nodeList.getLength(); i++) {
                 Element packageElement = (Element) nodeList.item(i);
@@ -158,12 +158,10 @@ public class XmlAugmenter {
 
             //System.out.println("Separate XML reports created for each package in the current directory.");
             readAndExtractPackageUsage(getJactReportPath() + "xml_reports/", dependenciesMap, projPackagesAndClassMap, localRepoPath);
-
-            writeCompleteReport(dependenciesMap, packageReports);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        return packageReports;
     }
 
     /**
@@ -175,7 +173,7 @@ public class XmlAugmenter {
      * @param projPackagesAndClassMap
      * @param localRepoPath
      */
-    public static void readAndExtractPackageUsage(String pathToReport,
+    private static void readAndExtractPackageUsage(String pathToReport,
                                                   Map<String, ProjectDependency> dependenciesMap,
                                                   Map<String, Set<String>> projPackagesAndClassMap,
                                                   String localRepoPath){
@@ -188,10 +186,7 @@ public class XmlAugmenter {
                 // Iterate through each file
                 for (File file : files) {
                     String packageName = fileNameToPackageMap.get(file.getName()).replaceAll("/", ".");
-                    ProjectDependency matchedDep = packageToDepPaths(packageName, dependenciesMap, projPackagesAndClassMap, localRepoPath);
-                    // It needs to add to either the dependencyUsage or the project usage,
-                    // If the matched dependency is a project package then
-
+                    ProjectDependency matchedDep = packageToDependency(packageName, dependenciesMap, projPackagesAndClassMap, localRepoPath);
                     if(matchedDep.getId() != null){
                         // We know the package comes from a dependency
                         extractCounterValues(getJactReportPath() + "xml_reports/" + file.getName(), matchedDep, dependencyUsage, file.getName());
@@ -219,7 +214,7 @@ public class XmlAugmenter {
      * @param dependenciesMap
      * @param packageReports
      */
-    public static void writeCompleteReport(Map<String, ProjectDependency> dependenciesMap, Map<String, Document> packageReports) {
+    private static void writeCompleteReport(Map<String, ProjectDependency> dependenciesMap, Map<String, Document> packageReports) {
         try {
             CommandExecutor.copyDtdFile("report.dtd", "./target/jact-report");
         } catch (IOException e) {
@@ -306,7 +301,7 @@ public class XmlAugmenter {
      * @param dependency
      * @param writer
      */
-    public static void writePackageReportsFromMap(ProjectDependency dependency, FileWriter writer){
+    private static void writePackageReportsFromMap(ProjectDependency dependency, FileWriter writer){
         for (Map.Entry<String, DependencyUsage> entry : dependency.packageUsageMap.entrySet()) {
             File packageFile = new File(getJactReportPath() + "xml_reports/" + entry.getKey());
             try (BufferedReader reader = new BufferedReader(new FileReader(packageFile))) {
@@ -346,7 +341,7 @@ public class XmlAugmenter {
      * @param usage
      * @param packageFileName
      */
-    public static void extractCounterValues(String inputFilePath, ProjectDependency matchedDep, DependencyUsage usage, String packageFileName) {
+    private static void extractCounterValues(String inputFilePath, ProjectDependency matchedDep, DependencyUsage usage, String packageFileName) {
         try {
             // Parse the XML file
             File inputFile = new File(inputFilePath);
