@@ -21,6 +21,7 @@ import java.util.*;
 
 import static jact.depUtils.PackageToDependencyResolver.packageToDepPaths;
 import static jact.plugin.AbstractReportMojo.getJactReportPath;
+import static jact.utils.FileSystemUtils.removeFile;
 import static jact.utils.FileSystemUtils.renameFile;
 
 /**
@@ -38,6 +39,8 @@ public class XmlAugmenter {
     private static String sessionInfo;
 
     private static DependencyUsage totalUsage = new DependencyUsage();
+
+    private static Map<String, String> fileNameToPackageMap = new HashMap<>();
 
 
 
@@ -148,6 +151,8 @@ public class XmlAugmenter {
                 String packageName = entry.getKey();
                 Document packageReport = entry.getValue();
                 String filename = packageName.replace("/", "-") + ".xml"; // Use package name for filename
+                // Add to th
+                fileNameToPackageMap.put(filename, packageName);
                 writeXML(packageReport, getJactReportPath() + "xml_reports/" + filename);
             }
 
@@ -182,20 +187,18 @@ public class XmlAugmenter {
             if (files != null) {
                 // Iterate through each file
                 for (File file : files) {
-                    // Extract filename without extension
-                    String filename = file.getName().replaceAll("\\.xml$", "");
-                    //System.out.println(filename);
-                    // Call your function with the filename
-                    filename = filename.replace("-", ".");
-                    ProjectDependency matchedDep = packageToDepPaths(filename, dependenciesMap, projPackagesAndClassMap, localRepoPath);
+                    String packageName = fileNameToPackageMap.get(file.getName()).replaceAll("/", ".");
+                    ProjectDependency matchedDep = packageToDepPaths(packageName, dependenciesMap, projPackagesAndClassMap, localRepoPath);
                     // It needs to add to either the dependencyUsage or the project usage,
                     // If the matched dependency is a project package then
+
                     if(matchedDep.getId() != null){
                         // We know the package comes from a dependency
                         extractCounterValues(getJactReportPath() + "xml_reports/" + file.getName(), matchedDep, dependencyUsage, file.getName());
-                    }else{
+                    }else if(projPackagesAndClassMap.containsKey(packageName)){
                         extractCounterValues(getJactReportPath() + "xml_reports/" + file.getName(), thisProject, projectUsage, file.getName());
-
+                    }else{
+                        removeFile(getJactReportPath() + "xml_reports/" + file.getName());
                     }
                 }
             } else {
@@ -341,9 +344,9 @@ public class XmlAugmenter {
      * @param inputFilePath
      * @param matchedDep
      * @param usage
-     * @param packageName
+     * @param packageFileName
      */
-    public static void extractCounterValues(String inputFilePath, ProjectDependency matchedDep, DependencyUsage usage, String packageName) {
+    public static void extractCounterValues(String inputFilePath, ProjectDependency matchedDep, DependencyUsage usage, String packageFileName) {
         try {
             // Parse the XML file
             File inputFile = new File(inputFilePath);
@@ -372,7 +375,7 @@ public class XmlAugmenter {
                             processCounterValues(type, missed, covered, matchedDep, packageUsage);
                             matchedDep.dependencyUsage.addAll(packageUsage);
                             usage.addAll(packageUsage);
-                            matchedDep.packageUsageMap.put(packageName, packageUsage);
+                            matchedDep.packageUsageMap.put(packageFileName, packageUsage);
                         }
                     }
                 }
@@ -380,6 +383,10 @@ public class XmlAugmenter {
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
+        }
+        // No usage, such packages are not included in the html version.
+        if(!matchedDep.packageUsageMap.containsKey(packageFileName)){
+            removeFile(getJactReportPath() + "xml_reports/" + packageFileName);
         }
     }
 

@@ -33,6 +33,20 @@ public class FileSystemUtils {
         }
     }
 
+    public static void removeFile(String filePath) {
+        File file = new File(filePath);
+
+        // Check if the file exists
+        if (file.exists()) {
+            // Delete the file
+            if (!file.delete()) {
+                System.out.println("Failed to delete the file.");
+            }
+        }else {
+            System.out.println("File does not exist.");
+        }
+    }
+
     public static void removeDirectory(File dir) {
         if (!dir.exists()) {
             return;
