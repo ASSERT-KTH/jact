@@ -43,11 +43,7 @@ public class CombinedReportMojo extends AbstractReportMojo {
 
         getLog().info("STARTING: JACT - Java Complete Coverage Tracker");
         getLog().info("JARNAME: " + getOutputJarName());
-        //String outputDirectory = project.getBuild().getOutputDirectory();
 
-
-
-        // Execute JaCoCoCLI to create the report WITH dependencies
         getLog().info("Copying the `jacococli.jar` to the project.");
         try {
             copyJacocoCliJar();
