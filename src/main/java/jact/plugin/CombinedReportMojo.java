@@ -8,8 +8,6 @@ import org.apache.maven.plugins.annotations.Mojo;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -57,20 +55,19 @@ public class CombinedReportMojo extends AbstractReportMojo {
         Map<String, ProjectDependency> projectDependenciesMapXML =
                 ProjectDependencies.getAllProjectDependencies(getJactReportPath(), true, getDepFilterParam());
 
-        getLog().info("Creating the complete coverage report.");
+        getLog().info("Creating the complete XML coverage report.");
         executeJacocoCLI(getOutputJarName(), false);
-        getLog().info("Organizing the complete coverage report.");
+        getLog().info("Organizing the complete XML coverage report.");
         generateXmlReport(projectDependenciesMapXML, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
         getLog().info("JACT: XML Report Successfully Generated!");
 
-
+        // HTML VERSION:
         Map<String, ProjectDependency> projectDependenciesMapHTML =
                 ProjectDependencies.getAllProjectDependencies(getJactReportPath(), false, getDepFilterParam());
-        // HTML VERSION:
-        getLog().info("Creating the complete coverage report.");
+        getLog().info("Creating the complete HTML coverage report.");
         executeJacocoCLI(getOutputJarName(), true);
 
-        getLog().info("Organizing the complete coverage report.");
+        getLog().info("Organizing the complete HTML coverage report.");
         generateHtmlReport(projectDependenciesMapHTML, getProjectPackagesAndClasses(), getLocalRepoPath(), getProjId());
         getLog().info("JACT: HTML Report Successfully Generated!");
     }

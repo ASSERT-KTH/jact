@@ -30,6 +30,11 @@ public class HtmlAugmenter {
     private static DependencyUsage completeUsage;
     private static List<String> calculatedChildIds;
 
+    // Report summary usages:
+    private static DependencyUsage summaryRawDependencyUsage;
+    private static DependencyUsage summaryCompileScopeDependencyUsage;
+    private static DependencyUsage summaryTransitiveUsage;
+
     /**
      * Generates the entire JACT HTML report.
      * @param dependenciesMap
@@ -44,6 +49,11 @@ public class HtmlAugmenter {
         totalDependencyUsage = new DependencyUsage();
         completeUsage = new DependencyUsage();
         calculatedChildIds = new ArrayList<>();
+
+        // Report summary usages (for gathering results)
+        summaryRawDependencyUsage = new DependencyUsage();
+        summaryCompileScopeDependencyUsage = new DependencyUsage();
+        summaryTransitiveUsage = new DependencyUsage();
 
         // Rename the original index.html file
         String inputFilePath =
@@ -62,6 +72,23 @@ public class HtmlAugmenter {
             createDependencyReports(dependenciesMap);
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+
+        createReportSummary(); // Make this optional
+    }
+
+    private static void createReportSummary(){
+        String outputFile = getJactReportPath() + "jactReportSummary.txt";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
+            writer.write(thisProject.dependencyUsage.usageToString("PROJECT USAGE") + "\n");
+            writer.write(summaryRawDependencyUsage.usageToString("RAW DEPENDENCY USAGE") + "\n");
+            writer.write(totalDependencyUsage.usageToString("TOTAL DEPENDENCY USAGE") + "\n");
+            writer.write(summaryCompileScopeDependencyUsage.usageToString("COMPILE-SCOPE USAGE") + "\n");
+            writer.write(summaryTransitiveUsage.usageToString("TRANSITIVE USAGE") + "\n");
+            writer.write(completeUsage.usageToString("COMPLETE USAGE"));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -308,8 +335,13 @@ public class HtmlAugmenter {
      */
     private static void calculateAllUsages(Map<String, ProjectDependency> dependenciesMap){
         for(ProjectDependency dependency : dependenciesMap.values()){
+            summaryRawDependencyUsage.addAll(dependency.dependencyUsage);
+            if(dependency.getScope().equals("compile")){
+                summaryCompileScopeDependencyUsage.addAll(dependency.dependencyUsage);
+            }
             if(!dependency.getChildDeps().isEmpty()){
                 DependencyUsage transitiveDepsUsage = calculateTransitiveDepUsage(dependency, false);
+                summaryTransitiveUsage.addAll(transitiveDepsUsage);
                 dependency.dependencyUsage.addAll(transitiveDepsUsage);
                 getTransitiveUsageMap().get(dependency.getId()).addAll(transitiveDepsUsage);
                 calculatedChildIds.add(dependency.getId());
