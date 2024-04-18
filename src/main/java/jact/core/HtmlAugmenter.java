@@ -704,17 +704,17 @@ public class HtmlAugmenter {
         summaryRawCompleteUsage.addAll(thisProject.dependencyUsage);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
             writer.write(thisProject.dependencyUsage.usageToMarkdown("PROJECT USAGE"));
-            writer.write("---" + "  \n");
+            writer.write("---\n");
             writer.write(summaryRawDependencyUsage.usageToMarkdown("RAW DEPENDENCY USAGE"));
-            writer.write("---" + "  \n");
+            writer.write("---\n");
             writer.write(totalDependencyUsage.usageToMarkdown("TOTAL DEPENDENCY USAGE"));
-            writer.write("---" + "  \n");
+            writer.write("---\n");
             writer.write(summaryCompileScopeDependencyUsage.usageToMarkdown("COMPILE-SCOPE USAGE"));
-            writer.write("---" + "  \n");
+            writer.write("---\n");
             writer.write(summaryTransitiveUsage.usageToMarkdown("TRANSITIVE USAGE"));
-            writer.write("---" + "  \n");
+            writer.write("---\n");
             writer.write(summaryRawCompleteUsage.usageToMarkdown("RAW COMPLETE USAGE"));
-            writer.write("---" + "  \n");
+            writer.write("---\n");
             writer.write(completeUsage.usageToMarkdown("COMPLETE USAGE"));
         } catch (IOException e) {
             e.printStackTrace();
