@@ -32,7 +32,7 @@ public class DependencyUsage {
     private static String lessRoundedPercentage(long part, long whole) {
         double percentage = (double) part / whole * 100;
         DecimalFormat decimalFormat = new DecimalFormat("#.####"); // Format to four decimal places
-        return decimalFormat.format(percentage) + "\\%";
+        return decimalFormat.format(percentage) + "%";
     }
 
     public static int barLength(long part, long whole) {
@@ -261,35 +261,23 @@ public class DependencyUsage {
 
         String usageString =
                 "### " + name + " (covered, missed, total):" + "  \n" +
-                        "##### INSTRUCTION: ${\\space" + "\\color{lightgreen} " + coveredInstructions + " : " + coveredInstructionsPercentage +
-                        " \\color{white} \\space | \\space " +
-                        "\\color{red} " +  this.getMissedInstructions() + " : " + missedInstructionsPercentage +
-                        " \\color{white} \\space | \\space " + this.getTotalInstructions() + "}$\n" +
+                        "**INSTRUCTION** &nbsp;" + coveredInstructions + " : " + coveredInstructionsPercentage + " | " +
+                        this.getMissedInstructions() + " : " + missedInstructionsPercentage + " | " + this.getTotalInstructions() + "  \n" +
 
-                        "##### BRANCH: ${\\space" + "\\color{lightgreen} " + coveredBranches + " : " + coveredBranchesPercentage +
-                        " \\color{white} \\space | \\space " +
-                        "\\color{red} " + this.getMissedBranches() + " : " + missedBranchesPercentage +
-                        " \\color{white} \\space | \\space " + this.getTotalBranches() + "}$\n" +
+                        "**BRANCH** &nbsp;" + coveredBranches + " : " + coveredBranchesPercentage + " | " +
+                        this.getMissedBranches() + " : " + missedBranchesPercentage + " | " + this.getTotalBranches() + "  \n" +
 
-                        "##### LINE: ${\\space" + "\\color{lightgreen} " + coveredLines + " : " + coveredLinesPercentage +
-                        " \\color{white} \\space | \\space " +
-                        "\\color{red} " + this.getMissedLines() + " : " + missedLinesPercentage +
-                        " \\color{white} \\space | \\space " + this.getTotalLines() + "}$\n" +
+                        "**LINE** &nbsp;" + coveredLines + " : " + coveredLinesPercentage + " | " +
+                        this.getMissedLines() + " : " + missedLinesPercentage + " | " + this.getTotalLines() + "  \n" +
 
-                        "##### COMPLEXITY: ${\\space" + "\\color{lightgreen} " + coveredCyclomaticComplexity + " : " + coveredComplexityPercentage +
-                        " \\color{white} \\space | \\space " +
-                        "\\color{red} " + this.getMissedCyclomaticComplexity() + " : " + missedComplexityPercentage +
-                        " \\color{white} \\space | \\space " + this.getCyclomaticComplexity() + "}$\n" +
+                        "**COMPLEXITY** &nbsp;" + coveredCyclomaticComplexity + " : " + coveredComplexityPercentage + " | " +
+                        this.getMissedCyclomaticComplexity() + " : " + missedComplexityPercentage + " | " + this.getCyclomaticComplexity() + "  \n" +
 
-                        "##### METHOD: ${\\space" + "\\color{lightgreen} " + coveredMethods + " : " + coveredMethodsPercentage +
-                        " \\color{white} \\space | \\space " +
-                        "\\color{red} " + this.getMissedMethods() + " : " + missedMethodsPercentage +
-                        " \\color{white} \\space | \\space " + this.getTotalMethods() + "}$\n" +
+                        "**METHOD** &nbsp;" + coveredMethods + " : " + coveredMethodsPercentage + " | " +
+                        this.getMissedMethods() + " : " + missedMethodsPercentage + " | " + this.getTotalMethods() + "  \n" +
 
-                        "##### CLASS: ${\\space" + "\\color{lightgreen} " + coveredClasses + " : " + coveredClassesPercentage +
-                        " \\color{white} \\space | \\space " +
-                        "\\color{red} " + this.getMissedClasses() + " : " + missedClassesPercentage +
-                        " \\color{white} \\space | \\space " + this.getTotalClasses() + "}$\n";
+                        "**CLASS** &nbsp;" + coveredClasses + " : " + coveredClassesPercentage + " | " +
+                        this.getMissedClasses() + " : " + missedClassesPercentage + " | " + this.getTotalClasses() + "  \n";
 
         return usageString;
     }
