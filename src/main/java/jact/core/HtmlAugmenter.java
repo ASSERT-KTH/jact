@@ -698,18 +698,24 @@ public class HtmlAugmenter {
     }
 
     private static void createReportSummary() {
-        String outputFile = getJactReportPath() + "jactReportSummary.txt";
+        String outputFile = getJactReportPath() + "jactReportSummary.md";
         DependencyUsage summaryRawCompleteUsage = new DependencyUsage();
         summaryRawCompleteUsage.addAll(summaryRawDependencyUsage);
         summaryRawCompleteUsage.addAll(thisProject.dependencyUsage);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
-            writer.write(thisProject.dependencyUsage.usageToString("PROJECT USAGE") + "\n");
-            writer.write(summaryRawDependencyUsage.usageToString("RAW DEPENDENCY USAGE") + "\n");
-            writer.write(totalDependencyUsage.usageToString("TOTAL DEPENDENCY USAGE") + "\n");
-            writer.write(summaryCompileScopeDependencyUsage.usageToString("COMPILE-SCOPE USAGE") + "\n");
-            writer.write(summaryTransitiveUsage.usageToString("TRANSITIVE USAGE") + "\n");
-            writer.write(summaryRawCompleteUsage.usageToString("RAW COMPLETE USAGE") + "\n");
-            writer.write(completeUsage.usageToString("COMPLETE USAGE"));
+            writer.write(thisProject.dependencyUsage.usageToMarkdown("PROJECT USAGE"));
+            writer.write("---" + "  \n");
+            writer.write(summaryRawDependencyUsage.usageToMarkdown("RAW DEPENDENCY USAGE"));
+            writer.write("---" + "  \n");
+            writer.write(totalDependencyUsage.usageToMarkdown("TOTAL DEPENDENCY USAGE"));
+            writer.write("---" + "  \n");
+            writer.write(summaryCompileScopeDependencyUsage.usageToMarkdown("COMPILE-SCOPE USAGE"));
+            writer.write("---" + "  \n");
+            writer.write(summaryTransitiveUsage.usageToMarkdown("TRANSITIVE USAGE"));
+            writer.write("---" + "  \n");
+            writer.write(summaryRawCompleteUsage.usageToMarkdown("RAW COMPLETE USAGE"));
+            writer.write("---" + "  \n");
+            writer.write(completeUsage.usageToMarkdown("COMPLETE USAGE"));
         } catch (IOException e) {
             e.printStackTrace();
         }

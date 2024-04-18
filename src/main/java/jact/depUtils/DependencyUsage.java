@@ -234,7 +234,7 @@ public class DependencyUsage {
         return xmlString;
     }
 
-    public String usageToString(String name) {
+    public String usageToMarkdown(String name) {
         long coveredInstructions = this.getTotalInstructions() - this.getMissedInstructions();
         String coveredInstructionsPercentage = lessRoundedPercentage(coveredInstructions, this.getTotalInstructions());
         String missedInstructionsPercentage = lessRoundedPercentage(this.getMissedInstructions(), this.getTotalInstructions());
@@ -260,24 +260,24 @@ public class DependencyUsage {
         String missedClassesPercentage = lessRoundedPercentage(this.getMissedClasses(), this.getTotalClasses());
 
         String usageString =
-                "#### " + name + " ############################" + "\n" +
-                        "INSTRUCTION: " + "covered = " + coveredInstructions + " : " + coveredInstructionsPercentage +
-                        " | missed = " + this.getMissedInstructions() + " : " + missedInstructionsPercentage + " | total = " + this.getTotalInstructions() + "\n" +
+                "### " + name + " (covered, missed, total):" + "  \n" +
+                        "##### INSTRUCTION: " + "<span style=\"color:green;\"> " + coveredInstructions + " : " + coveredInstructionsPercentage + " </span>" +
+                        " | <span style=\"color:red;\">" + this.getMissedInstructions() + " : " + missedInstructionsPercentage + " </span>" + " | " + this.getTotalInstructions() + "\n" +
 
-                        "BRANCH: " + "covered = " + coveredBranches + " : " + coveredBranchesPercentage +
-                        " | missed = " + this.getMissedBranches() + " : " + missedBranchesPercentage + " | total = " + this.getTotalBranches() + "\n" +
+                        "##### BRANCH: " + "<span style=\"color:green;\"> " + coveredBranches + " : " + coveredBranchesPercentage + " </span>" +
+                        " | <span style=\"color:red;\">" + this.getMissedBranches() + " : " + missedBranchesPercentage + " </span>" + " | " + this.getTotalBranches() + "\n" +
 
-                        "LINE: " + "covered = " + coveredLines + " : " + coveredLinesPercentage +
-                        " | missed = " + this.getMissedLines() + " : " + missedLinesPercentage + " | total = " + this.getTotalLines() + "\n" +
+                        "##### LINE: " + "<span style=\"color:green;\"> " + coveredLines + " : " + coveredLinesPercentage + " </span>" +
+                        " | <span style=\"color:red;\">" + this.getMissedLines() + " : " + missedLinesPercentage + " </span>" + " | " + this.getTotalLines() + "\n" +
 
-                        "COMPLEXITY: " + "covered = " + coveredCyclomaticComplexity + " : " + coveredComplexityPercentage +
-                        " | missed = " + this.getMissedCyclomaticComplexity() + " : " + missedComplexityPercentage + " | total = " + this.getCyclomaticComplexity() + "\n" +
+                        "##### COMPLEXITY: " + "<span style=\"color:green;\"> " + coveredCyclomaticComplexity + " : " + coveredComplexityPercentage + " </span>" +
+                        " | <span style=\"color:red;\">" + this.getMissedCyclomaticComplexity() + " : " + missedComplexityPercentage + " </span>" + " | " + this.getCyclomaticComplexity() + "\n" +
 
-                        "METHOD: " + "covered = " + coveredMethods + " : " + coveredMethodsPercentage +
-                        " | missed = " + this.getMissedMethods() + " : " + missedMethodsPercentage + " | total = " + this.getTotalMethods() + "\n" +
+                        "##### METHOD: " + "<span style=\"color:green;\"> " + coveredMethods + " : " + coveredMethodsPercentage + " </span>" +
+                        " | <span style=\"color:red;\">" + this.getMissedMethods() + " : " + missedMethodsPercentage + " </span>" + " | " + this.getTotalMethods() + "\n" +
 
-                        "CLASS: " + "covered = " + coveredClasses + " : " + coveredClassesPercentage +
-                        " | missed = " + this.getMissedClasses() + " : " + missedClassesPercentage + " | total = " + this.getTotalClasses() + "\n";
+                        "##### CLASS: " + "<span style=\"color:green;\"> " + coveredClasses + " : " + coveredClassesPercentage + " </span>" +
+                        " | <span style=\"color:red;\">" + this.getMissedClasses() + " : " + missedClassesPercentage + " </span>" + " | " + this.getTotalClasses() + "\n";
 
         return usageString;
     }
