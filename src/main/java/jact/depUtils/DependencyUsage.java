@@ -151,7 +151,7 @@ public class DependencyUsage {
         this.addTotalClasses(depUsage.getTotalClasses());
     }
 
-    public String usageToHTML(String dependencyDirName, DependencyUsage total, boolean isPackage, boolean transitiveEntry) {
+    public String usageToHTML(String dependencyDirName, DependencyUsage total, boolean isPackage, boolean indirectEntry) {
 
         long coveredInstructions = this.getTotalInstructions() - this.getMissedInstructions();
         long coveredBranches = this.getTotalBranches() - this.getMissedBranches();
@@ -168,9 +168,9 @@ public class DependencyUsage {
             icon = "el_group";
         }
         String link = dependencyDirName + "/index.html";
-        if (dependencyDirName.equals("transitive-dependencies") && transitiveEntry) {
-            link = "transitive-dependencies.html";
-        } else if (transitiveEntry) {
+        if (dependencyDirName.equals("indirect-dependencies") && indirectEntry) {
+            link = "indirect-dependencies.html";
+        } else if (indirectEntry) {
             link = "../" + dependencyDirName + "/index.html";
         }
 
@@ -260,24 +260,15 @@ public class DependencyUsage {
         String missedClassesPercentage = lessRoundedPercentage(this.getMissedClasses(), this.getTotalClasses());
 
         String usageString =
-                "### " + name + " (covered, missed, total):" + "  \n" +
-                        "**INSTRUCTION** &nbsp;" + coveredInstructions + " : " + coveredInstructionsPercentage + " | " +
-                        this.getMissedInstructions() + " : " + missedInstructionsPercentage + " | " + this.getTotalInstructions() + "  \n" +
-
-                        "**BRANCH** &nbsp;" + coveredBranches + " : " + coveredBranchesPercentage + " | " +
-                        this.getMissedBranches() + " : " + missedBranchesPercentage + " | " + this.getTotalBranches() + "  \n" +
-
-                        "**LINE** &nbsp;" + coveredLines + " : " + coveredLinesPercentage + " | " +
-                        this.getMissedLines() + " : " + missedLinesPercentage + " | " + this.getTotalLines() + "  \n" +
-
-                        "**COMPLEXITY** &nbsp;" + coveredCyclomaticComplexity + " : " + coveredComplexityPercentage + " | " +
-                        this.getMissedCyclomaticComplexity() + " : " + missedComplexityPercentage + " | " + this.getCyclomaticComplexity() + "  \n" +
+                "### " + name + " (covered, total):" + "  \n" +
+                        "**INSTRUCTION** &nbsp;" + coveredInstructions + " : " + coveredInstructionsPercentage + " | "
+                        + this.getTotalInstructions() + "  \n" +
 
                         "**METHOD** &nbsp;" + coveredMethods + " : " + coveredMethodsPercentage + " | " +
-                        this.getMissedMethods() + " : " + missedMethodsPercentage + " | " + this.getTotalMethods() + "  \n" +
+                        + this.getTotalMethods() + "  \n" +
 
                         "**CLASS** &nbsp;" + coveredClasses + " : " + coveredClassesPercentage + " | " +
-                        this.getMissedClasses() + " : " + missedClassesPercentage + " | " + this.getTotalClasses() + "  \n";
+                        this.getTotalClasses() + "  \n";
 
         return usageString;
     }

@@ -18,7 +18,7 @@ import static jact.utils.CommandExecutor.generateDependencyLockfile;
  */
 public class ProjectDependencies {
     private static Map<String, ProjectDependency> projectDependenciesMap;
-    private static Map<String, DependencyUsage> transitiveUsageMap;
+    private static Map<String, DependencyUsage> indirectUsageMap;
     private static Set<String> visited;
     private static boolean skipTestDependencies;
 
@@ -27,7 +27,7 @@ public class ProjectDependencies {
                                                                            boolean skipTestDeps) {
         // Reset previous objects (for the combined report caused by static classes)
         projectDependenciesMap = new HashMap<>();
-        transitiveUsageMap = new HashMap<>();
+        indirectUsageMap = new HashMap<>();
         visited = new HashSet<>();
         skipTestDependencies = skipTestDeps;
 
@@ -38,7 +38,7 @@ public class ProjectDependencies {
 
     /**
      * Generate the project lockfile containing all the project dependencies
-     * including their transitive dependencies and creates their corresponding
+     * including their indirect dependencies and creates their corresponding
      * ProjectDependency object with child/parent dependencies.
      *
      * @param targetDirectory
@@ -90,7 +90,7 @@ public class ProjectDependencies {
                 }
                 JsonArray childrenJsonArray = jsonObject.getAsJsonArray("children");
                 if (!childrenJsonArray.isEmpty()) {
-                    addTransitive(pd);
+                    addIndirect(pd);
                     for (JsonElement element : childrenJsonArray) {
                         ProjectDependency child = parseDependency(element.getAsJsonObject(), pd);
                         pd.addChildDep(child);
@@ -120,7 +120,7 @@ public class ProjectDependencies {
             projectDependenciesMap.put(projectDependency.getId(), projectDependency);
             JsonArray childrenJsonArray = jsonObject.getAsJsonArray("children");
             if (!childrenJsonArray.isEmpty()) {
-                addTransitive(projectDependency);
+                addIndirect(projectDependency);
                 for (JsonElement element : childrenJsonArray) {
                     ProjectDependency child = parseDependency(element.getAsJsonObject(), projectDependency);
                     projectDependency.addChildDep(child);
@@ -131,19 +131,19 @@ public class ProjectDependencies {
     }
 
     /**
-     * Adds a transitive entry for dependencies with
-     * children for keeping track of transitive usage.
+     * Adds a indirect entry for dependencies with
+     * children for keeping track of indirect usage.
      *
      * @param pd
      */
-    private static void addTransitive(ProjectDependency pd) {
-        if (!transitiveUsageMap.containsKey(pd.getId())) {
-            transitiveUsageMap.put(pd.getId(), new DependencyUsage());
+    private static void addIndirect(ProjectDependency pd) {
+        if (!indirectUsageMap.containsKey(pd.getId())) {
+            indirectUsageMap.put(pd.getId(), new DependencyUsage());
         }
     }
 
-    public static Map<String, DependencyUsage> getTransitiveUsageMap() {
-        return transitiveUsageMap;
+    public static Map<String, DependencyUsage> getIndirectUsageMap() {
+        return indirectUsageMap;
     }
 
 }

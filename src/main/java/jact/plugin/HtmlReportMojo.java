@@ -19,7 +19,7 @@ import static jact.utils.CommandExecutor.executeJacocoCLI;
 /**
  * JACT HTML Report:
  * Generates a complete code coverage report including all
- * dependencies along with their transitive dependencies.
+ * dependencies along with their indirect dependencies.
  */
 @Mojo(name = "html-report", defaultPhase = LifecyclePhase.INSTALL, threadSafe = false)
 public class HtmlReportMojo extends AbstractReportMojo {

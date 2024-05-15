@@ -14,7 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static jact.depUtils.PackageToDependencyResolver.packageToDependency;
-import static jact.depUtils.ProjectDependencies.getTransitiveUsageMap;
+import static jact.depUtils.ProjectDependencies.getIndirectUsageMap;
 import static jact.depUtils.ProjectDependency.depToDirName;
 import static jact.plugin.AbstractReportMojo.getJactReportPath;
 import static jact.utils.FileSystemUtils.*;
@@ -100,12 +100,12 @@ public class HtmlAugmenter {
     }
 
 
-    private static void setupTransitiveReports(Map<String, ProjectDependency> dependenciesMap) {
-        for (String depId : getTransitiveUsageMap().keySet()) {
+    private static void setupIndirectReports(Map<String, ProjectDependency> dependenciesMap) {
+        for (String depId : getIndirectUsageMap().keySet()) {
             try {
                 writeModifiedTemplateToFile("html-templates/indivDepViewTemplateStart.html",
-                        dependenciesMap.get(depId).getReportPath() + "transitive-dependencies.html",
-                        "<span style=\"display: inline-block;\">Transitive Dependencies from: <br>" +
+                        dependenciesMap.get(depId).getReportPath() + "indirect-dependencies.html",
+                        "<span style=\"display: inline-block;\">Indirect Dependencies from: <br>" +
                                 depToDirName(dependenciesMap.get(depId)) + "</span>");
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -157,7 +157,7 @@ public class HtmlAugmenter {
         }
 
         setupDependencyReports(dependenciesMap);
-        setupTransitiveReports(dependenciesMap);
+        setupIndirectReports(dependenciesMap);
     }
 
     /**
@@ -248,19 +248,19 @@ public class HtmlAugmenter {
     }
 
 
-    private static void writeTransitiveToFile(ProjectDependency pd) throws IOException {
-        if (getTransitiveUsageMap().containsKey(pd.getId())) {
+    private static void writeIndirectToFile(ProjectDependency pd) throws IOException {
+        if (getIndirectUsageMap().containsKey(pd.getId())) {
             String path = pd.getReportPath();
             writeHTMLStringToFile(path + "index.html",
-                    getTransitiveUsageMap().get(pd.getId()).usageToHTML("transitive-dependencies",
+                    getIndirectUsageMap().get(pd.getId()).usageToHTML("indirect-dependencies",
                             pd.dependencyUsage, false, true));
-            writeHTMLTotalToFile(path + "transitive-dependencies.html", getTransitiveUsageMap().get(pd.getId()).totalUsageToHTML());
+            writeHTMLTotalToFile(path + "indirect-dependencies.html", getIndirectUsageMap().get(pd.getId()).totalUsageToHTML());
             for (ProjectDependency child : pd.getChildDeps().values()) {
-                writeHTMLStringToFile(path + "transitive-dependencies.html",
+                writeHTMLStringToFile(path + "indirect-dependencies.html",
                         child.dependencyUsage.usageToHTML(depToDirName(child),
-                                getTransitiveUsageMap().get(pd.getId()), false, true));
+                                getIndirectUsageMap().get(pd.getId()), false, true));
             }
-            writeTemplateToFile("html-templates/endTemplate.html", path + "transitive-dependencies.html");
+            writeTemplateToFile("html-templates/endTemplate.html", path + "indirect-dependencies.html");
         }
     }
 
@@ -268,7 +268,7 @@ public class HtmlAugmenter {
      * Writes all dependencies to the report. Dependencies
      * without parents are written to the overview and
      * child dependencies are written as entries in their
-     * respective transitive reports.
+     * respective indirect reports.
      *
      * @param dependenciesMap
      * @throws IOException
@@ -281,7 +281,7 @@ public class HtmlAugmenter {
                         pd.dependencyUsage.usageToHTML(depToDirName(pd), totalDependencyUsage, false, false));
             }
             writeHTMLTotalToFile(path + "index.html", pd.dependencyUsage.totalUsageToHTML());
-            writeTransitiveToFile(pd);
+            writeIndirectToFile(pd);
             pd.writePackagesToFile(path, pd.dependencyUsage);
             // Write the end of the template here
             writeModifiedTemplateToFile("html-templates/endTemplate.html",
@@ -312,7 +312,7 @@ public class HtmlAugmenter {
                 throw new RuntimeException(e);
             }
         }
-        // Write the overview total: Project + Dependencies (incl. transitive)
+        // Write the overview total: Project + Dependencies (incl. indirect)
         writeHTMLTotalToFile(getJactReportPath() + "index.html", completeUsage.totalUsageToHTML());
 
         // Writes the overview HTML template
@@ -321,7 +321,7 @@ public class HtmlAugmenter {
 
 
     /**
-     * Calculates the transitive dependency usage
+     * Calculates the indirect dependency usage
      * for the input dependency recursively adding
      * the children dependencies.
      *
@@ -329,11 +329,11 @@ public class HtmlAugmenter {
      * @param includeSelf
      * @return DependencyUsage
      */
-    private static DependencyUsage calculateTransitiveDepUsage(ProjectDependency dependency, boolean includeSelf) {
+    private static DependencyUsage calculateIndirectDepUsage(ProjectDependency dependency, boolean includeSelf) {
         DependencyUsage currUsage = new DependencyUsage();
         if (!calculatedChildIds.contains(dependency.getId())) {
             for (ProjectDependency child : dependency.getChildDeps().values()) {
-                currUsage.addAll(calculateTransitiveDepUsage(child, true));
+                currUsage.addAll(calculateIndirectDepUsage(child, true));
             }
         }
         if (includeSelf) {
@@ -346,11 +346,14 @@ public class HtmlAugmenter {
     /**
      * Calculates the total usage for all layers of the report.
      * Layers include the complete overview, dependency overview
-     * individual dependencies and their transitive dependencies.
+     * individual dependencies and their indirect dependencies.
      *
      * @param dependenciesMap
      */
     private static void calculateAllUsages(Map<String, ProjectDependency> dependenciesMap, boolean generateSummary) {
+        if(generateSummary){
+            writeDepToCSV(dependenciesMap);
+        }
         for (ProjectDependency dependency : dependenciesMap.values()) {
             if(generateSummary){
                 summaryTotalDepUsage.addAll((dependency.dependencyUsage));
@@ -366,18 +369,18 @@ public class HtmlAugmenter {
                 }
             }
             if (!dependency.getChildDeps().isEmpty()) {
-                DependencyUsage indirectDepsUsage = calculateTransitiveDepUsage(dependency, false);
+                DependencyUsage indirectDepsUsage = calculateIndirectDepUsage(dependency, false);
                 if(generateSummary){
                     // Multiple Indirect Dependencies
                     nrMultipleIndirectDeps += dependency.getChildDeps().size();
                     summaryMultipleIndirectDepUsage.addAll(indirectDepsUsage);
                 }
                 dependency.dependencyUsage.addAll(indirectDepsUsage);
-                getTransitiveUsageMap().get(dependency.getId()).addAll(indirectDepsUsage);
+                getIndirectUsageMap().get(dependency.getId()).addAll(indirectDepsUsage);
                 calculatedChildIds.add(dependency.getId());
             }
             // Calculate the total
-            // Only ROOT dependencies are added, since the transitive
+            // Only ROOT dependencies are added, since the indirect
             // cost was included in the previous if-statement.
             if (dependency.rootDep) {
                 totalDependencyUsage.addAll(dependency.dependencyUsage);
@@ -743,16 +746,16 @@ public class HtmlAugmenter {
 
         // Currently missing a complete total: Project + Deps
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
-            writer.write(thisProject.dependencyUsage.usageToMarkdown("PROJECT USAGE") + "  \n");
+            writer.write(thisProject.dependencyUsage.usageToMarkdown("PROJECT COVERAGE") + "  \n");
             writer.write("----------------------------------------------------------------  \n");
             writer.write("### **NUMBER OF DEPENDENCIES:** " + "  \n");
             writer.write("- **#DIRECT:** " + nrDirectDeps + "  \n");
             writer.write("- **#INDIRECT:** " + nrIndirectDeps + "  \n");
-            writer.write(summaryCompileScopeDepUsage.usageToMarkdown("COMPILE-SCOPE USAGE") + "  \n");
-            writer.write(summaryDirectDepUsage.usageToMarkdown("DIRECT DEPENDENCY USAGE") + "  \n");
-            writer.write(summaryIndirectDepUsage.usageToMarkdown("INDIRECT DEPENDENCY USAGE") + "  \n");
-            writer.write(summaryTotalDepUsage.usageToMarkdown("TOTAL DEPENDENCY USAGE") + "  \n");
-            writer.write(summaryTotalUsage.usageToMarkdown("TOTAL USAGE _[Project + Dependencies]_") + "  \n");
+            writer.write(summaryCompileScopeDepUsage.usageToMarkdown("COMPILE-SCOPE COVERAGE") + "  \n");
+            writer.write(summaryDirectDepUsage.usageToMarkdown("DIRECT DEPENDENCY COVERAGE") + "  \n");
+            writer.write(summaryIndirectDepUsage.usageToMarkdown("INDIRECT DEPENDENCY COVERAGE") + "  \n");
+            writer.write(summaryTotalDepUsage.usageToMarkdown("TOTAL DEPENDENCY COVERAGE _[Direct + Indirect]_") + "  \n");
+            writer.write(summaryTotalUsage.usageToMarkdown("TOTAL COVERAGE _[Project + Dependencies]_") + "  \n");
             writer.write("----------------------------------------------------------------  \n");
             // MULTIPLE
             writer.write("## MULTIPLE:  \n");
@@ -762,12 +765,60 @@ public class HtmlAugmenter {
             writer.write("### **NUMBER OF DEPENDENCIES:** " + "  \n");
             writer.write("- **#DIRECT:** " + nrDirectDeps + "  \n");
             writer.write("- **#MULTIPLE INDIRECT:** " + nrMultipleIndirectDeps + "  \n");
-            writer.write(summaryMultipleIndirectDepUsage.usageToMarkdown("MULTIPLE INDIRECT USAGE") + "  \n");
-            writer.write(summaryMultipleTotalDepUsage.usageToMarkdown("MULTIPLE TOTAL DEPENDENCY USAGE") + "  \n");
-            writer.write(summaryMultipleTotalUsage.usageToMarkdown("MULTIPLE TOTAL USAGE _[Project + Dependencies]_"));
+            writer.write(summaryMultipleIndirectDepUsage.usageToMarkdown("MULTIPLE INDIRECT COVERAGE") + "  \n");
+            writer.write(summaryMultipleTotalDepUsage.usageToMarkdown("MULTIPLE TOTAL DEPENDENCY COVERAGE _[Direct + Multiple Indirect]_") + "  \n");
+            writer.write(summaryMultipleTotalUsage.usageToMarkdown("MULTIPLE TOTAL COVERAGE _[Project + Dependencies]_"));
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    private static void writeDepToCSV(Map<String, ProjectDependency> dependenciesMap){
+        String outputFile = getJactReportPath() + "directDependencySummary.csv";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
+            writer.write("DEPENDENCY_ID,DIRECT_DEPENDENCY,INSTRUCTION_COVERED,INSTRUCTION_TOTAL," +
+                    "METHOD_COVERED,METHOD_TOTAL,CLASS_COVERED,CLASS_TOTAL\n");
+            for (ProjectDependency pd : dependenciesMap.values()) {
+                long coveredInstructions = pd.dependencyUsage.getTotalInstructions() - pd.dependencyUsage.getMissedInstructions();
+                long coveredMethods = pd.dependencyUsage.getTotalMethods() - pd.dependencyUsage.getMissedMethods();
+                long coveredClasses = pd.dependencyUsage.getTotalClasses() - pd.dependencyUsage.getMissedClasses();
+                writer.write(pd.getId() + "," + pd.rootDep + "," +
+                                coveredInstructions + "," + pd.dependencyUsage.getTotalInstructions() + "," +
+                                coveredMethods + "," + pd.dependencyUsage.getTotalMethods() + "," +
+                                coveredClasses + "," + pd.dependencyUsage.getTotalClasses() + "\n");
+            }
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
+//        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
+//            writer.write(thisProject.dependencyUsage.usageToMarkdown("PROJECT COVERAGE") + "  \n");
+//            writer.write("----------------------------------------------------------------  \n");
+//            writer.write("### **NUMBER OF DEPENDENCIES:** " + "  \n");
+//            writer.write("- **#DIRECT:** " + nrDirectDeps + "  \n");
+//            writer.write("- **#INDIRECT:** " + nrIndirectDeps + "  \n");
+//            writer.write(summaryCompileScopeDepUsage.usageToMarkdown("COMPILE-SCOPE COVERAGE") + "  \n");
+//            writer.write(summaryDirectDepUsage.usageToMarkdown("DIRECT DEPENDENCY COVERAGE") + "  \n");
+//            writer.write(summaryIndirectDepUsage.usageToMarkdown("INDIRECT DEPENDENCY COVERAGE") + "  \n");
+//            writer.write(summaryTotalDepUsage.usageToMarkdown("TOTAL DEPENDENCY COVERAGE _[Direct + Indirect]_") + "  \n");
+//            writer.write(summaryTotalUsage.usageToMarkdown("TOTAL COVERAGE _[Project + Dependencies]_") + "  \n");
+//            writer.write("----------------------------------------------------------------  \n");
+//            // MULTIPLE
+//            writer.write("## MULTIPLE:  \n");
+//            writer.write("_If indirect dependencies are shared by direct dependencies they are added to the  \n" +
+//                    "cost of all of their parent dependencies in the visual HTML version but only included  \n" +
+//                    "once in the Uber-jar._  \n");
+//            writer.write("### **NUMBER OF DEPENDENCIES:** " + "  \n");
+//            writer.write("- **#DIRECT:** " + nrDirectDeps + "  \n");
+//            writer.write("- **#MULTIPLE INDIRECT:** " + nrMultipleIndirectDeps + "  \n");
+//            writer.write(summaryMultipleIndirectDepUsage.usageToMarkdown("MULTIPLE INDIRECT COVERAGE") + "  \n");
+//            writer.write(summaryMultipleTotalDepUsage.usageToMarkdown("MULTIPLE TOTAL DEPENDENCY COVERAGE _[Direct + Multiple Indirect]_") + "  \n");
+//            writer.write(summaryMultipleTotalUsage.usageToMarkdown("MULTIPLE TOTAL COVERAGE _[Project + Dependencies]_"));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
 }
