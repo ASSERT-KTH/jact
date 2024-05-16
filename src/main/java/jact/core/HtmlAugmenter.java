@@ -186,14 +186,15 @@ public class HtmlAugmenter {
             if (directories != null) {
                 for (File directory : directories) {
                     String dirName = directory.getName();
-                    if (!dirName.equals("dependencies") && !dirName.equals("jacoco-resources")) {
-                        ProjectDependency matchedDep =
-                                packageToDependency(dirName, dependenciesMap, projPackagesAndClassMap, localRepoPath);
-                        // Could become problematic if packages share name with packages in dependencies
+                    if (!dirName.equals("dependencies") && !dirName.equals("jact_xml_package_reports") &&
+                            !dirName.equals("jacoco-resources")) {
                         if (projPackagesAndClassMap.containsKey(dirName)) {
                             extractAndAddPackageTotal(getJactReportPath() + dirName +
                                     "/index.html", thisProject, dirName);
                         } else {
+                            // Match the package to its dependency
+                            ProjectDependency matchedDep =
+                                    packageToDependency(dirName, dependenciesMap, localRepoPath);
                             if (matchedDep.getId() != null) {
                                 extractAndAddPackageTotal(getJactReportPath() + dirName +
                                         "/index.html", matchedDep, dirName);

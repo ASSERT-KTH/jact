@@ -1,6 +1,7 @@
 package jact.depUtils;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.Map;
@@ -13,39 +14,54 @@ import java.util.zip.ZipFile;
  */
 public class PackageToDependencyResolver {
 
-    public static ProjectDependency packageToDependency(String packageName, Map<String, ProjectDependency> dependenciesMap,
-                                                        Map<String, Set<String>> projPackagesAndClassMap, String localRepoPath) {
+    private static ProjectDependency prevMatchedDep = new ProjectDependency();
 
-        boolean packageNameInProject = projPackagesAndClassMap.containsKey(packageName);
-        boolean foundDep = false;
+    public static ProjectDependency packageToDependency(String packageName, Map<String,
+                                                        ProjectDependency> dependenciesMap,
+                                                        String localRepoPath) {
+
         ProjectDependency matchedDep = new ProjectDependency();
+        boolean foundPackage = false;
 
-        // Iterate over each dependency
-        for (ProjectDependency dependency : dependenciesMap.values()) {
-            if (foundDep) {
-                break;
+        // Check the last matched dependency
+        if(prevMatchedDep.getId() != null){
+            foundPackage = containsPackage(packageName, getDependencyJars(prevMatchedDep, localRepoPath));
+        }
+
+        if(foundPackage){
+            matchedDep = prevMatchedDep;
+        }else{
+            // Check all dependencies for the package
+            for (ProjectDependency dependency : dependenciesMap.values()) {
+                foundPackage = containsPackage(packageName, getDependencyJars(dependency, localRepoPath));
+                if(foundPackage){
+                    prevMatchedDep = dependency;
+                    matchedDep = dependency;
+                    break;
+                }
             }
-            String groupId = dependency.getGroupId();
-            String artifactId = dependency.getArtifactId();
-            String version = dependency.getVersion();
+        }
 
-            // Construct the path to the JAR file
-            String jarFilePath = localRepoPath + "/" + groupId.replace('.', '/') +
-                    "/" + artifactId + "/" + version + "/" + artifactId + "-" + version + ".jar";
-            File jarFile = new File(jarFilePath);
+        if (matchedDep.getId() == null) {
+            // Usually a problem with a runtime dependency required by a test-dependency.
+            // Which jacoco occasionally includes. Remove it.
+            System.out.println("CANNOT MATCH PACKAGE TO ANY DEPENDENCY: " + packageName);
+        }
+        return matchedDep;
+    }
 
-            // Check if the JAR file exists
-            if (jarFile.exists()) {
+    private static boolean containsPackage(String packageName, File[] jarFiles){
+        if (jarFiles != null && jarFiles.length > 0) {
+            for(File jarFile : jarFiles){
                 try (ZipFile zipFile = new ZipFile(jarFile)) {
                     Enumeration<? extends ZipEntry> entries = zipFile.entries();
                     while (entries.hasMoreElements()) {
                         ZipEntry entry = entries.nextElement();
                         // Check if the entry is a class file within the desired package
                         if (entry.getName().startsWith(packageName.replace('.', '/')) && entry.getName().endsWith(".class")) {
-                            //System.out.println("Package: " + packageName + " matched to dependency: " + groupId + ":" + artifactId + ":" + version);
-                            matchedDep = dependency;
-                            foundDep = true;
-                            break;
+                            //System.out.println("Package: " + packageName + " matched to dependency: " +
+                            // groupId + ":" + artifactId + ":" + version);
+                            return true;
                         }
                     }
                 } catch (IOException e) {
@@ -53,17 +69,20 @@ public class PackageToDependencyResolver {
                 }
             }
         }
-
-        if (matchedDep.getId() != null && packageNameInProject) {
-            // Extract the classes in the project and put them in a separate directory
-            System.out.println("Package name: " + packageName +
-                    " has an identical name to a package in " + matchedDep.getId());
-            return new ProjectDependency();
-        } else if (matchedDep.getId() == null && !packageNameInProject) {
-            // Usually a problem with a runtime dependency required by a test-dependency.
-            // Which jacoco occasionally includes. Remove it.
-            //System.out.println("CANNOT MATCH PACKAGE TO ANY DEPENDENCY: " + packageName);
-        }
-        return matchedDep;
+        return false;
     }
+
+    private static File[] getDependencyJars(ProjectDependency dependency, String localRepoPath){
+        String groupId = dependency.getGroupId();
+        String artifactId = dependency.getArtifactId();
+        String version = dependency.getVersion();
+
+        // Construct the path to the JAR file
+        String directoryPath = localRepoPath + "/" + groupId.replace('.', '/') +
+                "/" + artifactId + "/" + version + "/";
+        File directory = new File(directoryPath);
+        // Return all jar files from that dependency
+        return directory.listFiles((dir, name) -> name.endsWith(".jar"));
+    }
+
 }
