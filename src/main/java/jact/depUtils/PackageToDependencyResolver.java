@@ -50,6 +50,13 @@ public class PackageToDependencyResolver {
         return matchedDep;
     }
 
+    /**
+     * Checks if the given jars contain the
+     * packaged that is being searched for.
+     * @param packageName
+     * @param jarFiles
+     * @return
+     */
     private static boolean containsPackage(String packageName, File[] jarFiles){
         if (jarFiles != null && jarFiles.length > 0) {
             for(File jarFile : jarFiles){
@@ -72,6 +79,14 @@ public class PackageToDependencyResolver {
         return false;
     }
 
+    /**
+     * Gets all the jar-names contained in
+     * the dependency directory, required
+     * to resolve non-standard jar-names.
+     * @param dependency
+     * @param localRepoPath
+     * @return
+     */
     private static File[] getDependencyJars(ProjectDependency dependency, String localRepoPath){
         String groupId = dependency.getGroupId();
         String artifactId = dependency.getArtifactId();
