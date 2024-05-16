@@ -20,7 +20,7 @@ import static jact.utils.CommandExecutor.executeJacocoCLI;
 /**
  * JACT Combined Report:
  * Generates a complete code coverage report including all
- * dependencies along with their transitive dependencies.
+ * dependencies along with their indirect dependencies.
  * This Mojo generates both the HTML and XML reports.
  */
 @Mojo(name = "combined-report", defaultPhase = LifecyclePhase.INSTALL, threadSafe = false)

@@ -8,15 +8,15 @@
 ### What is JACT?
 JACT is a work in progress Maven plugin for my master's thesis which will generate a complete code coverage report of a
 Java project using Maven. The report includes coverage of both the project and all of its dependencies (even transitive).
-JACT uses the JaCoCo CLI to generate the coverage report on the packaged FAT-jar and augments the unorganized package 
+JACT uses the JaCoCo CLI to generate the coverage report on the packaged Uber-jar and augments the unorganized package 
 report by resolving the package dependency heritage uncovering the complete dependency usage by including the transitive
 dependency usage.
 
 ##### Current prerequisites:
 - Required to use JaCoCo
-- Use either the Maven Shade Plugin to create a FAT-jar (including all the dependencies along with their transitive 
+- Use either the Maven Shade Plugin to create a Uber-jar (including all the dependencies along with their transitive 
   dependencies). Example provided under 'Using JACT'.
-- Resulting FAT-jar has to be place under ./target/
+- Resulting Uber-jar has to be place under ./target/
 
 ### Building the test project and inspecting its coverage report:
 - Clone this repo and build the project from the root folder:
@@ -35,7 +35,7 @@ The report will now be located under the test project `/target/jact-report` wher
 ### Using JACT:
 After fulfilling the prerequsites in your project, clone this repo and execute `mvn clean install`.
 
-For JACT to create a complete coverage report you need to package your project separately as a FAT-jar. This is done with
+For JACT to create a complete coverage report you need to package your project separately as a Uber-jar. This is done with
 the Maven Shade Plugin. Add this minimal configuration to the pom.xml file in your project:
 ```xml
 <plugin>
@@ -76,12 +76,12 @@ The property `${report-format}` can take one of the following values depending o
 * **xml-report** Generates the XML report.
 * **combined-report** Generates both the HTML and XML report.
 
-JACT creates the report during the `install`-phase since it requires a packaged FAT-jar. Executing `mvn clean install`
+JACT creates the report during the `install`-phase since it requires a packaged Uber-jar. Executing `mvn clean install`
 in your project will create a `jact-report` directory under `./target/jact-report`.
 
 
 **_Custom Maven-Shade-Plugin jar name:_** </br>
-If your project packages a FAT-jar under a custom name the custom name can be provided by adding this to your JACT
+If your project packages a Uber-jar under a custom name the custom name can be provided by adding this to your JACT
 configuration:
 
 ```xml

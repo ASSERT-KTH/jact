@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import static jact.depUtils.ProjectDependencies.getAllProjectDependencies;
-import static jact.depUtils.ProjectDependencies.getTransitiveUsageMap;
+import static jact.depUtils.ProjectDependencies.getIndirectUsageMap;
 import static jact.depUtils.ProjectDependency.depToDirName;
 import static jact.utils.FileSystemUtils.removeDirectory;
 import static junit.framework.TestCase.assertEquals;
@@ -177,41 +177,41 @@ public class ComplexProjectDependenciesTest {
      *                     objects.
      *     Post-condition: All ProjectDependencies with children
      *                     have a corresponding entry in the
-     *                     transitiveUsageMap.
+     *                     indirectUsageMap.
      */
-    public void transitiveReportPathsTest() {
-        assertEquals(30, getTransitiveUsageMap().size());
+    public void indirectReportPathsTest() {
+        assertEquals(30, getIndirectUsageMap().size());
 
-        assertTrue(getTransitiveUsageMap().containsKey("org.apache.maven.doxia:doxia-logging-api:1.12.0"));
-        assertTrue(getTransitiveUsageMap().containsKey("org.apache.maven.doxia:doxia-sink-api:1.12.0"));
-        assertTrue(getTransitiveUsageMap().containsKey("org.junit.jupiter:junit-jupiter-engine:5.10.2"));
-        assertTrue(getTransitiveUsageMap().containsKey("com.tngtech.archunit:archunit-junit5-api:1.2.1"));
-        assertTrue(getTransitiveUsageMap().containsKey("org.apache.httpcomponents.client5:httpclient5:5.1.3"));
-        assertTrue(getTransitiveUsageMap().containsKey("org.apache.httpcomponents:httpclient:4.5.13"));
-        assertTrue(getTransitiveUsageMap().containsKey("com.github.caciocavallosilano:cacio-tta:1.11"));
-        assertTrue(getTransitiveUsageMap().containsKey("org.xmlresolver:xmlresolver:5.2.2"));
-        assertTrue(getTransitiveUsageMap().containsKey("com.tngtech.archunit:archunit-junit5:1.2.1"));
-        assertTrue(getTransitiveUsageMap().containsKey("org.apache.httpcomponents.core5:httpcore5-h2:5.1.3"));
-        assertTrue(getTransitiveUsageMap().containsKey("com.google.truth:truth:1.4.2"));
-        assertTrue(getTransitiveUsageMap().containsKey("commons-beanutils:commons-beanutils:1.9.4"));
-        assertTrue(getTransitiveUsageMap().containsKey("junit:junit:4.13.2"));
-        assertTrue(getTransitiveUsageMap().containsKey("org.apache.maven.doxia:doxia-module-xdoc:1.12.0"));
-        assertTrue(getTransitiveUsageMap().containsKey("org.junit.platform:junit-platform-engine:1.10.2"));
-        assertTrue(getTransitiveUsageMap().containsKey("org.junit.jupiter:junit-jupiter-params:5.9.2"));
-        assertTrue(getTransitiveUsageMap().containsKey("org.eclipse.jgit:org.eclipse.jgit:6.9.0.202403050737-r"));
-        assertTrue(getTransitiveUsageMap().containsKey("org.mockito:mockito-inline:5.2.0"));
-        assertTrue(getTransitiveUsageMap().containsKey("org.junit-pioneer:junit-pioneer:2.2.0"));
-        assertTrue(getTransitiveUsageMap().containsKey("org.mockito:mockito-core:5.2.0"));
-        assertTrue(getTransitiveUsageMap().containsKey("org.junit.platform:junit-platform-commons:1.10.2"));
-        assertTrue(getTransitiveUsageMap().containsKey("org.codehaus.plexus:plexus-container-default:2.1.0"));
-        assertTrue(getTransitiveUsageMap().containsKey("nl.jqno.equalsverifier:equalsverifier:3.16"));
-        assertTrue(getTransitiveUsageMap().containsKey("org.junit.jupiter:junit-jupiter-api:5.10.2"));
-        assertTrue(getTransitiveUsageMap().containsKey("com.google.guava:guava:33.1.0-jre"));
-        assertTrue(getTransitiveUsageMap().containsKey("com.tngtech.archunit:archunit-junit5-engine:1.2.1"));
-        assertTrue(getTransitiveUsageMap().containsKey("net.sf.saxon:Saxon-HE:12.4"));
-        assertTrue(getTransitiveUsageMap().containsKey("org.junit.platform:junit-platform-launcher:1.9.2"));
-        assertTrue(getTransitiveUsageMap().containsKey("org.apache.maven.doxia:doxia-core:1.12.0"));
-        assertTrue(getTransitiveUsageMap().containsKey("org.reflections:reflections:0.10.2"));
+        assertTrue(getIndirectUsageMap().containsKey("org.apache.maven.doxia:doxia-logging-api:1.12.0"));
+        assertTrue(getIndirectUsageMap().containsKey("org.apache.maven.doxia:doxia-sink-api:1.12.0"));
+        assertTrue(getIndirectUsageMap().containsKey("org.junit.jupiter:junit-jupiter-engine:5.10.2"));
+        assertTrue(getIndirectUsageMap().containsKey("com.tngtech.archunit:archunit-junit5-api:1.2.1"));
+        assertTrue(getIndirectUsageMap().containsKey("org.apache.httpcomponents.client5:httpclient5:5.1.3"));
+        assertTrue(getIndirectUsageMap().containsKey("org.apache.httpcomponents:httpclient:4.5.13"));
+        assertTrue(getIndirectUsageMap().containsKey("com.github.caciocavallosilano:cacio-tta:1.11"));
+        assertTrue(getIndirectUsageMap().containsKey("org.xmlresolver:xmlresolver:5.2.2"));
+        assertTrue(getIndirectUsageMap().containsKey("com.tngtech.archunit:archunit-junit5:1.2.1"));
+        assertTrue(getIndirectUsageMap().containsKey("org.apache.httpcomponents.core5:httpcore5-h2:5.1.3"));
+        assertTrue(getIndirectUsageMap().containsKey("com.google.truth:truth:1.4.2"));
+        assertTrue(getIndirectUsageMap().containsKey("commons-beanutils:commons-beanutils:1.9.4"));
+        assertTrue(getIndirectUsageMap().containsKey("junit:junit:4.13.2"));
+        assertTrue(getIndirectUsageMap().containsKey("org.apache.maven.doxia:doxia-module-xdoc:1.12.0"));
+        assertTrue(getIndirectUsageMap().containsKey("org.junit.platform:junit-platform-engine:1.10.2"));
+        assertTrue(getIndirectUsageMap().containsKey("org.junit.jupiter:junit-jupiter-params:5.9.2"));
+        assertTrue(getIndirectUsageMap().containsKey("org.eclipse.jgit:org.eclipse.jgit:6.9.0.202403050737-r"));
+        assertTrue(getIndirectUsageMap().containsKey("org.mockito:mockito-inline:5.2.0"));
+        assertTrue(getIndirectUsageMap().containsKey("org.junit-pioneer:junit-pioneer:2.2.0"));
+        assertTrue(getIndirectUsageMap().containsKey("org.mockito:mockito-core:5.2.0"));
+        assertTrue(getIndirectUsageMap().containsKey("org.junit.platform:junit-platform-commons:1.10.2"));
+        assertTrue(getIndirectUsageMap().containsKey("org.codehaus.plexus:plexus-container-default:2.1.0"));
+        assertTrue(getIndirectUsageMap().containsKey("nl.jqno.equalsverifier:equalsverifier:3.16"));
+        assertTrue(getIndirectUsageMap().containsKey("org.junit.jupiter:junit-jupiter-api:5.10.2"));
+        assertTrue(getIndirectUsageMap().containsKey("com.google.guava:guava:33.1.0-jre"));
+        assertTrue(getIndirectUsageMap().containsKey("com.tngtech.archunit:archunit-junit5-engine:1.2.1"));
+        assertTrue(getIndirectUsageMap().containsKey("net.sf.saxon:Saxon-HE:12.4"));
+        assertTrue(getIndirectUsageMap().containsKey("org.junit.platform:junit-platform-launcher:1.9.2"));
+        assertTrue(getIndirectUsageMap().containsKey("org.apache.maven.doxia:doxia-core:1.12.0"));
+        assertTrue(getIndirectUsageMap().containsKey("org.reflections:reflections:0.10.2"));
     }
 
 }

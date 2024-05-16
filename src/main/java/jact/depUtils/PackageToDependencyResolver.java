@@ -56,8 +56,9 @@ public class PackageToDependencyResolver {
 
         if (matchedDep.getId() != null && packageNameInProject) {
             // Extract the classes in the project and put them in a separate directory
-            throw new RuntimeException("CANNOT RESOLVE PACKAGES: Package name: " + packageName +
+            System.out.println("Package name: " + packageName +
                     " has an identical name to a package in " + matchedDep.getId());
+            return new ProjectDependency();
         } else if (matchedDep.getId() == null && !packageNameInProject) {
             // Usually a problem with a runtime dependency required by a test-dependency.
             // Which jacoco occasionally includes. Remove it.

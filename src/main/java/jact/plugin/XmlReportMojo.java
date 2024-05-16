@@ -19,7 +19,7 @@ import static jact.utils.CommandExecutor.executeJacocoCLI;
 /**
  * JACT XML Report:
  * Generates a complete code coverage report including all
- * dependencies along with their transitive dependencies.
+ * dependencies along with their indirect dependencies.
  */
 @Mojo(name = "xml-report", defaultPhase = LifecyclePhase.INSTALL, threadSafe = false)
 public class XmlReportMojo extends AbstractReportMojo {
