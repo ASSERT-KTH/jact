@@ -776,7 +776,7 @@ public class HtmlAugmenter {
 
 
     private static void writeDepToCSV(Map<String, ProjectDependency> dependenciesMap){
-        String outputFile = getJactReportPath() + "directDependencySummary.csv";
+        String outputFile = getJactReportPath() + "DependencyUsageSummary.csv";
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
             writer.write("DEPENDENCY_ID,DIRECT_DEPENDENCY,INSTRUCTION_COVERED,INSTRUCTION_TOTAL," +

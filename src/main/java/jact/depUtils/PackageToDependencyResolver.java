@@ -45,7 +45,7 @@ public class PackageToDependencyResolver {
         if (matchedDep.getId() == null) {
             // Usually a problem with a runtime dependency required by a test-dependency.
             // Which jacoco occasionally includes. Remove it.
-            System.out.println("CANNOT MATCH PACKAGE TO ANY DEPENDENCY: " + packageName);
+            System.out.println("COULD NOT MATCH PACKAGE TO ANY DEPENDENCY: " + packageName);
         }
         return matchedDep;
     }
