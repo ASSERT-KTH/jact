@@ -155,11 +155,11 @@ public class XmlAugmenter {
                 String filename = packageName.replace("/", "-") + ".xml"; // Use package name for filename
                 // Add to th
                 fileNameToPackageMap.put(filename, packageName);
-                writeXML(packageReport, getJactReportPath() + "xml_reports/" + filename);
+                writeXML(packageReport, getJactReportPath() + "jact_xml_package_reports/" + filename);
             }
 
             //System.out.println("Separate XML reports created for each package in the current directory.");
-            readAndExtractPackageUsage(getJactReportPath() + "xml_reports/", dependenciesMap, projPackagesAndClassMap, localRepoPath);
+            readAndExtractPackageUsage(getJactReportPath() + "jact_xml_package_reports/", dependenciesMap, projPackagesAndClassMap, localRepoPath);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -189,14 +189,18 @@ public class XmlAugmenter {
                 // Iterate through each file
                 for (File file : files) {
                     String packageName = fileNameToPackageMap.get(file.getName()).replaceAll("/", ".");
-                    ProjectDependency matchedDep = packageToDependency(packageName, dependenciesMap, projPackagesAndClassMap, localRepoPath);
-                    if (matchedDep.getId() != null) {
-                        // We know the package comes from a dependency
-                        extractCounterValues(getJactReportPath() + "xml_reports/" + file.getName(), matchedDep, dependencyUsage, file.getName());
-                    } else if (projPackagesAndClassMap.containsKey(packageName)) {
-                        extractCounterValues(getJactReportPath() + "xml_reports/" + file.getName(), thisProject, projectUsage, file.getName());
+                    if (projPackagesAndClassMap.containsKey(packageName)) {
+                        extractCounterValues(getJactReportPath() + "jact_xml_package_reports/" + file.getName(),
+                                thisProject, projectUsage, file.getName());
                     } else {
-                        removeFile(getJactReportPath() + "xml_reports/" + file.getName());
+                        // Match the package to its dependency
+                        ProjectDependency matchedDep = packageToDependency(packageName, dependenciesMap, localRepoPath);
+                        if (matchedDep.getId() != null) {
+                            extractCounterValues(getJactReportPath() + "jact_xml_package_reports/" + file.getName(),
+                                    matchedDep, dependencyUsage, file.getName());
+                        }else{
+                            removeFile(getJactReportPath() + "jact_xml_package_reports/" + file.getName());
+                        }
                     }
                 }
             } else {
@@ -310,7 +314,7 @@ public class XmlAugmenter {
      */
     private static void writePackageReportsFromMap(ProjectDependency dependency, FileWriter writer) {
         for (Map.Entry<String, DependencyUsage> entry : dependency.packageUsageMap.entrySet()) {
-            File packageFile = new File(getJactReportPath() + "xml_reports/" + entry.getKey());
+            File packageFile = new File(getJactReportPath() + "jact_xml_package_reports/" + entry.getKey());
             try (BufferedReader reader = new BufferedReader(new FileReader(packageFile))) {
                 String line;
                 boolean firstLineSkipped = false;
@@ -389,7 +393,7 @@ public class XmlAugmenter {
         }
         // No usage, such packages are not included in the html version.
         if (!matchedDep.packageUsageMap.containsKey(packageFileName)) {
-            removeFile(getJactReportPath() + "xml_reports/" + packageFileName);
+            removeFile(getJactReportPath() + "jact_xml_package_reports/" + packageFileName);
         }
     }
 
