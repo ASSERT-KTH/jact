@@ -792,33 +792,6 @@ public class HtmlAugmenter {
         }catch (IOException e) {
             e.printStackTrace();
         }
-
-//        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
-//            writer.write(thisProject.dependencyUsage.usageToMarkdown("PROJECT COVERAGE") + "  \n");
-//            writer.write("----------------------------------------------------------------  \n");
-//            writer.write("### **NUMBER OF DEPENDENCIES:** " + "  \n");
-//            writer.write("- **#DIRECT:** " + nrDirectDeps + "  \n");
-//            writer.write("- **#INDIRECT:** " + nrIndirectDeps + "  \n");
-//            writer.write(summaryCompileScopeDepUsage.usageToMarkdown("COMPILE-SCOPE COVERAGE") + "  \n");
-//            writer.write(summaryDirectDepUsage.usageToMarkdown("DIRECT DEPENDENCY COVERAGE") + "  \n");
-//            writer.write(summaryIndirectDepUsage.usageToMarkdown("INDIRECT DEPENDENCY COVERAGE") + "  \n");
-//            writer.write(summaryTotalDepUsage.usageToMarkdown("TOTAL DEPENDENCY COVERAGE _[Direct + Indirect]_") + "  \n");
-//            writer.write(summaryTotalUsage.usageToMarkdown("TOTAL COVERAGE _[Project + Dependencies]_") + "  \n");
-//            writer.write("----------------------------------------------------------------  \n");
-//            // MULTIPLE
-//            writer.write("## MULTIPLE:  \n");
-//            writer.write("_If indirect dependencies are shared by direct dependencies they are added to the  \n" +
-//                    "cost of all of their parent dependencies in the visual HTML version but only included  \n" +
-//                    "once in the Uber-jar._  \n");
-//            writer.write("### **NUMBER OF DEPENDENCIES:** " + "  \n");
-//            writer.write("- **#DIRECT:** " + nrDirectDeps + "  \n");
-//            writer.write("- **#MULTIPLE INDIRECT:** " + nrMultipleIndirectDeps + "  \n");
-//            writer.write(summaryMultipleIndirectDepUsage.usageToMarkdown("MULTIPLE INDIRECT COVERAGE") + "  \n");
-//            writer.write(summaryMultipleTotalDepUsage.usageToMarkdown("MULTIPLE TOTAL DEPENDENCY COVERAGE _[Direct + Multiple Indirect]_") + "  \n");
-//            writer.write(summaryMultipleTotalUsage.usageToMarkdown("MULTIPLE TOTAL COVERAGE _[Project + Dependencies]_"));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
     }
 
 }
