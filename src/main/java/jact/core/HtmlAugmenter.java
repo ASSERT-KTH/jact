@@ -448,10 +448,6 @@ public class HtmlAugmenter {
      * @param packageUsage
      */
     private static void extractUsage(String line, int entryIndex, ProjectDependency matchedDep, DependencyUsage packageUsage) {
-        if(matchedDep.getId().equals("org.bouncycastle:bcpkix-jdk15to18:1.77")){
-            System.out.println("BOUNCY: " + line);
-            System.out.println("INDEX: " + entryIndex);
-        }
         switch (entryIndex) {
             case 1:
                 // Missed and Covered instructions
@@ -514,9 +510,6 @@ public class HtmlAugmenter {
                 // Covered Classes
                 matchedDep.dependencyUsage.addTotalClasses(extractUsageNumber(line));
                 packageUsage.addTotalClasses(extractUsageNumber(line));
-                if(matchedDep.getId().equals("org.bouncycastle:bcpkix-jdk15to18:1.77")){
-                    System.out.println("BOUNCY: " + extractUsageNumber(line));
-                }
                 break;
             default:
                 System.out.println("Could not extract usage of line: " + line);
