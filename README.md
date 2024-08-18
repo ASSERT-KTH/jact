@@ -24,7 +24,7 @@ dependency usage.
     mvn clean install
     ```
   
-- Navigate into the root of the test project: `./src/main/it/sanity-check-project` and again execute:
+- Navigate into the root of the test project: `./src/main/it/test-project` and again execute:
     ```
     mvn clean install
     ```
