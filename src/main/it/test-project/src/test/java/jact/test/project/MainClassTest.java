@@ -1,11 +1,11 @@
-package jonas.sanity.check;
+package jact.test.project;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-public class SanityCheckTest {
+public class MainClassTest {
     @Test
     public void shouldAnswerWithTrue() {
         assertTrue(true);
@@ -13,7 +13,7 @@ public class SanityCheckTest {
 
     @Test
     public void testMain() {
-        SanityCheck SC = new SanityCheck();
-        SC.main(new String[0]);
+        MainClass MC = new MainClass();
+        MC.main(new String[0]);
     }
 }
