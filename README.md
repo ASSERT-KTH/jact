@@ -6,17 +6,16 @@
 <br/> 
 
 ### What is JACT?
-JACT is a work in progress Maven plugin for my master's thesis which will generate a complete code coverage report of a
-Java project using Maven. The report includes coverage of both the project and all of its dependencies (even transitive).
-JACT uses the JaCoCo CLI to generate the coverage report on the packaged Uber-jar and augments the unorganized package 
-report by resolving the package dependency heritage uncovering the complete dependency usage by including the transitive
-dependency usage.
+JACT is a Maven plugin for my master's thesis generates a complete code coverage report of a Java project using Maven. 
+The generated report includes the conventional project coverage in addition to the coverage of the entire dependency 
+tree. JACT uses the JaCoCo CLI to generate the coverage report on the packaged Uber-jar. Thereafter, it augments the 
+unorganized package report by resolving the package dependency heritage and calculates the coverage of all dependencies.
 
 ##### Current prerequisites:
 - Required to use JaCoCo
-- Use either the Maven Shade Plugin to create a Uber-jar (including all the dependencies along with their transitive 
+- Use either the Maven Shade Plugin to create an Uber-jar (including all the dependencies along with their transitive 
   dependencies). Example provided under 'Using JACT'.
-- Resulting Uber-jar has to be place under ./target/
+- Resulting Uber-jar has to be placed under ./target/
 
 ### Building the test project and inspecting its coverage report:
 - Clone this repo and build the project from the root folder:
