@@ -37,7 +37,7 @@ public class XmlReportMojo extends AbstractReportMojo {
         }
 
 
-        getLog().info("STARTING: JACT - Java Complete Coverage Tracker");
+        getLog().info("STARTING: JACT - Java Absolute Coverage Tracker");
         getLog().info("JARNAME: " + getOutputJarName());
         //String outputDirectory = project.getBuild().getOutputDirectory();
 
